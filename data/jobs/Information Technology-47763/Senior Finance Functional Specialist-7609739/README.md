@@ -5,38 +5,33 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location:&nbsp;</strong>Austin, USA</p>
-<p><strong>About The Team</strong></p>
-<p>The CxO Transformation Partners (CXTP) team serves as trusted advisors to Cloudflare’s most senior customers and prospects. We are a highly strategic group who simplify technical complexity and align our solutions with large-scale business objectives. Our mission is to unlock commercial outcomes by bridging the gap between deep technical capabilities and executive-level strategic goals.</p>
-<p>This is a high-stakes, senior executive facing environment. We are looking for a highly operational, polished, and strategic candidate who possesses a consulting mindset and is eager to design the foundational processes that enable executive-level transformation.</p>
-<p><strong>About The Internship</strong></p>
-<p>The Executive Engagement Intern will help operationalize our Executive Community experience enabling scale, consistency, and quality in CxO interactions. We define this "experience" as a curated, high-touch peer platform designed to foster trust and facilitate strategic dialogue among CxOs. This role focuses on supporting the program launch, which will include the creation of an Executive Council, designing executive engagements, and establishing foundational processes for:</p>
+<p><strong>Available Locations: </strong>Bengaluru, India</p>
+<p><strong>About the Role:</strong></p>
+<p>The Oracle Finance Functional Specialist will be a primary functional expert responsible for the configuration, validation, and optimization of the <strong>Oracle Fusion Cloud ERP Financials</strong> modules. This role is critical for the company-wide Oracle migration, focusing on configuring systems to accurately reflect accounting policies and compliance standards across General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing.</p>
+<p><strong>Key Responsibilities</strong></p>
 <ul>
-	<li>Summits, &amp; Networking Peer Networking Events:&nbsp; Designing the operational playbooks for these intimate, high-impact events.</li>
-	<li>&nbsp;Academy pilot. The CXO Academy is our premier executive education program. This pilot focuses on building a curriculum that helps CxOs navigate technological and business change. The intern will support the pilot by designing participant workflows, supporting development of curriculum and feedback mechanisms.</li>
+	<li><strong>Financial Module Ownership:</strong> Define and own the functional configuration roadmap for key financial modules, including General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing<strong>.</strong></li>
+	<li><strong>Compliance and System Configuration:</strong> Directly design and configure Oracle Fusion to ensure enforcement of critical financial compliance standards (e.g., ASC 606/IFRS 15, SOX).</li>
+	<li><strong>Reporting Design:</strong> Define and develop robust financial reports and dashboards that meet the needs of internal and external stakeholders using Oracle Fusion reporting tools (e.g., OTBI, FRS, Smartview).</li>
+	<li><strong>Implementation &amp; Data Migration:</strong> Lead the configuration, unit testing, and cutover activities for financial modules, including defining the strategy and execution for data conversion of critical master and transactional data (e.g., customers, open invoices).</li>
+	<li><strong>Process Alignment:</strong> Partner with Finance Business Users and Business Systems Analysts to ensure system configurations align with corporate policy and drive process efficiency.</li>
 </ul>
-<p><strong>What You’ll Get To Do In This Role</strong></p>
+<p><strong>Required Qualifications</strong></p>
 <ul>
-	<li>Own the delivery of the Executive Engagement Playbook and the council operations toolkit, providing a strong portfolio deliverable and presentation to leadership.</li>
-	<li>Key projects will include:</li>
-	<ul>
-		<li>Building the Executive Council operations kit, encompassing bios, briefing notes, and tracking mechanisms.</li>
-		<li>Developing an executive event playbook for summits and dinners.</li>
-		<li>Supporting the Academy curriculum and participant workflow.</li>
-		<li>Creating standardized templates for immersion labs and sprints.</li>
-	</ul>
+	<li>10+ years of progressive experience as a Consultant, specifically supporting financial ERP systems.</li>
+	<li>5+ years of hands-on, end-to-end implementation and <strong>configuration experience with Oracle Fusion Cloud Financials</strong>, focusing on the General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing.</li>
+	<li>Deep functional understanding of core accounting principles.</li>
+	<li>Proven ability to create/translate detailed functional design documents and author system configuration from design through deployment.</li>
 </ul>
-<p><strong>Qualifications</strong></p>
+<p><strong>Preferred Qualifications</strong></p>
 <ul>
-	<li>Currently pursuing an Undergrad Masters MA/MS (MBA not required).</li>
-	<li>Available for a full-time 12-week internship, working from our Austin office 3 days a week during the summer (May26-Aug14).</li>
-	<li>Experience or strong interest in developing executive-level content, playbooks, operational kits, and program materials.</li>
-	<li>A tech-savvy and iterative creator, proficient in leveraging AI coding assistants (e.g., Copilot, ChatGPT) or low-code tools to rapidly build and improve functional prototypes, automation scripts, or operational materials based on stakeholder feedback.</li>
-	<li>Ability to own a high-impact project end-to-end and deliver portfolio-ready results.</li>
-	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including executives, sales, and marketing.</li>
-	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
+	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
+	<li>Hands-on experience with other Oracle EPM modules like EDMCS, FCCS and ARCS.</li>
+	<li>Third-party supporting software experience like Avalara, Kyriba, Zip, etc.</li>
+	<li>Exposure to the Data Center Infrastructure industry</li>
+	<li>Relevant professional product/functional certifications (e.g., CPA, PMP, Oracle Cloud certifications)</li>
+	<li>Working knowledge of various AI Agents within Oracle Fusion Cloud Applications</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

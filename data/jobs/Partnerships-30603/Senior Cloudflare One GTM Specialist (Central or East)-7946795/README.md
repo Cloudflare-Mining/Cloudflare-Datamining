@@ -5,35 +5,64 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location:&nbsp;</strong>Austin, Texas</p>
-<p><strong>About the Department</strong><strong><br></strong></p>
-<p>The Marketing team at Cloudflare is dedicated to amplifying our mission to help build a better Internet. We craft compelling narratives, engage with our global audience, and drive awareness and adoption of our innovative products and services. Through strategic campaigns, content creation, and community engagement, we play a crucial role in connecting with our customers and the broader internet community. As an intern, you'll join a dynamic and supportive environment, learning from experienced professionals and contributing to impactful projects.</p>
-<p><strong>About the Role</strong></p>
-<p>As a Content Marketing Intern at Cloudflare, you will play a vital role in shaping the voice of our brand and engaging our audience across various digital platforms. You will contribute to creating compelling content that attracts potential customers and keeps our current community informed and engaged throughout their journey with Cloudflare. This role offers an exciting opportunity to develop your writing skills, understand digital content strategy, and learn about the intersection of technology, marketing, and global reach. You will be a key contributor to our team, bringing fresh perspectives and a passion for storytelling to our content initiatives.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>This role will be located in either Austin or located in our Central/East regions</strong></p>
+<p><strong>About the Department</strong></p>
+<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Product Specialists, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
+<p>Our Cloudflare One Go-To-Market Specialist team provides deep subject matter expertise on converging Network and Security services in our Cloudflare One (CF1) portfolio, including Secure Access Service Edge (SASE), Security Service Edge (SSE), Zero Trust Network Access (ZTNA), Secure Web Gateway (SWG), Cloud Access Security Broker (CASB), Remote Browser Isolation (RBI), Data Protection (including DLP), and Email Security (CES).</p>
+<p><strong>What you’ll do</strong></p>
+<p>As a <strong>Senior Cloudflare One GTM Specialist</strong> you will be responsible for growing CloudflareOne (CF1) revenue and product adoption. In this role, you will serve as the segment lead for CF1 sales. You will advise the sales leaders on opportunities and programs to grow CF1 revenue, partner with the technical sales teams, enable account executives on product positioning and competitive intelligence, grow partner engagement around CF1, and support strategic deals from discovery to close. The ideal candidate possesses a consultative mindset, strong selling skills, and a deep technical background to drive engagement internally among the sales organization and externally with decision-makers and influencers within security, networking, and IT and operations.</p>
 <ul>
-	<li>Collaborate with the marketing team to develop and execute content strategies that align with business goals.</li>
-	<li>Research, write, and edit engaging blog posts, newsletters, case studies, and other marketing collateral.</li>
-	<li>Ensure all content reflects Cloudflare's brand voice and maintains a high standard of quality and accuracy.</li>
-	<li>Learn and apply best practices in SEO (Search Engine Optimization) and AEO (AI Engine Optimization) to optimize content for discoverability.</li>
-	<li>Adapt writing style and tone for various digital platforms and target audiences, understanding the nuances of each channel.</li>
-	<li>Contribute to content planning and brainstorming sessions, bringing creative ideas to the table.</li>
-	<li>Support the team in analyzing content performance and identifying opportunities for improvement.</li>
+	<li>Present to strategic customers as an expert of our SASE, SSE, AI Security, and Email Security solutions.</li>
+	<li>Align Director and C-Level perceived business value with Cloudflare solutions in the transformational objectives of securing remote work, safe AI adoption, corporate network modernization, adoption of SASE/SSE, and data protection</li>
+	<li>Develop and advise on sales strategies and pipeline generation in partnership with regional and country sales leaders.&nbsp;</li>
+	<li>Provide regular business reviews to the management team highlighting pipeline health, attainment progress and challenges to closing business</li>
+	<li>Generate a succinct feedback loop with PM, PMM, Demand Generation, Enablement, Programs, and Partner Organization to deliver relevant CF1 anecdotes and data points.</li>
 </ul>
-<p><strong>Skills &amp; Qualifications</strong></p>
+<p>The Senior Cloudflare One GTM Specialist Role is a consultative sales excellence role that directly supports sales delivery of regional CF1 quota. In order to be successful, you will need to become a thought leader, trusted advisor, and spokesperson for Cloudflare One - Cloudflare's SASE platform.</p>
+<h4><strong>Requirements</strong></h4>
 <ul>
-	<li>Currently pursuing a degree in Journalism, English, Marketing, Communications, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer (May-Aug).</li>
-	<li>A strong portfolio showcasing your writing samples across different formats (e.g., blog posts, articles, essays).</li>
-	<li>Demonstrable understanding of SEO (Search Engine Optimization) and AEO (AI Engine Optimization) principles.</li>
-	<li>Ability to write clearly, concisely, and adaptably for various digital platforms and audiences.</li>
-	<li>Experience with AI editing tools, brand compliance, and productivity.</li>
-	<li>Strong research skills and a keen eye for detail.</li>
-	<li>Excellent communication and collaboration skills.</li>
-	<li>Curiosity and a proactive approach to learning and problem-solving.</li>
-	<li>A passion for technology and its impact on the internet is desirable.</li>
+	<li>Minimum 4 years of experience selling or supporting the sales of cyber security, networking, identity management, cloud or SaaS solutions.</li>
+	<li>Technical expertise in SASE, SSE, AI Security, ZTNA, SWG, CASB, DLP, SD-WAN, and Email Security</li>
+	<li>Experience building territory plans, prospecting and bringing in new logos in a competitive market</li>
+	<li>Knowledge of key market players/competitors in the software defined networking, zero trust and cybersecurity solution spaces.</li>
+	<li>Familiarity with AI concepts and terminology, specifically related to MCP servers and Agents</li>
+	<li>Demonstrated ability to think strategically and develop/execute corresponding objectives.</li>
+	<li>Strong verbal and written communications, as well as the ability to work effectively across internal and external organizations.</li>
+	<li>Excellent presentation and public speaking skills.</li>
+	<li>Bachelor’s Degree</li>
+	<li>10-20% travel</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<p>For Colorado based hires: Estimated annual salary of $146,000 - $257,000<br>For California (excluding Bay Area) based hires: Estimated salary of $161,000 - $287,000<br>For Bay Area-based hires: Estimated annual salary of $168,000 - $303,000</p>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual <strong>salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan</strong>.</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
