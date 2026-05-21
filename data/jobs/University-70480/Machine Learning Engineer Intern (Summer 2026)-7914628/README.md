@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, Texas, US<br><br><strong>Internship Dates:</strong> June 8 - August 28 or June 22 - September 11</p>
+<p><strong>Available Locations: </strong>Austin, Texas, US<br><br><strong>Internship Dates:</strong> June 22 - September 11</p>
 <h4><strong>About the team</strong></h4>
 <p>The Data Intelligence &amp; Analytics team at Cloudflare is responsible for building a unified data &amp; ML platform that enables our internal Business Partners and Product teams with actionable analytics, insights and recommendations. Our goal is to democratize data &amp; intelligence, support Cloudflare’s critical business needs, and provide self-service data &amp; AI applications to fuel existing and new business critical initiatives.</p>
 <h4><strong>About the role</strong></h4>
