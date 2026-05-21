@@ -1187,6 +1187,16 @@
 																				"example": true,
 																				"type": "boolean",
 																				"x-auditable": true
+																			},
+																			"propagation_policy": {
+																				"default": "authenticated",
+																				"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																				"enum": [
+																					"authenticated",
+																					"accept"
+																				],
+																				"type": "string",
+																				"x-auditable": true
 																			}
 																		},
 																		"type": "object"
@@ -2718,6 +2728,16 @@
 																			"description": "Whether trace persistence is enabled for the Worker.",
 																			"example": true,
 																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"propagation_policy": {
+																			"default": "authenticated",
+																			"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																			"enum": [
+																				"authenticated",
+																				"accept"
+																			],
+																			"type": "string",
 																			"x-auditable": true
 																		}
 																	},
@@ -6896,6 +6916,16 @@
 																	"example": true,
 																	"type": "boolean",
 																	"x-auditable": true
+																},
+																"propagation_policy": {
+																	"default": "authenticated",
+																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																	"enum": [
+																		"authenticated",
+																		"accept"
+																	],
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"type": "object"
@@ -8110,6 +8140,16 @@
 														"example": true,
 														"type": "boolean",
 														"x-auditable": true
+													},
+													"propagation_policy": {
+														"default": "authenticated",
+														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+														"enum": [
+															"authenticated",
+															"accept"
+														],
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -8398,6 +8438,16 @@
 																			"description": "Whether trace persistence is enabled for the Worker.",
 																			"example": true,
 																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"propagation_policy": {
+																			"default": "authenticated",
+																			"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																			"enum": [
+																				"authenticated",
+																				"accept"
+																			],
+																			"type": "string",
 																			"x-auditable": true
 																		}
 																	},
@@ -12352,6 +12402,16 @@
 														"example": true,
 														"type": "boolean",
 														"x-auditable": true
+													},
+													"propagation_policy": {
+														"default": "authenticated",
+														"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+														"enum": [
+															"authenticated",
+															"accept"
+														],
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"type": "object"
@@ -15834,6 +15894,16 @@
 																	"description": "Whether trace persistence is enabled for the Worker.",
 																	"example": true,
 																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"propagation_policy": {
+																	"default": "authenticated",
+																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																	"enum": [
+																		"authenticated",
+																		"accept"
+																	],
+																	"type": "string",
 																	"x-auditable": true
 																}
 															},
@@ -19318,6 +19388,16 @@
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true
+															},
+															"propagation_policy": {
+																"default": "authenticated",
+																"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																"enum": [
+																	"authenticated",
+																	"accept"
+																],
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"type": "object"
@@ -19970,6 +20050,16 @@
 																					"description": "Whether trace persistence is enabled for the Worker.",
 																					"example": true,
 																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"propagation_policy": {
+																					"default": "authenticated",
+																					"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																					"enum": [
+																						"authenticated",
+																						"accept"
+																					],
+																					"type": "string",
 																					"x-auditable": true
 																				}
 																			},
@@ -20931,6 +21021,16 @@
 																	"description": "Whether trace persistence is enabled for the Worker.",
 																	"example": true,
 																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"propagation_policy": {
+																	"default": "authenticated",
+																	"description": "Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. \"authenticated\" (default) honors inbound trace context only when accompanied by a valid trace auth token. \"accept\" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled.",
+																	"enum": [
+																		"authenticated",
+																		"accept"
+																	],
+																	"type": "string",
 																	"x-auditable": true
 																}
 															},
