@@ -571,6 +571,87 @@
 			"Realtime"
 		]
 	},
+	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks/all": {
+		"description": "Returns the list of webhook event names supported by RealtimeKit.",
+		"operationId": "getAllWebhookEvents",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "The app identifier tag.",
+					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
+					"maxLength": 32,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"data": {
+									"items": {
+										"enum": [
+											"meeting.started",
+											"meeting.ended",
+											"meeting.participantJoined",
+											"meeting.participantLeft",
+											"meeting.chatSynced",
+											"recording.statusUpdate",
+											"livestreaming.statusUpdate",
+											"meeting.transcript",
+											"meeting.summary"
+										],
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"success": {
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"data"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Operation successful"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Fetch all supported webhook events",
+		"tags": [
+			"Webhooks"
+		],
+		"x-api-token-group": [
+			"Realtime Admin",
+			"Realtime"
+		]
+	},
 	"PATCH /accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}": {
 		"description": "Edits the webhook details for the given webhook ID.",
 		"operationId": "editWebhook",

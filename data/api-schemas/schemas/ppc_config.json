@@ -124,6 +124,9 @@
 											"type": "boolean"
 										},
 										"price_usd_microcents": {
+											"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
+											"maximum": 999999900000,
+											"minimum": 0,
 											"type": "integer"
 										}
 									},
@@ -475,6 +478,9 @@
 								"type": "boolean"
 							},
 							"price_usd_microcents": {
+								"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
+								"maximum": 999999900000,
+								"minimum": 0,
 								"type": "integer"
 							}
 						},
@@ -596,6 +602,9 @@
 											"type": "boolean"
 										},
 										"price_usd_microcents": {
+											"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
+											"maximum": 999999900000,
+											"minimum": 0,
 											"type": "integer"
 										}
 									},
@@ -993,6 +1002,9 @@
 								"type": "boolean"
 							},
 							"price_usd_microcents": {
+								"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
+								"maximum": 999999900000,
+								"minimum": 0,
 								"type": "integer"
 							}
 						},
@@ -1114,6 +1126,9 @@
 											"type": "boolean"
 										},
 										"price_usd_microcents": {
+											"description": "Price in microcents 1 USD = 100,000,000 microcents. Must be 0 or a multiple of 100,000 $0.001. Range: $0.001–$9,999.999.",
+											"maximum": 999999900000,
+											"minimum": 0,
 											"type": "integer"
 										}
 									},
