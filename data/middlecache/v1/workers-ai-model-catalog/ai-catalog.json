@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-05-20T04:33:40.823Z",
+	"generated_at": "2026-05-21T04:33:53.829Z",
 	"model_count": 137,
 	"models": [
 		{
@@ -3064,13 +3064,17 @@
 					"value": "80000"
 				},
 				{
+					"property_id": "lora",
+					"value": "true"
+				},
+				{
 					"property_id": "terms",
 					"value": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/LICENSE"
 				}
 			],
 			"metadata": {
 				"beta": false,
-				"lora": false,
+				"lora": true,
 				"function_calling": false,
 				"partner": false,
 				"realtime": false
@@ -4141,26 +4145,6 @@
 					"value": "262144"
 				},
 				{
-					"property_id": "price",
-					"value": [
-						{
-							"unit": "per M input tokens",
-							"price": 0.95,
-							"currency": "USD"
-						},
-						{
-							"unit": "per M output tokens",
-							"price": 4,
-							"currency": "USD"
-						},
-						{
-							"unit": "per M cached input tokens",
-							"price": 0.16,
-							"currency": "USD"
-						}
-					]
-				},
-				{
 					"property_id": "function_calling",
 					"value": "true"
 				},
@@ -4175,6 +4159,26 @@
 				{
 					"property_id": "vision",
 					"value": "true"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.72,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 3.48,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M cached input tokens",
+							"price": 0.3,
+							"currency": "USD"
+						}
+					]
 				}
 			],
 			"metadata": {
