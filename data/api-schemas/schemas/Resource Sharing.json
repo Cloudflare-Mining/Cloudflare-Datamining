@@ -1218,24 +1218,26 @@
 				}
 			},
 			{
-				"description": "Page number.",
+				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"default": 1,
 					"example": 2,
-					"minimum": 0,
+					"minimum": 1,
 					"multipleOf": 1,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to return per page.",
+				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"default": 20,
 					"example": 20,
 					"maximum": 100,
-					"minimum": 0,
+					"minimum": 1,
 					"multipleOf": 1,
 					"type": "integer"
 				}
@@ -2221,24 +2223,26 @@
 				}
 			},
 			{
-				"description": "Page number.",
+				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"default": 1,
 					"example": 2,
-					"minimum": 0,
+					"minimum": 1,
 					"multipleOf": 1,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to return per page.",
+				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"default": 20,
 					"example": 20,
 					"maximum": 100,
-					"minimum": 0,
+					"minimum": 1,
 					"multipleOf": 1,
 					"type": "integer"
 				}
@@ -3005,24 +3009,26 @@
 				}
 			},
 			{
-				"description": "Page number.",
+				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"default": 1,
 					"example": 2,
-					"minimum": 0,
+					"minimum": 1,
 					"multipleOf": 1,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to return per page.",
+				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"default": 20,
 					"example": 20,
 					"maximum": 100,
-					"minimum": 0,
+					"minimum": 1,
 					"multipleOf": 1,
 					"type": "integer"
 				}
@@ -3812,24 +3818,26 @@
 				}
 			},
 			{
-				"description": "Page number.",
+				"description": "Page number. Defaults to `1` when `per_page` is supplied without\n`page`. May be omitted entirely along with `per_page` to receive a\nnon-paginated response.",
 				"in": "query",
 				"name": "page",
 				"schema": {
+					"default": 1,
 					"example": 2,
-					"minimum": 0,
+					"minimum": 1,
 					"multipleOf": 1,
 					"type": "integer"
 				}
 			},
 			{
-				"description": "Number of objects to return per page.",
+				"description": "Number of objects to return per page. Defaults to `20` when `page`\nis supplied without `per_page`. May be omitted entirely along with\n`page` to receive a non-paginated response.",
 				"in": "query",
 				"name": "per_page",
 				"schema": {
+					"default": 20,
 					"example": 20,
 					"maximum": 100,
-					"minimum": 0,
+					"minimum": 1,
 					"multipleOf": 1,
 					"type": "integer"
 				}
