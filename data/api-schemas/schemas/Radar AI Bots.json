@@ -1753,7 +1753,8 @@
 					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
 					"enum": [
 						"PERCENTAGE",
-						"MIN0_MAX"
+						"MIN0_MAX",
+						"PERCENTAGE_CHANGE"
 					],
 					"example": "PERCENTAGE",
 					"type": "string"

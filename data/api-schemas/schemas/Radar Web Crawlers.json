@@ -577,6 +577,22 @@
 				}
 			},
 			{
+				"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+				"in": "query",
+				"name": "normalization",
+				"schema": {
+					"default": "PERCENTAGE",
+					"description": "Normalization method applied to the results. Refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization/).",
+					"enum": [
+						"PERCENTAGE",
+						"MIN0_MAX",
+						"PERCENTAGE_CHANGE"
+					],
+					"example": "PERCENTAGE",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Filters results by bot operator.",
 				"in": "query",
 				"name": "botOperator",
