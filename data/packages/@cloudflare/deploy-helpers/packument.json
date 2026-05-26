@@ -1,0 +1,70 @@
+{
+	"name": "@cloudflare/deploy-helpers",
+	"dist-tags": {
+		"latest": "0.1.0"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "@cloudflare/deploy-helpers",
+			"version": "0.0.0",
+			"devDependencies": {
+				"tsup": "8.3.0",
+				"vitest": "4.1.0",
+				"miniflare": "4.20260526.0",
+				"typescript": "~5.8.3",
+				"@types/node": "^22.10.1",
+				"concurrently": "^8.2.2",
+				"@cloudflare/workers-utils": "0.21.1",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/containers-shared": "0.15.1"
+			},
+			"dist": {
+				"shasum": "bbd2a34cc85977490c7c1f20b003c7560d4a0620",
+				"tarball": "https://registry.npmjs.org/@cloudflare/deploy-helpers/-/deploy-helpers-0.0.0.tgz",
+				"fileCount": 5,
+				"integrity": "sha512-BNaRPzZaS9uEYrxHt5yVG1F3fKMA8MQU/mwO438FGh4qnl+CSj3QSi4rITvv/HDiJ+W7bINJSITQWt++Hf+ONw==",
+				"signatures": [
+					{
+						"sig": "MEUCIFF8LJ9+gMNPJAjcsHS1V9isditNwLbZhNunE8xN4aB2AiEAmJEv1IXvP8laYdz8Aum4H3WBDI9yt5ZsNn0s2M452X4=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1996
+			}
+		},
+		"0.1.0": {
+			"name": "@cloudflare/deploy-helpers",
+			"version": "0.1.0",
+			"devDependencies": {
+				"@types/node": "^22.10.1",
+				"concurrently": "^8.2.2",
+				"tsup": "8.3.0",
+				"typescript": "~5.8.3",
+				"vitest": "4.1.0",
+				"@cloudflare/containers-shared": "0.15.1",
+				"miniflare": "4.20260526.0",
+				"@cloudflare/workers-utils": "0.21.1",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-ZD9/aN5/Hze6IA8oirpS49ptkNFiNOA0axS7Q8n4thuqd3yUFn+3cl8pwFr6EmaODtlGBpYon3VvEqjQ6BDHoQ==",
+				"shasum": "54c3e568527ef2137e8e7d7ec86f12b7a7cb1bf4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/deploy-helpers/-/deploy-helpers-0.1.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 6635,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fdeploy-helpers@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIA9kcdgNGrMOy87ITyfiB86zLlR931pv7u3dstXhXx5OAiA4L8WxvDwup3OviXZPPLNAOzeD3OTHRzCykpGErSciMQ=="
+					}
+				]
+			}
+		}
+	}
+}

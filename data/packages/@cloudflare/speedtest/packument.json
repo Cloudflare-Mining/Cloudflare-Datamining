@@ -1485,43 +1485,43 @@
 			"name": "@cloudflare/speedtest",
 			"version": "1.9.1",
 			"devDependencies": {
-				"@babel/core": "^7.27.1",
-				"@babel/eslint-parser": "^7.27.1",
-				"@babel/preset-env": "^7.27.2",
-				"@eslint/js": "^9.27.0",
-				"@rollup/plugin-babel": "^6.0.4",
-				"@rollup/plugin-node-resolve": "^16.0.1",
-				"eslint": "^9.27.0",
-				"eslint-plugin-compat": "^6.0.2",
-				"eslint-plugin-import": "^2.31.0",
-				"eslint-plugin-json": "^4.0.1",
-				"eslint-plugin-prettier": "^5.4.0",
 				"husky": "^9.1.7",
-				"lint-staged": "^16.0.0",
-				"prettier": "^3.5.3",
+				"eslint": "^9.27.0",
 				"rimraf": "^6.0.1",
 				"rollup": "^4.41.0",
+				"prettier": "^3.5.3",
+				"@eslint/js": "^9.27.0",
+				"typescript": "^5.8.3",
+				"@babel/core": "^7.27.1",
+				"lint-staged": "^16.0.0",
+				"@babel/preset-env": "^7.27.2",
 				"rollup-plugin-dts": "^6.2.1",
-				"typescript": "^5.8.3"
+				"eslint-plugin-json": "^4.0.1",
+				"@babel/eslint-parser": "^7.27.1",
+				"@rollup/plugin-babel": "^6.0.4",
+				"eslint-plugin-compat": "^6.0.2",
+				"eslint-plugin-import": "^2.31.0",
+				"eslint-plugin-prettier": "^5.4.0",
+				"@rollup/plugin-node-resolve": "^16.0.1"
 			},
 			"dist": {
-				"integrity": "sha512-pXJ5vXvZCh0qUZnvvpjSL+VxD9aBa5PZKF7Diysby0oY0AkHYwNIbE7dGBmXC6YCeoYScEpRdHP5wPxLxFa5KA==",
 				"shasum": "96445b54ab2abc68554caaa807b04a61f9109a33",
 				"tarball": "https://registry.npmjs.org/@cloudflare/speedtest/-/speedtest-1.9.1.tgz",
 				"fileCount": 6,
-				"unpackedSize": 290821,
+				"integrity": "sha512-pXJ5vXvZCh0qUZnvvpjSL+VxD9aBa5PZKF7Diysby0oY0AkHYwNIbE7dGBmXC6YCeoYScEpRdHP5wPxLxFa5KA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDvph/WW8VnLWRH6MtGXMl6Y5huh2SuAKyq0K+k0h2g8gIhAONP1drJ+8LrEEo6WWdiqDDJCMUYMDmiJwqvXTUX2ARI",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fspeedtest@1.9.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDvph/WW8VnLWRH6MtGXMl6Y5huh2SuAKyq0K+k0h2g8gIhAONP1drJ+8LrEEo6WWdiqDDJCMUYMDmiJwqvXTUX2ARI"
-					}
-				]
+				"unpackedSize": 290821
 			},
 			"engines": {
 				"node": ">=12"

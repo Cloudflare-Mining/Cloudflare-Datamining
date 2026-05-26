@@ -221,28 +221,28 @@
 			"name": "@cloudflare/voice",
 			"version": "0.2.0",
 			"peerDependencies": {
+				"react": "^19.0.0",
 				"agents": ">=0.11.7 <1.0.0",
-				"partysocket": "^1.0.0",
-				"react": "^19.0.0"
+				"partysocket": "^1.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-ABpcbJ0ZFVahbMorg5tNbuSeM4SnTmWqjS+iSrxwTa3QtSHEGDSNcIx58IuZnxTBDXofkmf3dW58Ufqm9yZINA==",
 				"shasum": "eb44ed17d74ed7547ee8a6f75fbbbb348482fbcc",
 				"tarball": "https://registry.npmjs.org/@cloudflare/voice/-/voice-0.2.0.tgz",
 				"fileCount": 14,
-				"unpackedSize": 296414,
+				"integrity": "sha512-ABpcbJ0ZFVahbMorg5tNbuSeM4SnTmWqjS+iSrxwTa3QtSHEGDSNcIx58IuZnxTBDXofkmf3dW58Ufqm9yZINA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCo+PwhjyiugOMjNybsVpCelP8/RAUEXsD8ZZe2A9rkrgIhAOFpO7NsT5kM4hrMjoxZHKV6VF/3q2B7WFwKF858riJf",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvoice@0.2.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCo+PwhjyiugOMjNybsVpCelP8/RAUEXsD8ZZe2A9rkrgIhAOFpO7NsT5kM4hrMjoxZHKV6VF/3q2B7WFwKF858riJf"
-					}
-				]
+				"unpackedSize": 296414
 			}
 		}
 	}

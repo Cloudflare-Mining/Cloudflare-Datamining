@@ -34,29 +34,29 @@
 			"name": "@cloudflare/dynamic-workflows",
 			"version": "0.1.1",
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.0.0",
-				"@types/node": "catalog:",
 				"esbuild": "^0.27.0",
-				"typescript": "catalog:"
+				"typescript": "catalog:",
+				"@types/node": "catalog:",
+				"@cloudflare/workers-types": "^4.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-sVomQI/cCOHr/Tu/qefnpECctG38ayrePxsUJm8UqllV1HCX9hQ1EW0cFo4HCdU+avQsPVfPiknnlk0oRySlig==",
 				"shasum": "b3dc1eec7c4af9661bef988f986c2ef9a92a4fa5",
 				"tarball": "https://registry.npmjs.org/@cloudflare/dynamic-workflows/-/dynamic-workflows-0.1.1.tgz",
 				"fileCount": 12,
-				"unpackedSize": 47518,
+				"integrity": "sha512-sVomQI/cCOHr/Tu/qefnpECctG38ayrePxsUJm8UqllV1HCX9hQ1EW0cFo4HCdU+avQsPVfPiknnlk0oRySlig==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDQY4bm9my42RdTIJoQANViYBjFXfjcHGkZmuEsiCSASwIhAKKYhRo6C8cKGCTxILYCeHnsLaNFwQ5lth7SpmHm3WIw",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fdynamic-workflows@0.1.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDQY4bm9my42RdTIJoQANViYBjFXfjcHGkZmuEsiCSASwIhAKKYhRo6C8cKGCTxILYCeHnsLaNFwQ5lth7SpmHm3WIw"
-					}
-				]
+				"unpackedSize": 47518
 			},
 			"engines": {
 				"node": ">=22"
