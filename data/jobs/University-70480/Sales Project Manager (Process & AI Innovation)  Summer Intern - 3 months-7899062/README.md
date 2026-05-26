@@ -5,38 +5,26 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p>&nbsp;</p>
-<p><strong>Location:</strong> London, UK</p>
-<h3><strong>About the Team</strong></h3>
-<p>The Marketing team at Cloudflare is at the forefront of sharing our mission to help build a better internet. We are a dynamic and fast-paced team dedicated to showcasing Cloudflare's innovative products and solutions to a global audience. Through strategic campaigns, engaging events, and compelling content, we drive awareness, generate demand, and support our company's rapid growth. As an intern, you'll gain hands-on experience leveraging cutting-edge marketing strategies and technologies to directly impact our success.</p>
-<h3><strong>About the Role</strong></h3>
-<p>As a Marketing Campaigns &amp; Account-Based Marketing (ABM) Intern, you will play a crucial role in scaling Cloudflare's targeted marketing initiatives to generate engagement and pipeline across our EMEA target account base. This is an exciting opportunity to sit at the intersection of marketing, sales, and technology. You will help us modernize our approach by exploring AI adoption and developing new processes and tools to automate elements of our marketing campaigns. From analyzing audience segments to identifying productivity hacks, your work will directly support our EMEA campaign efforts and help deliver impactful, tailored experiences to our key accounts.</p>
-<h3><strong>Responsibilities</strong></h3>
-<ul>
-	<li><strong>Scale 1:Many Marketing Campaigns:</strong> Assist in the planning and execution of targeted 1:Many ABM campaigns, helping the team drive engagement and pipeline from our customer and prospect account segments across EMEA.</li>
-	<li><strong>Drive AI &amp; Automation:</strong> Research, test, and help implement AI tools and automated workflows to increase team productivity, streamline campaign creation, and personalize outreach at scale.</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner with the broader marketing, design, and sales teams to coordinate and execute digital campaign tactics, such as paid media campaigns, webinars, customized email sequences, and direct mail campaigns.</li>
-	<li><strong>Data &amp; Engagement Tracking:</strong> Help manage and track account engagement and leads generated from targeted campaigns, ensuring data accuracy in our CRM and timely follow-ups from the sales team.</li>
-	<li><strong>Performance Analysis:</strong> Contribute to campaign analysis by gathering data, analyzing funnel metrics, and providing insights on how to continually optimize campaign efforts.</li>
-	<li><strong>Process Improvement:</strong> Actively participate in team meetings and bring a fresh perspective, contributing innovative ideas for improving our marketing processes and overall campaign effectiveness.</li>
-</ul>
-<h3><strong>Skills &amp; Qualifications</strong></h3>
-<ul>
-	<li>Currently pursuing a Bachelor's degree in Marketing, Communications, Business, Technology, or a related field.</li>
-	<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
-	<li>Strong organizational skills with a keen eye for detail and the ability to manage multiple targeted campaigns simultaneously.</li>
-	<li>Excellent written and verbal communication skills, with an understanding of account based marketing strategies.</li>
-	<li>A strong interest in marketing technology, AI adoption, and process automation.</li>
-	<li>Proactive attitude with a desire to learn, experiment, and contribute in a fast-paced environment.</li>
-	<li>Ability to collaborate effectively within a team and with cross-functional partners, particularly Sales.</li>
-	<li>Proficiency with standard office productivity tools (e.g., Google Workspace, Microsoft Office).</li>
-</ul>
-<h3><strong>Bonus Points</strong></h3>
-<ul>
-	<li>Previous experience (academic or professional) with B2B marketing, lead generation, or Account-Based Marketing.</li>
-	<li>Familiarity with generative AI tools (e.g., Gemini, ChatGPT, Jasper) and how they can be applied to marketing.</li>
-	<li>Understanding of lead tracking, CRM systems (like Salesforce), or marketing automation platforms (like Marketo).</li>
-</ul>
+<p><strong>Available Location: </strong>London, UK</p>
+<div><strong>Department:</strong> Sales Operations &amp; Strategy / Business Transformation</div>
+<div><br><strong>The Opportunity<br></strong>Cloudflare is at the forefront of the AI revolution, and our team is leading the charge internally. We aren’t just talking about AI; we are actively rebuilding how our business functions.<br>We are looking for a high-energy, technically curious AI Transformation Intern to join a group of elite innovators. This isn't a "fetch the coffee" internship. You will be building the underlying infrastructure for our team’s AI initiatives, acting as a bridge between frontline business needs and global AI engineering, and delivering tangible process changes that move the needle for a multi-billion dollar company.</div>
+<div><br><strong>What You’ll Do<br></strong>
+	<ul>
+		<li><strong>Build &amp; Architect:</strong> Design and deploy AI-powered solutions that automate complex workflows and solve real-world business bottlenecks.</li>
+		<li><strong>Be the Subject Matter Expert:</strong> Act as a consultant for the team on the latest AI tools and LLM capabilities.</li>
+		<li><strong>Listen &amp; Empathize:</strong> Deep-dive into the daily challenges of our Sales and Partner teams to understand where AI can have the highest impact.</li>
+		<li><strong>Global Liaison:</strong> Engage with Cloudflare’s Global AI Organization to position our team’s needs and ensure our infrastructure aligns with company-wide standards.</li>
+		<li><strong>Iterate &amp; Improve:</strong> Collect feedback from team members, troubleshoot technical hurdles, and constantly refine the tools you build.</li>
+	</ul>
+	<br><strong>Skills &amp; Qualifications</strong><br>
+	<ul>
+		<li>Currently pursuing a degree in Business, Project Management, Operations, Data Science, or a related field.</li>
+		<li>Available for a full-time 12-week internship, working from our London office 3-5 days a week during the summer (June -September).</li>
+		<li>Business Strategy or Tech-focused student with a strong interest in AI/Automation, process improvement, program management, and technology exploration.</li>
+		<li>Strong organizational, communication, and analytical skills with the ability to manage multiple tasks and translate ideas into structured documentation.</li>
+		<li>A natural problem-solver who enjoys mapping out a process (using tools like Lucidchart or Miro) and thinking about how to make it simpler and faster.</li>
+	</ul>
+</div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
