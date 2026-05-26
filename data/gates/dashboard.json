@@ -330,7 +330,7 @@
 		"enabled": true
 	},
 	"billable-usage-in-product-overviews": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-account-management-kumo": {
 		"enabled": true
@@ -983,6 +983,9 @@
 	"disable-preview-badge": {
 		"enabled": true
 	},
+	"disable-worktree-badge": {
+		"enabled": false
+	},
 	"display-realtimekit-on-billable-usage": {
 		"enabled": false
 	},
@@ -1401,11 +1404,14 @@
 			"hide-quick-start-guide"
 		]
 	},
+	"honest-invoice-test": {
+		"enabled": false
+	},
 	"http-2-multiplexing": {
 		"enabled": true
 	},
 	"hyperdrive-planet-scale-partnership": {
-		"enabled": false
+		"enabled": true
 	},
 	"hyperdrive-private-networking": {
 		"enabled": true
@@ -1798,7 +1804,7 @@
 		"enabled": true
 	},
 	"pipelines-create-ui-v2": {
-		"enabled": false
+		"enabled": true
 	},
 	"pipelines-v2-ui": {
 		"enabled": true
@@ -2386,6 +2392,9 @@
 	"security-overview-v2-5": {
 		"enabled": false
 	},
+	"security-precursor": {
+		"enabled": true
+	},
 	"security-rules-severity-templates": {
 		"enabled": true
 	},
@@ -2452,7 +2461,7 @@
 		"enabled": true
 	},
 	"spectrum-v-net-origins": {
-		"enabled": false
+		"enabled": true
 	},
 	"speculation-beta-message": {
 		"enabled": true
