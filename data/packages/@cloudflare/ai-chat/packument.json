@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/ai-chat",
 	"dist-tags": {
-		"latest": "0.7.1"
+		"latest": "0.7.2"
 	},
 	"versions": {
 		"0.0.1": {
@@ -1649,6 +1649,47 @@
 					}
 				},
 				"unpackedSize": 581201
+			}
+		},
+		"0.7.2": {
+			"name": "@cloudflare/ai-chat",
+			"version": "0.7.2",
+			"dependencies": {
+				"nanoid": "^5.1.11"
+			},
+			"devDependencies": {
+				"@playwright/test": "^1.60.0",
+				"@types/react": "^19.2.14",
+				"ai": "^6.0.185",
+				"react": "^19.2.6",
+				"vitest-browser-react": "^2.2.0",
+				"zod": "^4.4.3"
+			},
+			"peerDependencies": {
+				"@ai-sdk/react": "^3.0.0",
+				"agents": ">=0.12.4 <1.0.0",
+				"ai": "^6.0.0",
+				"react": "^19.0.0",
+				"zod": "^4.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-9YXGLTh05ejpnLXksPk5NhVc9KPvm5MrwjnLGbsL3jI0+PkTo1WN7PxF4qO4mK28wOzm+KHWp9QaOzXdIKMoMQ==",
+				"shasum": "d4b87d3314986a74fa3d0370d10c1292219671da",
+				"tarball": "https://registry.npmjs.org/@cloudflare/ai-chat/-/ai-chat-0.7.2.tgz",
+				"fileCount": 14,
+				"unpackedSize": 597103,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fai-chat@0.7.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQCoWwDBGYDbi7oU2WcWo+pPJn+kmM/Svj+qAAMuT0CQTwIgE9PmTBGXsKk4Z8X6ky7rjAcqMxyVyFPSfLp0W7KjCJs="
+					}
+				]
 			}
 		}
 	}
