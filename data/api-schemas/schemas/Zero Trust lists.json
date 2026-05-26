@@ -1463,35 +1463,32 @@
 								{
 									"properties": {
 										"result": {
+											"description": "Provide the list items.",
 											"items": {
-												"description": "Provide the list items.",
-												"items": {
-													"properties": {
-														"created_at": {
-															"example": "2014-01-01T05:20:00.12345Z",
-															"format": "date-time",
-															"readOnly": true,
-															"type": "string"
-														},
-														"description": {
-															"description": "Provide the list item description (optional).",
-															"example": "Austin office IP",
-															"minimum": 0,
-															"type": "string"
-														},
-														"value": {
-															"description": "Specify the item value.",
-															"example": "8GE8721REF",
-															"type": "string",
-															"x-auditable": true
-														}
+												"properties": {
+													"created_at": {
+														"example": "2014-01-01T05:20:00.12345Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
 													},
-													"type": "object"
+													"description": {
+														"description": "Provide the list item description (optional).",
+														"example": "Austin office IP",
+														"minimum": 0,
+														"type": "string"
+													},
+													"value": {
+														"description": "Specify the item value.",
+														"example": "8GE8721REF",
+														"type": "string",
+														"x-auditable": true
+													}
 												},
-												"type": "array",
-												"x-stainless-collection-type": "set"
+												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"x-stainless-collection-type": "set"
 										}
 									},
 									"type": "object"
@@ -1638,35 +1635,32 @@
 										{
 											"properties": {
 												"result": {
+													"description": "Provide the list items.",
 													"items": {
-														"description": "Provide the list items.",
-														"items": {
-															"properties": {
-																"created_at": {
-																	"example": "2014-01-01T05:20:00.12345Z",
-																	"format": "date-time",
-																	"readOnly": true,
-																	"type": "string"
-																},
-																"description": {
-																	"description": "Provide the list item description (optional).",
-																	"example": "Austin office IP",
-																	"minimum": 0,
-																	"type": "string"
-																},
-																"value": {
-																	"description": "Specify the item value.",
-																	"example": "8GE8721REF",
-																	"type": "string",
-																	"x-auditable": true
-																}
+														"properties": {
+															"created_at": {
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
 															},
-															"type": "object"
+															"description": {
+																"description": "Provide the list item description (optional).",
+																"example": "Austin office IP",
+																"minimum": 0,
+																"type": "string"
+															},
+															"value": {
+																"description": "Specify the item value.",
+																"example": "8GE8721REF",
+																"type": "string",
+																"x-auditable": true
+															}
 														},
-														"type": "array",
-														"x-stainless-collection-type": "set"
+														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-collection-type": "set"
 												}
 											},
 											"type": "object"
