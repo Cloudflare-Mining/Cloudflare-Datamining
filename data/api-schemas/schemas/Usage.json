@@ -1,0 +1,306 @@
+{
+	"GET /accounts/{account_id}/workers/observability/usage": {
+		"description": "Event counts broken down by dataset and service, bucketed by day, for up to 90 days. The top-level events field is the sum of all breakdown counts.",
+		"operationId": "usage.get",
+		"parameters": [
+			{
+				"in": "query",
+				"name": "from",
+				"required": true,
+				"schema": {
+					"description": "Unix timestamp in milliseconds for the start of the range.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "to",
+				"required": true,
+				"schema": {
+					"description": "Unix timestamp in milliseconds for the end of the range.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"enum": [
+													"Successful request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"breakdown": {
+											"description": "Event counts grouped by dataset and service, bucketed by day.",
+											"items": {
+												"properties": {
+													"bin": {
+														"description": "ISO-8601 timestamp for the start of the bucket.",
+														"type": "string"
+													},
+													"count": {
+														"description": "ABR-adjusted event count for this bucket.",
+														"type": "number"
+													},
+													"dataset": {
+														"description": "Dataset name (e.g. 'workers', 'queues').",
+														"type": "string"
+													},
+													"service": {
+														"description": "Worker or service name that produced the events.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"bin",
+													"dataset",
+													"service",
+													"count"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"events": {
+											"description": "Total ABR-adjusted event count for the period — sum of all breakdown bins.",
+											"type": "number"
+										}
+									},
+									"required": [
+										"events",
+										"breakdown"
+									],
+									"type": "object"
+								},
+								"success": {
+									"enum": [
+										true
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"messages",
+								"success",
+								"errors",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful request"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Bad Request"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Unauthorized"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"detail": {
+												"type": "string"
+											},
+											"message": {
+												"enum": [
+													"Internal error"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"errors",
+								"success",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal error"
+			}
+		},
+		"summary": "Get event count",
+		"tags": [
+			"Usage"
+		],
+		"x-api-token-group": [
+			"Workers Observability Write",
+			"Workers Observability Read"
+		]
+	}
+}

@@ -1089,6 +1089,16 @@
 				"schema": {
 					"type": "number"
 				}
+			},
+			{
+				"description": "Filters pipelines by name (case-insensitive substring).",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"maxLength": 128,
+					"minLength": 1,
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -1403,6 +1413,16 @@
 				"in": "query",
 				"name": "pipeline_id",
 				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters sinks by name (case-insensitive substring).",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"maxLength": 128,
+					"minLength": 1,
 					"type": "string"
 				}
 			},
@@ -2916,6 +2936,16 @@
 					"example": "043e105f4ecef8ad9ca31a8372d0c353",
 					"maxLength": 32,
 					"minLength": 32,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filters streams by name (case-insensitive substring).",
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"maxLength": 128,
+					"minLength": 1,
 					"type": "string"
 				}
 			},

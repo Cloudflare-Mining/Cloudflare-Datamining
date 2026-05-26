@@ -1719,6 +1719,17 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/workers/observability/usage": [
+		{
+			"description": "Your Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /zones/{zone_id}/api_gateway/configuration": [
 		{
 			"in": "path",
