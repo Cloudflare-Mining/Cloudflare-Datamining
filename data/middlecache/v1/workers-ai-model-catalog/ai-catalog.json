@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-05-26T04:33:57.877Z",
-	"model_count": 137,
+	"generated_at": "2026-05-27T04:33:43.154Z",
+	"model_count": 142,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -32,14 +32,14 @@
 				}
 			],
 			"metadata": {
-				"Resolutions": "720P, 1080P",
+				"Input": "Image URL (no base64)",
 				"Max Duration": "15 seconds",
-				"Input": "Image URL (no base64)"
+				"Resolutions": "720P, 1080P"
 			},
 			"external_info": "https://modelstudio.console.alibabacloud.com/",
 			"terms": "https://www.alibabacloud.com/help/en/legal",
 			"cover_image_url": null,
-			"created_at": "2026-04-27 16:31:19"
+			"created_at": "2026-05-22 17:52:49"
 		},
 		{
 			"model_id": "alibaba/hh1-t2v",
@@ -71,14 +71,14 @@
 				}
 			],
 			"metadata": {
-				"Resolutions": "720P, 1080P",
 				"Aspect Ratios": "16:9, 9:16, 1:1, 4:3, 3:4",
-				"Max Duration": "15 seconds"
+				"Max Duration": "15 seconds",
+				"Resolutions": "720P, 1080P"
 			},
 			"external_info": "https://modelstudio.console.alibabacloud.com/",
 			"terms": "https://www.alibabacloud.com/help/en/legal",
 			"cover_image_url": null,
-			"created_at": "2026-04-27 16:32:19"
+			"created_at": "2026-05-22 17:52:50"
 		},
 		{
 			"model_id": "alibaba/qwen3-max",
@@ -116,8 +116,8 @@
 			},
 			"external_info": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
 			"terms": "https://www.alibabacloud.com/help/en/legal",
-			"cover_image_url": null,
-			"created_at": "2026-04-15 22:29:39"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/alibaba/qwen3-max.png",
+			"created_at": "2026-05-22 17:52:51"
 		},
 		{
 			"model_id": "alibaba/qwen3.5-397b-a17b",
@@ -156,8 +156,8 @@
 			},
 			"external_info": "https://www.alibabacloud.com/en/solutions/generative-ai/qwen",
 			"terms": "https://www.alibabacloud.com/help/en/legal",
-			"cover_image_url": null,
-			"created_at": "2026-04-15 22:29:40"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/alibaba/qwen3.5-397b-a17b.png",
+			"created_at": "2026-05-22 17:52:51"
 		},
 		{
 			"model_id": "alibaba/wan-2.6-image",
@@ -189,13 +189,13 @@
 				}
 			],
 			"metadata": {
-				"Size Format": "WxH (e.g. 1024x1024)",
-				"Negative Prompt": "Yes"
+				"Negative Prompt": "Yes",
+				"Size Format": "WxH (e.g. 1024x1024)"
 			},
 			"external_info": "https://wan.video/",
 			"terms": "https://www.alibabacloud.com/help/en/legal",
-			"cover_image_url": null,
-			"created_at": "2026-04-14 18:41:46"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/alibaba/wan-2.6-image.png",
+			"created_at": "2026-05-22 17:52:52"
 		},
 		{
 			"model_id": "anthropic/claude-haiku-4.5",
@@ -241,8 +241,8 @@
 			},
 			"external_info": "https://www.anthropic.com/claude/haiku",
 			"terms": "https://www.anthropic.com/legal/commercial-terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/05737276-9667-4b1c-b5b8-111a0351ddf8/claudehaiku45.png",
-			"created_at": "2026-04-13 16:45:16"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-haiku-4.5.png",
+			"created_at": "2026-05-22 17:52:52"
 		},
 		{
 			"model_id": "anthropic/claude-opus-4.6",
@@ -292,14 +292,14 @@
 			},
 			"external_info": "https://www.anthropic.com/claude/opus",
 			"terms": "https://www.anthropic.com/legal/commercial-terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_cover_image/80b47428-86ad-41e9-839f-34f16440743b/cluade-opus46.jpeg",
-			"created_at": "2026-04-13 16:15:16"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-opus-4.6.png",
+			"created_at": "2026-05-22 17:52:55"
 		},
 		{
 			"model_id": "anthropic/claude-opus-4.7",
 			"slug": "anthropic/claude-opus-4.7",
 			"display_name": "Claude Opus 4.7",
-			"description": "Claude Opus 4.7 is Anthropic's most capable generally available model to date. It is highly autonomous and performs exceptionally well on long-horizon agentic work, knowledge work, vision tasks, and memory tasks.",
+			"description": "Claude Opus 4.7 is Anthropic's most capable generally available model, with a step-change improvement in agentic coding over Claude Opus 4.6. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.",
 			"task": {
 				"id": "",
 				"name": "Text Generation",
@@ -334,17 +334,17 @@
 				},
 				{
 					"property_id": "info",
-					"value": "https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-7"
+					"value": "https://www.anthropic.com/claude/opus"
 				}
 			],
 			"metadata": {
-				"Architecture": "Transformer",
-				"Extended Thinking": "Yes"
+				"Adaptive Thinking": "Yes",
+				"Architecture": "Transformer"
 			},
-			"external_info": "https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-7",
+			"external_info": "https://www.anthropic.com/claude/opus",
 			"terms": "https://www.anthropic.com/legal/commercial-terms",
-			"cover_image_url": "https://replicateassets.com/cdn-cgi/image/width=640,quality=85,fit=scale-down,format=auto/https://tjzk.replicate.delivery/models_models_cover_image/b200dc70-63c7-491d-a71f-e2b0b616ee18/replicate-prediction-amzhv0d91srm.jpg",
-			"created_at": "2026-04-16 19:12:00"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-opus-4.7.png",
+			"created_at": "2026-05-22 17:52:55"
 		},
 		{
 			"model_id": "anthropic/claude-sonnet-4.5",
@@ -391,8 +391,8 @@
 			},
 			"external_info": "https://www.anthropic.com/claude/sonnet",
 			"terms": "https://www.anthropic.com/legal/commercial-terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/83a76ce2-f847-4a96-b332-9f7e99342882/Screenshot_2025-09-29_at_5.22..png",
-			"created_at": "2026-04-13 16:45:14"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-sonnet-4.5.png",
+			"created_at": "2026-05-22 17:52:57"
 		},
 		{
 			"model_id": "anthropic/claude-sonnet-4.6",
@@ -438,8 +438,8 @@
 			},
 			"external_info": "https://www.anthropic.com/claude/sonnet",
 			"terms": "https://www.anthropic.com/legal/commercial-terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:44:14"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-sonnet-4.6.png",
+			"created_at": "2026-05-22 17:52:57"
 		},
 		{
 			"model_id": "anthropic/claude-sonnet-4",
@@ -485,13 +485,13 @@
 			},
 			"external_info": "https://www.anthropic.com/claude/sonnet",
 			"terms": "https://www.anthropic.com/legal/commercial-terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/a4e07111-b44f-43b1-a346-5be824f64913/9890d1bb39c15c41772af22d2282e.webp",
-			"created_at": "2026-04-13 16:45:15"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-sonnet-4.png",
+			"created_at": "2026-05-22 17:52:56"
 		},
 		{
 			"model_id": "assemblyai/universal-3-pro",
 			"slug": "assemblyai/universal-3-pro",
-			"display_name": "Universal 3 Pro",
+			"display_name": "AssemblyAI Universal-3 Pro",
 			"description": "AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.",
 			"task": {
 				"id": "",
@@ -523,8 +523,8 @@
 			},
 			"external_info": "https://www.assemblyai.com/",
 			"terms": "https://www.assemblyai.com/legal/terms-of-service",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:47:26"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/assemblyai/universal-3-pro.png",
+			"created_at": "2026-05-22 17:52:58"
 		},
 		{
 			"model_id": "bytedance/seedance-2.0-fast",
@@ -562,7 +562,7 @@
 			"external_info": "https://seed.bytedance.com/en/seedance",
 			"terms": null,
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/bytedance/seedance-2.0-fast.png",
-			"created_at": "2026-05-17 16:58:59"
+			"created_at": "2026-05-22 17:53:04"
 		},
 		{
 			"model_id": "bytedance/seedance-2.0",
@@ -577,6 +577,7 @@
 			"tags": [
 				"Video Generation",
 				"Image-to-Video",
+				"Reference Images",
 				"Audio Generation",
 				"Multimodal"
 			],
@@ -600,7 +601,7 @@
 			"external_info": "https://seed.bytedance.com/en/seedance2_0",
 			"terms": null,
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/bytedance/seedance-2.0.png",
-			"created_at": "2026-05-17 16:57:05"
+			"created_at": "2026-05-22 17:52:58"
 		},
 		{
 			"model_id": "bytedance/seedream-4.0",
@@ -629,13 +630,13 @@
 				}
 			],
 			"metadata": {
-				"Max Resolution": "4K",
-				"Editing": "Yes (single-sentence)"
+				"Editing": "Yes (single-sentence)",
+				"Max Resolution": "4K"
 			},
 			"external_info": "https://seed.bytedance.com/en/seedream4_0",
 			"terms": null,
-			"cover_image_url": null,
-			"created_at": "2026-04-08 22:04:50"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/bytedance/seedream-4.0.png",
+			"created_at": "2026-05-22 17:53:05"
 		},
 		{
 			"model_id": "bytedance/seedream-4.5",
@@ -670,8 +671,8 @@
 			},
 			"external_info": "https://seed.bytedance.com/en/seedream4_5",
 			"terms": null,
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/2e35026c-1f46-4bbe-a314-e27079e943fa/seedream-45-sm.jpg",
-			"created_at": "2026-04-08 22:06:07"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/bytedance/seedream-4.5.png",
+			"created_at": "2026-05-22 17:53:06"
 		},
 		{
 			"model_id": "bytedance/seedream-5-lite",
@@ -707,8 +708,8 @@
 			},
 			"external_info": "https://seed.bytedance.com/en/seedream5_0_lite",
 			"terms": null,
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/a21f19af-c659-4598-a0f7-093d32011814/replicate-prediction-nmj3175dt.png",
-			"created_at": "2026-04-08 22:07:41"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/bytedance/seedream-5-lite.png",
+			"created_at": "2026-05-22 17:53:06"
 		},
 		{
 			"model_id": "google/gemini-3-flash",
@@ -755,8 +756,8 @@
 			},
 			"external_info": "https://deepmind.google/technologies/gemini/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/489d0931-1c41-40b2-a44b-0991de35443b/gemini-3-flash-model-2096x118.webp",
-			"created_at": "2026-04-13 16:46:30"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3-flash.png",
+			"created_at": "2026-05-22 17:53:09"
 		},
 		{
 			"model_id": "google/gemini-3.1-flash-lite",
@@ -802,8 +803,8 @@
 			},
 			"external_info": "https://deepmind.google/technologies/gemini/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:46:30"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.1-flash-lite.png",
+			"created_at": "2026-05-22 17:53:09"
 		},
 		{
 			"model_id": "google/gemini-3.1-pro",
@@ -850,8 +851,8 @@
 			},
 			"external_info": "https://deepmind.google/technologies/gemini/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/52a1c810-25e8-43ab-86f2-5773fc6a0ff6/gemini-3.1-pro-cover.webp",
-			"created_at": "2026-04-13 16:46:29"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.1-pro.png",
+			"created_at": "2026-05-22 17:53:11"
 		},
 		{
 			"model_id": "google/imagen-4",
@@ -889,8 +890,8 @@
 			},
 			"external_info": "https://deepmind.google/technologies/imagen/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://replicate.delivery/xezq/UtW29FgOBeTJRakGfCvfbUru8OjFr4VuuNeS4jfhUdtlgOYzC/tmpvhtnlgyb.jpg",
-			"created_at": "2026-04-14 18:41:41"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/imagen-4.png",
+			"created_at": "2026-05-22 17:53:11"
 		},
 		{
 			"model_id": "google/nano-banana-2",
@@ -927,8 +928,8 @@
 			},
 			"external_info": "https://deepmind.google/technologies/imagen/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/80e7a89d-6163-4a92-927c-79ec74379079/nano-banana-2.png",
-			"created_at": "2026-04-08 22:03:11"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/nano-banana-2.png",
+			"created_at": "2026-05-22 17:53:12"
 		},
 		{
 			"model_id": "google/nano-banana-pro",
@@ -964,8 +965,8 @@
 			},
 			"external_info": "https://deepmind.google/technologies/imagen/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/5ee636db-8712-442f-9644-63980f6786f4/banana2.png",
-			"created_at": "2026-04-08 22:01:25"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/nano-banana-pro.png",
+			"created_at": "2026-05-22 17:53:13"
 		},
 		{
 			"model_id": "google/nano-banana",
@@ -1001,8 +1002,8 @@
 			},
 			"external_info": "https://deepmind.google/technologies/imagen/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/ed879e99-71b5-4689-bed3-e7305e35a28a/this.png",
-			"created_at": "2026-04-08 21:58:29"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/nano-banana.png",
+			"created_at": "2026-05-22 17:53:12"
 		},
 		{
 			"model_id": "google/veo-3-fast",
@@ -1035,14 +1036,14 @@
 				}
 			],
 			"metadata": {
-				"Max Duration": "8 seconds",
 				"Audio Generation": "Yes",
+				"Max Duration": "8 seconds",
 				"Resolutions": "720p, 1080p"
 			},
 			"external_info": "https://deepmind.google/technologies/veo/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/9f8c8990-2378-4a72-877e-6a0f09c66f3f/replicate-veo-3-fast.webp",
-			"created_at": "2026-04-08 21:38:24"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/veo-3-fast.png",
+			"created_at": "2026-05-22 17:53:14"
 		},
 		{
 			"model_id": "google/veo-3.1-fast",
@@ -1075,14 +1076,14 @@
 				}
 			],
 			"metadata": {
-				"Max Duration": "8 seconds",
 				"Audio Generation": "Yes",
+				"Max Duration": "8 seconds",
 				"Resolutions": "720p, 1080p"
 			},
 			"external_info": "https://deepmind.google/technologies/veo/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-08 21:40:52"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/veo-3.1-fast.png",
+			"created_at": "2026-05-22 17:53:15"
 		},
 		{
 			"model_id": "google/veo-3.1",
@@ -1115,14 +1116,14 @@
 				}
 			],
 			"metadata": {
-				"Max Duration": "8 seconds",
 				"Audio Generation": "Yes",
+				"Max Duration": "8 seconds",
 				"Resolutions": "720p, 1080p"
 			},
 			"external_info": "https://deepmind.google/technologies/veo/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-08 21:36:13"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/veo-3.1.png",
+			"created_at": "2026-05-22 17:53:14"
 		},
 		{
 			"model_id": "google/veo-3",
@@ -1154,19 +1155,19 @@
 				}
 			],
 			"metadata": {
-				"Max Duration": "8 seconds",
 				"Audio Generation": "Yes",
+				"Max Duration": "8 seconds",
 				"Resolutions": "720p, 1080p"
 			},
 			"external_info": "https://deepmind.google/technologies/veo/",
 			"terms": "https://ai.google.dev/gemini-api/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/0ca4ee69-0f6e-4dc8-9dc6-3063b97b0a50/replicate-prediction-whcj9787.webp",
-			"created_at": "2026-04-08 21:34:32"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/veo-3.png",
+			"created_at": "2026-05-22 17:53:13"
 		},
 		{
 			"model_id": "inworld/tts-1.5-max",
 			"slug": "inworld/tts-1.5-max",
-			"display_name": "TTS 1.5 Max",
+			"display_name": "Inworld TTS 1.5 Max",
 			"description": "Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support.",
 			"task": {
 				"id": "",
@@ -1196,18 +1197,18 @@
 				}
 			],
 			"metadata": {
-				"Latency": "<200ms",
-				"Languages": "15"
+				"Languages": "15",
+				"Latency": "<200ms"
 			},
 			"external_info": "https://inworld.ai/",
 			"terms": "https://inworld.ai/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/099327e7-d10c-470c-9816-52e5ef0b7a4b/inworld-max.jpg",
-			"created_at": "2026-04-13 16:47:22"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/inworld/tts-1.5-max.png",
+			"created_at": "2026-05-22 17:53:16"
 		},
 		{
 			"model_id": "inworld/tts-1.5-mini",
 			"slug": "inworld/tts-1.5-mini",
-			"display_name": "TTS 1.5 Mini",
+			"display_name": "Inworld TTS 1.5 Mini",
 			"description": "Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.",
 			"task": {
 				"id": "",
@@ -1237,13 +1238,13 @@
 				}
 			],
 			"metadata": {
-				"Latency": "~120ms",
-				"Languages": "15"
+				"Languages": "15",
+				"Latency": "~120ms"
 			},
 			"external_info": "https://inworld.ai/",
 			"terms": "https://inworld.ai/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_cover_image/a6840701-0041-4a1f-a25b-77152468c505/tmpmk9wkimd.jpg",
-			"created_at": "2026-04-13 16:47:23"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/inworld/tts-1.5-mini.png",
+			"created_at": "2026-05-22 17:53:16"
 		},
 		{
 			"model_id": "inworld/tts-2",
@@ -1285,12 +1286,12 @@
 			"external_info": "https://docs.inworld.ai/tts/realtime-tts-2-preview",
 			"terms": "https://inworld.ai/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/inworld/tts-2.png",
-			"created_at": "2026-05-05 00:17:34"
+			"created_at": "2026-05-22 17:53:17"
 		},
 		{
 			"model_id": "minimax/hailuo-2.3-fast",
 			"slug": "minimax/hailuo-2.3-fast",
-			"display_name": "Hailuo 2.3 Fast",
+			"display_name": "MiniMax Hailuo 2.3 Fast",
 			"description": "A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.",
 			"task": {
 				"id": "",
@@ -1322,13 +1323,13 @@
 			},
 			"external_info": "https://hailuoai.com/",
 			"terms": "https://hailuoai.com/terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:46:34"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/minimax/hailuo-2.3-fast.png",
+			"created_at": "2026-05-22 17:53:18"
 		},
 		{
 			"model_id": "minimax/hailuo-2.3",
 			"slug": "minimax/hailuo-2.3",
-			"display_name": "Hailuo 2.3",
+			"display_name": "MiniMax Hailuo 2.3",
 			"description": "A high-fidelity video generation model optimized for realistic human motion, cinematic VFX, expressive characters, and strong prompt and style adherence across text-to-video and image-to-video workflows.",
 			"task": {
 				"id": "",
@@ -1360,13 +1361,13 @@
 			},
 			"external_info": "https://hailuoai.com/",
 			"terms": "https://hailuoai.com/terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:46:33"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/minimax/hailuo-2.3.png",
+			"created_at": "2026-05-22 17:53:17"
 		},
 		{
 			"model_id": "minimax/m2.7",
 			"slug": "minimax/m2.7",
-			"display_name": "M2.7",
+			"display_name": "MiniMax M2.7",
 			"description": "MiniMax's M2.7 language model with multilingual capabilities.",
 			"task": {
 				"id": "",
@@ -1405,8 +1406,8 @@
 			},
 			"external_info": "https://www.minimaxi.com/",
 			"terms": "https://www.minimaxi.com/terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:46:35"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/minimax/m2.7.png",
+			"created_at": "2026-05-22 17:53:19"
 		},
 		{
 			"model_id": "minimax/music-2.6",
@@ -1440,19 +1441,19 @@
 				}
 			],
 			"metadata": {
+				"Audio Formats": "mp3, wav",
 				"Max Duration": "~6 minutes",
-				"Modes": "Vocals, Instrumental, Auto-Lyrics",
-				"Audio Formats": "mp3, wav"
+				"Modes": "Vocals, Instrumental, Auto-Lyrics"
 			},
 			"external_info": "https://www.minimaxi.com/",
 			"terms": "https://www.minimaxi.com/terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-14 18:41:44"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/minimax/music-2.6.png",
+			"created_at": "2026-05-22 17:53:20"
 		},
 		{
 			"model_id": "minimax/speech-2.8-hd",
 			"slug": "minimax/speech-2.8-hd",
-			"display_name": "Speech 2.8 HD",
+			"display_name": "MiniMax Speech 2.8 HD",
 			"description": "MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion control, multilingual support (40+ languages), and voice cloning.",
 			"task": {
 				"id": "",
@@ -1482,19 +1483,19 @@
 				}
 			],
 			"metadata": {
+				"Emotion Control": "Yes",
 				"Languages": "40+",
-				"Voice Cloning": "Yes",
-				"Emotion Control": "Yes"
+				"Voice Cloning": "Yes"
 			},
 			"external_info": "https://www.minimaxi.com/",
 			"terms": "https://www.minimaxi.com/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_cover_image/b3d383fc-aded-4d1c-956c-0930864c026d/replicate-prediction-9b1pktc169rm.jpg",
-			"created_at": "2026-04-13 16:46:35"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/minimax/speech-2.8-hd.png",
+			"created_at": "2026-05-22 17:53:20"
 		},
 		{
 			"model_id": "minimax/speech-2.8-turbo",
 			"slug": "minimax/speech-2.8-turbo",
-			"display_name": "Speech 2.8 Turbo",
+			"display_name": "MiniMax Speech 2.8 Turbo",
 			"description": "MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice cloning, emotion control, and 40+ language support at faster speeds.",
 			"task": {
 				"id": "",
@@ -1524,19 +1525,19 @@
 				}
 			],
 			"metadata": {
+				"Emotion Control": "Yes",
 				"Languages": "40+",
-				"Voice Cloning": "Yes",
-				"Emotion Control": "Yes"
+				"Voice Cloning": "Yes"
 			},
 			"external_info": "https://www.minimaxi.com/",
 			"terms": "https://www.minimaxi.com/terms",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_cover_image/fb264179-a754-44b2-b870-6e93571b0124/replicate-prediction-8p9jqdyjpnrm.jpg",
-			"created_at": "2026-04-13 16:46:36"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/minimax/speech-2.8-turbo.png",
+			"created_at": "2026-05-22 17:53:21"
 		},
 		{
 			"model_id": "openai/gpt-4.1-mini",
 			"slug": "openai/gpt-4.1-mini",
-			"display_name": "GPT-4.1 Mini",
+			"display_name": "GPT-4.1 mini",
 			"description": "Fast, affordable version of GPT-4.1 with a million-token context window.",
 			"task": {
 				"id": "",
@@ -1576,8 +1577,8 @@
 			},
 			"external_info": "https://openai.com/index/gpt-4-1/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/6f1609f1-ba45-4513-bfd6-7dfcb95efad8/Screenshot_2025-05-01_at_12.03.png",
-			"created_at": "2026-04-13 16:45:21"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-4.1-mini.png",
+			"created_at": "2026-05-22 17:53:25"
 		},
 		{
 			"model_id": "openai/gpt-4.1",
@@ -1622,8 +1623,8 @@
 			},
 			"external_info": "https://openai.com/index/gpt-4-1/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/8dbaab0b-d3e7-4bae-8772-d7e1f879d537/gpt-4.1.webp",
-			"created_at": "2026-04-13 16:45:21"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-4.1.png",
+			"created_at": "2026-05-22 17:53:24"
 		},
 		{
 			"model_id": "openai/gpt-4o-transcribe",
@@ -1657,19 +1658,19 @@
 			],
 			"metadata": {
 				"Context Window": "16,000 tokens",
-				"Max Output": "2,000 tokens",
-				"Knowledge Cutoff": "Jun 01, 2024"
+				"Knowledge Cutoff": "Jun 01, 2024",
+				"Max Output": "2,000 tokens"
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/b1aa75b9-0353-401e-a38f-5e129bee9658/4o-transcribe.webp",
-			"created_at": "2026-04-13 16:45:23"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-4o-transcribe.png",
+			"created_at": "2026-05-22 17:53:28"
 		},
 		{
 			"model_id": "openai/gpt-5.4-mini",
 			"slug": "openai/gpt-5.4-mini",
-			"display_name": "GPT-5.4 Mini",
-			"description": "GPT-5.4 Mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.",
+			"display_name": "GPT-5.4 mini",
+			"description": "GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.",
 			"task": {
 				"id": "",
 				"name": "Text Generation",
@@ -1708,14 +1709,14 @@
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:45:17"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.4-mini.png",
+			"created_at": "2026-05-22 17:53:35"
 		},
 		{
 			"model_id": "openai/gpt-5.4-nano",
 			"slug": "openai/gpt-5.4-nano",
-			"display_name": "GPT-5.4 Nano",
-			"description": "GPT-5.4 Nano is OpenAI's smallest and fastest model, optimized for edge and low-latency use cases.",
+			"display_name": "GPT-5.4 nano",
+			"description": "GPT-5.4 nano is OpenAI's smallest and fastest model, optimized for edge and low-latency use cases.",
 			"task": {
 				"id": "",
 				"name": "Text Generation",
@@ -1755,14 +1756,14 @@
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:45:18"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.4-nano.png",
+			"created_at": "2026-05-22 17:53:36"
 		},
 		{
 			"model_id": "openai/gpt-5.4-pro",
 			"slug": "openai/gpt-5.4-pro",
-			"display_name": "GPT-5.4 Pro",
-			"description": "GPT-5.4 Pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.",
+			"display_name": "GPT-5.4 pro",
+			"description": "GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.",
 			"task": {
 				"id": "",
 				"name": "Text Generation",
@@ -1799,13 +1800,13 @@
 				}
 			],
 			"metadata": {
-				"Architecture": "Transformer",
-				"API": "Responses"
+				"API": "Responses",
+				"Architecture": "Transformer"
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.4.png",
-			"created_at": "2026-04-24 18:13:13"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.4-pro.png",
+			"created_at": "2026-05-22 17:53:36"
 		},
 		{
 			"model_id": "openai/gpt-5.4",
@@ -1823,7 +1824,7 @@
 				"Reasoning",
 				"Multimodal"
 			],
-			"context_length": 128000,
+			"context_length": 1000000,
 			"max_output_tokens": 16384,
 			"supports_async": false,
 			"hosting": "proxied",
@@ -1831,7 +1832,7 @@
 			"properties": [
 				{
 					"property_id": "context_window",
-					"value": "128000"
+					"value": "1000000"
 				},
 				{
 					"property_id": "max_output_tokens",
@@ -1851,14 +1852,14 @@
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/54613ab5-0227-457a-b575-c34e36d589b8/Screenshot_2026-03-05_at_2.40..png",
-			"created_at": "2026-04-08 21:29:08"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.4.png",
+			"created_at": "2026-05-22 17:53:35"
 		},
 		{
 			"model_id": "openai/gpt-5.5-pro",
 			"slug": "openai/gpt-5.5-pro",
-			"display_name": "GPT-5.5 Pro",
-			"description": "GPT-5.5 Pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.",
+			"display_name": "GPT-5.5 pro",
+			"description": "GPT-5.5 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.",
 			"task": {
 				"id": "",
 				"name": "Text Generation",
@@ -1895,13 +1896,13 @@
 				}
 			],
 			"metadata": {
-				"Architecture": "Transformer",
-				"API": "Responses"
+				"API": "Responses",
+				"Architecture": "Transformer"
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.5-pro.png",
-			"created_at": "2026-04-24 18:03:34"
+			"created_at": "2026-05-22 17:53:38"
 		},
 		{
 			"model_id": "openai/gpt-5.5",
@@ -1948,7 +1949,7 @@
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.5.png",
-			"created_at": "2026-04-24 16:18:57"
+			"created_at": "2026-05-22 17:53:37"
 		},
 		{
 			"model_id": "openai/gpt-5",
@@ -1994,8 +1995,8 @@
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/93d32638-644c-4926-8d07-ad01eec112fb/gpt-5-sm.jpg",
-			"created_at": "2026-04-13 16:45:20"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.png",
+			"created_at": "2026-05-22 17:53:29"
 		},
 		{
 			"model_id": "openai/gpt-image-1.5",
@@ -2029,19 +2030,19 @@
 			],
 			"metadata": {
 				"Image Editing": "Yes",
-				"Sizes": "256x256 to 1792x1024",
 				"Quality": "low, medium, high, auto",
+				"Sizes": "256x256 to 1792x1024",
 				"Styles": "vivid, natural"
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://replicate.delivery/xezq/e6OMSz5X7H1sDqhsR2iMNEmeYt6xKtz4dqOG3LDbz1l7CCbWA/tmprm99whd5.webp",
-			"created_at": "2026-04-14 18:41:42"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-image-1.5.png",
+			"created_at": "2026-05-22 17:53:38"
 		},
 		{
 			"model_id": "openai/gpt-image-2",
 			"slug": "openai/gpt-image-2",
-			"display_name": "OpenAI GPT Image 2",
+			"display_name": "GPT Image 2",
 			"description": "OpenAI's next-generation image model that creates and edits images from text prompts, with support for multiple quality levels, sizes, and output formats. Note: transparent backgrounds are not supported — use openai/gpt-image-1.5 for transparent PNGs.",
 			"task": {
 				"id": "",
@@ -2070,14 +2071,14 @@
 			],
 			"metadata": {
 				"Image Editing": "Yes",
-				"Sizes": "1024x1024, 1024x1536, 1536x1024, auto",
+				"Output Formats": "png, webp, jpeg",
 				"Quality": "low, medium, high, auto",
-				"Output Formats": "png, webp, jpeg"
+				"Sizes": "1024x1024, 1024x1536, 1536x1024, auto"
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-image-2.png",
-			"created_at": "2026-04-23 18:37:10"
+			"created_at": "2026-05-22 17:53:39"
 		},
 		{
 			"model_id": "openai/o4-mini",
@@ -2124,8 +2125,8 @@
 			},
 			"external_info": "https://openai.com/",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": "https://tjzk.replicate.delivery/models_models_featured_image/f01a4135-119e-4257-80db-bb7a3e5e29bb/Screenshot_2025-05-01_at_2.49..png",
-			"created_at": "2026-04-13 16:45:22"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/o4-mini.png",
+			"created_at": "2026-05-22 17:53:42"
 		},
 		{
 			"model_id": "openai/tts-1-hd",
@@ -2162,8 +2163,8 @@
 			},
 			"external_info": "https://platform.openai.com/docs/guides/text-to-speech",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:45:25"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/tts-1-hd.png",
+			"created_at": "2026-05-22 17:53:44"
 		},
 		{
 			"model_id": "openai/tts-1",
@@ -2199,8 +2200,8 @@
 			},
 			"external_info": "https://platform.openai.com/docs/guides/text-to-speech",
 			"terms": "https://openai.com/policies/",
-			"cover_image_url": null,
-			"created_at": "2026-04-13 16:45:25"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/tts-1.png",
+			"created_at": "2026-05-22 17:53:43"
 		},
 		{
 			"model_id": "pixverse/v5.6",
@@ -2225,7 +2226,7 @@
 			"properties": [
 				{
 					"property_id": "terms",
-					"value": "https://pixverse.ai/en/terms-of-service/"
+					"value": "https://pixverse.ai/terms"
 				},
 				{
 					"property_id": "info",
@@ -2233,16 +2234,16 @@
 				}
 			],
 			"metadata": {
-				"Max Duration": "10 seconds",
-				"Resolutions": "360p, 540p, 720p, 1080p",
 				"Aspect Ratios": "16:9, 4:3, 1:1, 3:4, 9:16, 2:3, 3:2, 21:9",
 				"Audio Generation": "Yes",
-				"Image-to-Video": "Yes"
+				"Image-to-Video": "Yes",
+				"Max Duration": "10 seconds",
+				"Resolutions": "360p, 540p, 720p, 1080p"
 			},
 			"external_info": "https://pixverse.ai/",
-			"terms": "https://pixverse.ai/en/terms-of-service/",
-			"cover_image_url": null,
-			"created_at": "2026-04-15 22:29:12"
+			"terms": "https://pixverse.ai/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/pixverse/v5.6.png",
+			"created_at": "2026-05-22 17:53:45"
 		},
 		{
 			"model_id": "pixverse/v6",
@@ -2268,7 +2269,7 @@
 			"properties": [
 				{
 					"property_id": "terms",
-					"value": "https://pixverse.ai/en/terms-of-service/"
+					"value": "https://pixverse.ai/terms"
 				},
 				{
 					"property_id": "info",
@@ -2276,16 +2277,16 @@
 				}
 			],
 			"metadata": {
-				"Max Duration": "15 seconds",
-				"Resolutions": "360p, 540p, 720p, 1080p",
 				"Aspect Ratios": "16:9, 4:3, 1:1, 3:4, 9:16, 2:3, 3:2, 21:9",
 				"Audio Generation": "Yes",
-				"Image-to-Video": "Yes"
+				"Image-to-Video": "Yes",
+				"Max Duration": "15 seconds",
+				"Resolutions": "360p, 540p, 720p, 1080p"
 			},
 			"external_info": "https://pixverse.ai/",
-			"terms": "https://pixverse.ai/en/terms-of-service/",
-			"cover_image_url": null,
-			"created_at": "2026-04-15 22:29:14"
+			"terms": "https://pixverse.ai/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/pixverse/v6.png",
+			"created_at": "2026-05-22 17:53:46"
 		},
 		{
 			"model_id": "recraft/recraftv3",
@@ -2324,12 +2325,12 @@
 			"external_info": "https://www.recraft.ai/",
 			"terms": "https://www.recraft.ai/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/recraft/recraftv3.png",
-			"created_at": "2026-05-17 17:00:42"
+			"created_at": "2026-05-22 17:53:46"
 		},
 		{
 			"model_id": "recraft/recraftv4-pro-vector",
 			"slug": "recraft/recraftv4-pro-vector",
-			"display_name": "Recraft V4 Pro Vector",
+			"display_name": "Recraft V4 Pro SVG",
 			"description": "Generate detailed, production-ready SVG vector graphics from text prompts with fine geometry, scalable to any size for print and design work.",
 			"task": {
 				"id": "",
@@ -2364,8 +2365,8 @@
 			},
 			"external_info": "https://www.recraft.ai/",
 			"terms": "https://www.recraft.ai/terms",
-			"cover_image_url": "https://replicate.delivery/xezq/zOjOSqPexepGEEafhufhkn0fJq9fxvuYnGidFuAp8XJfqdbELA/tmp5rpedkjl.svg",
-			"created_at": "2026-04-13 16:46:33"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/recraft/recraftv4-pro-vector.png",
+			"created_at": "2026-05-22 17:53:55"
 		},
 		{
 			"model_id": "recraft/recraftv4-pro",
@@ -2404,13 +2405,13 @@
 			},
 			"external_info": "https://www.recraft.ai/",
 			"terms": "https://www.recraft.ai/terms",
-			"cover_image_url": "https://replicate.delivery/xezq/5dr6WJgJZx4WAJfTx9IR5C9sekPvCIjHk2eADCic6POkIuRsA/tmpwtqbnseq.webp",
-			"created_at": "2026-04-13 16:46:31"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/recraft/recraftv4-pro.png",
+			"created_at": "2026-05-22 17:53:55"
 		},
 		{
 			"model_id": "recraft/recraftv4-vector",
 			"slug": "recraft/recraftv4-vector",
-			"display_name": "Recraft V4 Vector",
+			"display_name": "Recraft V4 SVG",
 			"description": "Generate production-ready SVG vector graphics from text prompts with clean geometry, structured layers, and editable paths.",
 			"task": {
 				"id": "",
@@ -2444,8 +2445,8 @@
 			},
 			"external_info": "https://www.recraft.ai/",
 			"terms": "https://www.recraft.ai/terms",
-			"cover_image_url": "https://replicate.delivery/xezq/GZWGe3cYG3xZUSlVYxKZbV0wjzKILnrDtgrmEPELIJed52IWA/tmp9xf39p1o.svg",
-			"created_at": "2026-04-13 16:46:32"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/recraft/recraftv4-vector.png",
+			"created_at": "2026-05-22 17:53:56"
 		},
 		{
 			"model_id": "recraft/recraftv4",
@@ -2483,8 +2484,8 @@
 			},
 			"external_info": "https://www.recraft.ai/",
 			"terms": "https://www.recraft.ai/terms",
-			"cover_image_url": "https://replicate.delivery/xezq/3xGXF3IfTLW0I69qxg4Tz0xS7hU4uxQqOKxsMAnf8LrYD3IWA/tmpkjam_js3.webp",
-			"created_at": "2026-04-13 16:46:31"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/recraft/recraftv4.png",
+			"created_at": "2026-05-22 17:53:50"
 		},
 		{
 			"model_id": "runwayml/gen-4.5",
@@ -2517,14 +2518,14 @@
 				}
 			],
 			"metadata": {
+				"Image-to-Video": "Yes",
 				"Max Duration": "10 seconds",
-				"Resolutions": "1280:720, 720:1280, 1104:832, 832:1104, 960:960, 1584:672",
-				"Image-to-Video": "Yes"
+				"Resolutions": "1280:720, 720:1280, 1104:832, 832:1104, 960:960, 1584:672"
 			},
 			"external_info": "https://runwayml.com/",
 			"terms": "https://runwayml.com/terms-of-use",
-			"cover_image_url": null,
-			"created_at": "2026-04-14 18:41:45"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/runwayml/gen-4.5.png",
+			"created_at": "2026-05-22 17:53:58"
 		},
 		{
 			"model_id": "vidu/q3-pro",
@@ -2557,16 +2558,16 @@
 				}
 			],
 			"metadata": {
-				"Max Duration": "16 seconds",
-				"Resolutions": "540p, 720p, 1080p",
 				"Aspect Ratios": "16:9, 9:16, 3:4, 4:3, 1:1",
 				"Audio Generation": "Yes",
-				"Image-to-Video": "Yes"
+				"Image-to-Video": "Yes",
+				"Max Duration": "16 seconds",
+				"Resolutions": "540p, 720p, 1080p"
 			},
 			"external_info": "https://www.vidu.com/",
 			"terms": "https://www.vidu.com/terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-15 01:37:32"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/vidu/q3-pro.png",
+			"created_at": "2026-05-22 17:54:00"
 		},
 		{
 			"model_id": "vidu/q3-turbo",
@@ -2600,16 +2601,238 @@
 				}
 			],
 			"metadata": {
-				"Max Duration": "16 seconds",
-				"Resolutions": "540p, 720p, 1080p",
 				"Aspect Ratios": "16:9, 9:16, 3:4, 4:3, 1:1",
 				"Audio Generation": "Yes",
-				"Image-to-Video": "Yes"
+				"Image-to-Video": "Yes",
+				"Max Duration": "16 seconds",
+				"Resolutions": "540p, 720p, 1080p"
 			},
 			"external_info": "https://www.vidu.com/",
 			"terms": "https://www.vidu.com/terms",
-			"cover_image_url": null,
-			"created_at": "2026-04-15 01:37:34"
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/vidu/q3-turbo.png",
+			"created_at": "2026-05-22 17:54:00"
+		},
+		{
+			"model_id": "xai/grok-4.20-0309-non-reasoning",
+			"slug": "xai/grok-4.20-0309-non-reasoning",
+			"display_name": "Grok 4.20 Non-Reasoning",
+			"description": "xAI's Grok 4.20 non-reasoning model. Skips the thinking trace for fast, single-pass responses while keeping the same training as the reasoning variant.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Writing"
+			],
+			"context_length": 2000000,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "2000000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://x.ai/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer",
+				"Reasoning": "No"
+			},
+			"external_info": "https://x.ai/",
+			"terms": "https://x.ai/legal/terms-of-service",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-4.20-non-reasoning.png",
+			"created_at": "2026-05-22 17:54:01"
+		},
+		{
+			"model_id": "xai/grok-4.20-0309-reasoning",
+			"slug": "xai/grok-4.20-0309-reasoning",
+			"display_name": "Grok 4.20 Reasoning",
+			"description": "xAI's Grok 4.20 reasoning model. Uses extended thinking to work through complex problems, returning a reasoning trace alongside the final answer.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning",
+				"Coding",
+				"Agentic"
+			],
+			"context_length": 2000000,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "2000000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://x.ai/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer",
+				"Reasoning": "Yes"
+			},
+			"external_info": "https://x.ai/",
+			"terms": "https://x.ai/legal/terms-of-service",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-4.20-reasoning.png",
+			"created_at": "2026-05-22 17:54:01"
+		},
+		{
+			"model_id": "xai/grok-4.20-multi-agent-0309",
+			"slug": "xai/grok-4.20-multi-agent-0309",
+			"display_name": "Grok 4.20 Multi-Agent",
+			"description": "xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Agentic",
+				"Reasoning",
+				"Tool Use"
+			],
+			"context_length": 2000000,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "2000000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://x.ai/"
+				}
+			],
+			"metadata": {
+				"API": "Responses",
+				"Architecture": "Transformer",
+				"Tool Use": "Yes"
+			},
+			"external_info": "https://x.ai/",
+			"terms": "https://x.ai/legal/terms-of-service",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-4.20-multi-agent.png",
+			"created_at": "2026-05-22 17:54:02"
+		},
+		{
+			"model_id": "xai/grok-4.3",
+			"slug": "xai/grok-4.3",
+			"display_name": "Grok 4.3",
+			"description": "xAI's Grok 4.3 model with a 1M-token context window and strong agentic tool calling with minimal hallucinations. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (none, low, medium, high).",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning",
+				"Coding",
+				"Agentic",
+				"Tool Use",
+				"Multimodal"
+			],
+			"context_length": 1000000,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1000000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.x.ai/docs/models/grok-4.3"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer",
+				"Input Modalities": "Text, Image",
+				"Reasoning": "Configurable (none, low, medium, high)"
+			},
+			"external_info": "https://docs.x.ai/docs/models/grok-4.3",
+			"terms": "https://x.ai/legal/terms-of-service",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-4.3.png",
+			"created_at": "2026-05-22 17:54:03"
+		},
+		{
+			"model_id": "xai/grok-imagine-image-quality",
+			"slug": "xai/grok-imagine-image-quality",
+			"display_name": "Grok Imagine Image Quality",
+			"description": "xAI's higher-fidelity text-to-image model optimized for sharper details, more accurate compositions, and stronger text rendering. Supports image editing via reference images and masks. Trades speed for quality compared to grok-imagine-image. Default output at 2k resolution.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Multimodal",
+				"Text Rendering",
+				"High Quality"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.x.ai/developers/models/grok-imagine-image-quality"
+				}
+			],
+			"metadata": {
+				"Aspect Ratios": "1:1, 3:4, 4:3, 9:16, 16:9, 2:3, 3:2, 1:2, 2:1, auto (and more)",
+				"Max Images per Request": "10",
+				"Resolutions": "1k, 2k",
+				"Text Rendering": "Yes"
+			},
+			"external_info": "https://docs.x.ai/developers/models/grok-imagine-image-quality",
+			"terms": "https://x.ai/legal/terms-of-service",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-imagine-image-quality.png",
+			"created_at": "2026-05-22 17:54:08"
 		},
 		{
 			"model_id": "xai/grok-imagine-image",
@@ -2650,7 +2873,7 @@
 			"external_info": "https://docs.x.ai/developers/models/grok-imagine-image",
 			"terms": "https://x.ai/legal/terms-of-service",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-imagine-image.png",
-			"created_at": "2026-05-17 16:55:13"
+			"created_at": "2026-05-22 17:54:03"
 		},
 		{
 			"model_id": "xai/grok-imagine-video",
@@ -2691,7 +2914,7 @@
 			"external_info": "https://docs.x.ai/developers/models/grok-imagine-video",
 			"terms": "https://x.ai/legal/terms-of-service",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/xai/grok-imagine-video.png",
-			"created_at": "2026-05-17 16:49:14"
+			"created_at": "2026-05-22 17:54:13"
 		},
 		{
 			"model_id": "@cf/pipecat-ai/smart-turn-v2",

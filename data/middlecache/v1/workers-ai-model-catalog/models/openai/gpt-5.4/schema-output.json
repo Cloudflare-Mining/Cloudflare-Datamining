@@ -1,32 +1,44 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": {},
 	"properties": {
-		"id": {
-			"type": "string"
-		},
-		"object": {
-			"type": "string"
-		},
-		"created": {
-			"type": "number"
-		},
-		"model": {
-			"type": "string"
-		},
 		"choices": {
-			"type": "array",
 			"items": {
-				"type": "object",
+				"additionalProperties": {},
 				"properties": {
+					"finish_reason": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "null"
+							}
+						]
+					},
 					"index": {
 						"type": "number"
 					},
 					"message": {
-						"type": "object",
+						"additionalProperties": {},
 						"properties": {
-							"role": {
-								"type": "string"
+							"audio": {
+								"additionalProperties": {},
+								"properties": {
+									"data": {
+										"type": "string"
+									},
+									"expires_at": {
+										"type": "number"
+									},
+									"id": {
+										"type": "string"
+									},
+									"transcript": {
+										"type": "string"
+									}
+								},
+								"type": "object"
 							},
 							"content": {
 								"anyOf": [
@@ -38,25 +50,25 @@
 									}
 								]
 							},
+							"role": {
+								"type": "string"
+							},
 							"tool_calls": {
-								"type": "array",
-								"items": {}
+								"anyOf": [
+									{
+										"items": {},
+										"type": "array"
+									},
+									{
+										"type": "null"
+									}
+								]
 							}
 						},
 						"required": [
 							"role"
 						],
-						"additionalProperties": {}
-					},
-					"finish_reason": {
-						"anyOf": [
-							{
-								"type": "string"
-							},
-							{
-								"type": "null"
-							}
-						]
+						"type": "object"
 					}
 				},
 				"required": [
@@ -64,16 +76,29 @@
 					"message",
 					"finish_reason"
 				],
-				"additionalProperties": {}
-			}
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"created": {
+			"type": "number"
+		},
+		"id": {
+			"type": "string"
+		},
+		"model": {
+			"type": "string"
+		},
+		"object": {
+			"type": "string"
 		},
 		"usage": {
-			"type": "object",
+			"additionalProperties": {},
 			"properties": {
-				"prompt_tokens": {
+				"completion_tokens": {
 					"type": "number"
 				},
-				"completion_tokens": {
+				"prompt_tokens": {
 					"type": "number"
 				},
 				"total_tokens": {
@@ -85,7 +110,7 @@
 				"completion_tokens",
 				"total_tokens"
 			],
-			"additionalProperties": {}
+			"type": "object"
 		}
 	},
 	"required": [
@@ -95,5 +120,5 @@
 		"model",
 		"choices"
 	],
-	"additionalProperties": {}
+	"type": "object"
 }

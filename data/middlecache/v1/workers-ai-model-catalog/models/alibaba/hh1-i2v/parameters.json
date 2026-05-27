@@ -4,6 +4,25 @@
 	"input": {
 		"rows": [
 			{
+				"id": "duration",
+				"name": "duration",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"maximum": 15,
+					"minimum": 3
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "image",
 				"name": "image",
 				"type": "string",
@@ -22,8 +41,8 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "prompt",
-				"name": "prompt",
+				"id": "negative_prompt",
+				"name": "negative_prompt",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -37,8 +56,8 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "negative_prompt",
-				"name": "negative_prompt",
+				"id": "prompt",
+				"name": "prompt",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -71,25 +90,6 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "duration",
-				"name": "duration",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"metadata": {
-					"minimum": 3,
-					"maximum": 15
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "seed",
 				"name": "seed",
 				"type": "integer",
@@ -101,8 +101,8 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"metadata": {
-					"minimum": 0,
-					"maximum": 2147483647
+					"maximum": 2147483647,
+					"minimum": 0
 				},
 				"depth": 0,
 				"isLast": false,

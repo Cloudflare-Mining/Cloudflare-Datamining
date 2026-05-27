@@ -4,8 +4,8 @@
 	"input": {
 		"rows": [
 			{
-				"id": "prompt",
-				"name": "prompt",
+				"id": "aspect_ratio",
+				"name": "aspect_ratio",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -14,23 +14,13 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"description": "Text prompt describing the video to generate",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "image_input",
-				"name": "image_input",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Base64-encoded reference image for i2v",
+				"defaultValue": "16:9",
+				"description": "Video aspect ratio",
+				"enumValues": [
+					"16:9",
+					"9:16",
+					"1:1"
+				],
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -58,8 +48,41 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "aspect_ratio",
-				"name": "aspect_ratio",
+				"id": "generate_audio",
+				"name": "generate_audio",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "true",
+				"description": "Whether to generate audio with the video",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "image_input",
+				"name": "image_input",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Base64-encoded reference image for i2v",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "prompt",
+				"name": "prompt",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -68,13 +91,7 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"defaultValue": "16:9",
-				"description": "Video aspect ratio",
-				"enumValues": [
-					"16:9",
-					"9:16",
-					"1:1"
-				],
+				"description": "Text prompt describing the video to generate",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -96,23 +113,6 @@
 					"720p",
 					"1080p"
 				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "generate_audio",
-				"name": "generate_audio",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "true",
-				"description": "Whether to generate audio with the video",
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

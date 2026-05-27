@@ -1,22 +1,53 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": {},
 	"properties": {
+		"audio": {
+			"additionalProperties": false,
+			"properties": {
+				"format": {
+					"enum": [
+						"wav",
+						"mp3",
+						"flac",
+						"opus",
+						"pcm16"
+					],
+					"type": "string"
+				},
+				"voice": {
+					"enum": [
+						"alloy",
+						"ash",
+						"ballad",
+						"coral",
+						"echo",
+						"sage",
+						"shimmer",
+						"verse"
+					],
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"frequency_penalty": {
+			"maximum": 2,
+			"minimum": -2,
+			"type": "number"
+		},
+		"max_completion_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
+		"max_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
 		"messages": {
-			"type": "array",
 			"items": {
-				"type": "object",
+				"additionalProperties": {},
 				"properties": {
-					"role": {
-						"type": "string",
-						"enum": [
-							"system",
-							"developer",
-							"user",
-							"assistant",
-							"tool"
-						]
-					},
 					"content": {
 						"anyOf": [
 							{
@@ -26,68 +57,76 @@
 								"type": "null"
 							},
 							{
-								"type": "array",
-								"items": {}
+								"items": {},
+								"type": "array"
 							}
 						]
+					},
+					"role": {
+						"enum": [
+							"system",
+							"developer",
+							"user",
+							"assistant",
+							"tool"
+						],
+						"type": "string"
 					}
 				},
 				"required": [
 					"role",
 					"content"
 				],
-				"additionalProperties": {}
-			}
+				"type": "object"
+			},
+			"type": "array"
 		},
-		"temperature": {
-			"type": "number",
-			"minimum": 0,
-			"maximum": 2
-		},
-		"max_tokens": {
-			"type": "number",
-			"exclusiveMinimum": 0
-		},
-		"max_completion_tokens": {
-			"type": "number",
-			"exclusiveMinimum": 0
-		},
-		"top_p": {
-			"type": "number",
-			"minimum": 0,
-			"maximum": 1
-		},
-		"frequency_penalty": {
-			"type": "number",
-			"minimum": -2,
-			"maximum": 2
+		"modalities": {
+			"items": {
+				"enum": [
+					"text",
+					"audio"
+				],
+				"type": "string"
+			},
+			"type": "array"
 		},
 		"presence_penalty": {
-			"type": "number",
+			"maximum": 2,
 			"minimum": -2,
-			"maximum": 2
+			"type": "number"
 		},
+		"response_format": {},
 		"stream": {
 			"type": "boolean"
 		},
 		"stream_options": {
-			"type": "object",
+			"additionalProperties": false,
 			"properties": {
 				"include_usage": {
 					"type": "boolean"
 				}
 			},
-			"additionalProperties": false
+			"type": "object"
 		},
-		"tools": {
-			"type": "array",
-			"items": {}
+		"temperature": {
+			"maximum": 2,
+			"minimum": 0,
+			"type": "number"
 		},
 		"tool_choice": {},
-		"response_format": {}
+		"tools": {
+			"items": {},
+			"type": "array"
+		},
+		"top_p": {
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
+		}
 	},
 	"required": [
 		"messages"
 	],
-	"additionalProperties": {}
+	"type": "object"
 }

@@ -4,146 +4,6 @@
 	"input": {
 		"rows": [
 			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "Description of the music style, mood, and scenario",
-				"metadata": {
-					"maxLength": 2000
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "lyrics",
-				"name": "lyrics",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Song lyrics, using \\n to separate lines",
-				"metadata": {
-					"minLength": 1,
-					"maxLength": 3500
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "sample_rate",
-				"name": "sample_rate",
-				"type": "one of",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": true,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "sample_rate.0",
-						"name": "Option 1",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": true,
-						"isFirstOneOfChild": true,
-						"isLastOneOfChild": false,
-						"required": false,
-						"description": "Audio sample rate",
-						"metadata": {
-							"const": 16000
-						},
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "sample_rate.1",
-						"name": "Option 2",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": true,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"description": "Audio sample rate",
-						"metadata": {
-							"const": 24000
-						},
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "sample_rate.2",
-						"name": "Option 3",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": true,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"description": "Audio sample rate",
-						"metadata": {
-							"const": 32000
-						},
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "sample_rate.3",
-						"name": "Option 4",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": true,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": true,
-						"required": false,
-						"description": "Audio sample rate",
-						"metadata": {
-							"const": 44100
-						},
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						]
-					}
-				]
-			},
-			{
 				"id": "bitrate",
 				"name": "bitrate",
 				"type": "one of",
@@ -265,6 +125,43 @@
 				"ancestorIsLast": []
 			},
 			{
+				"id": "is_instrumental",
+				"name": "is_instrumental",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "false",
+				"description": "Generate instrumental music (no vocals)",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "lyrics",
+				"name": "lyrics",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Song lyrics, using \\n to separate lines",
+				"metadata": {
+					"maxLength": 3500,
+					"minLength": 1
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "lyrics_optimizer",
 				"name": "lyrics_optimizer",
 				"type": "boolean",
@@ -282,9 +179,9 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "is_instrumental",
-				"name": "is_instrumental",
-				"type": "boolean",
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -292,11 +189,114 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"defaultValue": "false",
-				"description": "Generate instrumental music (no vocals)",
+				"description": "Description of the music style, mood, and scenario",
+				"metadata": {
+					"maxLength": 2000
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "sample_rate",
+				"name": "sample_rate",
+				"type": "one of",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": true,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
 				"depth": 0,
 				"isLast": true,
-				"ancestorIsLast": []
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "sample_rate.0",
+						"name": "Option 1",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": true,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Audio sample rate",
+						"metadata": {
+							"const": 16000
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "sample_rate.1",
+						"name": "Option 2",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Audio sample rate",
+						"metadata": {
+							"const": 24000
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "sample_rate.2",
+						"name": "Option 3",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Audio sample rate",
+						"metadata": {
+							"const": 32000
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "sample_rate.3",
+						"name": "Option 4",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": true,
+						"required": false,
+						"description": "Audio sample rate",
+						"metadata": {
+							"const": 44100
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							true
+						]
+					}
+				]
 			}
 		],
 		"variants": null,

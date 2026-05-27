@@ -4,6 +4,57 @@
 	"input": {
 		"rows": [
 			{
+				"id": "mask_sensitive_info",
+				"name": "mask_sensitive_info",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "max_completion_tokens",
+				"name": "max_completion_tokens",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"exclusiveMinimum": 0
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "max_tokens",
+				"name": "max_tokens",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"exclusiveMinimum": 0
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "messages",
 				"name": "messages",
 				"type": "array",
@@ -18,46 +69,6 @@
 				"isLast": false,
 				"ancestorIsLast": [],
 				"children": [
-					{
-						"id": "messages.role",
-						"name": "role",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"enumValues": [
-							"system",
-							"user",
-							"assistant",
-							"tool"
-						],
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "messages.name",
-						"name": "name",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
 					{
 						"id": "messages.content",
 						"name": "content",
@@ -131,6 +142,26 @@
 										],
 										"children": [
 											{
+												"id": "messages.content.1.0.text",
+												"name": "text",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"depth": 4,
+												"isLast": false,
+												"ancestorIsLast": [
+													false,
+													false,
+													true,
+													false
+												]
+											},
+											{
 												"id": "messages.content.1.0.type",
 												"name": "type",
 												"type": "string",
@@ -144,26 +175,6 @@
 												"metadata": {
 													"const": "text"
 												},
-												"depth": 4,
-												"isLast": false,
-												"ancestorIsLast": [
-													false,
-													false,
-													true,
-													false
-												]
-											},
-											{
-												"id": "messages.content.1.0.text",
-												"name": "text",
-												"type": "string",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": true,
 												"depth": 4,
 												"isLast": true,
 												"ancestorIsLast": [
@@ -195,29 +206,6 @@
 										],
 										"children": [
 											{
-												"id": "messages.content.1.1.type",
-												"name": "type",
-												"type": "string",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": true,
-												"metadata": {
-													"const": "image_url"
-												},
-												"depth": 4,
-												"isLast": false,
-												"ancestorIsLast": [
-													false,
-													false,
-													true,
-													true
-												]
-											},
-											{
 												"id": "messages.content.1.1.image_url",
 												"name": "image_url",
 												"type": "object",
@@ -229,7 +217,7 @@
 												"isLastOneOfChild": false,
 												"required": true,
 												"depth": 4,
-												"isLast": true,
+												"isLast": false,
 												"ancestorIsLast": [
 													false,
 													false,
@@ -255,15 +243,78 @@
 															false,
 															true,
 															true,
-															true
+															false
 														]
 													}
+												]
+											},
+											{
+												"id": "messages.content.1.1.type",
+												"name": "type",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"metadata": {
+													"const": "image_url"
+												},
+												"depth": 4,
+												"isLast": true,
+												"ancestorIsLast": [
+													false,
+													false,
+													true,
+													true
 												]
 											}
 										]
 									}
 								]
 							}
+						]
+					},
+					{
+						"id": "messages.name",
+						"name": "name",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "messages.role",
+						"name": "role",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"enumValues": [
+							"system",
+							"user",
+							"assistant",
+							"tool"
+						],
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
 						]
 					},
 					{
@@ -283,6 +334,64 @@
 							false
 						],
 						"children": [
+							{
+								"id": "messages.tool_calls.function",
+								"name": "function",
+								"type": "object",
+								"isArray": false,
+								"isObject": true,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								],
+								"children": [
+									{
+										"id": "messages.tool_calls.function.arguments",
+										"name": "arguments",
+										"type": "string",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										]
+									},
+									{
+										"id": "messages.tool_calls.function.name",
+										"name": "name",
+										"type": "string",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"depth": 3,
+										"isLast": true,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										]
+									}
+								]
+							},
 							{
 								"id": "messages.tool_calls.id",
 								"name": "id",
@@ -316,15 +425,90 @@
 									"const": "function"
 								},
 								"depth": 2,
-								"isLast": false,
+								"isLast": true,
 								"ancestorIsLast": [
 									false,
 									true
 								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "response_format",
+				"name": "response_format",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "response_format.json_schema",
+						"name": "json_schema",
+						"type": "object",
+						"isArray": false,
+						"isObject": true,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "response_format.json_schema.description",
+								"name": "description",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									false
+								]
 							},
 							{
-								"id": "messages.tool_calls.function",
-								"name": "function",
+								"id": "response_format.json_schema.name",
+								"name": "name",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"metadata": {
+									"maxLength": 64
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							},
+							{
+								"id": "response_format.json_schema.schema",
+								"name": "schema",
 								"type": "object",
 								"isArray": false,
 								"isObject": true,
@@ -337,13 +521,13 @@
 								"isLast": true,
 								"ancestorIsLast": [
 									false,
-									true
+									false
 								],
 								"children": [
 									{
-										"id": "messages.tool_calls.function.name",
-										"name": "name",
-										"type": "string",
+										"id": "response_format.json_schema.schema.properties",
+										"name": "properties",
+										"type": "",
 										"isArray": false,
 										"isObject": false,
 										"isOneOf": false,
@@ -355,13 +539,13 @@
 										"isLast": false,
 										"ancestorIsLast": [
 											false,
-											true,
+											false,
 											true
 										]
 									},
 									{
-										"id": "messages.tool_calls.function.arguments",
-										"name": "arguments",
+										"id": "response_format.json_schema.schema.type",
+										"name": "type",
 										"type": "string",
 										"isArray": false,
 										"isObject": false,
@@ -370,93 +554,42 @@
 										"isFirstOneOfChild": false,
 										"isLastOneOfChild": false,
 										"required": true,
+										"metadata": {
+											"const": "object"
+										},
 										"depth": 3,
 										"isLast": true,
 										"ancestorIsLast": [
 											false,
-											true,
+											false,
 											true
 										]
 									}
 								]
 							}
 						]
+					},
+					{
+						"id": "response_format.type",
+						"name": "type",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"metadata": {
+							"const": "json_schema"
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
 					}
 				]
-			},
-			{
-				"id": "temperature",
-				"name": "temperature",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"metadata": {
-					"minimum": 0,
-					"maximum": 1
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "max_tokens",
-				"name": "max_tokens",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"metadata": {
-					"exclusiveMinimum": 0
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "max_completion_tokens",
-				"name": "max_completion_tokens",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"metadata": {
-					"exclusiveMinimum": 0
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "top_p",
-				"name": "top_p",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"metadata": {
-					"minimum": 0,
-					"maximum": 1
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
 			},
 			{
 				"id": "stream",
@@ -508,114 +641,23 @@
 				]
 			},
 			{
-				"id": "tools",
-				"name": "tools",
-				"type": "array",
-				"isArray": true,
+				"id": "temperature",
+				"name": "temperature",
+				"type": "number",
+				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
+				"metadata": {
+					"maximum": 1,
+					"minimum": 0
+				},
 				"depth": 0,
 				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "tools.type",
-						"name": "type",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"metadata": {
-							"const": "function"
-						},
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "tools.function",
-						"name": "function",
-						"type": "object",
-						"isArray": false,
-						"isObject": true,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						],
-						"children": [
-							{
-								"id": "tools.function.name",
-								"name": "name",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							},
-							{
-								"id": "tools.function.description",
-								"name": "description",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							},
-							{
-								"id": "tools.function.parameters",
-								"name": "parameters",
-								"type": "",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							}
-						]
-					}
-				]
+				"ancestorIsLast": []
 			},
 			{
 				"id": "tool_choice",
@@ -637,8 +679,143 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "response_format",
-				"name": "response_format",
+				"id": "tools",
+				"name": "tools",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "tools.function",
+						"name": "function",
+						"type": "object",
+						"isArray": false,
+						"isObject": true,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "tools.function.description",
+								"name": "description",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							},
+							{
+								"id": "tools.function.name",
+								"name": "name",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							},
+							{
+								"id": "tools.function.parameters",
+								"name": "parameters",
+								"type": "",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							}
+						]
+					},
+					{
+						"id": "tools.type",
+						"name": "type",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"metadata": {
+							"const": "function"
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "top_p",
+				"name": "top_p",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"maximum": 1,
+					"minimum": 0
+				},
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	},
+	"output": {
+		"rows": [
+			{
+				"id": "base_resp",
+				"name": "base_resp",
 				"type": "object",
 				"isArray": false,
 				"isObject": true,
@@ -652,9 +829,9 @@
 				"ancestorIsLast": [],
 				"children": [
 					{
-						"id": "response_format.type",
-						"name": "type",
-						"type": "string",
+						"id": "base_resp.status_code",
+						"name": "status_code",
+						"type": "number",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -662,9 +839,6 @@
 						"isFirstOneOfChild": false,
 						"isLastOneOfChild": false,
 						"required": true,
-						"metadata": {
-							"const": "json_schema"
-						},
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
@@ -672,11 +846,11 @@
 						]
 					},
 					{
-						"id": "response_format.json_schema",
-						"name": "json_schema",
-						"type": "object",
+						"id": "base_resp.status_msg",
+						"name": "status_msg",
+						"type": "string",
 						"isArray": false,
-						"isObject": true,
+						"isObject": false,
 						"isOneOf": false,
 						"isOneOfChild": false,
 						"isFirstOneOfChild": false,
@@ -686,147 +860,9 @@
 						"isLast": true,
 						"ancestorIsLast": [
 							false
-						],
-						"children": [
-							{
-								"id": "response_format.json_schema.name",
-								"name": "name",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"metadata": {
-									"maxLength": 64
-								},
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							},
-							{
-								"id": "response_format.json_schema.description",
-								"name": "description",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": false,
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							},
-							{
-								"id": "response_format.json_schema.schema",
-								"name": "schema",
-								"type": "object",
-								"isArray": false,
-								"isObject": true,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									true
-								],
-								"children": [
-									{
-										"id": "response_format.json_schema.schema.type",
-										"name": "type",
-										"type": "string",
-										"isArray": false,
-										"isObject": false,
-										"isOneOf": false,
-										"isOneOfChild": false,
-										"isFirstOneOfChild": false,
-										"isLastOneOfChild": false,
-										"required": true,
-										"metadata": {
-											"const": "object"
-										},
-										"depth": 3,
-										"isLast": false,
-										"ancestorIsLast": [
-											false,
-											true,
-											true
-										]
-									},
-									{
-										"id": "response_format.json_schema.schema.properties",
-										"name": "properties",
-										"type": "",
-										"isArray": false,
-										"isObject": false,
-										"isOneOf": false,
-										"isOneOfChild": false,
-										"isFirstOneOfChild": false,
-										"isLastOneOfChild": false,
-										"required": true,
-										"depth": 3,
-										"isLast": true,
-										"ancestorIsLast": [
-											false,
-											true,
-											true
-										]
-									}
-								]
-							}
 						]
 					}
 				]
-			},
-			{
-				"id": "mask_sensitive_info",
-				"name": "mask_sensitive_info",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": true,
-				"ancestorIsLast": []
-			}
-		],
-		"variants": null,
-		"isFlat": false
-	},
-	"output": {
-		"rows": [
-			{
-				"id": "id",
-				"name": "id",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
 			},
 			{
 				"id": "choices",
@@ -843,6 +879,28 @@
 				"isLast": false,
 				"ancestorIsLast": [],
 				"children": [
+					{
+						"id": "choices.finish_reason",
+						"name": "finish_reason",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"enumValues": [
+							"stop",
+							"length",
+							"tool_calls"
+						],
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
 					{
 						"id": "choices.index",
 						"name": "index",
@@ -872,11 +930,29 @@
 						"isLastOneOfChild": false,
 						"required": true,
 						"depth": 1,
-						"isLast": false,
+						"isLast": true,
 						"ancestorIsLast": [
 							false
 						],
 						"children": [
+							{
+								"id": "choices.message.content",
+								"name": "content",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							},
 							{
 								"id": "choices.message.role",
 								"name": "role",
@@ -895,25 +971,7 @@
 								"isLast": false,
 								"ancestorIsLast": [
 									false,
-									false
-								]
-							},
-							{
-								"id": "choices.message.content",
-								"name": "content",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									false
+									true
 								]
 							},
 							{
@@ -931,9 +989,70 @@
 								"isLast": true,
 								"ancestorIsLast": [
 									false,
-									false
+									true
 								],
 								"children": [
+									{
+										"id": "choices.message.tool_calls.function",
+										"name": "function",
+										"type": "object",
+										"isArray": false,
+										"isObject": true,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											true
+										],
+										"children": [
+											{
+												"id": "choices.message.tool_calls.function.arguments",
+												"name": "arguments",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"depth": 4,
+												"isLast": false,
+												"ancestorIsLast": [
+													false,
+													true,
+													true,
+													false
+												]
+											},
+											{
+												"id": "choices.message.tool_calls.function.name",
+												"name": "name",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"depth": 4,
+												"isLast": true,
+												"ancestorIsLast": [
+													false,
+													true,
+													true,
+													false
+												]
+											}
+										]
+									},
 									{
 										"id": "choices.message.tool_calls.id",
 										"name": "id",
@@ -949,7 +1068,7 @@
 										"isLast": false,
 										"ancestorIsLast": [
 											false,
-											false,
+											true,
 											true
 										]
 									},
@@ -968,98 +1087,15 @@
 											"const": "function"
 										},
 										"depth": 3,
-										"isLast": false,
-										"ancestorIsLast": [
-											false,
-											false,
-											true
-										]
-									},
-									{
-										"id": "choices.message.tool_calls.function",
-										"name": "function",
-										"type": "object",
-										"isArray": false,
-										"isObject": true,
-										"isOneOf": false,
-										"isOneOfChild": false,
-										"isFirstOneOfChild": false,
-										"isLastOneOfChild": false,
-										"required": true,
-										"depth": 3,
 										"isLast": true,
 										"ancestorIsLast": [
 											false,
-											false,
+											true,
 											true
-										],
-										"children": [
-											{
-												"id": "choices.message.tool_calls.function.name",
-												"name": "name",
-												"type": "string",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": true,
-												"depth": 4,
-												"isLast": false,
-												"ancestorIsLast": [
-													false,
-													false,
-													true,
-													true
-												]
-											},
-											{
-												"id": "choices.message.tool_calls.function.arguments",
-												"name": "arguments",
-												"type": "string",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": true,
-												"depth": 4,
-												"isLast": true,
-												"ancestorIsLast": [
-													false,
-													false,
-													true,
-													true
-												]
-											}
 										]
 									}
 								]
 							}
-						]
-					},
-					{
-						"id": "choices.finish_reason",
-						"name": "finish_reason",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"enumValues": [
-							"stop",
-							"length",
-							"tool_calls"
-						],
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
 						]
 					}
 				]
@@ -1075,6 +1111,36 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "id",
+				"name": "id",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "input_sensitive",
+				"name": "input_sensitive",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -1114,6 +1180,21 @@
 				"ancestorIsLast": []
 			},
 			{
+				"id": "output_sensitive",
+				"name": "output_sensitive",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "usage",
 				"name": "usage",
 				"type": "object",
@@ -1125,12 +1206,12 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"depth": 0,
-				"isLast": false,
+				"isLast": true,
 				"ancestorIsLast": [],
 				"children": [
 					{
-						"id": "usage.total_tokens",
-						"name": "total_tokens",
+						"id": "usage.completion_tokens",
+						"name": "completion_tokens",
 						"type": "number",
 						"isArray": false,
 						"isObject": false,
@@ -1142,7 +1223,7 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					},
 					{
@@ -1159,94 +1240,13 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "usage.completion_tokens",
-						"name": "completion_tokens",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						]
-					}
-				]
-			},
-			{
-				"id": "input_sensitive",
-				"name": "input_sensitive",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "output_sensitive",
-				"name": "output_sensitive",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "base_resp",
-				"name": "base_resp",
-				"type": "object",
-				"isArray": false,
-				"isObject": true,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": true,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "base_resp.status_code",
-						"name": "status_code",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
 							true
 						]
 					},
 					{
-						"id": "base_resp.status_msg",
-						"name": "status_msg",
-						"type": "string",
+						"id": "usage.total_tokens",
+						"name": "total_tokens",
+						"type": "number",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,

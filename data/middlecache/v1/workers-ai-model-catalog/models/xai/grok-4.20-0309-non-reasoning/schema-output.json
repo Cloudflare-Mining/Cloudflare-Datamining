@@ -1,0 +1,273 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": false,
+	"properties": {
+		"choices": {
+			"items": {
+				"additionalProperties": false,
+				"properties": {
+					"finish_reason": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "null"
+							}
+						]
+					},
+					"index": {
+						"type": "number"
+					},
+					"logprobs": {
+						"anyOf": [
+							{
+								"additionalProperties": false,
+								"properties": {
+									"content": {
+										"anyOf": [
+											{
+												"items": {},
+												"type": "array"
+											},
+											{
+												"type": "null"
+											}
+										]
+									}
+								},
+								"required": [
+									"content"
+								],
+								"type": "object"
+							},
+							{
+								"type": "null"
+							}
+						]
+					},
+					"message": {
+						"additionalProperties": false,
+						"properties": {
+							"content": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"reasoning_content": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"refusal": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"role": {
+								"type": "string"
+							},
+							"tool_calls": {
+								"anyOf": [
+									{
+										"items": {
+											"additionalProperties": false,
+											"properties": {
+												"function": {
+													"additionalProperties": false,
+													"properties": {
+														"arguments": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"arguments"
+													],
+													"type": "object"
+												},
+												"id": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"type",
+												"function"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									{
+										"type": "null"
+									}
+								]
+							}
+						},
+						"required": [
+							"role",
+							"content"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"index",
+					"finish_reason",
+					"message"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"citations": {
+			"anyOf": [
+				{
+					"items": {},
+					"type": "array"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"created": {
+			"type": "number"
+		},
+		"id": {
+			"type": "string"
+		},
+		"model": {
+			"type": "string"
+		},
+		"object": {
+			"const": "chat.completion",
+			"type": "string"
+		},
+		"output_files": {
+			"anyOf": [
+				{
+					"items": {},
+					"type": "array"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"system_fingerprint": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"usage": {
+			"additionalProperties": false,
+			"properties": {
+				"completion_tokens": {
+					"type": "number"
+				},
+				"completion_tokens_details": {
+					"additionalProperties": false,
+					"properties": {
+						"accepted_prediction_tokens": {
+							"type": "number"
+						},
+						"audio_tokens": {
+							"type": "number"
+						},
+						"reasoning_tokens": {
+							"type": "number"
+						},
+						"rejected_prediction_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"reasoning_tokens",
+						"audio_tokens",
+						"accepted_prediction_tokens",
+						"rejected_prediction_tokens"
+					],
+					"type": "object"
+				},
+				"cost_in_usd_ticks": {
+					"type": "number"
+				},
+				"num_sources_used": {
+					"type": "number"
+				},
+				"prompt_tokens": {
+					"type": "number"
+				},
+				"prompt_tokens_details": {
+					"additionalProperties": false,
+					"properties": {
+						"audio_tokens": {
+							"type": "number"
+						},
+						"cached_tokens": {
+							"type": "number"
+						},
+						"image_tokens": {
+							"type": "number"
+						},
+						"text_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"text_tokens",
+						"audio_tokens",
+						"image_tokens",
+						"cached_tokens"
+					],
+					"type": "object"
+				},
+				"total_tokens": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"prompt_tokens",
+				"completion_tokens",
+				"total_tokens"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"id",
+		"object",
+		"created",
+		"model",
+		"choices"
+	],
+	"type": "object"
+}

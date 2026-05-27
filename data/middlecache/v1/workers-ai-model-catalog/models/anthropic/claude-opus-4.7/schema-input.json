@@ -1,88 +1,74 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": {},
 	"properties": {
+		"max_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
 		"messages": {
-			"type": "array",
 			"items": {
-				"type": "object",
+				"additionalProperties": false,
 				"properties": {
-					"role": {
-						"type": "string",
-						"enum": [
-							"user",
-							"assistant"
-						]
-					},
 					"content": {
 						"anyOf": [
 							{
 								"type": "string"
 							},
 							{
-								"type": "array",
 								"items": {
-									"type": "object",
+									"additionalProperties": false,
 									"properties": {
-										"type": {
-											"type": "string"
-										},
+										"source": {},
 										"text": {
 											"type": "string"
 										},
-										"source": {}
+										"type": {
+											"type": "string"
+										}
 									},
 									"required": [
 										"type"
 									],
-									"additionalProperties": false
-								}
+									"type": "object"
+								},
+								"type": "array"
 							}
 						]
+					},
+					"role": {
+						"enum": [
+							"user",
+							"assistant"
+						],
+						"type": "string"
 					}
 				},
 				"required": [
 					"role",
 					"content"
 				],
-				"additionalProperties": false
-			}
+				"type": "object"
+			},
+			"type": "array"
 		},
-		"max_tokens": {
-			"type": "number",
-			"exclusiveMinimum": 0
-		},
-		"system": {
-			"type": "string"
-		},
-		"temperature": {
-			"type": "number",
-			"minimum": 0,
-			"maximum": 1
-		},
-		"top_p": {
-			"type": "number",
-			"minimum": 0,
-			"maximum": 1
-		},
-		"top_k": {
-			"type": "number",
-			"exclusiveMinimum": 0
+		"metadata": {
+			"additionalProperties": {},
+			"propertyNames": {
+				"type": "string"
+			},
+			"type": "object"
 		},
 		"stream": {
 			"type": "boolean"
 		},
-		"metadata": {
-			"type": "object",
-			"propertyNames": {
-				"type": "string"
-			},
-			"additionalProperties": {}
+		"system": {
+			"type": "string"
 		}
 	},
 	"required": [
 		"messages",
 		"max_tokens"
 	],
-	"additionalProperties": {}
+	"type": "object"
 }

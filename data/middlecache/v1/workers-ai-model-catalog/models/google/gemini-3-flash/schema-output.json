@@ -1,83 +1,29 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": {},
 	"properties": {
 		"candidates": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"content": {
-						"type": "object",
-						"properties": {
-							"role": {
-								"type": "string"
-							},
-							"parts": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"text": {
-											"type": "string"
-										}
-									},
-									"additionalProperties": {}
-								}
-							}
-						},
-						"required": [
-							"parts"
-						],
-						"additionalProperties": {}
-					},
-					"finishReason": {
-						"type": "string"
-					},
-					"safetyRatings": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"properties": {
-								"category": {
-									"type": "string"
-								},
-								"probability": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"category",
-								"probability"
-							],
-							"additionalProperties": {}
-						}
-					}
-				},
-				"required": [
-					"content"
-				],
-				"additionalProperties": {}
-			}
+			"items": {},
+			"type": "array"
+		},
+		"modelVersion": {
+			"type": "string"
 		},
 		"usageMetadata": {
-			"type": "object",
+			"additionalProperties": {},
 			"properties": {
-				"promptTokenCount": {
+				"candidatesTokenCount": {
 					"type": "number"
 				},
-				"candidatesTokenCount": {
+				"promptTokenCount": {
 					"type": "number"
 				},
 				"totalTokenCount": {
 					"type": "number"
 				}
 			},
-			"additionalProperties": {}
-		},
-		"modelVersion": {
-			"type": "string"
+			"type": "object"
 		}
 	},
-	"additionalProperties": {}
+	"type": "object"
 }

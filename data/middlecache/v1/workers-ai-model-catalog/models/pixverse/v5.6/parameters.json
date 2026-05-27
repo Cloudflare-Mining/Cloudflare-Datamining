@@ -4,8 +4,8 @@
 	"input": {
 		"rows": [
 			{
-				"id": "prompt",
-				"name": "prompt",
+				"id": "aspect_ratio",
+				"name": "aspect_ratio",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -14,45 +14,18 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"description": "Text prompt describing the video to generate",
-				"metadata": {
-					"maxLength": 2048
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "negative_prompt",
-				"name": "negative_prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Negative text prompt",
-				"metadata": {
-					"maxLength": 2048
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "image_input",
-				"name": "image_input",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Base64-encoded reference image for image-to-video generation (data:image/...;base64,...). The image will be uploaded to Pixverse automatically.",
+				"defaultValue": "16:9",
+				"description": "Video aspect ratio",
+				"enumValues": [
+					"16:9",
+					"4:3",
+					"1:1",
+					"3:4",
+					"9:16",
+					"2:3",
+					"3:2",
+					"21:9"
+				],
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -141,8 +114,80 @@
 				]
 			},
 			{
-				"id": "aspect_ratio",
-				"name": "aspect_ratio",
+				"id": "generate_audio",
+				"name": "generate_audio",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "true",
+				"description": "Whether to generate audio with the video",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "image_input",
+				"name": "image_input",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Base64-encoded reference image for image-to-video generation (data:image/...;base64,...). The image will be uploaded to Pixverse automatically.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "motion_mode",
+				"name": "motion_mode",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Motion mode (fast only available when duration=5; 1080p does not support fast)",
+				"enumValues": [
+					"normal",
+					"fast"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "negative_prompt",
+				"name": "negative_prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Negative text prompt",
+				"metadata": {
+					"maxLength": 2048
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "prompt",
+				"name": "prompt",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -151,18 +196,10 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"defaultValue": "16:9",
-				"description": "Video aspect ratio",
-				"enumValues": [
-					"16:9",
-					"4:3",
-					"1:1",
-					"3:4",
-					"9:16",
-					"2:3",
-					"3:2",
-					"21:9"
-				],
+				"description": "Text prompt describing the video to generate",
+				"metadata": {
+					"maxLength": 2048
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -203,46 +240,9 @@
 				"required": false,
 				"description": "Random seed for reproducibility",
 				"metadata": {
-					"minimum": 0,
-					"maximum": 2147483647
+					"maximum": 2147483647,
+					"minimum": 0
 				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "motion_mode",
-				"name": "motion_mode",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Motion mode (fast only available when duration=5; 1080p does not support fast)",
-				"enumValues": [
-					"normal",
-					"fast"
-				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "generate_audio",
-				"name": "generate_audio",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "true",
-				"description": "Whether to generate audio with the video",
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

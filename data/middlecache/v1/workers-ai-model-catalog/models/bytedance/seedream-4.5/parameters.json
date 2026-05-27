@@ -4,8 +4,8 @@
 	"input": {
 		"rows": [
 			{
-				"id": "prompt",
-				"name": "prompt",
+				"id": "aspect_ratio",
+				"name": "aspect_ratio",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -13,7 +13,33 @@
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": true,
+				"required": false,
+				"enumValues": [
+					"match_input_image",
+					"1:1",
+					"4:3",
+					"3:4",
+					"16:9",
+					"9:16",
+					"3:2",
+					"2:3",
+					"21:9"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "disable_safety_checker",
+				"name": "disable_safety_checker",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -59,9 +85,9 @@
 				]
 			},
 			{
-				"id": "size",
-				"name": "size",
-				"type": "string",
+				"id": "max_images",
+				"name": "max_images",
+				"type": "integer",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -69,17 +95,17 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"enumValues": [
-					"2K",
-					"4K"
-				],
+				"metadata": {
+					"maximum": 15,
+					"minimum": 1
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "aspect_ratio",
-				"name": "aspect_ratio",
+				"id": "prompt",
+				"name": "prompt",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -87,18 +113,7 @@
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": false,
-				"enumValues": [
-					"match_input_image",
-					"1:1",
-					"4:3",
-					"3:4",
-					"16:9",
-					"9:16",
-					"3:2",
-					"2:3",
-					"21:9"
-				],
+				"required": true,
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -123,9 +138,9 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "max_images",
-				"name": "max_images",
-				"type": "integer",
+				"id": "size",
+				"name": "size",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -133,25 +148,10 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"metadata": {
-					"minimum": 1,
-					"maximum": 15
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "disable_safety_checker",
-				"name": "disable_safety_checker",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
+				"enumValues": [
+					"2K",
+					"4K"
+				],
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

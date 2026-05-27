@@ -4,6 +4,51 @@
 	"input": {
 		"rows": [
 			{
+				"id": "response_format",
+				"name": "response_format",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "mp3",
+				"description": "The output format for the audio. Supported formats are mp3, opus, wav, aac and flac.",
+				"enumValues": [
+					"mp3",
+					"opus",
+					"wav",
+					"aac",
+					"flac"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "speed",
+				"name": "speed",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "1",
+				"description": "The speed of the generated audio. Select a value from 0.25 to 4.0. 1.0 is the default.",
+				"metadata": {
+					"maximum": 4,
+					"minimum": 0.25
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "text",
 				"name": "text",
 				"type": "string",
@@ -43,51 +88,6 @@
 					"nova",
 					"shimmer"
 				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "response_format",
-				"name": "response_format",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "mp3",
-				"description": "The output format for the audio. Supported formats are mp3, opus, wav, aac and flac.",
-				"enumValues": [
-					"mp3",
-					"opus",
-					"wav",
-					"aac",
-					"flac"
-				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "speed",
-				"name": "speed",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "1",
-				"description": "The speed of the generated audio. Select a value from 0.25 to 4.0. 1.0 is the default.",
-				"metadata": {
-					"minimum": 0.25,
-					"maximum": 4
-				},
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

@@ -4,72 +4,6 @@
 	"input": {
 		"rows": [
 			{
-				"id": "first_frame_image",
-				"name": "first_frame_image",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "URL or base64 data URI of the first frame image",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"metadata": {
-					"maxLength": 2000
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "prompt_optimizer",
-				"name": "prompt_optimizer",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "true",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "fast_pretreatment",
-				"name": "fast_pretreatment",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "false",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "duration",
 				"name": "duration",
 				"type": "one of",
@@ -129,6 +63,72 @@
 				]
 			},
 			{
+				"id": "fast_pretreatment",
+				"name": "fast_pretreatment",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "false",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "first_frame_image",
+				"name": "first_frame_image",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "URL or base64 data URI of the first frame image",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"maxLength": 2000
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "prompt_optimizer",
+				"name": "prompt_optimizer",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "true",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "resolution",
 				"name": "resolution",
 				"type": "string",
@@ -145,21 +145,6 @@
 					"1080P"
 				],
 				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "callback_url",
-				"name": "callback_url",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []
 			}
@@ -170,8 +155,8 @@
 	"output": {
 		"rows": [
 			{
-				"id": "video",
-				"name": "video",
+				"id": "status",
+				"name": "status",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -180,9 +165,13 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"metadata": {
-					"format": "uri"
-				},
+				"enumValues": [
+					"Preparing",
+					"Queueing",
+					"Processing",
+					"Success",
+					"Fail"
+				],
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -203,8 +192,8 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "status",
-				"name": "status",
+				"id": "video",
+				"name": "video",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -213,13 +202,9 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"enumValues": [
-					"Preparing",
-					"Queueing",
-					"Processing",
-					"Success",
-					"Fail"
-				],
+				"metadata": {
+					"format": "uri"
+				},
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

@@ -4,8 +4,8 @@
 	"input": {
 		"rows": [
 			{
-				"id": "prompt",
-				"name": "prompt",
+				"id": "aspect_ratio",
+				"name": "aspect_ratio",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -13,7 +13,19 @@
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": true,
+				"required": false,
+				"enumValues": [
+					"1:1",
+					"3:2",
+					"2:3",
+					"3:4",
+					"4:3",
+					"4:5",
+					"5:4",
+					"9:16",
+					"16:9",
+					"21:9"
+				],
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -56,8 +68,8 @@
 				]
 			},
 			{
-				"id": "aspect_ratio",
-				"name": "aspect_ratio",
+				"id": "image_size",
+				"name": "image_size",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -67,16 +79,9 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"enumValues": [
-					"1:1",
-					"3:2",
-					"2:3",
-					"3:4",
-					"4:3",
-					"4:5",
-					"5:4",
-					"9:16",
-					"16:9",
-					"21:9"
+					"1K",
+					"2K",
+					"4K"
 				],
 				"depth": 0,
 				"isLast": false,
@@ -103,8 +108,8 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "image_size",
-				"name": "image_size",
+				"id": "prompt",
+				"name": "prompt",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -112,12 +117,7 @@
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": false,
-				"enumValues": [
-					"1K",
-					"2K",
-					"4K"
-				],
+				"required": true,
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

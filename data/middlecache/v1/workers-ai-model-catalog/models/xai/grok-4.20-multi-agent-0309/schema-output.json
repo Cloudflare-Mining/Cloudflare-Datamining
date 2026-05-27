@@ -1,0 +1,198 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"completed_at": {
+			"anyOf": [
+				{
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"created_at": {
+			"type": "number"
+		},
+		"error": {
+			"anyOf": [
+				{},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"id": {
+			"type": "string"
+		},
+		"incomplete_details": {
+			"anyOf": [
+				{},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"instructions": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"metadata": {},
+		"model": {
+			"type": "string"
+		},
+		"object": {
+			"const": "response",
+			"type": "string"
+		},
+		"output": {
+			"items": {},
+			"type": "array"
+		},
+		"parallel_tool_calls": {
+			"type": "boolean"
+		},
+		"previous_response_id": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"reasoning": {
+			"anyOf": [
+				{},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"status": {
+			"enum": [
+				"in_progress",
+				"completed",
+				"incomplete",
+				"failed"
+			],
+			"type": "string"
+		},
+		"store": {
+			"type": "boolean"
+		},
+		"temperature": {
+			"anyOf": [
+				{
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"text": {},
+		"tool_choice": {},
+		"tools": {
+			"items": {},
+			"type": "array"
+		},
+		"top_p": {
+			"anyOf": [
+				{
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"usage": {
+			"additionalProperties": {},
+			"properties": {
+				"cost_in_usd_ticks": {
+					"anyOf": [
+						{
+							"type": "number"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"input_tokens": {
+					"type": "number"
+				},
+				"input_tokens_details": {
+					"additionalProperties": {},
+					"properties": {
+						"cached_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"cached_tokens"
+					],
+					"type": "object"
+				},
+				"num_server_side_tools_used": {
+					"type": "number"
+				},
+				"num_sources_used": {
+					"type": "number"
+				},
+				"output_tokens": {
+					"type": "number"
+				},
+				"output_tokens_details": {
+					"additionalProperties": {},
+					"properties": {
+						"reasoning_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"reasoning_tokens"
+					],
+					"type": "object"
+				},
+				"total_tokens": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"input_tokens",
+				"output_tokens",
+				"total_tokens"
+			],
+			"type": "object"
+		},
+		"user": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		}
+	},
+	"required": [
+		"id",
+		"object",
+		"created_at",
+		"model",
+		"status",
+		"output"
+	],
+	"type": "object"
+}

@@ -1,48 +1,48 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": false,
 	"properties": {
-		"prompt": {
-			"description": "Text prompt describing the video to generate",
+		"aspect_ratio": {
+			"default": "16:9",
+			"description": "Video aspect ratio",
+			"enum": [
+				"16:9",
+				"9:16",
+				"1:1"
+			],
 			"type": "string"
+		},
+		"duration": {
+			"default": "6s",
+			"description": "Video duration",
+			"enum": [
+				"4s",
+				"6s",
+				"8s"
+			],
+			"type": "string"
+		},
+		"generate_audio": {
+			"default": true,
+			"description": "Whether to generate audio with the video",
+			"type": "boolean"
 		},
 		"image_input": {
 			"description": "Base64-encoded reference image for i2v",
 			"type": "string"
 		},
-		"duration": {
-			"description": "Video duration",
-			"default": "6s",
-			"type": "string",
-			"enum": [
-				"4s",
-				"6s",
-				"8s"
-			]
-		},
-		"aspect_ratio": {
-			"description": "Video aspect ratio",
-			"default": "16:9",
-			"type": "string",
-			"enum": [
-				"16:9",
-				"9:16",
-				"1:1"
-			]
+		"prompt": {
+			"description": "Text prompt describing the video to generate",
+			"type": "string"
 		},
 		"resolution": {
-			"description": "Video resolution",
 			"default": "720p",
-			"type": "string",
+			"description": "Video resolution",
 			"enum": [
 				"720p",
 				"1080p"
-			]
-		},
-		"generate_audio": {
-			"description": "Whether to generate audio with the video",
-			"default": true,
-			"type": "boolean"
+			],
+			"type": "string"
 		}
 	},
 	"required": [
@@ -52,5 +52,5 @@
 		"resolution",
 		"generate_audio"
 	],
-	"additionalProperties": false
+	"type": "object"
 }

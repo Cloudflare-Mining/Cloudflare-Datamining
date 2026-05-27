@@ -4,6 +4,66 @@
 	"input": {
 		"rows": [
 			{
+				"id": "aspect_ratio",
+				"name": "aspect_ratio",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"enumValues": [
+					"match_input_image",
+					"1:1",
+					"4:3",
+					"3:4",
+					"16:9",
+					"9:16",
+					"3:2",
+					"2:3",
+					"21:9"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "enhance_prompt",
+				"name": "enhance_prompt",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "height",
+				"name": "height",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"maximum": 4096,
+					"minimum": 1024
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "prompt",
 				"name": "prompt",
 				"type": "string",
@@ -40,32 +100,6 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "aspect_ratio",
-				"name": "aspect_ratio",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"enumValues": [
-					"match_input_image",
-					"1:1",
-					"4:3",
-					"3:4",
-					"16:9",
-					"9:16",
-					"3:2",
-					"2:3",
-					"21:9"
-				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "width",
 				"name": "width",
 				"type": "integer",
@@ -77,43 +111,9 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"metadata": {
-					"minimum": 1024,
-					"maximum": 4096
+					"maximum": 4096,
+					"minimum": 1024
 				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "height",
-				"name": "height",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"metadata": {
-					"minimum": 1024,
-					"maximum": 4096
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "enhance_prompt",
-				"name": "enhance_prompt",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

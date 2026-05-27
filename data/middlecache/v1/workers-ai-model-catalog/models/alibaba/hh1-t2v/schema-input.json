@@ -1,38 +1,38 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": false,
 	"properties": {
-		"prompt": {
-			"type": "string",
-			"minLength": 1,
-			"maxLength": 2500
+		"duration": {
+			"maximum": 15,
+			"minimum": 3,
+			"type": "integer"
 		},
-		"resolution": {
-			"type": "string",
-			"enum": [
-				"720P",
-				"1080P"
-			]
+		"prompt": {
+			"maxLength": 2500,
+			"minLength": 1,
+			"type": "string"
 		},
 		"ratio": {
-			"type": "string",
 			"enum": [
 				"16:9",
 				"9:16",
 				"1:1",
 				"4:3",
 				"3:4"
-			]
+			],
+			"type": "string"
 		},
-		"duration": {
-			"type": "integer",
-			"minimum": 3,
-			"maximum": 15
+		"resolution": {
+			"enum": [
+				"720P",
+				"1080P"
+			],
+			"type": "string"
 		},
 		"seed": {
-			"type": "integer",
+			"maximum": 2147483647,
 			"minimum": 0,
-			"maximum": 2147483647
+			"type": "integer"
 		},
 		"watermark": {
 			"type": "boolean"
@@ -41,5 +41,5 @@
 	"required": [
 		"prompt"
 	],
-	"additionalProperties": false
+	"type": "object"
 }

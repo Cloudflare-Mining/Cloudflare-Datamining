@@ -1,41 +1,38 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": false,
 	"properties": {
+		"mask_sensitive_info": {
+			"type": "boolean"
+		},
+		"max_completion_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
+		"max_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
 		"messages": {
-			"type": "array",
 			"items": {
-				"type": "object",
+				"additionalProperties": {},
 				"properties": {
-					"role": {
-						"type": "string",
-						"enum": [
-							"system",
-							"user",
-							"assistant",
-							"tool"
-						]
-					},
-					"name": {
-						"type": "string"
-					},
 					"content": {
 						"anyOf": [
 							{
 								"type": "string"
 							},
 							{
-								"type": "array",
 								"items": {
 									"anyOf": [
 										{
-											"type": "object",
+											"additionalProperties": false,
 											"properties": {
-												"type": {
-													"type": "string",
-													"const": "text"
-												},
 												"text": {
+													"type": "string"
+												},
+												"type": {
+													"const": "text",
 													"type": "string"
 												}
 											},
@@ -43,17 +40,13 @@
 												"type",
 												"text"
 											],
-											"additionalProperties": false
+											"type": "object"
 										},
 										{
-											"type": "object",
+											"additionalProperties": false,
 											"properties": {
-												"type": {
-													"type": "string",
-													"const": "image_url"
-												},
 												"image_url": {
-													"type": "object",
+													"additionalProperties": false,
 													"properties": {
 														"url": {
 															"type": "string"
@@ -62,39 +55,48 @@
 													"required": [
 														"url"
 													],
-													"additionalProperties": false
+													"type": "object"
+												},
+												"type": {
+													"const": "image_url",
+													"type": "string"
 												}
 											},
 											"required": [
 												"type",
 												"image_url"
 											],
-											"additionalProperties": false
+											"type": "object"
 										}
 									]
-								}
+								},
+								"type": "array"
 							}
 						]
 					},
+					"name": {
+						"type": "string"
+					},
+					"role": {
+						"enum": [
+							"system",
+							"user",
+							"assistant",
+							"tool"
+						],
+						"type": "string"
+					},
 					"tool_calls": {
-						"type": "array",
 						"items": {
-							"type": "object",
+							"additionalProperties": false,
 							"properties": {
-								"id": {
-									"type": "string"
-								},
-								"type": {
-									"type": "string",
-									"const": "function"
-								},
 								"function": {
-									"type": "object",
+									"additionalProperties": false,
 									"properties": {
-										"name": {
+										"arguments": {
 											"type": "string"
 										},
-										"arguments": {
+										"name": {
 											"type": "string"
 										}
 									},
@@ -102,7 +104,14 @@
 										"name",
 										"arguments"
 									],
-									"additionalProperties": false
+									"type": "object"
+								},
+								"id": {
+									"type": "string"
+								},
+								"type": {
+									"const": "function",
+									"type": "string"
 								}
 							},
 							"required": [
@@ -110,63 +119,100 @@
 								"type",
 								"function"
 							],
-							"additionalProperties": false
-						}
+							"type": "object"
+						},
+						"type": "array"
 					}
 				},
 				"required": [
 					"role",
 					"content"
 				],
-				"additionalProperties": {}
-			}
+				"type": "object"
+			},
+			"type": "array"
 		},
-		"temperature": {
-			"type": "number",
-			"minimum": 0,
-			"maximum": 1
-		},
-		"max_tokens": {
-			"type": "number",
-			"exclusiveMinimum": 0
-		},
-		"max_completion_tokens": {
-			"type": "number",
-			"exclusiveMinimum": 0
-		},
-		"top_p": {
-			"type": "number",
-			"minimum": 0,
-			"maximum": 1
+		"response_format": {
+			"additionalProperties": false,
+			"properties": {
+				"json_schema": {
+					"additionalProperties": false,
+					"properties": {
+						"description": {
+							"type": "string"
+						},
+						"name": {
+							"maxLength": 64,
+							"type": "string"
+						},
+						"schema": {
+							"additionalProperties": false,
+							"properties": {
+								"properties": {},
+								"type": {
+									"const": "object",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"properties"
+							],
+							"type": "object"
+						}
+					},
+					"required": [
+						"name",
+						"schema"
+					],
+					"type": "object"
+				},
+				"type": {
+					"const": "json_schema",
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"json_schema"
+			],
+			"type": "object"
 		},
 		"stream": {
 			"type": "boolean"
 		},
 		"stream_options": {
-			"type": "object",
+			"additionalProperties": false,
 			"properties": {
 				"include_usage": {
 					"type": "boolean"
 				}
 			},
-			"additionalProperties": false
+			"type": "object"
+		},
+		"temperature": {
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
+		},
+		"tool_choice": {
+			"enum": [
+				"none",
+				"auto"
+			],
+			"type": "string"
 		},
 		"tools": {
-			"type": "array",
 			"items": {
-				"type": "object",
+				"additionalProperties": false,
 				"properties": {
-					"type": {
-						"type": "string",
-						"const": "function"
-					},
 					"function": {
-						"type": "object",
+						"additionalProperties": false,
 						"properties": {
-							"name": {
+							"description": {
 								"type": "string"
 							},
-							"description": {
+							"name": {
 								"type": "string"
 							},
 							"parameters": {}
@@ -176,75 +222,29 @@
 							"description",
 							"parameters"
 						],
-						"additionalProperties": false
+						"type": "object"
+					},
+					"type": {
+						"const": "function",
+						"type": "string"
 					}
 				},
 				"required": [
 					"type",
 					"function"
 				],
-				"additionalProperties": false
-			}
-		},
-		"tool_choice": {
-			"type": "string",
-			"enum": [
-				"none",
-				"auto"
-			]
-		},
-		"response_format": {
-			"type": "object",
-			"properties": {
-				"type": {
-					"type": "string",
-					"const": "json_schema"
-				},
-				"json_schema": {
-					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string",
-							"maxLength": 64
-						},
-						"description": {
-							"type": "string"
-						},
-						"schema": {
-							"type": "object",
-							"properties": {
-								"type": {
-									"type": "string",
-									"const": "object"
-								},
-								"properties": {}
-							},
-							"required": [
-								"type",
-								"properties"
-							],
-							"additionalProperties": false
-						}
-					},
-					"required": [
-						"name",
-						"schema"
-					],
-					"additionalProperties": false
-				}
+				"type": "object"
 			},
-			"required": [
-				"type",
-				"json_schema"
-			],
-			"additionalProperties": false
+			"type": "array"
 		},
-		"mask_sensitive_info": {
-			"type": "boolean"
+		"top_p": {
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
 		}
 	},
 	"required": [
 		"messages"
 	],
-	"additionalProperties": {}
+	"type": "object"
 }

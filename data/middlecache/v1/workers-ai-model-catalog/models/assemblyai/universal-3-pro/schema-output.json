@@ -1,14 +1,131 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": false,
 	"properties": {
+		"confidence": {
+			"anyOf": [
+				{
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			],
+			"description": "Overall confidence score for the transcription."
+		},
+		"language_code": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			],
+			"description": "Detected or specified language code."
+		},
+		"language_confidence": {
+			"anyOf": [
+				{
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			],
+			"description": "Confidence score for language detection."
+		},
 		"text": {
 			"description": "The transcribed text.",
 			"type": "string"
+		},
+		"utterances": {
+			"anyOf": [
+				{
+					"items": {
+						"additionalProperties": false,
+						"properties": {
+							"confidence": {
+								"type": "number"
+							},
+							"end": {
+								"type": "number"
+							},
+							"speaker": {
+								"type": "string"
+							},
+							"start": {
+								"type": "number"
+							},
+							"text": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"text",
+							"start",
+							"end",
+							"confidence",
+							"speaker"
+						],
+						"type": "object"
+					},
+					"type": "array"
+				},
+				{
+					"type": "null"
+				}
+			],
+			"description": "Speaker-separated utterances (when speaker_labels is enabled)."
+		},
+		"words": {
+			"anyOf": [
+				{
+					"items": {
+						"additionalProperties": false,
+						"properties": {
+							"confidence": {
+								"type": "number"
+							},
+							"end": {
+								"type": "number"
+							},
+							"speaker": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"start": {
+								"type": "number"
+							},
+							"text": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"text",
+							"start",
+							"end",
+							"confidence"
+						],
+						"type": "object"
+					},
+					"type": "array"
+				},
+				{
+					"type": "null"
+				}
+			],
+			"description": "Word-level timestamps and confidence scores."
 		}
 	},
 	"required": [
 		"text"
 	],
-	"additionalProperties": false
+	"type": "object"
 }

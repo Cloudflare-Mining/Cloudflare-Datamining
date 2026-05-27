@@ -1,0 +1,406 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"context_management": {
+			"anyOf": [
+				{
+					"items": {},
+					"type": "array"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"include": {
+			"anyOf": [
+				{
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"input": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"items": {},
+					"minItems": 1,
+					"type": "array"
+				}
+			]
+		},
+		"instructions": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"logprobs": {
+			"anyOf": [
+				{
+					"type": "boolean"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"max_output_tokens": {
+			"anyOf": [
+				{
+					"exclusiveMinimum": 0,
+					"maximum": 9007199254740991,
+					"type": "integer"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"max_turns": {
+			"anyOf": [
+				{
+					"exclusiveMinimum": 0,
+					"maximum": 9007199254740991,
+					"type": "integer"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"parallel_tool_calls": {
+			"anyOf": [
+				{
+					"type": "boolean"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"previous_response_id": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"prompt_cache_key": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"reasoning": {
+			"additionalProperties": {},
+			"properties": {
+				"effort": {
+					"anyOf": [
+						{
+							"enum": [
+								"low",
+								"medium",
+								"high"
+							],
+							"type": "string"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"generate_summary": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"summary": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "null"
+						}
+					]
+				}
+			},
+			"type": "object"
+		},
+		"search_parameters": {
+			"additionalProperties": {},
+			"properties": {
+				"from_date": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"max_search_results": {
+					"anyOf": [
+						{
+							"exclusiveMinimum": 0,
+							"maximum": 9007199254740991,
+							"type": "integer"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"mode": {
+					"anyOf": [
+						{
+							"enum": [
+								"off",
+								"on",
+								"auto"
+							],
+							"type": "string"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"return_citations": {
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"sources": {
+					"anyOf": [
+						{
+							"items": {},
+							"maxItems": 20,
+							"type": "array"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"to_date": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "null"
+						}
+					]
+				}
+			},
+			"type": "object"
+		},
+		"store": {
+			"anyOf": [
+				{
+					"type": "boolean"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"stream": {
+			"anyOf": [
+				{
+					"type": "boolean"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"temperature": {
+			"anyOf": [
+				{
+					"maximum": 2,
+					"minimum": 0,
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"text": {
+			"additionalProperties": {},
+			"properties": {
+				"format": {}
+			},
+			"type": "object"
+		},
+		"tool_choice": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"additionalProperties": false,
+					"properties": {
+						"function": {
+							"additionalProperties": false,
+							"properties": {
+								"name": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"name"
+							],
+							"type": "object"
+						},
+						"type": {
+							"const": "function",
+							"type": "string"
+						}
+					},
+					"required": [
+						"type",
+						"function"
+					],
+					"type": "object"
+				}
+			]
+		},
+		"tools": {
+			"anyOf": [
+				{
+					"items": {
+						"anyOf": [
+							{
+								"additionalProperties": false,
+								"properties": {
+									"description": {
+										"type": "string"
+									},
+									"name": {
+										"minLength": 1,
+										"type": "string"
+									},
+									"parameters": {
+										"additionalProperties": {},
+										"propertyNames": {
+											"type": "string"
+										},
+										"type": "object"
+									},
+									"strict": {
+										"type": "boolean"
+									},
+									"type": {
+										"const": "function",
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"name",
+									"parameters"
+								],
+								"type": "object"
+							},
+							{
+								"additionalProperties": {},
+								"properties": {
+									"type": {
+										"enum": [
+											"web_search",
+											"x_search",
+											"web_search_preview"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"type"
+								],
+								"type": "object"
+							}
+						]
+					},
+					"maxItems": 128,
+					"type": "array"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"top_logprobs": {
+			"anyOf": [
+				{
+					"maximum": 8,
+					"minimum": 0,
+					"type": "integer"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"top_p": {
+			"anyOf": [
+				{
+					"maximum": 1,
+					"minimum": 0,
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"user": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		}
+	},
+	"required": [
+		"input"
+	],
+	"type": "object"
+}

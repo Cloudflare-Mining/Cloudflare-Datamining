@@ -1,15 +1,15 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": false,
 	"properties": {
 		"image": {
 			"description": "URL to the generated image",
-			"type": "string",
-			"format": "uri"
+			"format": "uri",
+			"type": "string"
 		}
 	},
 	"required": [
 		"image"
 	],
-	"additionalProperties": false
+	"type": "object"
 }

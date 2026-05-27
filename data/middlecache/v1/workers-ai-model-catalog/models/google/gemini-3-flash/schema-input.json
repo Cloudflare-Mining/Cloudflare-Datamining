@@ -1,93 +1,71 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": {},
 	"properties": {
 		"contents": {
-			"type": "array",
 			"items": {
-				"type": "object",
+				"additionalProperties": {},
 				"properties": {
-					"role": {
-						"type": "string",
-						"enum": [
-							"user",
-							"model"
-						]
-					},
 					"parts": {
-						"type": "array",
 						"items": {
-							"type": "object",
+							"additionalProperties": {},
 							"properties": {
 								"text": {
 									"type": "string"
 								}
 							},
-							"additionalProperties": {}
-						}
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"role": {
+						"enum": [
+							"user",
+							"model"
+						],
+						"type": "string"
 					}
 				},
 				"required": [
 					"parts"
 				],
-				"additionalProperties": {}
-			}
-		},
-		"systemInstruction": {
-			"type": "object",
-			"properties": {
-				"parts": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"text": {
-								"type": "string"
-							}
-						},
-						"additionalProperties": {}
-					}
-				}
+				"type": "object"
 			},
-			"required": [
-				"parts"
-			],
-			"additionalProperties": {}
+			"type": "array"
 		},
 		"generationConfig": {
-			"type": "object",
+			"additionalProperties": {},
 			"properties": {
-				"temperature": {
-					"type": "number"
-				},
-				"topP": {
-					"type": "number"
-				},
-				"topK": {
+				"candidateCount": {
 					"type": "number"
 				},
 				"maxOutputTokens": {
 					"type": "number"
 				},
-				"candidateCount": {
-					"type": "number"
-				},
-				"stopSequences": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
 				"responseMimeType": {
 					"type": "string"
+				},
+				"stopSequences": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"temperature": {
+					"type": "number"
+				},
+				"topK": {
+					"type": "number"
+				},
+				"topP": {
+					"type": "number"
 				}
 			},
-			"additionalProperties": {}
+			"type": "object"
 		},
 		"safetySettings": {
-			"type": "array",
 			"items": {
-				"type": "object",
+				"additionalProperties": {},
 				"properties": {
 					"category": {
 						"type": "string"
@@ -100,17 +78,39 @@
 					"category",
 					"threshold"
 				],
-				"additionalProperties": {}
-			}
+				"type": "object"
+			},
+			"type": "array"
 		},
+		"systemInstruction": {
+			"additionalProperties": {},
+			"properties": {
+				"parts": {
+					"items": {
+						"additionalProperties": {},
+						"properties": {
+							"text": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"type": "array"
+				}
+			},
+			"required": [
+				"parts"
+			],
+			"type": "object"
+		},
+		"toolConfig": {},
 		"tools": {
-			"type": "array",
-			"items": {}
-		},
-		"toolConfig": {}
+			"items": {},
+			"type": "array"
+		}
 	},
 	"required": [
 		"contents"
 	],
-	"additionalProperties": {}
+	"type": "object"
 }

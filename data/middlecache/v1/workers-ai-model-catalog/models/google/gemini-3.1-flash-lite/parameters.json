@@ -19,27 +19,6 @@
 				"ancestorIsLast": [],
 				"children": [
 					{
-						"id": "contents.role",
-						"name": "role",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"enumValues": [
-							"user",
-							"model"
-						],
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
 						"id": "contents.parts",
 						"name": "parts",
 						"type": "array",
@@ -51,7 +30,7 @@
 						"isLastOneOfChild": false,
 						"required": true,
 						"depth": 1,
-						"isLast": true,
+						"isLast": false,
 						"ancestorIsLast": [
 							false
 						],
@@ -71,63 +50,30 @@
 								"isLast": true,
 								"ancestorIsLast": [
 									false,
-									true
+									false
 								]
 							}
 						]
-					}
-				]
-			},
-			{
-				"id": "systemInstruction",
-				"name": "systemInstruction",
-				"type": "object",
-				"isArray": false,
-				"isObject": true,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
+					},
 					{
-						"id": "systemInstruction.parts",
-						"name": "parts",
-						"type": "array",
-						"isArray": true,
+						"id": "contents.role",
+						"name": "role",
+						"type": "string",
+						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
 						"isOneOfChild": false,
 						"isFirstOneOfChild": false,
 						"isLastOneOfChild": false,
-						"required": true,
+						"required": false,
+						"enumValues": [
+							"user",
+							"model"
+						],
 						"depth": 1,
 						"isLast": true,
 						"ancestorIsLast": [
 							false
-						],
-						"children": [
-							{
-								"id": "systemInstruction.parts.text",
-								"name": "text",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": false,
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							}
 						]
 					}
 				]
@@ -148,42 +94,8 @@
 				"ancestorIsLast": [],
 				"children": [
 					{
-						"id": "generationConfig.temperature",
-						"name": "temperature",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "generationConfig.topP",
-						"name": "topP",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "generationConfig.topK",
-						"name": "topK",
+						"id": "generationConfig.candidateCount",
+						"name": "candidateCount",
 						"type": "number",
 						"isArray": false,
 						"isObject": false,
@@ -216,9 +128,9 @@
 						]
 					},
 					{
-						"id": "generationConfig.candidateCount",
-						"name": "candidateCount",
-						"type": "number",
+						"id": "generationConfig.responseMimeType",
+						"name": "responseMimeType",
+						"type": "string",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -270,9 +182,43 @@
 						]
 					},
 					{
-						"id": "generationConfig.responseMimeType",
-						"name": "responseMimeType",
-						"type": "string",
+						"id": "generationConfig.temperature",
+						"name": "temperature",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "generationConfig.topK",
+						"name": "topK",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "generationConfig.topP",
+						"name": "topP",
+						"type": "number",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -340,11 +286,11 @@
 				]
 			},
 			{
-				"id": "tools",
-				"name": "tools",
-				"type": "array",
-				"isArray": true,
-				"isObject": false,
+				"id": "systemInstruction",
+				"name": "systemInstruction",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
 				"isOneOf": false,
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
@@ -355,20 +301,40 @@
 				"ancestorIsLast": [],
 				"children": [
 					{
-						"id": "tools.items",
-						"name": "items",
-						"type": "",
-						"isArray": false,
+						"id": "systemInstruction.parts",
+						"name": "parts",
+						"type": "array",
+						"isArray": true,
 						"isObject": false,
 						"isOneOf": false,
 						"isOneOfChild": false,
 						"isFirstOneOfChild": false,
 						"isLastOneOfChild": false,
-						"required": false,
+						"required": true,
 						"depth": 1,
 						"isLast": true,
 						"ancestorIsLast": [
 							false
+						],
+						"children": [
+							{
+								"id": "systemInstruction.parts.text",
+								"name": "text",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							}
 						]
 					}
 				]
@@ -385,8 +351,42 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"depth": 0,
-				"isLast": true,
+				"isLast": false,
 				"ancestorIsLast": []
+			},
+			{
+				"id": "tools",
+				"name": "tools",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "tools.items",
+						"name": "items",
+						"type": "",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							true
+						]
+					}
+				]
 			}
 		],
 		"variants": null,
@@ -410,208 +410,9 @@
 				"ancestorIsLast": [],
 				"children": [
 					{
-						"id": "candidates.content",
-						"name": "content",
-						"type": "object",
-						"isArray": false,
-						"isObject": true,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						],
-						"children": [
-							{
-								"id": "candidates.content.role",
-								"name": "role",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": false,
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									false
-								]
-							},
-							{
-								"id": "candidates.content.parts",
-								"name": "parts",
-								"type": "array",
-								"isArray": true,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									false
-								],
-								"children": [
-									{
-										"id": "candidates.content.parts.text",
-										"name": "text",
-										"type": "string",
-										"isArray": false,
-										"isObject": false,
-										"isOneOf": false,
-										"isOneOfChild": false,
-										"isFirstOneOfChild": false,
-										"isLastOneOfChild": false,
-										"required": false,
-										"depth": 3,
-										"isLast": true,
-										"ancestorIsLast": [
-											false,
-											false,
-											true
-										]
-									}
-								]
-							}
-						]
-					},
-					{
-						"id": "candidates.finishReason",
-						"name": "finishReason",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "candidates.safetyRatings",
-						"name": "safetyRatings",
-						"type": "array",
-						"isArray": true,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						],
-						"children": [
-							{
-								"id": "candidates.safetyRatings.category",
-								"name": "category",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							},
-							{
-								"id": "candidates.safetyRatings.probability",
-								"name": "probability",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							}
-						]
-					}
-				]
-			},
-			{
-				"id": "usageMetadata",
-				"name": "usageMetadata",
-				"type": "object",
-				"isArray": false,
-				"isObject": true,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "usageMetadata.promptTokenCount",
-						"name": "promptTokenCount",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "usageMetadata.candidatesTokenCount",
-						"name": "candidatesTokenCount",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "usageMetadata.totalTokenCount",
-						"name": "totalTokenCount",
-						"type": "number",
+						"id": "candidates.items",
+						"name": "items",
+						"type": "",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -639,8 +440,76 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"depth": 0,
-				"isLast": true,
+				"isLast": false,
 				"ancestorIsLast": []
+			},
+			{
+				"id": "usageMetadata",
+				"name": "usageMetadata",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "usageMetadata.candidatesTokenCount",
+						"name": "candidatesTokenCount",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "usageMetadata.promptTokenCount",
+						"name": "promptTokenCount",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "usageMetadata.totalTokenCount",
+						"name": "totalTokenCount",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							true
+						]
+					}
+				]
 			}
 		],
 		"variants": null,

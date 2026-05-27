@@ -1,15 +1,13 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": false,
 	"properties": {
 		"image": {
-			"type": "string",
-			"format": "uri",
-			"contentMediaType": "image/svg+xml"
+			"type": "string"
 		}
 	},
 	"required": [
 		"image"
 	],
-	"additionalProperties": false
+	"type": "object"
 }

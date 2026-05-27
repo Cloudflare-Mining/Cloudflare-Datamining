@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"type": "object",
+	"additionalProperties": false,
 	"properties": {
 		"input": {
 			"anyOf": [
@@ -8,61 +8,61 @@
 					"type": "string"
 				},
 				{
-					"type": "array",
-					"items": {}
+					"items": {},
+					"type": "array"
 				}
 			]
 		},
 		"instructions": {
 			"type": "string"
 		},
-		"temperature": {
-			"type": "number",
-			"minimum": 0,
-			"maximum": 2
-		},
 		"max_output_tokens": {
-			"type": "number",
-			"exclusiveMinimum": 0
-		},
-		"top_p": {
-			"type": "number",
-			"minimum": 0,
-			"maximum": 1
-		},
-		"stream": {
-			"type": "boolean"
-		},
-		"tools": {
-			"type": "array",
-			"items": {}
-		},
-		"tool_choice": {},
-		"text": {
-			"type": "object",
-			"properties": {
-				"format": {}
-			},
-			"additionalProperties": {}
+			"exclusiveMinimum": 0,
+			"type": "number"
 		},
 		"reasoning": {
-			"type": "object",
+			"additionalProperties": {},
 			"properties": {
 				"effort": {
-					"type": "string",
 					"enum": [
 						"none",
 						"low",
 						"medium",
 						"high"
-					]
+					],
+					"type": "string"
 				}
 			},
-			"additionalProperties": {}
+			"type": "object"
+		},
+		"stream": {
+			"type": "boolean"
+		},
+		"temperature": {
+			"maximum": 2,
+			"minimum": 0,
+			"type": "number"
+		},
+		"text": {
+			"additionalProperties": {},
+			"properties": {
+				"format": {}
+			},
+			"type": "object"
+		},
+		"tool_choice": {},
+		"tools": {
+			"items": {},
+			"type": "array"
+		},
+		"top_p": {
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
 		}
 	},
 	"required": [
 		"input"
 	],
-	"additionalProperties": false
+	"type": "object"
 }
