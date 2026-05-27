@@ -777,7 +777,7 @@
 			"pro": false
 		}
 	},
-	"DELETE /accounts/{account_id}/shares/{share_id}/resources/{resource_id}": {
+	"DELETE /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"description": "Deletion is not immediate, an updated share resource object with a new status will be returned.",
 		"operationId": "share-resource-delete",
 		"parameters": [
@@ -807,7 +807,7 @@
 			},
 			{
 				"in": "path",
-				"name": "resource_id",
+				"name": "share_resource_id",
 				"required": true,
 				"schema": {
 					"description": "Share Resource identifier.",
@@ -3377,7 +3377,7 @@
 			"pro": false
 		}
 	},
-	"GET /accounts/{account_id}/shares/{share_id}/resources/{resource_id}": {
+	"GET /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"description": "Get share resource by ID.",
 		"operationId": "share-resources-get-by-id",
 		"parameters": [
@@ -3407,7 +3407,7 @@
 			},
 			{
 				"in": "path",
-				"name": "resource_id",
+				"name": "share_resource_id",
 				"required": true,
 				"schema": {
 					"description": "Share Resource identifier.",
@@ -4326,14 +4326,21 @@
 							},
 							"recipients": {
 								"items": {
-									"description": "Account or organization ID must be provided.",
+									"description": "Optionally specify `recipient_account_id` to target a specific account, or `organization_id` to target the caller's whole organization. If neither is provided, the caller's organization is used.\nThe legacy field `account_id` is accepted as a synonym for `recipient_account_id` during the deprecation period (see `x-sunset` on that field).\n",
 									"properties": {
 										"account_id": {
-											"description": "Account identifier.",
-											"example": "023e105f4ecef8ad9ca31a8372d0c353",
-											"maxLength": 32,
-											"type": "string",
-											"x-auditable": true
+											"allOf": [
+												{
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												}
+											],
+											"deprecated": true,
+											"description": "Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead.\nThe body field collided with the URL path parameter of the same name, which prevented SDK generators from distinguishing the source account (in the URL) from the recipient account (in the body). Both names will continue to be accepted until 2027-05-26 (see `x-sunset`).\n",
+											"x-stainless-deprecation-message": "This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period."
 										},
 										"organization_id": {
 											"description": "Organization identifier.",
@@ -4341,6 +4348,18 @@
 											"maxLength": 32,
 											"type": "string",
 											"x-auditable": true
+										},
+										"recipient_account_id": {
+											"allOf": [
+												{
+													"description": "Account identifier.",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"type": "string",
+													"x-auditable": true
+												}
+											],
+											"description": "The account that will receive the share."
 										}
 									},
 									"type": "object"
@@ -4844,14 +4863,21 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Account or organization ID must be provided.",
+						"description": "Optionally specify `recipient_account_id` to target a specific account, or `organization_id` to target the caller's whole organization. If neither is provided, the caller's organization is used.\nThe legacy field `account_id` is accepted as a synonym for `recipient_account_id` during the deprecation period (see `x-sunset` on that field).\n",
 						"properties": {
 							"account_id": {
-								"description": "Account identifier.",
-								"example": "023e105f4ecef8ad9ca31a8372d0c353",
-								"maxLength": 32,
-								"type": "string",
-								"x-auditable": true
+								"allOf": [
+									{
+										"description": "Account identifier.",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"type": "string",
+										"x-auditable": true
+									}
+								],
+								"deprecated": true,
+								"description": "Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead.\nThe body field collided with the URL path parameter of the same name, which prevented SDK generators from distinguishing the source account (in the URL) from the recipient account (in the body). Both names will continue to be accepted until 2027-05-26 (see `x-sunset`).\n",
+								"x-stainless-deprecation-message": "This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period."
 							},
 							"organization_id": {
 								"description": "Organization identifier.",
@@ -4859,6 +4885,18 @@
 								"maxLength": 32,
 								"type": "string",
 								"x-auditable": true
+							},
+							"recipient_account_id": {
+								"allOf": [
+									{
+										"description": "Account identifier.",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"type": "string",
+										"x-auditable": true
+									}
+								],
+								"description": "The account that will receive the share."
 							}
 						},
 						"type": "object"
@@ -6032,14 +6070,21 @@
 				"application/json": {
 					"schema": {
 						"items": {
-							"description": "Account or organization ID must be provided.",
+							"description": "Optionally specify `recipient_account_id` to target a specific account, or `organization_id` to target the caller's whole organization. If neither is provided, the caller's organization is used.\nThe legacy field `account_id` is accepted as a synonym for `recipient_account_id` during the deprecation period (see `x-sunset` on that field).\n",
 							"properties": {
 								"account_id": {
-									"description": "Account identifier.",
-									"example": "023e105f4ecef8ad9ca31a8372d0c353",
-									"maxLength": 32,
-									"type": "string",
-									"x-auditable": true
+									"allOf": [
+										{
+											"description": "Account identifier.",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string",
+											"x-auditable": true
+										}
+									],
+									"deprecated": true,
+									"description": "Deprecated alias for `recipient_account_id`. Use `recipient_account_id` instead.\nThe body field collided with the URL path parameter of the same name, which prevented SDK generators from distinguishing the source account (in the URL) from the recipient account (in the body). Both names will continue to be accepted until 2027-05-26 (see `x-sunset`).\n",
+									"x-stainless-deprecation-message": "This field has been renamed to `recipient_account_id`. Both names are accepted during the deprecation period."
 								},
 								"organization_id": {
 									"description": "Organization identifier.",
@@ -6047,6 +6092,18 @@
 									"maxLength": 32,
 									"type": "string",
 									"x-auditable": true
+								},
+								"recipient_account_id": {
+									"allOf": [
+										{
+											"description": "Account identifier.",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"type": "string",
+											"x-auditable": true
+										}
+									],
+									"description": "The account that will receive the share."
 								}
 							},
 							"type": "object"
@@ -6209,7 +6266,7 @@
 			"pro": false
 		}
 	},
-	"PUT /accounts/{account_id}/shares/{share_id}/resources/{resource_id}": {
+	"PUT /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"description": "Update is not immediate, an updated share resource object with a new status will be returned.",
 		"operationId": "share-resource-update",
 		"parameters": [
@@ -6239,7 +6296,7 @@
 			},
 			{
 				"in": "path",
-				"name": "resource_id",
+				"name": "share_resource_id",
 				"required": true,
 				"schema": {
 					"description": "Share Resource identifier.",
