@@ -207,6 +207,33 @@
 														"type": "boolean",
 														"x-auditable": true
 													},
+													"dns_search_suffixes": {
+														"default": [],
+														"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+														"items": {
+															"properties": {
+																"description": {
+																	"description": "A description of the DNS search suffix.",
+																	"example": "Example internal domains",
+																	"type": "string",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"suffix": {
+																	"description": "The DNS search suffix to append when resolving short hostnames.",
+																	"example": "internal.corp",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"suffix"
+															],
+															"type": "object"
+														},
+														"type": "array",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"enabled": {
 														"default": true,
 														"description": "Whether the policy will be applied to matching devices.",
@@ -777,6 +804,33 @@
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true
+															},
+															"dns_search_suffixes": {
+																"default": [],
+																"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+																"items": {
+																	"properties": {
+																		"description": {
+																			"description": "A description of the DNS search suffix.",
+																			"example": "Example internal domains",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"suffix": {
+																			"description": "The DNS search suffix to append when resolving short hostnames.",
+																			"example": "internal.corp",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"suffix"
+																	],
+																	"type": "object"
+																},
+																"type": "array",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"enabled": {
 																"default": true,
@@ -3271,6 +3325,33 @@
 														"type": "boolean",
 														"x-auditable": true
 													},
+													"dns_search_suffixes": {
+														"default": [],
+														"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+														"items": {
+															"properties": {
+																"description": {
+																	"description": "A description of the DNS search suffix.",
+																	"example": "Example internal domains",
+																	"type": "string",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
+																},
+																"suffix": {
+																	"description": "The DNS search suffix to append when resolving short hostnames.",
+																	"example": "internal.corp",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"suffix"
+															],
+															"type": "object"
+														},
+														"type": "array",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"enabled": {
 														"default": true,
 														"description": "Whether the policy will be applied to matching devices.",
@@ -3841,6 +3922,33 @@
 																"example": true,
 																"type": "boolean",
 																"x-auditable": true
+															},
+															"dns_search_suffixes": {
+																"default": [],
+																"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+																"items": {
+																	"properties": {
+																		"description": {
+																			"description": "A description of the DNS search suffix.",
+																			"example": "Example internal domains",
+																			"type": "string",
+																			"x-auditable": true,
+																			"x-stainless-terraform-configurability": "computed_optional"
+																		},
+																		"suffix": {
+																			"description": "The DNS search suffix to append when resolving short hostnames.",
+																			"example": "internal.corp",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"suffix"
+																	],
+																	"type": "object"
+																},
+																"type": "array",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"enabled": {
 																"default": true,
@@ -4497,6 +4605,33 @@
 													"type": "boolean",
 													"x-auditable": true
 												},
+												"dns_search_suffixes": {
+													"default": [],
+													"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+													"items": {
+														"properties": {
+															"description": {
+																"description": "A description of the DNS search suffix.",
+																"example": "Example internal domains",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"suffix": {
+																"description": "The DNS search suffix to append when resolving short hostnames.",
+																"example": "internal.corp",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"suffix"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"enabled": {
 													"default": true,
 													"description": "Whether the policy will be applied to matching devices.",
@@ -4995,6 +5130,33 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
+														},
+														"dns_search_suffixes": {
+															"default": [],
+															"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+															"items": {
+																"properties": {
+																	"description": {
+																		"description": "A description of the DNS search suffix.",
+																		"example": "Example internal domains",
+																		"type": "string",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"suffix": {
+																		"description": "The DNS search suffix to append when resolving short hostnames.",
+																		"example": "internal.corp",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"suffix"
+																],
+																"type": "object"
+															},
+															"type": "array",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"enabled": {
 															"default": true,
@@ -5623,6 +5785,33 @@
 													"type": "boolean",
 													"x-auditable": true
 												},
+												"dns_search_suffixes": {
+													"default": [],
+													"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+													"items": {
+														"properties": {
+															"description": {
+																"description": "A description of the DNS search suffix.",
+																"example": "Example internal domains",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"suffix": {
+																"description": "The DNS search suffix to append when resolving short hostnames.",
+																"example": "internal.corp",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"suffix"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"enabled": {
 													"default": true,
 													"description": "Whether the policy will be applied to matching devices.",
@@ -6170,6 +6359,33 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
+														},
+														"dns_search_suffixes": {
+															"default": [],
+															"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+															"items": {
+																"properties": {
+																	"description": {
+																		"description": "A description of the DNS search suffix.",
+																		"example": "Example internal domains",
+																		"type": "string",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"suffix": {
+																		"description": "The DNS search suffix to append when resolving short hostnames.",
+																		"example": "internal.corp",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"suffix"
+																],
+																"type": "object"
+															},
+															"type": "array",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"enabled": {
 															"default": true,
@@ -9969,6 +10185,33 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
+							"dns_search_suffixes": {
+								"default": [],
+								"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+								"items": {
+									"properties": {
+										"description": {
+											"description": "A description of the DNS search suffix.",
+											"example": "Example internal domains",
+											"type": "string",
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
+										},
+										"suffix": {
+											"description": "The DNS search suffix to append when resolving short hostnames.",
+											"example": "internal.corp",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"suffix"
+									],
+									"type": "object"
+								},
+								"type": "array",
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
 							"exclude": {
 								"description": "List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"items": {
@@ -10326,6 +10569,33 @@
 													"example": true,
 													"type": "boolean",
 													"x-auditable": true
+												},
+												"dns_search_suffixes": {
+													"default": [],
+													"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+													"items": {
+														"properties": {
+															"description": {
+																"description": "A description of the DNS search suffix.",
+																"example": "Example internal domains",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"suffix": {
+																"description": "The DNS search suffix to append when resolving short hostnames.",
+																"example": "internal.corp",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"suffix"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"default": true,
@@ -10825,6 +11095,33 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
+														},
+														"dns_search_suffixes": {
+															"default": [],
+															"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+															"items": {
+																"properties": {
+																	"description": {
+																		"description": "A description of the DNS search suffix.",
+																		"example": "Example internal domains",
+																		"type": "string",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"suffix": {
+																		"description": "The DNS search suffix to append when resolving short hostnames.",
+																		"example": "internal.corp",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"suffix"
+																],
+																"type": "object"
+															},
+															"type": "array",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"enabled": {
 															"default": true,
@@ -11347,6 +11644,33 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
+							"dns_search_suffixes": {
+								"default": [],
+								"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+								"items": {
+									"properties": {
+										"description": {
+											"description": "A description of the DNS search suffix.",
+											"example": "Example internal domains",
+											"type": "string",
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
+										},
+										"suffix": {
+											"description": "The DNS search suffix to append when resolving short hostnames.",
+											"example": "internal.corp",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"suffix"
+									],
+									"type": "object"
+								},
+								"type": "array",
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
 							"enabled": {
 								"description": "Whether the policy will be applied to matching devices.",
 								"example": true,
@@ -11732,6 +12056,33 @@
 													"example": true,
 													"type": "boolean",
 													"x-auditable": true
+												},
+												"dns_search_suffixes": {
+													"default": [],
+													"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+													"items": {
+														"properties": {
+															"description": {
+																"description": "A description of the DNS search suffix.",
+																"example": "Example internal domains",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"suffix": {
+																"description": "The DNS search suffix to append when resolving short hostnames.",
+																"example": "internal.corp",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"suffix"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"default": true,
@@ -12280,6 +12631,33 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
+														},
+														"dns_search_suffixes": {
+															"default": [],
+															"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+															"items": {
+																"properties": {
+																	"description": {
+																		"description": "A description of the DNS search suffix.",
+																		"example": "Example internal domains",
+																		"type": "string",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"suffix": {
+																		"description": "The DNS search suffix to append when resolving short hostnames.",
+																		"example": "internal.corp",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"suffix"
+																],
+																"type": "object"
+															},
+															"type": "array",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"enabled": {
 															"default": true,
@@ -13235,6 +13613,33 @@
 								"type": "boolean",
 								"x-auditable": true
 							},
+							"dns_search_suffixes": {
+								"default": [],
+								"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+								"items": {
+									"properties": {
+										"description": {
+											"description": "A description of the DNS search suffix.",
+											"example": "Example internal domains",
+											"type": "string",
+											"x-auditable": true,
+											"x-stainless-terraform-configurability": "computed_optional"
+										},
+										"suffix": {
+											"description": "The DNS search suffix to append when resolving short hostnames.",
+											"example": "internal.corp",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"suffix"
+									],
+									"type": "object"
+								},
+								"type": "array",
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
 							"enabled": {
 								"default": true,
 								"description": "Whether the policy will be applied to matching devices.",
@@ -13626,6 +14031,33 @@
 													"example": true,
 													"type": "boolean",
 													"x-auditable": true
+												},
+												"dns_search_suffixes": {
+													"default": [],
+													"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+													"items": {
+														"properties": {
+															"description": {
+																"description": "A description of the DNS search suffix.",
+																"example": "Example internal domains",
+																"type": "string",
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
+															},
+															"suffix": {
+																"description": "The DNS search suffix to append when resolving short hostnames.",
+																"example": "internal.corp",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"suffix"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"enabled": {
 													"default": true,
@@ -14174,6 +14606,33 @@
 															"example": true,
 															"type": "boolean",
 															"x-auditable": true
+														},
+														"dns_search_suffixes": {
+															"default": [],
+															"description": "List of DNS search suffixes to apply to clients. Suffixes are evaluated in order. Use an empty array to clear.",
+															"items": {
+																"properties": {
+																	"description": {
+																		"description": "A description of the DNS search suffix.",
+																		"example": "Example internal domains",
+																		"type": "string",
+																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "computed_optional"
+																	},
+																	"suffix": {
+																		"description": "The DNS search suffix to append when resolving short hostnames.",
+																		"example": "internal.corp",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"suffix"
+																],
+																"type": "object"
+															},
+															"type": "array",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"enabled": {
 															"default": true,
