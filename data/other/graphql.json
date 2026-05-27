@@ -1909,15 +1909,20 @@
 	},
 	"AccountCf1GatewayNetworkSession1dGroupsDimensions": {
 		"__description": "",
+		"clientTlsVersion": "TLS version negotiated with client",
 		"connectionCloseReason": "Reason the connection was closed",
 		"datetime": "Day start timestamp (daily granularity)",
 		"destinationPort": "Destination port number",
 		"destinationTunnelId": "Destination tunnel ID",
 		"egressColoName": "Egress Cloudflare colo code",
+		"egressIPv4": "Egress IPv4 address",
+		"egressIPv6": "Egress IPv6 address",
 		"egressRuleId": "Egress policy rule ID",
 		"ingressColoName": "Ingress Cloudflare colo code",
 		"offramp": "Egress offramp type",
 		"onRamp": "Ingress onramp type (derived from flowPath)",
+		"originTlsCertificateValidationResult": "Result of origin TLS certificate validation",
+		"originTlsCipher": "TLS cipher used to connect to origin",
 		"protocol": "L4 protocol",
 		"sni": "Server Name Indication from TLS handshake",
 		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)"
@@ -1953,15 +1958,20 @@
 	},
 	"AccountCf1GatewayNetworkSession1hGroupsDimensions": {
 		"__description": "",
+		"clientTlsVersion": "TLS version negotiated with client",
 		"connectionCloseReason": "Reason the connection was closed",
 		"datetime": "Hour start timestamp (hourly granularity)",
 		"destinationPort": "Destination port number",
 		"destinationTunnelId": "Destination tunnel ID",
 		"egressColoName": "Egress Cloudflare colo code",
+		"egressIPv4": "Egress IPv4 address",
+		"egressIPv6": "Egress IPv6 address",
 		"egressRuleId": "Egress policy rule ID",
 		"ingressColoName": "Ingress Cloudflare colo code",
 		"offramp": "Egress offramp type",
 		"onRamp": "Ingress onramp type (derived from flowPath)",
+		"originTlsCertificateValidationResult": "Result of origin TLS certificate validation",
+		"originTlsCipher": "TLS cipher used to connect to origin",
 		"protocol": "L4 protocol",
 		"sni": "Server Name Indication from TLS handshake",
 		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)"
@@ -1997,6 +2007,7 @@
 	},
 	"AccountCf1GatewayNetworkSessionRawGroupsDimensions": {
 		"__description": "",
+		"clientTlsVersion": "TLS version negotiated with client",
 		"connectionCloseReason": "Reason the connection was closed",
 		"datetime": "Session close timestamp",
 		"datetimeFiveMinutes": "Session close timestamp truncated to five minutes",
@@ -2004,10 +2015,14 @@
 		"destinationPort": "Destination port number",
 		"destinationTunnelId": "Destination tunnel ID",
 		"egressColoName": "Egress Cloudflare colo code",
+		"egressIPv4": "Egress IPv4 address",
+		"egressIPv6": "Egress IPv6 address",
 		"egressRuleId": "Egress policy rule ID",
 		"ingressColoName": "Ingress Cloudflare colo code",
 		"offramp": "Egress offramp type",
 		"onRamp": "Ingress onramp type (derived from flowPath)",
+		"originTlsCertificateValidationResult": "Result of origin TLS certificate validation",
+		"originTlsCipher": "TLS cipher used to connect to origin",
 		"protocol": "L4 protocol",
 		"sni": "Server Name Indication from TLS handshake",
 		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)"
@@ -9528,6 +9543,7 @@
 		"videoPlaybackEventsAdaptiveGroups": "",
 		"videoQualityEventsAdaptiveGroups": "",
 		"warpDeviceAdaptiveGroups": "",
+		"webSearchRequestsAdaptiveGroups": "",
 		"workerPlacementAdaptiveGroups": "",
 		"workersAnalyticsEngineAdaptiveGroups": "",
 		"workersBuildsBuildMinutesAdaptiveGroups": "",
@@ -10446,6 +10462,80 @@
 	"AccountWarpDeviceAdaptiveGroupsUniq": {
 		"__description": "",
 		"deviceIds": "Approximate count of unique deviceIds"
+	},
+	"AccountWebSearchRequestsAdaptiveGroups": {
+		"__description": "Web Search Requests Analytics",
+		"avg": "The average of values for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of web search request events",
+		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountWebSearchRequestsAdaptiveGroupsAvg": {
+		"__description": "",
+		"requestedCount": "Average number of results requested",
+		"sampleInterval": "Average sample interval",
+		"totalDurationMs": "Average request duration in milliseconds"
+	},
+	"AccountWebSearchRequestsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of web search request events, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountWebSearchRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"billable": "Whether the request is billable (0 = false, 1 = true)",
+		"clientCountry": "The country of the client that made the request",
+		"date": "The date of the web search request",
+		"datetime": "The date and time the event occurred",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"errorCode": "The error code returned, if any",
+		"errorStage": "The stage at which an error occurred, if any",
+		"query": "The verbatim search query (truncated to 1024 characters)",
+		"queryHash": "The SHA-256 hex hash of the search query",
+		"queryLength": "The length of the search query in characters",
+		"region": "The region the request was served from",
+		"requestId": "The unique identifier for the web search request",
+		"requestedCount": "The number of results requested",
+		"result": "The high-level outcome of the request",
+		"source": "The source of the request",
+		"totalDurationMs": "The total duration of the request in milliseconds",
+		"userAgent": "The user agent string of the inbound request"
+	},
+	"AccountWebSearchRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWebSearchRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWebSearchRequestsAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"totalDurationMsP25": "Request duration in milliseconds (25th percentile)",
+		"totalDurationMsP50": "Request duration in milliseconds (50th percentile)",
+		"totalDurationMsP75": "Request duration in milliseconds (75th percentile)",
+		"totalDurationMsP90": "Request duration in milliseconds (90th percentile)",
+		"totalDurationMsP95": "Request duration in milliseconds (95th percentile)",
+		"totalDurationMsP99": "Request duration in milliseconds (99th percentile)",
+		"totalDurationMsP999": "Request duration in milliseconds (99.9th percentile)"
+	},
+	"AccountWebSearchRequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"billableCount": "Total number of billable requests",
+		"queryLength": "Total query length in characters",
+		"requestedCount": "Total number of results requested",
+		"totalDurationMs": "Total request duration in milliseconds"
+	},
+	"AccountWebSearchRequestsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"billableCount": "Confidence interval for the corresponding point estimate",
+		"queryLength": "Confidence interval for the corresponding point estimate",
+		"requestedCount": "Confidence interval for the corresponding point estimate",
+		"totalDurationMs": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountWorkerPlacementAdaptiveGroups": {
 		"__description": "Worker placement metrics",
@@ -14508,6 +14598,7 @@
 		"videoPlaybackEventsAdaptiveGroups": "Beta. Aggregated video streaming playback event metrics with adaptive sampling",
 		"videoQualityEventsAdaptiveGroups": "Beta. Aggregated video streaming quality change event metrics with adaptive sampling",
 		"warpDeviceAdaptiveGroups": "Beta. Warp device health events with adaptive sampling",
+		"webSearchRequestsAdaptiveGroups": "Web Search Requests Analytics",
 		"workerPlacementAdaptiveGroups": "Worker placement metrics",
 		"workersAnalyticsEngineAdaptiveGroups": "Beta. Custom Events with adaptive sampling",
 		"workersBuildsBuildMinutesAdaptiveGroups": "Workers Builds build minute overview data with adaptive sampling",
@@ -14534,7 +14625,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
