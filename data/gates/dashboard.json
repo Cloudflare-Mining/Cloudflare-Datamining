@@ -411,6 +411,9 @@
 	"billing-unified-checkout-load-balancer": {
 		"enabled": true
 	},
+	"billing-unified-checkout-multi-sku": {
+		"enabled": false
+	},
 	"billing-unified-checkout-pay-bad-debt": {
 		"enabled": true
 	},
@@ -1528,6 +1531,9 @@
 	"kumo-sequences": {
 		"enabled": false
 	},
+	"kumo-session-identifiers": {
+		"enabled": false
+	},
 	"kumo-traffic-sequence": {
 		"enabled": true
 	},
@@ -1733,6 +1739,9 @@
 	},
 	"new-kv-pairs-tab": {
 		"enabled": true
+	},
+	"new-usage-billing-enabled": {
+		"enabled": false
 	},
 	"new-zone-overview": {
 		"enabled": false
@@ -2627,6 +2636,9 @@
 	},
 	"threat-events-appsec-integration": {
 		"enabled": true
+	},
+	"threat-events-appsec-integration-analytics": {
+		"enabled": false
 	},
 	"threat-events-industry-graph": {
 		"enabled": true
