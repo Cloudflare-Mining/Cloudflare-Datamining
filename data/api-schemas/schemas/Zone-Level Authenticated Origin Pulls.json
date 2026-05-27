@@ -232,7 +232,7 @@
 						}
 					}
 				},
-				"description": "Delete Certificate response"
+				"description": "Delete Certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -541,16 +541,16 @@
 						}
 					}
 				},
-				"description": "Delete Certificate response failure"
+				"description": "Delete Certificate response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Certificate",
@@ -820,7 +820,7 @@
 						}
 					}
 				},
-				"description": "List Certificates response"
+				"description": "List Certificates response."
 			},
 			"4XX": {
 				"content": {
@@ -1167,16 +1167,16 @@
 						}
 					}
 				},
-				"description": "List Certificates response failure"
+				"description": "List Certificates response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Certificates",
@@ -1426,7 +1426,7 @@
 						}
 					}
 				},
-				"description": "Get Certificate Details response"
+				"description": "Get Certificate Details response."
 			},
 			"4XX": {
 				"content": {
@@ -1735,16 +1735,16 @@
 						}
 					}
 				},
-				"description": "Get Certificate Details response failure"
+				"description": "Get Certificate Details response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get Certificate Details",
@@ -1890,7 +1890,7 @@
 						}
 					}
 				},
-				"description": "Get Enablement Setting for Zone response"
+				"description": "Get Enablement Setting for Zone response."
 			},
 			"4XX": {
 				"content": {
@@ -2112,16 +2112,16 @@
 						}
 					}
 				},
-				"description": "Get Enablement Setting for Zone response failure"
+				"description": "Get Enablement Setting for Zone response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get Enablement Setting for Zone",
@@ -2384,7 +2384,7 @@
 						}
 					}
 				},
-				"description": "Upload Certificate response"
+				"description": "Upload Certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -2693,16 +2693,16 @@
 						}
 					}
 				},
-				"description": "Upload Certificate response failure"
+				"description": "Upload Certificate response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Upload Certificate",
@@ -2873,7 +2873,7 @@
 						}
 					}
 				},
-				"description": "Set Enablement for Zone response"
+				"description": "Set Enablement for Zone response."
 			},
 			"4XX": {
 				"content": {
@@ -3095,16 +3095,16 @@
 						}
 					}
 				},
-				"description": "Set Enablement for Zone response failure"
+				"description": "Set Enablement for Zone response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Set Enablement for Zone",

@@ -1,4 +1,169 @@
 {
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/blob/{hash}": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/commit/{hash}": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/file": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/fork": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/import": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/log": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/raw/{ref}/{path}": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tokens": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/repos/{name}/tree/{hash}": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/artifacts/namespaces/{namespace}/tokens/{id}": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/brand-protection/alerts": [
 		{
 			"in": "path",
@@ -433,7 +598,79 @@
 			}
 		}
 	],
-	"PARAMETERS /accounts/{account_id}/containers": [
+	"PARAMETERS /accounts/{account_id}/containers/applications": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/rollouts": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/versions": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/instances/{instance_id}/ssh": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/registries": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/registries/{domain}": [
 		{
 			"description": "Account identifier.",
 			"in": "path",

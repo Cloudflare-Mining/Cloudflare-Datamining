@@ -270,7 +270,7 @@
 						}
 					}
 				},
-				"description": "Revoke Client Certificate Response"
+				"description": "Revoke Client Certificate Response."
 			},
 			"4XX": {
 				"content": {
@@ -383,16 +383,16 @@
 						}
 					}
 				},
-				"description": "Revoke Client Certificate Response Failure"
+				"description": "Revoke Client Certificate Response Failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Revoke Client Certificate",
@@ -556,7 +556,7 @@
 						}
 					}
 				},
-				"description": "List Hostname Associations Response"
+				"description": "List Hostname Associations Response."
 			},
 			"4XX": {
 				"content": {
@@ -673,16 +673,16 @@
 						}
 					}
 				},
-				"description": "List Hostname Associations Response Failure"
+				"description": "List Hostname Associations Response Failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Hostname Associations",
@@ -1051,7 +1051,7 @@
 						}
 					}
 				},
-				"description": "List Client Certificates Response"
+				"description": "List Client Certificates Response."
 			},
 			"4XX": {
 				"content": {
@@ -1168,16 +1168,16 @@
 						}
 					}
 				},
-				"description": "List Client Certificates Response Failure"
+				"description": "List Client Certificates Response Failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Client Certificates",
@@ -1471,7 +1471,7 @@
 						}
 					}
 				},
-				"description": "Client Certificate Details Response"
+				"description": "Client Certificate Details Response."
 			},
 			"4XX": {
 				"content": {
@@ -1584,16 +1584,16 @@
 						}
 					}
 				},
-				"description": "Client Certificate Details Response Failure"
+				"description": "Client Certificate Details Response Failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Client Certificate Details",
@@ -1903,7 +1903,7 @@
 						}
 					}
 				},
-				"description": "Reactivate Client Certificate Response"
+				"description": "Reactivate Client Certificate Response."
 			},
 			"4XX": {
 				"content": {
@@ -2016,16 +2016,16 @@
 						}
 					}
 				},
-				"description": "Reactivate Client Certificate Response Failure"
+				"description": "Reactivate Client Certificate Response Failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Reactivate Client Certificate",
@@ -2334,7 +2334,7 @@
 						}
 					}
 				},
-				"description": "Create Client Certificate Response"
+				"description": "Create Client Certificate Response."
 			},
 			"4XX": {
 				"content": {
@@ -2687,16 +2687,16 @@
 						}
 					}
 				},
-				"description": "Create Client Certificate Response Failure"
+				"description": "Create Client Certificate Response Failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create Client Certificate",
@@ -2876,7 +2876,7 @@
 						}
 					}
 				},
-				"description": "Replace Hostname Associations Response"
+				"description": "Replace Hostname Associations Response."
 			},
 			"4XX": {
 				"content": {
@@ -2989,16 +2989,16 @@
 						}
 					}
 				},
-				"description": "Replace Hostname Associations Response Failure"
+				"description": "Replace Hostname Associations Response Failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Replace Hostname Associations",

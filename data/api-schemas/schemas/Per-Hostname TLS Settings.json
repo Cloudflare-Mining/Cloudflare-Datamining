@@ -217,7 +217,7 @@
 						}
 					}
 				},
-				"description": "Delete TLS setting for hostname response"
+				"description": "Delete TLS setting for hostname response."
 			},
 			"4XX": {
 				"content": {
@@ -503,16 +503,16 @@
 						}
 					}
 				},
-				"description": "Delete TLS setting for hostname response failure"
+				"description": "Delete TLS setting for hostname response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete TLS setting for hostname",
@@ -800,7 +800,7 @@
 						}
 					}
 				},
-				"description": "List per-hostname TLS settings response"
+				"description": "List per-hostname TLS settings response."
 			},
 			"4XX": {
 				"content": {
@@ -1145,16 +1145,16 @@
 						}
 					}
 				},
-				"description": "List per-hostname TLS settings response failure"
+				"description": "List per-hostname TLS settings response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List TLS setting for hostnames",
@@ -1395,7 +1395,7 @@
 						}
 					}
 				},
-				"description": "Get TLS setting for hostname response"
+				"description": "Get TLS setting for hostname response."
 			},
 			"4XX": {
 				"content": {
@@ -1681,16 +1681,16 @@
 						}
 					}
 				},
-				"description": "Get TLS setting for hostname response failure"
+				"description": "Get TLS setting for hostname response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get TLS setting for hostname",
@@ -1976,7 +1976,7 @@
 						}
 					}
 				},
-				"description": "Edit TLS setting for hostname response"
+				"description": "Edit TLS setting for hostname response."
 			},
 			"4XX": {
 				"content": {
@@ -2262,16 +2262,16 @@
 						}
 					}
 				},
-				"description": "Edit TLS setting for hostname response failure"
+				"description": "Edit TLS setting for hostname response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Edit TLS setting for hostname",

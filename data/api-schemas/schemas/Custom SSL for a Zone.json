@@ -147,7 +147,7 @@
 						}
 					}
 				},
-				"description": "Delete SSL Configuration response"
+				"description": "Delete SSL Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -371,16 +371,16 @@
 						}
 					}
 				},
-				"description": "Delete SSL Configuration response failure"
+				"description": "Delete SSL Configuration response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete SSL Configuration",
@@ -864,7 +864,7 @@
 						}
 					}
 				},
-				"description": "List SSL Configurations response"
+				"description": "List SSL Configurations response."
 			},
 			"4XX": {
 				"content": {
@@ -1369,16 +1369,16 @@
 						}
 					}
 				},
-				"description": "List SSL Configurations response failure"
+				"description": "List SSL Configurations response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List SSL Configurations",
@@ -1788,7 +1788,7 @@
 						}
 					}
 				},
-				"description": "SSL Configuration Details response"
+				"description": "SSL Configuration Details response."
 			},
 			"4XX": {
 				"content": {
@@ -2255,16 +2255,16 @@
 						}
 					}
 				},
-				"description": "SSL Configuration Details response failure"
+				"description": "SSL Configuration Details response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "SSL Configuration Details",
@@ -2748,7 +2748,7 @@
 						}
 					}
 				},
-				"description": "Edit SSL Configuration response"
+				"description": "Edit SSL Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -3215,16 +3215,16 @@
 						}
 					}
 				},
-				"description": "Edit SSL Configuration response failure"
+				"description": "Edit SSL Configuration response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Edit SSL Configuration",
@@ -3708,7 +3708,7 @@
 						}
 					}
 				},
-				"description": "Create SSL Configuration response"
+				"description": "Create SSL Configuration response."
 			},
 			"4XX": {
 				"content": {
@@ -4175,16 +4175,16 @@
 						}
 					}
 				},
-				"description": "Create SSL Configuration response failure"
+				"description": "Create SSL Configuration response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create SSL Configuration",
@@ -4665,7 +4665,7 @@
 						}
 					}
 				},
-				"description": "Re-prioritize SSL Certificates response"
+				"description": "Re-prioritize SSL Certificates response."
 			},
 			"4XX": {
 				"content": {
@@ -5170,16 +5170,16 @@
 						}
 					}
 				},
-				"description": "Re-prioritize SSL Certificates response failure"
+				"description": "Re-prioritize SSL Certificates response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Re-prioritize SSL Certificates",

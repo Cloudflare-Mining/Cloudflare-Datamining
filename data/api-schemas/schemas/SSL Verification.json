@@ -148,7 +148,7 @@
 						}
 					}
 				},
-				"description": "SSL Verification Details response"
+				"description": "SSL Verification Details response."
 			},
 			"4XX": {
 				"content": {
@@ -380,16 +380,16 @@
 						}
 					}
 				},
-				"description": "SSL Verification Details response failure"
+				"description": "SSL Verification Details response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "SSL Verification Details",
@@ -592,7 +592,7 @@
 						}
 					}
 				},
-				"description": "Edit SSL Certificate Pack Validation Method response"
+				"description": "Edit SSL Certificate Pack Validation Method response."
 			},
 			"4XX": {
 				"content": {
@@ -826,16 +826,16 @@
 						}
 					}
 				},
-				"description": "Edit SSL Certificate Pack Validation Method response failure"
+				"description": "Edit SSL Certificate Pack Validation Method response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Edit SSL Certificate Pack Validation Method",

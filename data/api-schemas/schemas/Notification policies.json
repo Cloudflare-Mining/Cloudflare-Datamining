@@ -3878,6 +3878,243 @@
 			"Notification policies"
 		]
 	},
+	"POST /accounts/{account_id}/alerting/v3/policies/{policy_id}/test": {
+		"description": "Send a test notification for a policy to verify delivery mechanisms are working as expected.",
+		"operationId": "notification-policies-test-a-notification-policy",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The account id",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "policy_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier of a notification policy",
+					"example": "0da2b59ef118439d8097bdfb215203c9",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"severity": {
+								"description": "Severity level for the test alert. Defaults to INFO (1) if omitted.",
+								"enum": [
+									0,
+									1,
+									2,
+									3,
+									4
+								],
+								"example": 1,
+								"type": "integer"
+							},
+							"source": {
+								"description": "Source identifier for the test alert.",
+								"type": "string"
+							},
+							"state_correlation_id": {
+								"description": "Correlation ID for stateful test alerts. Required when state_event is set.",
+								"type": "string"
+							},
+							"state_event": {
+								"description": "State event type for stateful test alerts. Use with state_correlation_id.",
+								"enum": [
+									0,
+									1,
+									2
+								],
+								"type": "integer"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"description": "Optional configuration for the test notification. When omitted, a default INFO-severity test alert is sent."
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Test a Notification policy response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Test a Notification policy response failure. Common causes include an invalid or non-existent policy ID, or a delivery mechanism that is unreachable."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Test a Notification policy",
+		"tags": [
+			"Notification policies"
+		],
+		"x-api-token-group": [
+			"Notifications Write",
+			"Account Settings Write"
+		]
+	},
 	"PUT /accounts/{account_id}/alerting/v3/policies/{policy_id}": {
 		"description": "Update a Notification policy.",
 		"operationId": "notification-policies-update-a-notification-policy",

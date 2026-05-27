@@ -1,0 +1,2531 @@
+{
+	"POST /accounts/{account_id}/containers/applications/{application_id}/rollouts": {
+		"description": "A rollout can be used to update the application's configuration across instances with minimal downtime.",
+		"operationId": "createApplicationRollout",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "application_id",
+				"required": true,
+				"schema": {
+					"description": "An Application ID represents an identifier of an application",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body to create a new rollout for an application.",
+						"properties": {
+							"description": {
+								"description": "Description of the rollout process.",
+								"type": "string"
+							},
+							"kind": {
+								"description": "Kind of the rollout process.\n - \"full_auto\": For rolling rollouts, starts progressing steps upon rollout creation. For new_instances rollouts, advances percentage targets automatically after target-version health is observed.\n - \"full_manual\": Requires manually progressing each step in the rollout using the UpdateRollout's action paramater.\nFor \"new_instances\" strategy, omit \"kind\" to preserve manual percentage behavior, or set \"full_auto\" to start an automatic 10% health-gated ramp.\n",
+								"enum": [
+									"full_auto",
+									"full_manual"
+								],
+								"type": "string"
+							},
+							"percentage": {
+								"description": "Initial target version percentage (0-100). Version sync will actively replace instances to match.\nRequired when strategy is \"new_instances\" and kind is \"full_manual\". When strategy is \"new_instances\" and kind is \"full_auto\", omitted percentage starts at 10% or the smallest percentage that targets at least one instance. Not used for \"rolling\".\n",
+								"maximum": 100,
+								"minimum": 0,
+								"type": "integer"
+							},
+							"step_percentage": {
+								"description": "Percentage of rollout to increase in each step when \"steps\" is not specificed. Applicable values are 5, 10, 20, 25, 50, 100.\nThese create rollouts with 20, 10, 5, 4, 2, 1 steps respectively.\nOnly valid for \"rolling\" strategy.\n",
+								"enum": [
+									5,
+									10,
+									20,
+									25,
+									50,
+									100
+								],
+								"type": "integer"
+							},
+							"steps": {
+								"description": "Steps defining the rollout process, when \"step_percentage\" is not defined.\nOnly one of \"step_percentage\" or \"steps\" can be defined when creating a rollout.\n\"steps\" allow granular control over each step.\nOnly valid for \"rolling\" strategy.\n",
+								"items": {
+									"description": "Steps defining the rollout process.",
+									"properties": {
+										"description": {
+											"description": "Description of the rollout step.",
+											"type": "string"
+										},
+										"step_size": {
+											"properties": {
+												"percentage": {
+													"description": "Percentage of instances affected in this step. Min 10% and Max 100%.",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"percentage"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"step_size",
+										"description"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"strategy": {
+								"description": "Strategy used for the rollout.\n- \"rolling\": Step-based rollout with health gates. Actively replaces instances to reach each step's target percentage.\n- \"new_instances\": Percentage control over version distribution. Version sync actively replaces instances to match the configured percentage. The \"full_auto\" kind advances through fixed percentage targets after target-version health is observed.\n",
+								"enum": [
+									"rolling",
+									"new_instances"
+								],
+								"type": "string"
+							},
+							"target_configuration": {
+								"description": "Properties required to modify a cloudchamber deployment specified by the user.",
+								"properties": {
+									"affinities": {
+										"description": "Defines affinity in application scheduling. (This still an experimental feature, some schedulers might not work with these affinities).\n",
+										"properties": {
+											"colocation": {
+												"description": "Colocation affinity is designed so schedulers try to place application instances all in the same way. Colocation is best-effort depending on available resources. If there is some leftover set of instances\nthat can't be placed together, the scheduler will try to place them somewhere else.\n",
+												"enum": [
+													"datacenter"
+												],
+												"type": "string"
+											},
+											"hardware_generation": {
+												"description": "To the extent possible, prefer nodes with specified characteristics when placing application instances.\n",
+												"enum": [
+													"highest-overall-performance"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"authorized_keys": {
+										"items": {
+											"description": "SSH public key provided by the user",
+											"properties": {
+												"name": {
+													"description": "Optional human readable name for this key",
+													"type": "string"
+												},
+												"public_key": {
+													"description": "An SSH public key",
+													"type": "string"
+												}
+											},
+											"required": [
+												"public_key"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"checks": {
+										"description": "Health and readiness checks for this deployment.",
+										"items": {
+											"description": "Health and readiness checks for a deployment",
+											"properties": {
+												"attempts_before_failure": {
+													"default": 1,
+													"description": "Number of times to attempt the check before considering it to have failed",
+													"type": "integer"
+												},
+												"grace_period": {
+													"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+													"example": "30s",
+													"type": "string"
+												},
+												"http": {
+													"description": "Configuration for HTTP checks.",
+													"properties": {
+														"body": {
+															"description": "If the method is one of POST, PATCH or PUT, this is required. It's the body that will be passed to the HTTP healthcheck request.",
+															"type": "string"
+														},
+														"headers": {
+															"additionalProperties": true,
+															"description": "HTTP headers to include in the request.",
+															"type": "object"
+														},
+														"method": {
+															"description": "Available HTTP methods for health and readiness checks.",
+															"enum": [
+																"GET",
+																"POST",
+																"PATCH",
+																"PUT",
+																"OPTIONS",
+																"DELETE",
+																"HEAD"
+															],
+															"type": "string"
+														},
+														"path": {
+															"default": "/",
+															"description": "Path that will be used to perform the healthcheck.",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"interval": {
+													"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+													"example": "30s",
+													"type": "string"
+												},
+												"kind": {
+													"enum": [
+														"health",
+														"ready"
+													],
+													"type": "string"
+												},
+												"name": {
+													"description": "Optional name for the check. If omitted, a name will be generated automatically.",
+													"type": "string"
+												},
+												"port": {
+													"description": "The name of the port defined in the \"ports\" property of the deployment",
+													"type": "string"
+												},
+												"timeout": {
+													"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+													"example": "30s",
+													"type": "string"
+												},
+												"tls": {
+													"default": false,
+													"description": "Connect to the port using TLS",
+													"type": "boolean"
+												},
+												"type": {
+													"enum": [
+														"http",
+														"tcp"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"port",
+												"interval",
+												"timeout",
+												"kind"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"command": {
+										"description": "The command to be executed when the container starts, passed to the entrypoint.\nThis can be overridden at run-time. If only the command is overridden at run-time,\nit gets passed to the default entrypoint specified in the image.\n",
+										"example": [
+											"myapp",
+											"--default-option"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"disk": {
+										"description": "The disk configuration for this deployment. By default, all containers have a disk size of 2GB.",
+										"properties": {
+											"size": {
+												"description": "A disk size that specifies its unit at the end.",
+												"example": "1GB",
+												"type": "string"
+											},
+											"size_mb": {
+												"description": "Size of the disk, in MB.",
+												"type": "integer"
+											}
+										},
+										"type": "object"
+									},
+									"dns": {
+										"description": "Represents the /etc/resolv.conf that will appear in the deployment.\nIf the 'dns' property is specified, even if empty object, will override the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+										"properties": {
+											"searches": {
+												"description": "The container resolver will append these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it will append 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
+												"items": {
+													"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+													"example": "docker.io",
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"servers": {
+												"description": "List of DNS servers that the deployment will use to resolve domain names. You can only specify a maximum of 3.",
+												"items": {
+													"description": "A string representation of an IP, can be both v6 and v4.",
+													"example": "192.1.1.1",
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
+									"durable_object_offset_instances": {
+										"description": "The number of containers that should be prewarmed for this application, resulting in a number of deployments = number of durable object instances + this value.\nSend an integer to set, null to clear an existing explicit override (return to the account/system default), or omit to leave unchanged.\n",
+										"nullable": true,
+										"type": "integer"
+									},
+									"entrypoint": {
+										"description": "The entry point for the container, specifying the executable to run when the container starts.\nThis can be overridden at run-time. If overridden, the default command from the image is ignored.\nBoth entrypoint and command can be specified at run-time to completely replace the image defaults.\n",
+										"example": [
+											"/bin/bash"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"environment_variables": {
+										"description": "Container environment variables",
+										"items": {
+											"description": "An environment variable with a value set",
+											"properties": {
+												"name": {
+													"description": "An environment variable name",
+													"type": "string"
+												},
+												"value": {
+													"description": "An environment variable value",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"experimental_flags": {
+										"description": "Opt-in experimental flags for this application. Only a subset of\nexperimental flags can be set by users; unsupported values are rejected.\n",
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 10,
+										"type": "array"
+									},
+									"image": {
+										"description": "Image url",
+										"type": "string"
+									},
+									"instance_type": {
+										"anyOf": [
+											{
+												"enum": [
+													"lite",
+													"basic",
+													"standard-1",
+													"standard-2",
+													"standard-3",
+													"standard-4"
+												],
+												"type": "string"
+											}
+										],
+										"default": "lite",
+										"description": "The instance type will be used to configure vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+										"example": "lite",
+										"type": "string"
+									},
+									"labels": {
+										"description": "Deployment labels",
+										"items": {
+											"description": "A label",
+											"properties": {
+												"name": {
+													"description": "A label name",
+													"type": "string"
+												},
+												"value": {
+													"description": "A label value",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"value"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"lifecycle": {
+										"description": "Lifecycle configuration for a deployment.",
+										"properties": {
+											"max_termination_duration": {
+												"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+												"example": "30s",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"memory": {
+										"description": "A memory size that specifies its unit at the end.",
+										"example": "1GB",
+										"type": "string"
+									},
+									"memory_mib": {
+										"description": "Specify the memory to be used for the deployment, in MiB. The default will be the one configured for the account.",
+										"type": "integer"
+									},
+									"metadata_service": {
+										"description": "Configuration for enabling the container metadata service.",
+										"properties": {
+											"enabled": {
+												"description": "Whether the metadata service should be enabled for the deployment.",
+												"type": "boolean"
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									},
+									"network": {
+										"properties": {
+											"assign_ipv4": {
+												"enum": [
+													"none",
+													"predefined",
+													"account"
+												],
+												"type": "string"
+											},
+											"assign_ipv6": {
+												"enum": [
+													"none",
+													"predefined",
+													"account"
+												],
+												"type": "string"
+											},
+											"egress_from_landing_colo": {
+												"description": "Egress packets sent by the container through a colo, if any, that has seen packets sent to the container first. Landing colos are tracked for individual 5-tuples.\n",
+												"type": "boolean"
+											},
+											"ipv4_prefix_length": {
+												"description": "Prefix length of an IPv4 subnet assigned to a container.",
+												"exclusiveMaximum": true,
+												"maximum": 32,
+												"minimum": 1,
+												"type": "integer"
+											},
+											"ipv6_prefix_length": {
+												"description": "Prefix length of an IPv6 subnet assigned to a container.",
+												"exclusiveMaximum": true,
+												"maximum": 128,
+												"minimum": 1,
+												"type": "integer"
+											},
+											"mode": {
+												"description": "Defines the kind of networking the container will have. If \"public\", the container will be assigned at least an IPv6, and an IPv4 if \"assign_ipv4\": true. If \"public-by-port\" is specified, the IP address assignment logic is the same as with \"public\". However, at least one port must be specified. Only packets sent to specified ports will be routed to the container. If \"private\", the container won't have any accessible public IPs, however it will be able to access the internet.\n",
+												"enum": [
+													"public",
+													"public-by-port",
+													"private"
+												],
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"observability": {
+										"description": "Settings for deployment observability such as logging.",
+										"properties": {
+											"logs": {
+												"description": "Observability logging settings.",
+												"properties": {
+													"enabled": {
+														"default": false,
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"type": "object"
+									},
+									"ports": {
+										"items": {
+											"description": "Represents a port assignment for a deployment",
+											"properties": {
+												"assign_port": {
+													"description": "Choose a port number from a given set of port ranges and use it. It is an optional field.\nIf it is set, \"port\" must not be provided. The same port ranges may be used with multiple ports\nas long as the port ranges are identical for each port. Otherwise no two port ranges must intersect\nand no fixed port must belong to any port range. The total port count for all port ranges should\nbe sufficiently large for assigning the requested number of ports.\n",
+													"items": {
+														"properties": {
+															"end": {
+																"description": "Last port number. Inclusive. It may be equal to the start one.",
+																"type": "integer"
+															},
+															"start": {
+																"description": "First port number. Inclusive.",
+																"type": "integer"
+															}
+														},
+														"required": [
+															"start",
+															"end"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"name": {
+													"description": "A port name. The port array should not have duplicate names. The port name should be between 1 and 15 characters long. Only alphanumeric characters, dashes (-), and underscores (_) are allowed. No consecutive dashes. The value of the port is exposed to the user's application with a set of environment variables, where `<name>` below is the name of the port with dashes converted to underscores (example: \"web-ui\" becomes \"web_ui\"):\n - `CLOUDFLARE_PORT_<name>`: Port inside the container\n - `CLOUDFLARE_HOST_PORT_<name>`: Port outside the container\n - `CLOUDFLARE_HOST_IP_<name>`: Address of the external network interface the port is allocated on\n - `CLOUDFLARE_HOST_ADDR_<name>`: `CLOUDFLARE_HOST_IP_<name>:CLOUDFLARE_HOST_PORT_<name>`\n",
+													"example": "web-ui",
+													"type": "string"
+												},
+												"port": {
+													"description": "Optional port number, it's assigned only if the user specified it.\nIf it's not specified, the datacenter scheduler will decide it.\n",
+													"type": "integer"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"provisioner": {
+										"description": "Configuration for a VM provisioner.",
+										"properties": {
+											"type": {
+												"description": "The provisioner to use.",
+												"enum": [
+													"none",
+													"cloudinit"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"type"
+										],
+										"type": "object"
+									},
+									"secrets": {
+										"description": "A list of objects with secret names and the their access types from the account",
+										"items": {
+											"description": "Specifies how secrets are accessed in containers, defining the name of the secret within the container and the corresponding account secret name.",
+											"properties": {
+												"name": {
+													"description": "The name of the secret within the container",
+													"type": "string"
+												},
+												"secret": {
+													"description": "Corresponding secret name from the account",
+													"type": "string"
+												},
+												"type": {
+													"description": "The secret access type denotes how a secret is made available within a container. Available Options are \"env\".",
+													"enum": [
+														"env"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"type",
+												"secret"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"ssh_public_key_ids": {
+										"description": "A list of SSH public key IDs from the account",
+										"items": {
+											"description": "An SSH public key ID. One can map an ssh public key to a deployment using this ID.",
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"trusted_user_ca_keys": {
+										"items": {
+											"description": "SSH public key provided by the user",
+											"properties": {
+												"name": {
+													"description": "Optional human readable name for this key",
+													"type": "string"
+												},
+												"public_key": {
+													"description": "An SSH public key",
+													"type": "string"
+												}
+											},
+											"required": [
+												"public_key"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"vcpu": {
+										"description": "Specify the vcpu to be used for the deployment. Vcpu must be at least 1. The input value will be rounded to\nthe nearest 0.0001. The default will be the one configured for the account.\n",
+										"format": "float",
+										"type": "number"
+									},
+									"wrangler_ssh": {
+										"description": "Configuration properties for SSH'ing into a container with Wrangler",
+										"properties": {
+											"enabled": {
+												"default": true,
+												"type": "boolean"
+											},
+											"port": {
+												"default": 22,
+												"type": "number"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"target_configuration",
+							"strategy",
+							"description"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Represents the status and metadata of a rollout process for an application.\nFor \"rolling\" strategy: includes steps and progress with instance counts.\nFor \"new_instances\" strategy: steps and progress are omitted. Use percentage,\nversion_distribution, and health.summary for status.\n",
+											"properties": {
+												"created_at": {
+													"description": "UTC timestamp string in ISO 8601 format",
+													"example": "2021-04-01T12:32:41.488Z",
+													"type": "string"
+												},
+												"current_configuration": {
+													"description": "Properties required to modify a cloudchamber deployment specified by the user.",
+													"properties": {
+														"affinities": {
+															"description": "Defines affinity in application scheduling. (This still an experimental feature, some schedulers might not work with these affinities).\n",
+															"properties": {
+																"colocation": {
+																	"description": "Colocation affinity is designed so schedulers try to place application instances all in the same way. Colocation is best-effort depending on available resources. If there is some leftover set of instances\nthat can't be placed together, the scheduler will try to place them somewhere else.\n",
+																	"enum": [
+																		"datacenter"
+																	],
+																	"type": "string"
+																},
+																"hardware_generation": {
+																	"description": "To the extent possible, prefer nodes with specified characteristics when placing application instances.\n",
+																	"enum": [
+																		"highest-overall-performance"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"authorized_keys": {
+															"items": {
+																"description": "SSH public key provided by the user",
+																"properties": {
+																	"name": {
+																		"description": "Optional human readable name for this key",
+																		"type": "string"
+																	},
+																	"public_key": {
+																		"description": "An SSH public key",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"public_key"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"checks": {
+															"description": "Health and readiness checks for this deployment.",
+															"items": {
+																"description": "Health and readiness checks for a deployment",
+																"properties": {
+																	"attempts_before_failure": {
+																		"default": 1,
+																		"description": "Number of times to attempt the check before considering it to have failed",
+																		"type": "integer"
+																	},
+																	"grace_period": {
+																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+																		"example": "30s",
+																		"type": "string"
+																	},
+																	"http": {
+																		"description": "Configuration for HTTP checks.",
+																		"properties": {
+																			"body": {
+																				"description": "If the method is one of POST, PATCH or PUT, this is required. It's the body that will be passed to the HTTP healthcheck request.",
+																				"type": "string"
+																			},
+																			"headers": {
+																				"additionalProperties": true,
+																				"description": "HTTP headers to include in the request.",
+																				"type": "object"
+																			},
+																			"method": {
+																				"description": "Available HTTP methods for health and readiness checks.",
+																				"enum": [
+																					"GET",
+																					"POST",
+																					"PATCH",
+																					"PUT",
+																					"OPTIONS",
+																					"DELETE",
+																					"HEAD"
+																				],
+																				"type": "string"
+																			},
+																			"path": {
+																				"default": "/",
+																				"description": "Path that will be used to perform the healthcheck.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"interval": {
+																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+																		"example": "30s",
+																		"type": "string"
+																	},
+																	"kind": {
+																		"enum": [
+																			"health",
+																			"ready"
+																		],
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Optional name for the check. If omitted, a name will be generated automatically.",
+																		"type": "string"
+																	},
+																	"port": {
+																		"description": "The name of the port defined in the \"ports\" property of the deployment",
+																		"type": "string"
+																	},
+																	"timeout": {
+																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+																		"example": "30s",
+																		"type": "string"
+																	},
+																	"tls": {
+																		"default": false,
+																		"description": "Connect to the port using TLS",
+																		"type": "boolean"
+																	},
+																	"type": {
+																		"enum": [
+																			"http",
+																			"tcp"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"port",
+																	"interval",
+																	"timeout",
+																	"kind"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"command": {
+															"description": "The command to be executed when the container starts, passed to the entrypoint.\nThis can be overridden at run-time. If only the command is overridden at run-time,\nit gets passed to the default entrypoint specified in the image.\n",
+															"example": [
+																"myapp",
+																"--default-option"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"disk": {
+															"description": "The disk configuration for this deployment. By default, all containers have a disk size of 2GB.",
+															"properties": {
+																"size": {
+																	"description": "A disk size that specifies its unit at the end.",
+																	"example": "1GB",
+																	"type": "string"
+																},
+																"size_mb": {
+																	"description": "Size of the disk, in MB.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"dns": {
+															"description": "Represents the /etc/resolv.conf that will appear in the deployment.\nIf the 'dns' property is specified, even if empty object, will override the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+															"properties": {
+																"searches": {
+																	"description": "The container resolver will append these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it will append 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
+																	"items": {
+																		"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+																		"example": "docker.io",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"servers": {
+																	"description": "List of DNS servers that the deployment will use to resolve domain names. You can only specify a maximum of 3.",
+																	"items": {
+																		"description": "A string representation of an IP, can be both v6 and v4.",
+																		"example": "192.1.1.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														"durable_object_offset_instances": {
+															"description": "The number of containers that should be prewarmed for this application, resulting in a number of deployments = number of durable object instances + this value.\nSend an integer to set, null to clear an existing explicit override (return to the account/system default), or omit to leave unchanged.\n",
+															"nullable": true,
+															"type": "integer"
+														},
+														"entrypoint": {
+															"description": "The entry point for the container, specifying the executable to run when the container starts.\nThis can be overridden at run-time. If overridden, the default command from the image is ignored.\nBoth entrypoint and command can be specified at run-time to completely replace the image defaults.\n",
+															"example": [
+																"/bin/bash"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"environment_variables": {
+															"description": "Container environment variables",
+															"items": {
+																"description": "An environment variable with a value set",
+																"properties": {
+																	"name": {
+																		"description": "An environment variable name",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "An environment variable value",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"value"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"experimental_flags": {
+															"description": "Opt-in experimental flags for this application. Only a subset of\nexperimental flags can be set by users; unsupported values are rejected.\n",
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 10,
+															"type": "array"
+														},
+														"image": {
+															"description": "Image url",
+															"type": "string"
+														},
+														"instance_type": {
+															"anyOf": [
+																{
+																	"enum": [
+																		"lite",
+																		"basic",
+																		"standard-1",
+																		"standard-2",
+																		"standard-3",
+																		"standard-4"
+																	],
+																	"type": "string"
+																}
+															],
+															"default": "lite",
+															"description": "The instance type will be used to configure vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+															"example": "lite",
+															"type": "string"
+														},
+														"labels": {
+															"description": "Deployment labels",
+															"items": {
+																"description": "A label",
+																"properties": {
+																	"name": {
+																		"description": "A label name",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "A label value",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"value"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"lifecycle": {
+															"description": "Lifecycle configuration for a deployment.",
+															"properties": {
+																"max_termination_duration": {
+																	"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+																	"example": "30s",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"memory": {
+															"description": "A memory size that specifies its unit at the end.",
+															"example": "1GB",
+															"type": "string"
+														},
+														"memory_mib": {
+															"description": "Specify the memory to be used for the deployment, in MiB. The default will be the one configured for the account.",
+															"type": "integer"
+														},
+														"metadata_service": {
+															"description": "Configuration for enabling the container metadata service.",
+															"properties": {
+																"enabled": {
+																	"description": "Whether the metadata service should be enabled for the deployment.",
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"enabled"
+															],
+															"type": "object"
+														},
+														"network": {
+															"properties": {
+																"assign_ipv4": {
+																	"enum": [
+																		"none",
+																		"predefined",
+																		"account"
+																	],
+																	"type": "string"
+																},
+																"assign_ipv6": {
+																	"enum": [
+																		"none",
+																		"predefined",
+																		"account"
+																	],
+																	"type": "string"
+																},
+																"egress_from_landing_colo": {
+																	"description": "Egress packets sent by the container through a colo, if any, that has seen packets sent to the container first. Landing colos are tracked for individual 5-tuples.\n",
+																	"type": "boolean"
+																},
+																"ipv4_prefix_length": {
+																	"description": "Prefix length of an IPv4 subnet assigned to a container.",
+																	"exclusiveMaximum": true,
+																	"maximum": 32,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"ipv6_prefix_length": {
+																	"description": "Prefix length of an IPv6 subnet assigned to a container.",
+																	"exclusiveMaximum": true,
+																	"maximum": 128,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"mode": {
+																	"description": "Defines the kind of networking the container will have. If \"public\", the container will be assigned at least an IPv6, and an IPv4 if \"assign_ipv4\": true. If \"public-by-port\" is specified, the IP address assignment logic is the same as with \"public\". However, at least one port must be specified. Only packets sent to specified ports will be routed to the container. If \"private\", the container won't have any accessible public IPs, however it will be able to access the internet.\n",
+																	"enum": [
+																		"public",
+																		"public-by-port",
+																		"private"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"observability": {
+															"description": "Settings for deployment observability such as logging.",
+															"properties": {
+																"logs": {
+																	"description": "Observability logging settings.",
+																	"properties": {
+																		"enabled": {
+																			"default": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"ports": {
+															"items": {
+																"description": "Represents a port assignment for a deployment",
+																"properties": {
+																	"assign_port": {
+																		"description": "Choose a port number from a given set of port ranges and use it. It is an optional field.\nIf it is set, \"port\" must not be provided. The same port ranges may be used with multiple ports\nas long as the port ranges are identical for each port. Otherwise no two port ranges must intersect\nand no fixed port must belong to any port range. The total port count for all port ranges should\nbe sufficiently large for assigning the requested number of ports.\n",
+																		"items": {
+																			"properties": {
+																				"end": {
+																					"description": "Last port number. Inclusive. It may be equal to the start one.",
+																					"type": "integer"
+																				},
+																				"start": {
+																					"description": "First port number. Inclusive.",
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"start",
+																				"end"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"name": {
+																		"description": "A port name. The port array should not have duplicate names. The port name should be between 1 and 15 characters long. Only alphanumeric characters, dashes (-), and underscores (_) are allowed. No consecutive dashes. The value of the port is exposed to the user's application with a set of environment variables, where `<name>` below is the name of the port with dashes converted to underscores (example: \"web-ui\" becomes \"web_ui\"):\n - `CLOUDFLARE_PORT_<name>`: Port inside the container\n - `CLOUDFLARE_HOST_PORT_<name>`: Port outside the container\n - `CLOUDFLARE_HOST_IP_<name>`: Address of the external network interface the port is allocated on\n - `CLOUDFLARE_HOST_ADDR_<name>`: `CLOUDFLARE_HOST_IP_<name>:CLOUDFLARE_HOST_PORT_<name>`\n",
+																		"example": "web-ui",
+																		"type": "string"
+																	},
+																	"port": {
+																		"description": "Optional port number, it's assigned only if the user specified it.\nIf it's not specified, the datacenter scheduler will decide it.\n",
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"provisioner": {
+															"description": "Configuration for a VM provisioner.",
+															"properties": {
+																"type": {
+																	"description": "The provisioner to use.",
+																	"enum": [
+																		"none",
+																		"cloudinit"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"secrets": {
+															"description": "A list of objects with secret names and the their access types from the account",
+															"items": {
+																"description": "Specifies how secrets are accessed in containers, defining the name of the secret within the container and the corresponding account secret name.",
+																"properties": {
+																	"name": {
+																		"description": "The name of the secret within the container",
+																		"type": "string"
+																	},
+																	"secret": {
+																		"description": "Corresponding secret name from the account",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The secret access type denotes how a secret is made available within a container. Available Options are \"env\".",
+																		"enum": [
+																			"env"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"secret"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"ssh_public_key_ids": {
+															"description": "A list of SSH public key IDs from the account",
+															"items": {
+																"description": "An SSH public key ID. One can map an ssh public key to a deployment using this ID.",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"trusted_user_ca_keys": {
+															"items": {
+																"description": "SSH public key provided by the user",
+																"properties": {
+																	"name": {
+																		"description": "Optional human readable name for this key",
+																		"type": "string"
+																	},
+																	"public_key": {
+																		"description": "An SSH public key",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"public_key"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"vcpu": {
+															"description": "Specify the vcpu to be used for the deployment. Vcpu must be at least 1. The input value will be rounded to\nthe nearest 0.0001. The default will be the one configured for the account.\n",
+															"format": "float",
+															"type": "number"
+														},
+														"wrangler_ssh": {
+															"description": "Configuration properties for SSH'ing into a container with Wrangler",
+															"properties": {
+																"enabled": {
+																	"default": true,
+																	"type": "boolean"
+																},
+																"port": {
+																	"default": 22,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"current_version": {
+													"description": "Current application version before the rollout.",
+													"type": "integer"
+												},
+												"description": {
+													"type": "string"
+												},
+												"health": {
+													"properties": {
+														"errors": {
+															"items": {
+																"properties": {
+																	"event": {
+																		"description": "An event within a Placement or a Job",
+																		"properties": {
+																			"details": {
+																				"additionalProperties": true,
+																				"type": "object"
+																			},
+																			"id": {
+																				"type": "string"
+																			},
+																			"message": {
+																				"type": "string"
+																			},
+																			"name": {
+																				"description": "Name of the event that describes the kind event that happened.\n  - SchedulerPlaced: It's the first event that creates a Cloudchamber placement. It happens when the runtime was able to retrieve deployment resources and start verify everything is correct.\n  - NetworkingIPAssigned: It's sent when the Cloudchamber runtime has mapped the IP to the container.\n  - VMStarted: It's sent when the Cloudchamber runtime has started the VM. However, it does not mean that the container is healthy.\n  - ImagePulled: It's sent when the Cloudchamber runtime has pulled the image successfully.\n  - ImagePullError: It's sent when the Cloudchamber runtime is having issues pulling image. The message and details have more information on what happened for debugging.\n  - VMFailedToStart: It's sent when the Cloudchamber runtime was unable to boot the VM.\n  - VMStopping: It's sent when the scheduler is stopping the VM.\n  - VMStopped: It's sent when the VM has finally exited.\n  - VMFailed: It's sent when the scheduling of the VM failed in the current location.\n  - RuntimeStartFailed: It's sent when the runtime had an internal error.\n  - SSHStarted: It's sent when the container has gained network connectivity and has opened the SSH port. This event is only sent when SSH keys are configured.\n  - CheckUpdate: Sent when the status of a health or readiness check changes. This may also affect the health status of the placement.\n  - DurableObjectConnected: Sent when a durable object instance connects and gains control of the deployment.\n    This event is only sent for durable object deployments. It is sent after VMStarted.\n  - ContainerStarted: It's sent when the container has started running.\n",
+																				"enum": [
+																					"SchedulerPlaced",
+																					"NetworkingIPAssigned",
+																					"VMStarted",
+																					"ImagePulled",
+																					"ImagePullError",
+																					"VMFailedToStart",
+																					"NetworkingIPAssignmentFailed",
+																					"VMRunning",
+																					"VMStopping",
+																					"VMStopped",
+																					"VMFailed",
+																					"RuntimeStartFailed",
+																					"SSHStarted",
+																					"ServiceHealthUpdates",
+																					"CheckUpdate",
+																					"DurableObjectConnected",
+																					"ContainerStarted"
+																				],
+																				"type": "string"
+																			},
+																			"statusChange": {
+																				"additionalProperties": true,
+																				"type": "object"
+																			},
+																			"time": {
+																				"description": "UTC timestamp string in ISO 8601 format",
+																				"example": "2021-04-01T12:32:41.488Z",
+																				"type": "string"
+																			},
+																			"type": {
+																				"enum": [
+																					"Info",
+																					"Error",
+																					"Warn",
+																					"UserError",
+																					"SystemError"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"id",
+																			"time",
+																			"type",
+																			"name",
+																			"message",
+																			"details",
+																			"statusChange"
+																		],
+																		"type": "object"
+																	},
+																	"instance_id": {
+																		"description": "An instance ID represents an identifier of an instance configuration that maintains an underlying placement",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"instance_id",
+																	"event"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"instances": {
+															"description": "Shows a count of application instance states.",
+															"properties": {
+																"active": {
+																	"description": "Number of instances with a running container.",
+																	"type": "integer"
+																},
+																"assigned": {
+																	"description": "Number of instances assigned to a container, but the container is not yet running.",
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"active",
+																"assigned"
+															],
+															"type": "object"
+														},
+														"summary": {
+															"description": "High-level health assessment. Only populated for \"new_instances\" strategy.\nBased on a sample of target-version instances (not a full count).\n- \"pending\": No target-version instances exist yet.\n- \"healthy\": All sampled target-version instances are running/active.\n- \"degraded\": Some sampled instances are still starting or scheduling.\n- \"unhealthy\": One or more sampled instances have failed.\n",
+															"enum": [
+																"healthy",
+																"degraded",
+																"unhealthy",
+																"pending"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"instances",
+														"errors"
+													],
+													"type": "object"
+												},
+												"id": {
+													"description": "An identifier for a specific rollout within an application.",
+													"type": "string"
+												},
+												"kind": {
+													"description": "Kind of the rollout process.\n - \"full_auto\": For rolling rollouts, starts progressing steps upon rollout creation. For new_instances rollouts, advances percentage targets automatically after target-version health is observed.\n - \"full_manual\": Requires manually progressing each step in the rollout using the UpdateRollout's action paramater.\n - \"durable_objects_auto\": Default when the application is a DO application.\n",
+													"enum": [
+														"full_auto",
+														"full_manual",
+														"durable_objects_auto"
+													],
+													"type": "string"
+												},
+												"last_updated_at": {
+													"description": "UTC timestamp string in ISO 8601 format",
+													"example": "2021-04-01T12:32:41.488Z",
+													"type": "string"
+												},
+												"percentage": {
+													"description": "Current target version percentage (0-100). Only present for \"new_instances\" strategy.\n",
+													"type": "integer"
+												},
+												"progress": {
+													"description": "Progress details of an application rollout.",
+													"properties": {
+														"current_step": {
+															"description": "Current step being executed in the rollout process. Initialized to 0.",
+															"type": "integer"
+														},
+														"total_instances": {
+															"description": "Total number of instances affected by the rollout.",
+															"type": "integer"
+														},
+														"total_steps": {
+															"description": "Total number of steps in the rollout.",
+															"type": "integer"
+														},
+														"updated_instances": {
+															"description": "Number of instances updated in the rollout process.",
+															"type": "integer"
+														},
+														"version_distribution": {
+															"description": "Expected distribution of instances by version based on the current percentage split.\nPopulated during active rollouts. Values are computed from the version percentage weights,\nnot actual running instance counts.\n",
+															"properties": {
+																"current_version_instances": {
+																	"description": "Expected number of instances remaining on the current (old) version based on the current percentage split. Only populated for \"rolling\" strategy.",
+																	"type": "integer"
+																},
+																"current_version_percentage": {
+																	"description": "The percentage of new instances being scheduled on the current version (100 - target_version_percentage).\nOnly populated for \"new_instances\" strategy.\n",
+																	"type": "integer"
+																},
+																"target_version_instances": {
+																	"description": "Expected number of instances scheduled for the target (new) version based on the current percentage split. Only populated for \"rolling\" strategy.",
+																	"type": "integer"
+																},
+																"target_version_percentage": {
+																	"description": "The active percentage of new instances being scheduled on the target version.\nFor \"rolling\", this reflects the step_size.percentage of the current active step.\nFor \"new_instances\", this reflects the user-set percentage.\n",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"required": [
+														"total_steps",
+														"current_step",
+														"updated_instances",
+														"total_instances"
+													],
+													"type": "object"
+												},
+												"started_at": {
+													"description": "Timestamp when the rollout started.",
+													"format": "date-time",
+													"type": "string"
+												},
+												"status": {
+													"description": "Current status of the rollout.",
+													"enum": [
+														"pending",
+														"progressing",
+														"completed",
+														"reverted",
+														"replaced"
+													],
+													"type": "string"
+												},
+												"steps": {
+													"items": {
+														"description": "Steps within the rollout process.",
+														"properties": {
+															"completed_at": {
+																"description": "UTC timestamp string in ISO 8601 format",
+																"example": "2021-04-01T12:32:41.488Z",
+																"type": "string"
+															},
+															"description": {
+																"description": "Description of the rollout step.",
+																"type": "string"
+															},
+															"id": {
+																"description": "The sequential order of the rollout step, automatically assigned starting from 1, based on the total number of steps in the rollout process.",
+																"type": "integer"
+															},
+															"reason": {
+																"description": "Reason why the step has the current status",
+																"type": "string"
+															},
+															"started_at": {
+																"description": "UTC timestamp string in ISO 8601 format",
+																"example": "2021-04-01T12:32:41.488Z",
+																"type": "string"
+															},
+															"status": {
+																"description": "Status of the rollout step.",
+																"enum": [
+																	"pending",
+																	"progressing",
+																	"reverting",
+																	"completed",
+																	"reverted"
+																],
+																"type": "string"
+															},
+															"step_size": {
+																"properties": {
+																	"percentage": {
+																		"description": "Percentage of instances affected in this step. Min 10% and Max 100%.",
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"percentage"
+																],
+																"type": "object"
+															}
+														},
+														"required": [
+															"id",
+															"step_size",
+															"description",
+															"status"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"strategy": {
+													"description": "The rollout strategy.\n- \"rolling\": Step-based rollout with health gates. Actively replaces instances to reach each step's target percentage. Response includes steps and progress.\n- \"new_instances\": Percentage control over version distribution. Version sync actively replaces instances to match the configured percentage. \"full_auto\" ramps through fixed percentage targets after target-version health is observed. Response includes percentage, version_distribution, and health.summary.\n",
+													"enum": [
+														"rolling",
+														"new_instances"
+													],
+													"type": "string"
+												},
+												"target_configuration": {
+													"description": "Properties required to modify a cloudchamber deployment specified by the user.",
+													"properties": {
+														"affinities": {
+															"description": "Defines affinity in application scheduling. (This still an experimental feature, some schedulers might not work with these affinities).\n",
+															"properties": {
+																"colocation": {
+																	"description": "Colocation affinity is designed so schedulers try to place application instances all in the same way. Colocation is best-effort depending on available resources. If there is some leftover set of instances\nthat can't be placed together, the scheduler will try to place them somewhere else.\n",
+																	"enum": [
+																		"datacenter"
+																	],
+																	"type": "string"
+																},
+																"hardware_generation": {
+																	"description": "To the extent possible, prefer nodes with specified characteristics when placing application instances.\n",
+																	"enum": [
+																		"highest-overall-performance"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"authorized_keys": {
+															"items": {
+																"description": "SSH public key provided by the user",
+																"properties": {
+																	"name": {
+																		"description": "Optional human readable name for this key",
+																		"type": "string"
+																	},
+																	"public_key": {
+																		"description": "An SSH public key",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"public_key"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"checks": {
+															"description": "Health and readiness checks for this deployment.",
+															"items": {
+																"description": "Health and readiness checks for a deployment",
+																"properties": {
+																	"attempts_before_failure": {
+																		"default": 1,
+																		"description": "Number of times to attempt the check before considering it to have failed",
+																		"type": "integer"
+																	},
+																	"grace_period": {
+																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+																		"example": "30s",
+																		"type": "string"
+																	},
+																	"http": {
+																		"description": "Configuration for HTTP checks.",
+																		"properties": {
+																			"body": {
+																				"description": "If the method is one of POST, PATCH or PUT, this is required. It's the body that will be passed to the HTTP healthcheck request.",
+																				"type": "string"
+																			},
+																			"headers": {
+																				"additionalProperties": true,
+																				"description": "HTTP headers to include in the request.",
+																				"type": "object"
+																			},
+																			"method": {
+																				"description": "Available HTTP methods for health and readiness checks.",
+																				"enum": [
+																					"GET",
+																					"POST",
+																					"PATCH",
+																					"PUT",
+																					"OPTIONS",
+																					"DELETE",
+																					"HEAD"
+																				],
+																				"type": "string"
+																			},
+																			"path": {
+																				"default": "/",
+																				"description": "Path that will be used to perform the healthcheck.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"interval": {
+																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+																		"example": "30s",
+																		"type": "string"
+																	},
+																	"kind": {
+																		"enum": [
+																			"health",
+																			"ready"
+																		],
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Optional name for the check. If omitted, a name will be generated automatically.",
+																		"type": "string"
+																	},
+																	"port": {
+																		"description": "The name of the port defined in the \"ports\" property of the deployment",
+																		"type": "string"
+																	},
+																	"timeout": {
+																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+																		"example": "30s",
+																		"type": "string"
+																	},
+																	"tls": {
+																		"default": false,
+																		"description": "Connect to the port using TLS",
+																		"type": "boolean"
+																	},
+																	"type": {
+																		"enum": [
+																			"http",
+																			"tcp"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"port",
+																	"interval",
+																	"timeout",
+																	"kind"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"command": {
+															"description": "The command to be executed when the container starts, passed to the entrypoint.\nThis can be overridden at run-time. If only the command is overridden at run-time,\nit gets passed to the default entrypoint specified in the image.\n",
+															"example": [
+																"myapp",
+																"--default-option"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"disk": {
+															"description": "The disk configuration for this deployment. By default, all containers have a disk size of 2GB.",
+															"properties": {
+																"size": {
+																	"description": "A disk size that specifies its unit at the end.",
+																	"example": "1GB",
+																	"type": "string"
+																},
+																"size_mb": {
+																	"description": "Size of the disk, in MB.",
+																	"type": "integer"
+																}
+															},
+															"type": "object"
+														},
+														"dns": {
+															"description": "Represents the /etc/resolv.conf that will appear in the deployment.\nIf the 'dns' property is specified, even if empty object, will override the default resolv.conf of the container.\nThe default resolv.conf of a container is 'servers = [\"1.1.1.1\", \"9.9.9.9\", \"2606:4700:4700::1111\"]', only if an IPv4 is assigned.\nThe default for a non IPv4 deployment is 'servers = [\"2606:4700:4700::1111\", \"2620:fe::fe\"]'.\n",
+															"properties": {
+																"searches": {
+																	"description": "The container resolver will append these domains to every resolve query. For example, if you have 'google.com',\nand your deployment queries 'web', it will append 'google.com' to 'web' in the search query before trying 'web'.\nLimited to 6 domains.\n",
+																	"items": {
+																		"description": "A string representation of a domain name. See RFC-1034 (https://www.ietf.org/rfc/rfc1034.txt). Consider that the limit of a domain name is min 3 and max 253 ASCII characters.",
+																		"example": "docker.io",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"servers": {
+																	"description": "List of DNS servers that the deployment will use to resolve domain names. You can only specify a maximum of 3.",
+																	"items": {
+																		"description": "A string representation of an IP, can be both v6 and v4.",
+																		"example": "192.1.1.1",
+																		"type": "string"
+																	},
+																	"type": "array"
+																}
+															},
+															"type": "object"
+														},
+														"durable_object_offset_instances": {
+															"description": "The number of containers that should be prewarmed for this application, resulting in a number of deployments = number of durable object instances + this value.\nSend an integer to set, null to clear an existing explicit override (return to the account/system default), or omit to leave unchanged.\n",
+															"nullable": true,
+															"type": "integer"
+														},
+														"entrypoint": {
+															"description": "The entry point for the container, specifying the executable to run when the container starts.\nThis can be overridden at run-time. If overridden, the default command from the image is ignored.\nBoth entrypoint and command can be specified at run-time to completely replace the image defaults.\n",
+															"example": [
+																"/bin/bash"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"environment_variables": {
+															"description": "Container environment variables",
+															"items": {
+																"description": "An environment variable with a value set",
+																"properties": {
+																	"name": {
+																		"description": "An environment variable name",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "An environment variable value",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"value"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"experimental_flags": {
+															"description": "Opt-in experimental flags for this application. Only a subset of\nexperimental flags can be set by users; unsupported values are rejected.\n",
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 10,
+															"type": "array"
+														},
+														"image": {
+															"description": "Image url",
+															"type": "string"
+														},
+														"instance_type": {
+															"anyOf": [
+																{
+																	"enum": [
+																		"lite",
+																		"basic",
+																		"standard-1",
+																		"standard-2",
+																		"standard-3",
+																		"standard-4"
+																	],
+																	"type": "string"
+																}
+															],
+															"default": "lite",
+															"description": "The instance type will be used to configure vCPU, memory, and disk.\n\n- \"lite\": 1/16 vCPU, 256 MiB memory, 2 GB disk\n- \"basic\": 1/4 vCPU, 1 GiB memory, 4 GB disk\n- \"standard-1\": 1/2 vCPU, 4 GiB memory, 8 GB disk\n- \"standard-2\": 1 vCPU, 6 GiB memory, 12 GB disk\n- \"standard-3\": 2 vCPU, 8 GiB memory, 16 GB disk\n- \"standard-4\": 4 vCPU, 12 GiB memory, 20 GB disk\n",
+															"example": "lite",
+															"type": "string"
+														},
+														"labels": {
+															"description": "Deployment labels",
+															"items": {
+																"description": "A label",
+																"properties": {
+																	"name": {
+																		"description": "A label name",
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "A label value",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"value"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"lifecycle": {
+															"description": "Lifecycle configuration for a deployment.",
+															"properties": {
+																"max_termination_duration": {
+																	"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
+																	"example": "30s",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"memory": {
+															"description": "A memory size that specifies its unit at the end.",
+															"example": "1GB",
+															"type": "string"
+														},
+														"memory_mib": {
+															"description": "Specify the memory to be used for the deployment, in MiB. The default will be the one configured for the account.",
+															"type": "integer"
+														},
+														"metadata_service": {
+															"description": "Configuration for enabling the container metadata service.",
+															"properties": {
+																"enabled": {
+																	"description": "Whether the metadata service should be enabled for the deployment.",
+																	"type": "boolean"
+																}
+															},
+															"required": [
+																"enabled"
+															],
+															"type": "object"
+														},
+														"network": {
+															"properties": {
+																"assign_ipv4": {
+																	"enum": [
+																		"none",
+																		"predefined",
+																		"account"
+																	],
+																	"type": "string"
+																},
+																"assign_ipv6": {
+																	"enum": [
+																		"none",
+																		"predefined",
+																		"account"
+																	],
+																	"type": "string"
+																},
+																"egress_from_landing_colo": {
+																	"description": "Egress packets sent by the container through a colo, if any, that has seen packets sent to the container first. Landing colos are tracked for individual 5-tuples.\n",
+																	"type": "boolean"
+																},
+																"ipv4_prefix_length": {
+																	"description": "Prefix length of an IPv4 subnet assigned to a container.",
+																	"exclusiveMaximum": true,
+																	"maximum": 32,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"ipv6_prefix_length": {
+																	"description": "Prefix length of an IPv6 subnet assigned to a container.",
+																	"exclusiveMaximum": true,
+																	"maximum": 128,
+																	"minimum": 1,
+																	"type": "integer"
+																},
+																"mode": {
+																	"description": "Defines the kind of networking the container will have. If \"public\", the container will be assigned at least an IPv6, and an IPv4 if \"assign_ipv4\": true. If \"public-by-port\" is specified, the IP address assignment logic is the same as with \"public\". However, at least one port must be specified. Only packets sent to specified ports will be routed to the container. If \"private\", the container won't have any accessible public IPs, however it will be able to access the internet.\n",
+																	"enum": [
+																		"public",
+																		"public-by-port",
+																		"private"
+																	],
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"observability": {
+															"description": "Settings for deployment observability such as logging.",
+															"properties": {
+																"logs": {
+																	"description": "Observability logging settings.",
+																	"properties": {
+																		"enabled": {
+																			"default": false,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
+															"type": "object"
+														},
+														"ports": {
+															"items": {
+																"description": "Represents a port assignment for a deployment",
+																"properties": {
+																	"assign_port": {
+																		"description": "Choose a port number from a given set of port ranges and use it. It is an optional field.\nIf it is set, \"port\" must not be provided. The same port ranges may be used with multiple ports\nas long as the port ranges are identical for each port. Otherwise no two port ranges must intersect\nand no fixed port must belong to any port range. The total port count for all port ranges should\nbe sufficiently large for assigning the requested number of ports.\n",
+																		"items": {
+																			"properties": {
+																				"end": {
+																					"description": "Last port number. Inclusive. It may be equal to the start one.",
+																					"type": "integer"
+																				},
+																				"start": {
+																					"description": "First port number. Inclusive.",
+																					"type": "integer"
+																				}
+																			},
+																			"required": [
+																				"start",
+																				"end"
+																			],
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"name": {
+																		"description": "A port name. The port array should not have duplicate names. The port name should be between 1 and 15 characters long. Only alphanumeric characters, dashes (-), and underscores (_) are allowed. No consecutive dashes. The value of the port is exposed to the user's application with a set of environment variables, where `<name>` below is the name of the port with dashes converted to underscores (example: \"web-ui\" becomes \"web_ui\"):\n - `CLOUDFLARE_PORT_<name>`: Port inside the container\n - `CLOUDFLARE_HOST_PORT_<name>`: Port outside the container\n - `CLOUDFLARE_HOST_IP_<name>`: Address of the external network interface the port is allocated on\n - `CLOUDFLARE_HOST_ADDR_<name>`: `CLOUDFLARE_HOST_IP_<name>:CLOUDFLARE_HOST_PORT_<name>`\n",
+																		"example": "web-ui",
+																		"type": "string"
+																	},
+																	"port": {
+																		"description": "Optional port number, it's assigned only if the user specified it.\nIf it's not specified, the datacenter scheduler will decide it.\n",
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"name"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"provisioner": {
+															"description": "Configuration for a VM provisioner.",
+															"properties": {
+																"type": {
+																	"description": "The provisioner to use.",
+																	"enum": [
+																		"none",
+																		"cloudinit"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"secrets": {
+															"description": "A list of objects with secret names and the their access types from the account",
+															"items": {
+																"description": "Specifies how secrets are accessed in containers, defining the name of the secret within the container and the corresponding account secret name.",
+																"properties": {
+																	"name": {
+																		"description": "The name of the secret within the container",
+																		"type": "string"
+																	},
+																	"secret": {
+																		"description": "Corresponding secret name from the account",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "The secret access type denotes how a secret is made available within a container. Available Options are \"env\".",
+																		"enum": [
+																			"env"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"name",
+																	"type",
+																	"secret"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"ssh_public_key_ids": {
+															"description": "A list of SSH public key IDs from the account",
+															"items": {
+																"description": "An SSH public key ID. One can map an ssh public key to a deployment using this ID.",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"trusted_user_ca_keys": {
+															"items": {
+																"description": "SSH public key provided by the user",
+																"properties": {
+																	"name": {
+																		"description": "Optional human readable name for this key",
+																		"type": "string"
+																	},
+																	"public_key": {
+																		"description": "An SSH public key",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"public_key"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"vcpu": {
+															"description": "Specify the vcpu to be used for the deployment. Vcpu must be at least 1. The input value will be rounded to\nthe nearest 0.0001. The default will be the one configured for the account.\n",
+															"format": "float",
+															"type": "number"
+														},
+														"wrangler_ssh": {
+															"description": "Configuration properties for SSH'ing into a container with Wrangler",
+															"properties": {
+																"enabled": {
+																	"default": true,
+																	"type": "boolean"
+																},
+																"port": {
+																	"default": 22,
+																	"type": "number"
+																}
+															},
+															"type": "object"
+														}
+													},
+													"type": "object"
+												},
+												"target_version": {
+													"description": "Target application version after the rollout is complete and applied to all current instances.",
+													"type": "integer"
+												},
+												"version_distribution": {
+													"description": "Version percentage distribution. Only present for \"new_instances\" strategy.\nFor \"rolling\" strategy, see progress.version_distribution instead.\n",
+													"properties": {
+														"current_version_percentage": {
+															"description": "Percentage of instances on the current (old) version.",
+															"type": "integer"
+														},
+														"target_version_percentage": {
+															"description": "Percentage of instances on the target (new) version.",
+															"type": "integer"
+														}
+													},
+													"required": [
+														"target_version_percentage",
+														"current_version_percentage"
+													],
+													"type": "object"
+												}
+											},
+											"required": [
+												"id",
+												"created_at",
+												"last_updated_at",
+												"description",
+												"kind",
+												"strategy",
+												"current_version",
+												"target_version",
+												"current_configuration",
+												"target_configuration",
+												"status",
+												"health"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successful response."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Can't update the application rollout because it has bad inputs"
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Response body when an Application is not found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An internal error has occurred."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a new rollout for an application",
+		"tags": [
+			"Applications",
+			"Rollouts"
+		]
+	}
+}

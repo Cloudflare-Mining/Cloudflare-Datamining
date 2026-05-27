@@ -173,7 +173,7 @@
 						}
 					}
 				},
-				"description": "Delete Fallback Origin for Custom Hostnames response"
+				"description": "Delete Fallback Origin for Custom Hostnames response."
 			},
 			"4XX": {
 				"content": {
@@ -435,16 +435,16 @@
 						}
 					}
 				},
-				"description": "Delete Fallback Origin for Custom Hostnames response failure"
+				"description": "Delete Fallback Origin for Custom Hostnames response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Fallback Origin for Custom Hostnames",
@@ -634,7 +634,7 @@
 						}
 					}
 				},
-				"description": "Get Fallback Origin for Custom Hostnames response"
+				"description": "Get Fallback Origin for Custom Hostnames response."
 			},
 			"4XX": {
 				"content": {
@@ -896,16 +896,16 @@
 						}
 					}
 				},
-				"description": "Get Fallback Origin for Custom Hostnames response failure"
+				"description": "Get Fallback Origin for Custom Hostnames response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get Fallback Origin for Custom Hostnames",
@@ -1118,7 +1118,7 @@
 						}
 					}
 				},
-				"description": "Update Fallback Origin for Custom Hostnames response"
+				"description": "Update Fallback Origin for Custom Hostnames response."
 			},
 			"4XX": {
 				"content": {
@@ -1380,16 +1380,16 @@
 						}
 					}
 				},
-				"description": "Update Fallback Origin for Custom Hostnames response failure"
+				"description": "Update Fallback Origin for Custom Hostnames response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Update Fallback Origin for Custom Hostnames",

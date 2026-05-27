@@ -146,7 +146,7 @@
 						}
 					}
 				},
-				"description": "Total TLS Settings Details response"
+				"description": "Total TLS Settings Details response."
 			},
 			"4XX": {
 				"content": {
@@ -387,16 +387,16 @@
 						}
 					}
 				},
-				"description": "Total TLS Settings Details response failure"
+				"description": "Total TLS Settings Details response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Total TLS Settings Details",
@@ -597,7 +597,7 @@
 						}
 					}
 				},
-				"description": "Enable or Disable Total TLS response"
+				"description": "Enable or Disable Total TLS response."
 			},
 			"4XX": {
 				"content": {
@@ -838,16 +838,16 @@
 						}
 					}
 				},
-				"description": "Enable or Disable Total TLS response failure"
+				"description": "Enable or Disable Total TLS response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Enable or Disable Total TLS",

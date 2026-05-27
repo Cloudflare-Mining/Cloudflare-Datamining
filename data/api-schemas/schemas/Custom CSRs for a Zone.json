@@ -149,7 +149,7 @@
 						}
 					}
 				},
-				"description": "Delete Custom CSR response"
+				"description": "Delete Custom CSR response."
 			},
 			"4XX": {
 				"content": {
@@ -374,16 +374,16 @@
 						}
 					}
 				},
-				"description": "Delete Custom CSR response failure"
+				"description": "Delete Custom CSR response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Custom CSR",
@@ -675,7 +675,7 @@
 						}
 					}
 				},
-				"description": "List Custom CSRs response"
+				"description": "List Custom CSRs response."
 			},
 			"4XX": {
 				"content": {
@@ -1018,16 +1018,16 @@
 						}
 					}
 				},
-				"description": "List Custom CSRs response failure"
+				"description": "List Custom CSRs response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Custom CSRs",
@@ -1274,7 +1274,7 @@
 						}
 					}
 				},
-				"description": "Custom CSR Details response"
+				"description": "Custom CSR Details response."
 			},
 			"4XX": {
 				"content": {
@@ -1579,16 +1579,16 @@
 						}
 					}
 				},
-				"description": "Custom CSR Details response failure"
+				"description": "Custom CSR Details response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Custom CSR Details",
@@ -1898,7 +1898,7 @@
 						}
 					}
 				},
-				"description": "Create Custom CSR response"
+				"description": "Create Custom CSR response."
 			},
 			"4XX": {
 				"content": {
@@ -2203,16 +2203,16 @@
 						}
 					}
 				},
-				"description": "Create Custom CSR response failure"
+				"description": "Create Custom CSR response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create Custom CSR",

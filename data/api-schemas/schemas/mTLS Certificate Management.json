@@ -216,7 +216,7 @@
 						}
 					}
 				},
-				"description": "Delete mTLS certificate response"
+				"description": "Delete mTLS certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -509,16 +509,16 @@
 						}
 					}
 				},
-				"description": "Delete mTLS certificate response failure"
+				"description": "Delete mTLS certificate response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete mTLS certificate",
@@ -819,7 +819,7 @@
 						}
 					}
 				},
-				"description": "List mTLS certificates response"
+				"description": "List mTLS certificates response."
 			},
 			"4XX": {
 				"content": {
@@ -1171,16 +1171,16 @@
 						}
 					}
 				},
-				"description": "List mTLS certificates response failure"
+				"description": "List mTLS certificates response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List mTLS certificates",
@@ -1414,7 +1414,7 @@
 						}
 					}
 				},
-				"description": "Get mTLS certificate response"
+				"description": "Get mTLS certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -1707,16 +1707,16 @@
 						}
 					}
 				},
-				"description": "Get mTLS certificate response failure"
+				"description": "Get mTLS certificate response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Get mTLS certificate",
@@ -1923,7 +1923,7 @@
 						}
 					}
 				},
-				"description": "List mTLS certificate associations response"
+				"description": "List mTLS certificate associations response."
 			},
 			"4XX": {
 				"content": {
@@ -2189,16 +2189,16 @@
 						}
 					}
 				},
-				"description": "List mTLS certificate associations response failure"
+				"description": "List mTLS certificate associations response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List mTLS certificate associations",
@@ -2466,7 +2466,7 @@
 						}
 					}
 				},
-				"description": "Upload mTLS certificate response"
+				"description": "Upload mTLS certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -2766,16 +2766,16 @@
 						}
 					}
 				},
-				"description": "Upload mTLS certificate response failure"
+				"description": "Upload mTLS certificate response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Upload mTLS certificate",

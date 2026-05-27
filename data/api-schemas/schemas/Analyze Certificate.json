@@ -149,7 +149,7 @@
 						}
 					}
 				},
-				"description": "Analyze Certificate response"
+				"description": "Analyze Certificate response."
 			},
 			"4XX": {
 				"content": {
@@ -364,16 +364,16 @@
 						}
 					}
 				},
-				"description": "Analyze Certificate response failure"
+				"description": "Analyze Certificate response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Analyze Certificate",

@@ -52,7 +52,7 @@
 						}
 					}
 				},
-				"description": "Delete Custom Hostname (and any issued SSL certificates) response"
+				"description": "Delete Custom Hostname (and any issued SSL certificates) response."
 			},
 			"4XX": {
 				"content": {
@@ -181,16 +181,16 @@
 						}
 					}
 				},
-				"description": "Delete Custom Hostname (and any issued SSL certificates) response failure"
+				"description": "Delete Custom Hostname (and any issued SSL certificates) response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Custom Hostname (and any issued SSL certificates)",
@@ -289,7 +289,7 @@
 						}
 					}
 				},
-				"description": "Delete Single Certificate and Key In a Custom Hostname response"
+				"description": "Delete Single Certificate and Key In a Custom Hostname response."
 			},
 			"4XX": {
 				"content": {
@@ -418,16 +418,16 @@
 						}
 					}
 				},
-				"description": "Delete Single Certificate and Key In a Custom Hostname response failure"
+				"description": "Delete Single Certificate and Key In a Custom Hostname response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Single Certificate And Key For Custom Hostname",
@@ -1663,7 +1663,7 @@
 						}
 					}
 				},
-				"description": "List Custom Hostnames response"
+				"description": "List Custom Hostnames response."
 			},
 			"4XX": {
 				"content": {
@@ -2796,16 +2796,16 @@
 						}
 					}
 				},
-				"description": "List Custom Hostnames response failure"
+				"description": "List Custom Hostnames response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Custom Hostnames",
@@ -3846,7 +3846,7 @@
 						}
 					}
 				},
-				"description": "Custom Hostname Details response"
+				"description": "Custom Hostname Details response."
 			},
 			"4XX": {
 				"content": {
@@ -4946,16 +4946,16 @@
 						}
 					}
 				},
-				"description": "Custom Hostname Details response failure"
+				"description": "Custom Hostname Details response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Custom Hostname Details",
@@ -6200,7 +6200,7 @@
 						}
 					}
 				},
-				"description": "Edit Custom Hostname response"
+				"description": "Edit Custom Hostname response."
 			},
 			"4XX": {
 				"content": {
@@ -7300,16 +7300,16 @@
 						}
 					}
 				},
-				"description": "Edit Custom Hostname response failure"
+				"description": "Edit Custom Hostname response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Edit Custom Hostname",
@@ -8539,7 +8539,7 @@
 						}
 					}
 				},
-				"description": "Create Custom Hostname response"
+				"description": "Create Custom Hostname response."
 			},
 			"4XX": {
 				"content": {
@@ -9639,16 +9639,16 @@
 						}
 					}
 				},
-				"description": "Create Custom Hostname response failure"
+				"description": "Create Custom Hostname response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Create Custom Hostname",
@@ -10739,7 +10739,7 @@
 						}
 					}
 				},
-				"description": "Edit Custom Certificate In a Custom Hostname response"
+				"description": "Edit Custom Certificate In a Custom Hostname response."
 			},
 			"4XX": {
 				"content": {
@@ -11839,16 +11839,16 @@
 						}
 					}
 				},
-				"description": "Edit Custom Certificate In a Custom Hostname response failure"
+				"description": "Edit Custom Certificate In a Custom Hostname response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Replace Custom Certificate and Custom Key In Custom Hostname",

@@ -128,7 +128,7 @@
 						}
 					}
 				},
-				"description": "Universal SSL Settings Details response"
+				"description": "Universal SSL Settings Details response."
 			},
 			"4XX": {
 				"content": {
@@ -351,16 +351,16 @@
 						}
 					}
 				},
-				"description": "Universal SSL Settings Details response failure"
+				"description": "Universal SSL Settings Details response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Universal SSL Settings Details",
@@ -530,7 +530,7 @@
 						}
 					}
 				},
-				"description": "Edit Universal SSL Settings response"
+				"description": "Edit Universal SSL Settings response."
 			},
 			"4XX": {
 				"content": {
@@ -753,16 +753,16 @@
 						}
 					}
 				},
-				"description": "Edit Universal SSL Settings response failure"
+				"description": "Edit Universal SSL Settings response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Edit Universal SSL Settings",

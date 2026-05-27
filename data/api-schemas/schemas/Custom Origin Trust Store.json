@@ -141,7 +141,7 @@
 						}
 					}
 				},
-				"description": "Delete Custom Origin Trust Store response"
+				"description": "Delete Custom Origin Trust Store response."
 			},
 			"4XX": {
 				"content": {
@@ -265,16 +265,16 @@
 						}
 					}
 				},
-				"description": "Delete Custom Origin Trust Store response failure"
+				"description": "Delete Custom Origin Trust Store response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Delete Custom Origin Trust Store",
@@ -572,7 +572,7 @@
 						}
 					}
 				},
-				"description": "Custom Origin Trust Store Details response"
+				"description": "Custom Origin Trust Store Details response."
 			},
 			"4XX": {
 				"content": {
@@ -902,16 +902,16 @@
 						}
 					}
 				},
-				"description": "Custom Origin Trust Store response failure"
+				"description": "Custom Origin Trust Store response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "List Custom Origin Trust Store Details",
@@ -1144,7 +1144,7 @@
 						}
 					}
 				},
-				"description": "Custom Origin Trust Store Details response"
+				"description": "Custom Origin Trust Store Details response."
 			},
 			"4XX": {
 				"content": {
@@ -1436,16 +1436,16 @@
 						}
 					}
 				},
-				"description": "Custom Origin Trust Store Details response failure"
+				"description": "Custom Origin Trust Store Details response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Custom Origin Trust Store Details",
@@ -1685,7 +1685,7 @@
 						}
 					}
 				},
-				"description": "Upload Custom Origin Trust Store response"
+				"description": "Upload Custom Origin Trust Store response."
 			},
 			"4XX": {
 				"content": {
@@ -1977,16 +1977,16 @@
 						}
 					}
 				},
-				"description": "Upload Custom Origin Trust Store response failure"
+				"description": "Upload Custom Origin Trust Store response failure."
 			}
 		},
 		"security": [
 			{
-				"api_email": [],
-				"api_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"api_email": [],
+				"api_key": []
 			}
 		],
 		"summary": "Upload Custom Origin Trust Store",
