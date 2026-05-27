@@ -135,7 +135,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -347,7 +348,7 @@
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"description": "Offset the results",
+					"description": "Offset the results.",
 					"example": 10,
 					"type": "integer"
 				}
@@ -566,7 +567,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -788,7 +790,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1138,7 +1141,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1322,7 +1326,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1498,7 +1503,8 @@
 						},
 						"required": [
 							"certificate"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -1679,7 +1685,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1863,7 +1870,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},

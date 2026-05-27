@@ -47,7 +47,8 @@
 													"type": "string",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
 									},
 									"type": "object"
@@ -84,7 +85,8 @@
 															"type": "string",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											},
 											"type": "object"
@@ -206,10 +208,10 @@
 		},
 		"security": [
 			{
-				"user_service_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"user_service_key": []
 			}
 		],
 		"summary": "Revoke Certificate",
@@ -273,7 +275,7 @@
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"description": "Offset the results",
+					"description": "Offset the results.",
 					"example": 10,
 					"type": "integer"
 				}
@@ -833,10 +835,10 @@
 		},
 		"security": [
 			{
-				"user_service_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"user_service_key": []
 			}
 		],
 		"summary": "List Certificates",
@@ -1345,10 +1347,10 @@
 		},
 		"security": [
 			{
-				"user_service_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"user_service_key": []
 			}
 		],
 		"summary": "Get Certificate",
@@ -1908,10 +1910,10 @@
 		},
 		"security": [
 			{
-				"user_service_key": []
+				"api_token": []
 			},
 			{
-				"api_token": []
+				"user_service_key": []
 			}
 		],
 		"summary": "Create Certificate",

@@ -126,13 +126,13 @@
 										"result": {
 											"properties": {
 												"certificate": {
-													"description": "The Client Certificate PEM",
+													"description": "The Client Certificate PEM.",
 													"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 													"readOnly": true,
 													"type": "string"
 												},
 												"certificate_authority": {
-													"description": "Certificate Authority used to issue the Client Certificate",
+													"description": "Certificate Authority used to issue the Client Certificate.",
 													"properties": {
 														"id": {
 															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
@@ -148,14 +148,14 @@
 													"type": "object"
 												},
 												"common_name": {
-													"description": "Common Name of the Client Certificate",
+													"description": "Common Name of the Client Certificate.",
 													"example": "Cloudflare",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"country": {
-													"description": "Country, provided by the CSR",
+													"description": "Country, provided by the CSR.",
 													"example": "US",
 													"readOnly": true,
 													"type": "string",
@@ -168,14 +168,14 @@
 													"x-auditable": true
 												},
 												"expires_on": {
-													"description": "Date that the Client Certificate expires",
+													"description": "Date that the Client Certificate expires.",
 													"example": "2033-02-20T23:18:00Z",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"fingerprint_sha256": {
-													"description": "Unique identifier of the Client Certificate",
+													"description": "Unique identifier of the Client Certificate.",
 													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 													"readOnly": true,
 													"type": "string",
@@ -189,28 +189,28 @@
 													"x-auditable": true
 												},
 												"issued_on": {
-													"description": "Date that the Client Certificate was issued by the Certificate Authority",
+													"description": "Date that the Client Certificate was issued by the Certificate Authority.",
 													"example": "2023-02-23T23:18:00Z",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"location": {
-													"description": "Location, provided by the CSR",
+													"description": "Location, provided by the CSR.",
 													"example": "Somewhere",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"organization": {
-													"description": "Organization, provided by the CSR",
+													"description": "Organization, provided by the CSR.",
 													"example": "Organization",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"organizational_unit": {
-													"description": "Organizational Unit, provided by the CSR",
+													"description": "Organizational Unit, provided by the CSR.",
 													"example": "Organizational Unit",
 													"readOnly": true,
 													"type": "string",
@@ -231,21 +231,21 @@
 													"x-auditable": true
 												},
 												"ski": {
-													"description": "Subject Key Identifier",
+													"description": "Subject Key Identifier.",
 													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"state": {
-													"description": "State, provided by the CSR",
+													"description": "State, provided by the CSR.",
 													"example": "CA",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
-													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions.",
 													"enum": [
 														"active",
 														"pending_reactivation",
@@ -257,14 +257,16 @@
 													"x-auditable": true
 												},
 												"validity_days": {
-													"description": "The number of days the Client Certificate will be valid after the issued_on date",
+													"description": "The number of days the Client Certificate will be valid after the issued_on date.",
 													"example": 3650,
 													"type": "integer",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -415,7 +417,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/certificate_authorities/hostname_associations": {
-		"description": "List Hostname Associations",
+		"description": "List Hostname Associations.",
 		"operationId": "client-certificate-for-a-zone-list-hostname-associations",
 		"parameters": [
 			{
@@ -550,7 +552,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -701,7 +704,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/client_certificates": {
-		"description": "List all of your Zone's API Shield mTLS Client Certificates by Status and/or using Pagination",
+		"description": "List all of your Zone's API Shield mTLS Client Certificates by Status and/or using Pagination.",
 		"operationId": "client-certificate-for-a-zone-list-client-certificates",
 		"parameters": [
 			{
@@ -728,7 +731,8 @@
 						"pending_revocation",
 						"revoked"
 					],
-					"example": "all"
+					"example": "all",
+					"type": "string"
 				}
 			},
 			{
@@ -765,7 +769,7 @@
 				"in": "query",
 				"name": "offset",
 				"schema": {
-					"description": "Offset the results",
+					"description": "Offset the results.",
 					"example": 10,
 					"type": "integer"
 				}
@@ -905,13 +909,13 @@
 											"items": {
 												"properties": {
 													"certificate": {
-														"description": "The Client Certificate PEM",
+														"description": "The Client Certificate PEM.",
 														"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 														"readOnly": true,
 														"type": "string"
 													},
 													"certificate_authority": {
-														"description": "Certificate Authority used to issue the Client Certificate",
+														"description": "Certificate Authority used to issue the Client Certificate.",
 														"properties": {
 															"id": {
 																"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
@@ -927,14 +931,14 @@
 														"type": "object"
 													},
 													"common_name": {
-														"description": "Common Name of the Client Certificate",
+														"description": "Common Name of the Client Certificate.",
 														"example": "Cloudflare",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"country": {
-														"description": "Country, provided by the CSR",
+														"description": "Country, provided by the CSR.",
 														"example": "US",
 														"readOnly": true,
 														"type": "string",
@@ -947,14 +951,14 @@
 														"x-auditable": true
 													},
 													"expires_on": {
-														"description": "Date that the Client Certificate expires",
+														"description": "Date that the Client Certificate expires.",
 														"example": "2033-02-20T23:18:00Z",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"fingerprint_sha256": {
-														"description": "Unique identifier of the Client Certificate",
+														"description": "Unique identifier of the Client Certificate.",
 														"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 														"readOnly": true,
 														"type": "string",
@@ -968,28 +972,28 @@
 														"x-auditable": true
 													},
 													"issued_on": {
-														"description": "Date that the Client Certificate was issued by the Certificate Authority",
+														"description": "Date that the Client Certificate was issued by the Certificate Authority.",
 														"example": "2023-02-23T23:18:00Z",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"location": {
-														"description": "Location, provided by the CSR",
+														"description": "Location, provided by the CSR.",
 														"example": "Somewhere",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"organization": {
-														"description": "Organization, provided by the CSR",
+														"description": "Organization, provided by the CSR.",
 														"example": "Organization",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"organizational_unit": {
-														"description": "Organizational Unit, provided by the CSR",
+														"description": "Organizational Unit, provided by the CSR.",
 														"example": "Organizational Unit",
 														"readOnly": true,
 														"type": "string",
@@ -1010,21 +1014,21 @@
 														"x-auditable": true
 													},
 													"ski": {
-														"description": "Subject Key Identifier",
+														"description": "Subject Key Identifier.",
 														"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"state": {
-														"description": "State, provided by the CSR",
+														"description": "State, provided by the CSR.",
 														"example": "CA",
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
 													},
 													"status": {
-														"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+														"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions.",
 														"enum": [
 															"active",
 															"pending_reactivation",
@@ -1036,16 +1040,18 @@
 														"x-auditable": true
 													},
 													"validity_days": {
-														"description": "The number of days the Client Certificate will be valid after the issued_on date",
+														"description": "The number of days the Client Certificate will be valid after the issued_on date.",
 														"example": 3650,
 														"type": "integer",
 														"x-auditable": true
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1201,7 +1207,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/client_certificates/{client_certificate_id}": {
-		"description": "Get Details for a single mTLS API Shield Client Certificate",
+		"description": "Get Details for a single mTLS API Shield Client Certificate.",
 		"operationId": "client-certificate-for-a-zone-client-certificate-details",
 		"parameters": [
 			{
@@ -1327,13 +1333,13 @@
 										"result": {
 											"properties": {
 												"certificate": {
-													"description": "The Client Certificate PEM",
+													"description": "The Client Certificate PEM.",
 													"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 													"readOnly": true,
 													"type": "string"
 												},
 												"certificate_authority": {
-													"description": "Certificate Authority used to issue the Client Certificate",
+													"description": "Certificate Authority used to issue the Client Certificate.",
 													"properties": {
 														"id": {
 															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
@@ -1349,14 +1355,14 @@
 													"type": "object"
 												},
 												"common_name": {
-													"description": "Common Name of the Client Certificate",
+													"description": "Common Name of the Client Certificate.",
 													"example": "Cloudflare",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"country": {
-													"description": "Country, provided by the CSR",
+													"description": "Country, provided by the CSR.",
 													"example": "US",
 													"readOnly": true,
 													"type": "string",
@@ -1369,14 +1375,14 @@
 													"x-auditable": true
 												},
 												"expires_on": {
-													"description": "Date that the Client Certificate expires",
+													"description": "Date that the Client Certificate expires.",
 													"example": "2033-02-20T23:18:00Z",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"fingerprint_sha256": {
-													"description": "Unique identifier of the Client Certificate",
+													"description": "Unique identifier of the Client Certificate.",
 													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 													"readOnly": true,
 													"type": "string",
@@ -1390,28 +1396,28 @@
 													"x-auditable": true
 												},
 												"issued_on": {
-													"description": "Date that the Client Certificate was issued by the Certificate Authority",
+													"description": "Date that the Client Certificate was issued by the Certificate Authority.",
 													"example": "2023-02-23T23:18:00Z",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"location": {
-													"description": "Location, provided by the CSR",
+													"description": "Location, provided by the CSR.",
 													"example": "Somewhere",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"organization": {
-													"description": "Organization, provided by the CSR",
+													"description": "Organization, provided by the CSR.",
 													"example": "Organization",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"organizational_unit": {
-													"description": "Organizational Unit, provided by the CSR",
+													"description": "Organizational Unit, provided by the CSR.",
 													"example": "Organizational Unit",
 													"readOnly": true,
 													"type": "string",
@@ -1432,21 +1438,21 @@
 													"x-auditable": true
 												},
 												"ski": {
-													"description": "Subject Key Identifier",
+													"description": "Subject Key Identifier.",
 													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"state": {
-													"description": "State, provided by the CSR",
+													"description": "State, provided by the CSR.",
 													"example": "CA",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
-													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions.",
 													"enum": [
 														"active",
 														"pending_reactivation",
@@ -1458,14 +1464,16 @@
 													"x-auditable": true
 												},
 												"validity_days": {
-													"description": "The number of days the Client Certificate will be valid after the issued_on date",
+													"description": "The number of days the Client Certificate will be valid after the issued_on date.",
 													"example": 3650,
 													"type": "integer",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1759,13 +1767,13 @@
 										"result": {
 											"properties": {
 												"certificate": {
-													"description": "The Client Certificate PEM",
+													"description": "The Client Certificate PEM.",
 													"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 													"readOnly": true,
 													"type": "string"
 												},
 												"certificate_authority": {
-													"description": "Certificate Authority used to issue the Client Certificate",
+													"description": "Certificate Authority used to issue the Client Certificate.",
 													"properties": {
 														"id": {
 															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
@@ -1781,14 +1789,14 @@
 													"type": "object"
 												},
 												"common_name": {
-													"description": "Common Name of the Client Certificate",
+													"description": "Common Name of the Client Certificate.",
 													"example": "Cloudflare",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"country": {
-													"description": "Country, provided by the CSR",
+													"description": "Country, provided by the CSR.",
 													"example": "US",
 													"readOnly": true,
 													"type": "string",
@@ -1801,14 +1809,14 @@
 													"x-auditable": true
 												},
 												"expires_on": {
-													"description": "Date that the Client Certificate expires",
+													"description": "Date that the Client Certificate expires.",
 													"example": "2033-02-20T23:18:00Z",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"fingerprint_sha256": {
-													"description": "Unique identifier of the Client Certificate",
+													"description": "Unique identifier of the Client Certificate.",
 													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 													"readOnly": true,
 													"type": "string",
@@ -1822,28 +1830,28 @@
 													"x-auditable": true
 												},
 												"issued_on": {
-													"description": "Date that the Client Certificate was issued by the Certificate Authority",
+													"description": "Date that the Client Certificate was issued by the Certificate Authority.",
 													"example": "2023-02-23T23:18:00Z",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"location": {
-													"description": "Location, provided by the CSR",
+													"description": "Location, provided by the CSR.",
 													"example": "Somewhere",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"organization": {
-													"description": "Organization, provided by the CSR",
+													"description": "Organization, provided by the CSR.",
 													"example": "Organization",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"organizational_unit": {
-													"description": "Organizational Unit, provided by the CSR",
+													"description": "Organizational Unit, provided by the CSR.",
 													"example": "Organizational Unit",
 													"readOnly": true,
 													"type": "string",
@@ -1864,21 +1872,21 @@
 													"x-auditable": true
 												},
 												"ski": {
-													"description": "Subject Key Identifier",
+													"description": "Subject Key Identifier.",
 													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"state": {
-													"description": "State, provided by the CSR",
+													"description": "State, provided by the CSR.",
 													"example": "CA",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
-													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions.",
 													"enum": [
 														"active",
 														"pending_reactivation",
@@ -1890,14 +1898,16 @@
 													"x-auditable": true
 												},
 												"validity_days": {
-													"description": "The number of days the Client Certificate will be valid after the issued_on date",
+													"description": "The number of days the Client Certificate will be valid after the issued_on date.",
 													"example": 3650,
 													"type": "integer",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2048,7 +2058,7 @@
 		}
 	},
 	"POST /zones/{zone_id}/client_certificates": {
-		"description": "Create a new API Shield mTLS Client Certificate",
+		"description": "Create a new API Shield mTLS Client Certificate.",
 		"operationId": "client-certificate-for-a-zone-create-client-certificate",
 		"parameters": [
 			{
@@ -2076,7 +2086,7 @@
 								"x-auditable": true
 							},
 							"validity_days": {
-								"description": "The number of days the Client Certificate will be valid after the issued_on date",
+								"description": "The number of days the Client Certificate will be valid after the issued_on date.",
 								"example": 3650,
 								"type": "integer",
 								"x-auditable": true
@@ -2190,13 +2200,13 @@
 										"result": {
 											"properties": {
 												"certificate": {
-													"description": "The Client Certificate PEM",
+													"description": "The Client Certificate PEM.",
 													"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 													"readOnly": true,
 													"type": "string"
 												},
 												"certificate_authority": {
-													"description": "Certificate Authority used to issue the Client Certificate",
+													"description": "Certificate Authority used to issue the Client Certificate.",
 													"properties": {
 														"id": {
 															"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
@@ -2212,14 +2222,14 @@
 													"type": "object"
 												},
 												"common_name": {
-													"description": "Common Name of the Client Certificate",
+													"description": "Common Name of the Client Certificate.",
 													"example": "Cloudflare",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"country": {
-													"description": "Country, provided by the CSR",
+													"description": "Country, provided by the CSR.",
 													"example": "US",
 													"readOnly": true,
 													"type": "string",
@@ -2232,14 +2242,14 @@
 													"x-auditable": true
 												},
 												"expires_on": {
-													"description": "Date that the Client Certificate expires",
+													"description": "Date that the Client Certificate expires.",
 													"example": "2033-02-20T23:18:00Z",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"fingerprint_sha256": {
-													"description": "Unique identifier of the Client Certificate",
+													"description": "Unique identifier of the Client Certificate.",
 													"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 													"readOnly": true,
 													"type": "string",
@@ -2253,28 +2263,28 @@
 													"x-auditable": true
 												},
 												"issued_on": {
-													"description": "Date that the Client Certificate was issued by the Certificate Authority",
+													"description": "Date that the Client Certificate was issued by the Certificate Authority.",
 													"example": "2023-02-23T23:18:00Z",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"location": {
-													"description": "Location, provided by the CSR",
+													"description": "Location, provided by the CSR.",
 													"example": "Somewhere",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"organization": {
-													"description": "Organization, provided by the CSR",
+													"description": "Organization, provided by the CSR.",
 													"example": "Organization",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"organizational_unit": {
-													"description": "Organizational Unit, provided by the CSR",
+													"description": "Organizational Unit, provided by the CSR.",
 													"example": "Organizational Unit",
 													"readOnly": true,
 													"type": "string",
@@ -2295,21 +2305,21 @@
 													"x-auditable": true
 												},
 												"ski": {
-													"description": "Subject Key Identifier",
+													"description": "Subject Key Identifier.",
 													"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"state": {
-													"description": "State, provided by the CSR",
+													"description": "State, provided by the CSR.",
 													"example": "CA",
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
 												},
 												"status": {
-													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+													"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions.",
 													"enum": [
 														"active",
 														"pending_reactivation",
@@ -2321,14 +2331,16 @@
 													"x-auditable": true
 												},
 												"validity_days": {
-													"description": "The number of days the Client Certificate will be valid after the issued_on date",
+													"description": "The number of days the Client Certificate will be valid after the issued_on date.",
 													"example": 3650,
 													"type": "integer",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2435,13 +2447,13 @@
 												"result": {
 													"properties": {
 														"certificate": {
-															"description": "The Client Certificate PEM",
+															"description": "The Client Certificate PEM.",
 															"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoC...dhDDE\n-----END CERTIFICATE-----",
 															"readOnly": true,
 															"type": "string"
 														},
 														"certificate_authority": {
-															"description": "Certificate Authority used to issue the Client Certificate",
+															"description": "Certificate Authority used to issue the Client Certificate.",
 															"properties": {
 																"id": {
 																	"example": "568b6b74-7b0c-4755-8840-4e3b8c24adeb",
@@ -2457,14 +2469,14 @@
 															"type": "object"
 														},
 														"common_name": {
-															"description": "Common Name of the Client Certificate",
+															"description": "Common Name of the Client Certificate.",
 															"example": "Cloudflare",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"country": {
-															"description": "Country, provided by the CSR",
+															"description": "Country, provided by the CSR.",
 															"example": "US",
 															"readOnly": true,
 															"type": "string",
@@ -2477,14 +2489,14 @@
 															"x-auditable": true
 														},
 														"expires_on": {
-															"description": "Date that the Client Certificate expires",
+															"description": "Date that the Client Certificate expires.",
 															"example": "2033-02-20T23:18:00Z",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"fingerprint_sha256": {
-															"description": "Unique identifier of the Client Certificate",
+															"description": "Unique identifier of the Client Certificate.",
 															"example": "256c24690243359fb8cf139a125bd05ebf1d968b71e4caf330718e9f5c8a89ea",
 															"readOnly": true,
 															"type": "string",
@@ -2498,28 +2510,28 @@
 															"x-auditable": true
 														},
 														"issued_on": {
-															"description": "Date that the Client Certificate was issued by the Certificate Authority",
+															"description": "Date that the Client Certificate was issued by the Certificate Authority.",
 															"example": "2023-02-23T23:18:00Z",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"location": {
-															"description": "Location, provided by the CSR",
+															"description": "Location, provided by the CSR.",
 															"example": "Somewhere",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"organization": {
-															"description": "Organization, provided by the CSR",
+															"description": "Organization, provided by the CSR.",
 															"example": "Organization",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"organizational_unit": {
-															"description": "Organizational Unit, provided by the CSR",
+															"description": "Organizational Unit, provided by the CSR.",
 															"example": "Organizational Unit",
 															"readOnly": true,
 															"type": "string",
@@ -2540,21 +2552,21 @@
 															"x-auditable": true
 														},
 														"ski": {
-															"description": "Subject Key Identifier",
+															"description": "Subject Key Identifier.",
 															"example": "8e375af1389a069a0f921f8cc8e1eb12d784b949",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"state": {
-															"description": "State, provided by the CSR",
+															"description": "State, provided by the CSR.",
 															"example": "CA",
 															"readOnly": true,
 															"type": "string",
 															"x-auditable": true
 														},
 														"status": {
-															"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions",
+															"description": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions.",
 															"enum": [
 																"active",
 																"pending_reactivation",
@@ -2566,14 +2578,16 @@
 															"x-auditable": true
 														},
 														"validity_days": {
-															"description": "The number of days the Client Certificate will be valid after the issued_on date",
+															"description": "The number of days the Client Certificate will be valid after the issued_on date.",
 															"example": 3650,
 															"type": "integer",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2719,7 +2733,7 @@
 		}
 	},
 	"PUT /zones/{zone_id}/certificate_authorities/hostname_associations": {
-		"description": "Replace Hostname Associations",
+		"description": "Replace Hostname Associations.",
 		"operationId": "client-certificate-for-a-zone-put-hostname-associations",
 		"parameters": [
 			{
@@ -2870,7 +2884,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}

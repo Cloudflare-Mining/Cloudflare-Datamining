@@ -450,7 +450,8 @@
 					"enum": [
 						"all"
 					],
-					"example": "all"
+					"example": "all",
+					"type": "string"
 				}
 			},
 			{
@@ -461,7 +462,8 @@
 					"enum": [
 						"staging",
 						"production"
-					]
+					],
+					"type": "string"
 				}
 			}
 		],
@@ -600,7 +602,7 @@
 												"description": "A certificate pack with all its properties.",
 												"properties": {
 													"certificate_authority": {
-														"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+														"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).",
 														"enum": [
 															"google",
 															"lets_encrypt",
@@ -971,7 +973,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1115,7 +1118,7 @@
 														"description": "A certificate pack with all its properties.",
 														"properties": {
 															"certificate_authority": {
-																"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+																"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).",
 																"enum": [
 																	"google",
 																	"lets_encrypt",
@@ -1486,7 +1489,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1760,7 +1764,7 @@
 											"description": "A certificate pack with all its properties.",
 											"properties": {
 												"certificate_authority": {
-													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).",
 													"enum": [
 														"google",
 														"lets_encrypt",
@@ -2238,7 +2242,7 @@
 													"description": "A certificate pack with all its properties.",
 													"properties": {
 														"certificate_authority": {
-															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).",
 															"enum": [
 																"google",
 																"lets_encrypt",
@@ -3304,7 +3308,7 @@
 											"description": "A certificate pack with all its properties.",
 											"properties": {
 												"certificate_authority": {
-													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).",
 													"enum": [
 														"google",
 														"lets_encrypt",
@@ -3782,7 +3786,7 @@
 													"description": "A certificate pack with all its properties.",
 													"properties": {
 														"certificate_authority": {
-															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).",
 															"enum": [
 																"google",
 																"lets_encrypt",
@@ -4321,7 +4325,7 @@
 					"schema": {
 						"properties": {
 							"certificate_authority": {
-								"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+								"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).",
 								"enum": [
 									"google",
 									"lets_encrypt",
@@ -4496,7 +4500,7 @@
 											"description": "A certificate pack with all its properties.",
 											"properties": {
 												"certificate_authority": {
-													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+													"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).",
 													"enum": [
 														"google",
 														"lets_encrypt",
@@ -4974,7 +4978,7 @@
 													"description": "A certificate pack with all its properties.",
 													"properties": {
 														"certificate_authority": {
-															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)",
+															"description": "Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities).",
 															"enum": [
 																"google",
 																"lets_encrypt",

@@ -522,7 +522,8 @@
 						"ssl",
 						"ssl_status"
 					],
-					"example": "ssl"
+					"example": "ssl",
+					"type": "string"
 				}
 			},
 			{
@@ -534,7 +535,8 @@
 						"asc",
 						"desc"
 					],
-					"example": "desc"
+					"example": "desc",
+					"type": "string"
 				}
 			},
 			{
@@ -637,7 +639,8 @@
 					"enum": [
 						0,
 						1
-					]
+					],
+					"type": "integer"
 				}
 			}
 		],
@@ -888,7 +891,7 @@
 																				"x-auditable": true
 																			},
 																			"certificate_authority": {
-																				"description": "The Certificate Authority that will issue the certificate",
+																				"description": "The Certificate Authority that will issue the certificate.",
 																				"enum": [
 																					"digicert",
 																					"google",
@@ -1267,7 +1270,8 @@
 																},
 																"type": "array"
 															}
-														}
+														},
+														"type": "object"
 													}
 												],
 												"properties": {
@@ -1304,7 +1308,7 @@
 																		"x-auditable": true
 																	},
 																	"certificate_authority": {
-																		"description": "The Certificate Authority that will issue the certificate",
+																		"description": "The Certificate Authority that will issue the certificate.",
 																		"enum": [
 																			"digicert",
 																			"google",
@@ -1657,7 +1661,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1913,7 +1918,7 @@
 																						"x-auditable": true
 																					},
 																					"certificate_authority": {
-																						"description": "The Certificate Authority that will issue the certificate",
+																						"description": "The Certificate Authority that will issue the certificate.",
 																						"enum": [
 																							"digicert",
 																							"google",
@@ -2292,7 +2297,8 @@
 																		},
 																		"type": "array"
 																	}
-																}
+																},
+																"type": "object"
 															}
 														],
 														"properties": {
@@ -2329,7 +2335,7 @@
 																				"x-auditable": true
 																			},
 																			"certificate_authority": {
-																				"description": "The Certificate Authority that will issue the certificate",
+																				"description": "The Certificate Authority that will issue the certificate.",
 																				"enum": [
 																					"digicert",
 																					"google",
@@ -2682,7 +2688,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3070,7 +3077,7 @@
 																					"x-auditable": true
 																				},
 																				"certificate_authority": {
-																					"description": "The Certificate Authority that will issue the certificate",
+																					"description": "The Certificate Authority that will issue the certificate.",
 																					"enum": [
 																						"digicert",
 																						"google",
@@ -3449,7 +3456,8 @@
 																	},
 																	"type": "array"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"properties": {
@@ -3486,7 +3494,7 @@
 																			"x-auditable": true
 																		},
 																		"certificate_authority": {
-																			"description": "The Certificate Authority that will issue the certificate",
+																			"description": "The Certificate Authority that will issue the certificate.",
 																			"enum": [
 																				"digicert",
 																				"google",
@@ -3840,7 +3848,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4062,7 +4071,7 @@
 																							"x-auditable": true
 																						},
 																						"certificate_authority": {
-																							"description": "The Certificate Authority that will issue the certificate",
+																							"description": "The Certificate Authority that will issue the certificate.",
 																							"enum": [
 																								"digicert",
 																								"google",
@@ -4441,7 +4450,8 @@
 																			},
 																			"type": "array"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"properties": {
@@ -4478,7 +4488,7 @@
 																					"x-auditable": true
 																				},
 																				"certificate_authority": {
-																					"description": "The Certificate Authority that will issue the certificate",
+																					"description": "The Certificate Authority that will issue the certificate.",
 																					"enum": [
 																						"digicert",
 																						"google",
@@ -4832,7 +4842,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -5050,7 +5061,7 @@
 												"x-auditable": true
 											},
 											"certificate_authority": {
-												"description": "The Certificate Authority that will issue the certificate",
+												"description": "The Certificate Authority that will issue the certificate.",
 												"enum": [
 													"digicert",
 													"google",
@@ -5062,13 +5073,13 @@
 												"x-auditable": true
 											},
 											"cloudflare_branding": {
-												"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true",
+												"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
 												"example": false,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"custom_cert_bundle": {
-												"description": "Array of custom certificate and key pairs (1 or 2 pairs allowed)",
+												"description": "Array of custom certificate and key pairs (1 or 2 pairs allowed).",
 												"items": {
 													"properties": {
 														"custom_certificate": {
@@ -5424,7 +5435,7 @@
 																					"x-auditable": true
 																				},
 																				"certificate_authority": {
-																					"description": "The Certificate Authority that will issue the certificate",
+																					"description": "The Certificate Authority that will issue the certificate.",
 																					"enum": [
 																						"digicert",
 																						"google",
@@ -5803,7 +5814,8 @@
 																	},
 																	"type": "array"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"properties": {
@@ -5840,7 +5852,7 @@
 																			"x-auditable": true
 																		},
 																		"certificate_authority": {
-																			"description": "The Certificate Authority that will issue the certificate",
+																			"description": "The Certificate Authority that will issue the certificate.",
 																			"enum": [
 																				"digicert",
 																				"google",
@@ -6194,7 +6206,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -6416,7 +6429,7 @@
 																							"x-auditable": true
 																						},
 																						"certificate_authority": {
-																							"description": "The Certificate Authority that will issue the certificate",
+																							"description": "The Certificate Authority that will issue the certificate.",
 																							"enum": [
 																								"digicert",
 																								"google",
@@ -6795,7 +6808,8 @@
 																			},
 																			"type": "array"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"properties": {
@@ -6832,7 +6846,7 @@
 																					"x-auditable": true
 																				},
 																				"certificate_authority": {
-																					"description": "The Certificate Authority that will issue the certificate",
+																					"description": "The Certificate Authority that will issue the certificate.",
 																					"enum": [
 																						"digicert",
 																						"google",
@@ -7186,7 +7200,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -7386,7 +7401,7 @@
 												"x-auditable": true
 											},
 											"certificate_authority": {
-												"description": "The Certificate Authority that will issue the certificate",
+												"description": "The Certificate Authority that will issue the certificate.",
 												"enum": [
 													"digicert",
 													"google",
@@ -7398,13 +7413,13 @@
 												"x-auditable": true
 											},
 											"cloudflare_branding": {
-												"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true",
+												"description": "Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.",
 												"example": false,
 												"type": "boolean",
 												"x-auditable": true
 											},
 											"custom_cert_bundle": {
-												"description": "Array of custom certificate and key pairs (1 or 2 pairs allowed)",
+												"description": "Array of custom certificate and key pairs (1 or 2 pairs allowed).",
 												"items": {
 													"properties": {
 														"custom_certificate": {
@@ -7763,7 +7778,7 @@
 																					"x-auditable": true
 																				},
 																				"certificate_authority": {
-																					"description": "The Certificate Authority that will issue the certificate",
+																					"description": "The Certificate Authority that will issue the certificate.",
 																					"enum": [
 																						"digicert",
 																						"google",
@@ -8142,7 +8157,8 @@
 																	},
 																	"type": "array"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"properties": {
@@ -8179,7 +8195,7 @@
 																			"x-auditable": true
 																		},
 																		"certificate_authority": {
-																			"description": "The Certificate Authority that will issue the certificate",
+																			"description": "The Certificate Authority that will issue the certificate.",
 																			"enum": [
 																				"digicert",
 																				"google",
@@ -8533,7 +8549,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -8755,7 +8772,7 @@
 																							"x-auditable": true
 																						},
 																						"certificate_authority": {
-																							"description": "The Certificate Authority that will issue the certificate",
+																							"description": "The Certificate Authority that will issue the certificate.",
 																							"enum": [
 																								"digicert",
 																								"google",
@@ -9134,7 +9151,8 @@
 																			},
 																			"type": "array"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"properties": {
@@ -9171,7 +9189,7 @@
 																					"x-auditable": true
 																				},
 																				"certificate_authority": {
-																					"description": "The Certificate Authority that will issue the certificate",
+																					"description": "The Certificate Authority that will issue the certificate.",
 																					"enum": [
 																						"digicert",
 																						"google",
@@ -9525,7 +9543,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -9963,7 +9982,7 @@
 																					"x-auditable": true
 																				},
 																				"certificate_authority": {
-																					"description": "The Certificate Authority that will issue the certificate",
+																					"description": "The Certificate Authority that will issue the certificate.",
 																					"enum": [
 																						"digicert",
 																						"google",
@@ -10342,7 +10361,8 @@
 																	},
 																	"type": "array"
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"properties": {
@@ -10379,7 +10399,7 @@
 																			"x-auditable": true
 																		},
 																		"certificate_authority": {
-																			"description": "The Certificate Authority that will issue the certificate",
+																			"description": "The Certificate Authority that will issue the certificate.",
 																			"enum": [
 																				"digicert",
 																				"google",
@@ -10733,7 +10753,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -10955,7 +10976,7 @@
 																							"x-auditable": true
 																						},
 																						"certificate_authority": {
-																							"description": "The Certificate Authority that will issue the certificate",
+																							"description": "The Certificate Authority that will issue the certificate.",
 																							"enum": [
 																								"digicert",
 																								"google",
@@ -11334,7 +11355,8 @@
 																			},
 																			"type": "array"
 																		}
-																	}
+																	},
+																	"type": "object"
 																}
 															],
 															"properties": {
@@ -11371,7 +11393,7 @@
 																					"x-auditable": true
 																				},
 																				"certificate_authority": {
-																					"description": "The Certificate Authority that will issue the certificate",
+																					"description": "The Certificate Authority that will issue the certificate.",
 																					"enum": [
 																						"digicert",
 																						"google",
@@ -11725,7 +11747,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},

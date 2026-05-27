@@ -141,7 +141,8 @@
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -257,7 +258,8 @@
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -466,7 +468,8 @@
 						"initializing"
 					],
 					"example": "active",
-					"readOnly": true
+					"readOnly": true,
+					"type": "string"
 				}
 			}
 		],
@@ -754,16 +757,16 @@
 																		"x-auditable": true
 																	},
 																	"tunnel": {
-																		"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																		"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																		"properties": {
 																			"private_ip": {
-																				"description": "Private IP of the Key Server Host",
+																				"description": "Private IP of the Key Server Host.",
 																				"example": "10.0.0.1",
 																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"vnet_id": {
-																				"description": "Cloudflare Tunnel Virtual Network ID",
+																				"description": "Cloudflare Tunnel Virtual Network ID.",
 																				"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																				"type": "string",
 																				"x-auditable": true
@@ -858,7 +861,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1151,16 +1155,16 @@
 																				"x-auditable": true
 																			},
 																			"tunnel": {
-																				"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																				"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																				"properties": {
 																					"private_ip": {
-																						"description": "Private IP of the Key Server Host",
+																						"description": "Private IP of the Key Server Host.",
 																						"example": "10.0.0.1",
 																						"type": "string",
 																						"x-auditable": true
 																					},
 																					"vnet_id": {
-																						"description": "Cloudflare Tunnel Virtual Network ID",
+																						"description": "Cloudflare Tunnel Virtual Network ID.",
 																						"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																						"type": "string",
 																						"x-auditable": true
@@ -1255,7 +1259,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1680,16 +1685,16 @@
 																	"x-auditable": true
 																},
 																"tunnel": {
-																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																	"properties": {
 																		"private_ip": {
-																			"description": "Private IP of the Key Server Host",
+																			"description": "Private IP of the Key Server Host.",
 																			"example": "10.0.0.1",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"vnet_id": {
-																			"description": "Cloudflare Tunnel Virtual Network ID",
+																			"description": "Cloudflare Tunnel Virtual Network ID.",
 																			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																			"type": "string",
 																			"x-auditable": true
@@ -1782,7 +1787,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2039,16 +2045,16 @@
 																			"x-auditable": true
 																		},
 																		"tunnel": {
-																			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																			"properties": {
 																				"private_ip": {
-																					"description": "Private IP of the Key Server Host",
+																					"description": "Private IP of the Key Server Host.",
 																					"example": "10.0.0.1",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"vnet_id": {
-																					"description": "Cloudflare Tunnel Virtual Network ID",
+																					"description": "Cloudflare Tunnel Virtual Network ID.",
 																					"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																					"type": "string",
 																					"x-auditable": true
@@ -2141,7 +2147,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2348,7 +2355,7 @@
 							},
 							"deploy": {
 								"default": "production",
-								"description": "The environment to deploy the certificate to, defaults to production",
+								"description": "The environment to deploy the certificate to, defaults to production.",
 								"enum": [
 									"staging",
 									"production"
@@ -2640,16 +2647,16 @@
 																	"x-auditable": true
 																},
 																"tunnel": {
-																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																	"properties": {
 																		"private_ip": {
-																			"description": "Private IP of the Key Server Host",
+																			"description": "Private IP of the Key Server Host.",
 																			"example": "10.0.0.1",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"vnet_id": {
-																			"description": "Cloudflare Tunnel Virtual Network ID",
+																			"description": "Cloudflare Tunnel Virtual Network ID.",
 																			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																			"type": "string",
 																			"x-auditable": true
@@ -2742,7 +2749,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2999,16 +3007,16 @@
 																			"x-auditable": true
 																		},
 																		"tunnel": {
-																			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																			"properties": {
 																				"private_ip": {
-																					"description": "Private IP of the Key Server Host",
+																					"description": "Private IP of the Key Server Host.",
 																					"example": "10.0.0.1",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"vnet_id": {
-																					"description": "Cloudflare Tunnel Virtual Network ID",
+																					"description": "Cloudflare Tunnel Virtual Network ID.",
 																					"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																					"type": "string",
 																					"x-auditable": true
@@ -3101,7 +3109,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -3294,7 +3303,7 @@
 							},
 							"deploy": {
 								"default": "production",
-								"description": "The environment to deploy the certificate to, defaults to production",
+								"description": "The environment to deploy the certificate to, defaults to production.",
 								"enum": [
 									"staging",
 									"production"
@@ -3600,16 +3609,16 @@
 																	"x-auditable": true
 																},
 																"tunnel": {
-																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																	"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																	"properties": {
 																		"private_ip": {
-																			"description": "Private IP of the Key Server Host",
+																			"description": "Private IP of the Key Server Host.",
 																			"example": "10.0.0.1",
 																			"type": "string",
 																			"x-auditable": true
 																		},
 																		"vnet_id": {
-																			"description": "Cloudflare Tunnel Virtual Network ID",
+																			"description": "Cloudflare Tunnel Virtual Network ID.",
 																			"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																			"type": "string",
 																			"x-auditable": true
@@ -3702,7 +3711,8 @@
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -3959,16 +3969,16 @@
 																			"x-auditable": true
 																		},
 																		"tunnel": {
-																			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																			"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																			"properties": {
 																				"private_ip": {
-																					"description": "Private IP of the Key Server Host",
+																					"description": "Private IP of the Key Server Host.",
 																					"example": "10.0.0.1",
 																					"type": "string",
 																					"x-auditable": true
 																				},
 																				"vnet_id": {
-																					"description": "Cloudflare Tunnel Virtual Network ID",
+																					"description": "Cloudflare Tunnel Virtual Network ID.",
 																					"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																					"type": "string",
 																					"x-auditable": true
@@ -4061,7 +4071,8 @@
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -4265,7 +4276,8 @@
 						},
 						"required": [
 							"certificates"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -4555,16 +4567,16 @@
 																		"x-auditable": true
 																	},
 																	"tunnel": {
-																		"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																		"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																		"properties": {
 																			"private_ip": {
-																				"description": "Private IP of the Key Server Host",
+																				"description": "Private IP of the Key Server Host.",
 																				"example": "10.0.0.1",
 																				"type": "string",
 																				"x-auditable": true
 																			},
 																			"vnet_id": {
-																				"description": "Cloudflare Tunnel Virtual Network ID",
+																				"description": "Cloudflare Tunnel Virtual Network ID.",
 																				"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																				"type": "string",
 																				"x-auditable": true
@@ -4659,7 +4671,8 @@
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -4952,16 +4965,16 @@
 																				"x-auditable": true
 																			},
 																			"tunnel": {
-																				"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel",
+																				"description": "Configuration for using Keyless SSL through a Cloudflare Tunnel.",
 																				"properties": {
 																					"private_ip": {
-																						"description": "Private IP of the Key Server Host",
+																						"description": "Private IP of the Key Server Host.",
 																						"example": "10.0.0.1",
 																						"type": "string",
 																						"x-auditable": true
 																					},
 																					"vnet_id": {
-																						"description": "Cloudflare Tunnel Virtual Network ID",
+																						"description": "Cloudflare Tunnel Virtual Network ID.",
 																						"example": "7365377a-85a4-4390-9480-531ef7dc7a3c",
 																						"type": "string",
 																						"x-auditable": true
@@ -5056,7 +5069,8 @@
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},

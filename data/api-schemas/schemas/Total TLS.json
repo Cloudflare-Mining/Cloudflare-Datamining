@@ -138,9 +138,11 @@
 													"type": "integer",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -271,9 +273,11 @@
 															"type": "integer",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -461,7 +465,8 @@
 						},
 						"required": [
 							"enabled"
-						]
+						],
+						"type": "object"
 					}
 				}
 			},
@@ -589,9 +594,11 @@
 													"type": "integer",
 													"x-auditable": true
 												}
-											}
+											},
+											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -722,9 +729,11 @@
 															"type": "integer",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},

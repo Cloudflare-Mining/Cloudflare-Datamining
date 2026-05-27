@@ -205,12 +205,14 @@
 															"type": "string",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -390,12 +392,14 @@
 																	"type": "string",
 																	"x-auditable": true
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -783,37 +787,44 @@
 														"type": "string",
 														"x-auditable": true
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								},
 								{
 									"properties": {
 										"result_info": {
 											"properties": {
 												"count": {
-													"example": 1
+													"example": 1,
+													"type": "number"
 												},
 												"page": {
-													"example": 1
+													"example": 1,
+													"type": "number"
 												},
 												"per_page": {
-													"example": 50
+													"example": 50,
+													"type": "number"
 												},
 												"total_count": {
-													"example": 1
+													"example": 1,
+													"type": "number"
 												},
 												"total_pages": {
-													"description": "Total pages available of results",
+													"description": "Total pages available of results.",
 													"example": 1,
 													"type": "number"
 												}
 											},
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1027,37 +1038,44 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										},
 										{
 											"properties": {
 												"result_info": {
 													"properties": {
 														"count": {
-															"example": 1
+															"example": 1,
+															"type": "number"
 														},
 														"page": {
-															"example": 1
+															"example": 1,
+															"type": "number"
 														},
 														"per_page": {
-															"example": 50
+															"example": 50,
+															"type": "number"
 														},
 														"total_count": {
-															"example": 1
+															"example": 1,
+															"type": "number"
 														},
 														"total_pages": {
-															"description": "Total pages available of results",
+															"description": "Total pages available of results.",
 															"example": 1,
 															"type": "number"
 														}
 													},
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1403,12 +1421,14 @@
 															"type": "string",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -1588,12 +1608,14 @@
 																	"type": "string",
 																	"x-auditable": true
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -1913,11 +1935,13 @@
 														"type": "string",
 														"x-auditable": true
 													}
-												}
+												},
+												"type": "object"
 											},
 											"type": "array"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2071,11 +2095,13 @@
 																"type": "string",
 																"x-auditable": true
 															}
-														}
+														},
+														"type": "object"
 													},
 													"type": "array"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
@@ -2455,12 +2481,14 @@
 															"type": "string",
 															"x-auditable": true
 														}
-													}
+													},
+													"type": "object"
 												}
 											],
 											"type": "object"
 										}
-									}
+									},
+									"type": "object"
 								}
 							]
 						}
@@ -2647,12 +2675,14 @@
 																	"type": "string",
 																	"x-auditable": true
 																}
-															}
+															},
+															"type": "object"
 														}
 													],
 													"type": "object"
 												}
-											}
+											},
+											"type": "object"
 										}
 									]
 								},
