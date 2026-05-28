@@ -1,0 +1,29 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"candidates": {
+			"items": {},
+			"type": "array"
+		},
+		"modelVersion": {
+			"type": "string"
+		},
+		"usageMetadata": {
+			"additionalProperties": {},
+			"properties": {
+				"candidatesTokenCount": {
+					"type": "number"
+				},
+				"promptTokenCount": {
+					"type": "number"
+				},
+				"totalTokenCount": {
+					"type": "number"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

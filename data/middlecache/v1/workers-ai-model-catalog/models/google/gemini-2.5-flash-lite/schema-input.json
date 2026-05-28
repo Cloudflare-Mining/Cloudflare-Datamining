@@ -1,0 +1,116 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"contents": {
+			"items": {
+				"additionalProperties": {},
+				"properties": {
+					"parts": {
+						"items": {
+							"additionalProperties": {},
+							"properties": {
+								"text": {
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"role": {
+						"enum": [
+							"user",
+							"model"
+						],
+						"type": "string"
+					}
+				},
+				"required": [
+					"parts"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"generationConfig": {
+			"additionalProperties": {},
+			"properties": {
+				"candidateCount": {
+					"type": "number"
+				},
+				"maxOutputTokens": {
+					"type": "number"
+				},
+				"responseMimeType": {
+					"type": "string"
+				},
+				"stopSequences": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"temperature": {
+					"type": "number"
+				},
+				"topK": {
+					"type": "number"
+				},
+				"topP": {
+					"type": "number"
+				}
+			},
+			"type": "object"
+		},
+		"safetySettings": {
+			"items": {
+				"additionalProperties": {},
+				"properties": {
+					"category": {
+						"type": "string"
+					},
+					"threshold": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"category",
+					"threshold"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"systemInstruction": {
+			"additionalProperties": {},
+			"properties": {
+				"parts": {
+					"items": {
+						"additionalProperties": {},
+						"properties": {
+							"text": {
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"type": "array"
+				}
+			},
+			"required": [
+				"parts"
+			],
+			"type": "object"
+		},
+		"toolConfig": {},
+		"tools": {
+			"items": {},
+			"type": "array"
+		}
+	},
+	"required": [
+		"contents"
+	],
+	"type": "object"
+}

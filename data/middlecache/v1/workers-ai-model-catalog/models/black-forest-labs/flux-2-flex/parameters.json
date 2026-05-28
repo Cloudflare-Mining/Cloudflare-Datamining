@@ -1,0 +1,246 @@
+{
+	"flat": true,
+	"modes": null,
+	"input": {
+		"rows": [
+			{
+				"id": "guidance",
+				"name": "guidance",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Classifier-free guidance scale (1.5–10). Higher values follow the prompt more strictly at the cost of realism.",
+				"metadata": {
+					"maximum": 10,
+					"minimum": 1.5
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "height",
+				"name": "height",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Height of the generated image in pixels (minimum 64). Omit to let BFL pick.",
+				"metadata": {
+					"maximum": 9007199254740991,
+					"minimum": 64
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "input_images",
+				"name": "input_images",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Up to 8 reference images for editing or multi-image composition. Each entry is an HTTPS URL or a data:image/...;base64,... URI.",
+				"metadata": {
+					"maxItems": 8
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "input_images.items",
+						"name": "items",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "output_format",
+				"name": "output_format",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Output image format. Defaults to jpeg.",
+				"enumValues": [
+					"jpeg",
+					"png",
+					"webp"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Text prompt for image generation or editing.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "prompt_upsampling",
+				"name": "prompt_upsampling",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Whether BFL should expand short prompts before generation. Defaults to true on flex.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "safety_tolerance",
+				"name": "safety_tolerance",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Tolerance for input/output moderation. 0 is the strictest, 5 the most permissive. Defaults to 2.",
+				"metadata": {
+					"maximum": 5,
+					"minimum": 0
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "seed",
+				"name": "seed",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Optional seed for reproducible generation.",
+				"metadata": {
+					"maximum": 9007199254740991,
+					"minimum": -9007199254740991
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "steps",
+				"name": "steps",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Number of denoising steps (1–50). Higher steps yield more detail at the cost of latency.",
+				"metadata": {
+					"maximum": 50,
+					"minimum": 1
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "width",
+				"name": "width",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Width of the generated image in pixels (minimum 64). Omit to let BFL pick.",
+				"metadata": {
+					"maximum": 9007199254740991,
+					"minimum": 64
+				},
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	},
+	"output": {
+		"rows": [
+			{
+				"id": "image",
+				"name": "image",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "URL to the generated image",
+				"metadata": {
+					"format": "uri"
+				},
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	}
+}

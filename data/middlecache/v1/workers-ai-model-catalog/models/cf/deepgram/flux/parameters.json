@@ -13,7 +13,7 @@
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": true,
+				"required": false,
 				"description": "Encoding of the audio stream. Currently only supports raw signed little-endian 16-bit PCM.",
 				"enumValues": [
 					"linear16"
@@ -32,7 +32,7 @@
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": true,
+				"required": false,
 				"description": "Sample rate of the audio stream in Hz.",
 				"metadata": {
 					"pattern": "^[0-9]+$"

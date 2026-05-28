@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-05-27T04:33:43.154Z",
-	"model_count": 142,
+	"generated_at": "2026-05-28T04:33:58.829Z",
+	"model_count": 149,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -527,6 +527,130 @@
 			"created_at": "2026-05-22 17:52:58"
 		},
 		{
+			"model_id": "black-forest-labs/flux-2-flex",
+			"slug": "black-forest-labs/flux-2-flex",
+			"display_name": "FLUX.2 [flex]",
+			"description": "FLUX.2 [flex] is Black Forest Labs' fine-grained control variant of FLUX.2 — exposes tunable inference steps, guidance, and prompt upsampling for typography-heavy and production workflows.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Typography",
+				"Tunable"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://blackforestlabs.ai/terms-of-service/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://blackforestlabs.ai/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Flow matching transformer",
+				"Guidance Range": "1.5 – 10",
+				"Max Reference Images": "8",
+				"Steps Range": "1 – 50"
+			},
+			"external_info": "https://blackforestlabs.ai/",
+			"terms": "https://blackforestlabs.ai/terms-of-service/",
+			"cover_image_url": null,
+			"created_at": "2026-05-27 23:12:22"
+		},
+		{
+			"model_id": "black-forest-labs/flux-2-max",
+			"slug": "black-forest-labs/flux-2-max",
+			"display_name": "FLUX.2 [max]",
+			"description": "FLUX.2 [max] is Black Forest Labs' highest-quality image model — top editing consistency, strongest prompt following, and grounding search for visualizations of real-time information.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"High Quality",
+				"Grounding Search"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://blackforestlabs.ai/terms-of-service/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://blackforestlabs.ai/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Flow matching transformer",
+				"Grounding Search": "Yes",
+				"Max Reference Images": "8",
+				"Max Resolution": "4MP"
+			},
+			"external_info": "https://blackforestlabs.ai/",
+			"terms": "https://blackforestlabs.ai/terms-of-service/",
+			"cover_image_url": null,
+			"created_at": "2026-05-27 23:12:31"
+		},
+		{
+			"model_id": "black-forest-labs/flux-2-pro-preview",
+			"slug": "black-forest-labs/flux-2-pro-preview",
+			"display_name": "FLUX.2 [pro] Preview",
+			"description": "FLUX.2 [pro] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest [pro] weights with strong multi-reference support.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Image Editing",
+				"Preview"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://blackforestlabs.ai/terms-of-service/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://blackforestlabs.ai/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Flow matching transformer",
+				"Max Reference Images": "8",
+				"Max Resolution": "4MP"
+			},
+			"external_info": "https://blackforestlabs.ai/",
+			"terms": "https://blackforestlabs.ai/terms-of-service/",
+			"cover_image_url": null,
+			"created_at": "2026-05-27 23:12:41"
+		},
+		{
 			"model_id": "bytedance/seedance-2.0-fast",
 			"slug": "bytedance/seedance-2.0-fast",
 			"display_name": "Seedance 2.0 Fast",
@@ -712,6 +836,148 @@
 			"created_at": "2026-05-22 17:53:06"
 		},
 		{
+			"model_id": "google/gemini-2.5-flash-lite",
+			"slug": "google/gemini-2.5-flash-lite",
+			"display_name": "Gemini 2.5 Flash Lite",
+			"description": "Google's lightest and most cost-efficient Gemini 2.5 model for high-throughput tasks.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Cost-Efficient",
+				"Multimodal"
+			],
+			"context_length": 1000000,
+			"max_output_tokens": 8192,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1000000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "8192"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://ai.google.dev/gemini-api/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://deepmind.google/technologies/gemini/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)"
+			},
+			"external_info": "https://deepmind.google/technologies/gemini/",
+			"terms": "https://ai.google.dev/gemini-api/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-2.5-flash-lite.png",
+			"created_at": "2026-05-22 17:53:08"
+		},
+		{
+			"model_id": "google/gemini-2.5-flash",
+			"slug": "google/gemini-2.5-flash",
+			"display_name": "Gemini 2.5 Flash",
+			"description": "Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token context window.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Multimodal"
+			],
+			"context_length": 1000000,
+			"max_output_tokens": 8192,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1000000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "8192"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://ai.google.dev/gemini-api/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://deepmind.google/technologies/gemini/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)",
+				"Thinking": "Yes"
+			},
+			"external_info": "https://deepmind.google/technologies/gemini/",
+			"terms": "https://ai.google.dev/gemini-api/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-2.5-flash.png",
+			"created_at": "2026-05-22 17:53:07"
+		},
+		{
+			"model_id": "google/gemini-2.5-pro",
+			"slug": "google/gemini-2.5-pro",
+			"display_name": "Gemini 2.5 Pro",
+			"description": "Google's most capable Gemini 2.5 model with strong reasoning, thinking support, and a 1M token context window.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning",
+				"Multimodal",
+				"Thinking"
+			],
+			"context_length": 1000000,
+			"max_output_tokens": 65536,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1000000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "65536"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://ai.google.dev/gemini-api/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://deepmind.google/technologies/gemini/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)",
+				"Thinking": "Yes"
+			},
+			"external_info": "https://deepmind.google/technologies/gemini/",
+			"terms": "https://ai.google.dev/gemini-api/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-2.5-pro.png",
+			"created_at": "2026-05-22 17:53:08"
+		},
+		{
 			"model_id": "google/gemini-3-flash",
 			"slug": "google/gemini-3-flash",
 			"display_name": "Gemini 3 Flash",
@@ -805,6 +1071,29 @@
 			"terms": "https://ai.google.dev/gemini-api/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.1-flash-lite.png",
 			"created_at": "2026-05-22 17:53:09"
+		},
+		{
+			"model_id": "google/gemini-3.1-flash-tts",
+			"slug": "google/gemini-3.1-flash-tts",
+			"display_name": "Gemini 3.1 Flash TTS",
+			"description": "",
+			"task": {
+				"id": "",
+				"name": "Text-to-Speech",
+				"description": ""
+			},
+			"tags": [],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [],
+			"metadata": {},
+			"external_info": null,
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-05-22 17:53:10"
 		},
 		{
 			"model_id": "google/gemini-3.1-pro",
