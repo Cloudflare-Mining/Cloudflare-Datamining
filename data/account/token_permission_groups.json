@@ -2412,6 +2412,15 @@
 		"category": "developer_platform"
 	},
 	{
+		"id": "1354ed31bab640c19eb70c0caf669b79",
+		"name": "Queues Metadata Read",
+		"description": "Grants read access to Cloudflare Queues configuration",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
 		"id": "84a7755d54c646ca87cd50682a34bf7c",
 		"name": "Queues Read",
 		"description": "Grants read access to Cloudflare Queues",
@@ -2984,6 +2993,15 @@
 		"description": "Grants write access to Cloudflare R2 Bucket Scoped Storage",
 		"scopes": [
 			"com.cloudflare.edge.r2.bucket"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "dc1beb502339482da2515d6e146ca1ac",
+		"name": "Workers R2 Storage Metadata Read",
+		"description": "Grants read access to Cloudflare Workers R2 Storage metadata",
+		"scopes": [
+			"com.cloudflare.api.account"
 		],
 		"category": "developer_platform"
 	},
