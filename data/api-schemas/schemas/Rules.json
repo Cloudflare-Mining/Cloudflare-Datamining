@@ -346,6 +346,11 @@
 												"type": "array",
 												"x-auditable": true
 											},
+											"pending_approval_id": {
+												"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+												"nullable": true,
+												"type": "number"
+											},
 											"updated_at": {
 												"example": 1679529600000,
 												"type": "number",
@@ -368,7 +373,8 @@
 											"created_at",
 											"updated_at",
 											"created_by",
-											"updated_by"
+											"updated_by",
+											"pending_approval_id"
 										],
 										"type": "object"
 									},
@@ -506,6 +512,11 @@
 									"type": "array",
 									"x-auditable": true
 								},
+								"pending_approval_id": {
+									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+									"nullable": true,
+									"type": "number"
+								},
 								"updated_at": {
 									"example": 1679529600000,
 									"type": "number",
@@ -528,7 +539,8 @@
 								"created_at",
 								"updated_at",
 								"created_by",
-								"updated_by"
+								"updated_by",
+								"pending_approval_id"
 							],
 							"type": "object"
 						}
@@ -842,7 +854,10 @@
 									"description": "Parsed natural-language interpretation of the query, when available.",
 									"properties": {
 										"filters": {
-											"additionalProperties": {},
+											"additionalProperties": {
+												"nullable": true,
+												"type": "object"
+											},
 											"description": "Filters applied during retrieval (account ACL plus user-supplied facets).",
 											"type": "object"
 										},
@@ -915,6 +930,11 @@
 														"type": "array",
 														"x-auditable": true
 													},
+													"pending_approval_id": {
+														"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+														"nullable": true,
+														"type": "number"
+													},
 													"updated_at": {
 														"example": 1679529600000,
 														"type": "number",
@@ -937,7 +957,8 @@
 													"created_at",
 													"updated_at",
 													"created_by",
-													"updated_by"
+													"updated_by",
+													"pending_approval_id"
 												],
 												"type": "object"
 											},
@@ -1421,6 +1442,11 @@
 									"type": "array",
 									"x-auditable": true
 								},
+								"pending_approval_id": {
+									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+									"nullable": true,
+									"type": "number"
+								},
 								"updated_at": {
 									"example": 1679529600000,
 									"type": "number",
@@ -1443,7 +1469,8 @@
 								"created_at",
 								"updated_at",
 								"created_by",
-								"updated_by"
+								"updated_by",
+								"pending_approval_id"
 							],
 							"type": "object"
 						}
@@ -1774,6 +1801,11 @@
 									"type": "array",
 									"x-auditable": true
 								},
+								"pending_approval_id": {
+									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
+									"nullable": true,
+									"type": "number"
+								},
 								"updated_at": {
 									"example": 1679529600000,
 									"type": "number",
@@ -1796,7 +1828,8 @@
 								"created_at",
 								"updated_at",
 								"created_by",
-								"updated_by"
+								"updated_by",
+								"pending_approval_id"
 							],
 							"type": "object"
 						}

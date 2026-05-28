@@ -1,6 +1,6 @@
 {
 	"DELETE /organizations/{organization_id}": {
-		"description": "Delete an organization. The organization MUST be empty before deleting.\nIt must not contain any sub-organizations, accounts, members or users. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+		"description": "Delete an organization. The organization MUST be empty before deleting.\nIt must not contain any sub-organizations, accounts, members or users. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)\n\n**Access Control:** Restricted to enterprise organizations.\nNon-admin callers also require the `account_deletion` tenant flag.",
 		"operationId": "Organizations_delete",
 		"parameters": [
 			{

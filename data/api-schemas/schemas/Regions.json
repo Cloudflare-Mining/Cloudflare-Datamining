@@ -7,8 +7,13 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"format": "int64",
-					"type": "integer"
+					"description": "Identifier of a Cloudflare account.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{
@@ -484,8 +489,13 @@
 				"name": "account_id",
 				"required": true,
 				"schema": {
-					"format": "int64",
-					"type": "integer"
+					"description": "Identifier of a Cloudflare account.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"minLength": 32,
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string",
+					"x-auditable": true
 				}
 			},
 			{

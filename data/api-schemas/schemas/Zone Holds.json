@@ -1,6 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/hold": {
-		"description": "Stop enforcement of a zone hold on the zone, permanently or temporarily, allowing the\ncreation and activation of zones with this zone's hostname.",
+		"description": "Stop enforcement of a zone hold on the zone, permanently or temporarily, allowing the\ncreation and activation of zones with this zone's hostname.\nExisting zone holds can be removed from CDN-only zones when `hold_after` is not provided.\nActive holds are automatically disabled when a zone transitions to CDN-only mode.",
 		"operationId": "zones-0-hold-delete",
 		"parameters": [
 			{
@@ -17,7 +17,7 @@
 				}
 			},
 			{
-				"description": "If `hold_after` is provided, the hold will be temporarily disabled,\nthen automatically re-enabled by the system at the time specified\nin this RFC3339-formatted timestamp. Otherwise, the hold will be\ndisabled indefinitely.",
+				"description": "If `hold_after` is provided, the hold will be temporarily disabled,\nthen automatically re-enabled by the system at the time specified\nin this RFC3339-formatted timestamp. Otherwise, the hold will be\ndisabled indefinitely. `hold_after` cannot be provided for CDN-only zones.",
 				"example": "2023-01-31T15:56:36+00:00",
 				"in": "query",
 				"name": "hold_after",
@@ -608,7 +608,7 @@
 		]
 	},
 	"PATCH /zones/{zone_id}/hold": {
-		"description": "Update the `hold_after` and/or `include_subdomains` values on an existing zone hold.\nThe hold is enabled if the `hold_after` date-time value is in the past.",
+		"description": "Update the `hold_after` and/or `include_subdomains` values on an existing zone hold.\nThe hold is enabled if the `hold_after` date-time value is in the past.\nExisting zone holds can be removed from CDN-only zones by setting `hold_after` to `null`.\nOther zone hold updates cannot be made on CDN-only zones.\nActive holds are automatically disabled when a zone transitions to CDN-only mode.",
 		"operationId": "zones-0-hold-patch",
 		"parameters": [
 			{
@@ -632,8 +632,9 @@
 						"properties": {
 							"hold_after": {
 								"default": "",
-								"description": "If `hold_after` is provided and future-dated, the hold will be temporarily disabled,\nthen automatically re-enabled by the system at the time specified\nin this RFC3339-formatted timestamp. A past-dated `hold_after` value will have\nno effect on an existing, enabled hold. Providing an empty string will set its value\nto the current time.",
+								"description": "If `hold_after` is provided and future-dated, the hold will be temporarily disabled,\nthen automatically re-enabled by the system at the time specified\nin this RFC3339-formatted timestamp. A past-dated `hold_after` value will have\nno effect on an existing, enabled hold. Providing an empty string will set its value\nto the current time. Providing `null` will disable the hold indefinitely.",
 								"example": "2023-01-31T15:56:36+00:00",
+								"nullable": true,
 								"type": "string"
 							},
 							"include_subdomains": {
@@ -912,7 +913,7 @@
 		]
 	},
 	"POST /zones/{zone_id}/hold": {
-		"description": "Enforce a zone hold on the zone, blocking the creation and activation of zones with this zone's hostname.",
+		"description": "Enforce a zone hold on the zone, blocking the creation and activation of zones with this zone's hostname.\nZone holds cannot be enabled on CDN-only zones.",
 		"operationId": "zones-0-hold-post",
 		"parameters": [
 			{
