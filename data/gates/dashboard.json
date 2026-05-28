@@ -1,11 +1,4 @@
 {
-	"1533-d-super-add-button-in-top-nav": {
-		"enabled": true,
-		"branches": [
-			"baseline",
-			"add-products"
-		]
-	},
 	"2022-improved-dev-tools": {
 		"enabled": true
 	},
@@ -403,7 +396,7 @@
 		"enabled": false
 	},
 	"billing-unified-checkout-cache-reserve": {
-		"enabled": false
+		"enabled": true
 	},
 	"billing-unified-checkout-images": {
 		"enabled": true
@@ -493,7 +486,7 @@
 		"enabled": false
 	},
 	"brand-protection-cease-and-desist": {
-		"enabled": false
+		"enabled": true
 	},
 	"brand-protection-dismiss-matches-api-fix": {
 		"enabled": true
@@ -1180,13 +1173,6 @@
 			"experiment"
 		]
 	},
-	"dx-plans-page": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"experiment"
-		]
-	},
 	"dx-product-catalogue": {
 		"enabled": true
 	},
@@ -1248,13 +1234,6 @@
 			"experiment"
 		]
 	},
-	"dx-welcome-slide": {
-		"enabled": false,
-		"branches": [
-			"variant-a",
-			"variant-b"
-		]
-	},
 	"dx-zone-overview-ui-refresh": {
 		"enabled": true
 	},
@@ -1299,9 +1278,6 @@
 	},
 	"event-hub-ui": {
 		"enabled": true
-	},
-	"fed-ramp-redirect-signup-route": {
-		"enabled": false
 	},
 	"federated-profile-preferences": {
 		"enabled": false
@@ -1583,6 +1559,9 @@
 			"sign-in",
 			"log-in"
 		]
+	},
+	"logpush-transformation-beta": {
+		"enabled": false
 	},
 	"loui-kumo-log-explorer": {
 		"enabled": true
