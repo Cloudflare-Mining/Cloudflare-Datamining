@@ -91,29 +91,50 @@
 		"name": "cf",
 		"version": "0.0.5",
 		"dependencies": {
-			"@clack/core": "1.2.0",
 			"boxen": "8.0.1",
 			"chalk": "5.6.2",
+			"yargs": "18.0.0",
 			"figures": "6.1.0",
-			"gradient-string": "3.0.0",
-			"yargs": "18.0.0"
+			"@clack/core": "1.2.0",
+			"gradient-string": "3.0.0"
 		},
 		"bin": {
 			"cf": "bin/cf"
 		},
 		"dist": {
-			"integrity": "sha512-4C8EOaeKOvv/t9x9K4HgbWX2Ktu2q/We/85ZU/bbedJCzRtFUgAL+nOqWWGVdEAgzbeUYPc4PbMhmL9Kgv4bbA==",
 			"shasum": "6f8dfe800783b13666e56d3065aca1c84f5d6b9b",
 			"tarball": "https://registry.npmjs.org/cf/-/cf-0.0.5.tgz",
 			"fileCount": 28,
-			"unpackedSize": 37518131,
+			"integrity": "sha512-4C8EOaeKOvv/t9x9K4HgbWX2Ktu2q/We/85ZU/bbedJCzRtFUgAL+nOqWWGVdEAgzbeUYPc4PbMhmL9Kgv4bbA==",
+			"signatures": [
+				{
+					"sig": "MEUCIQD/BN8NgNLtt/UQLwnot1OE2pymF3nt7oDyPbKkRYz+YgIgRigkglAt5UOQoK6CzE44qK2+CKXYLAc6idLP6pcUaJc=",
+					"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+				}
+			],
+			"unpackedSize": 37518131
+		},
+		"date": "2026-04-14T02:48:14.424Z"
+	},
+	"0.0.6": {
+		"name": "cf",
+		"version": "0.0.6",
+		"bin": {
+			"cf": "bin/cf"
+		},
+		"dist": {
+			"integrity": "sha512-FUTEhDk1lfisq32cXeP+L2nl2eCrVaFQZ21vs+HGk78BnrbaUjtAvw5PbPH6qtWbkqbgjcpWI8sSzwSePU0cTQ==",
+			"shasum": "1ffa889e7f210e13a4a185af972dd91a74cdc0c6",
+			"tarball": "https://registry.npmjs.org/cf/-/cf-0.0.6.tgz",
+			"fileCount": 143,
+			"unpackedSize": 12857895,
 			"signatures": [
 				{
 					"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-					"sig": "MEUCIQD/BN8NgNLtt/UQLwnot1OE2pymF3nt7oDyPbKkRYz+YgIgRigkglAt5UOQoK6CzE44qK2+CKXYLAc6idLP6pcUaJc="
+					"sig": "MEUCIA1GLoUNGybQJibOhiZdMpIr5LPQKBlx0mNjcWYmeGwdAiEAvjoKQPyOVdt5BPcqeUa3QUp4sp5U/eyqW1QnkNkaueM="
 				}
 			]
 		},
-		"date": "2026-04-14T02:48:14.424Z"
+		"date": "2026-05-28T19:37:02.944Z"
 	}
 }
