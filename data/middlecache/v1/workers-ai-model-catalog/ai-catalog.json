@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-05-28T04:33:58.829Z",
-	"model_count": 149,
+	"generated_at": "2026-05-29T04:33:48.981Z",
+	"model_count": 150,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -345,6 +345,57 @@
 			"terms": "https://www.anthropic.com/legal/commercial-terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-opus-4.7.png",
 			"created_at": "2026-05-22 17:52:55"
+		},
+		{
+			"model_id": "anthropic/claude-opus-4.8",
+			"slug": "anthropic/claude-opus-4.8",
+			"display_name": "Claude Opus 4.8",
+			"description": "Claude Opus 4.8 is Anthropic's most capable generally available model, with a step-change improvement in agentic coding over Claude Opus 4.7. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Enterprise",
+				"Agentic",
+				"Financial Analysis",
+				"Legal"
+			],
+			"context_length": 1000000,
+			"max_output_tokens": 128000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1000000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "128000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://www.anthropic.com/legal/commercial-terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.anthropic.com/claude/opus"
+				}
+			],
+			"metadata": {
+				"Adaptive Thinking": "Yes",
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://www.anthropic.com/claude/opus",
+			"terms": "https://www.anthropic.com/legal/commercial-terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-opus-4.8.png",
+			"created_at": "2026-05-28 17:14:04"
 		},
 		{
 			"model_id": "anthropic/claude-sonnet-4.5",
