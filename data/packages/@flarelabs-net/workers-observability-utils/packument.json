@@ -1,7 +1,7 @@
 {
 	"name": "@flarelabs-net/workers-observability-utils",
 	"dist-tags": {
-		"latest": "0.3.5"
+		"latest": "0.4.0"
 	},
 	"versions": {
 		"0.1.0": {
@@ -201,24 +201,57 @@
 				"ulid-workers": "^2.1.0"
 			},
 			"devDependencies": {
-				"@cloudflare/vitest-pool-workers": "^0.8.32",
-				"@cloudflare/workers-types": "^4.20250519.0",
-				"@types/node": "^22.15.19",
 				"biome": "^0.3.3",
+				"vitest": "^3.1.4",
 				"release-it": "^19.0.3",
 				"typescript": "^5.2.2",
-				"vitest": "^3.1.4"
+				"@types/node": "^22.15.19",
+				"@cloudflare/workers-types": "^4.20250519.0",
+				"@cloudflare/vitest-pool-workers": "^0.8.32"
 			},
 			"dist": {
-				"integrity": "sha512-j8zQcAEbFz+wKzkNA2Trjq7KB7n+kjIzcBmMRuuXZXbEqsBSg7DRt9Ky7m0mlydBEvBfR/pxVuU1mvZx2D5SHw==",
 				"shasum": "30b9578915574f3e2eba64ccda619cfd18aff70f",
 				"tarball": "https://registry.npmjs.org/@flarelabs-net/workers-observability-utils/-/workers-observability-utils-0.3.5.tgz",
 				"fileCount": 48,
-				"unpackedSize": 97089,
+				"integrity": "sha512-j8zQcAEbFz+wKzkNA2Trjq7KB7n+kjIzcBmMRuuXZXbEqsBSg7DRt9Ky7m0mlydBEvBfR/pxVuU1mvZx2D5SHw==",
+				"signatures": [
+					{
+						"sig": "MEUCIEy5njpnHPUFn5B8Cf3461Nf40Z4cgJfx7OyqRaCg817AiEAu5ijnisEmcm9H8XW3+n3mokH6bjcLQ67H9o3JtERMRA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 97089
+			}
+		},
+		"0.4.0": {
+			"name": "@flarelabs-net/workers-observability-utils",
+			"version": "0.4.0",
+			"dependencies": {
+				"flat": "^6.0.1",
+				"ulid-workers": "^2.1.0"
+			},
+			"devDependencies": {
+				"@cloudflare/vitest-pool-workers": "^0.16.8",
+				"@cloudflare/workers-types": "^4.20260521.1",
+				"@types/node": "^22.15.19",
+				"biome": "^0.3.3",
+				"release-it": "^19.0.3",
+				"publint": "^0.3.21",
+				"rolldown": "^1.0.3",
+				"rolldown-plugin-dts": "^0.25.1",
+				"typescript": "^5.8.3",
+				"vitest": "^4.1.4"
+			},
+			"dist": {
+				"integrity": "sha512-VIlvv/PG+gik5HoHRQRNms7erlDtfiwmXForFeIMribJ6t2D14nJIKaYwmd71HgQpvsFXweaRXTaXGkteHt5Fw==",
+				"shasum": "c398d1c2d5be4e4973b73216e9768396b0e4477e",
+				"tarball": "https://registry.npmjs.org/@flarelabs-net/workers-observability-utils/-/workers-observability-utils-0.4.0.tgz",
+				"fileCount": 13,
+				"unpackedSize": 47555,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIEy5njpnHPUFn5B8Cf3461Nf40Z4cgJfx7OyqRaCg817AiEAu5ijnisEmcm9H8XW3+n3mokH6bjcLQ67H9o3JtERMRA="
+						"sig": "MEUCIE91Ys/gCY8epv4YhSoblHawS+qFN7XlKPXAJ6D1QHLAAiEAj3Ju2qSQ8Im8RjdZG71gPQlldt+4GQCGFH/9Gyihy+0="
 					}
 				]
 			}
