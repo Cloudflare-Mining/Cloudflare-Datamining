@@ -2,12 +2,81 @@
 	"flat": true,
 	"modes": null,
 	"input": {
-		"rows": [],
+		"rows": [
+			{
+				"id": "multipart",
+				"name": "multipart",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "multipart.body",
+						"name": "body",
+						"type": "object",
+						"isArray": false,
+						"isObject": true,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "multipart.contentType",
+						"name": "contentType",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							true
+						]
+					}
+				]
+			}
+		],
 		"variants": null,
 		"isFlat": false
 	},
 	"output": {
-		"rows": [],
+		"rows": [
+			{
+				"id": "image",
+				"name": "image",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Generated image as Base64 string.",
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
 		"variants": null,
 		"isFlat": false
 	}

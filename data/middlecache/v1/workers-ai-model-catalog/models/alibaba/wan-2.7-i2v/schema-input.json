@@ -1,0 +1,40 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": false,
+	"properties": {
+		"duration": {
+			"maximum": 15,
+			"minimum": 2,
+			"type": "integer"
+		},
+		"image": {
+			"format": "uri",
+			"type": "string"
+		},
+		"negative_prompt": {
+			"type": "string"
+		},
+		"prompt": {
+			"type": "string"
+		},
+		"resolution": {
+			"enum": [
+				"720P",
+				"1080P"
+			],
+			"type": "string"
+		},
+		"seed": {
+			"maximum": 2147483647,
+			"minimum": 0,
+			"type": "integer"
+		},
+		"watermark": {
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"image"
+	],
+	"type": "object"
+}

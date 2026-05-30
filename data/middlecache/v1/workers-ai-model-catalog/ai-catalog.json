@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-05-29T04:33:48.981Z",
-	"model_count": 150,
+	"generated_at": "2026-05-30T04:33:54.269Z",
+	"model_count": 159,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -196,6 +196,45 @@
 			"terms": "https://www.alibabacloud.com/help/en/legal",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/alibaba/wan-2.6-image.png",
 			"created_at": "2026-05-22 17:52:52"
+		},
+		{
+			"model_id": "alibaba/wan-2.7-i2v",
+			"slug": "alibaba/wan-2.7-i2v",
+			"display_name": "Wan 2.7 I2V",
+			"description": "Alibaba's Wan 2.7 image-to-video model that generates videos from a reference image with optional text prompts. Supports 720P and 1080P output with durations from 2 to 15 seconds.",
+			"task": {
+				"id": "",
+				"name": "Image-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Image-to-Video",
+				"Video Generation"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.alibabacloud.com/help/en/legal"
+				},
+				{
+					"property_id": "info",
+					"value": "https://wan.video/"
+				}
+			],
+			"metadata": {
+				"Input": "Image URL (no base64)",
+				"Max Duration": "15 seconds",
+				"Resolutions": "720P, 1080P"
+			},
+			"external_info": "https://wan.video/",
+			"terms": "https://www.alibabacloud.com/help/en/legal",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/alibaba/wan-2.7-i2v.png",
+			"created_at": "2026-05-29 20:29:17"
 		},
 		{
 			"model_id": "anthropic/claude-haiku-4.5",
@@ -2666,6 +2705,326 @@
 			"terms": "https://www.recraft.ai/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/recraft/recraftv3.png",
 			"created_at": "2026-05-22 17:53:46"
+		},
+		{
+			"model_id": "recraft/recraftv4-1-pro-vector",
+			"slug": "recraft/recraftv4-1-pro-vector",
+			"display_name": "Recraft V4.1 Pro SVG",
+			"description": "Generate detailed, high-resolution SVG vector graphics from text prompts with high aesthetic quality, fine geometry, scalable to any size for print and design work.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"SVG",
+				"Vector",
+				"Design",
+				"High Resolution"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.recraft.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.recraft.ai/"
+				}
+			],
+			"metadata": {
+				"Output Format": "SVG",
+				"Resolution": "2048px+"
+			},
+			"external_info": "https://www.recraft.ai/",
+			"terms": "https://www.recraft.ai/terms",
+			"cover_image_url": null,
+			"created_at": "2026-05-22 17:53:52"
+		},
+		{
+			"model_id": "recraft/recraftv4-1-pro",
+			"slug": "recraft/recraftv4-1-pro",
+			"display_name": "Recraft V4.1 Pro",
+			"description": "Recraft V4.1 Pro generates high-resolution, art-directed images at 2048px+ tuned for high aesthetics, with strong composition, text rendering, and refined design taste. Built for print and production work.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Design",
+				"Text Rendering",
+				"High Resolution"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.recraft.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.recraft.ai/"
+				}
+			],
+			"metadata": {
+				"Resolution": "2048px+",
+				"Text Rendering": "Yes"
+			},
+			"external_info": "https://www.recraft.ai/",
+			"terms": "https://www.recraft.ai/terms",
+			"cover_image_url": null,
+			"created_at": "2026-05-22 17:53:51"
+		},
+		{
+			"model_id": "recraft/recraftv4-1-utility-pro-vector",
+			"slug": "recraft/recraftv4-1-utility-pro-vector",
+			"display_name": "Recraft V4.1 Utility Pro SVG",
+			"description": "Generate detailed, high-resolution SVG vector graphics from text prompts with a general-purpose model, scalable to any size for print and large-scale design work.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"SVG",
+				"Vector",
+				"Design",
+				"High Resolution"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.recraft.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.recraft.ai/"
+				}
+			],
+			"metadata": {
+				"Output Format": "SVG",
+				"Resolution": "2048px+"
+			},
+			"external_info": "https://www.recraft.ai/",
+			"terms": "https://www.recraft.ai/terms",
+			"cover_image_url": null,
+			"created_at": "2026-05-22 17:53:53"
+		},
+		{
+			"model_id": "recraft/recraftv4-1-utility-pro",
+			"slug": "recraft/recraftv4-1-utility-pro",
+			"display_name": "Recraft V4.1 Utility Pro",
+			"description": "Recraft V4.1 Utility Pro is a general-purpose text-to-image model producing high-resolution 2048px+ output for a wide range of production and print use cases.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Design",
+				"Text Rendering",
+				"High Resolution"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.recraft.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.recraft.ai/"
+				}
+			],
+			"metadata": {
+				"Resolution": "2048px+",
+				"Text Rendering": "Yes"
+			},
+			"external_info": "https://www.recraft.ai/",
+			"terms": "https://www.recraft.ai/terms",
+			"cover_image_url": null,
+			"created_at": "2026-05-22 17:53:53"
+		},
+		{
+			"model_id": "recraft/recraftv4-1-utility-vector",
+			"slug": "recraft/recraftv4-1-utility-vector",
+			"display_name": "Recraft V4.1 Utility SVG",
+			"description": "Generate production-ready SVG vector graphics from text prompts with a general-purpose model suited for a wide range of design and illustration tasks.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"SVG",
+				"Vector",
+				"Design"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.recraft.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.recraft.ai/"
+				}
+			],
+			"metadata": {
+				"Output Format": "SVG",
+				"Resolution": "1024px"
+			},
+			"external_info": "https://www.recraft.ai/",
+			"terms": "https://www.recraft.ai/terms",
+			"cover_image_url": null,
+			"created_at": "2026-05-22 17:53:54"
+		},
+		{
+			"model_id": "recraft/recraftv4-1-utility",
+			"slug": "recraft/recraftv4-1-utility",
+			"display_name": "Recraft V4.1 Utility",
+			"description": "Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality and flexibility for a wide range of everyday use cases at standard resolution.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Design",
+				"Text Rendering"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.recraft.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.recraft.ai/"
+				}
+			],
+			"metadata": {
+				"Resolution": "1024px",
+				"Text Rendering": "Yes"
+			},
+			"external_info": "https://www.recraft.ai/",
+			"terms": "https://www.recraft.ai/terms",
+			"cover_image_url": null,
+			"created_at": "2026-05-22 17:53:52"
+		},
+		{
+			"model_id": "recraft/recraftv4-1-vector",
+			"slug": "recraft/recraftv4-1-vector",
+			"display_name": "Recraft V4.1 SVG",
+			"description": "Generate production-ready SVG vector graphics from text prompts with high aesthetic quality, clean geometry, structured layers, and editable paths.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"SVG",
+				"Vector",
+				"Design"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.recraft.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.recraft.ai/"
+				}
+			],
+			"metadata": {
+				"Output Format": "SVG",
+				"Resolution": "1024px"
+			},
+			"external_info": "https://www.recraft.ai/",
+			"terms": "https://www.recraft.ai/terms",
+			"cover_image_url": null,
+			"created_at": "2026-05-22 17:53:54"
+		},
+		{
+			"model_id": "recraft/recraftv4-1",
+			"slug": "recraft/recraftv4-1",
+			"display_name": "Recraft V4.1",
+			"description": "Recraft V4.1 generates art-directed images tuned for high aesthetics, with strong composition, accurate text rendering, and refined design taste. Fast and cost-efficient at standard resolution.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Generation",
+				"Design",
+				"Text Rendering"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.recraft.ai/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.recraft.ai/"
+				}
+			],
+			"metadata": {
+				"Resolution": "1024px",
+				"Text Rendering": "Yes"
+			},
+			"external_info": "https://www.recraft.ai/",
+			"terms": "https://www.recraft.ai/terms",
+			"cover_image_url": null,
+			"created_at": "2026-05-22 17:53:51"
 		},
 		{
 			"model_id": "recraft/recraftv4-pro-vector",

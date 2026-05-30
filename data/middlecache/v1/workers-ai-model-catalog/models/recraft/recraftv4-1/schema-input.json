@@ -1,0 +1,70 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": false,
+	"properties": {
+		"controls": {
+			"additionalProperties": false,
+			"properties": {
+				"background_color": {
+					"additionalProperties": false,
+					"properties": {
+						"rgb": {
+							"items": {
+								"maximum": 255,
+								"minimum": 0,
+								"type": "integer"
+							},
+							"maxItems": 3,
+							"minItems": 3,
+							"type": "array"
+						}
+					},
+					"required": [
+						"rgb"
+					],
+					"type": "object"
+				},
+				"colors": {
+					"items": {
+						"additionalProperties": false,
+						"properties": {
+							"rgb": {
+								"items": {
+									"maximum": 255,
+									"minimum": 0,
+									"type": "integer"
+								},
+								"maxItems": 3,
+								"minItems": 3,
+								"type": "array"
+							}
+						},
+						"required": [
+							"rgb"
+						],
+						"type": "object"
+					},
+					"maxItems": 5,
+					"type": "array"
+				}
+			},
+			"type": "object"
+		},
+		"prompt": {
+			"type": "string"
+		},
+		"size": {
+			"type": "string"
+		},
+		"style": {
+			"type": "string"
+		},
+		"substyle": {
+			"type": "string"
+		}
+	},
+	"required": [
+		"prompt"
+	],
+	"type": "object"
+}
