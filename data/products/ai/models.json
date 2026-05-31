@@ -183,52 +183,6 @@
 		]
 	},
 	{
-		"id": "e11d8f45-7b08-499a-9eeb-71d4d3c8cbf9",
-		"source": 1,
-		"name": "@cf/meta/llama-3-8b-instruct",
-		"description": "Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2024-04-18 20:31:47.273",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "price",
-				"value": [
-					{
-						"unit": "per M input tokens",
-						"price": 0.282,
-						"currency": "USD"
-					},
-					{
-						"unit": "per M output tokens",
-						"price": 0.827,
-						"currency": "USD"
-					}
-				]
-			},
-			{
-				"property_id": "context_window",
-				"value": "7968"
-			},
-			{
-				"property_id": "info",
-				"value": "https://llama.meta.com"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			},
-			{
-				"property_id": "terms",
-				"value": "https://llama.meta.com/llama3/license/#"
-			}
-		]
-	},
-	{
 		"id": "d9dc8363-66f4-4bb0-8641-464ee7bfc131",
 		"source": 1,
 		"name": "@cf/meta/llama-3.2-3b-instruct",
@@ -267,69 +221,6 @@
 			{
 				"property_id": "terms",
 				"value": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/LICENSE"
-			}
-		]
-	},
-	{
-		"id": "d7948af7-749a-4fa3-8480-2a9f4215f427",
-		"source": 1,
-		"name": "@cf/moonshotai/kimi-k2.5",
-		"description": "Kimi K2.5 is a frontier-scale open-source model with a 256k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2026-02-02 21:11:49.874",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "async_queue",
-				"value": "true"
-			},
-			{
-				"property_id": "context_window",
-				"value": "256000"
-			},
-			{
-				"property_id": "price",
-				"value": [
-					{
-						"unit": "per M input tokens",
-						"price": 0.6,
-						"currency": "USD"
-					},
-					{
-						"unit": "per M output tokens",
-						"price": 3,
-						"currency": "USD"
-					},
-					{
-						"unit": "per M cached input tokens",
-						"price": 0.1,
-						"currency": "USD"
-					}
-				]
-			},
-			{
-				"property_id": "function_calling",
-				"value": "true"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			},
-			{
-				"property_id": "reasoning",
-				"value": "true"
-			},
-			{
-				"property_id": "terms",
-				"value": "https://github.com/MoonshotAI/Kimi-K2.5/blob/master/LICENSE"
-			},
-			{
-				"property_id": "vision",
-				"value": "true"
 			}
 		]
 	},
@@ -402,98 +293,6 @@
 						"currency": "USD"
 					}
 				]
-			}
-		]
-	},
-	{
-		"id": "ca54bcd6-0d98-4739-9b3b-5c8b4402193d",
-		"source": 1,
-		"name": "@cf/meta/llama-2-7b-chat-fp16",
-		"description": "Full precision (fp16) generative text model with 7 billion parameters from Meta",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2023-11-07 11:54:20.229",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "price",
-				"value": [
-					{
-						"unit": "per M input tokens",
-						"price": 0.556,
-						"currency": "USD"
-					},
-					{
-						"unit": "per M output tokens",
-						"price": 6.667,
-						"currency": "USD"
-					}
-				]
-			},
-			{
-				"property_id": "context_window",
-				"value": "4096"
-			},
-			{
-				"property_id": "info",
-				"value": "https://ai.meta.com/llama/"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			},
-			{
-				"property_id": "terms",
-				"value": "https://ai.meta.com/resources/models-and-libraries/llama-downloads/"
-			}
-		]
-	},
-	{
-		"id": "c907d0f9-d69d-4e93-b501-4daeb4fd69eb",
-		"source": 1,
-		"name": "@cf/mistral/mistral-7b-instruct-v0.1",
-		"description": "Instruct fine-tuned version of the Mistral-7b generative text model with 7 billion parameters",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2023-11-07 11:54:20.229",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "price",
-				"value": [
-					{
-						"unit": "per M input tokens",
-						"price": 0.11,
-						"currency": "USD"
-					},
-					{
-						"unit": "per M output tokens",
-						"price": 0.19,
-						"currency": "USD"
-					}
-				]
-			},
-			{
-				"property_id": "context_window",
-				"value": "2824"
-			},
-			{
-				"property_id": "info",
-				"value": "https://mistral.ai/news/announcing-mistral-7b/"
-			},
-			{
-				"property_id": "lora",
-				"value": "true"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
 			}
 		]
 	},
@@ -641,53 +440,6 @@
 						"currency": "USD"
 					}
 				]
-			}
-		]
-	},
-	{
-		"id": "b97d7069-48d9-461c-80dd-445d20a632eb",
-		"source": 2,
-		"name": "@hf/mistral/mistral-7b-instruct-v0.2",
-		"description": "The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2024-04-02 13:00:59.244",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "context_window",
-				"value": "3072"
-			},
-			{
-				"property_id": "info",
-				"value": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2"
-			},
-			{
-				"property_id": "lora",
-				"value": "true"
-			},
-			{
-				"property_id": "max_batch_prefill_tokens",
-				"value": "8192"
-			},
-			{
-				"property_id": "max_input_length",
-				"value": "3072"
-			},
-			{
-				"property_id": "max_total_tokens",
-				"value": "4096"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
 			}
 		]
 	},
@@ -903,29 +655,6 @@
 			{
 				"property_id": "terms",
 				"value": "https://bfl.ai/legal/terms-of-service"
-			}
-		]
-	},
-	{
-		"id": "9c95c39d-45b3-4163-9631-22f0c0dc3b14",
-		"source": 1,
-		"name": "@cf/meta/llama-2-7b-chat-int8",
-		"description": "Quantized (int8) generative text model with 7 billion parameters from Meta",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2023-09-25 19:21:11.898",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "context_window",
-				"value": "8192"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
 			}
 		]
 	},
@@ -1552,41 +1281,6 @@
 		]
 	},
 	{
-		"id": "44774b85-08c8-4bb8-8d2a-b06ebc538a79",
-		"source": 2,
-		"name": "@hf/nousresearch/hermes-2-pro-mistral-7b",
-		"description": "Hermes 2 Pro on Mistral 7B is the new flagship 7B Hermes! Hermes 2 Pro is an upgraded, retrained version of Nous Hermes 2, consisting of an updated and cleaned version of the OpenHermes 2.5 Dataset, as well as a newly introduced Function Calling and JSON Mode dataset developed in-house.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2024-04-01 23:45:53.800",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "context_window",
-				"value": "24000"
-			},
-			{
-				"property_id": "function_calling",
-				"value": "true"
-			},
-			{
-				"property_id": "info",
-				"value": "https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			}
-		]
-	},
-	{
 		"id": "43dbadb4-2b0a-47e9-8479-34a49b971f1e",
 		"source": 1,
 		"name": "@cf/nvidia/nemotron-3-120b-a12b",
@@ -1758,75 +1452,6 @@
 		]
 	},
 	{
-		"id": "3dcb4f2d-26a8-412b-b6e3-2a368beff66b",
-		"source": 1,
-		"name": "@cf/meta/llama-3.1-8b-instruct-awq",
-		"description": "Quantized (int4) generative text model with 8 billion parameters from Meta.\n",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2024-07-25 17:46:04.304",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "price",
-				"value": [
-					{
-						"unit": "per M input tokens",
-						"price": 0.123,
-						"currency": "USD"
-					},
-					{
-						"unit": "per M output tokens",
-						"price": 0.266,
-						"currency": "USD"
-					}
-				]
-			},
-			{
-				"property_id": "context_window",
-				"value": "8192"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			},
-			{
-				"property_id": "terms",
-				"value": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE"
-			}
-		]
-	},
-	{
-		"id": "3dca5889-db3e-4973-aa0c-3a4a6bd22d29",
-		"source": 1,
-		"name": "@cf/unum/uform-gen2-qwen-500m",
-		"description": "UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets.",
-		"task": {
-			"id": "882a91d1-c331-4eec-bdad-834c919942a8",
-			"name": "Image-to-Text",
-			"description": "Image to text models output a text from a given image. Image captioning or optical character recognition can be considered as the most common applications of image to text."
-		},
-		"created_at": "2024-02-27 18:28:52.485",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "info",
-				"value": "https://www.unum.cloud/"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			}
-		]
-	},
-	{
 		"id": "3ae8936e-593e-4fb2-85ee-95dd8a057588",
 		"source": 1,
 		"name": "@cf/black-forest-labs/flux-2-dev",
@@ -1961,52 +1586,6 @@
 			{
 				"property_id": "function_calling",
 				"value": "true"
-			}
-		]
-	},
-	{
-		"id": "31097538-a3ff-4e6e-bb56-ad0e1f428b61",
-		"source": 1,
-		"name": "@cf/meta/llama-3-8b-instruct-awq",
-		"description": "Quantized (int4) generative text model with 8 billion parameters from Meta.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2024-05-09 23:32:47.584",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "price",
-				"value": [
-					{
-						"unit": "per M input tokens",
-						"price": 0.123,
-						"currency": "USD"
-					},
-					{
-						"unit": "per M output tokens",
-						"price": 0.266,
-						"currency": "USD"
-					}
-				]
-			},
-			{
-				"property_id": "context_window",
-				"value": "8192"
-			},
-			{
-				"property_id": "info",
-				"value": "https://llama.meta.com"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			},
-			{
-				"property_id": "terms",
-				"value": "https://llama.meta.com/llama3/license/#"
 			}
 		]
 	},
@@ -2146,105 +1725,6 @@
 		]
 	},
 	{
-		"id": "1dc9e589-df6b-4e66-ac9f-ceff42d64983",
-		"source": 1,
-		"name": "@cf/defog/sqlcoder-7b-2",
-		"description": "This model is intended to be used by non-technical users to understand data inside their SQL databases. ",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2024-02-27 18:18:46.095",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "context_window",
-				"value": "10000"
-			},
-			{
-				"property_id": "info",
-				"value": "https://huggingface.co/defog/sqlcoder-7b-2"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			},
-			{
-				"property_id": "terms",
-				"value": "https://creativecommons.org/licenses/by-sa/4.0/deed.en"
-			}
-		]
-	},
-	{
-		"id": "1d933df3-680f-4280-940d-da87435edb07",
-		"source": 1,
-		"name": "@cf/microsoft/phi-2",
-		"description": "Phi-2 is a Transformer-based model with a next-word prediction objective, trained on 1.4T tokens from multiple passes on a mixture of Synthetic and Web datasets for NLP and coding.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2024-02-27 18:26:21.126",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "context_window",
-				"value": "2048"
-			},
-			{
-				"property_id": "info",
-				"value": "https://huggingface.co/microsoft/phi-2"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			}
-		]
-	},
-	{
-		"id": "19bd38eb-bcda-4e53-bec2-704b4689b43a",
-		"source": 1,
-		"name": "@cf/facebook/bart-large-cnn",
-		"description": "BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.",
-		"task": {
-			"id": "6f4e65d8-da0f-40d2-9aa4-db582a5a04fd",
-			"name": "Summarization",
-			"description": "Summarization is the task of producing a shorter version of a document while preserving its important information. Some models can extract text from the original input, while other models can generate entirely new text."
-		},
-		"created_at": "2024-02-27 18:28:11.833",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "price",
-				"value": [
-					{
-						"unit": "per M input tokens",
-						"price": 0,
-						"currency": "USD"
-					}
-				]
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			}
-		]
-	},
-	{
 		"id": "19547f04-7a6a-4f87-bf2c-f5e32fb12dc5",
 		"source": 1,
 		"name": "@cf/runwayml/stable-diffusion-v1-5-img2img",
@@ -2363,45 +1843,6 @@
 		]
 	},
 	{
-		"id": "0f002249-7d86-4698-aabf-8529ed86cefb",
-		"source": 2,
-		"name": "@hf/google/gemma-7b-it",
-		"description": "Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models. They are text-to-text, decoder-only large language models, available in English, with open weights, pre-trained variants, and instruction-tuned variants.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2024-04-01 23:51:35.866",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "beta",
-				"value": "true"
-			},
-			{
-				"property_id": "context_window",
-				"value": "8192"
-			},
-			{
-				"property_id": "info",
-				"value": "https://ai.google.dev/gemma/docs"
-			},
-			{
-				"property_id": "lora",
-				"value": "true"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
-			},
-			{
-				"property_id": "terms",
-				"value": "https://ai.google.dev/gemma/terms"
-			}
-		]
-	},
-	{
 		"id": "0e372c11-8720-46c9-a02d-666188a22dae",
 		"source": 1,
 		"name": "@cf/leonardo/lucid-origin",
@@ -2486,48 +1927,6 @@
 			{
 				"property_id": "vision",
 				"value": "true"
-			}
-		]
-	},
-	{
-		"id": "053d5ac0-861b-4d3b-8501-e58d00417ef8",
-		"source": 1,
-		"name": "@cf/google/gemma-3-12b-it",
-		"description": "Gemma 3 models are well-suited for a variety of text generation and image understanding tasks, including question answering, summarization, and reasoning. Gemma 3 models are multimodal, handling text and image input and generating text output, with a large, 128K context window, multilingual support in over 140 languages, and is available in more sizes than previous versions.",
-		"task": {
-			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
-			"name": "Text Generation",
-			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
-		},
-		"created_at": "2025-03-18 03:58:02.423",
-		"tags": [],
-		"properties": [
-			{
-				"property_id": "context_window",
-				"value": "80000"
-			},
-			{
-				"property_id": "price",
-				"value": [
-					{
-						"unit": "per M input tokens",
-						"price": 0.345,
-						"currency": "USD"
-					},
-					{
-						"unit": "per M output tokens",
-						"price": 0.556,
-						"currency": "USD"
-					}
-				]
-			},
-			{
-				"property_id": "lora",
-				"value": "true"
-			},
-			{
-				"property_id": "planned_deprecation_date",
-				"value": "2026-05-30"
 			}
 		]
 	},
