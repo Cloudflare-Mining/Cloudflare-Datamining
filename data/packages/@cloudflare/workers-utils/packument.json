@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/workers-utils",
 	"dist-tags": {
-		"latest": "0.21.1"
+		"latest": "0.22.0"
 	},
 	"versions": {
 		"0.0.2": {
@@ -1084,6 +1084,58 @@
 					}
 				},
 				"unpackedSize": 650880
+			}
+		},
+		"0.22.0": {
+			"name": "@cloudflare/workers-utils",
+			"version": "0.22.0",
+			"dependencies": {
+				"undici": "7.24.8"
+			},
+			"devDependencies": {
+				"@types/command-exists": "^1.2.0",
+				"@types/node": "^22.10.1",
+				"@types/signal-exit": "^3.0.1",
+				"@vitest/ui": "4.1.0",
+				"cloudflare": "^5.2.0",
+				"command-exists": "^1.2.9",
+				"concurrently": "^8.2.2",
+				"empathic": "^2.0.0",
+				"jsonc-parser": "^3.2.0",
+				"signal-exit": "^3.0.7",
+				"smol-toml": "^1.5.2",
+				"ts-dedent": "^2.2.0",
+				"tsdown": "^0.15.9",
+				"tsup": "8.3.0",
+				"typescript": "~5.8.3",
+				"update-check": "^1.5.4",
+				"vitest": "4.1.0",
+				"xdg-app-paths": "^8.3.0",
+				"@cloudflare/workers-shared": "0.19.6",
+				"@cloudflare/workflows-shared": "0.11.1",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"peerDependencies": {
+				"vitest": "^4.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-mREN2vSnvToyBSTsL9XvnpwrnukM12VLicqAO61K1YcPdgQU+n89oY9/68s/E/reaho2h4uxt0eN5t1eOA7xTA==",
+				"shasum": "3d105c5369fa9b3f256c0d1321a86be01b04c46b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-utils/-/workers-utils-0.22.0.tgz",
+				"fileCount": 17,
+				"unpackedSize": 716717,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-utils@0.22.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIBlMa1VVZD3iSgKWD6242TWc+536R43kspSDMPqQA1MLAiBkqxvE5gsnRlmQKIjp7TccheOxDK+0KdnRNzlrx6HDMw=="
+					}
+				]
 			}
 		}
 	}
