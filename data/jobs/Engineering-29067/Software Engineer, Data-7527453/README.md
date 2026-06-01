@@ -7,13 +7,13 @@
 </div>
 <p><strong>Available Locations: Austin</strong></p>
 <h2>About the Team</h2>
-<p>The Core Data team’s mission is building a centralized data platform for Cloudflare that provides&nbsp; secure, democratized access to data for internal customers throughout the company. We operate infrastructure and craft tools to empower both technical and non-technical users to answer their most important questions. We facilitate access to data from federated sources across the company for dashboarding, ad-hoc querying and in-product use cases. We power data pipelines and data products, secure and monitor data, and drive data governance at Cloudflare. Our work enables every individual at the company to act with greater information and make more informed decisions.&nbsp;</p>
+<p>The Town Lake team's mission is building a centralized data platform for Cloudflare that provides secure, democratized access to data for internal customers throughout the company. We operate infrastructure and craft tools to empower both technical and non-technical users to answer their most important questions. We are now evolving our platform to go beyond raw data access, integrating semantic intelligence and knowledge graphs to power the next generation of AI-driven decision-making. You can learn more about our platform at <a href="https://blog.cloudflare.com/our-unified-data-platform/">Cloudflare’s blog</a>.</p>
 <h2>About the Role</h2>
-<p>We are looking for a systems engineer with a strong background in data to help us expand and maintain our data infrastructure. You’ll contribute to the technical implementation of our scaling data platform, manage access while accounting for privacy and security, build data pipelines, and develop tools to automate accessibility and usefulness of data. You’ll collaborate with teams including Product Growth, Marketing, and Billing to help them make informed decisions and power usage-based invoicing platforms, as well as work with product teams to bring new data-driven solutions to Cloudflare customers.</p>
+<p>We are looking for a software engineer with a strong background in data to help us expand and maintain our data infrastructure. You’ll contribute to the technical implementation of our scaling unified data platform, manage access while accounting for privacy and security, build data pipelines, and develop tools to automate accessibility and usefulness of data. You’ll collaborate with teams including Trust and Safety, Fintech and product teams across the company to help them make informed decisions and bring new data-driven solutions to Cloudflare customers.</p>
 <h2>What You’ll Do</h2>
 <ul>
-	<li>Contribute to the design and execution of technical architecture for highly visible data infrastructure at the company.</li>
-	<li>Design and develop tools and infrastructure to improve and scale our data systems at Cloudflare.</li>
+	<li>Contribute to the design and execution of technical architecture for highly visible data infrastructure.</li>
+	<li>Design and develop tools and infrastructure to improve and scale Cloudflare’s data systems.</li>
 	<li>Build and maintain data pipelines and data products to serve customers throughout the company, including tools to automate delivery of those services.</li>
 	<li>Gain deep knowledge of our data platforms and tools to guide and enable stakeholders with their data needs.</li>
 	<li>Work across our tech stack, which includes Kubernetes, Trino, Iceberg, Clickhouse, and PostgreSQL, with software built using Go, Javascript/Typescript, Python, and others.</li>
@@ -23,20 +23,19 @@
 <ul>
 	<li>3-5+ years of experience as a software engineer with a focus on building and maintaining data infrastructure.</li>
 	<li>Experience participating in technical initiatives in a cross-functional context, working with stakeholders to deliver value.</li>
-	<li>Practical experience with data infrastructure components, such as Trino, Spark, Iceberg/Delta Lake, Kafka, Clickhouse, or PostgreSQL.</li>
-	<li>Hands-on experience building and debugging data pipelines.</li>
 	<li>Proficient using backend languages like Go, Python, or Typescript, along with strong SQL skills.</li>
+	<li>Hands-on experience building and debugging data pipelines.</li>
 	<li>Strong analytical skills, with a focus on understanding how data is used to drive business value.</li>
 	<li>Solid communication skills, with the ability to explain technical concepts to both technical and non-technical audiences.</li>
 </ul>
 <h2>Desirable Skills</h2>
 <ul>
+	<li>Practical experience with data infrastructure components, such as Trino, Spark, Iceberg/Delta Lake, Kafka, Clickhouse, or PostgreSQL.</li>
 	<li>Experience with data orchestration and infrastructure platforms like Airflow and DBT.</li>
 	<li>Experience deploying and managing services in Kubernetes.</li>
 	<li>Familiarity with data governance processes, privacy requirements, or auditability.</li>
 	<li>Interest in or knowledge of machine learning models and MLOps.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
