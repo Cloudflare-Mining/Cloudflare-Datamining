@@ -1872,6 +1872,15 @@
 		"category": "developer_platform"
 	},
 	{
+		"id": "8fdee1402d214c6383671bc8367e3bff",
+		"name": "Images Metadata Read",
+		"description": "Grants read access to Images metadata and configuration without access to image content",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "media"
+	},
+	{
 		"id": "0cf6473ad41449e7b7b743d14fc20c60",
 		"name": "Images Read",
 		"description": "Grants read access to Images",
@@ -2901,6 +2910,15 @@
 		"id": "bdbcd690c763475a985e8641dddc09f7",
 		"name": "Workers Containers Write",
 		"description": "Grants write access to Workers Containers",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "developer_platform"
+	},
+	{
+		"id": "96800ebd1a004f5b92266eed9e3dcf13",
+		"name": "Workers KV Storage Metadata Read",
+		"description": "Grants read access to Workers KV configuration and analytics",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],

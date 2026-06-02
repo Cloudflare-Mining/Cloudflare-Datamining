@@ -303,6 +303,10 @@
 		"name": "Workers Platform (Read-only)",
 		"description": "Can read all resources in the Workers Platform.",
 		"permissions": {
+			"image": {
+				"read": true,
+				"edit": false
+			},
 			"worker": {
 				"read": true,
 				"edit": false
@@ -1432,13 +1436,13 @@
 		"name": "Cloudflare Images",
 		"description": "Can edit Cloudflare Images assets",
 		"permissions": {
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
 			"image": {
 				"read": true,
 				"edit": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
 			},
 			"zone": {
 				"read": true,
@@ -1702,6 +1706,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"image": {
+				"read": true,
+				"edit": true
+			},
 			"worker": {
 				"read": true,
 				"edit": true
@@ -1911,10 +1919,6 @@
 			"domain": {
 				"read": true,
 				"edit": false
-			},
-			"image": {
-				"read": true,
-				"edit": true
 			},
 			"page_shield": {
 				"read": true,
@@ -2416,6 +2420,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"image": {
+				"read": true,
+				"edit": false
+			},
 			"worker": {
 				"read": true,
 				"edit": false
@@ -2612,10 +2620,6 @@
 				"read": true,
 				"edit": false
 			},
-			"image": {
-				"read": true,
-				"edit": false
-			},
 			"zone": {
 				"read": true,
 				"edit": false
@@ -2639,6 +2643,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account and edit subscriptions. Cannot manage memberships nor billing profile.",
 		"permissions": {
+			"image": {
+				"read": true,
+				"edit": true
+			},
 			"worker": {
 				"read": true,
 				"edit": true
@@ -2847,10 +2855,6 @@
 			"domain": {
 				"read": true,
 				"edit": false
-			},
-			"image": {
-				"read": true,
-				"edit": true
 			},
 			"zone": {
 				"read": true,
