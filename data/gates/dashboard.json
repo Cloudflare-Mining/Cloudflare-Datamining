@@ -1501,6 +1501,9 @@
 	"kumo-advanced-protection": {
 		"enabled": false
 	},
+	"kumo-appsec-security-reports": {
+		"enabled": false
+	},
 	"kumo-authentication": {
 		"enabled": true
 	},
@@ -1696,7 +1699,7 @@
 		"enabled": true
 	},
 	"magicwan-stratus-migration": {
-		"enabled": false
+		"enabled": true
 	},
 	"mapbox-removal": {
 		"enabled": true
@@ -2651,7 +2654,7 @@
 		"enabled": true
 	},
 	"threat-events-appsec-integration-analytics": {
-		"enabled": false
+		"enabled": true
 	},
 	"threat-events-industry-graph": {
 		"enabled": true
@@ -2797,6 +2800,9 @@
 	},
 	"two-factor-login-interstitial": {
 		"enabled": true
+	},
+	"uc-consolidate-submit": {
+		"enabled": false
 	},
 	"unified-appsec-default": {
 		"enabled": false
