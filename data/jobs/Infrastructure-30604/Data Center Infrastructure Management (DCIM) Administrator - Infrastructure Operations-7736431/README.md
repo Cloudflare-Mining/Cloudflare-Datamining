@@ -5,38 +5,61 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Washington, D.C. or London, UK</strong></p>
-<p><strong>About this job</strong></p>
-<p>As the world’s first connectivity cloud, Cloudflare helps connect and protect millions of customers globally. Everyone from individuals to the world’s largest enterprises use our unified platform of networking, security, and developer services to succeed everywhere in the world. This can sometimes make Cloudflare a target for litigation and regulation. We’re looking for a Litigation Counsel to join our team responsible for managing litigation matters around the world.&nbsp;</p>
-<p>The ideal candidate is comfortable confronting novel legal issues in a fast paced environment, while never losing sight of Cloudflare’s core principles. As Litigation Counsel, you’ll work with our internal legal team, external counsel, and stakeholders across the company to handle ongoing lawsuits, respond to litigation threats, and assist in broader legal strategy. You’ll help Cloudflare navigate a diverse set of legal issues around the globe including intellectual property, contracts and other business disputes, regulatory issues, and labor and employment matters. Cloudflare faces complex legal issues as a result of its role as an Internet infrastructure provider, including litigation and regulation relating to customer content on our network (i.e., “intermediary liability”). These cases require a strong interest in navigating challenging technical and legal issues in order to advance Cloudflare’s mission to help build a better Internet. The ideal candidate has the passion to keep pace with a fast moving docket, the curiosity to dive deep into evolving technology and Internet law, and the initiative to help scale our litigation function alongside a fast growing company.&nbsp;</p>
-<p><strong>In this role, you will:</strong></p>
+<p><strong>Available Locations:&nbsp;&nbsp;</strong></p>
+<p>Atlanta (US), Austin (US), Denver (US), Seattle (US), Toronto (Canada)</p>
+<p><strong>About the Role:</strong></p>
+<p>We are seeking a DCIM Administrator to build and run our Data Center Infrastructure Management program.&nbsp; This technical role is part of the Infrastructure Operations organization, which is responsible for building, scaling, and running one of the world's largest and most important cloud networks. Cloudflare’s global network spans more than 330 cities, and is a key strategic asset that supports all of our customers and products.</p>
+<p>You are the operational backbone and workflow gatekeeper for all physical changes across our global network. Your meticulous work ensures every Move, Add, and Change (MAC) is executed only through a validated Nlyte work order, driving the highest level of data accuracy essential for supporting our edge and core security and performance services.</p>
+<p>We operate in a fast-paced environment where you will be expected to drive both project delivery and operational excellence through continuous improvement, standardization, and optimization. This isn't just about day to day operations; it's about building a scalable, performant, secure, and resilient infrastructure that plays a critical role in us building a better Internet.</p>
+<p><strong>Who you are:</strong></p>
+<p>You are a DCIM expert, highly organized and efficient operator. &nbsp; You have a track record of driving operational excellence through establishing and enforcing standard operating procedures and continuous improvement efforts. You are passionate about asset management and obsessed over data accuracy.&nbsp; This role is for hands-on asset and infrastructure administrators who can rapidly learn, adapt, and apply learnings to enable fast and sustainable growth. You thrive in a hyper-growth environment and have an outstanding ability to get things done under pressure while maintaining optimism and grit.</p>
+<p>You are Transparent; you ensure every physical action is accurately logged and instantly visible to stakeholders globally.&nbsp; You are Principled; you have an uncompromising commitment to data integrity and refuse to bypass established workflows.</p>
+<p><strong>Key Responsibilities:</strong></p>
 <ul>
-	<li>Work with our existing litigation team to help formulate and implement litigation strategies;</li>
-	<li>Evaluate and respond to litigation threats and legal matters in various jurisdictions around the world;</li>
-	<li>Help select, onboard, and manage outside counsel on all aspects of litigation (including factual development, briefing, hearings, trials, appeals, etc.)</li>
-	<li>Work cross-functionally to further develop Cloudflare’s approach to intermediary liability, AI, and other emerging legal and technology issues globally;</li>
-	<li>Assist in responding to and working with government regulators and private organizations on issues relating to Cloudflare’s products and services;</li>
-	<li>Communicate with business leaders across the company about ongoing litigation and litigation threats, and provide training and resources to address future legal risks.</li>
+	<li>Assist with the successful deployment of CAPEX investments, ensuring our infrastructure scales ahead of demand.</li>
+	<li>Collaborate with cross-functional partners including Project Managers, Capacity Planning, Finance, and Security to deliver on ambitious group initiatives.</li>
+	<li>Manage key third-party vendors and contractors, holding them accountable for performance and service level agreements (SLAs).</li>
+	<li>Be a role model and champion for continuous improvement, standardization, optimization, and automation.</li>
+	<li>Workflow Execution: Administer and manage the Nlyte Workflow/Work Order processes, including; issuing, tracking, and closing all physical MAC tickets.&nbsp;</li>
+	<li>Enforce strict adherence to the defined process by global technicians.&nbsp;</li>
+	<li>Data Integrity Champion: Perform daily data entry, manage automated asset discovery tools, and reconcile physical inventory against Nlyte records to guarantee 99.5%+ accuracy.&nbsp;</li>
+	<li>Asset Lifecycle Management (ALM): Own the entire asset data chain from receiving (scanning/logging) through deployment and decommissioning.&nbsp;</li>
+	<li>Model Library Management: Maintain the Nlyte Materials Catalog, ensuring all new hardware models have precise, validated resource profiles (power, cooling, rack elevations) to enable Analyst validation.&nbsp;</li>
+	<li>Field Training &amp; Support: Provide hands-on training and support for global technicians on using the Nlyte mobile app, scanning tools, and required workflow procedures.</li>
 </ul>
-<p><strong>You have:</strong></p>
+<p><strong>Qualifications:</strong></p>
 <ul>
-	<li>Been admitted to practice law in the US or the UK;</li>
-	<li>4+ years PQE either in a law firm or in-house (preferably with technology companies);</li>
-	<li>Experience litigating cases in one or more jurisdictions;&nbsp;</li>
-	<li>Strong communication skills and cooperative team player;</li>
-	<li>Ability to lead with empathy and understanding while embracing diverse points of view;</li>
-	<li>Flexibility to adapt and thrive in a fast paced environment;</li>
-	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish principled, thoughtful, and effective solutions efficiently and in an amenable manner;</li>
-	<li>Ability to organize, prioritize, and manage many tasks on complex projects;</li>
-	<li>An ambitious mindset that enables you to successfully work independently and autonomously with limited guidance, but also to use good judgment and call out issues when needed.</li>
+	<li>Education:</li>
+	<ul>
+		<li>Bachelor's degree in Information Technology, Logistics, Manufacturing, Business Administration, or a related field, or equivalent practical experience.&nbsp;&nbsp;</li>
+	</ul>
+	<li>Experience:</li>
+	<ul>
+		<li>4+ years of hands-on experience in IT Asset Management or DCIM administration (Nlyte experience is a strong advantage).</li>
+		<li>Direct experience administering a workflow or change management system, with a focus on discipline and process enforcement in a multi-site environment.</li>
+		<li>Experience with change management in ERP and asset management transformation efforts.</li>
+		<li>Experience operating in a high-velocity environment involving geographic dispersed Data Centers across various time zones.</li>
+	</ul>
+	<li>Technical Competencies:</li>
+	<ul>
+		<li>High proficiency in physical inventory control, including barcode/RFID systems.</li>
+		<li>Deep familiarity with data center infrastructure, including server hardware, network hardware, rack elevation/density, and power distribution&nbsp;</li>
+		<li>Knowledge of structured cabling, and cabling standards.</li>
+		<li>Advanced proficiency in Excel (VLOOKUP, Pivot Tables) or basic SQL.</li>
+		<li>Expert in workflow Management (MAC Process): Proven experience managing a high-volume Move, Add, Change queue.</li>
+	</ul>
 </ul>
-<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
-<p>● For Washington, D.C. based hires: Estimated annual salary of $150,000 - $207,000.</p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
-<p><strong>Health &amp; Welfare Benefits</strong><br>● Medical/Rx Insurance<br>● Dental Insurance<br>● Vision Insurance<br>● Flexible Spending Accounts<br>● Commuter Spending Accounts<br>● Fertility &amp; Family Forming Benefits<br>● On-demand mental health support and Employee Assistance Program<br>● Global Travel Medical Insurance</p>
-<p><strong>Financial Benefits</strong><br>● Short and Long Term Disability Insurance<br>● Life &amp; Accident Insurance<br>● 401(k) Retirement Savings Plan<br>● Employee Stock Participation Plan</p>
-<p><strong>Time Off</strong><br>● Flexible paid time off covering vacation and sick leave<br>● Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
+<ul>
+	<li>Soft Skills:</li>
+	<ul>
+		<li>Exceptional attention to detail and strong organizational skills.&nbsp;&nbsp;</li>
+		<li>Excellent problem-solving and root cause analysis capabilities.&nbsp;&nbsp;</li>
+		<li>Meticulous Attention to Detail: A "Zero-Defect" mindset regarding data entry.</li>
+		<li>Strong verbal and written communication skills.</li>
+		<li>Documentation &amp; SOP Creation: Experience writing Standard Operating Procedures (SOPs) for remote hands technicians.</li>
+		<li>Remote Training Ability: Experience training or guiding remote teams.</li>
+	</ul>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
