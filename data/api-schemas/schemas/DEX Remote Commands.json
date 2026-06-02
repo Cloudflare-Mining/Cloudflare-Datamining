@@ -76,6 +76,11 @@
 				"in": "query",
 				"name": "command_type",
 				"schema": {
+					"enum": [
+						"pcap",
+						"speed-test",
+						"warp-diag"
+					],
 					"type": "string"
 				}
 			},
@@ -1371,59 +1376,71 @@
 								"description": "List of device-level commands to execute",
 								"items": {
 									"properties": {
-										"command_args": {
-											"additionalProperties": false,
-											"properties": {
-												"interfaces": {
-													"description": "List of interfaces to capture packets on",
-													"items": {
-														"enum": [
-															"default",
-															"tunnel"
-														],
-														"type": "string",
-														"x-auditable": true
+										"args": {
+											"description": "Command arguments. Allowed fields depend on `type`.",
+											"oneOf": [
+												{
+													"additionalProperties": false,
+													"properties": {
+														"test-all-routes": {
+															"default": true,
+															"description": "Test an IP address from all included or excluded ranges. Essentially the same as running 'route get <ip>' and collecting the results. This option may increase the time taken to collect the warp-diag.",
+															"type": "boolean",
+															"x-auditable": true
+														}
 													},
-													"type": "array"
+													"title": "warp-diag args",
+													"type": "object"
 												},
-												"max-file-size-mb": {
-													"default": 5,
-													"description": "Maximum file size (in MB) for the capture file. Specifies the maximum file size of the warp-diag zip artifact that can be uploaded. If the zip artifact exceeds the specified max file size, it will NOT be uploaded",
-													"minimum": 1,
-													"type": "number",
-													"x-auditable": true
+												{
+													"additionalProperties": false,
+													"properties": {
+														"max-file-size-mb": {
+															"default": 5,
+															"description": "Maximum file size (in MB) for the capture file. If the capture artifact exceeds the specified max file size, it will NOT be uploaded.",
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"packet-size-bytes": {
+															"default": 160,
+															"description": "Maximum number of bytes to save for each packet",
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														},
+														"time-limit-min": {
+															"default": 5,
+															"description": "Limit on capture duration (in minutes)",
+															"minimum": 1,
+															"type": "number",
+															"x-auditable": true
+														}
+													},
+													"title": "pcap args",
+													"type": "object"
 												},
-												"packet-size-bytes": {
-													"default": 160,
-													"description": "Maximum number of bytes to save for each packet",
-													"minimum": 1,
-													"type": "number",
-													"x-auditable": true
-												},
-												"test-all-routes": {
-													"default": true,
-													"description": "Test an IP address from all included or excluded ranges. Tests an IP address from all included or excluded ranges. Essentially the same as running 'route get <ip>'' and collecting the results. This option may increase the time taken to collect the warp-diag",
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"time-limit-min": {
-													"default": 5,
-													"description": "Limit on capture duration (in minutes)",
-													"minimum": 1,
-													"type": "number",
-													"x-auditable": true
+												{
+													"additionalProperties": false,
+													"properties": {
+														"interfaces": {
+															"description": "List of interfaces to run the speed test on",
+															"items": {
+																"enum": [
+																	"default",
+																	"tunnel"
+																],
+																"type": "string",
+																"x-auditable": true
+															},
+															"type": "array"
+														}
+													},
+													"title": "speed-test args",
+													"type": "object"
 												}
-											},
-											"type": "object"
-										},
-										"command_type": {
-											"description": "Type of command to execute on the device",
-											"enum": [
-												"pcap",
-												"warp-diag"
 											],
-											"type": "string",
-											"x-auditable": true
+											"type": "object"
 										},
 										"device_id": {
 											"description": "Unique identifier for the physical device",
@@ -1433,6 +1450,16 @@
 											"description": "Unique identifier for the device registration. Required for multi-user devices to target the correct user session.",
 											"type": "string"
 										},
+										"type": {
+											"description": "Type of command to execute on the device",
+											"enum": [
+												"pcap",
+												"speed-test",
+												"warp-diag"
+											],
+											"type": "string",
+											"x-auditable": true
+										},
 										"user_email": {
 											"description": "Email tied to the device",
 											"type": "string"
@@ -1441,7 +1468,7 @@
 									"required": [
 										"device_id",
 										"user_email",
-										"command_type"
+										"type"
 									],
 									"type": "object"
 								},
@@ -1625,7 +1652,7 @@
 																"type": "string"
 															},
 															"type": {
-																"description": "Type of the command (e.g., \"pcap\" or \"warp-diag\")",
+																"description": "Type of the command (e.g., \"pcap\", \"speed-test\", or \"warp-diag\")",
 																"type": "string"
 															}
 														},

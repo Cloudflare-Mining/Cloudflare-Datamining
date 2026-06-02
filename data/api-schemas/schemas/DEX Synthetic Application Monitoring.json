@@ -1089,6 +1089,480 @@
 			"Zero Trust Read"
 		]
 	},
+	"GET /accounts/{account_id}/dex/devices/{device_id}/isps": {
+		"description": "List ISP information observed for a specific device during traceroute tests.",
+		"operationId": "dex-endpoints-list-device-isps",
+		"parameters": [
+			{
+				"description": "unique identifier linked to an account in the API request path",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "01a7362d577a6c3019a474fd6f485823",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Device tag ID",
+				"in": "path",
+				"name": "device_id",
+				"required": true,
+				"schema": {
+					"description": "API Resource UUID tag.",
+					"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+					"maxLength": 36,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Page number of paginated results. Mutually exclusive with cursor.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of items per page",
+				"in": "query",
+				"name": "per_page",
+				"required": true,
+				"schema": {
+					"maximum": 50,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Cursor for cursor-based pagination. Mutually exclusive with page.",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The field to sort results by",
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"default": "time_start",
+					"enum": [
+						"time_start"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "The order to sort results",
+				"in": "query",
+				"name": "sort_order",
+				"schema": {
+					"default": "DESC",
+					"enum": [
+						"ASC",
+						"DESC"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start time for the query in ISO 8601 format",
+				"in": "query",
+				"name": "from",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time for the query in ISO 8601 format",
+				"in": "query",
+				"name": "to",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"isps": {
+													"items": {
+														"properties": {
+															"ip": {
+																"description": "IP address information for the ISP hop. Fields marked as PII-gated (`name`, `address`, `netmask`, and all `location` sub-fields) will be returned as the literal string `\"REDACTED\"` for callers that do not have the PII permission. `asn`, `aso`, and `version` are always returned regardless of PII access.\n",
+																"properties": {
+																	"address": {
+																		"description": "IP address. Returned as `\"REDACTED\"` without PII permission.",
+																		"example": "203.0.113.1",
+																		"type": "string"
+																	},
+																	"asn": {
+																		"description": "Autonomous System Number",
+																		"example": 13335,
+																		"type": "integer"
+																	},
+																	"aso": {
+																		"description": "Autonomous System Organization name",
+																		"example": "CLOUDFLARENET",
+																		"type": "string"
+																	},
+																	"location": {
+																		"description": "Geographic location information. All fields are returned as the literal string `\"REDACTED\"` for callers that do not have the PII permission.\n",
+																		"properties": {
+																			"city": {
+																				"description": "City name. Returned as `\"REDACTED\"` without PII permission.",
+																				"example": "San Francisco",
+																				"type": "string"
+																			},
+																			"country_iso": {
+																				"description": "Country ISO code. Returned as `\"REDACTED\"` without PII permission.",
+																				"example": "US",
+																				"type": "string"
+																			},
+																			"state_iso": {
+																				"description": "State/province ISO code. Returned as `\"REDACTED\"` without PII permission.",
+																				"example": "CA",
+																				"type": "string"
+																			},
+																			"zip": {
+																				"description": "ZIP/postal code. Returned as `\"REDACTED\"` without PII permission.",
+																				"example": "94107",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"name": {
+																		"description": "Named IP address (reverse DNS hostname when available). Returned as `\"REDACTED\"` without PII permission.",
+																		"example": "isp-gateway.example.com",
+																		"type": "string"
+																	},
+																	"netmask": {
+																		"description": "Network mask. Returned as `\"REDACTED\"` without PII permission.",
+																		"example": "255.255.255.0",
+																		"type": "string"
+																	},
+																	"version": {
+																		"description": "IP version (`1` for IPv4, `2` for IPv6, `0` if unknown)",
+																		"example": 1,
+																		"type": "integer"
+																	}
+																},
+																"type": "object"
+															},
+															"test_id": {
+																"description": "The test that generated this result",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"type": "string"
+															},
+															"test_result_id": {
+																"description": "The specific test result",
+																"example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+																"type": "string"
+															},
+															"time_start": {
+																"description": "Timestamp of when the ISP was observed",
+																"example": "2024-06-01T12:00:00Z",
+																"format": "date-time",
+																"type": "string"
+															}
+														},
+														"required": [
+															"time_start",
+															"test_id",
+															"test_result_id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"isps"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List of ISPs observed for the device"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List device ISPs failure response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "List device ISPs",
+		"tags": [
+			"DEX Synthetic Application Monitoring"
+		],
+		"x-api-token-group": [
+			"Cloudflare DEX Write",
+			"Cloudflare DEX Read",
+			"Zero Trust Report",
+			"Zero Trust Read"
+		]
+	},
 	"GET /accounts/{account_id}/dex/fleet-status/devices": {
 		"description": "List details for devices using WARP",
 		"operationId": "dex-fleet-status-devices",

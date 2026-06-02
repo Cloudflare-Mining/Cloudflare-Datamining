@@ -2890,6 +2890,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -2901,6 +2902,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -2916,6 +2918,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -3487,6 +3490,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -3498,6 +3502,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -3513,6 +3518,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -4393,6 +4399,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -4404,6 +4411,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -4419,6 +4427,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -5872,6 +5881,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -5883,6 +5893,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -5898,6 +5909,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -6530,6 +6542,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -6541,6 +6554,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -6556,6 +6570,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -7493,6 +7508,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -7504,6 +7520,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -7519,6 +7536,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -8098,6 +8116,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -8109,6 +8128,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -8124,6 +8144,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -9003,6 +9024,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -9014,6 +9036,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -9029,6 +9052,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -9600,6 +9624,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -9611,6 +9636,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -9626,6 +9652,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -10494,6 +10521,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -10505,6 +10533,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -10520,6 +10549,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -11244,6 +11274,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -11255,6 +11286,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -11270,6 +11302,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -12264,6 +12297,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -12275,6 +12309,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -12290,6 +12325,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -12877,6 +12913,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -12888,6 +12925,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -12903,6 +12941,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -13858,6 +13897,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -13869,6 +13909,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -13884,6 +13925,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -14553,6 +14595,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -14564,6 +14607,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -14579,6 +14623,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -15546,6 +15591,10 @@
 					"examples": {
 						"example1": {
 							"value": {
+								"formats": [
+									"content",
+									"screenshot"
+								],
 								"url": "https://www.example.com/"
 							}
 						}
@@ -15565,6 +15614,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -15576,6 +15626,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -15591,6 +15642,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -15859,6 +15911,22 @@
 											},
 											"emulateMediaType": {
 												"type": "string"
+											},
+											"formats": {
+												"default": [
+													"content",
+													"screenshot"
+												],
+												"items": {
+													"enum": [
+														"content",
+														"screenshot",
+														"markdown",
+														"accessibilityTree"
+													],
+													"type": "string"
+												},
+												"type": "array"
 											},
 											"gotoOptions": {
 												"default": {},
@@ -16236,6 +16304,7 @@
 											"addScriptTag": {
 												"description": "Adds a `<script>` tag into the page with the desired URL or content.",
 												"items": {
+													"additionalProperties": false,
 													"properties": {
 														"content": {
 															"type": "string"
@@ -16247,6 +16316,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -16262,6 +16332,7 @@
 															"type": "string"
 														},
 														"url": {
+															"format": "uri",
 															"type": "string"
 														}
 													},
@@ -16530,6 +16601,22 @@
 											},
 											"emulateMediaType": {
 												"type": "string"
+											},
+											"formats": {
+												"default": [
+													"content",
+													"screenshot"
+												],
+												"items": {
+													"enum": [
+														"content",
+														"screenshot",
+														"markdown",
+														"accessibilityTree"
+													],
+													"type": "string"
+												},
+												"type": "array"
 											},
 											"gotoOptions": {
 												"default": {},
@@ -16943,8 +17030,127 @@
 								},
 								"result": {
 									"properties": {
+										"accessibilityTree": {
+											"description": "Accessibility tree node",
+											"properties": {
+												"autocomplete": {
+													"type": "string"
+												},
+												"checked": {
+													"oneOf": [
+														{
+															"type": "boolean"
+														},
+														{
+															"enum": [
+																"mixed"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"children": {
+													"items": "[Circular ~.POST /accounts/{account_id}/browser-rendering/snapshot.responses.200.content.application/json.schema.properties.result.properties.accessibilityTree]",
+													"type": "array"
+												},
+												"description": {
+													"type": "string"
+												},
+												"disabled": {
+													"type": "boolean"
+												},
+												"expanded": {
+													"type": "boolean"
+												},
+												"focused": {
+													"type": "boolean"
+												},
+												"haspopup": {
+													"type": "string"
+												},
+												"invalid": {
+													"type": "string"
+												},
+												"keyshortcuts": {
+													"type": "string"
+												},
+												"level": {
+													"type": "number"
+												},
+												"modal": {
+													"type": "boolean"
+												},
+												"multiline": {
+													"type": "boolean"
+												},
+												"multiselectable": {
+													"type": "boolean"
+												},
+												"name": {
+													"type": "string"
+												},
+												"orientation": {
+													"type": "string"
+												},
+												"pressed": {
+													"oneOf": [
+														{
+															"type": "boolean"
+														},
+														{
+															"enum": [
+																"mixed"
+															],
+															"type": "string"
+														}
+													]
+												},
+												"readonly": {
+													"type": "boolean"
+												},
+												"required": {
+													"type": "boolean"
+												},
+												"role": {
+													"type": "string"
+												},
+												"roledescription": {
+													"type": "string"
+												},
+												"selected": {
+													"type": "boolean"
+												},
+												"value": {
+													"oneOf": [
+														{
+															"type": "string"
+														},
+														{
+															"type": "number"
+														}
+													]
+												},
+												"valuemax": {
+													"type": "number"
+												},
+												"valuemin": {
+													"type": "number"
+												},
+												"valuetext": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"role"
+											],
+											"type": "object"
+										},
 										"content": {
 											"description": "HTML content.",
+											"type": "string"
+										},
+										"markdown": {
+											"description": "Markdown content.",
 											"type": "string"
 										},
 										"screenshot": {
@@ -16952,10 +17158,6 @@
 											"type": "string"
 										}
 									},
-									"required": [
-										"screenshot",
-										"content"
-									],
 									"type": "object"
 								},
 								"success": {
@@ -16971,7 +17173,7 @@
 						}
 					}
 				},
-				"description": "Returns the screenshot."
+				"description": "Returns the requested formats information."
 			},
 			"400": {
 				"content": {

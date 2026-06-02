@@ -1,0 +1,1426 @@
+{
+	"DELETE /accounts/{account_id}/access/idp_federation_grants/{grant_id}": {
+		"description": "Deletes an IdP federation grant. The identity provider remains in the account,\nbut it is no longer available for federation to other accounts.\n",
+		"operationId": "access-idp-federation-grants-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "UID of the IdP federation grant.",
+				"in": "path",
+				"name": "grant_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"202": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"description": "UID of the deleted IdP federation grant."
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete IdP federation grant response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "IdP federation grant does not exist"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete IdP federation grant response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete an IdP federation grant",
+		"tags": [
+			"Access IdP federation grants"
+		]
+	},
+	"GET /accounts/{account_id}/access/idp_federation_grants": {
+		"description": "Lists the IdP federation grants owned by the account.",
+		"operationId": "access-idp-federation-grants-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_at": {
+														"description": "When the grant was created.",
+														"example": "2026-05-07T19:11:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"id": {
+														"allOf": [
+															{
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string",
+																"x-auditable": true
+															}
+														],
+														"description": "UID of the IdP federation grant.",
+														"readOnly": true
+													},
+													"idp_id": {
+														"description": "UID of the identity provider being federated.",
+														"example": "a79de439-0e7f-4ebb-8a02-222222222222",
+														"format": "uuid",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"idp_id",
+													"created_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List IdP federation grants response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List IdP federation grants response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List IdP federation grants",
+		"tags": [
+			"Access IdP federation grants"
+		]
+	},
+	"GET /accounts/{account_id}/access/idp_federation_grants/{grant_id}": {
+		"description": "Retrieves a single IdP federation grant by its UID.",
+		"operationId": "access-idp-federation-grants-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "UID of the IdP federation grant.",
+				"in": "path",
+				"name": "grant_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"description": "When the grant was created.",
+													"example": "2026-05-07T19:11:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"description": "UID of the IdP federation grant.",
+													"readOnly": true
+												},
+												"idp_id": {
+													"description": "UID of the identity provider being federated.",
+													"example": "a79de439-0e7f-4ebb-8a02-222222222222",
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"idp_id",
+												"created_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get IdP federation grant response"
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "IdP federation grant does not exist"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get IdP federation grant response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get an IdP federation grant",
+		"tags": [
+			"Access IdP federation grants"
+		]
+	},
+	"POST /accounts/{account_id}/access/idp_federation_grants": {
+		"description": "Creates an IdP federation grant for the specified identity provider, making it\navailable for federation to other accounts in the same Cloudflare organization.\n\nThe account must belong to a Cloudflare organization. One-time pin and\nCloudflare-managed identity providers cannot be federated. An identity\nprovider may only have one active grant at a time.\n",
+		"operationId": "access-idp-federation-grants-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"idp_id": {
+								"description": "UID of the identity provider to federate. Must be an existing identity provider in this account. One-time pin and Cloudflare-managed identity providers cannot be federated.",
+								"example": "a79de439-0e7f-4ebb-8a02-222222222222",
+								"format": "uuid",
+								"type": "string"
+							}
+						},
+						"required": [
+							"idp_id"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_at": {
+													"description": "When the grant was created.",
+													"example": "2026-05-07T19:11:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier.",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"description": "UID of the IdP federation grant.",
+													"readOnly": true
+												},
+												"idp_id": {
+													"description": "UID of the identity provider being federated.",
+													"example": "a79de439-0e7f-4ebb-8a02-222222222222",
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id",
+												"idp_id",
+												"created_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create IdP federation grant response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create IdP federation grant response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create an IdP federation grant",
+		"tags": [
+			"Access IdP federation grants"
+		]
+	}
+}

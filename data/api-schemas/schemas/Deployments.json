@@ -4,6 +4,7 @@
 		"operationId": "containerWranglerSsh",
 		"parameters": [
 			{
+				"description": "The ID of the container instance. This is the same ID listed in Wrangler and the Cloudflare Dash",
 				"in": "path",
 				"name": "instance_id",
 				"required": true,

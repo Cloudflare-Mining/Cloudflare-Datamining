@@ -147,6 +147,32 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"tun_type": {
+													"allOf": [
+														{
+															"description": "The type of tunnel.",
+															"enum": [
+																"cfd_tunnel",
+																"warp_connector",
+																"warp",
+																"magic",
+																"ip_sec",
+																"gre",
+																"cni"
+															],
+															"example": "cfd_tunnel",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"enum": [
+																"cfd_tunnel",
+																"warp_connector"
+															],
+															"type": "string"
+														}
+													]
+												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -290,6 +316,32 @@
 															"format": "uuid",
 															"type": "string",
 															"x-auditable": true
+														},
+														"tun_type": {
+															"allOf": [
+																{
+																	"description": "The type of tunnel.",
+																	"enum": [
+																		"cfd_tunnel",
+																		"warp_connector",
+																		"warp",
+																		"magic",
+																		"ip_sec",
+																		"gre",
+																		"cni"
+																	],
+																	"example": "cfd_tunnel",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"enum": [
+																		"cfd_tunnel",
+																		"warp_connector"
+																	],
+																	"type": "string"
+																}
+															]
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
@@ -684,6 +736,32 @@
 														"type": "string",
 														"x-auditable": true
 													},
+													"tun_type": {
+														"allOf": [
+															{
+																"description": "The type of tunnel.",
+																"enum": [
+																	"cfd_tunnel",
+																	"warp_connector",
+																	"warp",
+																	"magic",
+																	"ip_sec",
+																	"gre",
+																	"cni"
+																],
+																"example": "cfd_tunnel",
+																"type": "string",
+																"x-auditable": true
+															},
+															{
+																"enum": [
+																	"cfd_tunnel",
+																	"warp_connector"
+																],
+																"type": "string"
+															}
+														]
+													},
 													"tunnel_id": {
 														"description": "UUID of the tunnel.",
 														"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -869,6 +947,32 @@
 																"format": "uuid",
 																"type": "string",
 																"x-auditable": true
+															},
+															"tun_type": {
+																"allOf": [
+																	{
+																		"description": "The type of tunnel.",
+																		"enum": [
+																			"cfd_tunnel",
+																			"warp_connector",
+																			"warp",
+																			"magic",
+																			"ip_sec",
+																			"gre",
+																			"cni"
+																		],
+																		"example": "cfd_tunnel",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	{
+																		"enum": [
+																			"cfd_tunnel",
+																			"warp_connector"
+																		],
+																		"type": "string"
+																	}
+																]
 															},
 															"tunnel_id": {
 																"description": "UUID of the tunnel.",
@@ -1155,6 +1259,32 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"tun_type": {
+													"allOf": [
+														{
+															"description": "The type of tunnel.",
+															"enum": [
+																"cfd_tunnel",
+																"warp_connector",
+																"warp",
+																"magic",
+																"ip_sec",
+																"gre",
+																"cni"
+															],
+															"example": "cfd_tunnel",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"enum": [
+																"cfd_tunnel",
+																"warp_connector"
+															],
+															"type": "string"
+														}
+													]
+												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -1298,6 +1428,32 @@
 															"format": "uuid",
 															"type": "string",
 															"x-auditable": true
+														},
+														"tun_type": {
+															"allOf": [
+																{
+																	"description": "The type of tunnel.",
+																	"enum": [
+																		"cfd_tunnel",
+																		"warp_connector",
+																		"warp",
+																		"magic",
+																		"ip_sec",
+																		"gre",
+																		"cni"
+																	],
+																	"example": "cfd_tunnel",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"enum": [
+																		"cfd_tunnel",
+																		"warp_connector"
+																	],
+																	"type": "string"
+																}
+															]
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
@@ -1614,6 +1770,32 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"tun_type": {
+													"allOf": [
+														{
+															"description": "The type of tunnel.",
+															"enum": [
+																"cfd_tunnel",
+																"warp_connector",
+																"warp",
+																"magic",
+																"ip_sec",
+																"gre",
+																"cni"
+															],
+															"example": "cfd_tunnel",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"enum": [
+																"cfd_tunnel",
+																"warp_connector"
+															],
+															"type": "string"
+														}
+													]
+												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -1757,6 +1939,32 @@
 															"format": "uuid",
 															"type": "string",
 															"x-auditable": true
+														},
+														"tun_type": {
+															"allOf": [
+																{
+																	"description": "The type of tunnel.",
+																	"enum": [
+																		"cfd_tunnel",
+																		"warp_connector",
+																		"warp",
+																		"magic",
+																		"ip_sec",
+																		"gre",
+																		"cni"
+																	],
+																	"example": "cfd_tunnel",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"enum": [
+																		"cfd_tunnel",
+																		"warp_connector"
+																	],
+																	"type": "string"
+																}
+															]
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",
@@ -2059,6 +2267,32 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"tun_type": {
+													"allOf": [
+														{
+															"description": "The type of tunnel.",
+															"enum": [
+																"cfd_tunnel",
+																"warp_connector",
+																"warp",
+																"magic",
+																"ip_sec",
+																"gre",
+																"cni"
+															],
+															"example": "cfd_tunnel",
+															"type": "string",
+															"x-auditable": true
+														},
+														{
+															"enum": [
+																"cfd_tunnel",
+																"warp_connector"
+															],
+															"type": "string"
+														}
+													]
+												},
 												"tunnel_id": {
 													"description": "UUID of the tunnel.",
 													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
@@ -2202,6 +2436,32 @@
 															"format": "uuid",
 															"type": "string",
 															"x-auditable": true
+														},
+														"tun_type": {
+															"allOf": [
+																{
+																	"description": "The type of tunnel.",
+																	"enum": [
+																		"cfd_tunnel",
+																		"warp_connector",
+																		"warp",
+																		"magic",
+																		"ip_sec",
+																		"gre",
+																		"cni"
+																	],
+																	"example": "cfd_tunnel",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																{
+																	"enum": [
+																		"cfd_tunnel",
+																		"warp_connector"
+																	],
+																	"type": "string"
+																}
+															]
 														},
 														"tunnel_id": {
 															"description": "UUID of the tunnel.",

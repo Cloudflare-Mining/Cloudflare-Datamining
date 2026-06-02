@@ -6541,7 +6541,7 @@
 		"x-auditable": false,
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.update"
+				"com.cloudflare.edge.worker.queue.push"
 			]
 		}
 	},
@@ -6788,7 +6788,7 @@
 		"x-auditable": false,
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.update"
+				"com.cloudflare.edge.worker.queue.ack"
 			]
 		}
 	},
@@ -7073,7 +7073,12 @@
 			"Queues Write",
 			"Workers Scripts Write"
 		],
-		"x-auditable": false
+		"x-auditable": false,
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.edge.worker.queue.push"
+			]
+		}
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/preview": {
 		"description": "Preview messages from a Queue without leasing them. Messages remain available for subsequent preview or pull operations.",
@@ -7320,7 +7325,7 @@
 		"x-auditable": false,
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.update"
+				"com.cloudflare.edge.worker.queue.peek"
 			]
 		}
 	},
@@ -7558,7 +7563,7 @@
 		"x-auditable": false,
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.update"
+				"com.cloudflare.edge.worker.queue.ack"
 			]
 		}
 	},
@@ -7850,7 +7855,7 @@
 		"x-auditable": false,
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.update"
+				"com.cloudflare.edge.worker.queue.pull"
 			]
 		}
 	},
@@ -8306,7 +8311,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.edge.worker.queue.update"
+				"com.cloudflare.edge.worker.queue.ack"
 			]
 		}
 	},

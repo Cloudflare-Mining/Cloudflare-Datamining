@@ -1,0 +1,1643 @@
+{
+	"DELETE /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}": {
+		"description": "Deletes a specific ramp from a CF1 Site.",
+		"operationId": "magic-cf1-sites-delete-cf1-site-ramp",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "cf1_site_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ramp_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"required": [
+														"gre"
+													]
+												},
+												{
+													"required": [
+														"ipsec"
+													]
+												},
+												{
+													"required": [
+														"gre_interconnect"
+													]
+												},
+												{
+													"required": [
+														"mpls_interconnect"
+													]
+												},
+												{
+													"required": [
+														"mconn"
+													]
+												}
+											],
+											"properties": {
+												"created_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "A human-provided description of the ramp.",
+													"example": "Primary CF GRE tunnel",
+													"type": "string"
+												},
+												"gre": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"gre_interconnect": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													],
+													"readOnly": true
+												},
+												"ipsec": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"mconn": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"mpls_interconnect": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"name": {
+													"description": "A human-provided name describing the ramp that should be unique within the CF1 Site.",
+													"example": "primary_gre_ramp",
+													"type": "string"
+												},
+												"type": {
+													"allOf": [
+														{
+															"description": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
+															"enum": [
+																"gre",
+																"gre_interconnect",
+																"mpls_interconnect",
+																"mconn",
+																"ipsec"
+															],
+															"type": "string"
+														}
+													],
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"type",
+												"created_on",
+												"modified_on"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete CF1 Site Ramp response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete CF1 Site Ramp response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete CF1 Site Ramp",
+		"tags": [
+			"Magic CF1 Site Ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps": {
+		"description": "Lists ramps (network connections) associated with a CF1 Site. Ramps represent GRE tunnels, IPsec tunnels, interconnects, or MCONN links.",
+		"operationId": "magic-cf1-sites-list-cf1-site-ramps",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "cf1_site_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"oneOf": [
+													{
+														"required": [
+															"gre"
+														]
+													},
+													{
+														"required": [
+															"ipsec"
+														]
+													},
+													{
+														"required": [
+															"gre_interconnect"
+														]
+													},
+													{
+														"required": [
+															"mpls_interconnect"
+														]
+													},
+													{
+														"required": [
+															"mconn"
+														]
+													}
+												],
+												"properties": {
+													"created_on": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"description": {
+														"description": "A human-provided description of the ramp.",
+														"example": "Primary CF GRE tunnel",
+														"type": "string"
+													},
+													"gre": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"gre_interconnect": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"id": {
+														"allOf": [
+															{
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															}
+														],
+														"readOnly": true
+													},
+													"ipsec": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"mconn": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"modified_on": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"mpls_interconnect": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"name": {
+														"description": "A human-provided name describing the ramp that should be unique within the CF1 Site.",
+														"example": "primary_gre_ramp",
+														"type": "string"
+													},
+													"type": {
+														"allOf": [
+															{
+																"description": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
+																"enum": [
+																	"gre",
+																	"gre_interconnect",
+																	"mpls_interconnect",
+																	"mconn",
+																	"ipsec"
+																],
+																"type": "string"
+															}
+														],
+														"readOnly": true
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"type",
+													"created_on",
+													"modified_on"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List CF1 Site Ramps response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List CF1 Site Ramps response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List CF1 Site Ramps",
+		"tags": [
+			"Magic CF1 Site Ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}": {
+		"description": "Gets a specific ramp for a CF1 Site.",
+		"operationId": "magic-cf1-sites-get-cf1-site-ramp",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "cf1_site_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "ramp_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"oneOf": [
+												{
+													"required": [
+														"gre"
+													]
+												},
+												{
+													"required": [
+														"ipsec"
+													]
+												},
+												{
+													"required": [
+														"gre_interconnect"
+													]
+												},
+												{
+													"required": [
+														"mpls_interconnect"
+													]
+												},
+												{
+													"required": [
+														"mconn"
+													]
+												}
+											],
+											"properties": {
+												"created_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "A human-provided description of the ramp.",
+													"example": "Primary CF GRE tunnel",
+													"type": "string"
+												},
+												"gre": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"gre_interconnect": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													],
+													"readOnly": true
+												},
+												"ipsec": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"mconn": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"mpls_interconnect": {
+													"properties": {
+														"managed_by": {
+															"description": "URL reference to the source network resource that this ramp is managed by.",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"name": {
+													"description": "A human-provided name describing the ramp that should be unique within the CF1 Site.",
+													"example": "primary_gre_ramp",
+													"type": "string"
+												},
+												"type": {
+													"allOf": [
+														{
+															"description": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
+															"enum": [
+																"gre",
+																"gre_interconnect",
+																"mpls_interconnect",
+																"mconn",
+																"ipsec"
+															],
+															"type": "string"
+														}
+													],
+													"readOnly": true
+												}
+											},
+											"required": [
+												"id",
+												"name",
+												"type",
+												"created_on",
+												"modified_on"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get CF1 Site Ramp response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get CF1 Site Ramp response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get CF1 Site Ramp",
+		"tags": [
+			"Magic CF1 Site Ramps"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps": {
+		"description": "Creates ramps (network connections) for a CF1 Site.",
+		"operationId": "magic-cf1-sites-create-cf1-site-ramps",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "cf1_site_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"properties": {
+								"source_ramp_id": {
+									"allOf": [
+										{
+											"description": "Identifier",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"readOnly": true,
+											"type": "string"
+										}
+									],
+									"description": "Identifier of the source network resource to associate as a ramp."
+								},
+								"type": {
+									"description": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
+									"enum": [
+										"gre",
+										"gre_interconnect",
+										"mpls_interconnect",
+										"mconn",
+										"ipsec"
+									],
+									"type": "string"
+								}
+							},
+							"required": [
+								"source_ramp_id",
+								"type"
+							],
+							"type": "object"
+						},
+						"minItems": 1,
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"oneOf": [
+													{
+														"required": [
+															"gre"
+														]
+													},
+													{
+														"required": [
+															"ipsec"
+														]
+													},
+													{
+														"required": [
+															"gre_interconnect"
+														]
+													},
+													{
+														"required": [
+															"mpls_interconnect"
+														]
+													},
+													{
+														"required": [
+															"mconn"
+														]
+													}
+												],
+												"properties": {
+													"created_on": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"description": {
+														"description": "A human-provided description of the ramp.",
+														"example": "Primary CF GRE tunnel",
+														"type": "string"
+													},
+													"gre": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"gre_interconnect": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"id": {
+														"allOf": [
+															{
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															}
+														],
+														"readOnly": true
+													},
+													"ipsec": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"mconn": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"modified_on": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"mpls_interconnect": {
+														"properties": {
+															"managed_by": {
+																"description": "URL reference to the source network resource that this ramp is managed by.",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"name": {
+														"description": "A human-provided name describing the ramp that should be unique within the CF1 Site.",
+														"example": "primary_gre_ramp",
+														"type": "string"
+													},
+													"type": {
+														"allOf": [
+															{
+																"description": "The type of network connection (ramp) linking a CF1 Site to Cloudflare's network.",
+																"enum": [
+																	"gre",
+																	"gre_interconnect",
+																	"mpls_interconnect",
+																	"mconn",
+																	"ipsec"
+																],
+																"type": "string"
+															}
+														],
+														"readOnly": true
+													}
+												},
+												"required": [
+													"id",
+													"name",
+													"type",
+													"created_on",
+													"modified_on"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create CF1 Site Ramps response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create CF1 Site Ramps response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create CF1 Site Ramps",
+		"tags": [
+			"Magic CF1 Site Ramps"
+		],
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

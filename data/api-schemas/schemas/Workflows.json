@@ -383,6 +383,9 @@
 													"queued": {
 														"type": "number"
 													},
+													"rollingBack": {
+														"type": "number"
+													},
 													"running": {
 														"type": "number"
 													},
@@ -654,6 +657,9 @@
 													"type": "number"
 												},
 												"queued": {
+													"type": "number"
+												},
+												"rollingBack": {
 													"type": "number"
 												},
 												"running": {
@@ -958,7 +964,8 @@
 						"terminated",
 						"complete",
 						"waitingForPause",
-						"waiting"
+						"waiting",
+						"rollingBack"
 					],
 					"type": "string"
 				}
@@ -1070,7 +1077,8 @@
 													"terminated",
 													"complete",
 													"waitingForPause",
-													"waiting"
+													"waiting",
+													"rollingBack"
 												],
 												"type": "string"
 											},
@@ -1433,6 +1441,39 @@
 											"format": "date-time",
 											"type": "string"
 										},
+										"rollback": {
+											"nullable": true,
+											"properties": {
+												"error": {
+													"nullable": true,
+													"properties": {
+														"message": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"message"
+													],
+													"type": "object"
+												},
+												"outcome": {
+													"enum": [
+														"complete",
+														"failed"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"outcome",
+												"error"
+											],
+											"type": "object"
+										},
 										"start": {
 											"format": "date-time",
 											"nullable": true,
@@ -1447,7 +1488,8 @@
 												"terminated",
 												"complete",
 												"waitingForPause",
-												"waiting"
+												"waiting",
+												"rollingBack"
 											],
 											"type": "string"
 										},
@@ -1770,7 +1812,8 @@
 										"success",
 										"error",
 										"status",
-										"output"
+										"output",
+										"rollback"
 									],
 									"type": "object"
 								},
@@ -2106,7 +2149,8 @@
 												"terminated",
 												"complete",
 												"waitingForPause",
-												"waiting"
+												"waiting",
+												"rollingBack"
 											],
 											"type": "string"
 										}
@@ -4559,49 +4603,95 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"properties": {
-							"from": {
-								"description": "Step to restart from. Only applicable when status is \"restart\".",
+						"oneOf": [
+							{
 								"properties": {
-									"count": {
-										"exclusiveMinimum": true,
-										"minimum": 0,
-										"type": "integer"
-									},
-									"name": {
-										"maxLength": 256,
-										"minLength": 1,
-										"type": "string"
-									},
-									"type": {
+									"status": {
 										"enum": [
-											"do",
-											"sleep",
-											"waitForEvent"
+											"pause"
 										],
 										"type": "string"
 									}
 								},
 								"required": [
-									"name"
+									"status"
 								],
 								"type": "object"
 							},
-							"status": {
-								"description": "Apply action to instance.",
-								"enum": [
-									"resume",
-									"pause",
-									"terminate",
-									"restart"
+							{
+								"properties": {
+									"status": {
+										"enum": [
+											"resume"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"status"
 								],
-								"type": "string"
+								"type": "object"
+							},
+							{
+								"properties": {
+									"rollback": {
+										"description": "Run rollback before terminating.",
+										"type": "boolean"
+									},
+									"status": {
+										"enum": [
+											"terminate"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"status"
+								],
+								"type": "object"
+							},
+							{
+								"properties": {
+									"from": {
+										"description": "Step to restart from.",
+										"properties": {
+											"count": {
+												"exclusiveMinimum": true,
+												"minimum": 0,
+												"type": "integer"
+											},
+											"name": {
+												"maxLength": 256,
+												"minLength": 1,
+												"type": "string"
+											},
+											"type": {
+												"enum": [
+													"do",
+													"sleep",
+													"waitForEvent"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"name"
+										],
+										"type": "object"
+									},
+									"status": {
+										"enum": [
+											"restart"
+										],
+										"type": "string"
+									}
+								},
+								"required": [
+									"status"
+								],
+								"type": "object"
 							}
-						},
-						"required": [
-							"status"
-						],
-						"type": "object"
+						]
 					}
 				}
 			}
@@ -4659,7 +4749,8 @@
 												"terminated",
 												"complete",
 												"waitingForPause",
-												"waiting"
+												"waiting",
+												"rollingBack"
 											],
 											"type": "string"
 										},
@@ -5069,7 +5160,8 @@
 												"terminated",
 												"complete",
 												"waitingForPause",
-												"waiting"
+												"waiting",
+												"rollingBack"
 											],
 											"type": "string"
 										},
@@ -5719,7 +5811,8 @@
 													"terminated",
 													"complete",
 													"waitingForPause",
-													"waiting"
+													"waiting",
+													"rollingBack"
 												],
 												"type": "string"
 											},

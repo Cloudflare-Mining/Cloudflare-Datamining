@@ -2553,6 +2553,106 @@
 																"k"
 															],
 															"type": "object"
+														},
+														{
+															"properties": {
+																"k": {
+																	"description": "Installed initial inbound and outbound keys",
+																	"enum": [
+																		"RekeyInstallBoth"
+																	],
+																	"type": "string"
+																},
+																"tunnel_id": {
+																	"description": "Tunnel identifier",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"k",
+																"tunnel_id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"k": {
+																	"description": "Installed new inbound key, kept old outbound",
+																	"enum": [
+																		"RekeyStart"
+																	],
+																	"type": "string"
+																},
+																"tunnel_id": {
+																	"description": "Tunnel identifier",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"k",
+																"tunnel_id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"k": {
+																	"description": "Confirmed traffic on new inbound key, swapped outbound to new",
+																	"enum": [
+																		"RekeyAdvance"
+																	],
+																	"type": "string"
+																},
+																"tunnel_id": {
+																	"description": "Tunnel identifier",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"k",
+																"tunnel_id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"k": {
+																	"description": "Deleted old keys",
+																	"enum": [
+																		"RekeyComplete"
+																	],
+																	"type": "string"
+																},
+																"tunnel_id": {
+																	"description": "Tunnel identifier",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"k",
+																"tunnel_id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"k": {
+																	"description": "Deleted all keys after receiving an unexpected key",
+																	"enum": [
+																		"RekeyReset"
+																	],
+																	"type": "string"
+																},
+																"tunnel_id": {
+																	"description": "Tunnel identifier",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"k",
+																"tunnel_id"
+															],
+															"type": "object"
 														}
 													],
 													"type": "object"
@@ -3269,6 +3369,106 @@
 																		},
 																		"required": [
 																			"k"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"k": {
+																				"description": "Installed initial inbound and outbound keys",
+																				"enum": [
+																					"RekeyInstallBoth"
+																				],
+																				"type": "string"
+																			},
+																			"tunnel_id": {
+																				"description": "Tunnel identifier",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"k",
+																			"tunnel_id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"k": {
+																				"description": "Installed new inbound key, kept old outbound",
+																				"enum": [
+																					"RekeyStart"
+																				],
+																				"type": "string"
+																			},
+																			"tunnel_id": {
+																				"description": "Tunnel identifier",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"k",
+																			"tunnel_id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"k": {
+																				"description": "Confirmed traffic on new inbound key, swapped outbound to new",
+																				"enum": [
+																					"RekeyAdvance"
+																				],
+																				"type": "string"
+																			},
+																			"tunnel_id": {
+																				"description": "Tunnel identifier",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"k",
+																			"tunnel_id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"k": {
+																				"description": "Deleted old keys",
+																				"enum": [
+																					"RekeyComplete"
+																				],
+																				"type": "string"
+																			},
+																			"tunnel_id": {
+																				"description": "Tunnel identifier",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"k",
+																			"tunnel_id"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"properties": {
+																			"k": {
+																				"description": "Deleted all keys after receiving an unexpected key",
+																				"enum": [
+																					"RekeyReset"
+																				],
+																				"type": "string"
+																			},
+																			"tunnel_id": {
+																				"description": "Tunnel identifier",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"k",
+																			"tunnel_id"
 																		],
 																		"type": "object"
 																	}

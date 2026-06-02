@@ -1,0 +1,1716 @@
+{
+	"DELETE /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}": {
+		"description": "Deletes a specific CF1 Site for an account.",
+		"operationId": "magic-cf1-sites-delete-cf1-site",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "cf1_site_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "A human-provided description of the CF1 Site.",
+													"example": "Launch Pad 34",
+													"type": "string"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													],
+													"readOnly": true
+												},
+												"location": {
+													"properties": {
+														"lat": {
+															"description": "Latitude of the CF1 Site.",
+															"example": 28.521339842093845,
+															"format": "float",
+															"type": "number"
+														},
+														"long": {
+															"description": "Longitude of the CF1 Site.",
+															"example": -80.56092644815843,
+															"format": "float",
+															"type": "number"
+														},
+														"name": {
+															"description": "Name of nearest town, city, or village.",
+															"example": "Cape Canaveral",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "A human-provided name describing the CF1 Site that should be unique within the account.",
+													"example": "Pad 34",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete CF1 Site response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete CF1 Site response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Delete CF1 Site",
+		"tags": [
+			"Magic CF1 Sites"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/magic/cf1_sites": {
+		"description": "Lists CF1 Sites associated with an account. A CF1 Site represents a physical customer network location with optional geographic coordinates.",
+		"operationId": "magic-cf1-sites-list-cf1-sites",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_on": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"description": {
+														"description": "A human-provided description of the CF1 Site.",
+														"example": "Launch Pad 34",
+														"type": "string"
+													},
+													"id": {
+														"allOf": [
+															{
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															}
+														],
+														"readOnly": true
+													},
+													"location": {
+														"properties": {
+															"lat": {
+																"description": "Latitude of the CF1 Site.",
+																"example": 28.521339842093845,
+																"format": "float",
+																"type": "number"
+															},
+															"long": {
+																"description": "Longitude of the CF1 Site.",
+																"example": -80.56092644815843,
+																"format": "float",
+																"type": "number"
+															},
+															"name": {
+																"description": "Name of nearest town, city, or village.",
+																"example": "Cape Canaveral",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"modified_on": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"description": "A human-provided name describing the CF1 Site that should be unique within the account.",
+														"example": "Pad 34",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List CF1 Sites response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List CF1 Sites response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "List CF1 Sites",
+		"tags": [
+			"Magic CF1 Sites"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"GET /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}": {
+		"description": "Gets a specific CF1 Site for an account.",
+		"operationId": "magic-cf1-sites-get-cf1-site",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "cf1_site_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "A human-provided description of the CF1 Site.",
+													"example": "Launch Pad 34",
+													"type": "string"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													],
+													"readOnly": true
+												},
+												"location": {
+													"properties": {
+														"lat": {
+															"description": "Latitude of the CF1 Site.",
+															"example": 28.521339842093845,
+															"format": "float",
+															"type": "number"
+														},
+														"long": {
+															"description": "Longitude of the CF1 Site.",
+															"example": -80.56092644815843,
+															"format": "float",
+															"type": "number"
+														},
+														"name": {
+															"description": "Name of nearest town, city, or village.",
+															"example": "Cape Canaveral",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "A human-provided name describing the CF1 Site that should be unique within the account.",
+													"example": "Pad 34",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get CF1 Site response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get CF1 Site response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Get CF1 Site",
+		"tags": [
+			"Magic CF1 Sites"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic WAN Read",
+			"Magic Transit Read",
+			"Magic Transit Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"PATCH /accounts/{account_id}/magic/cf1_sites/{cf1_site_id}": {
+		"description": "Partially updates a specific CF1 Site for an account. Only the fields included in the request body are modified; omitted fields retain their existing values.",
+		"operationId": "magic-cf1-sites-update-cf1-site",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "cf1_site_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Partial update payload for a CF1 Site. All properties are optional; only fields supplied in the request body are modified.",
+						"properties": {
+							"description": {
+								"description": "A human-provided description of the CF1 Site.",
+								"example": "Launch Pad 34",
+								"type": "string"
+							},
+							"location": {
+								"properties": {
+									"lat": {
+										"description": "Latitude of the CF1 Site.",
+										"example": 28.521339842093845,
+										"format": "float",
+										"type": "number"
+									},
+									"long": {
+										"description": "Longitude of the CF1 Site.",
+										"example": -80.56092644815843,
+										"format": "float",
+										"type": "number"
+									},
+									"name": {
+										"description": "Name of nearest town, city, or village.",
+										"example": "Cape Canaveral",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"name": {
+								"description": "A human-provided name describing the CF1 Site that should be unique within the account.",
+								"example": "Pad 34",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"created_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "A human-provided description of the CF1 Site.",
+													"example": "Launch Pad 34",
+													"type": "string"
+												},
+												"id": {
+													"allOf": [
+														{
+															"description": "Identifier",
+															"example": "023e105f4ecef8ad9ca31a8372d0c353",
+															"maxLength": 32,
+															"readOnly": true,
+															"type": "string"
+														}
+													],
+													"readOnly": true
+												},
+												"location": {
+													"properties": {
+														"lat": {
+															"description": "Latitude of the CF1 Site.",
+															"example": 28.521339842093845,
+															"format": "float",
+															"type": "number"
+														},
+														"long": {
+															"description": "Longitude of the CF1 Site.",
+															"example": -80.56092644815843,
+															"format": "float",
+															"type": "number"
+														},
+														"name": {
+															"description": "Name of nearest town, city, or village.",
+															"example": "Cape Canaveral",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"modified_on": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "A human-provided name describing the CF1 Site that should be unique within the account.",
+													"example": "Pad 34",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name"
+											],
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update CF1 Site response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update CF1 Site response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Update CF1 Site",
+		"tags": [
+			"Magic CF1 Sites"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	},
+	"POST /accounts/{account_id}/magic/cf1_sites": {
+		"description": "Creates new CF1 Sites for an account. Each site must have a unique name within the account.",
+		"operationId": "magic-cf1-sites-create-cf1-sites",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"properties": {
+								"created_on": {
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
+								},
+								"description": {
+									"description": "A human-provided description of the CF1 Site.",
+									"example": "Launch Pad 34",
+									"type": "string"
+								},
+								"id": {
+									"allOf": [
+										{
+											"description": "Identifier",
+											"example": "023e105f4ecef8ad9ca31a8372d0c353",
+											"maxLength": 32,
+											"readOnly": true,
+											"type": "string"
+										}
+									],
+									"readOnly": true
+								},
+								"location": {
+									"properties": {
+										"lat": {
+											"description": "Latitude of the CF1 Site.",
+											"example": 28.521339842093845,
+											"format": "float",
+											"type": "number"
+										},
+										"long": {
+											"description": "Longitude of the CF1 Site.",
+											"example": -80.56092644815843,
+											"format": "float",
+											"type": "number"
+										},
+										"name": {
+											"description": "Name of nearest town, city, or village.",
+											"example": "Cape Canaveral",
+											"type": "string"
+										}
+									},
+									"type": "object"
+								},
+								"modified_on": {
+									"format": "date-time",
+									"readOnly": true,
+									"type": "string"
+								},
+								"name": {
+									"description": "A human-provided name describing the CF1 Site that should be unique within the account.",
+									"example": "Pad 34",
+									"type": "string"
+								}
+							},
+							"required": [
+								"name"
+							],
+							"type": "object"
+						},
+						"minItems": 1,
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"nullable": true,
+															"type": "object"
+														},
+														{
+															"nullable": true,
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"created_on": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"description": {
+														"description": "A human-provided description of the CF1 Site.",
+														"example": "Launch Pad 34",
+														"type": "string"
+													},
+													"id": {
+														"allOf": [
+															{
+																"description": "Identifier",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															}
+														],
+														"readOnly": true
+													},
+													"location": {
+														"properties": {
+															"lat": {
+																"description": "Latitude of the CF1 Site.",
+																"example": 28.521339842093845,
+																"format": "float",
+																"type": "number"
+															},
+															"long": {
+																"description": "Longitude of the CF1 Site.",
+																"example": -80.56092644815843,
+																"format": "float",
+																"type": "number"
+															},
+															"name": {
+																"description": "Name of nearest town, city, or village.",
+																"example": "Cape Canaveral",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"modified_on": {
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string"
+													},
+													"name": {
+														"description": "A human-provided name describing the CF1 Site that should be unique within the account.",
+														"example": "Pad 34",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create CF1 Sites response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create CF1 Sites response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Create CF1 Sites",
+		"tags": [
+			"Magic CF1 Sites"
+		],
+		"x-api-token-group": [
+			"Magic WAN Write",
+			"Magic Transit Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"#organization:edit"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": false,
+			"enterprise": true,
+			"free": false,
+			"pro": false
+		}
+	}
+}

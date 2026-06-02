@@ -630,16 +630,6 @@
 														"type": "string",
 														"x-stainless-terraform-configurability": "computed"
 													},
-													"max_ttl_secs": {
-														"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-														"example": 3600,
-														"maximum": 36000,
-														"minimum": 60,
-														"nullable": true,
-														"type": "integer",
-														"x-auditable": true,
-														"x-stainless-terraform-configurability": "optional"
-													},
 													"name": {
 														"description": "Specify the location name.",
 														"example": "Austin Office Location",
@@ -993,16 +983,6 @@
 																"readOnly": true,
 																"type": "string",
 																"x-stainless-terraform-configurability": "computed"
-															},
-															"max_ttl_secs": {
-																"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-																"example": 3600,
-																"maximum": 36000,
-																"minimum": 60,
-																"nullable": true,
-																"type": "integer",
-																"x-auditable": true,
-																"x-stainless-terraform-configurability": "optional"
 															},
 															"name": {
 																"description": "Specify the location name.",
@@ -1458,16 +1438,6 @@
 													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
 												},
-												"max_ttl_secs": {
-													"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-													"example": 3600,
-													"maximum": 36000,
-													"minimum": 60,
-													"nullable": true,
-													"type": "integer",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "optional"
-												},
 												"name": {
 													"description": "Specify the location name.",
 													"example": "Austin Office Location",
@@ -1788,16 +1758,6 @@
 															"readOnly": true,
 															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
-														},
-														"max_ttl_secs": {
-															"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-															"example": 3600,
-															"maximum": 36000,
-															"minimum": 60,
-															"nullable": true,
-															"type": "integer",
-															"x-auditable": true,
-															"x-stainless-terraform-configurability": "optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -2121,16 +2081,6 @@
 								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
-							"max_ttl_secs": {
-								"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-								"example": 3600,
-								"maximum": 36000,
-								"minimum": 60,
-								"nullable": true,
-								"type": "integer",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "optional"
-							},
 							"name": {
 								"description": "Specify the location name.",
 								"example": "Austin Office Location",
@@ -2441,16 +2391,6 @@
 													"readOnly": true,
 													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
-												},
-												"max_ttl_secs": {
-													"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-													"example": 3600,
-													"maximum": 36000,
-													"minimum": 60,
-													"nullable": true,
-													"type": "integer",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -2772,16 +2712,6 @@
 															"readOnly": true,
 															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
-														},
-														"max_ttl_secs": {
-															"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-															"example": 3600,
-															"maximum": 36000,
-															"minimum": 60,
-															"nullable": true,
-															"type": "integer",
-															"x-auditable": true,
-															"x-stainless-terraform-configurability": "optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -3114,16 +3044,6 @@
 								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
-							"max_ttl_secs": {
-								"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-								"example": 3600,
-								"maximum": 36000,
-								"minimum": 60,
-								"nullable": true,
-								"type": "integer",
-								"x-auditable": true,
-								"x-stainless-terraform-configurability": "optional"
-							},
 							"name": {
 								"description": "Specify the location name.",
 								"example": "Austin Office Location",
@@ -3434,16 +3354,6 @@
 													"readOnly": true,
 													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
-												},
-												"max_ttl_secs": {
-													"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-													"example": 3600,
-													"maximum": 36000,
-													"minimum": 60,
-													"nullable": true,
-													"type": "integer",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -3765,16 +3675,6 @@
 															"readOnly": true,
 															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
-														},
-														"max_ttl_secs": {
-															"description": "Specify the maximum TTL, in seconds, applied to DNS response records.\nRecords whose upstream TTL exceeds this value are served with the\ncapped value. When null or absent, no cap is applied at this tier.\n",
-															"example": 3600,
-															"maximum": 36000,
-															"minimum": 60,
-															"nullable": true,
-															"type": "integer",
-															"x-auditable": true,
-															"x-stainless-terraform-configurability": "optional"
 														},
 														"name": {
 															"description": "Specify the location name.",

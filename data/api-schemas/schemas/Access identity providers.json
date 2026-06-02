@@ -470,6 +470,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -741,6 +747,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -997,6 +1009,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -1208,6 +1226,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -1418,6 +1442,12 @@
 																		"description": "The name of the identity provider, shown to users on the login page.",
 																		"example": "Widget Corps IDP",
 																		"type": "string"
+																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
 																	},
 																	"saml_certificate_set": {
 																		"allOf": [
@@ -1657,6 +1687,12 @@
 																		"description": "The name of the identity provider, shown to users on the login page.",
 																		"example": "Widget Corps IDP",
 																		"type": "string"
+																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
 																	},
 																	"saml_certificate_set": {
 																		"allOf": [
@@ -1907,6 +1943,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -2117,6 +2159,12 @@
 																		"description": "The name of the identity provider, shown to users on the login page.",
 																		"example": "Widget Corps IDP",
 																		"type": "string"
+																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
 																	},
 																	"saml_certificate_set": {
 																		"allOf": [
@@ -2393,6 +2441,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -2648,6 +2702,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -2898,6 +2958,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -3147,6 +3213,12 @@
 																		"description": "The name of the identity provider, shown to users on the login page.",
 																		"example": "Widget Corps IDP",
 																		"type": "string"
+																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
 																	},
 																	"saml_certificate_set": {
 																		"allOf": [
@@ -3413,6 +3485,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -3624,6 +3702,12 @@
 																		"example": "Widget Corps IDP",
 																		"type": "string"
 																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
 																	"saml_certificate_set": {
 																		"allOf": [
 																			{
@@ -3832,6 +3916,12 @@
 																		"description": "The name of the identity provider, shown to users on the login page.",
 																		"example": "Widget Corps IDP",
 																		"type": "string"
+																	},
+																	"read_only": {
+																		"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																		"example": true,
+																		"readOnly": true,
+																		"type": "boolean"
 																	},
 																	"saml_certificate_set": {
 																		"allOf": [
@@ -4317,6 +4407,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -4588,6 +4684,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -4844,6 +4946,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -5055,6 +5163,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -5265,6 +5379,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -5504,6 +5624,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -5754,6 +5880,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -5964,6 +6096,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -6240,6 +6378,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -6495,6 +6639,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -6745,6 +6895,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -6994,6 +7150,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -7260,6 +7422,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -7471,6 +7639,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -7679,6 +7853,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -8925,6 +9105,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -9196,6 +9382,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -9452,6 +9644,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -9663,6 +9861,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -9873,6 +10077,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -10112,6 +10322,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -10362,6 +10578,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -10572,6 +10794,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -10848,6 +11076,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -11103,6 +11337,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -11353,6 +11593,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -11602,6 +11848,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -11868,6 +12120,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -12079,6 +12337,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -12287,6 +12551,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -12606,6 +12876,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -12877,6 +13153,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -13133,6 +13415,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -13344,6 +13632,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -13554,6 +13848,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -13793,6 +14093,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -14043,6 +14349,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -14253,6 +14565,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -14529,6 +14847,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -14784,6 +15108,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -15034,6 +15364,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -15283,6 +15619,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -15549,6 +15891,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -15760,6 +16108,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -15968,6 +16322,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -17092,6 +17452,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -17363,6 +17729,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -17619,6 +17991,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -17830,6 +18208,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -18040,6 +18424,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -18279,6 +18669,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -18529,6 +18925,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -18739,6 +19141,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -19015,6 +19423,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -19270,6 +19684,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -19520,6 +19940,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -19769,6 +20195,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -20035,6 +20467,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -20246,6 +20684,12 @@
 												"example": "Widget Corps IDP",
 												"type": "string"
 											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
+											},
 											"saml_certificate_set": {
 												"allOf": [
 													{
@@ -20454,6 +20898,12 @@
 												"description": "The name of the identity provider, shown to users on the login page.",
 												"example": "Widget Corps IDP",
 												"type": "string"
+											},
+											"read_only": {
+												"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+												"example": true,
+												"readOnly": true,
+												"type": "boolean"
 											},
 											"saml_certificate_set": {
 												"allOf": [
@@ -20773,6 +21223,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -21044,6 +21500,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -21300,6 +21762,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -21511,6 +21979,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -21721,6 +22195,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -21960,6 +22440,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -22210,6 +22696,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -22420,6 +22912,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -22696,6 +23194,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -22951,6 +23455,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -23201,6 +23711,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -23450,6 +23966,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [
@@ -23716,6 +24238,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -23927,6 +24455,12 @@
 																	"example": "Widget Corps IDP",
 																	"type": "string"
 																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
 																"saml_certificate_set": {
 																	"allOf": [
 																		{
@@ -24135,6 +24669,12 @@
 																	"description": "The name of the identity provider, shown to users on the login page.",
 																	"example": "Widget Corps IDP",
 																	"type": "string"
+																},
+																"read_only": {
+																	"description": "Indicates that the identity provider is immutable and cannot be updated or deleted via the API.\n",
+																	"example": true,
+																	"readOnly": true,
+																	"type": "boolean"
 																},
 																"saml_certificate_set": {
 																	"allOf": [

@@ -2967,7 +2967,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/intel/indicator-feeds/{feed_id}/snapshot": {
-		"description": "Revises the raw data entries in a custom threat indicator feed.",
+		"description": "Revises the raw data entries in a custom threat indicator feed.\n\nAccepts both plain and gzipped STIX2/CRDF bodies. Gzip is\ndetected by RFC 1952 magic bytes (`0x1f 0x8b`) and/or a `.gz`\nfilename suffix (case-insensitive) — either signal alone is\nsufficient to trigger the gzip path; if the body is not valid\ngzip, the upload fails fast. Customers are encouraged to gzip\nlarger uploads — the api-gateway 500 MB body cap applies to\nthe on-the-wire (compressed) size, so gzip lets a single\nupload carry several GiB of decompressed STIX.\n",
 		"operationId": "custom-indicator-feeds-update-indicator-feed-data",
 		"parameters": [
 			{
@@ -3001,8 +3001,8 @@
 					"schema": {
 						"properties": {
 							"source": {
-								"description": "The file to upload",
-								"example": "@/Users/me/test.stix2",
+								"description": "The file to upload. Either a plain STIX2/CRDF body\nor a gzipped one (recognised by `0x1f 0x8b` magic\nbytes or a `.gz` filename suffix).\n",
+								"example": "@/Users/me/test.stix2.gz",
 								"type": "string"
 							}
 						},
@@ -3136,6 +3136,101 @@
 					}
 				},
 				"description": "Get indicator feed metadata"
+			},
+			"413": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Decompressed upload exceeds the maximum allowed size. The\nserver caps the decompressed body at a configured limit\n(default 6 GiB) as a gzip-bomb defence; this response is\nreturned before any feed state changes. Resubmit a smaller\n(or non-pathologically-compressed) body.\n"
 			},
 			"4XX": {
 				"content": {
