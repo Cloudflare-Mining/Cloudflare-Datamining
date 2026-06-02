@@ -1587,9 +1587,9 @@
 		"country": "Source country code",
 		"datetime": "Day start timestamp (daily granularity)",
 		"destination": "Query name (destination domain)",
-		"deviceId": "Device ID. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"edeErrors": "Union of EDE codes observed in the group (rollup of raw edeErrors via groupUniqArrayArray; sorted ascending for deterministic output)",
-		"email": "User email address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"location": "Gateway location ID",
 		"matchedCategoryIds": "Union of matched categories observed in the group (rollup of raw matchedCategoryIds via groupUniqArrayArray; sorted ascending for deterministic output)",
 		"policyId": "Policy ID",
@@ -1599,7 +1599,7 @@
 		"queryType": "DNS query type",
 		"rcode": "DNS response code",
 		"resolverDecision": "Gateway resolver decision. To filter for all \"block\" outcomes, use resolverDecision_in with [\"blockedRule\", \"blockedByQueryName\", \"blockedByCategory\"]. Other values: allowedOnNoPolicyMatch, allowedOnPolicyMatch, allowedByQueryName, overrideRule, safesearchRule, ytRestrictedModeRule, allowedOnNoLocation, allowedOnNoRule, overrideOnlyRule.",
-		"sourceIP": "Source IP address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\""
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayDns1dGroupsFilter_InputObject": {
 		"__description": ""
@@ -1630,9 +1630,9 @@
 		"country": "Source country code",
 		"datetime": "Hour start timestamp (hourly granularity)",
 		"destination": "Query name (destination domain)",
-		"deviceId": "Device ID. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"edeErrors": "Union of EDE codes observed in the group (rollup of raw edeErrors via groupUniqArrayArray; sorted ascending for deterministic output)",
-		"email": "User email address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"location": "Gateway location ID",
 		"matchedCategoryIds": "Union of matched categories observed in the group (rollup of raw matchedCategoryIds via groupUniqArrayArray; sorted ascending for deterministic output)",
 		"policyId": "Policy ID",
@@ -1642,7 +1642,7 @@
 		"queryType": "DNS query type",
 		"rcode": "DNS response code",
 		"resolverDecision": "Gateway resolver decision. To filter for all \"block\" outcomes, use resolverDecision_in with [\"blockedRule\", \"blockedByQueryName\", \"blockedByCategory\"]. Other values: allowedOnNoPolicyMatch, allowedOnPolicyMatch, allowedByQueryName, overrideRule, safesearchRule, ytRestrictedModeRule, allowedOnNoLocation, allowedOnNoRule, overrideOnlyRule.",
-		"sourceIP": "Source IP address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\""
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayDns1hGroupsFilter_InputObject": {
 		"__description": ""
@@ -1675,9 +1675,9 @@
 		"datetimeFiveMinutes": "Query timestamp truncated to five minutes",
 		"datetimeHour": "Query timestamp truncated to hour",
 		"destination": "Query name (destination domain)",
-		"deviceId": "Device ID. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"edeErrors": "Extended DNS Error (EDE) codes returned in the response",
-		"email": "User email address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"location": "Gateway location ID",
 		"matchedCategoryIds": "Categories that matched the applied policy (subset of queryCategoryIds)",
 		"policyId": "Policy ID",
@@ -1688,7 +1688,7 @@
 		"queryType": "DNS query type",
 		"rcode": "DNS response code",
 		"resolverDecision": "Gateway resolver decision. To filter for all \"block\" outcomes, use resolverDecision_in with [\"blockedRule\", \"blockedByQueryName\", \"blockedByCategory\"]. Other values: allowedOnNoPolicyMatch, allowedOnPolicyMatch, allowedByQueryName, overrideRule, safesearchRule, ytRestrictedModeRule, allowedOnNoLocation, allowedOnNoRule, overrideOnlyRule.",
-		"sourceIP": "Source IP address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\""
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayDnsRawGroupsFilter_InputObject": {
 		"__description": ""
@@ -1718,10 +1718,10 @@
 		"action": "Gateway action taken",
 		"country": "Source country code",
 		"datetime": "Day start timestamp (daily granularity)",
-		"deviceId": "Device ID. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
-		"email": "User email address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"httpHost": "HTTP hostname",
-		"sourceIP": "Source IP address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\""
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayHttp1dGroupsFilter_InputObject": {
 		"__description": ""
@@ -1752,10 +1752,10 @@
 		"action": "Gateway action taken",
 		"country": "Source country code",
 		"datetime": "Hour start timestamp (hourly granularity)",
-		"deviceId": "Device ID. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
-		"email": "User email address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"httpHost": "HTTP hostname",
-		"sourceIP": "Source IP address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\""
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayHttp1hGroupsFilter_InputObject": {
 		"__description": ""
@@ -1788,10 +1788,10 @@
 		"datetime": "Request timestamp",
 		"datetimeFiveMinutes": "Request timestamp truncated to five minutes",
 		"datetimeHour": "Request timestamp truncated to hour",
-		"deviceId": "Device ID. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
-		"email": "User email address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\"",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"httpHost": "HTTP hostname",
-		"sourceIP": "Source IP address. Requires the #teams:pii permission; otherwise returned as the literal \"REDACTED\""
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayHttpRawGroupsFilter_InputObject": {
 		"__description": ""
@@ -4940,6 +4940,8 @@
 		"botDetectionIdCountArray": "Count array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
 		"botDetectionTagArray": "Array of bot management detection tags",
 		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index.",
+		"clientRequestAcceptContentTypeCategoryArray": "Array of Accept content type category slugs (e.g. html, json, images) aggregated independently across requests, ordered by request count descending and capped at 50 entries. Each category is counted separately — a request accepting both text/html and application/json contributes to both html and json totals.",
+		"clientRequestAcceptContentTypeCategoryCountArray": "Count array of per-category Accept content type aggregations, ordered by request count descending and capped at 50 entries. Elements correspond to clientRequestAcceptContentTypeCategoryArray by index. Each count represents the total number of requests that included any MIME type belonging to that category in their Accept header.",
 		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
 		"edgeDnsResponseTimeMs": "",
 		"edgeRequestBytes": "",
@@ -11379,6 +11381,8 @@
 	},
 	"OrganizationHttpRequestsAdaptiveGroupsSum": {
 		"__description": "",
+		"clientRequestAcceptContentTypeCategoryArray": "Array of Accept content type category slugs (e.g. html, json, images) aggregated independently across requests, ordered by request count descending and capped at 50 entries. Each category is counted separately — a request accepting both text/html and application/json contributes to both html and json totals.",
+		"clientRequestAcceptContentTypeCategoryCountArray": "Count array of per-category Accept content type aggregations, ordered by request count descending and capped at 50 entries. Elements correspond to clientRequestAcceptContentTypeCategoryArray by index. Each count represents the total number of requests that included any MIME type belonging to that category in their Accept header.",
 		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
 		"edgeDnsResponseTimeMs": "",
 		"edgeResponseBytes": "",
@@ -13165,6 +13169,8 @@
 		"botDetectionIdCountArray": "Count array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
 		"botDetectionTagArray": "Array of bot management detection tags",
 		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index.",
+		"clientRequestAcceptContentTypeCategoryArray": "Array of Accept content type category slugs (e.g. html, json, images) aggregated independently across requests, ordered by request count descending and capped at 50 entries. Each category is counted separately — a request accepting both text/html and application/json contributes to both html and json totals.",
+		"clientRequestAcceptContentTypeCategoryCountArray": "Count array of per-category Accept content type aggregations, ordered by request count descending and capped at 50 entries. Elements correspond to clientRequestAcceptContentTypeCategoryArray by index. Each count represents the total number of requests that included any MIME type belonging to that category in their Accept header.",
 		"crossZoneSubrequests": "The number of requests that were inititiated by a Cloudflare Worker on another zone",
 		"edgeDnsResponseTimeMs": "",
 		"edgeRequestBytes": "",
