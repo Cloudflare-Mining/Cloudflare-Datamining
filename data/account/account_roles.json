@@ -483,6 +483,10 @@
 		"name": "Cloudforce One Read",
 		"description": "Grants read access to Cloudforce One",
 		"permissions": {
+			"cfone": {
+				"read": true,
+				"edit": false
+			},
 			"zone": {
 				"read": true,
 				"edit": false
@@ -498,6 +502,10 @@
 		"name": "Cloudforce One Admin",
 		"description": "Grants write access to Cloudforce One",
 		"permissions": {
+			"cfone": {
+				"read": true,
+				"edit": true
+			},
 			"zone": {
 				"read": true,
 				"edit": false
@@ -1806,6 +1814,10 @@
 				"read": true,
 				"edit": true
 			},
+			"cfone": {
+				"read": true,
+				"edit": true
+			},
 			"billing": {
 				"read": true,
 				"edit": true
@@ -2497,6 +2509,10 @@
 				"read": true,
 				"edit": false
 			},
+			"cfone": {
+				"read": true,
+				"edit": false
+			},
 			"billing": {
 				"read": true,
 				"edit": false
@@ -2735,6 +2751,10 @@
 				"edit": true
 			},
 			"logs": {
+				"read": true,
+				"edit": true
+			},
+			"cfone": {
 				"read": true,
 				"edit": true
 			},
