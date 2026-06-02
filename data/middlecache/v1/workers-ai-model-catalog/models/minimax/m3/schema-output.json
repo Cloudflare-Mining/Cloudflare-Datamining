@@ -1,0 +1,151 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"base_resp": {
+			"additionalProperties": false,
+			"properties": {
+				"status_code": {
+					"type": "number"
+				},
+				"status_msg": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"status_code",
+				"status_msg"
+			],
+			"type": "object"
+		},
+		"choices": {
+			"items": {
+				"additionalProperties": {},
+				"properties": {
+					"finish_reason": {
+						"enum": [
+							"stop",
+							"length",
+							"tool_calls"
+						],
+						"type": "string"
+					},
+					"index": {
+						"type": "number"
+					},
+					"message": {
+						"additionalProperties": {},
+						"properties": {
+							"content": {
+								"type": "string"
+							},
+							"role": {
+								"const": "assistant",
+								"type": "string"
+							},
+							"tool_calls": {
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"function": {
+											"additionalProperties": false,
+											"properties": {
+												"arguments": {
+													"type": "string"
+												},
+												"name": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"arguments"
+											],
+											"type": "object"
+										},
+										"id": {
+											"type": "string"
+										},
+										"type": {
+											"const": "function",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"type",
+										"function"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"role",
+							"content"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"index",
+					"message",
+					"finish_reason"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"created": {
+			"type": "number"
+		},
+		"id": {
+			"type": "string"
+		},
+		"input_sensitive": {
+			"type": "boolean"
+		},
+		"model": {
+			"type": "string"
+		},
+		"object": {
+			"enum": [
+				"chat.completion",
+				"chat.completion.chunk"
+			],
+			"type": "string"
+		},
+		"output_sensitive": {
+			"type": "boolean"
+		},
+		"usage": {
+			"additionalProperties": {},
+			"properties": {
+				"completion_tokens": {
+					"type": "number"
+				},
+				"prompt_tokens": {
+					"type": "number"
+				},
+				"total_tokens": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"total_tokens",
+				"prompt_tokens",
+				"completion_tokens"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"id",
+		"choices",
+		"created",
+		"model",
+		"object"
+	],
+	"type": "object"
+}

@@ -1,0 +1,250 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": false,
+	"properties": {
+		"mask_sensitive_info": {
+			"type": "boolean"
+		},
+		"max_completion_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
+		"max_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
+		"messages": {
+			"items": {
+				"additionalProperties": {},
+				"properties": {
+					"content": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"items": {
+									"anyOf": [
+										{
+											"additionalProperties": false,
+											"properties": {
+												"text": {
+													"type": "string"
+												},
+												"type": {
+													"const": "text",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"text"
+											],
+											"type": "object"
+										},
+										{
+											"additionalProperties": false,
+											"properties": {
+												"image_url": {
+													"additionalProperties": false,
+													"properties": {
+														"url": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"url"
+													],
+													"type": "object"
+												},
+												"type": {
+													"const": "image_url",
+													"type": "string"
+												}
+											},
+											"required": [
+												"type",
+												"image_url"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"type": "array"
+							}
+						]
+					},
+					"name": {
+						"type": "string"
+					},
+					"role": {
+						"enum": [
+							"system",
+							"user",
+							"assistant",
+							"tool"
+						],
+						"type": "string"
+					},
+					"tool_calls": {
+						"items": {
+							"additionalProperties": false,
+							"properties": {
+								"function": {
+									"additionalProperties": false,
+									"properties": {
+										"arguments": {
+											"type": "string"
+										},
+										"name": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"name",
+										"arguments"
+									],
+									"type": "object"
+								},
+								"id": {
+									"type": "string"
+								},
+								"type": {
+									"const": "function",
+									"type": "string"
+								}
+							},
+							"required": [
+								"id",
+								"type",
+								"function"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"role",
+					"content"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"response_format": {
+			"additionalProperties": false,
+			"properties": {
+				"json_schema": {
+					"additionalProperties": false,
+					"properties": {
+						"description": {
+							"type": "string"
+						},
+						"name": {
+							"maxLength": 64,
+							"type": "string"
+						},
+						"schema": {
+							"additionalProperties": false,
+							"properties": {
+								"properties": {},
+								"type": {
+									"const": "object",
+									"type": "string"
+								}
+							},
+							"required": [
+								"type",
+								"properties"
+							],
+							"type": "object"
+						}
+					},
+					"required": [
+						"name",
+						"schema"
+					],
+					"type": "object"
+				},
+				"type": {
+					"const": "json_schema",
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"json_schema"
+			],
+			"type": "object"
+		},
+		"stream": {
+			"type": "boolean"
+		},
+		"stream_options": {
+			"additionalProperties": false,
+			"properties": {
+				"include_usage": {
+					"type": "boolean"
+				}
+			},
+			"type": "object"
+		},
+		"temperature": {
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
+		},
+		"tool_choice": {
+			"enum": [
+				"none",
+				"auto"
+			],
+			"type": "string"
+		},
+		"tools": {
+			"items": {
+				"additionalProperties": false,
+				"properties": {
+					"function": {
+						"additionalProperties": false,
+						"properties": {
+							"description": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"parameters": {}
+						},
+						"required": [
+							"name",
+							"description",
+							"parameters"
+						],
+						"type": "object"
+					},
+					"type": {
+						"const": "function",
+						"type": "string"
+					}
+				},
+				"required": [
+					"type",
+					"function"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"top_p": {
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
+		}
+	},
+	"required": [
+		"messages"
+	],
+	"type": "object"
+}
