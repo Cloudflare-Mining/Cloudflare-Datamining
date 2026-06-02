@@ -1,6 +1,7 @@
 {
 	"AccountID": "string; Cloudflare account tag.",
 	"Action": "string; Action performed by gateway on the HTTP request.",
+	"AddedHeaders": "array[string]; Headers added to the HTTP request by a Gateway rule.",
 	"AppControlInfo": "object; Information about application control operations, APIs, and groups that matched the HTTP request.",
 	"ApplicationIDs": "array[int]; IDs of the applications that matched the HTTP request parameters.",
 	"ApplicationNames": "array[string]; Names of the applications that matched the HTTP request parameters.",
@@ -13,6 +14,7 @@
 	"CategoryIDs": "array[int]; IDs of the categories that matched the HTTP request parameters.",
 	"CategoryNames": "array[string]; Names of the categories that matched the HTTP request parameters.",
 	"Datetime": "int or string; The date and time the corresponding HTTP request was made.",
+	"DeletedHeaders": "array[string]; Names of headers that were deleted from the HTTP request by a Gateway rule.",
 	"DestinationIP": "string; Destination ip of the request.",
 	"DestinationIPContinentCode": "string; Continent code of the destination IP of the HTTP request (for example, 'NA').",
 	"DestinationIPCountryCode": "string; Country code of the destination IP of the HTTP request (for example, 'US').",
@@ -40,6 +42,7 @@
 	"RegistrationID": "string; The UUID of the device registration from which the HTTP request originated.",
 	"RequestID": "string; Cloudflare request ID. This might be empty on bypass action.",
 	"SessionID": "string; Network session ID.",
+	"SetHeaders": "array[string]; Names of headers that were set (overwritten) on the HTTP request by a Gateway rule.",
 	"SourceIP": "string; Source ip of the request.",
 	"SourceIPContinentCode": "string; Continent code of the source IP of the request (for example, 'NA').",
 	"SourceIPCountryCode": "string; Country code of the source IP of the request (for example, 'US').",
