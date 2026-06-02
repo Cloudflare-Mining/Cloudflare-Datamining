@@ -494,9 +494,6 @@
 	"brand-protection-cease-and-desist": {
 		"enabled": true
 	},
-	"brand-protection-dismiss-matches-api-fix": {
-		"enabled": true
-	},
 	"browser-rendering-live-view": {
 		"enabled": true
 	},
@@ -543,7 +540,7 @@
 		"enabled": true
 	},
 	"cfone-threat-actor-profiles-enabled": {
-		"enabled": false
+		"enabled": true
 	},
 	"cfone-threat-events-visualizations-enabled": {
 		"enabled": true
@@ -722,6 +719,9 @@
 		"enabled": true
 	},
 	"data-audit-logs-history": {
+		"enabled": false
+	},
+	"data-audit-logs-org": {
 		"enabled": false
 	},
 	"data-audit-logs-v2": {
@@ -1603,7 +1603,7 @@
 		"enabled": true
 	},
 	"loui-ssl-kumoify": {
-		"enabled": false
+		"enabled": true
 	},
 	"loui-turnstile-kumo": {
 		"enabled": true
@@ -2300,6 +2300,9 @@
 	"realtimekit-dashboard-redirect": {
 		"enabled": true
 	},
+	"reg-whois-ownership-letter": {
+		"enabled": false
+	},
 	"registrar-account-home-copy-experiment": {
 		"enabled": true,
 		"branches": [
@@ -2654,12 +2657,6 @@
 		"enabled": true
 	},
 	"threat-events-appsec-integration-analytics": {
-		"enabled": true
-	},
-	"threat-events-industry-graph": {
-		"enabled": true
-	},
-	"threat-events-views-alerts": {
 		"enabled": true
 	},
 	"threat-intel-new-nav": {
