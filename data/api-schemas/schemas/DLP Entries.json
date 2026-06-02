@@ -462,6 +462,11 @@
 																				"format": "date-time",
 																				"type": "string"
 																			},
+																			"description": {
+																				"description": "The optional description of the custom prompt topic entry.",
+																				"nullable": true,
+																				"type": "string"
+																			},
 																			"enabled": {
 																				"deprecated": true,
 																				"type": "boolean"
@@ -690,6 +695,11 @@
 																				"format": "date-time",
 																				"type": "string"
 																			},
+																			"description": {
+																				"description": "The optional description of the exact data entry.",
+																				"nullable": true,
+																				"type": "string"
+																			},
 																			"enabled": {
 																				"type": "boolean"
 																			},
@@ -742,6 +752,11 @@
 																		"properties": {
 																			"created_at": {
 																				"format": "date-time",
+																				"type": "string"
+																			},
+																			"description": {
+																				"description": "The optional description of the document fingerprint entry.",
+																				"nullable": true,
 																				"type": "string"
 																			},
 																			"enabled": {
@@ -1221,6 +1236,11 @@
 																					"format": "date-time",
 																					"type": "string"
 																				},
+																				"description": {
+																					"description": "The optional description of the custom prompt topic entry.",
+																					"nullable": true,
+																					"type": "string"
+																				},
 																				"enabled": {
 																					"deprecated": true,
 																					"type": "boolean"
@@ -1449,6 +1469,11 @@
 																					"format": "date-time",
 																					"type": "string"
 																				},
+																				"description": {
+																					"description": "The optional description of the exact data entry.",
+																					"nullable": true,
+																					"type": "string"
+																				},
 																				"enabled": {
 																					"type": "boolean"
 																				},
@@ -1501,6 +1526,11 @@
 																			"properties": {
 																				"created_at": {
 																					"format": "date-time",
+																					"type": "string"
+																				},
+																				"description": {
+																					"description": "The optional description of the document fingerprint entry.",
+																					"nullable": true,
 																					"type": "string"
 																				},
 																				"enabled": {
@@ -2480,6 +2510,11 @@
 																	"format": "date-time",
 																	"type": "string"
 																},
+																"description": {
+																	"description": "The optional description of the custom prompt topic entry.",
+																	"nullable": true,
+																	"type": "string"
+																},
 																"enabled": {
 																	"deprecated": true,
 																	"type": "boolean"
@@ -2708,6 +2743,11 @@
 																	"format": "date-time",
 																	"type": "string"
 																},
+																"description": {
+																	"description": "The optional description of the exact data entry.",
+																	"nullable": true,
+																	"type": "string"
+																},
 																"enabled": {
 																	"type": "boolean"
 																},
@@ -2760,6 +2800,11 @@
 															"properties": {
 																"created_at": {
 																	"format": "date-time",
+																	"type": "string"
+																},
+																"description": {
+																	"description": "The optional description of the document fingerprint entry.",
+																	"nullable": true,
 																	"type": "string"
 																},
 																"enabled": {

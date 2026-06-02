@@ -330,6 +330,7 @@
 																		"type": "string"
 																	},
 																	"endpoint": {
+																		"format": "uri",
 																		"nullable": true,
 																		"type": "string"
 																	},
@@ -636,6 +637,7 @@
 																	"type": "string"
 																},
 																"endpoint": {
+																	"format": "uri",
 																	"nullable": true,
 																	"type": "string"
 																},
@@ -1277,6 +1279,8 @@
 												"type": "string"
 											},
 											"endpoint": {
+												"description": "Custom S3-compatible endpoint that must use https://.",
+												"format": "uri",
 												"nullable": true,
 												"type": "string"
 											},
@@ -2412,6 +2416,8 @@
 										"type": "string"
 									},
 									"endpoint": {
+										"description": "Custom S3-compatible endpoint that must use https://.",
+										"format": "uri",
 										"nullable": true,
 										"type": "string"
 									},
