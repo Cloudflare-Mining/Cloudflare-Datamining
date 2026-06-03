@@ -22,7 +22,7 @@
 <p>The Senior Cloudflare One GTM Specialist Role is a consultative sales excellence role that directly supports sales delivery of regional CF1 quota. In order to be successful, you will need to become a thought leader, trusted advisor, and spokesperson for Cloudflare One - Cloudflare's SASE platform.</p>
 <h4><strong>Requirements</strong></h4>
 <ul>
-	<li>Minimum 4 years of experience selling or supporting the sales of cyber security, networking, identity management, cloud or SaaS solutions.</li>
+	<li>Minimum 7 years of experience selling or supporting the sales of cyber security, networking, identity management, cloud or SaaS solutions.</li>
 	<li>Technical expertise in SASE, SSE, AI Security, ZTNA, SWG, CASB, DLP, SD-WAN, and Email Security</li>
 	<li>Experience building territory plans, prospecting and bringing in new logos in a competitive market</li>
 	<li>Knowledge of key market players/competitors in the software defined networking, zero trust and cybersecurity solution spaces.</li>
