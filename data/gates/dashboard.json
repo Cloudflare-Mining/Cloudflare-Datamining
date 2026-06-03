@@ -27,7 +27,7 @@
 		"enabled": true
 	},
 	"account-oauth-policy": {
-		"enabled": false
+		"enabled": true
 	},
 	"account-overview-workers-empty-widget": {
 		"enabled": false
@@ -555,9 +555,6 @@
 		"enabled": false
 	},
 	"client-side-security-advanced": {
-		"enabled": true
-	},
-	"cloud-connector-r2": {
 		"enabled": true
 	},
 	"cloudflare-agent-direct": {
@@ -1762,7 +1759,7 @@
 		"enabled": true
 	},
 	"oauth-management-ui": {
-		"enabled": false
+		"enabled": true
 	},
 	"onboarding-bot-management": {
 		"enabled": true
@@ -2250,27 +2247,6 @@
 	},
 	"r2-migration-dashboard": {
 		"enabled": false
-	},
-	"r2-onboarding-flow": {
-		"enabled": true,
-		"branches": [
-			"old-flow",
-			"new-flow"
-		]
-	},
-	"r2-onboarding-flow-new-customer": {
-		"enabled": true,
-		"branches": [
-			"old-flow",
-			"new-flow"
-		]
-	},
-	"r2-purchase-call-to-action": {
-		"enabled": true,
-		"branches": [
-			"purchase-r2",
-			"activate-r2"
-		]
 	},
 	"r2-sql-studio": {
 		"enabled": false

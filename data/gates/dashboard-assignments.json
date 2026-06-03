@@ -53,6 +53,9 @@
 	"account-logpush": {
 		"true": 100
 	},
+	"account-oauth-policy": {
+		"false": 100
+	},
 	"account-owned-api-tokens": {
 		"true": 100
 	},
@@ -709,6 +712,9 @@
 		"false": 95,
 		"true": 5
 	},
+	"oauth-management-ui": {
+		"false": 100
+	},
 	"page-rules-templates": {
 		"true": 100
 	},
@@ -868,15 +874,6 @@
 	},
 	"r2-localized-uploads": {
 		"true": 100
-	},
-	"r2-onboarding-flow": {
-		"new-flow": 100
-	},
-	"r2-onboarding-flow-new-customer": {
-		"new-flow": 100
-	},
-	"r2-purchase-call-to-action": {
-		"activate-r2": 100
 	},
 	"rachel-test-delete-okay": {
 		"experiment": 50,
