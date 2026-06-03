@@ -554,7 +554,7 @@
 				}
 			},
 			{
-				"description": "The search query string. You can search using the meeting ID or title.",
+				"description": "The search query string. You can search using participant ID, custom participant ID, or display name.",
 				"in": "query",
 				"name": "search",
 				"schema": {
@@ -1113,6 +1113,21 @@
 					"format": "uuid",
 					"type": "string"
 				}
+			},
+			{
+				"description": "Transcript file format to fetch.",
+				"in": "query",
+				"name": "format",
+				"schema": {
+					"default": "CSV",
+					"enum": [
+						"SRT",
+						"VTT",
+						"JSON",
+						"CSV"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {
@@ -1207,6 +1222,15 @@
 						"quality_stats"
 					],
 					"type": "string"
+				}
+			},
+			{
+				"description": "if true, response includes all the peer events of participant.",
+				"in": "query",
+				"name": "include_peer_events",
+				"schema": {
+					"default": false,
+					"type": "boolean"
 				}
 			},
 			{
@@ -1369,18 +1393,19 @@
 			}
 		],
 		"responses": {
-			"2XX": {
+			"200": {
 				"content": {
 					"application/json": {
 						"schema": {
 							"properties": {
 								"data": {
 									"properties": {
-										"message": {
+										"session_id": {
+											"format": "uuid",
 											"type": "string"
 										},
-										"success": {
-											"type": "boolean"
+										"status": {
+											"type": "string"
 										}
 									},
 									"type": "object"

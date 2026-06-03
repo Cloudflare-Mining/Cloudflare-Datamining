@@ -32,6 +32,7 @@
 				"name": "preset_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -66,14 +67,26 @@
 											"allOf": [
 												{
 													"properties": {
+														"created_at": {
+															"description": "Timestamp this preset was created at",
+															"format": "date-time",
+															"type": "string"
+														},
 														"id": {
 															"description": "ID of the preset",
 															"format": "uuid",
 															"type": "string"
+														},
+														"updated_at": {
+															"description": "Timestamp this preset was last updated",
+															"format": "date-time",
+															"type": "string"
 														}
 													},
 													"required": [
-														"id"
+														"id",
+														"created_at",
+														"updated_at"
 													],
 													"type": "object"
 												},
@@ -81,20 +94,30 @@
 													"properties": {
 														"config": {
 															"properties": {
+																"livestream_viewer_qualities": {
+																	"default": [],
+																	"description": "Livestream viewer quality levels.",
+																	"items": {
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"nullable": true,
+																	"type": "array"
+																},
 																"max_screenshare_count": {
 																	"description": "Maximum number of screen shares that can be active at a given time",
-																	"type": "integer"
+																	"type": "number"
 																},
 																"max_video_streams": {
 																	"description": "Maximum number of streams that are visible on a device",
 																	"properties": {
 																		"desktop": {
 																			"description": "Maximum number of video streams visible on desktop devices",
-																			"type": "integer"
+																			"type": "number"
 																		},
 																		"mobile": {
 																			"description": "Maximum number of streams visible on mobile devices",
-																			"type": "integer"
+																			"type": "number"
 																		}
 																	},
 																	"required": [
@@ -127,14 +150,16 @@
 																			"properties": {
 																				"frame_rate": {
 																					"description": "Frame rate of screen share",
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Quality of screen share ",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
 																				}
@@ -151,16 +176,23 @@
 																				"frame_rate": {
 																					"description": "Frame rate of participants' video",
 																					"maximum": 30,
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Video quality of participants",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
+																				},
+																				"simulcast": {
+																					"default": false,
+																					"description": "Enable simulcast for participant videos.",
+																					"type": "boolean"
 																				}
 																			},
 																			"required": [
@@ -181,7 +213,8 @@
 																	"enum": [
 																		"GROUP_CALL",
 																		"WEBINAR",
-																		"AUDIO_ROOM"
+																		"AUDIO_ROOM",
+																		"LIVESTREAM"
 																	],
 																	"type": "string"
 																}
@@ -200,6 +233,9 @@
 														},
 														"permissions": {
 															"properties": {
+																"accept_stage_requests": {
+																	"type": "boolean"
+																},
 																"accept_waiting_requests": {
 																	"description": "Whether this participant can accept waiting requests",
 																	"type": "boolean"
@@ -223,7 +259,6 @@
 																	"type": "boolean"
 																},
 																"chat": {
-																	"description": "Chat permissions",
 																	"properties": {
 																		"private": {
 																			"properties": {
@@ -400,31 +435,24 @@
 																			"type": "boolean"
 																		},
 																		"config": {
-																			"oneOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"properties": {
-																						"access_control": {
-																							"enum": [
-																								"FULL_ACCESS",
-																								"VIEW_ONLY"
-																							],
-																							"type": "string"
-																						},
-																						"handles_view_only": {
-																							"type": "boolean"
-																						}
+																			"additionalProperties": {
+																				"additionalProperties": true,
+																				"properties": {
+																					"access_control": {
+																						"enum": [
+																							"FULL_ACCESS",
+																							"VIEW_ONLY"
+																						],
+																						"type": "string"
 																					},
-																					"required": [
-																						"access_control",
-																						"handles_view_only"
-																					],
-																					"type": "object"
-																				}
-																			]
+																					"handles_view_only": {
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"description": "Plugin configuration keyed by plugin UUID.",
+																			"type": "object"
 																		}
 																	},
 																	"required": [
@@ -471,6 +499,20 @@
 																"show_participant_list": {
 																	"type": "boolean"
 																},
+																"stage_access": {
+																	"enum": [
+																		"ALLOWED",
+																		"NOT_ALLOWED",
+																		"CAN_REQUEST"
+																	],
+																	"type": "string"
+																},
+																"stage_enabled": {
+																	"type": "boolean"
+																},
+																"transcription_enabled": {
+																	"type": "boolean"
+																},
 																"waiting_room_type": {
 																	"description": "Waiting room type",
 																	"enum": [
@@ -508,20 +550,22 @@
 														},
 														"ui": {
 															"properties": {
-																"config_diff": {
-																	"type": "object"
-																},
 																"design_tokens": {
 																	"properties": {
 																		"border_radius": {
 																			"enum": [
-																				"rounded"
+																				"sharp",
+																				"rounded",
+																				"extra-rounded",
+																				"circular"
 																			],
 																			"type": "string"
 																		},
 																		"border_width": {
 																			"enum": [
-																				"thin"
+																				"none",
+																				"thin",
+																				"fat"
 																			],
 																			"type": "string"
 																		},
@@ -628,7 +672,14 @@
 																			],
 																			"type": "object"
 																		},
+																		"font_family": {
+																			"type": "string"
+																		},
+																		"google_font": {
+																			"type": "string"
+																		},
 																		"logo": {
+																			"format": "uri",
 																			"type": "string"
 																		},
 																		"spacing_base": {
@@ -637,7 +688,9 @@
 																		},
 																		"theme": {
 																			"enum": [
-																				"dark"
+																				"darkest",
+																				"dark",
+																				"light"
 																			],
 																			"type": "string"
 																		}
@@ -647,8 +700,7 @@
 																		"border_width",
 																		"spacing_base",
 																		"theme",
-																		"colors",
-																		"logo"
+																		"colors"
 																	],
 																	"type": "object"
 																}
@@ -662,6 +714,7 @@
 													"required": [
 														"name",
 														"config",
+														"permissions",
 														"ui"
 													],
 													"title": "Preset",
@@ -741,6 +794,14 @@
 				"schema": {
 					"minimum": 0,
 					"type": "number"
+				}
+			},
+			{
+				"description": "Search presets by name.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
 				}
 			}
 		],
@@ -882,6 +943,7 @@
 				"name": "preset_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -916,14 +978,26 @@
 											"allOf": [
 												{
 													"properties": {
+														"created_at": {
+															"description": "Timestamp this preset was created at",
+															"format": "date-time",
+															"type": "string"
+														},
 														"id": {
 															"description": "ID of the preset",
 															"format": "uuid",
 															"type": "string"
+														},
+														"updated_at": {
+															"description": "Timestamp this preset was last updated",
+															"format": "date-time",
+															"type": "string"
 														}
 													},
 													"required": [
-														"id"
+														"id",
+														"created_at",
+														"updated_at"
 													],
 													"type": "object"
 												},
@@ -931,20 +1005,30 @@
 													"properties": {
 														"config": {
 															"properties": {
+																"livestream_viewer_qualities": {
+																	"default": [],
+																	"description": "Livestream viewer quality levels.",
+																	"items": {
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"nullable": true,
+																	"type": "array"
+																},
 																"max_screenshare_count": {
 																	"description": "Maximum number of screen shares that can be active at a given time",
-																	"type": "integer"
+																	"type": "number"
 																},
 																"max_video_streams": {
 																	"description": "Maximum number of streams that are visible on a device",
 																	"properties": {
 																		"desktop": {
 																			"description": "Maximum number of video streams visible on desktop devices",
-																			"type": "integer"
+																			"type": "number"
 																		},
 																		"mobile": {
 																			"description": "Maximum number of streams visible on mobile devices",
-																			"type": "integer"
+																			"type": "number"
 																		}
 																	},
 																	"required": [
@@ -977,14 +1061,16 @@
 																			"properties": {
 																				"frame_rate": {
 																					"description": "Frame rate of screen share",
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Quality of screen share ",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
 																				}
@@ -1001,16 +1087,23 @@
 																				"frame_rate": {
 																					"description": "Frame rate of participants' video",
 																					"maximum": 30,
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Video quality of participants",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
+																				},
+																				"simulcast": {
+																					"default": false,
+																					"description": "Enable simulcast for participant videos.",
+																					"type": "boolean"
 																				}
 																			},
 																			"required": [
@@ -1031,7 +1124,8 @@
 																	"enum": [
 																		"GROUP_CALL",
 																		"WEBINAR",
-																		"AUDIO_ROOM"
+																		"AUDIO_ROOM",
+																		"LIVESTREAM"
 																	],
 																	"type": "string"
 																}
@@ -1050,6 +1144,9 @@
 														},
 														"permissions": {
 															"properties": {
+																"accept_stage_requests": {
+																	"type": "boolean"
+																},
 																"accept_waiting_requests": {
 																	"description": "Whether this participant can accept waiting requests",
 																	"type": "boolean"
@@ -1073,7 +1170,6 @@
 																	"type": "boolean"
 																},
 																"chat": {
-																	"description": "Chat permissions",
 																	"properties": {
 																		"private": {
 																			"properties": {
@@ -1250,31 +1346,24 @@
 																			"type": "boolean"
 																		},
 																		"config": {
-																			"oneOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"properties": {
-																						"access_control": {
-																							"enum": [
-																								"FULL_ACCESS",
-																								"VIEW_ONLY"
-																							],
-																							"type": "string"
-																						},
-																						"handles_view_only": {
-																							"type": "boolean"
-																						}
+																			"additionalProperties": {
+																				"additionalProperties": true,
+																				"properties": {
+																					"access_control": {
+																						"enum": [
+																							"FULL_ACCESS",
+																							"VIEW_ONLY"
+																						],
+																						"type": "string"
 																					},
-																					"required": [
-																						"access_control",
-																						"handles_view_only"
-																					],
-																					"type": "object"
-																				}
-																			]
+																					"handles_view_only": {
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"description": "Plugin configuration keyed by plugin UUID.",
+																			"type": "object"
 																		}
 																	},
 																	"required": [
@@ -1321,6 +1410,20 @@
 																"show_participant_list": {
 																	"type": "boolean"
 																},
+																"stage_access": {
+																	"enum": [
+																		"ALLOWED",
+																		"NOT_ALLOWED",
+																		"CAN_REQUEST"
+																	],
+																	"type": "string"
+																},
+																"stage_enabled": {
+																	"type": "boolean"
+																},
+																"transcription_enabled": {
+																	"type": "boolean"
+																},
 																"waiting_room_type": {
 																	"description": "Waiting room type",
 																	"enum": [
@@ -1358,20 +1461,22 @@
 														},
 														"ui": {
 															"properties": {
-																"config_diff": {
-																	"type": "object"
-																},
 																"design_tokens": {
 																	"properties": {
 																		"border_radius": {
 																			"enum": [
-																				"rounded"
+																				"sharp",
+																				"rounded",
+																				"extra-rounded",
+																				"circular"
 																			],
 																			"type": "string"
 																		},
 																		"border_width": {
 																			"enum": [
-																				"thin"
+																				"none",
+																				"thin",
+																				"fat"
 																			],
 																			"type": "string"
 																		},
@@ -1478,7 +1583,14 @@
 																			],
 																			"type": "object"
 																		},
+																		"font_family": {
+																			"type": "string"
+																		},
+																		"google_font": {
+																			"type": "string"
+																		},
 																		"logo": {
+																			"format": "uri",
 																			"type": "string"
 																		},
 																		"spacing_base": {
@@ -1487,7 +1599,9 @@
 																		},
 																		"theme": {
 																			"enum": [
-																				"dark"
+																				"darkest",
+																				"dark",
+																				"light"
 																			],
 																			"type": "string"
 																		}
@@ -1497,8 +1611,7 @@
 																		"border_width",
 																		"spacing_base",
 																		"theme",
-																		"colors",
-																		"logo"
+																		"colors"
 																	],
 																	"type": "object"
 																}
@@ -1512,6 +1625,7 @@
 													"required": [
 														"name",
 														"config",
+														"permissions",
 														"ui"
 													],
 													"title": "Preset",
@@ -1579,6 +1693,7 @@
 				"name": "preset_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -1590,20 +1705,30 @@
 						"properties": {
 							"config": {
 								"properties": {
+									"livestream_viewer_qualities": {
+										"default": [],
+										"description": "Livestream viewer quality levels.",
+										"items": {
+											"minimum": 0,
+											"type": "integer"
+										},
+										"nullable": true,
+										"type": "array"
+									},
 									"max_screenshare_count": {
 										"description": "Maximum number of screen shares that can be active at a given time",
-										"type": "integer"
+										"type": "number"
 									},
 									"max_video_streams": {
 										"description": "Maximum number of streams that are visible on a device",
 										"properties": {
 											"desktop": {
 												"description": "Maximum number of video streams visible on desktop devices",
-												"type": "integer"
+												"type": "number"
 											},
 											"mobile": {
 												"description": "Maximum number of streams visible on mobile devices",
-												"type": "integer"
+												"type": "number"
 											}
 										},
 										"type": "object"
@@ -1611,19 +1736,37 @@
 									"media": {
 										"description": "Media configuration options. eg: Video quality",
 										"properties": {
+											"audio": {
+												"description": "Control options for Audio quality.",
+												"properties": {
+													"enable_high_bitrate": {
+														"default": false,
+														"description": "Enable High Quality Audio for your meetings",
+														"type": "boolean"
+													},
+													"enable_stereo": {
+														"default": false,
+														"description": "Enable Stereo for your meetings",
+														"type": "boolean"
+													}
+												},
+												"type": "object"
+											},
 											"screenshare": {
 												"description": "Configuration options for participant screen shares",
 												"properties": {
 													"frame_rate": {
 														"description": "Frame rate of screen share",
-														"type": "integer"
+														"type": "number"
 													},
 													"quality": {
 														"description": "Quality of screen share ",
 														"enum": [
 															"hd",
 															"vga",
-															"qvga"
+															"qvga",
+															"fhd",
+															"uhd"
 														],
 														"type": "string"
 													}
@@ -1636,16 +1779,22 @@
 													"frame_rate": {
 														"description": "Frame rate of participants' video",
 														"maximum": 30,
-														"type": "integer"
+														"type": "number"
 													},
 													"quality": {
 														"description": "Video quality of participants",
 														"enum": [
 															"hd",
 															"vga",
-															"qvga"
+															"qvga",
+															"fhd",
+															"uhd"
 														],
 														"type": "string"
+													},
+													"simulcast": {
+														"description": "Enable simulcast for participant videos.",
+														"type": "boolean"
 													}
 												},
 												"type": "object"
@@ -1658,7 +1807,8 @@
 										"enum": [
 											"GROUP_CALL",
 											"WEBINAR",
-											"AUDIO_ROOM"
+											"AUDIO_ROOM",
+											"LIVESTREAM"
 										],
 										"type": "string"
 									}
@@ -1671,6 +1821,9 @@
 							},
 							"permissions": {
 								"properties": {
+									"accept_stage_requests": {
+										"type": "boolean"
+									},
 									"accept_waiting_requests": {
 										"description": "Whether this participant can accept waiting requests",
 										"type": "boolean"
@@ -1694,7 +1847,6 @@
 										"type": "boolean"
 									},
 									"chat": {
-										"description": "Chat permissions",
 										"properties": {
 											"private": {
 												"properties": {
@@ -1837,27 +1989,24 @@
 												"type": "boolean"
 											},
 											"config": {
-												"oneOf": [
-													{
-														"format": "uuid",
-														"type": "string"
-													},
-													{
-														"properties": {
-															"access_control": {
-																"enum": [
-																	"FULL_ACCESS",
-																	"VIEW_ONLY"
-																],
-																"type": "string"
-															},
-															"handles_view_only": {
-																"type": "boolean"
-															}
+												"additionalProperties": {
+													"additionalProperties": true,
+													"properties": {
+														"access_control": {
+															"enum": [
+																"FULL_ACCESS",
+																"VIEW_ONLY"
+															],
+															"type": "string"
 														},
-														"type": "object"
-													}
-												]
+														"handles_view_only": {
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"description": "Plugin configuration keyed by plugin UUID.",
+												"type": "object"
 											}
 										},
 										"type": "object"
@@ -1893,6 +2042,20 @@
 									"show_participant_list": {
 										"type": "boolean"
 									},
+									"stage_access": {
+										"enum": [
+											"ALLOWED",
+											"NOT_ALLOWED",
+											"CAN_REQUEST"
+										],
+										"type": "string"
+									},
+									"stage_enabled": {
+										"type": "boolean"
+									},
+									"transcription_enabled": {
+										"type": "boolean"
+									},
 									"waiting_room_type": {
 										"description": "Waiting room type",
 										"enum": [
@@ -1907,20 +2070,22 @@
 							},
 							"ui": {
 								"properties": {
-									"config_diff": {
-										"type": "object"
-									},
 									"design_tokens": {
 										"properties": {
 											"border_radius": {
 												"enum": [
-													"rounded"
+													"sharp",
+													"rounded",
+													"extra-rounded",
+													"circular"
 												],
 												"type": "string"
 											},
 											"border_width": {
 												"enum": [
-													"thin"
+													"none",
+													"thin",
+													"fat"
 												],
 												"type": "string"
 											},
@@ -2003,7 +2168,14 @@
 												},
 												"type": "object"
 											},
+											"font_family": {
+												"type": "string"
+											},
+											"google_font": {
+												"type": "string"
+											},
 											"logo": {
+												"format": "uri",
 												"type": "string"
 											},
 											"spacing_base": {
@@ -2012,7 +2184,9 @@
 											},
 											"theme": {
 												"enum": [
-													"dark"
+													"darkest",
+													"dark",
+													"light"
 												],
 												"type": "string"
 											}
@@ -2060,14 +2234,26 @@
 											"allOf": [
 												{
 													"properties": {
+														"created_at": {
+															"description": "Timestamp this preset was created at",
+															"format": "date-time",
+															"type": "string"
+														},
 														"id": {
 															"description": "ID of the preset",
 															"format": "uuid",
 															"type": "string"
+														},
+														"updated_at": {
+															"description": "Timestamp this preset was last updated",
+															"format": "date-time",
+															"type": "string"
 														}
 													},
 													"required": [
-														"id"
+														"id",
+														"created_at",
+														"updated_at"
 													],
 													"type": "object"
 												},
@@ -2075,20 +2261,30 @@
 													"properties": {
 														"config": {
 															"properties": {
+																"livestream_viewer_qualities": {
+																	"default": [],
+																	"description": "Livestream viewer quality levels.",
+																	"items": {
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"nullable": true,
+																	"type": "array"
+																},
 																"max_screenshare_count": {
 																	"description": "Maximum number of screen shares that can be active at a given time",
-																	"type": "integer"
+																	"type": "number"
 																},
 																"max_video_streams": {
 																	"description": "Maximum number of streams that are visible on a device",
 																	"properties": {
 																		"desktop": {
 																			"description": "Maximum number of video streams visible on desktop devices",
-																			"type": "integer"
+																			"type": "number"
 																		},
 																		"mobile": {
 																			"description": "Maximum number of streams visible on mobile devices",
-																			"type": "integer"
+																			"type": "number"
 																		}
 																	},
 																	"required": [
@@ -2121,14 +2317,16 @@
 																			"properties": {
 																				"frame_rate": {
 																					"description": "Frame rate of screen share",
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Quality of screen share ",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
 																				}
@@ -2145,16 +2343,23 @@
 																				"frame_rate": {
 																					"description": "Frame rate of participants' video",
 																					"maximum": 30,
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Video quality of participants",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
+																				},
+																				"simulcast": {
+																					"default": false,
+																					"description": "Enable simulcast for participant videos.",
+																					"type": "boolean"
 																				}
 																			},
 																			"required": [
@@ -2175,7 +2380,8 @@
 																	"enum": [
 																		"GROUP_CALL",
 																		"WEBINAR",
-																		"AUDIO_ROOM"
+																		"AUDIO_ROOM",
+																		"LIVESTREAM"
 																	],
 																	"type": "string"
 																}
@@ -2194,6 +2400,9 @@
 														},
 														"permissions": {
 															"properties": {
+																"accept_stage_requests": {
+																	"type": "boolean"
+																},
 																"accept_waiting_requests": {
 																	"description": "Whether this participant can accept waiting requests",
 																	"type": "boolean"
@@ -2217,7 +2426,6 @@
 																	"type": "boolean"
 																},
 																"chat": {
-																	"description": "Chat permissions",
 																	"properties": {
 																		"private": {
 																			"properties": {
@@ -2394,31 +2602,24 @@
 																			"type": "boolean"
 																		},
 																		"config": {
-																			"oneOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"properties": {
-																						"access_control": {
-																							"enum": [
-																								"FULL_ACCESS",
-																								"VIEW_ONLY"
-																							],
-																							"type": "string"
-																						},
-																						"handles_view_only": {
-																							"type": "boolean"
-																						}
+																			"additionalProperties": {
+																				"additionalProperties": true,
+																				"properties": {
+																					"access_control": {
+																						"enum": [
+																							"FULL_ACCESS",
+																							"VIEW_ONLY"
+																						],
+																						"type": "string"
 																					},
-																					"required": [
-																						"access_control",
-																						"handles_view_only"
-																					],
-																					"type": "object"
-																				}
-																			]
+																					"handles_view_only": {
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"description": "Plugin configuration keyed by plugin UUID.",
+																			"type": "object"
 																		}
 																	},
 																	"required": [
@@ -2465,6 +2666,20 @@
 																"show_participant_list": {
 																	"type": "boolean"
 																},
+																"stage_access": {
+																	"enum": [
+																		"ALLOWED",
+																		"NOT_ALLOWED",
+																		"CAN_REQUEST"
+																	],
+																	"type": "string"
+																},
+																"stage_enabled": {
+																	"type": "boolean"
+																},
+																"transcription_enabled": {
+																	"type": "boolean"
+																},
 																"waiting_room_type": {
 																	"description": "Waiting room type",
 																	"enum": [
@@ -2502,20 +2717,22 @@
 														},
 														"ui": {
 															"properties": {
-																"config_diff": {
-																	"type": "object"
-																},
 																"design_tokens": {
 																	"properties": {
 																		"border_radius": {
 																			"enum": [
-																				"rounded"
+																				"sharp",
+																				"rounded",
+																				"extra-rounded",
+																				"circular"
 																			],
 																			"type": "string"
 																		},
 																		"border_width": {
 																			"enum": [
-																				"thin"
+																				"none",
+																				"thin",
+																				"fat"
 																			],
 																			"type": "string"
 																		},
@@ -2622,7 +2839,14 @@
 																			],
 																			"type": "object"
 																		},
+																		"font_family": {
+																			"type": "string"
+																		},
+																		"google_font": {
+																			"type": "string"
+																		},
 																		"logo": {
+																			"format": "uri",
 																			"type": "string"
 																		},
 																		"spacing_base": {
@@ -2631,7 +2855,9 @@
 																		},
 																		"theme": {
 																			"enum": [
-																				"dark"
+																				"darkest",
+																				"dark",
+																				"light"
 																			],
 																			"type": "string"
 																		}
@@ -2641,8 +2867,7 @@
 																		"border_width",
 																		"spacing_base",
 																		"theme",
-																		"colors",
-																		"logo"
+																		"colors"
 																	],
 																	"type": "object"
 																}
@@ -2656,6 +2881,7 @@
 													"required": [
 														"name",
 														"config",
+														"permissions",
 														"ui"
 													],
 													"title": "Preset",
@@ -2725,20 +2951,30 @@
 						"properties": {
 							"config": {
 								"properties": {
+									"livestream_viewer_qualities": {
+										"default": [],
+										"description": "Livestream viewer quality levels.",
+										"items": {
+											"minimum": 0,
+											"type": "integer"
+										},
+										"nullable": true,
+										"type": "array"
+									},
 									"max_screenshare_count": {
 										"description": "Maximum number of screen shares that can be active at a given time",
-										"type": "integer"
+										"type": "number"
 									},
 									"max_video_streams": {
 										"description": "Maximum number of streams that are visible on a device",
 										"properties": {
 											"desktop": {
 												"description": "Maximum number of video streams visible on desktop devices",
-												"type": "integer"
+												"type": "number"
 											},
 											"mobile": {
 												"description": "Maximum number of streams visible on mobile devices",
-												"type": "integer"
+												"type": "number"
 											}
 										},
 										"required": [
@@ -2771,14 +3007,16 @@
 												"properties": {
 													"frame_rate": {
 														"description": "Frame rate of screen share",
-														"type": "integer"
+														"type": "number"
 													},
 													"quality": {
 														"description": "Quality of screen share ",
 														"enum": [
 															"hd",
 															"vga",
-															"qvga"
+															"qvga",
+															"fhd",
+															"uhd"
 														],
 														"type": "string"
 													}
@@ -2795,16 +3033,23 @@
 													"frame_rate": {
 														"description": "Frame rate of participants' video",
 														"maximum": 30,
-														"type": "integer"
+														"type": "number"
 													},
 													"quality": {
 														"description": "Video quality of participants",
 														"enum": [
 															"hd",
 															"vga",
-															"qvga"
+															"qvga",
+															"fhd",
+															"uhd"
 														],
 														"type": "string"
+													},
+													"simulcast": {
+														"default": false,
+														"description": "Enable simulcast for participant videos.",
+														"type": "boolean"
 													}
 												},
 												"required": [
@@ -2825,7 +3070,8 @@
 										"enum": [
 											"GROUP_CALL",
 											"WEBINAR",
-											"AUDIO_ROOM"
+											"AUDIO_ROOM",
+											"LIVESTREAM"
 										],
 										"type": "string"
 									}
@@ -2844,6 +3090,9 @@
 							},
 							"permissions": {
 								"properties": {
+									"accept_stage_requests": {
+										"type": "boolean"
+									},
 									"accept_waiting_requests": {
 										"description": "Whether this participant can accept waiting requests",
 										"type": "boolean"
@@ -2867,7 +3116,6 @@
 										"type": "boolean"
 									},
 									"chat": {
-										"description": "Chat permissions",
 										"properties": {
 											"private": {
 												"properties": {
@@ -3044,31 +3292,24 @@
 												"type": "boolean"
 											},
 											"config": {
-												"oneOf": [
-													{
-														"format": "uuid",
-														"type": "string"
-													},
-													{
-														"properties": {
-															"access_control": {
-																"enum": [
-																	"FULL_ACCESS",
-																	"VIEW_ONLY"
-																],
-																"type": "string"
-															},
-															"handles_view_only": {
-																"type": "boolean"
-															}
+												"additionalProperties": {
+													"additionalProperties": true,
+													"properties": {
+														"access_control": {
+															"enum": [
+																"FULL_ACCESS",
+																"VIEW_ONLY"
+															],
+															"type": "string"
 														},
-														"required": [
-															"access_control",
-															"handles_view_only"
-														],
-														"type": "object"
-													}
-												]
+														"handles_view_only": {
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"description": "Plugin configuration keyed by plugin UUID.",
+												"type": "object"
 											}
 										},
 										"required": [
@@ -3115,6 +3356,20 @@
 									"show_participant_list": {
 										"type": "boolean"
 									},
+									"stage_access": {
+										"enum": [
+											"ALLOWED",
+											"NOT_ALLOWED",
+											"CAN_REQUEST"
+										],
+										"type": "string"
+									},
+									"stage_enabled": {
+										"type": "boolean"
+									},
+									"transcription_enabled": {
+										"type": "boolean"
+									},
 									"waiting_room_type": {
 										"description": "Waiting room type",
 										"enum": [
@@ -3152,20 +3407,22 @@
 							},
 							"ui": {
 								"properties": {
-									"config_diff": {
-										"type": "object"
-									},
 									"design_tokens": {
 										"properties": {
 											"border_radius": {
 												"enum": [
-													"rounded"
+													"sharp",
+													"rounded",
+													"extra-rounded",
+													"circular"
 												],
 												"type": "string"
 											},
 											"border_width": {
 												"enum": [
-													"thin"
+													"none",
+													"thin",
+													"fat"
 												],
 												"type": "string"
 											},
@@ -3272,7 +3529,14 @@
 												],
 												"type": "object"
 											},
+											"font_family": {
+												"type": "string"
+											},
+											"google_font": {
+												"type": "string"
+											},
 											"logo": {
+												"format": "uri",
 												"type": "string"
 											},
 											"spacing_base": {
@@ -3281,7 +3545,9 @@
 											},
 											"theme": {
 												"enum": [
-													"dark"
+													"darkest",
+													"dark",
+													"light"
 												],
 												"type": "string"
 											}
@@ -3291,8 +3557,7 @@
 											"border_width",
 											"spacing_base",
 											"theme",
-											"colors",
-											"logo"
+											"colors"
 										],
 										"type": "object"
 									}
@@ -3306,6 +3571,7 @@
 						"required": [
 							"name",
 							"config",
+							"permissions",
 							"ui"
 						],
 						"title": "Preset",
@@ -3316,7 +3582,7 @@
 			"required": true
 		},
 		"responses": {
-			"200": {
+			"201": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -3345,14 +3611,26 @@
 											"allOf": [
 												{
 													"properties": {
+														"created_at": {
+															"description": "Timestamp this preset was created at",
+															"format": "date-time",
+															"type": "string"
+														},
 														"id": {
 															"description": "ID of the preset",
 															"format": "uuid",
 															"type": "string"
+														},
+														"updated_at": {
+															"description": "Timestamp this preset was last updated",
+															"format": "date-time",
+															"type": "string"
 														}
 													},
 													"required": [
-														"id"
+														"id",
+														"created_at",
+														"updated_at"
 													],
 													"type": "object"
 												},
@@ -3360,20 +3638,30 @@
 													"properties": {
 														"config": {
 															"properties": {
+																"livestream_viewer_qualities": {
+																	"default": [],
+																	"description": "Livestream viewer quality levels.",
+																	"items": {
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"nullable": true,
+																	"type": "array"
+																},
 																"max_screenshare_count": {
 																	"description": "Maximum number of screen shares that can be active at a given time",
-																	"type": "integer"
+																	"type": "number"
 																},
 																"max_video_streams": {
 																	"description": "Maximum number of streams that are visible on a device",
 																	"properties": {
 																		"desktop": {
 																			"description": "Maximum number of video streams visible on desktop devices",
-																			"type": "integer"
+																			"type": "number"
 																		},
 																		"mobile": {
 																			"description": "Maximum number of streams visible on mobile devices",
-																			"type": "integer"
+																			"type": "number"
 																		}
 																	},
 																	"required": [
@@ -3406,14 +3694,16 @@
 																			"properties": {
 																				"frame_rate": {
 																					"description": "Frame rate of screen share",
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Quality of screen share ",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
 																				}
@@ -3430,16 +3720,23 @@
 																				"frame_rate": {
 																					"description": "Frame rate of participants' video",
 																					"maximum": 30,
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Video quality of participants",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
+																				},
+																				"simulcast": {
+																					"default": false,
+																					"description": "Enable simulcast for participant videos.",
+																					"type": "boolean"
 																				}
 																			},
 																			"required": [
@@ -3460,7 +3757,8 @@
 																	"enum": [
 																		"GROUP_CALL",
 																		"WEBINAR",
-																		"AUDIO_ROOM"
+																		"AUDIO_ROOM",
+																		"LIVESTREAM"
 																	],
 																	"type": "string"
 																}
@@ -3479,6 +3777,9 @@
 														},
 														"permissions": {
 															"properties": {
+																"accept_stage_requests": {
+																	"type": "boolean"
+																},
 																"accept_waiting_requests": {
 																	"description": "Whether this participant can accept waiting requests",
 																	"type": "boolean"
@@ -3502,7 +3803,6 @@
 																	"type": "boolean"
 																},
 																"chat": {
-																	"description": "Chat permissions",
 																	"properties": {
 																		"private": {
 																			"properties": {
@@ -3679,31 +3979,24 @@
 																			"type": "boolean"
 																		},
 																		"config": {
-																			"oneOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"properties": {
-																						"access_control": {
-																							"enum": [
-																								"FULL_ACCESS",
-																								"VIEW_ONLY"
-																							],
-																							"type": "string"
-																						},
-																						"handles_view_only": {
-																							"type": "boolean"
-																						}
+																			"additionalProperties": {
+																				"additionalProperties": true,
+																				"properties": {
+																					"access_control": {
+																						"enum": [
+																							"FULL_ACCESS",
+																							"VIEW_ONLY"
+																						],
+																						"type": "string"
 																					},
-																					"required": [
-																						"access_control",
-																						"handles_view_only"
-																					],
-																					"type": "object"
-																				}
-																			]
+																					"handles_view_only": {
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"description": "Plugin configuration keyed by plugin UUID.",
+																			"type": "object"
 																		}
 																	},
 																	"required": [
@@ -3750,6 +4043,20 @@
 																"show_participant_list": {
 																	"type": "boolean"
 																},
+																"stage_access": {
+																	"enum": [
+																		"ALLOWED",
+																		"NOT_ALLOWED",
+																		"CAN_REQUEST"
+																	],
+																	"type": "string"
+																},
+																"stage_enabled": {
+																	"type": "boolean"
+																},
+																"transcription_enabled": {
+																	"type": "boolean"
+																},
 																"waiting_room_type": {
 																	"description": "Waiting room type",
 																	"enum": [
@@ -3787,20 +4094,22 @@
 														},
 														"ui": {
 															"properties": {
-																"config_diff": {
-																	"type": "object"
-																},
 																"design_tokens": {
 																	"properties": {
 																		"border_radius": {
 																			"enum": [
-																				"rounded"
+																				"sharp",
+																				"rounded",
+																				"extra-rounded",
+																				"circular"
 																			],
 																			"type": "string"
 																		},
 																		"border_width": {
 																			"enum": [
-																				"thin"
+																				"none",
+																				"thin",
+																				"fat"
 																			],
 																			"type": "string"
 																		},
@@ -3907,7 +4216,14 @@
 																			],
 																			"type": "object"
 																		},
+																		"font_family": {
+																			"type": "string"
+																		},
+																		"google_font": {
+																			"type": "string"
+																		},
 																		"logo": {
+																			"format": "uri",
 																			"type": "string"
 																		},
 																		"spacing_base": {
@@ -3916,7 +4232,9 @@
 																		},
 																		"theme": {
 																			"enum": [
-																				"dark"
+																				"darkest",
+																				"dark",
+																				"light"
 																			],
 																			"type": "string"
 																		}
@@ -3926,8 +4244,7 @@
 																		"border_width",
 																		"spacing_base",
 																		"theme",
-																		"colors",
-																		"logo"
+																		"colors"
 																	],
 																	"type": "object"
 																}
@@ -3941,6 +4258,7 @@
 													"required": [
 														"name",
 														"config",
+														"permissions",
 														"ui"
 													],
 													"title": "Preset",
@@ -4008,6 +4326,7 @@
 				"name": "preset_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -4019,20 +4338,30 @@
 						"properties": {
 							"config": {
 								"properties": {
+									"livestream_viewer_qualities": {
+										"default": [],
+										"description": "Livestream viewer quality levels.",
+										"items": {
+											"minimum": 0,
+											"type": "integer"
+										},
+										"nullable": true,
+										"type": "array"
+									},
 									"max_screenshare_count": {
 										"description": "Maximum number of screen shares that can be active at a given time",
-										"type": "integer"
+										"type": "number"
 									},
 									"max_video_streams": {
 										"description": "Maximum number of streams that are visible on a device",
 										"properties": {
 											"desktop": {
 												"description": "Maximum number of video streams visible on desktop devices",
-												"type": "integer"
+												"type": "number"
 											},
 											"mobile": {
 												"description": "Maximum number of streams visible on mobile devices",
-												"type": "integer"
+												"type": "number"
 											}
 										},
 										"required": [
@@ -4065,14 +4394,16 @@
 												"properties": {
 													"frame_rate": {
 														"description": "Frame rate of screen share",
-														"type": "integer"
+														"type": "number"
 													},
 													"quality": {
 														"description": "Quality of screen share ",
 														"enum": [
 															"hd",
 															"vga",
-															"qvga"
+															"qvga",
+															"fhd",
+															"uhd"
 														],
 														"type": "string"
 													}
@@ -4089,16 +4420,23 @@
 													"frame_rate": {
 														"description": "Frame rate of participants' video",
 														"maximum": 30,
-														"type": "integer"
+														"type": "number"
 													},
 													"quality": {
 														"description": "Video quality of participants",
 														"enum": [
 															"hd",
 															"vga",
-															"qvga"
+															"qvga",
+															"fhd",
+															"uhd"
 														],
 														"type": "string"
+													},
+													"simulcast": {
+														"default": false,
+														"description": "Enable simulcast for participant videos.",
+														"type": "boolean"
 													}
 												},
 												"required": [
@@ -4119,7 +4457,8 @@
 										"enum": [
 											"GROUP_CALL",
 											"WEBINAR",
-											"AUDIO_ROOM"
+											"AUDIO_ROOM",
+											"LIVESTREAM"
 										],
 										"type": "string"
 									}
@@ -4138,6 +4477,9 @@
 							},
 							"permissions": {
 								"properties": {
+									"accept_stage_requests": {
+										"type": "boolean"
+									},
 									"accept_waiting_requests": {
 										"description": "Whether this participant can accept waiting requests",
 										"type": "boolean"
@@ -4161,7 +4503,6 @@
 										"type": "boolean"
 									},
 									"chat": {
-										"description": "Chat permissions",
 										"properties": {
 											"private": {
 												"properties": {
@@ -4338,31 +4679,24 @@
 												"type": "boolean"
 											},
 											"config": {
-												"oneOf": [
-													{
-														"format": "uuid",
-														"type": "string"
-													},
-													{
-														"properties": {
-															"access_control": {
-																"enum": [
-																	"FULL_ACCESS",
-																	"VIEW_ONLY"
-																],
-																"type": "string"
-															},
-															"handles_view_only": {
-																"type": "boolean"
-															}
+												"additionalProperties": {
+													"additionalProperties": true,
+													"properties": {
+														"access_control": {
+															"enum": [
+																"FULL_ACCESS",
+																"VIEW_ONLY"
+															],
+															"type": "string"
 														},
-														"required": [
-															"access_control",
-															"handles_view_only"
-														],
-														"type": "object"
-													}
-												]
+														"handles_view_only": {
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"description": "Plugin configuration keyed by plugin UUID.",
+												"type": "object"
 											}
 										},
 										"required": [
@@ -4409,6 +4743,20 @@
 									"show_participant_list": {
 										"type": "boolean"
 									},
+									"stage_access": {
+										"enum": [
+											"ALLOWED",
+											"NOT_ALLOWED",
+											"CAN_REQUEST"
+										],
+										"type": "string"
+									},
+									"stage_enabled": {
+										"type": "boolean"
+									},
+									"transcription_enabled": {
+										"type": "boolean"
+									},
 									"waiting_room_type": {
 										"description": "Waiting room type",
 										"enum": [
@@ -4446,20 +4794,22 @@
 							},
 							"ui": {
 								"properties": {
-									"config_diff": {
-										"type": "object"
-									},
 									"design_tokens": {
 										"properties": {
 											"border_radius": {
 												"enum": [
-													"rounded"
+													"sharp",
+													"rounded",
+													"extra-rounded",
+													"circular"
 												],
 												"type": "string"
 											},
 											"border_width": {
 												"enum": [
-													"thin"
+													"none",
+													"thin",
+													"fat"
 												],
 												"type": "string"
 											},
@@ -4566,7 +4916,14 @@
 												],
 												"type": "object"
 											},
+											"font_family": {
+												"type": "string"
+											},
+											"google_font": {
+												"type": "string"
+											},
 											"logo": {
+												"format": "uri",
 												"type": "string"
 											},
 											"spacing_base": {
@@ -4575,7 +4932,9 @@
 											},
 											"theme": {
 												"enum": [
-													"dark"
+													"darkest",
+													"dark",
+													"light"
 												],
 												"type": "string"
 											}
@@ -4585,8 +4944,7 @@
 											"border_width",
 											"spacing_base",
 											"theme",
-											"colors",
-											"logo"
+											"colors"
 										],
 										"type": "object"
 									}
@@ -4600,6 +4958,7 @@
 						"required": [
 							"name",
 							"config",
+							"permissions",
 							"ui"
 						],
 						"title": "Preset",
@@ -4639,14 +4998,26 @@
 											"allOf": [
 												{
 													"properties": {
+														"created_at": {
+															"description": "Timestamp this preset was created at",
+															"format": "date-time",
+															"type": "string"
+														},
 														"id": {
 															"description": "ID of the preset",
 															"format": "uuid",
 															"type": "string"
+														},
+														"updated_at": {
+															"description": "Timestamp this preset was last updated",
+															"format": "date-time",
+															"type": "string"
 														}
 													},
 													"required": [
-														"id"
+														"id",
+														"created_at",
+														"updated_at"
 													],
 													"type": "object"
 												},
@@ -4654,20 +5025,30 @@
 													"properties": {
 														"config": {
 															"properties": {
+																"livestream_viewer_qualities": {
+																	"default": [],
+																	"description": "Livestream viewer quality levels.",
+																	"items": {
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"nullable": true,
+																	"type": "array"
+																},
 																"max_screenshare_count": {
 																	"description": "Maximum number of screen shares that can be active at a given time",
-																	"type": "integer"
+																	"type": "number"
 																},
 																"max_video_streams": {
 																	"description": "Maximum number of streams that are visible on a device",
 																	"properties": {
 																		"desktop": {
 																			"description": "Maximum number of video streams visible on desktop devices",
-																			"type": "integer"
+																			"type": "number"
 																		},
 																		"mobile": {
 																			"description": "Maximum number of streams visible on mobile devices",
-																			"type": "integer"
+																			"type": "number"
 																		}
 																	},
 																	"required": [
@@ -4700,14 +5081,16 @@
 																			"properties": {
 																				"frame_rate": {
 																					"description": "Frame rate of screen share",
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Quality of screen share ",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
 																				}
@@ -4724,16 +5107,23 @@
 																				"frame_rate": {
 																					"description": "Frame rate of participants' video",
 																					"maximum": 30,
-																					"type": "integer"
+																					"type": "number"
 																				},
 																				"quality": {
 																					"description": "Video quality of participants",
 																					"enum": [
 																						"hd",
 																						"vga",
-																						"qvga"
+																						"qvga",
+																						"fhd",
+																						"uhd"
 																					],
 																					"type": "string"
+																				},
+																				"simulcast": {
+																					"default": false,
+																					"description": "Enable simulcast for participant videos.",
+																					"type": "boolean"
 																				}
 																			},
 																			"required": [
@@ -4754,7 +5144,8 @@
 																	"enum": [
 																		"GROUP_CALL",
 																		"WEBINAR",
-																		"AUDIO_ROOM"
+																		"AUDIO_ROOM",
+																		"LIVESTREAM"
 																	],
 																	"type": "string"
 																}
@@ -4773,6 +5164,9 @@
 														},
 														"permissions": {
 															"properties": {
+																"accept_stage_requests": {
+																	"type": "boolean"
+																},
 																"accept_waiting_requests": {
 																	"description": "Whether this participant can accept waiting requests",
 																	"type": "boolean"
@@ -4796,7 +5190,6 @@
 																	"type": "boolean"
 																},
 																"chat": {
-																	"description": "Chat permissions",
 																	"properties": {
 																		"private": {
 																			"properties": {
@@ -4973,31 +5366,24 @@
 																			"type": "boolean"
 																		},
 																		"config": {
-																			"oneOf": [
-																				{
-																					"format": "uuid",
-																					"type": "string"
-																				},
-																				{
-																					"properties": {
-																						"access_control": {
-																							"enum": [
-																								"FULL_ACCESS",
-																								"VIEW_ONLY"
-																							],
-																							"type": "string"
-																						},
-																						"handles_view_only": {
-																							"type": "boolean"
-																						}
+																			"additionalProperties": {
+																				"additionalProperties": true,
+																				"properties": {
+																					"access_control": {
+																						"enum": [
+																							"FULL_ACCESS",
+																							"VIEW_ONLY"
+																						],
+																						"type": "string"
 																					},
-																					"required": [
-																						"access_control",
-																						"handles_view_only"
-																					],
-																					"type": "object"
-																				}
-																			]
+																					"handles_view_only": {
+																						"type": "boolean"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"description": "Plugin configuration keyed by plugin UUID.",
+																			"type": "object"
 																		}
 																	},
 																	"required": [
@@ -5044,6 +5430,20 @@
 																"show_participant_list": {
 																	"type": "boolean"
 																},
+																"stage_access": {
+																	"enum": [
+																		"ALLOWED",
+																		"NOT_ALLOWED",
+																		"CAN_REQUEST"
+																	],
+																	"type": "string"
+																},
+																"stage_enabled": {
+																	"type": "boolean"
+																},
+																"transcription_enabled": {
+																	"type": "boolean"
+																},
 																"waiting_room_type": {
 																	"description": "Waiting room type",
 																	"enum": [
@@ -5081,20 +5481,22 @@
 														},
 														"ui": {
 															"properties": {
-																"config_diff": {
-																	"type": "object"
-																},
 																"design_tokens": {
 																	"properties": {
 																		"border_radius": {
 																			"enum": [
-																				"rounded"
+																				"sharp",
+																				"rounded",
+																				"extra-rounded",
+																				"circular"
 																			],
 																			"type": "string"
 																		},
 																		"border_width": {
 																			"enum": [
-																				"thin"
+																				"none",
+																				"thin",
+																				"fat"
 																			],
 																			"type": "string"
 																		},
@@ -5201,7 +5603,14 @@
 																			],
 																			"type": "object"
 																		},
+																		"font_family": {
+																			"type": "string"
+																		},
+																		"google_font": {
+																			"type": "string"
+																		},
 																		"logo": {
+																			"format": "uri",
 																			"type": "string"
 																		},
 																		"spacing_base": {
@@ -5210,7 +5619,9 @@
 																		},
 																		"theme": {
 																			"enum": [
-																				"dark"
+																				"darkest",
+																				"dark",
+																				"light"
 																			],
 																			"type": "string"
 																		}
@@ -5220,8 +5631,7 @@
 																		"border_width",
 																		"spacing_base",
 																		"theme",
-																		"colors",
-																		"logo"
+																		"colors"
 																	],
 																	"type": "object"
 																}
@@ -5235,6 +5645,7 @@
 													"required": [
 														"name",
 														"config",
+														"permissions",
 														"ui"
 													],
 													"title": "Preset",

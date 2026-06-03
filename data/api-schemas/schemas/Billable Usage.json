@@ -155,6 +155,18 @@
 												"description": "Identifies the Cloudflare service.",
 												"example": "Workers Standard",
 												"type": "string"
+											},
+											"ZoneId": {
+												"description": "The identifier for the Cloudflare zone (zone tag).",
+												"example": "023e105f4ecef8ad9ca31a8372d0c353",
+												"nullable": true,
+												"type": "string"
+											},
+											"ZoneName": {
+												"description": "The display name of the Cloudflare zone.",
+												"example": "example.com",
+												"nullable": true,
+												"type": "string"
 											}
 										},
 										"required": [
