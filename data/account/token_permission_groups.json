@@ -2295,6 +2295,24 @@
 		"category": "account_and_billing"
 	},
 	{
+		"id": "0b7793327a1a417681e4d49ee233e184",
+		"name": "OAuth Client Read",
+		"description": "Allows reading of OAuth clients",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "account_and_billing"
+	},
+	{
+		"id": "50fc2f43318f40e4855a35d8de5bf643",
+		"name": "OAuth Client Write",
+		"description": "Allows writing of OAuth clients",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "account_and_billing"
+	},
+	{
 		"id": "7b32a91ece3140d4b3c2c56f23fc8e35",
 		"name": "Origin Read",
 		"description": "Grants read access to origin phase",
