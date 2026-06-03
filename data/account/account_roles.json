@@ -1,5 +1,248 @@
 [
 	{
+		"id": "0c8cec86f6079584f7ac3038edded5dc",
+		"name": "OAuth App Registrations Read",
+		"description": "Can view OAuth app registrations.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "1f7c3119184b19d4fdc0c929dce0de8a",
+		"name": "OAuth App Registrations Write",
+		"description": "Can view, create, edit, and delete OAuth app registrations.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "72ad54a9ac553fb6898145a6dece5a0b",
+		"name": "Zero Trust Account Lists Read",
+		"description": "Can view all Zero Trust Gateway and Access Lists.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "e4e3b64b7a879312d3c7db1e736a8a60",
+		"name": "Zero Trust Gateway Policies Read",
+		"description": "Can view all Zero Trust Gateway Policies.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "66ad305159f0c386cd55532e2074dd30",
+		"name": "IP Addressing Read",
+		"description": "Grants read-only access to IP Addressing — IP prefixes, BGP prefixes, edge service bindings, address maps, IP leases, and LOA documents.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "f0f92691ab81efb9b815b9284a5faf2b",
+		"name": "IP Addressing Write",
+		"description": "Grants read and write access to IP Addressing — create, update, and delete IP prefixes, BGP prefixes, edge service bindings, address maps, delegations, and LOA documents.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "7a42d9ab1172b86d160141eae81ca5ca",
+		"name": "Page Rules Admin",
+		"description": "Can manage page rules.",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "b20a55db9d14fd244ae267779b212b56",
+		"name": "Security Center Read",
+		"description": "Can view Security Center insights.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "10a15686610725f53250de59acaff655",
+		"name": "Zone Settings Admin",
+		"description": "Can manage zone settings.",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "a25045a280add278953bd84aa3592575",
+		"name": "Page Rules Read",
+		"description": "Can view page rules.",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "035b7e809d3251cab6aa0e4e65c1247b",
+		"name": "DLS (Read-only)",
+		"description": "Grants read-only access to Data Localization Suite regions, BYOIP prefix bindings, and regional hostnames.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "fff0bd272b70dd774ed394be6ec41345",
+		"name": "DLS Write",
+		"description": "Can create, read, update, and delete BYOIP prefix bindings and regional hostnames, and read Data Localization Suite regions.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "9a3a4955e550da8d002f634f4daad6b3",
+		"name": "Workers Platform Metadata (Read-Only)",
+		"description": "Can view metadata, settings, and observability for all Developer Platform resources without access to secret values or stored data content.",
+		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": false
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"r2_bucket": {
+				"read": true,
+				"edit": false
+			},
+			"domain": {
+				"read": true,
+				"edit": false
+			},
+			"image": {
+				"read": true,
+				"edit": false
+			},
+			"logs": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "aa48cb99790097ce8a1d4b8292d27506",
 		"name": "SSL/TLS Admin",
 		"description": "Can view and edit SSL/TLS certificates and configurations.",
@@ -47,6 +290,81 @@
 				"edit": false
 			},
 			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "16cb5906f918226b0ef23048cc22ab10",
+		"name": "Cloudflare One Connector Read and Monitor: cloudflared",
+		"description": "Grants read access to cloudflared connector resources including log streaming",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "46569757cdb1414d114c4e0b6034c849",
+		"name": "Resource Library Admin",
+		"description": "Resource library or Alexandria, allows full Admin permissions to Resource library",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "49bd55f88a9c235865bb29a8211e5a4e",
+		"name": "Tag Admin",
+		"description": "Can manage resource tags.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "e5a9dfabf3315484950f460a5a1e2076",
+		"name": "AI Search Admin",
+		"description": "Can create, read, update, delete and run AI inferences in AI Search.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "91e0020c2095cd38fd6da90006a9c94b",
+		"name": "AI Search (Read-only)",
+		"description": "Grants access to reading data from AI Search.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
 				"read": true,
 				"edit": false
 			}
@@ -1291,7 +1609,7 @@
 	},
 	{
 		"id": "e8307f861fd552343e8a582620da412e",
-		"name": "Network Services (Magic)",
+		"name": "Network Services Write (Magic)",
 		"description": "Grants write access to conduit-api tunnels and routes",
 		"permissions": {
 			"magic": {
@@ -1314,7 +1632,7 @@
 	},
 	{
 		"id": "6fd8c99c8a080a3a8f2b292c1515fb25",
-		"name": "Network Services (Magic, Read-Only)",
+		"name": "Network Services Read (Magic)",
 		"description": "Grants read access to conduit-api tunnels and routes",
 		"permissions": {
 			"magic": {
@@ -1383,7 +1701,7 @@
 	},
 	{
 		"id": "051312130d7384b97d7c4fa122eb7519",
-		"name": "Trust And Safety",
+		"name": "Trust and Safety",
 		"description": "Grants access to view and request reviews for blocks on Dashboard",
 		"permissions": {
 			"blocks": {
@@ -1422,7 +1740,7 @@
 	},
 	{
 		"id": "69abc03715c77ae49be5e407f03d0650",
-		"name": "Zaraz Read",
+		"name": "Zaraz Readonly",
 		"description": "Can read Zaraz configuration.",
 		"permissions": {
 			"zaraz": {
