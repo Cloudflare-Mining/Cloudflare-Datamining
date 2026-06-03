@@ -1,5 +1,5 @@
 {
-	"generated_at": "2026-06-02T04:33:59.748Z",
+	"generated_at": "2026-06-03T04:33:53.450Z",
 	"model_count": 145,
 	"models": {
 		"alibaba/hh1-i2v": {
@@ -17612,7 +17612,7 @@
 				"Multilingual"
 			],
 			"context_length": 128000,
-			"max_output_tokens": null,
+			"max_output_tokens": 4096,
 			"supports_async": false,
 			"hosting": "proxied",
 			"data_source": "catalog",
@@ -17620,6 +17620,10 @@
 				{
 					"property_id": "context_window",
 					"value": "128000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "4096"
 				},
 				{
 					"property_id": "terms",
@@ -17989,7 +17993,7 @@
 				"Multilingual"
 			],
 			"context_length": 1000000,
-			"max_output_tokens": null,
+			"max_output_tokens": 4096,
 			"supports_async": false,
 			"hosting": "proxied",
 			"data_source": "catalog",
@@ -17997,6 +18001,10 @@
 				{
 					"property_id": "context_window",
 					"value": "1000000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "4096"
 				},
 				{
 					"property_id": "terms",
