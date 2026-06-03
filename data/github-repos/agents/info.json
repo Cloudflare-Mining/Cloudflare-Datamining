@@ -27,7 +27,6 @@
 		"assistant-msgs-bug",
 		"better-fix-jsonschema",
 		"blog",
-		"changeset-release/main",
 		"chat-sdk-example",
 		"claude/browser-tools-playwright-nLeW1",
 		"claude/codebase-navigation-index-oDtNv",
@@ -71,6 +70,7 @@
 		"fix/issue-1465-reused-tool-call-ids",
 		"fix/mcp-large-streamable-http-payloads",
 		"fix/mcp-v0095-compat",
+		"fix/rpc-resource-leaks",
 		"fix/streaming-accumulator-tool-batch-barrier-1649",
 		"fix/subagent-workflow-origins",
 		"fix/think-context-overflow-recovery",
@@ -97,6 +97,7 @@
 		"talk-more-to-aichat",
 		"task-with-options",
 		"test-git-ai-hooks",
-		"think"
+		"think",
+		"think-event-driven-continuation-barrier"
 	]
 }
