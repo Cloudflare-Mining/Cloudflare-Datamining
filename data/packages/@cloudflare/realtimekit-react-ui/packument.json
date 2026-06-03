@@ -1,8 +1,8 @@
 {
 	"name": "@cloudflare/realtimekit-react-ui",
 	"dist-tags": {
-		"latest": "1.2.0",
-		"staging": "1.2.0-staging.7"
+		"staging": "1.2.1-staging.1",
+		"latest": "1.2.0"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1847,13 +1847,39 @@
 				"@cloudflare/realtimekit-ui": "1.2.0"
 			},
 			"dist": {
-				"integrity": "sha512-aJoVPxpEboibpyQWgy+zgHbppQK4DlNDxwJkWu2f8gIWFFhr4QWLg7ovVvxfUhi8ONuTAzHao7ktAlg2Gr4onQ==",
 				"shasum": "4f5ffc6e05841575d2db7c3004672e7cd6e6fe24",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-1.2.0.tgz",
 				"fileCount": 46,
-				"unpackedSize": 161166,
+				"integrity": "sha512-aJoVPxpEboibpyQWgy+zgHbppQK4DlNDxwJkWu2f8gIWFFhr4QWLg7ovVvxfUhi8ONuTAzHao7ktAlg2Gr4onQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIE38S9vCIKh392yzMM6XVco+WWOeRCubBS3l80f693NCAiBuQXh7vXfW0s2L5ZfCmjFvWssB7JS6kZemCkB38YFO7g==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@1.2.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 161166
+			}
+		},
+		"1.2.1-staging.1": {
+			"name": "@cloudflare/realtimekit-react-ui",
+			"version": "1.2.1-staging.1",
+			"dependencies": {
+				"@cloudflare/realtimekit-ui": "1.2.1-staging.1"
+			},
+			"dist": {
+				"integrity": "sha512-wiJE5lTD/hFAI2Bis0wEzrfAHolU20cBf3L6haQk8VccV+dcKWwrsSeUbjfE0m4s13aVRpOrG+YM6CDYP5mF8Q==",
+				"shasum": "2cfcb84961f7882c49fa09b390cb1608fe1e8fd1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-1.2.1-staging.1.tgz",
+				"fileCount": 46,
+				"unpackedSize": 161163,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@1.2.1-staging.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -1861,7 +1887,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIE38S9vCIKh392yzMM6XVco+WWOeRCubBS3l80f693NCAiBuQXh7vXfW0s2L5ZfCmjFvWssB7JS6kZemCkB38YFO7g=="
+						"sig": "MEQCIFtqgbWzVmz6yPvOFJQWrqcXZTEfjEsEcMfORtkkI0a9AiAA6sUgVM9jIX9Cu9N5bf6IKtAGL1asl5DOI6oYD1w9bw=="
 					}
 				]
 			}

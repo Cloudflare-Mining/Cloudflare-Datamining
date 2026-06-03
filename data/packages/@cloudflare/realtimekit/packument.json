@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"agent": "1.1.7-agent.1",
 		"latest": "1.5.1",
-		"staging": "1.5.2-staging.2"
+		"staging": "1.5.2-staging.3"
 	},
 	"versions": {
 		"0.0.0": {
@@ -6169,6 +6169,43 @@
 			"name": "@cloudflare/realtimekit",
 			"version": "1.5.2-staging.2",
 			"dependencies": {
+				"uuid": "^8.3.2",
+				"bowser": "^2.11.0",
+				"sdp-transform": "^2.14.1",
+				"worker-timers": "7.0.60",
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"devDependencies": {
+				"type-fest": "^2.12.1",
+				"@types/long": "4.0.0",
+				"@types/node": "^16.0.0",
+				"@types/uuid": "^8.3.4",
+				"@types/events": "^3.0.0",
+				"@types/lodash-es": "^4.17.6",
+				"@types/sdp-transform": "^2.4.5",
+				"@cloudflare/realtimekit-utils": "1.0.0",
+				"@dyteinternals/proto-entities": "2.112.0",
+				"@cloudflare/realtimekit-callstats": "8.0.0",
+				"@cloudflare/realtimekit-sockrates": "0.1.2"
+			},
+			"dist": {
+				"shasum": "fb1e9381e408acb71b641b426304de2edac8efa2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-1.5.2-staging.2.tgz",
+				"fileCount": 20,
+				"integrity": "sha512-kDtvK/gO6w3oRuAZkyF9qw5j+5AXmaPetEnUOx2EhLXGTrO+RZcdKp+dULET/WZuMBTQS2tCQQhGSb8/ZSs8mA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDOP5zlI213/QwYVRdNXyUB1UeOBTpy3j4mws+06StfEwIgZCzJYHUc3CpMUHhLRhmKNMGpgNIwCSV16SYBsG2GHbs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 5282067
+			}
+		},
+		"1.5.2-staging.3": {
+			"name": "@cloudflare/realtimekit",
+			"version": "1.5.2-staging.3",
+			"dependencies": {
 				"@protobuf-ts/runtime": "^2.7.0",
 				"bowser": "^2.11.0",
 				"sdp-transform": "^2.14.1",
@@ -6189,15 +6226,15 @@
 				"@cloudflare/realtimekit-utils": "1.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-kDtvK/gO6w3oRuAZkyF9qw5j+5AXmaPetEnUOx2EhLXGTrO+RZcdKp+dULET/WZuMBTQS2tCQQhGSb8/ZSs8mA==",
-				"shasum": "fb1e9381e408acb71b641b426304de2edac8efa2",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-1.5.2-staging.2.tgz",
+				"integrity": "sha512-waE1p2WHXuslJT+yJ9owL+U0MsEgCmjtnkpZlxoNafbO8SZX2Gl0vPGrmQUDw+tZxj9RwJbiH2BcBeZJCn0njQ==",
+				"shasum": "04217917c64663cc77bd5dde0c0a3604da0400c4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit/-/realtimekit-1.5.2-staging.3.tgz",
 				"fileCount": 20,
-				"unpackedSize": 5282067,
+				"unpackedSize": 5282666,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDOP5zlI213/QwYVRdNXyUB1UeOBTpy3j4mws+06StfEwIgZCzJYHUc3CpMUHhLRhmKNMGpgNIwCSV16SYBsG2GHbs="
+						"sig": "MEYCIQCZmCuNhCgogPjLyrSW3ZNxzNQkUEZL7+SIi2jjv6FoYQIhALbq69v9yuTt3DnSNYDWdSg6kaBsBZBZnfiHx5RmhTXS"
 					}
 				]
 			}
