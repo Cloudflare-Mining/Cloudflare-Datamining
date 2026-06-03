@@ -1,0 +1,3450 @@
+{
+	"DELETE /accounts/{account_id}/oauth_clients/{oauth_client_id}": {
+		"description": "Delete an OAuth client.",
+		"operationId": "oauth-clients-delete",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "oauth_client_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for an OAuth client.",
+					"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+					"title": "OAuth Client Identifier",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"minLength": 32,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete OAuth Client response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete OAuth Client response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete OAuth Client",
+		"tags": [
+			"OAuth Clients"
+		],
+		"x-api-token-group": [
+			"OAuth Client Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.oauth-client.delete"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"DELETE /accounts/{account_id}/oauth_clients/{oauth_client_id}/rotate_secret": {
+		"description": "Removes the old client secret after a rotation, keeping only the new one. Use this after you have updated your client configuration to use the new secret. The `has_rotated_secret` field on the client indicates whether there is an old secret to delete.",
+		"operationId": "oauth-clients-delete-rotated-secret",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "oauth_client_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for an OAuth client.",
+					"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+					"title": "OAuth Client Identifier",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"properties": {
+												"id": {
+													"description": "Identifier",
+													"example": "023e105f4ecef8ad9ca31a8372d0c353",
+													"maxLength": 32,
+													"minLength": 32,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Rotated OAuth Client Secret response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete Rotated OAuth Client Secret response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete Rotated OAuth Client Secret",
+		"tags": [
+			"OAuth Clients"
+		],
+		"x-api-token-group": [
+			"OAuth Client Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.oauth-client.delete"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/oauth_clients": {
+		"description": "List all OAuth clients for an account.",
+		"operationId": "oauth-clients-list",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"description": "Fields shared by OAuth client responses and create/update requests.",
+														"properties": {
+															"allowed_cors_origins": {
+																"description": "Array of allowed CORS origins.",
+																"example": [
+																	"https://example.com"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"client_name": {
+																"description": "Human-readable name of the OAuth client.",
+																"example": "My OAuth App",
+																"type": "string",
+																"x-auditable": true
+															},
+															"client_uri": {
+																"description": "URL of the home page of the client.",
+																"example": "https://example.com",
+																"type": "string"
+															},
+															"grant_types": {
+																"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
+																"example": [
+																	"authorization_code",
+																	"refresh_token"
+																],
+																"items": {
+																	"enum": [
+																		"authorization_code",
+																		"refresh_token"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"logo_uri": {
+																"description": "URL of the client's logo.",
+																"example": "https://example.com/logo.png",
+																"type": "string"
+															},
+															"policy_uri": {
+																"description": "URL that points to a privacy policy document.",
+																"example": "https://example.com/privacy",
+																"type": "string"
+															},
+															"post_logout_redirect_uris": {
+																"description": "Array of allowed post-logout redirect URIs.",
+																"example": [
+																	"https://example.com/logout"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"redirect_uris": {
+																"description": "Array of allowed redirect URIs for the client.",
+																"example": [
+																	"https://example.com/callback"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"response_types": {
+																"description": "Array of OAuth response types the client is allowed to use.",
+																"example": [
+																	"code"
+																],
+																"items": {
+																	"enum": [
+																		"token",
+																		"id_token",
+																		"code"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"scopes": {
+																"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
+																"example": [
+																	"account.read"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"token_endpoint_auth_method": {
+																"description": "The authentication method the client uses at the token endpoint.",
+																"enum": [
+																	"none",
+																	"client_secret_basic",
+																	"client_secret_post"
+																],
+																"example": "client_secret_post",
+																"type": "string",
+																"x-auditable": true
+															},
+															"tos_uri": {
+																"description": "URL that points to a terms of service document.",
+																"example": "https://example.com/tos",
+																"type": "string"
+															}
+														},
+														"title": "OAuth Client Common Fields",
+														"type": "object"
+													},
+													{
+														"properties": {
+															"client_id": {
+																"allOf": [
+																	{
+																		"description": "The unique identifier for an OAuth client.",
+																		"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+																		"title": "OAuth Client Identifier",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"client_uri_verification": {
+																"description": "Client URI domain control verification state.",
+																"properties": {
+																	"status": {
+																		"description": "Current verification status for the client URI host.",
+																		"enum": [
+																			"pending",
+																			"in_progress",
+																			"verified",
+																			"failed"
+																		],
+																		"example": "in_progress",
+																		"type": "string"
+																	},
+																	"text": {
+																		"description": "Exact TXT record value that must be added to DNS to prove ownership of the client URI host.",
+																		"example": "cloudflare_oauth_client_publisher=example",
+																		"type": "string"
+																	}
+																},
+																"title": "OAuth Client URI Verification",
+																"type": "object"
+															},
+															"created_at": {
+																"description": "Timestamp when the OAuth client was created.",
+																"example": "2025-01-01T00:00:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"has_rotated_secret": {
+																"description": "Indicates whether the client has a rotated secret that has not yet been deleted.",
+																"example": false,
+																"readOnly": true,
+																"type": "boolean"
+															},
+															"promoted_at": {
+																"description": "Timestamp when the OAuth client was promoted to public visibility.",
+																"example": "2026-05-13T12:00:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"updated_at": {
+																"description": "Timestamp when the OAuth client was last updated.",
+																"example": "2025-01-01T00:00:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"visibility": {
+																"description": "Visibility of the OAuth client.",
+																"enum": [
+																	"public",
+																	"private"
+																],
+																"example": "private",
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"client_id",
+															"visibility"
+														],
+														"type": "object"
+													}
+												],
+												"description": "An OAuth 2.0 client registration.",
+												"title": "OAuth Client"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"title": "List OAuth Clients Response"
+						}
+					}
+				},
+				"description": "List OAuth Clients response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List OAuth Clients response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List OAuth Clients",
+		"tags": [
+			"OAuth Clients"
+		],
+		"x-api-token-group": [
+			"OAuth Client Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.oauth-client.list"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/oauth_clients/{oauth_client_id}": {
+		"description": "Get details of a specific OAuth client.",
+		"operationId": "oauth-clients-get",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "oauth_client_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for an OAuth client.",
+					"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+					"title": "OAuth Client Identifier",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"description": "Fields shared by OAuth client responses and create/update requests.",
+													"properties": {
+														"allowed_cors_origins": {
+															"description": "Array of allowed CORS origins.",
+															"example": [
+																"https://example.com"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"client_name": {
+															"description": "Human-readable name of the OAuth client.",
+															"example": "My OAuth App",
+															"type": "string",
+															"x-auditable": true
+														},
+														"client_uri": {
+															"description": "URL of the home page of the client.",
+															"example": "https://example.com",
+															"type": "string"
+														},
+														"grant_types": {
+															"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
+															"example": [
+																"authorization_code",
+																"refresh_token"
+															],
+															"items": {
+																"enum": [
+																	"authorization_code",
+																	"refresh_token"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"logo_uri": {
+															"description": "URL of the client's logo.",
+															"example": "https://example.com/logo.png",
+															"type": "string"
+														},
+														"policy_uri": {
+															"description": "URL that points to a privacy policy document.",
+															"example": "https://example.com/privacy",
+															"type": "string"
+														},
+														"post_logout_redirect_uris": {
+															"description": "Array of allowed post-logout redirect URIs.",
+															"example": [
+																"https://example.com/logout"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"redirect_uris": {
+															"description": "Array of allowed redirect URIs for the client.",
+															"example": [
+																"https://example.com/callback"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"response_types": {
+															"description": "Array of OAuth response types the client is allowed to use.",
+															"example": [
+																"code"
+															],
+															"items": {
+																"enum": [
+																	"token",
+																	"id_token",
+																	"code"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"scopes": {
+															"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
+															"example": [
+																"account.read"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"token_endpoint_auth_method": {
+															"description": "The authentication method the client uses at the token endpoint.",
+															"enum": [
+																"none",
+																"client_secret_basic",
+																"client_secret_post"
+															],
+															"example": "client_secret_post",
+															"type": "string",
+															"x-auditable": true
+														},
+														"tos_uri": {
+															"description": "URL that points to a terms of service document.",
+															"example": "https://example.com/tos",
+															"type": "string"
+														}
+													},
+													"title": "OAuth Client Common Fields",
+													"type": "object"
+												},
+												{
+													"properties": {
+														"client_id": {
+															"allOf": [
+																{
+																	"description": "The unique identifier for an OAuth client.",
+																	"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+																	"title": "OAuth Client Identifier",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"client_uri_verification": {
+															"description": "Client URI domain control verification state.",
+															"properties": {
+																"status": {
+																	"description": "Current verification status for the client URI host.",
+																	"enum": [
+																		"pending",
+																		"in_progress",
+																		"verified",
+																		"failed"
+																	],
+																	"example": "in_progress",
+																	"type": "string"
+																},
+																"text": {
+																	"description": "Exact TXT record value that must be added to DNS to prove ownership of the client URI host.",
+																	"example": "cloudflare_oauth_client_publisher=example",
+																	"type": "string"
+																}
+															},
+															"title": "OAuth Client URI Verification",
+															"type": "object"
+														},
+														"created_at": {
+															"description": "Timestamp when the OAuth client was created.",
+															"example": "2025-01-01T00:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"has_rotated_secret": {
+															"description": "Indicates whether the client has a rotated secret that has not yet been deleted.",
+															"example": false,
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"promoted_at": {
+															"description": "Timestamp when the OAuth client was promoted to public visibility.",
+															"example": "2026-05-13T12:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"description": "Timestamp when the OAuth client was last updated.",
+															"example": "2025-01-01T00:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"visibility": {
+															"description": "Visibility of the OAuth client.",
+															"enum": [
+																"public",
+																"private"
+															],
+															"example": "private",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"client_id",
+														"visibility"
+													],
+													"type": "object"
+												}
+											],
+											"description": "An OAuth 2.0 client registration.",
+											"title": "OAuth Client"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"title": "Single OAuth Client Response"
+						}
+					}
+				},
+				"description": "OAuth Client Details response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "OAuth Client Details response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "OAuth Client Details",
+		"tags": [
+			"OAuth Clients"
+		],
+		"x-api-token-group": [
+			"OAuth Client Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.oauth-client.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /oauth/scopes": {
+		"description": "List all available OAuth scopes. This endpoint requires authentication but has no authorization role requirements.",
+		"operationId": "oauth-scopes-list",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"example": 2000,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "An available OAuth scope that can be assigned to an OAuth client.",
+												"properties": {
+													"category": {
+														"description": "Category for grouping scopes in the UI.",
+														"example": "account_and_billing",
+														"type": "string"
+													},
+													"id": {
+														"description": "The scope label to use in the scopes array when creating or updating an OAuth client.",
+														"example": "account.read",
+														"type": "string"
+													},
+													"name": {
+														"description": "Human-readable name of the OAuth scope.",
+														"example": "Account Read",
+														"type": "string"
+													},
+													"scopes": {
+														"description": "The underlying resource scopes (Bach scopes) that define which resources this OAuth scope can act upon.",
+														"example": [
+															"com.cloudflare.api.account"
+														],
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"name",
+													"id"
+												],
+												"title": "OAuth Scope",
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"title": "List OAuth Scopes Response"
+						}
+					}
+				},
+				"description": "List OAuth Scopes response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List OAuth Scopes response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List OAuth Scopes",
+		"tags": [
+			"OAuth Clients"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PATCH /accounts/{account_id}/oauth_clients/{oauth_client_id}": {
+		"description": "Update an existing OAuth client. Only include fields you want to update.",
+		"operationId": "oauth-clients-update",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "oauth_client_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for an OAuth client.",
+					"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+					"title": "OAuth Client Identifier",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"description": "Fields shared by OAuth client responses and create/update requests.",
+								"properties": {
+									"allowed_cors_origins": {
+										"description": "Array of allowed CORS origins.",
+										"example": [
+											"https://example.com"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"client_name": {
+										"description": "Human-readable name of the OAuth client.",
+										"example": "My OAuth App",
+										"type": "string",
+										"x-auditable": true
+									},
+									"client_uri": {
+										"description": "URL of the home page of the client.",
+										"example": "https://example.com",
+										"type": "string"
+									},
+									"grant_types": {
+										"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
+										"example": [
+											"authorization_code",
+											"refresh_token"
+										],
+										"items": {
+											"enum": [
+												"authorization_code",
+												"refresh_token"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"logo_uri": {
+										"description": "URL of the client's logo.",
+										"example": "https://example.com/logo.png",
+										"type": "string"
+									},
+									"policy_uri": {
+										"description": "URL that points to a privacy policy document.",
+										"example": "https://example.com/privacy",
+										"type": "string"
+									},
+									"post_logout_redirect_uris": {
+										"description": "Array of allowed post-logout redirect URIs.",
+										"example": [
+											"https://example.com/logout"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"redirect_uris": {
+										"description": "Array of allowed redirect URIs for the client.",
+										"example": [
+											"https://example.com/callback"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"response_types": {
+										"description": "Array of OAuth response types the client is allowed to use.",
+										"example": [
+											"code"
+										],
+										"items": {
+											"enum": [
+												"token",
+												"id_token",
+												"code"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"scopes": {
+										"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
+										"example": [
+											"account.read"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"token_endpoint_auth_method": {
+										"description": "The authentication method the client uses at the token endpoint.",
+										"enum": [
+											"none",
+											"client_secret_basic",
+											"client_secret_post"
+										],
+										"example": "client_secret_post",
+										"type": "string",
+										"x-auditable": true
+									},
+									"tos_uri": {
+										"description": "URL that points to a terms of service document.",
+										"example": "https://example.com/tos",
+										"type": "string"
+									}
+								},
+								"title": "OAuth Client Common Fields",
+								"type": "object"
+							},
+							{
+								"properties": {
+									"visibility": {
+										"description": "Promote the OAuth client from private to public visibility. Only `public` is accepted; demotion to `private` is not supported. Promotion requires a non-empty client name, logo URI, verified client URI host, and at least one non-identity scope.",
+										"enum": [
+											"public"
+										],
+										"example": "public",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						],
+						"description": "Partial update request for an OAuth client. Only include fields you want to update.",
+						"title": "Update OAuth Client Request"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"description": "Fields shared by OAuth client responses and create/update requests.",
+													"properties": {
+														"allowed_cors_origins": {
+															"description": "Array of allowed CORS origins.",
+															"example": [
+																"https://example.com"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"client_name": {
+															"description": "Human-readable name of the OAuth client.",
+															"example": "My OAuth App",
+															"type": "string",
+															"x-auditable": true
+														},
+														"client_uri": {
+															"description": "URL of the home page of the client.",
+															"example": "https://example.com",
+															"type": "string"
+														},
+														"grant_types": {
+															"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
+															"example": [
+																"authorization_code",
+																"refresh_token"
+															],
+															"items": {
+																"enum": [
+																	"authorization_code",
+																	"refresh_token"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"logo_uri": {
+															"description": "URL of the client's logo.",
+															"example": "https://example.com/logo.png",
+															"type": "string"
+														},
+														"policy_uri": {
+															"description": "URL that points to a privacy policy document.",
+															"example": "https://example.com/privacy",
+															"type": "string"
+														},
+														"post_logout_redirect_uris": {
+															"description": "Array of allowed post-logout redirect URIs.",
+															"example": [
+																"https://example.com/logout"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"redirect_uris": {
+															"description": "Array of allowed redirect URIs for the client.",
+															"example": [
+																"https://example.com/callback"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"response_types": {
+															"description": "Array of OAuth response types the client is allowed to use.",
+															"example": [
+																"code"
+															],
+															"items": {
+																"enum": [
+																	"token",
+																	"id_token",
+																	"code"
+																],
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"scopes": {
+															"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
+															"example": [
+																"account.read"
+															],
+															"items": {
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"token_endpoint_auth_method": {
+															"description": "The authentication method the client uses at the token endpoint.",
+															"enum": [
+																"none",
+																"client_secret_basic",
+																"client_secret_post"
+															],
+															"example": "client_secret_post",
+															"type": "string",
+															"x-auditable": true
+														},
+														"tos_uri": {
+															"description": "URL that points to a terms of service document.",
+															"example": "https://example.com/tos",
+															"type": "string"
+														}
+													},
+													"title": "OAuth Client Common Fields",
+													"type": "object"
+												},
+												{
+													"properties": {
+														"client_id": {
+															"allOf": [
+																{
+																	"description": "The unique identifier for an OAuth client.",
+																	"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+																	"title": "OAuth Client Identifier",
+																	"type": "string",
+																	"x-auditable": true
+																}
+															],
+															"readOnly": true
+														},
+														"client_uri_verification": {
+															"description": "Client URI domain control verification state.",
+															"properties": {
+																"status": {
+																	"description": "Current verification status for the client URI host.",
+																	"enum": [
+																		"pending",
+																		"in_progress",
+																		"verified",
+																		"failed"
+																	],
+																	"example": "in_progress",
+																	"type": "string"
+																},
+																"text": {
+																	"description": "Exact TXT record value that must be added to DNS to prove ownership of the client URI host.",
+																	"example": "cloudflare_oauth_client_publisher=example",
+																	"type": "string"
+																}
+															},
+															"title": "OAuth Client URI Verification",
+															"type": "object"
+														},
+														"created_at": {
+															"description": "Timestamp when the OAuth client was created.",
+															"example": "2025-01-01T00:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"has_rotated_secret": {
+															"description": "Indicates whether the client has a rotated secret that has not yet been deleted.",
+															"example": false,
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"promoted_at": {
+															"description": "Timestamp when the OAuth client was promoted to public visibility.",
+															"example": "2026-05-13T12:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"updated_at": {
+															"description": "Timestamp when the OAuth client was last updated.",
+															"example": "2025-01-01T00:00:00Z",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														},
+														"visibility": {
+															"description": "Visibility of the OAuth client.",
+															"enum": [
+																"public",
+																"private"
+															],
+															"example": "private",
+															"readOnly": true,
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"client_id",
+														"visibility"
+													],
+													"type": "object"
+												}
+											],
+											"description": "An OAuth 2.0 client registration.",
+											"title": "OAuth Client"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"title": "Single OAuth Client Response"
+						}
+					}
+				},
+				"description": "Update OAuth Client response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update OAuth Client response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update OAuth Client",
+		"tags": [
+			"OAuth Clients"
+		],
+		"x-api-token-group": [
+			"OAuth Client Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.oauth-client.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/oauth_clients": {
+		"description": "Create a new OAuth client for an account.",
+		"operationId": "oauth-clients-create",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"allOf": [
+							{
+								"description": "Fields shared by OAuth client responses and create/update requests.",
+								"properties": {
+									"allowed_cors_origins": {
+										"description": "Array of allowed CORS origins.",
+										"example": [
+											"https://example.com"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"client_name": {
+										"description": "Human-readable name of the OAuth client.",
+										"example": "My OAuth App",
+										"type": "string",
+										"x-auditable": true
+									},
+									"client_uri": {
+										"description": "URL of the home page of the client.",
+										"example": "https://example.com",
+										"type": "string"
+									},
+									"grant_types": {
+										"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
+										"example": [
+											"authorization_code",
+											"refresh_token"
+										],
+										"items": {
+											"enum": [
+												"authorization_code",
+												"refresh_token"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"logo_uri": {
+										"description": "URL of the client's logo.",
+										"example": "https://example.com/logo.png",
+										"type": "string"
+									},
+									"policy_uri": {
+										"description": "URL that points to a privacy policy document.",
+										"example": "https://example.com/privacy",
+										"type": "string"
+									},
+									"post_logout_redirect_uris": {
+										"description": "Array of allowed post-logout redirect URIs.",
+										"example": [
+											"https://example.com/logout"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"redirect_uris": {
+										"description": "Array of allowed redirect URIs for the client.",
+										"example": [
+											"https://example.com/callback"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"response_types": {
+										"description": "Array of OAuth response types the client is allowed to use.",
+										"example": [
+											"code"
+										],
+										"items": {
+											"enum": [
+												"token",
+												"id_token",
+												"code"
+											],
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"scopes": {
+										"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
+										"example": [
+											"account.read"
+										],
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"token_endpoint_auth_method": {
+										"description": "The authentication method the client uses at the token endpoint.",
+										"enum": [
+											"none",
+											"client_secret_basic",
+											"client_secret_post"
+										],
+										"example": "client_secret_post",
+										"type": "string",
+										"x-auditable": true
+									},
+									"tos_uri": {
+										"description": "URL that points to a terms of service document.",
+										"example": "https://example.com/tos",
+										"type": "string"
+									}
+								},
+								"title": "OAuth Client Common Fields",
+								"type": "object"
+							},
+							{
+								"required": [
+									"client_name",
+									"grant_types",
+									"redirect_uris",
+									"response_types",
+									"scopes",
+									"token_endpoint_auth_method"
+								],
+								"type": "object"
+							}
+						],
+						"title": "Create OAuth Client Request"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"allOf": [
+												{
+													"allOf": [
+														{
+															"description": "Fields shared by OAuth client responses and create/update requests.",
+															"properties": {
+																"allowed_cors_origins": {
+																	"description": "Array of allowed CORS origins.",
+																	"example": [
+																		"https://example.com"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"client_name": {
+																	"description": "Human-readable name of the OAuth client.",
+																	"example": "My OAuth App",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"client_uri": {
+																	"description": "URL of the home page of the client.",
+																	"example": "https://example.com",
+																	"type": "string"
+																},
+																"grant_types": {
+																	"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
+																	"example": [
+																		"authorization_code",
+																		"refresh_token"
+																	],
+																	"items": {
+																		"enum": [
+																			"authorization_code",
+																			"refresh_token"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"logo_uri": {
+																	"description": "URL of the client's logo.",
+																	"example": "https://example.com/logo.png",
+																	"type": "string"
+																},
+																"policy_uri": {
+																	"description": "URL that points to a privacy policy document.",
+																	"example": "https://example.com/privacy",
+																	"type": "string"
+																},
+																"post_logout_redirect_uris": {
+																	"description": "Array of allowed post-logout redirect URIs.",
+																	"example": [
+																		"https://example.com/logout"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"redirect_uris": {
+																	"description": "Array of allowed redirect URIs for the client.",
+																	"example": [
+																		"https://example.com/callback"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"response_types": {
+																	"description": "Array of OAuth response types the client is allowed to use.",
+																	"example": [
+																		"code"
+																	],
+																	"items": {
+																		"enum": [
+																			"token",
+																			"id_token",
+																			"code"
+																		],
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"scopes": {
+																	"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
+																	"example": [
+																		"account.read"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"token_endpoint_auth_method": {
+																	"description": "The authentication method the client uses at the token endpoint.",
+																	"enum": [
+																		"none",
+																		"client_secret_basic",
+																		"client_secret_post"
+																	],
+																	"example": "client_secret_post",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"tos_uri": {
+																	"description": "URL that points to a terms of service document.",
+																	"example": "https://example.com/tos",
+																	"type": "string"
+																}
+															},
+															"title": "OAuth Client Common Fields",
+															"type": "object"
+														},
+														{
+															"properties": {
+																"client_id": {
+																	"allOf": [
+																		{
+																			"description": "The unique identifier for an OAuth client.",
+																			"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+																			"title": "OAuth Client Identifier",
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	],
+																	"readOnly": true
+																},
+																"client_uri_verification": {
+																	"description": "Client URI domain control verification state.",
+																	"properties": {
+																		"status": {
+																			"description": "Current verification status for the client URI host.",
+																			"enum": [
+																				"pending",
+																				"in_progress",
+																				"verified",
+																				"failed"
+																			],
+																			"example": "in_progress",
+																			"type": "string"
+																		},
+																		"text": {
+																			"description": "Exact TXT record value that must be added to DNS to prove ownership of the client URI host.",
+																			"example": "cloudflare_oauth_client_publisher=example",
+																			"type": "string"
+																		}
+																	},
+																	"title": "OAuth Client URI Verification",
+																	"type": "object"
+																},
+																"created_at": {
+																	"description": "Timestamp when the OAuth client was created.",
+																	"example": "2025-01-01T00:00:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"has_rotated_secret": {
+																	"description": "Indicates whether the client has a rotated secret that has not yet been deleted.",
+																	"example": false,
+																	"readOnly": true,
+																	"type": "boolean"
+																},
+																"promoted_at": {
+																	"description": "Timestamp when the OAuth client was promoted to public visibility.",
+																	"example": "2026-05-13T12:00:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"updated_at": {
+																	"description": "Timestamp when the OAuth client was last updated.",
+																	"example": "2025-01-01T00:00:00Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"visibility": {
+																	"description": "Visibility of the OAuth client.",
+																	"enum": [
+																		"public",
+																		"private"
+																	],
+																	"example": "private",
+																	"readOnly": true,
+																	"type": "string",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"client_id",
+																"visibility"
+															],
+															"type": "object"
+														}
+													],
+													"description": "An OAuth 2.0 client registration.",
+													"title": "OAuth Client"
+												},
+												{
+													"properties": {
+														"client_secret": {
+															"description": "The client secret. This is the only time the secret is returned in a response.",
+															"example": "cf-oauth-secret-example",
+															"readOnly": true,
+															"type": "string",
+															"x-sensitive": true
+														}
+													},
+													"type": "object"
+												}
+											],
+											"description": "An OAuth client response that includes the client secret. Only returned on client creation.",
+											"title": "OAuth Client with Secret"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"title": "Create OAuth Client Response"
+						}
+					}
+				},
+				"description": "Create OAuth Client response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create OAuth Client response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create OAuth Client",
+		"tags": [
+			"OAuth Clients"
+		],
+		"x-api-token-group": [
+			"OAuth Client Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.oauth-client.create"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/oauth_clients/{oauth_client_id}/rotate_secret": {
+		"description": "Creates a second client secret so you can update your client configuration before deleting the old one. The `has_rotated_secret` field on the client will be set to `true`.",
+		"operationId": "oauth-clients-rotate-secret",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"allOf": [
+						{
+							"description": "Identifier",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"minLength": 32,
+							"type": "string",
+							"x-auditable": true
+						}
+					],
+					"description": "Account identifier tag.",
+					"title": "Account Identifier"
+				}
+			},
+			{
+				"in": "path",
+				"name": "oauth_client_id",
+				"required": true,
+				"schema": {
+					"description": "The unique identifier for an OAuth client.",
+					"example": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+					"title": "OAuth Client Identifier",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"client_secret": {
+													"description": "The new client secret.",
+													"example": "cf-oauth-secret-new-example",
+													"readOnly": true,
+													"type": "string",
+													"x-sensitive": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"title": "Rotate OAuth Client Secret Response"
+						}
+					}
+				},
+				"description": "Rotate OAuth Client Secret response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Rotate OAuth Client Secret response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Rotate OAuth Client Secret",
+		"tags": [
+			"OAuth Clients"
+		],
+		"x-api-token-group": [
+			"OAuth Client Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.oauth-client.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
