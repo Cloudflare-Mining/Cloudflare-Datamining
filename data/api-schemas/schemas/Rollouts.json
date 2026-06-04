@@ -90,26 +90,6 @@
 							"target_configuration": {
 								"description": "Properties required to modify a cloudchamber deployment specified by the user.",
 								"properties": {
-									"affinities": {
-										"description": "Defines affinity in application scheduling. (This still an experimental feature, some schedulers might not work with these affinities).\n",
-										"properties": {
-											"colocation": {
-												"description": "Colocation affinity is designed so schedulers try to place application instances all in the same way. Colocation is best-effort depending on available resources. If there is some leftover set of instances\nthat can't be placed together, the scheduler will try to place them somewhere else.\n",
-												"enum": [
-													"datacenter"
-												],
-												"type": "string"
-											},
-											"hardware_generation": {
-												"description": "To the extent possible, prefer nodes with specified characteristics when placing application instances.\n",
-												"enum": [
-													"highest-overall-performance"
-												],
-												"type": "string"
-											}
-										},
-										"type": "object"
-									},
 									"authorized_keys": {
 										"items": {
 											"description": "SSH public key provided by the user",
@@ -125,103 +105,6 @@
 											},
 											"required": [
 												"public_key"
-											],
-											"type": "object"
-										},
-										"type": "array"
-									},
-									"checks": {
-										"description": "Health and readiness checks for this deployment.",
-										"items": {
-											"description": "Health and readiness checks for a deployment",
-											"properties": {
-												"attempts_before_failure": {
-													"default": 1,
-													"description": "Number of times to attempt the check before considering it to have failed",
-													"type": "integer"
-												},
-												"grace_period": {
-													"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-													"example": "30s",
-													"type": "string"
-												},
-												"http": {
-													"description": "Configuration for HTTP checks.",
-													"properties": {
-														"body": {
-															"description": "If the method is one of POST, PATCH or PUT, this is required. It's the body that will be passed to the HTTP healthcheck request.",
-															"type": "string"
-														},
-														"headers": {
-															"additionalProperties": true,
-															"description": "HTTP headers to include in the request.",
-															"type": "object"
-														},
-														"method": {
-															"description": "Available HTTP methods for health and readiness checks.",
-															"enum": [
-																"GET",
-																"POST",
-																"PATCH",
-																"PUT",
-																"OPTIONS",
-																"DELETE",
-																"HEAD"
-															],
-															"type": "string"
-														},
-														"path": {
-															"default": "/",
-															"description": "Path that will be used to perform the healthcheck.",
-															"type": "string"
-														}
-													},
-													"type": "object"
-												},
-												"interval": {
-													"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-													"example": "30s",
-													"type": "string"
-												},
-												"kind": {
-													"enum": [
-														"health",
-														"ready"
-													],
-													"type": "string"
-												},
-												"name": {
-													"description": "Optional name for the check. If omitted, a name will be generated automatically.",
-													"type": "string"
-												},
-												"port": {
-													"description": "The name of the port defined in the \"ports\" property of the deployment",
-													"type": "string"
-												},
-												"timeout": {
-													"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-													"example": "30s",
-													"type": "string"
-												},
-												"tls": {
-													"default": false,
-													"description": "Connect to the port using TLS",
-													"type": "boolean"
-												},
-												"type": {
-													"enum": [
-														"http",
-														"tcp"
-													],
-													"type": "string"
-												}
-											},
-											"required": [
-												"type",
-												"port",
-												"interval",
-												"timeout",
-												"kind"
 											],
 											"type": "object"
 										},
@@ -276,11 +159,6 @@
 											}
 										},
 										"type": "object"
-									},
-									"durable_object_offset_instances": {
-										"description": "The number of containers that should be prewarmed for this application, resulting in a number of deployments = number of durable object instances + this value.\nSend an integer to set, null to clear an existing explicit override (return to the account/system default), or omit to leave unchanged.\n",
-										"nullable": true,
-										"type": "integer"
 									},
 									"entrypoint": {
 										"description": "The entry point for the container, specifying the executable to run when the container starts.\nThis can be overridden at run-time. If overridden, the default command from the image is ignored.\nBoth entrypoint and command can be specified at run-time to completely replace the image defaults.\n",
@@ -400,54 +278,6 @@
 										],
 										"type": "object"
 									},
-									"network": {
-										"properties": {
-											"assign_ipv4": {
-												"enum": [
-													"none",
-													"predefined",
-													"account"
-												],
-												"type": "string"
-											},
-											"assign_ipv6": {
-												"enum": [
-													"none",
-													"predefined",
-													"account"
-												],
-												"type": "string"
-											},
-											"egress_from_landing_colo": {
-												"description": "Egress packets sent by the container through a colo, if any, that has seen packets sent to the container first. Landing colos are tracked for individual 5-tuples.\n",
-												"type": "boolean"
-											},
-											"ipv4_prefix_length": {
-												"description": "Prefix length of an IPv4 subnet assigned to a container.",
-												"exclusiveMaximum": true,
-												"maximum": 32,
-												"minimum": 1,
-												"type": "integer"
-											},
-											"ipv6_prefix_length": {
-												"description": "Prefix length of an IPv6 subnet assigned to a container.",
-												"exclusiveMaximum": true,
-												"maximum": 128,
-												"minimum": 1,
-												"type": "integer"
-											},
-											"mode": {
-												"description": "Defines the kind of networking the container will have. If \"public\", the container will be assigned at least an IPv6, and an IPv4 if \"assign_ipv4\": true. If \"public-by-port\" is specified, the IP address assignment logic is the same as with \"public\". However, at least one port must be specified. Only packets sent to specified ports will be routed to the container. If \"private\", the container won't have any accessible public IPs, however it will be able to access the internet.\n",
-												"enum": [
-													"public",
-													"public-by-port",
-													"private"
-												],
-												"type": "string"
-											}
-										},
-										"type": "object"
-									},
 									"observability": {
 										"description": "Settings for deployment observability such as logging.",
 										"properties": {
@@ -462,65 +292,6 @@
 												"type": "object"
 											}
 										},
-										"type": "object"
-									},
-									"ports": {
-										"items": {
-											"description": "Represents a port assignment for a deployment",
-											"properties": {
-												"assign_port": {
-													"description": "Choose a port number from a given set of port ranges and use it. It is an optional field.\nIf it is set, \"port\" must not be provided. The same port ranges may be used with multiple ports\nas long as the port ranges are identical for each port. Otherwise no two port ranges must intersect\nand no fixed port must belong to any port range. The total port count for all port ranges should\nbe sufficiently large for assigning the requested number of ports.\n",
-													"items": {
-														"properties": {
-															"end": {
-																"description": "Last port number. Inclusive. It may be equal to the start one.",
-																"type": "integer"
-															},
-															"start": {
-																"description": "First port number. Inclusive.",
-																"type": "integer"
-															}
-														},
-														"required": [
-															"start",
-															"end"
-														],
-														"type": "object"
-													},
-													"type": "array"
-												},
-												"name": {
-													"description": "A port name. The port array should not have duplicate names. The port name should be between 1 and 15 characters long. Only alphanumeric characters, dashes (-), and underscores (_) are allowed. No consecutive dashes. The value of the port is exposed to the user's application with a set of environment variables, where `<name>` below is the name of the port with dashes converted to underscores (example: \"web-ui\" becomes \"web_ui\"):\n - `CLOUDFLARE_PORT_<name>`: Port inside the container\n - `CLOUDFLARE_HOST_PORT_<name>`: Port outside the container\n - `CLOUDFLARE_HOST_IP_<name>`: Address of the external network interface the port is allocated on\n - `CLOUDFLARE_HOST_ADDR_<name>`: `CLOUDFLARE_HOST_IP_<name>:CLOUDFLARE_HOST_PORT_<name>`\n",
-													"example": "web-ui",
-													"type": "string"
-												},
-												"port": {
-													"description": "Optional port number, it's assigned only if the user specified it.\nIf it's not specified, the datacenter scheduler will decide it.\n",
-													"type": "integer"
-												}
-											},
-											"required": [
-												"name"
-											],
-											"type": "object"
-										},
-										"type": "array"
-									},
-									"provisioner": {
-										"description": "Configuration for a VM provisioner.",
-										"properties": {
-											"type": {
-												"description": "The provisioner to use.",
-												"enum": [
-													"none",
-													"cloudinit"
-												],
-												"type": "string"
-											}
-										},
-										"required": [
-											"type"
-										],
 										"type": "object"
 									},
 									"secrets": {
@@ -713,26 +484,6 @@
 												"current_configuration": {
 													"description": "Properties required to modify a cloudchamber deployment specified by the user.",
 													"properties": {
-														"affinities": {
-															"description": "Defines affinity in application scheduling. (This still an experimental feature, some schedulers might not work with these affinities).\n",
-															"properties": {
-																"colocation": {
-																	"description": "Colocation affinity is designed so schedulers try to place application instances all in the same way. Colocation is best-effort depending on available resources. If there is some leftover set of instances\nthat can't be placed together, the scheduler will try to place them somewhere else.\n",
-																	"enum": [
-																		"datacenter"
-																	],
-																	"type": "string"
-																},
-																"hardware_generation": {
-																	"description": "To the extent possible, prefer nodes with specified characteristics when placing application instances.\n",
-																	"enum": [
-																		"highest-overall-performance"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"authorized_keys": {
 															"items": {
 																"description": "SSH public key provided by the user",
@@ -748,103 +499,6 @@
 																},
 																"required": [
 																	"public_key"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"checks": {
-															"description": "Health and readiness checks for this deployment.",
-															"items": {
-																"description": "Health and readiness checks for a deployment",
-																"properties": {
-																	"attempts_before_failure": {
-																		"default": 1,
-																		"description": "Number of times to attempt the check before considering it to have failed",
-																		"type": "integer"
-																	},
-																	"grace_period": {
-																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																		"example": "30s",
-																		"type": "string"
-																	},
-																	"http": {
-																		"description": "Configuration for HTTP checks.",
-																		"properties": {
-																			"body": {
-																				"description": "If the method is one of POST, PATCH or PUT, this is required. It's the body that will be passed to the HTTP healthcheck request.",
-																				"type": "string"
-																			},
-																			"headers": {
-																				"additionalProperties": true,
-																				"description": "HTTP headers to include in the request.",
-																				"type": "object"
-																			},
-																			"method": {
-																				"description": "Available HTTP methods for health and readiness checks.",
-																				"enum": [
-																					"GET",
-																					"POST",
-																					"PATCH",
-																					"PUT",
-																					"OPTIONS",
-																					"DELETE",
-																					"HEAD"
-																				],
-																				"type": "string"
-																			},
-																			"path": {
-																				"default": "/",
-																				"description": "Path that will be used to perform the healthcheck.",
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"interval": {
-																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																		"example": "30s",
-																		"type": "string"
-																	},
-																	"kind": {
-																		"enum": [
-																			"health",
-																			"ready"
-																		],
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "Optional name for the check. If omitted, a name will be generated automatically.",
-																		"type": "string"
-																	},
-																	"port": {
-																		"description": "The name of the port defined in the \"ports\" property of the deployment",
-																		"type": "string"
-																	},
-																	"timeout": {
-																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																		"example": "30s",
-																		"type": "string"
-																	},
-																	"tls": {
-																		"default": false,
-																		"description": "Connect to the port using TLS",
-																		"type": "boolean"
-																	},
-																	"type": {
-																		"enum": [
-																			"http",
-																			"tcp"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"type",
-																	"port",
-																	"interval",
-																	"timeout",
-																	"kind"
 																],
 																"type": "object"
 															},
@@ -899,11 +553,6 @@
 																}
 															},
 															"type": "object"
-														},
-														"durable_object_offset_instances": {
-															"description": "The number of containers that should be prewarmed for this application, resulting in a number of deployments = number of durable object instances + this value.\nSend an integer to set, null to clear an existing explicit override (return to the account/system default), or omit to leave unchanged.\n",
-															"nullable": true,
-															"type": "integer"
 														},
 														"entrypoint": {
 															"description": "The entry point for the container, specifying the executable to run when the container starts.\nThis can be overridden at run-time. If overridden, the default command from the image is ignored.\nBoth entrypoint and command can be specified at run-time to completely replace the image defaults.\n",
@@ -1023,54 +672,6 @@
 															],
 															"type": "object"
 														},
-														"network": {
-															"properties": {
-																"assign_ipv4": {
-																	"enum": [
-																		"none",
-																		"predefined",
-																		"account"
-																	],
-																	"type": "string"
-																},
-																"assign_ipv6": {
-																	"enum": [
-																		"none",
-																		"predefined",
-																		"account"
-																	],
-																	"type": "string"
-																},
-																"egress_from_landing_colo": {
-																	"description": "Egress packets sent by the container through a colo, if any, that has seen packets sent to the container first. Landing colos are tracked for individual 5-tuples.\n",
-																	"type": "boolean"
-																},
-																"ipv4_prefix_length": {
-																	"description": "Prefix length of an IPv4 subnet assigned to a container.",
-																	"exclusiveMaximum": true,
-																	"maximum": 32,
-																	"minimum": 1,
-																	"type": "integer"
-																},
-																"ipv6_prefix_length": {
-																	"description": "Prefix length of an IPv6 subnet assigned to a container.",
-																	"exclusiveMaximum": true,
-																	"maximum": 128,
-																	"minimum": 1,
-																	"type": "integer"
-																},
-																"mode": {
-																	"description": "Defines the kind of networking the container will have. If \"public\", the container will be assigned at least an IPv6, and an IPv4 if \"assign_ipv4\": true. If \"public-by-port\" is specified, the IP address assignment logic is the same as with \"public\". However, at least one port must be specified. Only packets sent to specified ports will be routed to the container. If \"private\", the container won't have any accessible public IPs, however it will be able to access the internet.\n",
-																	"enum": [
-																		"public",
-																		"public-by-port",
-																		"private"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"observability": {
 															"description": "Settings for deployment observability such as logging.",
 															"properties": {
@@ -1085,65 +686,6 @@
 																	"type": "object"
 																}
 															},
-															"type": "object"
-														},
-														"ports": {
-															"items": {
-																"description": "Represents a port assignment for a deployment",
-																"properties": {
-																	"assign_port": {
-																		"description": "Choose a port number from a given set of port ranges and use it. It is an optional field.\nIf it is set, \"port\" must not be provided. The same port ranges may be used with multiple ports\nas long as the port ranges are identical for each port. Otherwise no two port ranges must intersect\nand no fixed port must belong to any port range. The total port count for all port ranges should\nbe sufficiently large for assigning the requested number of ports.\n",
-																		"items": {
-																			"properties": {
-																				"end": {
-																					"description": "Last port number. Inclusive. It may be equal to the start one.",
-																					"type": "integer"
-																				},
-																				"start": {
-																					"description": "First port number. Inclusive.",
-																					"type": "integer"
-																				}
-																			},
-																			"required": [
-																				"start",
-																				"end"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
-																	},
-																	"name": {
-																		"description": "A port name. The port array should not have duplicate names. The port name should be between 1 and 15 characters long. Only alphanumeric characters, dashes (-), and underscores (_) are allowed. No consecutive dashes. The value of the port is exposed to the user's application with a set of environment variables, where `<name>` below is the name of the port with dashes converted to underscores (example: \"web-ui\" becomes \"web_ui\"):\n - `CLOUDFLARE_PORT_<name>`: Port inside the container\n - `CLOUDFLARE_HOST_PORT_<name>`: Port outside the container\n - `CLOUDFLARE_HOST_IP_<name>`: Address of the external network interface the port is allocated on\n - `CLOUDFLARE_HOST_ADDR_<name>`: `CLOUDFLARE_HOST_IP_<name>:CLOUDFLARE_HOST_PORT_<name>`\n",
-																		"example": "web-ui",
-																		"type": "string"
-																	},
-																	"port": {
-																		"description": "Optional port number, it's assigned only if the user specified it.\nIf it's not specified, the datacenter scheduler will decide it.\n",
-																		"type": "integer"
-																	}
-																},
-																"required": [
-																	"name"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"provisioner": {
-															"description": "Configuration for a VM provisioner.",
-															"properties": {
-																"type": {
-																	"description": "The provisioner to use.",
-																	"enum": [
-																		"none",
-																		"cloudinit"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"type"
-															],
 															"type": "object"
 														},
 														"secrets": {
@@ -1512,26 +1054,6 @@
 												"target_configuration": {
 													"description": "Properties required to modify a cloudchamber deployment specified by the user.",
 													"properties": {
-														"affinities": {
-															"description": "Defines affinity in application scheduling. (This still an experimental feature, some schedulers might not work with these affinities).\n",
-															"properties": {
-																"colocation": {
-																	"description": "Colocation affinity is designed so schedulers try to place application instances all in the same way. Colocation is best-effort depending on available resources. If there is some leftover set of instances\nthat can't be placed together, the scheduler will try to place them somewhere else.\n",
-																	"enum": [
-																		"datacenter"
-																	],
-																	"type": "string"
-																},
-																"hardware_generation": {
-																	"description": "To the extent possible, prefer nodes with specified characteristics when placing application instances.\n",
-																	"enum": [
-																		"highest-overall-performance"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"authorized_keys": {
 															"items": {
 																"description": "SSH public key provided by the user",
@@ -1547,103 +1069,6 @@
 																},
 																"required": [
 																	"public_key"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"checks": {
-															"description": "Health and readiness checks for this deployment.",
-															"items": {
-																"description": "Health and readiness checks for a deployment",
-																"properties": {
-																	"attempts_before_failure": {
-																		"default": 1,
-																		"description": "Number of times to attempt the check before considering it to have failed",
-																		"type": "integer"
-																	},
-																	"grace_period": {
-																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																		"example": "30s",
-																		"type": "string"
-																	},
-																	"http": {
-																		"description": "Configuration for HTTP checks.",
-																		"properties": {
-																			"body": {
-																				"description": "If the method is one of POST, PATCH or PUT, this is required. It's the body that will be passed to the HTTP healthcheck request.",
-																				"type": "string"
-																			},
-																			"headers": {
-																				"additionalProperties": true,
-																				"description": "HTTP headers to include in the request.",
-																				"type": "object"
-																			},
-																			"method": {
-																				"description": "Available HTTP methods for health and readiness checks.",
-																				"enum": [
-																					"GET",
-																					"POST",
-																					"PATCH",
-																					"PUT",
-																					"OPTIONS",
-																					"DELETE",
-																					"HEAD"
-																				],
-																				"type": "string"
-																			},
-																			"path": {
-																				"default": "/",
-																				"description": "Path that will be used to perform the healthcheck.",
-																				"type": "string"
-																			}
-																		},
-																		"type": "object"
-																	},
-																	"interval": {
-																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																		"example": "30s",
-																		"type": "string"
-																	},
-																	"kind": {
-																		"enum": [
-																			"health",
-																			"ready"
-																		],
-																		"type": "string"
-																	},
-																	"name": {
-																		"description": "Optional name for the check. If omitted, a name will be generated automatically.",
-																		"type": "string"
-																	},
-																	"port": {
-																		"description": "The name of the port defined in the \"ports\" property of the deployment",
-																		"type": "string"
-																	},
-																	"timeout": {
-																		"description": "Duration string. From Go documentation:\n  A string representing the duration in the form \"3d1h3m\". Leading zero units are omitted.\n  As a special case, durations less than one second format use a smaller unit (milli-, micro-, or nanoseconds)\n  to ensure that the leading digit is non-zero.\n",
-																		"example": "30s",
-																		"type": "string"
-																	},
-																	"tls": {
-																		"default": false,
-																		"description": "Connect to the port using TLS",
-																		"type": "boolean"
-																	},
-																	"type": {
-																		"enum": [
-																			"http",
-																			"tcp"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"type",
-																	"port",
-																	"interval",
-																	"timeout",
-																	"kind"
 																],
 																"type": "object"
 															},
@@ -1698,11 +1123,6 @@
 																}
 															},
 															"type": "object"
-														},
-														"durable_object_offset_instances": {
-															"description": "The number of containers that should be prewarmed for this application, resulting in a number of deployments = number of durable object instances + this value.\nSend an integer to set, null to clear an existing explicit override (return to the account/system default), or omit to leave unchanged.\n",
-															"nullable": true,
-															"type": "integer"
 														},
 														"entrypoint": {
 															"description": "The entry point for the container, specifying the executable to run when the container starts.\nThis can be overridden at run-time. If overridden, the default command from the image is ignored.\nBoth entrypoint and command can be specified at run-time to completely replace the image defaults.\n",
@@ -1822,54 +1242,6 @@
 															],
 															"type": "object"
 														},
-														"network": {
-															"properties": {
-																"assign_ipv4": {
-																	"enum": [
-																		"none",
-																		"predefined",
-																		"account"
-																	],
-																	"type": "string"
-																},
-																"assign_ipv6": {
-																	"enum": [
-																		"none",
-																		"predefined",
-																		"account"
-																	],
-																	"type": "string"
-																},
-																"egress_from_landing_colo": {
-																	"description": "Egress packets sent by the container through a colo, if any, that has seen packets sent to the container first. Landing colos are tracked for individual 5-tuples.\n",
-																	"type": "boolean"
-																},
-																"ipv4_prefix_length": {
-																	"description": "Prefix length of an IPv4 subnet assigned to a container.",
-																	"exclusiveMaximum": true,
-																	"maximum": 32,
-																	"minimum": 1,
-																	"type": "integer"
-																},
-																"ipv6_prefix_length": {
-																	"description": "Prefix length of an IPv6 subnet assigned to a container.",
-																	"exclusiveMaximum": true,
-																	"maximum": 128,
-																	"minimum": 1,
-																	"type": "integer"
-																},
-																"mode": {
-																	"description": "Defines the kind of networking the container will have. If \"public\", the container will be assigned at least an IPv6, and an IPv4 if \"assign_ipv4\": true. If \"public-by-port\" is specified, the IP address assignment logic is the same as with \"public\". However, at least one port must be specified. Only packets sent to specified ports will be routed to the container. If \"private\", the container won't have any accessible public IPs, however it will be able to access the internet.\n",
-																	"enum": [
-																		"public",
-																		"public-by-port",
-																		"private"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"observability": {
 															"description": "Settings for deployment observability such as logging.",
 															"properties": {
@@ -1884,65 +1256,6 @@
 																	"type": "object"
 																}
 															},
-															"type": "object"
-														},
-														"ports": {
-															"items": {
-																"description": "Represents a port assignment for a deployment",
-																"properties": {
-																	"assign_port": {
-																		"description": "Choose a port number from a given set of port ranges and use it. It is an optional field.\nIf it is set, \"port\" must not be provided. The same port ranges may be used with multiple ports\nas long as the port ranges are identical for each port. Otherwise no two port ranges must intersect\nand no fixed port must belong to any port range. The total port count for all port ranges should\nbe sufficiently large for assigning the requested number of ports.\n",
-																		"items": {
-																			"properties": {
-																				"end": {
-																					"description": "Last port number. Inclusive. It may be equal to the start one.",
-																					"type": "integer"
-																				},
-																				"start": {
-																					"description": "First port number. Inclusive.",
-																					"type": "integer"
-																				}
-																			},
-																			"required": [
-																				"start",
-																				"end"
-																			],
-																			"type": "object"
-																		},
-																		"type": "array"
-																	},
-																	"name": {
-																		"description": "A port name. The port array should not have duplicate names. The port name should be between 1 and 15 characters long. Only alphanumeric characters, dashes (-), and underscores (_) are allowed. No consecutive dashes. The value of the port is exposed to the user's application with a set of environment variables, where `<name>` below is the name of the port with dashes converted to underscores (example: \"web-ui\" becomes \"web_ui\"):\n - `CLOUDFLARE_PORT_<name>`: Port inside the container\n - `CLOUDFLARE_HOST_PORT_<name>`: Port outside the container\n - `CLOUDFLARE_HOST_IP_<name>`: Address of the external network interface the port is allocated on\n - `CLOUDFLARE_HOST_ADDR_<name>`: `CLOUDFLARE_HOST_IP_<name>:CLOUDFLARE_HOST_PORT_<name>`\n",
-																		"example": "web-ui",
-																		"type": "string"
-																	},
-																	"port": {
-																		"description": "Optional port number, it's assigned only if the user specified it.\nIf it's not specified, the datacenter scheduler will decide it.\n",
-																		"type": "integer"
-																	}
-																},
-																"required": [
-																	"name"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														},
-														"provisioner": {
-															"description": "Configuration for a VM provisioner.",
-															"properties": {
-																"type": {
-																	"description": "The provisioner to use.",
-																	"enum": [
-																		"none",
-																		"cloudinit"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"type"
-															],
 															"type": "object"
 														},
 														"secrets": {
