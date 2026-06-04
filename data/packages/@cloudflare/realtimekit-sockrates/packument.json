@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/realtimekit-sockrates",
 	"dist-tags": {
-		"latest": "0.1.2",
+		"latest": "0.2.0",
 		"staging": "0.1.3-staging.2"
 	},
 	"versions": {
@@ -161,6 +161,39 @@
 				"events": "^3.3.0"
 			},
 			"devDependencies": {
+				"jest": "^29.7.0",
+				"vite": "4.1.2",
+				"ts-jest": "^29.1.1",
+				"ts-node": "^10.9.2",
+				"typescript": "~5.5.4",
+				"@types/jest": "^29.5.11",
+				"@types/node": "^20.10.6",
+				"@types/events": "^3.0.0"
+			},
+			"peerDependencies": {
+				"@protobuf-ts/runtime": "^2.7.0"
+			},
+			"dist": {
+				"shasum": "39f600baa9e3a0261ffcb6f47b0f00737e8b4eaa",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-sockrates/-/realtimekit-sockrates-0.1.3-staging.2.tgz",
+				"fileCount": 12,
+				"integrity": "sha512-jOm3ab8jarBsixE1X+t2VEr+H55GVZI8/PZNkr8cgOX+nLCNJQKHYNafQ7egS+NSGE2g2L7hFuqI0ZDXk9vGNg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDqYbnsiDSD/U/hAylO7nM6mfLd4NVNYLyXJ8Id+rZx2wIgE+42M5ZCElR+x0Mkr7oz6CgVgDqNZflZcvAKb42YooE=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 57742
+			}
+		},
+		"0.2.0": {
+			"name": "@cloudflare/realtimekit-sockrates",
+			"version": "0.2.0",
+			"dependencies": {
+				"events": "^3.3.0"
+			},
+			"devDependencies": {
 				"@types/events": "^3.0.0",
 				"@types/jest": "^29.5.11",
 				"@types/node": "^20.10.6",
@@ -174,15 +207,15 @@
 				"@protobuf-ts/runtime": "^2.7.0"
 			},
 			"dist": {
-				"integrity": "sha512-jOm3ab8jarBsixE1X+t2VEr+H55GVZI8/PZNkr8cgOX+nLCNJQKHYNafQ7egS+NSGE2g2L7hFuqI0ZDXk9vGNg==",
-				"shasum": "39f600baa9e3a0261ffcb6f47b0f00737e8b4eaa",
-				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-sockrates/-/realtimekit-sockrates-0.1.3-staging.2.tgz",
+				"integrity": "sha512-UzKA00uBDOZnKfHAcSasWrJ63ZNbrehVu/erxJCFvI40QEdQajl+O1jA2f+h2RkFbAzEdcXYl9MYyNDa2od+tw==",
+				"shasum": "feff2e9632b6b5c7793090edb46e1ed5176967bc",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-sockrates/-/realtimekit-sockrates-0.2.0.tgz",
 				"fileCount": 12,
-				"unpackedSize": 57742,
+				"unpackedSize": 57732,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDqYbnsiDSD/U/hAylO7nM6mfLd4NVNYLyXJ8Id+rZx2wIgE+42M5ZCElR+x0Mkr7oz6CgVgDqNZflZcvAKb42YooE="
+						"sig": "MEUCICEm5j8aBzkZPCQyq4y3IANx6aeGK5arlcCXCXItnJQ8AiEA78OHI3k9rLHsmtWNbhCHTdXODzyWw7h1+YpfP7m4hVE="
 					}
 				]
 			}
