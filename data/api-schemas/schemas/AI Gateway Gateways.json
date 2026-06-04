@@ -491,6 +491,146 @@
 											"type": "integer",
 											"x-auditable": true
 										},
+										"spend_limits": {
+											"nullable": true,
+											"properties": {
+												"enabled": {
+													"default": false,
+													"type": "boolean"
+												},
+												"rules": {
+													"default": [],
+													"items": {
+														"properties": {
+															"enabled": {
+																"default": true,
+																"type": "boolean"
+															},
+															"id": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"limit": {
+																"exclusiveMinimum": true,
+																"minimum": 0,
+																"type": "number"
+															},
+															"limitType": {
+																"enum": [
+																	"cost"
+																],
+																"type": "string"
+															},
+															"metadata": {
+																"additionalProperties": {
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"mode": {
+																					"enum": [
+																						"partition"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"mode"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"mode": {
+																					"enum": [
+																						"match"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"mode",
+																				"value"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"type": "object"
+															},
+															"model": {
+																"anyOf": [
+																	{
+																		"enum": [
+																			"partition"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"properties": {
+																			"match": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"match"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"provider": {
+																"anyOf": [
+																	{
+																		"enum": [
+																			"partition"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"properties": {
+																			"match": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"match"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"technique": {
+																"default": "sliding",
+																"enum": [
+																	"fixed",
+																	"sliding"
+																],
+																"type": "string"
+															},
+															"window": {
+																"exclusiveMinimum": true,
+																"minimum": 0,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"id",
+															"limitType",
+															"limit",
+															"window"
+														],
+														"type": "object"
+													},
+													"maxItems": 20,
+													"type": "array"
+												}
+											},
+											"type": "object",
+											"x-auditable": true
+										},
 										"store_id": {
 											"nullable": true,
 											"type": "string"
@@ -1135,6 +1275,146 @@
 												"minimum": 1,
 												"nullable": true,
 												"type": "integer",
+												"x-auditable": true
+											},
+											"spend_limits": {
+												"nullable": true,
+												"properties": {
+													"enabled": {
+														"default": false,
+														"type": "boolean"
+													},
+													"rules": {
+														"default": [],
+														"items": {
+															"properties": {
+																"enabled": {
+																	"default": true,
+																	"type": "boolean"
+																},
+																"id": {
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"limit": {
+																	"exclusiveMinimum": true,
+																	"minimum": 0,
+																	"type": "number"
+																},
+																"limitType": {
+																	"enum": [
+																		"cost"
+																	],
+																	"type": "string"
+																},
+																"metadata": {
+																	"additionalProperties": {
+																		"oneOf": [
+																			{
+																				"properties": {
+																					"mode": {
+																						"enum": [
+																							"partition"
+																						],
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"mode"
+																				],
+																				"type": "object"
+																			},
+																			{
+																				"properties": {
+																					"mode": {
+																						"enum": [
+																							"match"
+																						],
+																						"type": "string"
+																					},
+																					"value": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"mode",
+																					"value"
+																				],
+																				"type": "object"
+																			}
+																		]
+																	},
+																	"type": "object"
+																},
+																"model": {
+																	"anyOf": [
+																		{
+																			"enum": [
+																				"partition"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"properties": {
+																				"match": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"match"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"provider": {
+																	"anyOf": [
+																		{
+																			"enum": [
+																				"partition"
+																			],
+																			"type": "string"
+																		},
+																		{
+																			"properties": {
+																				"match": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"match"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"technique": {
+																	"default": "sliding",
+																	"enum": [
+																		"fixed",
+																		"sliding"
+																	],
+																	"type": "string"
+																},
+																"window": {
+																	"exclusiveMinimum": true,
+																	"minimum": 0,
+																	"type": "integer"
+																}
+															},
+															"required": [
+																"id",
+																"limitType",
+																"limit",
+																"window"
+															],
+															"type": "object"
+														},
+														"maxItems": 20,
+														"type": "array"
+													}
+												},
+												"type": "object",
 												"x-auditable": true
 											},
 											"store_id": {
@@ -1899,6 +2179,146 @@
 											"type": "integer",
 											"x-auditable": true
 										},
+										"spend_limits": {
+											"nullable": true,
+											"properties": {
+												"enabled": {
+													"default": false,
+													"type": "boolean"
+												},
+												"rules": {
+													"default": [],
+													"items": {
+														"properties": {
+															"enabled": {
+																"default": true,
+																"type": "boolean"
+															},
+															"id": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"limit": {
+																"exclusiveMinimum": true,
+																"minimum": 0,
+																"type": "number"
+															},
+															"limitType": {
+																"enum": [
+																	"cost"
+																],
+																"type": "string"
+															},
+															"metadata": {
+																"additionalProperties": {
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"mode": {
+																					"enum": [
+																						"partition"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"mode"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"mode": {
+																					"enum": [
+																						"match"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"mode",
+																				"value"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"type": "object"
+															},
+															"model": {
+																"anyOf": [
+																	{
+																		"enum": [
+																			"partition"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"properties": {
+																			"match": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"match"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"provider": {
+																"anyOf": [
+																	{
+																		"enum": [
+																			"partition"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"properties": {
+																			"match": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"match"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"technique": {
+																"default": "sliding",
+																"enum": [
+																	"fixed",
+																	"sliding"
+																],
+																"type": "string"
+															},
+															"window": {
+																"exclusiveMinimum": true,
+																"minimum": 0,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"id",
+															"limitType",
+															"limit",
+															"window"
+														],
+														"type": "object"
+													},
+													"maxItems": 20,
+													"type": "array"
+												}
+											},
+											"type": "object",
+											"x-auditable": true
+										},
 										"store_id": {
 											"nullable": true,
 											"type": "string"
@@ -2652,6 +3072,146 @@
 											"type": "integer",
 											"x-auditable": true
 										},
+										"spend_limits": {
+											"nullable": true,
+											"properties": {
+												"enabled": {
+													"default": false,
+													"type": "boolean"
+												},
+												"rules": {
+													"default": [],
+													"items": {
+														"properties": {
+															"enabled": {
+																"default": true,
+																"type": "boolean"
+															},
+															"id": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"limit": {
+																"exclusiveMinimum": true,
+																"minimum": 0,
+																"type": "number"
+															},
+															"limitType": {
+																"enum": [
+																	"cost"
+																],
+																"type": "string"
+															},
+															"metadata": {
+																"additionalProperties": {
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"mode": {
+																					"enum": [
+																						"partition"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"mode"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"mode": {
+																					"enum": [
+																						"match"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"mode",
+																				"value"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"type": "object"
+															},
+															"model": {
+																"anyOf": [
+																	{
+																		"enum": [
+																			"partition"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"properties": {
+																			"match": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"match"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"provider": {
+																"anyOf": [
+																	{
+																		"enum": [
+																			"partition"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"properties": {
+																			"match": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"match"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"technique": {
+																"default": "sliding",
+																"enum": [
+																	"fixed",
+																	"sliding"
+																],
+																"type": "string"
+															},
+															"window": {
+																"exclusiveMinimum": true,
+																"minimum": 0,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"id",
+															"limitType",
+															"limit",
+															"window"
+														],
+														"type": "object"
+													},
+													"maxItems": 20,
+													"type": "array"
+												}
+											},
+											"type": "object",
+											"x-auditable": true
+										},
 										"store_id": {
 											"nullable": true,
 											"type": "string"
@@ -3268,6 +3828,146 @@
 								"type": "integer",
 								"x-auditable": true
 							},
+							"spend_limits": {
+								"nullable": true,
+								"properties": {
+									"enabled": {
+										"default": false,
+										"type": "boolean"
+									},
+									"rules": {
+										"default": [],
+										"items": {
+											"properties": {
+												"enabled": {
+													"default": true,
+													"type": "boolean"
+												},
+												"id": {
+													"minLength": 1,
+													"type": "string"
+												},
+												"limit": {
+													"exclusiveMinimum": true,
+													"minimum": 0,
+													"type": "number"
+												},
+												"limitType": {
+													"enum": [
+														"cost"
+													],
+													"type": "string"
+												},
+												"metadata": {
+													"additionalProperties": {
+														"oneOf": [
+															{
+																"properties": {
+																	"mode": {
+																		"enum": [
+																			"partition"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"mode": {
+																		"enum": [
+																			"match"
+																		],
+																		"type": "string"
+																	},
+																	"value": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"mode",
+																	"value"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"type": "object"
+												},
+												"model": {
+													"anyOf": [
+														{
+															"enum": [
+																"partition"
+															],
+															"type": "string"
+														},
+														{
+															"properties": {
+																"match": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"match"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"provider": {
+													"anyOf": [
+														{
+															"enum": [
+																"partition"
+															],
+															"type": "string"
+														},
+														{
+															"properties": {
+																"match": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"match"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"technique": {
+													"default": "sliding",
+													"enum": [
+														"fixed",
+														"sliding"
+													],
+													"type": "string"
+												},
+												"window": {
+													"exclusiveMinimum": true,
+													"minimum": 0,
+													"type": "integer"
+												}
+											},
+											"required": [
+												"id",
+												"limitType",
+												"limit",
+												"window"
+											],
+											"type": "object"
+										},
+										"maxItems": 20,
+										"type": "array"
+									}
+								},
+								"type": "object",
+								"x-auditable": true
+							},
 							"store_id": {
 								"nullable": true,
 								"type": "string"
@@ -3788,6 +4488,146 @@
 											"minimum": 1,
 											"nullable": true,
 											"type": "integer",
+											"x-auditable": true
+										},
+										"spend_limits": {
+											"nullable": true,
+											"properties": {
+												"enabled": {
+													"default": false,
+													"type": "boolean"
+												},
+												"rules": {
+													"default": [],
+													"items": {
+														"properties": {
+															"enabled": {
+																"default": true,
+																"type": "boolean"
+															},
+															"id": {
+																"minLength": 1,
+																"type": "string"
+															},
+															"limit": {
+																"exclusiveMinimum": true,
+																"minimum": 0,
+																"type": "number"
+															},
+															"limitType": {
+																"enum": [
+																	"cost"
+																],
+																"type": "string"
+															},
+															"metadata": {
+																"additionalProperties": {
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"mode": {
+																					"enum": [
+																						"partition"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"mode"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"mode": {
+																					"enum": [
+																						"match"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"mode",
+																				"value"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"type": "object"
+															},
+															"model": {
+																"anyOf": [
+																	{
+																		"enum": [
+																			"partition"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"properties": {
+																			"match": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"match"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"provider": {
+																"anyOf": [
+																	{
+																		"enum": [
+																			"partition"
+																		],
+																		"type": "string"
+																	},
+																	{
+																		"properties": {
+																			"match": {
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"match"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"technique": {
+																"default": "sliding",
+																"enum": [
+																	"fixed",
+																	"sliding"
+																],
+																"type": "string"
+															},
+															"window": {
+																"exclusiveMinimum": true,
+																"minimum": 0,
+																"type": "integer"
+															}
+														},
+														"required": [
+															"id",
+															"limitType",
+															"limit",
+															"window"
+														],
+														"type": "object"
+													},
+													"maxItems": 20,
+													"type": "array"
+												}
+											},
+											"type": "object",
 											"x-auditable": true
 										},
 										"store_id": {

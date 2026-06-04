@@ -268,7 +268,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/moq/relays": {
-		"description": "Lists all MoQ relays for the account. Returns only metadata.\nConfig, status, and tokens are omitted.\n",
+		"description": "Lists all MoQ relays for the account. Returns only metadata.\nConfig, status, and tokens are omitted.\n\nResults are cursor-paginated (keyset on the `created` timestamp).\nUse `created_before` / `created_after` with the `created` value of the\nfirst/last item in a page to fetch the adjacent page. `result_info`\nreports the page `count` and the `total` matching the cursor filters.\n",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -279,6 +279,45 @@
 					"description": "Cloudflare account identifier.",
 					"example": "023e105f4ecef8ad9ca31a8372d0c353",
 					"type": "string"
+				}
+			},
+			{
+				"description": "Cursor for pagination. Returns relays created strictly before this\nRFC 3339 timestamp (typically the `created` value of the first item\non the current page, to fetch the previous page).\n",
+				"in": "query",
+				"name": "created_before",
+				"schema": {
+					"example": "2026-03-27T15:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Cursor for pagination. Returns relays created strictly after this\nRFC 3339 timestamp (typically the `created` value of the last item\non the current page, to fetch the next page).\n",
+				"in": "query",
+				"name": "created_after",
+				"schema": {
+					"example": "2026-03-27T15:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Maximum number of relays to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"example": 50,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Sort order by `created`. When true, results are returned oldest-first\n(ascending); otherwise newest-first (descending, the default).\n",
+				"in": "query",
+				"name": "asc",
+				"schema": {
+					"default": false,
+					"type": "boolean"
 				}
 			}
 		],
@@ -553,11 +592,18 @@
 																	"default": false,
 																	"type": "boolean"
 																},
-																"urls": {
+																"origins": {
 																	"default": [],
-																	"description": "Ordered list of upstream origin relay URLs.",
+																	"description": "Ordered list of upstream origin relays. Each entry is an object\n(not a bare string) so per-origin configuration can be added in\nthe future without another breaking change.\n",
 																	"items": {
-																		"type": "string"
+																		"description": "A single upstream origin relay.",
+																		"properties": {
+																			"url": {
+																				"description": "Upstream origin relay URL.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	},
 																	"type": "array"
 																}
@@ -901,11 +947,18 @@
 																	"default": false,
 																	"type": "boolean"
 																},
-																"urls": {
+																"origins": {
 																	"default": [],
-																	"description": "Ordered list of upstream origin relay URLs.",
+																	"description": "Ordered list of upstream origin relays. Each entry is an object\n(not a bare string) so per-origin configuration can be added in\nthe future without another breaking change.\n",
 																	"items": {
-																		"type": "string"
+																		"description": "A single upstream origin relay.",
+																		"properties": {
+																			"url": {
+																				"description": "Upstream origin relay URL.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	},
 																	"type": "array"
 																}
@@ -930,12 +983,14 @@
 												"token_publish_subscribe": {
 													"description": "Full access token (publish + subscribe). Treat as sensitive.",
 													"example": "eyJhbGciOiJFZDI1NTE5...",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"token_subscribe": {
 													"description": "Subscribe-only token. Treat as sensitive.",
 													"example": "eyJhbGciOiJFZDI1NTE5...",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"uid": {
 													"description": "Server-generated unique identifier (32 hex chars).",
@@ -1302,7 +1357,8 @@
 												"token": {
 													"description": "New token value (shown once). Treat as sensitive.",
 													"example": "eyJhbGciOiJFZDI1NTE5...",
-													"type": "string"
+													"type": "string",
+													"x-sensitive": true
 												},
 												"type": {
 													"enum": [
@@ -1562,11 +1618,18 @@
 												"default": false,
 												"type": "boolean"
 											},
-											"urls": {
+											"origins": {
 												"default": [],
-												"description": "Ordered list of upstream origin relay URLs.",
+												"description": "Ordered list of upstream origin relays. Each entry is an object\n(not a bare string) so per-origin configuration can be added in\nthe future without another breaking change.\n",
 												"items": {
-													"type": "string"
+													"description": "A single upstream origin relay.",
+													"properties": {
+														"url": {
+															"description": "Upstream origin relay URL.",
+															"type": "string"
+														}
+													},
+													"type": "object"
 												},
 												"type": "array"
 											}
@@ -1664,11 +1727,18 @@
 																	"default": false,
 																	"type": "boolean"
 																},
-																"urls": {
+																"origins": {
 																	"default": [],
-																	"description": "Ordered list of upstream origin relay URLs.",
+																	"description": "Ordered list of upstream origin relays. Each entry is an object\n(not a bare string) so per-origin configuration can be added in\nthe future without another breaking change.\n",
 																	"items": {
-																		"type": "string"
+																		"description": "A single upstream origin relay.",
+																		"properties": {
+																			"url": {
+																				"description": "Upstream origin relay URL.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
 																	},
 																	"type": "array"
 																}
