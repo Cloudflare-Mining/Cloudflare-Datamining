@@ -1,0 +1,2891 @@
+{
+	"name": "vinext",
+	"dist-tags": {
+		"latest": "0.0.55"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "vinext",
+			"version": "0.0.0",
+			"dist": {
+				"shasum": "2c62cc5f1cdc0eb927ab91591167f7f626ac810f",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.0.tgz",
+				"fileCount": 2,
+				"integrity": "sha512-kSP8G5UB8XDk84p6Yt2/D8ZH3b/z6pFEw1fHqk74tn4VHteb7Ryu9p2beloTkWBjN6hlk7P4htN7CArJSr6hlA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCpCAdG7YOqLCq42dcLtNh16h0Hk+82CS7iz08AQoEZNgIhAM7hseqbfKnTuxIHqBT/XGihq8OpqXlj3RH/oQdBYO9C",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 425
+			}
+		},
+		"0.0.1": {
+			"name": "vinext",
+			"version": "0.0.1",
+			"dependencies": {
+				"glob": "^11.0.0",
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": "^19.2.4",
+				"react-dom": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "e857634622154cddf61a69c0e982ec857c8f230b",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.1.tgz",
+				"fileCount": 271,
+				"integrity": "sha512-CaacHEK/jkkBPF531Nk411lfOtklalhHQUobN1ywdkqhsK2IRmIMpLWiZlGby2RS0tmevFtVeliIsYz//T04Lw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD45GRFUT8J/U++vutxhZSoPpM8HYjng6QWhS0jmebRAgIgGfNxXysofv/AZJCKPjSA23A9zeg0zIQ/3Jvq/dYLvBo=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1554281
+			}
+		},
+		"0.0.2": {
+			"name": "vinext",
+			"version": "0.0.2",
+			"dependencies": {
+				"glob": "^11.0.0",
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": "^19.2.4",
+				"react-dom": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "7e77fcf0f1a473273e64f60e0adc6bd067997a0f",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.2.tgz",
+				"fileCount": 271,
+				"integrity": "sha512-PVXdji2mqbiTcSYOXeyK37fpoB/VmTdfL2YibZ6dYOwFReGnfo4Gyhd48U2c3cDF67RCG7jk0EpsGL9Z7iJ95A==",
+				"signatures": [
+					{
+						"sig": "MEUCICWr7DMZkPG8YpKL6cIPqkEgfsVakXL4l1pcvDwAYKoGAiEAn9s1814Wlc6028BO+Zs8n8VitOG3/1O1Z/TPYZHcTLM=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 2453622
+			}
+		},
+		"0.0.3": {
+			"name": "vinext",
+			"version": "0.0.3",
+			"dependencies": {
+				"glob": "^11.0.0",
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "71dcc7073c2677849c143af7f079607ac61ccae1",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.3.tgz",
+				"fileCount": 271,
+				"integrity": "sha512-Y8OfL7ypy9HLs0vFWL4/r4N9RHZqyxktb7uJMHG0L9GdLwLtHUuTk8jY14wShDKQD8zwR9G8C1Uz4KRSHZH2Kg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDcQMGSRgzA4aLoaBtyfI4a8+WqoZwFDXD5l5Jm8Ize9wIgVHZd3AATiRX/rX0F3276l37TPkAl11Uju7rn73VuTzI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 2452199
+			}
+		},
+		"0.0.4": {
+			"name": "vinext",
+			"version": "0.0.4",
+			"dependencies": {
+				"glob": "^11.0.0",
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "47c0b7eeb1f414d39cfd49c2abf7b59898c1880e",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.4.tgz",
+				"fileCount": 271,
+				"integrity": "sha512-CMDrIDg/jgCGHJ9Ki439iqwW2MqvkRTUtb6y7ysyNlauPbY6MuXUmK+yk5RdTP4gQeP20HnujrCxaP+Ot/IDpQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIEO1aE2rzk1AULW+n6/QzvssFqbC/OuoWVtgzy+nlPH4AiEAsX2lVuDZFbntuFGP23I3mRRjVNZXSlGPzYyjc1UJZTc=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 2452723
+			}
+		},
+		"0.0.5": {
+			"name": "vinext",
+			"version": "0.0.5",
+			"dependencies": {
+				"glob": "^11.0.0",
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "35693f05721d5ed9f9d0981e654494026efca2d1",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.5.tgz",
+				"fileCount": 271,
+				"integrity": "sha512-Ctm+ja+Zam05iYzZbWQhKAyGSO1og5txC1OY+nTJ2tfVpL5rMH/Ppo9ZwysuzgNhe6Nm4frrwPrQhFHii8TIQw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCxr/uvgTKNDOOp4KkpwnInJ4m0DgbMk/yEGvtPiNB4dgIgbkHdKo4sgc8jSLx5qcHp+WPigrNlILefHE+XEdbZkV8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 2481922
+			}
+		},
+		"0.0.6": {
+			"name": "vinext",
+			"version": "0.0.6",
+			"dependencies": {
+				"glob": "^11.0.0",
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "f59db9ac495192d13da73104a4bc41bc3bcc1026",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.6.tgz",
+				"fileCount": 271,
+				"integrity": "sha512-tcJK5CPtJNJ5fGDeJSgP26cNIImGWMBsf3NNg4z6MzuM/JkzBKbBRlRIR+TuRb2FJ/Xw/PDir+rnuTXnRHDCyg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQC6AC5YLUxgtfjH4EZFF0bcAYaYWfrLyzY6FSS+t62lnwIhAIWioiKtqIPqoeMwg6vnowdAe7OZkYfGYC68mUdS1qnc",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2501260
+			}
+		},
+		"0.0.7": {
+			"name": "vinext",
+			"version": "0.0.7",
+			"dependencies": {
+				"glob": "^11.0.0",
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "ba861d7d0797bf5f2d0131d3e10ac0d9087f8014",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.7.tgz",
+				"fileCount": 271,
+				"integrity": "sha512-sEuLeMkklUwRDwnSofcWssRuXUz/txJI5NBiub203hURyqa+8VhRwTS5nxqf48SdrBeUt9dYzg6luraL4plQFQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDBqZR/N0Hds+fEi5d5MvPMJ+Nz9lta0tAY5dv4ZmJiHgIgE9tbG/a8eJVZwKbulpYNxauUpVOiElHO84crSOhwYoU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.7",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2501260
+			}
+		},
+		"0.0.8": {
+			"name": "vinext",
+			"version": "0.0.8",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "5b043e3196000b4f0f4f878c2812a3b76b98efd0",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.8.tgz",
+				"fileCount": 271,
+				"integrity": "sha512-UXnoK+W/XyK1l3UEe1wg4vtW0UWGqB+IjPN9LrKZF/g/zFgWNBNCeDsHV/6jG09HqCxKYElA5tszcZu3Xi3Alg==",
+				"signatures": [
+					{
+						"sig": "MEQCIFM8CsYKX0xIuQ1AuibrR6WfmLhatO9+9Zt9s7o8dp+qAiBMUA4wpJcZfdgfUPGecouVSvxgpm3bDDq295wy/y/hJg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.8",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2501041
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.9": {
+			"name": "vinext",
+			"version": "0.0.9",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "69e805c26f9105aca27805a701ac89a0e5c83a88",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.9.tgz",
+				"fileCount": 275,
+				"integrity": "sha512-21SLIbUN6y8jXo1OPt1SA8auhNe61dt9pFJABFUxDW/RlrDGBNaJk6IahUirK3pGIy9iF1UAZKYqFso0Ch3PLg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD5SQ7HfprpKFGFLNIIg4B7gh0cE3nUhMjxSyhKsQW0YgIhANDrJGaeAB7FlXGPhu9bjwDzUjyFOKotkk87TREr5ttx",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.9",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2515390
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.10": {
+			"name": "vinext",
+			"version": "0.0.10",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "3f9c5759e0a13ae7a508c2f821530ef384bfdc4b",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.10.tgz",
+				"fileCount": 291,
+				"integrity": "sha512-bUISYs5eb6sZ0zeAjoU5NmRq8p7ZMQPzJ4rjQBJYT4fyfgK84UdpTSu6kiE7lKeoCDDvlyP9EjPwz7MxD1Z6Cg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCtnGJilhbu2CBBnX3zt4lYMJDmsmxISTPCprvL4O85aQIhAJcyLtOBCPt5uhYNx1iMFS4OvRcSum/+sJshxFAyy+eW",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.10",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2626088
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.11": {
+			"name": "vinext",
+			"version": "0.0.11",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "afeebc847ee6afd934f95664ccfaf8f49e273a58",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.11.tgz",
+				"fileCount": 291,
+				"integrity": "sha512-qGjsotjKtOnxbQ/uAT6f2tzmcMeA1aqgbYHIjzyQdHO1jyPm1jFv8EsZQOqzboY3zQ7QqeoM6ALkv2bgqI6p1w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCMsOaI5L1g/4nTl8aoyFs4HUMGk8kBmt77jckA2Pf+KQIgL67P+Ldg81WPEXZoE2AW3FE1zWJ0DfFlBOba+44AUO0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.11",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2650038
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.12": {
+			"name": "vinext",
+			"version": "0.0.12",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "b78099c588689b6ab3e9270b0abd5d5982ebbcb2",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.12.tgz",
+				"fileCount": 291,
+				"integrity": "sha512-cZfmxKMwDasjQ5MuQZhf0ZPsyo/+EAd70W2NxaGdkfzd16qrGSF/RD7RvQNuO/dCh04n7CF+B2yQCBafN9qHTA==",
+				"signatures": [
+					{
+						"sig": "MEQCIFXLyULEpGoxBBHLPzW2RPaiSxmPcBjlqt9qn3gKqAr/AiAZklYTe8Gvgio/KbaopgXUIsIAcaHCyEsTJXKLWOmn+A==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.12",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2666611
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.13": {
+			"name": "vinext",
+			"version": "0.0.13",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "f8488d21fa6263a9476413f20e1726d1f1783b1d",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.13.tgz",
+				"fileCount": 291,
+				"integrity": "sha512-UwUCMpGlRDGttAcI1hCa86iMGqAHO23rpPFH0g0/b0Ia5WTPq0z28C68KXXm/rCrol5aPw/QKnWY3JYnslW2eQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIAsKZUG1TVTpcnMysYWViww1/4MXvbOdOJavIm+9guSDAiEA8C+Bi0IZmpz9oMCGNtwXaPYlJahzq+CaP06AKn3XXGM=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.13",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2670654
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.14": {
+			"name": "vinext",
+			"version": "0.0.14",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "b3fdc68301d6da47382be7a690e2543f061fe4c9",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.14.tgz",
+				"fileCount": 291,
+				"integrity": "sha512-A3GfevP8vsw/TNZI+wfsVA3e2lhqPrm8XwvoKSYyFcqg4C0SpQNBlq48wKUADjhikzi0Bjb5VbUoyHtHuFDVJA==",
+				"signatures": [
+					{
+						"sig": "MEUCIAWQ1vfWbJB1ySOz/jru+luowVVMedUNqwTKhP5VQpfFAiEA+Cz9N+OmgoVlbS111k+66w6DbjAdJxulk/0FwR+3Pcw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.14",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2693155
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.15": {
+			"name": "vinext",
+			"version": "0.0.15",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "fef20d47c87135bb03e1a65a874edafad0ec2803",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.15.tgz",
+				"fileCount": 295,
+				"integrity": "sha512-AOfzgKVgXqOZYjRmyp/2lE6vXhVVQk5rTdFcocbru/I5JpKBtzyyJU9gf/AhDdUIGWGRqScMq2FvJ7edg7txBA==",
+				"signatures": [
+					{
+						"sig": "MEUCIGN5Wy8Aoo5CNzcs7QeCo2oLTRTcbQ1pGDF0bJoY3O4WAiEA17zB/WaNO+YlUG4opRf9pTDlTI/0hDBKCN+V6ek+VmQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.15",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 2703232
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.16": {
+			"name": "vinext",
+			"version": "0.0.16",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "539403dae94c0a696a316b7ec080af4a8a416ac3",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.16.tgz",
+				"fileCount": 303,
+				"integrity": "sha512-PTfVFYoiCjSKSgYUpS7g0yAX0O2fu76no705QN0E2ZjU3to23SxGeNP2cmMkSD47tkS7qDtBJoTOWKRoPV2DFw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDeiCu3k8tbEScrTVMbbCxyfYsOl6KgewjDt6nfZZF0WgIhAOEqAdTx4qo2wMgNVAhKiDfjH+2b0oWaQQ9KGskAyk3l",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.16",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3258986
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.17": {
+			"name": "vinext",
+			"version": "0.0.17",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "a7ee3e20129ac0af16c7f6ed1076a52938a1950b",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.17.tgz",
+				"fileCount": 303,
+				"integrity": "sha512-TBApDXkI682hor2cOJ4sp8jHkqfhpdk+T6gZEN7F1d+UwVlieq6rDPsDZN0TmpdSEngPtc5+Kn7UJuu9QLBnsA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCmrJxAzuphaiSuLSmUkldkkaoH/mPOXEfpfwCjqZFetgIhAJbi4AgtITdV58Wg1wTkQ35zipeC97E/6EEzOT31PAqc",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.17",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3261587
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.18": {
+			"name": "vinext",
+			"version": "0.0.18",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "122de97cda2a1526f67af7077d3b1b7288312cab",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.18.tgz",
+				"fileCount": 303,
+				"integrity": "sha512-HTaO+fWYYInbLfRge+TgdEJqyjcV5amwHCUvEI9gp32jGEb/9xS/6NVscgMmjUlAlS4FSmwpgWEv6kwzDuZ2lQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIArzk0djgFUbNqF1Vhqee0NBfURdfeVHCnk8mfDaQkkcAiB2g8EgUruISKDIQ/l5nMlkl45VcgQz4tp3nA5TVbnyiw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.18",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3262960
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.19": {
+			"name": "vinext",
+			"version": "0.0.19",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "2ec7f6d84cc8d5ef143e33742155f6d2e2fd9c14",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.19.tgz",
+				"fileCount": 303,
+				"integrity": "sha512-vyfw7HWVZJkMPfLBfHXFVQL3zxg0XDIgkV26b18bbXc2auSvF8vjB2T0ipSjW+rkSf23NCT70HofI0/F/763RQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIDXBf+veiflXng/QYQELEpZO1h5Ha93cVu5+2ccke2S4AiEAkY0Jd8Q5E2gPmoShDc8iifs/7c9xGKlmpTPIjaon/zI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.19",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3270126
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.20": {
+			"name": "vinext",
+			"version": "0.0.20",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "b95b9944495850e58fc20c1c5474e2322f79a210",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.20.tgz",
+				"fileCount": 307,
+				"integrity": "sha512-LIq/SmwCPfZYCIOBE1wUSPtNew8PdZUg/GG27xleGkACXOpZDLWn0FhExfmOBieiOyu7c+GPyt7XY0D26qN4tA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDAcH6ATGJAv92Zt5R/yX6JKxvSXa4sTJLllctjlR/sCgIgO5Rm7t+zLrRRr3o6DZRSrOjjR16upDe2DXmYdrtDmgw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.20",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3395646
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.21": {
+			"name": "vinext",
+			"version": "0.0.21",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "78f604c8803a17a340d2a7a6a0e6b1be5c4c4606",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.21.tgz",
+				"fileCount": 307,
+				"integrity": "sha512-soB3EfR5E9Y0gHXZAhgPx1+RuAiBClNAA8qIs3XNIR0fIX1s/N+LUiMBjYg9RoWuXhlriUcJKeT+suYhPE6Vag==",
+				"signatures": [
+					{
+						"sig": "MEQCIG7eaaheC0HZVI9HGe+Fx/1b8zgwvIwHnHHjcxLvnVvHAiBAji1/U8xDeeb6iVIlqmvi9hqmJ2tQHXjmpdpqrvrNZw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.21",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3409450
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.22": {
+			"name": "vinext",
+			"version": "0.0.22",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "e548db706f234ade51573aeb1884c8512c2b33e6",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.22.tgz",
+				"fileCount": 315,
+				"integrity": "sha512-j44fCRVSUJeBo6DsVLjQbRaUS1TvuM7xQcQ70RoVcKsqcZuv3oc31cuuo7wE7L7Sb4bkaSHJHbQgK0AVYcDUpQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDNIlq3jE2schCICRcv6TC2bisHXqdGxvoierRXveFyCwIgF6yVeDNLkpJ2HNG7o+R7/0reCCIo/UuqyZzLtnxfTSA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.22",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3478920
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.23": {
+			"name": "vinext",
+			"version": "0.0.23",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "fd52e079da73068301aa41469d545f6f06ff8523",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.23.tgz",
+				"fileCount": 319,
+				"integrity": "sha512-dnJQyVpriwX7zJzwYD5VdcusKMd4UzhJpHQttOflCTyt9gXDWb1P7n6U9KWXHUaEHYpVV0/v7IQ2BnI4XHblvg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD8gFar8cmElM1s6MZMY6DEDv2LmLebatt8Vhq9vDWPigIhAKjHENGavMQEUOalEjF16q+6B7ihlXakGveC0SwOK0sk",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.23",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3526142
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.24": {
+			"name": "vinext",
+			"version": "0.0.24",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "206409401d34bb34cc8e215413f9a9b7924471e2",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.24.tgz",
+				"fileCount": 323,
+				"integrity": "sha512-+unmn1XJYoUrwi2M6h4cQXWMFit3QRP7Vynnzvd+eI756BLGFzFKsZvK6pHwC8k+HR0QzCwve/k8Md/tA1d8DA==",
+				"signatures": [
+					{
+						"sig": "MEUCICBWDKaIyiX94HxxBADsM+macexP6FW4q5pbWmcEKe/FAiEA5i77CUdasQKw1vgRkbfDvpKgGT88D9pO0zYanGlmb/8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.24",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3556367
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.25": {
+			"name": "vinext",
+			"version": "0.0.25",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "f33c90085aaec193d6bbb8e812a89ccab7b37881",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.25.tgz",
+				"fileCount": 335,
+				"integrity": "sha512-XXiR0FvPp+Z2Lqln2WR+zniTPiX3lfaYgoo2a1xRUQuFCihHnMUkcV5wYxusHPjYXbiA5nkWjzpK14Y59it8Xw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDIl0Q49Zyx6ZkB8/ASMlkAjnnRFhL2IUNWfd2c8BYoPgIgFfjWq+XdwSh/A8OTxLq882Kd4HCeq+8VcESnGZqAR1Q=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.25",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3664671
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.26": {
+			"name": "vinext",
+			"version": "0.0.26",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"vite-tsconfig-paths": "^6.1.1",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vite-plugin-commonjs": "^0.10.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "040514aa95d206eae404db470c4d861b9941071f",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.26.tgz",
+				"fileCount": 363,
+				"integrity": "sha512-ZfTfAB/NKC7s2OfvuMTi/nmSxZIKskKmCz5U5U8CZUOZZvuLNFDW6O9tqDsI85VmwrRdv8q9eDn/YT4ROXgZ0w==",
+				"signatures": [
+					{
+						"sig": "MEUCIHKTknamfBuDwScRrNbCFT+4Wgd8Q9KyV3WRKoyw5fe0AiEAx72vl+CB51+6D5NcEluckxzzon5fHc9mjMru+E38tLQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.26",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3774310
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.27": {
+			"name": "vinext",
+			"version": "0.0.27",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "8a87317c46a91e77c7b7135c0d44d08f68f623b1",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.27.tgz",
+				"fileCount": 375,
+				"integrity": "sha512-YhYx+0C9fDEyICIAIP9uxvlAmbKzHka6+YlWPXTLcESEM9wNItuyzAa12vO1gR1Cge0OKBtq/8maAh4SorNG9Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIDIstBHUP6s8AjVRwTMNVTaWmhp2Ykc25TvDmq4GsRraAiEAuPB5NFeinogE6QYwhXfxS7rI3VLQSiTxJaRhmc89TfY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.27",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3900645
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.28": {
+			"name": "vinext",
+			"version": "0.0.28",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "c3d5cfb70f77995da25a7a149e7fbfe3f202ca6e",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.28.tgz",
+				"fileCount": 395,
+				"integrity": "sha512-qX1cOlKmKlTfhidtqnS0Zm95guVkU35Ndo8zLpWJlbuzjaEBKsSywqIRR6pXcitF8VXu1Z4R7omObdGOCF9ISA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDD1ca+AhWXfVYZlKST/2MxjC94q8BqXeaD1DjgYcpseAIhAPU7kbycDAtQFub2r3JY31ZRkzzB1EsInP/u06JnBYz3",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.28",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4099810
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.29": {
+			"name": "vinext",
+			"version": "0.0.29",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0-beta.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "1a202814209d5b520d5c1a55be6a61d074929c84",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.29.tgz",
+				"fileCount": 403,
+				"integrity": "sha512-T7kzhgX2TbM+unIHaehiz5H7D2i0TLWhUUqvdnu5PgiBzCSMiH8G2rzE7dA8Tc1oEhywuzYP+pt5bfXkk9lk+w==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD5Ir5rZRIj+siQbRYkX62vAHQXKUjt3yIt3DlNczWVOQIgCnBFF71eL99vAbHnfzfngyG5eBXFeK8P3NhvDjHv2NY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.29",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4250598
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.30": {
+			"name": "vinext",
+			"version": "0.0.30",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"@vitejs/plugin-react": "^5.1.4",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "^7.3.1",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "0298c4418d153a3f8b1bd0b23203c24f5d6ee2d1",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.30.tgz",
+				"fileCount": 427,
+				"integrity": "sha512-u/Gqh6/xl+vkXp9FGKQhbFA3gU3S48okt9SFu+l0dxufKhwmKQ1b5r84XR2OcLEubGipYZERDdg63Ux2vPipFQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDRVfI4CVs7RK2uY7qqP4cfgTnE5meRzj8G/+z3Zj0bdwIgDYUc3XYRIo/Nibq8yKI5Q2ZwD5eHy4OzUZ8JB04ZuQY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.30",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4402942
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.31": {
+			"name": "vinext",
+			"version": "0.0.31",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "f20cfad2a7b63c81c9ffb9b6a657cff2c5af69b5",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.31.tgz",
+				"fileCount": 320,
+				"integrity": "sha512-4se0fL74VjlUOluvozC3ZfMpKSlvkNc5Akqmm8jehXKKp7ncuTLkggLpuMsEnS9vVMywcSdE+B00d1liMfLVow==",
+				"signatures": [
+					{
+						"sig": "MEUCIFuVjJ6llFRpS+EvQcVGJzrA57AzFFCndGfuxZsChjbWAiEAzXuT69YpBsIWzHWUx2anDnuzZfm23pqyC7RiegZIPhI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.31",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3792137
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.32": {
+			"name": "vinext",
+			"version": "0.0.32",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "3c5404bf1f7f99f51973c672db27e41e97170627",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.32.tgz",
+				"fileCount": 320,
+				"integrity": "sha512-++s7HvbTbdkE0S0BFB+/en9MyhmrtVVkFBXTvoHL0UCh/lvRV3e0D371nWBy0pnIPYARTKoNFxO/X5waos6DiA==",
+				"signatures": [
+					{
+						"sig": "MEUCIAJJFlYIcIO+izHx0J8Qfuq/LelJ0zscd8dL1YBIaeOMAiEAwXYHESM7oaunQELiHoxlld4don9Ac7tfQazoOxjQCfE=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.32",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3846547
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.33": {
+			"name": "vinext",
+			"version": "0.0.33",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "8ed078f370da7ab60ca8b963a0a3969499339c5e",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.33.tgz",
+				"fileCount": 359,
+				"integrity": "sha512-tqX4tj9baddegV020MNybZz3QulUErIo7zWqvxMkCALu0QFb265TWoMhRjeiu++4lGjRtY2aS96ZQQISp3Dxxg==",
+				"signatures": [
+					{
+						"sig": "MEUCIBRSn0MNmlhxvxQ6jb3YkEpYWVmDi7yfl8UfKtIbq3dTAiEAnYHeNnO1pOV/4sPJqc9AcjS5x//1nBlOTZMHeXTmpfY=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.33",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3966267
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.34": {
+			"name": "vinext",
+			"version": "0.0.34",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "c314f1182b1afe4fbbe40cb16679275572fea02d",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.34.tgz",
+				"fileCount": 377,
+				"integrity": "sha512-igBP6UrL/tEtT73hPFt6EKmHTKd4lsSZ8luV5oQjmDWPcgGew3FaSt/7vo6qK42mj7yfg5MjvmQ2VmQrm2z8Cw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDH4qorMCRy70vGoobdZ1I4ADqkwcepwhi1xXOCmCZ57AiEAqTQcGd/thFQWLkofT2jl3+YmlMColLgTKr2VZxpyVFw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.34",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3469455
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.35": {
+			"name": "vinext",
+			"version": "0.0.35",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "bd0ef359fec11829280256ee1ddc0b570e89ad0c",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.35.tgz",
+				"fileCount": 383,
+				"integrity": "sha512-z0EFQN6R+o5AdrTL/KRpsbc9mr0JLICy+v8ReBrx/R5TopC/bixllcuKB0/1HIvxm9TuLeO9+Llwv3D5APLSBA==",
+				"signatures": [
+					{
+						"sig": "MEQCIBs8FGVvVzlHdo3qUY/Pt24nvxOsV7/8EWh7DhbJ3B5uAiBSWypKcZ16IjbsNM2XvLimdgCuRJGdKdamTvZlUSVtFQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.35",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3517736
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.36": {
+			"name": "vinext",
+			"version": "0.0.36",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "3d26e402331e7ff7cbed9ba84d58098c890eaf84",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.36.tgz",
+				"fileCount": 386,
+				"integrity": "sha512-gock3MHioPKr8qTveJqpu4uFn/0+AgAzeIsRHweeAtNkOAU0egXo22prmeTxa9VwsZ1Ruu4a/1LUS3JplQbiTw==",
+				"signatures": [
+					{
+						"sig": "MEUCIAjhT90vgnlv2BAHyT+pYQFm/emC7jS4T8Pp71NuGZrEAiEA1tv9IiCUZeNLOwk0qJawrEcU4aERZKKZI4y3mktX2Yk=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.36",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3535123
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.37": {
+			"name": "vinext",
+			"version": "0.0.37",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.19",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "5e1e5d1858a540219793a827315af6479894db56",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.37.tgz",
+				"fileCount": 386,
+				"integrity": "sha512-BeHPspSb4PJjCPIv0oVtzwjbmigyDIpXrF2OdTIvvp9NhRF3DHzwVidx3BWOLD0XHk0EffowTVRKiR4jo42ADA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDBMpKowTBKvvjcpnwxs5KNimj7oB6P7WX56qyGsy8QnQIgBmM8cQdENsDYOPvfTC82CWDzpTpLGqPG1P5YWCT50lc=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.37",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3540977
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.38": {
+			"name": "vinext",
+			"version": "0.0.38",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.21",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.21",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "f58ff0e09123e260b91b7a40631f2245a103df92",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.38.tgz",
+				"fileCount": 420,
+				"integrity": "sha512-zlQswirXCApDgAFq1eoO/YbRlavGE+Bnowz5vXoQa2EmbFhYg52+T8SZs1QWdOqkbZMhpLIV/iaWvHtkRv2t4Q==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD7LnHF+gauzzsuFKSFgQgKMPpBJkKh9uKLocHSSD/QwAIgbXW1HDFmBMzc5zWWPaFU9o+rWkkpj6ffB6ywZLYbGlo=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.38",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3599119
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.39": {
+			"name": "vinext",
+			"version": "0.0.39",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"rsc-html-stream": "^0.0.7",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.21",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.21",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "670e772000e5b6249ae4f8b25462b388ae20cc7d",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.39.tgz",
+				"fileCount": 441,
+				"integrity": "sha512-2WCW5wKy4YkCGFtoUGDmfxMBPULGOXEqd7Rczwi4cMEx2SG8UnY5/56XXGAnjf8aIIrx8ggOVWJSebH96QdjZg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCXA87jsEjKETfP/mXos5hCSPlNdw1wVZdDb/MbMtq6yAIhAJAwEt/mNgRmpsHip6bMlzveTJJjfJg6EBmA6UgYmWyJ",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.39",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3813862
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.40": {
+			"name": "vinext",
+			"version": "0.0.40",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.21",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": ">=19.2.0",
+				"react-dom": ">=19.2.0",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.21",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.4"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "737df7019444d7a0995703aabed612088863b09b",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.40.tgz",
+				"fileCount": 447,
+				"integrity": "sha512-rs0z6G2el6kS/667ERKQjSMF3R8ZD2H9xDrnRntVOa6OBnyYcOMM/AVpOy/W1lxOkq6EYTO1OUD9DbNSWxRRJw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDbi2yFmamShrPIiCWFSQtPHW+BFGV/jHs4nmOcrtoYnQIhAPxAQ7KWOTM8HOyCuJGkJiva/dEXUTDIYZBz/8PkQaqh",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.40",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3885448
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.41": {
+			"name": "vinext",
+			"version": "0.0.41",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.12",
+				"vite-plus": "0.1.12",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.5",
+				"react-dom": "^19.2.5",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "6f6c87d9bc17c2e2d6747165292b4d201a96c8e4",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.41.tgz",
+				"fileCount": 456,
+				"integrity": "sha512-fpQjNp6cIqjYGH2/kbhN2SdIYHEu79RdlII23SWsY1Qp7LM+je8GfTJH1sxw6dASxPhZKZB/jCmTm5d2/D25zw==",
+				"signatures": [
+					{
+						"sig": "MEUCIFkfqPHHkLHkHHEPKKVtNaAj2+EVXK2rg/bNOtPqPmB/AiEAi8lA5aF3GpXorEB6hM0P1b5B1wrJAVqSEwao5kIntUs=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.41",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 3922997
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.42": {
+			"name": "vinext",
+			"version": "0.0.42",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.17",
+				"vite-plus": "0.1.17",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.5",
+				"react-dom": "^19.2.5",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "47d498573565e7fd456a01fc379f7d0ad7fb8dce",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.42.tgz",
+				"fileCount": 497,
+				"integrity": "sha512-kWYV3kUJxTuxyahODFO8/c3oBKpQd5ZdVNnDHVbUb5Ti3xjfOR/YmHODL3gOIPSYrqv5oX0vQVYrwsA9VZ5kOQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIBHIXQplwKF2tSXpPDoCaWKrJb9j9hxpt+LL0oLSw4ckAiAWqdtDcbis9T2cGR8DAKSDU6h+b7XP/ovbTXfpvm3hYg==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.42",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4144173
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.43": {
+			"name": "vinext",
+			"version": "0.0.43",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.17",
+				"vite-plus": "0.1.17",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.5",
+				"react-dom": "^19.2.5",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "ff38a201ea5217a4fb17b5a083418192ee768ca7",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.43.tgz",
+				"fileCount": 497,
+				"integrity": "sha512-7/St22TdEQYRv8wH4IxJERBicOoyyEC9vdMpSiThRkR5lAZ5D3dKfUMwbDCxldBnHEM+FFG4RexVdCOHkywc3g==",
+				"signatures": [
+					{
+						"sig": "MEQCIHt+MI+6dN2q4yBFCKFy5UpGYun8JV0W0rJ5qkM0PcTJAiBiXwsZhYirGkUG1yWt840NriVnUykQOKMNM5WO20LWSQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.43",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4159760
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.44": {
+			"name": "vinext",
+			"version": "0.0.44",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.17",
+				"vite-plus": "0.1.17",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.5",
+				"react-dom": "^19.2.5",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "d708fbec0062dd9c1def1da5184a5469caf232b9",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.44.tgz",
+				"fileCount": 494,
+				"integrity": "sha512-Hs+zLSRC+o5UXtsi3/kk+PUdfaZA+oKsgq9T74nHE2cV1jxdoVDiamKS03ydMsliFntYrpk7uzLHVH4MLPM+mA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD7sKtlLyGvuysJqdqPUx00KJ5ZqBjnTXlTh0Ypy6nsmgIhAO474hcoAskB/k9YInGs5RL3XyWurNzSpQ7Z0OBemAlK",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.44",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4181982
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.45": {
+			"name": "vinext",
+			"version": "0.0.45",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.17",
+				"vite-plus": "0.1.17",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.5",
+				"react-dom": "^19.2.5",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "c1470f3c9f15d27c0ee58186ad3bd84271cd7de3",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.45.tgz",
+				"fileCount": 520,
+				"integrity": "sha512-iXXRR5IMO5bZHgN9xEIzwt/+jushkoJgmWNenR++x6Tw1XnJGTEY9D5GAKMGewHl+HJ1z2GPO4fpNkT+2UowRA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD/OuwUIETwkMbGVP5YB+54K+TgckE1iTe4b2I8RR+i+wIhAJKH83Ze1W/RvJKPeHHqFOjjeJEFC0DrvKJIOIWWZlH5",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.45",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4640711
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.46": {
+			"name": "vinext",
+			"version": "0.0.46",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.17",
+				"vite-plus": "0.1.17",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.5",
+				"react-dom": "^19.2.5",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "00fae501b83c75924fd9cd8f2fc361fad045ac92",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.46.tgz",
+				"fileCount": 601,
+				"integrity": "sha512-+uFvEVATqTX+T+YDATT4piy4AJ/s5V/ANf7wmgJCoBLMwpU3zpJkpaF/68wG/ZvFViVIaJsT6IXeYGP3yDzRaw==",
+				"signatures": [
+					{
+						"sig": "MEUCIBinBp/ju+P4X48VNytwGaDHh1tOQWwnmjOVe8KrVJ0YAiEA3Q+04/lqd9d83e7fKKlnXCodxhCncGK6bPtUTIGqMnI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.46",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4997301
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.47": {
+			"name": "vinext",
+			"version": "0.0.47",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.17",
+				"vite-plus": "0.1.17",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.5",
+				"react-dom": "^19.2.5",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.5"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "00791c2cf0dcc54f678009506e5adad4b1adfa5f",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.47.tgz",
+				"fileCount": 664,
+				"integrity": "sha512-l/c1eUUYzrEowW/7jeWfpkuWqx1pYNOk2Zr8hzen9FPqgMF83ZJHIdWchCn2xwsJ7Bm/ZJGxZlAJb2Ch9kBL8g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQD+jqqVSs2H1Ykq2o2kPv2x48SYJVewcjFhmI6bTJf6ewIgYq9CY4xIIgTuJV7Cny2ti+jX7kpfJB7kS/oo+vcVpyM=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.47",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 5263071
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.48": {
+			"name": "vinext",
+			"version": "0.0.48",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.17",
+				"vite-plus": "0.1.17",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "43f3f7960f150dce4229b54620e2fd258c858f33",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.48.tgz",
+				"fileCount": 706,
+				"integrity": "sha512-VgKEdDKe9LnUcNRRGrvbGAi9DILU37yqGqI4BzRk86PGvLwkAmEYOHExONh0xRfly/nUXVXgfjRqZWVZ6MENZg==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDtOXbVY7wX2TohXLOywiXh4QZEVOO8DAuYtJ3GmWgzrgIhANjRV7HnwMl91/8rwt+ZoqDZ4BygktQsTAdrVetfke4o",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.48",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 5549133
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.49": {
+			"name": "vinext",
+			"version": "0.0.49",
+			"dependencies": {
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.17",
+				"vite-plus": "0.1.17",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "2e44fe3ec6acf7946165527e1e74cb9c0aa39955",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.49.tgz",
+				"fileCount": 706,
+				"integrity": "sha512-FD8JbaElijIfI1aWDo52c6r6/6k2ayuY5TwDqjAd10XEzHDMARLRukIFywqKKKliLEN4p9G0HU/TlJJ4umF5dw==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDhbFtNfh4lQ96R4MzWoPbo7xdbFj38lJmPgFJuSUH+zgIgXnu4alORg5Oi0pd5pzBvFCvMP4MA+vYXKxX5xMSbUwg=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.49",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 5550065
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.50": {
+			"name": "vinext",
+			"version": "0.0.50",
+			"dependencies": {
+				"ipaddr.js": "^2.1.0",
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"web-vitals": "^4.2.4",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.21",
+				"vite-plus": "0.1.21",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.23",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "315578ed44c9c839b13ae4117071cd385c90ed9c",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.50.tgz",
+				"fileCount": 740,
+				"integrity": "sha512-uo72YNnq94NtogETWnhMdFSrkMLwWgeXh5PS6qh8ksajuvAaZX50bXYJ4a6dERQ/AnnXAlNByAGHCjjNxQrvig==",
+				"signatures": [
+					{
+						"sig": "MEQCIDy3jGMufw9RZrP0pWIlbibIXbntBzWRjLIxT0uHzkTIAiBbI2nXKwqOVbCDVy8hqCu4y5WfqoYxPs7A8Rt0BbI7GA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.50",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 5863279
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.51": {
+			"name": "vinext",
+			"version": "0.0.51",
+			"dependencies": {
+				"ipaddr.js": "^2.1.0",
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"web-vitals": "^4.2.4",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.21",
+				"vite-plus": "0.1.21",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "99a749a03b68a44d52c12f22099048adab41fa83",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.51.tgz",
+				"fileCount": 793,
+				"integrity": "sha512-wNqX3B9Y0QYsMB+WskvI63mB4V+Lpqne5RFM6kL2BCXst2P91O+V+3RdGynpYEn+2xVNmzken2ipmNgfHUbC+A==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD3+U2ygki/acvfEpR/mqszRw03MLUzN57nv2P9Wj0NvAIhAKnxqAFkfi8Xix4r8Fbn4ZcQNKjIG8M5XNGRhrk7cr4u",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.51",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 6600797
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.52": {
+			"name": "vinext",
+			"version": "0.0.52",
+			"dependencies": {
+				"ipaddr.js": "^2.1.0",
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"web-vitals": "^4.2.4",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.22",
+				"vite-plus": "0.1.22",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "e08ec2865656d837da219bde695344393cb27ae3",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.52.tgz",
+				"fileCount": 846,
+				"integrity": "sha512-uPTM7qRWflkZND494ANzswn2MYyMVYR+rIpKm3iyVHtzCxhORhowhvxiITdmBbLNErKh3+vmkt3udZwWSAYeow==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCO8ahXvWSNjxI1R/IiK22ERCN32HxaZTPag42qTVIxsAIhANLX+dXGm/44jHJvEO9HtZj+VV11LyUwKhzYfZBuUKgc",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.52",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 7147392
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.53": {
+			"name": "vinext",
+			"version": "0.0.53",
+			"dependencies": {
+				"ipaddr.js": "^2.1.0",
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"web-vitals": "^4.2.4",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.22",
+				"vite-plus": "0.1.22",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "3f03139592f95e179d35c205afc149a268e2db0a",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.53.tgz",
+				"fileCount": 894,
+				"integrity": "sha512-Za1vvzTTdp51Bc54XW100o5lBcpoPcE6Pbh1uy2Ue4EOWx0pEFyH5uQAV+5nd1sceVFjEVVvY8cW36pJcmj/XQ==",
+				"signatures": [
+					{
+						"sig": "MEQCIF8JQi07E8WSwqTk6O/LXlML6SL6GrvP3oxEf8ljxEuQAiA2YjBE2hFkxz2NvkVzbLJmwoOqT690l+g9km+zehrmdQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.53",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 7462709
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.54": {
+			"name": "vinext",
+			"version": "0.0.54",
+			"dependencies": {
+				"ipaddr.js": "^2.1.0",
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"web-vitals": "^4.2.4",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.22",
+				"vite-plus": "0.1.22",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "c8293f981c35f2dba435c1f096a44aa69dadafb0",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.54.tgz",
+				"fileCount": 927,
+				"integrity": "sha512-k35zeeUCw6s6jb9rzU5WQ2c61DDhCYl94ALKw2YgVL2ESP9qyJfqmp4jKbrAeMCd0NKHGeTIxLM5WPJpEJl4sg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDDGRMEC0zD1iAHvF3AT2L0WD1zKDRz2vrzPnMBqZEc0wIgB55L27v0YHKdBTjsty9sAy8PlYMWAYIuIVMjnsezEV0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.54",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 7739381
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.0.55": {
+			"name": "vinext",
+			"version": "0.0.55",
+			"dependencies": {
+				"ipaddr.js": "^2.1.0",
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"web-vitals": "^4.2.4",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.1.22",
+				"vite-plus": "0.1.22",
+				"@types/node": "^25.2.3",
+				"@types/react": "^19.2.14",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-rsc": "^0.5.27",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "8b5566c4b83e8222e61d15aa9182370854fcaff0",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.0.55.tgz",
+				"fileCount": 951,
+				"integrity": "sha512-2bq+z6h7EfnhWH42TVcHEkRQCp0OT4LWZ38rCCgTqfz203lUR7tMrO18AOtDUvw6e784WM6ZslFP9p6jx54YaQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD3ISYJMYiBzjOeEhxkRb0isRfMjUyLICwEffXIjPlJCAIhANN64EeziBvhlASGtCsKILkKutnjvZerIAau/iwjDbMI",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.0.55",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 8016808
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		}
+	}
+}
