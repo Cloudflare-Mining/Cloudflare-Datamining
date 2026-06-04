@@ -1,0 +1,106 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": false,
+	"properties": {
+		"_operation": {
+			"enum": [
+				"generate",
+				"edit",
+				"extend"
+			],
+			"type": "string"
+		},
+		"aspect_ratio": {
+			"enum": [
+				"1:1",
+				"16:9",
+				"9:16",
+				"4:3",
+				"3:4",
+				"3:2",
+				"2:3"
+			],
+			"type": "string"
+		},
+		"duration": {
+			"maximum": 15,
+			"minimum": 1,
+			"type": "integer"
+		},
+		"image": {
+			"additionalProperties": false,
+			"properties": {
+				"url": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"url"
+			],
+			"type": "object"
+		},
+		"output": {
+			"additionalProperties": false,
+			"properties": {
+				"upload_url": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"upload_url"
+			],
+			"type": "object"
+		},
+		"prompt": {
+			"type": "string"
+		},
+		"reference_images": {
+			"items": {
+				"additionalProperties": false,
+				"properties": {
+					"url": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"url"
+				],
+				"type": "object"
+			},
+			"maxItems": 10,
+			"type": "array"
+		},
+		"resolution": {
+			"enum": [
+				"480p",
+				"720p"
+			],
+			"type": "string"
+		},
+		"size": {
+			"enum": [
+				"848x480",
+				"1696x960",
+				"1280x720",
+				"1920x1080"
+			],
+			"type": "string"
+		},
+		"user": {
+			"type": "string"
+		},
+		"video": {
+			"additionalProperties": false,
+			"properties": {
+				"url": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"url"
+			],
+			"type": "object"
+		}
+	},
+	"type": "object"
+}

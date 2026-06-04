@@ -1,0 +1,486 @@
+{
+	"flat": true,
+	"modes": null,
+	"input": {
+		"rows": [
+			{
+				"id": "language",
+				"name": "language",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "BCP-47 language code (e.g. \"en\", \"zh\", \"pt-BR\") or \"auto\" for automatic language detection. Required — xAI returns 400 if omitted. Supported codes: auto, en, ar-EG, ar-SA, ar-AE, bn, zh, fr, de, hi, id, it, ja, ko, pt-BR, pt-PT, ru, es-MX, es-ES, tr, vi.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "optimize_streaming_latency",
+				"name": "optimize_streaming_latency",
+				"type": "one of",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": true,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "optimize_streaming_latency.0",
+						"name": "Option 1",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": true,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Latency optimization for streaming synthesis. 0 (default): no optimization, best audio quality. 1: reduced first-chunk size for lower time-to-first-audio with minor quality tradeoff.",
+						"metadata": {
+							"const": 0
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "optimize_streaming_latency.1",
+						"name": "Option 2",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": true,
+						"required": false,
+						"description": "Latency optimization for streaming synthesis. 0 (default): no optimization, best audio quality. 1: reduced first-chunk size for lower time-to-first-audio with minor quality tradeoff.",
+						"metadata": {
+							"const": 1
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "output_format",
+				"name": "output_format",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Output audio format. Defaults to MP3 at 24 kHz / 128 kbps when omitted.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "output_format.bit_rate",
+						"name": "bit_rate",
+						"type": "one of",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": true,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "output_format.bit_rate.0",
+								"name": "Option 1",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": true,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Bit rate in bps. MP3 only. Defaults to 128000. Supported: 32000, 64000, 96000, 128000, 192000.",
+								"metadata": {
+									"const": 32000
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							},
+							{
+								"id": "output_format.bit_rate.1",
+								"name": "Option 2",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Bit rate in bps. MP3 only. Defaults to 128000. Supported: 32000, 64000, 96000, 128000, 192000.",
+								"metadata": {
+									"const": 64000
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							},
+							{
+								"id": "output_format.bit_rate.2",
+								"name": "Option 3",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Bit rate in bps. MP3 only. Defaults to 128000. Supported: 32000, 64000, 96000, 128000, 192000.",
+								"metadata": {
+									"const": 96000
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							},
+							{
+								"id": "output_format.bit_rate.3",
+								"name": "Option 4",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Bit rate in bps. MP3 only. Defaults to 128000. Supported: 32000, 64000, 96000, 128000, 192000.",
+								"metadata": {
+									"const": 128000
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							},
+							{
+								"id": "output_format.bit_rate.4",
+								"name": "Option 5",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": true,
+								"required": false,
+								"description": "Bit rate in bps. MP3 only. Defaults to 128000. Supported: 32000, 64000, 96000, 128000, 192000.",
+								"metadata": {
+									"const": 192000
+								},
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							}
+						]
+					},
+					{
+						"id": "output_format.codec",
+						"name": "codec",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"description": "Audio codec. Defaults to \"mp3\". mp3 → audio/mpeg (general use); wav → audio/wav (lossless); pcm → audio/pcm (raw 16-bit LE, real-time pipelines); mulaw/ulaw → audio/basic (G.711 μ-law, telephony); alaw → audio/alaw (G.711 A-law, telephony).",
+						"enumValues": [
+							"mp3",
+							"wav",
+							"pcm",
+							"mulaw",
+							"ulaw",
+							"alaw"
+						],
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "output_format.sample_rate",
+						"name": "sample_rate",
+						"type": "one of",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": true,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "output_format.sample_rate.0",
+								"name": "Option 1",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": true,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Sample rate in Hz. Defaults to 24000. Supported: 8000, 16000, 22050, 24000, 44100, 48000. Telephony codecs (mulaw, alaw) typically use 8000.",
+								"metadata": {
+									"const": 8000
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							},
+							{
+								"id": "output_format.sample_rate.1",
+								"name": "Option 2",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Sample rate in Hz. Defaults to 24000. Supported: 8000, 16000, 22050, 24000, 44100, 48000. Telephony codecs (mulaw, alaw) typically use 8000.",
+								"metadata": {
+									"const": 16000
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							},
+							{
+								"id": "output_format.sample_rate.2",
+								"name": "Option 3",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Sample rate in Hz. Defaults to 24000. Supported: 8000, 16000, 22050, 24000, 44100, 48000. Telephony codecs (mulaw, alaw) typically use 8000.",
+								"metadata": {
+									"const": 22050
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							},
+							{
+								"id": "output_format.sample_rate.3",
+								"name": "Option 4",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Sample rate in Hz. Defaults to 24000. Supported: 8000, 16000, 22050, 24000, 44100, 48000. Telephony codecs (mulaw, alaw) typically use 8000.",
+								"metadata": {
+									"const": 24000
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							},
+							{
+								"id": "output_format.sample_rate.4",
+								"name": "Option 5",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Sample rate in Hz. Defaults to 24000. Supported: 8000, 16000, 22050, 24000, 44100, 48000. Telephony codecs (mulaw, alaw) typically use 8000.",
+								"metadata": {
+									"const": 44100
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							},
+							{
+								"id": "output_format.sample_rate.5",
+								"name": "Option 6",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": true,
+								"required": false,
+								"description": "Sample rate in Hz. Defaults to 24000. Supported: 8000, 16000, 22050, 24000, 44100, 48000. Telephony codecs (mulaw, alaw) typically use 8000.",
+								"metadata": {
+									"const": 48000
+								},
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "text",
+				"name": "text",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Text to convert to speech. Maximum 15,000 characters. Supports inline speech tags: [pause], [laugh], <whisper>…</whisper>, etc.",
+				"metadata": {
+					"maxLength": 15000,
+					"minLength": 1
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "text_normalization",
+				"name": "text_normalization",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "When true, normalizes written-form text into spoken-form before synthesis (e.g. \"Dr.\" → \"Doctor\", \"100\" → \"one hundred\"). Defaults to false.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "voice_id",
+				"name": "voice_id",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Voice for synthesis. Defaults to \"eve\". Built-in voices: eve (energetic), ara (warm), rex (confident), sal (balanced), leo (authoritative). Custom voice IDs from /v1/tts/voices are also accepted. Case-insensitive — \"Eve\", \"EVE\", and \"eve\" are equivalent.",
+				"metadata": {
+					"minLength": 1
+				},
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	},
+	"output": {
+		"rows": [
+			{
+				"id": "audio",
+				"name": "audio",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Presigned R2 URL for the generated audio file. MIME type reflects the requested codec (audio/mpeg for mp3, audio/wav for wav, etc.).",
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	}
+}

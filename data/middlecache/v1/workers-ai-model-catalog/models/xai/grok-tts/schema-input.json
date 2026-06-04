@@ -1,0 +1,116 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": false,
+	"properties": {
+		"language": {
+			"description": "BCP-47 language code (e.g. \"en\", \"zh\", \"pt-BR\") or \"auto\" for automatic language detection. Required — xAI returns 400 if omitted. Supported codes: auto, en, ar-EG, ar-SA, ar-AE, bn, zh, fr, de, hi, id, it, ja, ko, pt-BR, pt-PT, ru, es-MX, es-ES, tr, vi.",
+			"type": "string"
+		},
+		"optimize_streaming_latency": {
+			"anyOf": [
+				{
+					"const": 0,
+					"type": "number"
+				},
+				{
+					"const": 1,
+					"type": "number"
+				}
+			],
+			"description": "Latency optimization for streaming synthesis. 0 (default): no optimization, best audio quality. 1: reduced first-chunk size for lower time-to-first-audio with minor quality tradeoff."
+		},
+		"output_format": {
+			"additionalProperties": false,
+			"description": "Output audio format. Defaults to MP3 at 24 kHz / 128 kbps when omitted.",
+			"properties": {
+				"bit_rate": {
+					"anyOf": [
+						{
+							"const": 32000,
+							"type": "number"
+						},
+						{
+							"const": 64000,
+							"type": "number"
+						},
+						{
+							"const": 96000,
+							"type": "number"
+						},
+						{
+							"const": 128000,
+							"type": "number"
+						},
+						{
+							"const": 192000,
+							"type": "number"
+						}
+					],
+					"description": "Bit rate in bps. MP3 only. Defaults to 128000. Supported: 32000, 64000, 96000, 128000, 192000."
+				},
+				"codec": {
+					"description": "Audio codec. Defaults to \"mp3\". mp3 → audio/mpeg (general use); wav → audio/wav (lossless); pcm → audio/pcm (raw 16-bit LE, real-time pipelines); mulaw/ulaw → audio/basic (G.711 μ-law, telephony); alaw → audio/alaw (G.711 A-law, telephony).",
+					"enum": [
+						"mp3",
+						"wav",
+						"pcm",
+						"mulaw",
+						"ulaw",
+						"alaw"
+					],
+					"type": "string"
+				},
+				"sample_rate": {
+					"anyOf": [
+						{
+							"const": 8000,
+							"type": "number"
+						},
+						{
+							"const": 16000,
+							"type": "number"
+						},
+						{
+							"const": 22050,
+							"type": "number"
+						},
+						{
+							"const": 24000,
+							"type": "number"
+						},
+						{
+							"const": 44100,
+							"type": "number"
+						},
+						{
+							"const": 48000,
+							"type": "number"
+						}
+					],
+					"description": "Sample rate in Hz. Defaults to 24000. Supported: 8000, 16000, 22050, 24000, 44100, 48000. Telephony codecs (mulaw, alaw) typically use 8000."
+				}
+			},
+			"type": "object"
+		},
+		"text": {
+			"description": "Text to convert to speech. Maximum 15,000 characters. Supports inline speech tags: [pause], [laugh], <whisper>…</whisper>, etc.",
+			"maxLength": 15000,
+			"minLength": 1,
+			"type": "string"
+		},
+		"text_normalization": {
+			"description": "When true, normalizes written-form text into spoken-form before synthesis (e.g. \"Dr.\" → \"Doctor\", \"100\" → \"one hundred\"). Defaults to false.",
+			"type": "boolean"
+		},
+		"voice_id": {
+			"description": "Voice for synthesis. Defaults to \"eve\". Built-in voices: eve (energetic), ara (warm), rex (confident), sal (balanced), leo (authoritative). Custom voice IDs from /v1/tts/voices are also accepted. Case-insensitive — \"Eve\", \"EVE\", and \"eve\" are equivalent.",
+			"minLength": 1,
+			"type": "string"
+		}
+	},
+	"required": [
+		"text",
+		"language"
+	],
+	"type": "object"
+}

@@ -1,0 +1,92 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"channels": {
+			"description": "Per-channel transcripts when multichannel=true.",
+			"items": {
+				"additionalProperties": {},
+				"properties": {
+					"index": {
+						"type": "number"
+					},
+					"text": {
+						"type": "string"
+					},
+					"words": {
+						"items": {
+							"additionalProperties": {},
+							"properties": {
+								"end": {
+									"type": "number"
+								},
+								"start": {
+									"type": "number"
+								},
+								"text": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"text",
+								"start",
+								"end"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"index",
+					"text"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"duration": {
+			"description": "Audio duration in seconds (2 d.p.).",
+			"type": "number"
+		},
+		"language": {
+			"description": "Detected language name (e.g. \"English\", \"French\").",
+			"type": "string"
+		},
+		"text": {
+			"description": "Full transcript text.",
+			"type": "string"
+		},
+		"words": {
+			"description": "Word-level segments. Each entry has text, start, end (seconds). Includes speaker integer when diarize=true.",
+			"items": {
+				"additionalProperties": {},
+				"properties": {
+					"end": {
+						"type": "number"
+					},
+					"speaker": {
+						"type": "number"
+					},
+					"start": {
+						"type": "number"
+					},
+					"text": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"text",
+					"start",
+					"end"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		}
+	},
+	"required": [
+		"text"
+	],
+	"type": "object"
+}
