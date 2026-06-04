@@ -42,7 +42,7 @@
 <h4>Qualifications</h4>
 <p><strong>Basic Qualifications</strong></p>
 <ul>
-	<li>Bachelor's degree in Business Administration, Supply Chain Management, Engineering, or related field</li>
+	<li>Bachelor's degree in Business Administration, Supply Chain Management, Engineering or equivalent work experience in the field</li>
 	<li>5+ years of experience in strategic sourcing, procurement, or supplier management, preferably within technology, infrastructure, or related industries</li>
 	<li>Demonstrated experience negotiating commercial agreements and managing supplier relationships end-to-end</li>
 	<li>Solid understanding of procurement processes, including sourcing, contracting, and supplier onboarding</li>
@@ -55,7 +55,7 @@
 </ul>
 <p><strong>Preferred Qualifications</strong></p>
 <ul>
-	<li>Master's degree in Business Administration, Supply Chain, or related field</li>
+	<li>Master's degree in Business Administration, Supply Chain Management, Engineering or equivalent work experience in the field</li>
 	<li>Professional certification such as CPSM, CPM, CSCP, or equivalent</li>
 	<li>7+ years of experience in strategic sourcing with direct experience in data center services categories (data center field services, IT asset disposal, network provisioning, logistics, rack integration, or infrastructure service delivery)</li>
 	<li>Proven track record of developing category strategies and driving complex, multi-million-dollar sourcing initiatives from inception to completion</li>

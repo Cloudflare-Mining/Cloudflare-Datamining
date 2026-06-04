@@ -5,36 +5,20 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location:&nbsp;</strong>Austin, Texas</p>
-<p><strong>About the Role</strong></p>
-<p>We are looking for a forward-thinking AI Discoverability &amp; Optimization Intern to join our Web Strategy team within Corporate Marketing. As search behavior shifts from traditional engines to Generative AI and Coding Agents, our brand must be where the users are. You will sit at the intersection of Data Science and Digital Marketing, helping us bridge the "Data-Insight Gap" by turning raw search and citation data into a strategic roadmap for growth.&nbsp;In this role, you won't just look at "what happened"; you’ll define "why" and "how" we optimize for the next generation of discovery. You will work directly with our SEO and Content teams to ensure Cloudflare is not just present, but authoritative in AI-generated answers and developer-focused coding environments. To maximize your impact, you will be expected to build AI-driven workflows that automate routine "busy-work," allowing you to focus on high-level analytical thinking and creative strategy.</p>
-<p><strong>Responsibilities</strong></p>
+<h3><strong>Available Locations: Austin, TX | Hybrid</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>What you'll do</strong></h3>
+<p>In this role, you will collaborate with a team of Design Engineers and Systems Engineers. You will help design and develop frontend experiences that improve overall developer experience throughout our dashboard. You will own your code from inception to release and bring attention to detail to the work you complete for both coding patterns &amp; visual aesthetics. On any given day, you might be working in Figma collaborating on designs or inspiration, developing new components and user interactions, polishing existing pages, or improving developer experience in any number of ways you might imagine. You can expect to interact with a variety of languages and technologies. We primarily use Typescript and React.</p>
+<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li><strong>AEO &amp; GEO Strategy:</strong> Identify "high-intent" user prompts where our brand is under-represented and recommend specific content optimizations — such as FAQ blocks or comparison tables — to capture these "missing" answers.</li>
-	<li><strong>Coding Agent Optimization (CAO):</strong> Analyze how coding assistants (like GitHub Copilot or Replit Agent) interpret our documentation and technical assets to ensure our tools are the first choice for developers.</li>
-	<li><strong>Authority Mapping:</strong> Build a "Priority Source List" of third-party wikis, niche forums, and technical blogs that AI engines frequently cite, serving as a "hit list" for PR and backlink efforts.</li>
-	<li><strong>Intelligence Mastery:</strong> Deeply utilize SEMRush for AEO and SEO intelligence and Adobe Analytics to understand user behavior and the downstream impact of our visibility.</li>
-	<li><strong>Sentiment &amp; Perception Audits:</strong> Identify queries where AI sources provide neutral or negative sentiment, outlining SME-led outreach strategies to improve these results.</li>
-	<li><strong>Impact Modeling:</strong> Develop a "Prioritization Matrix" that stack-ranks opportunities based on "Ease of Implementation" vs. "Potential Reach," ensuring we focus on the highest-value wins.</li>
-	<li><strong>Executive Reporting:</strong> Distill complex dataset findings into an "executive-ready" AI Visibility &amp; Gap Report by the end of the summer.</li>
+	<li>5+ years of experience working with distributed systems.</li>
+	<li>Experience designing and building frontend applications.</li>
+	<li>Solid understanding of cloud primitives and how they work together to build distributed systems.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language: we primarily use TypeScript.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in large-scale frontend applications.</li>
 </ul>
-<p><strong>Skills &amp; Qualifications</strong></p>
-<ul>
-	<li>A background in a quantitative or marketing field (Marketing, Data Science, CS, or Economics), MBA/MS preferred, with a passion for moving beyond "what happened" to "how we optimize".</li>
-	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the summer (May-Aug).</li>
-	<li>Data Proficiency: Experience navigating large datasets using Excel/Google Sheets, SQL, or Python.</li>
-	<li>Technical Curiosity: A foundational understanding of SEO, with a strong interest in AEO (Answer Engine Optimization) and how Coding Agents retrieve information.</li>
-	<li>Marketing Intuition: The ability to put yourself in the user's shoes to understand how they search for solutions in a generative-AI world.</li>
-	<li>AI-First Mindset: A desire to build AI-powered workflows to streamline analysis and maximize creative output.</li>
-	<li>Career Trajectory: You might want to develop into a Data Analyst, Digital Strategist, or Growth Marketer.</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Previous experience or coursework specifically related to Answer Engine Optimization (AEO) or Generative Experience Optimization (GEO).</li>
-	<li>Experience with technical documentation or contributing to open-source projects.</li>
-	<li>Proficiency with SEMRush or Adobe Analytics.</li>
-</ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

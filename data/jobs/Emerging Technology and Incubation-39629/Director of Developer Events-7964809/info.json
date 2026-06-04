@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7789256?gh_jid=7789256",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7964809?gh_jid=7964809",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3407011,
+	"internal_job_id": 3457960,
 	"location": {
 		"name": "In-Office"
 	},
@@ -18,14 +18,16 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "5991 - S&M Interns",
+			"value": "4500 - Emerg Tech & Incubation",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"New York, US",
+				"San Francisco, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -33,23 +35,23 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Early Talent"
+				"Emerging Technology & Incubation"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7789256,
-	"updated_at": "2026-05-29T19:27:13-04:00",
-	"requisition_id": "INT#5077",
-	"title": "Developer GTM Intern – Enterprise Sales & AI Automation (Summer 2026)",
+	"id": 7964809,
+	"updated_at": "2026-06-04T18:57:00-04:00",
+	"requisition_id": "22872",
+	"title": "Director of Developer Events",
 	"company_name": "Cloudflare",
-	"first_published": "2026-04-14T11:50:48-04:00",
+	"first_published": "2026-06-04T18:57:00-04:00",
 	"language": "en",
 	"application_deadline": null,
 	"departments": [
 		{
-			"id": 70480,
-			"name": "University",
+			"id": 39629,
+			"name": "Emerging Technology and Incubation",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -59,6 +61,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}
