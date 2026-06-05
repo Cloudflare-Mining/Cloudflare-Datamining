@@ -507,7 +507,9 @@
 																"type": "boolean"
 															},
 															"id": {
+																"default": "8de85b69",
 																"minLength": 1,
+																"pattern": "^[a-zA-Z0-9_-]+$",
 																"type": "string"
 															},
 															"limit": {
@@ -542,17 +544,20 @@
 																			"properties": {
 																				"mode": {
 																					"enum": [
-																						"match"
+																						"filter"
 																					],
 																					"type": "string"
 																				},
-																				"value": {
-																					"type": "string"
+																				"values": {
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
 																				}
 																			},
 																			"required": [
 																				"mode",
-																				"value"
+																				"values"
 																			],
 																			"type": "object"
 																		}
@@ -561,46 +566,46 @@
 																"type": "object"
 															},
 															"model": {
-																"anyOf": [
-																	{
+																"properties": {
+																	"mode": {
 																		"enum": [
-																			"partition"
+																			"filter"
 																		],
 																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"match": {
-																				"type": "string"
-																			}
+																	"values": {
+																		"items": {
+																			"type": "string"
 																		},
-																		"required": [
-																			"match"
-																		],
-																		"type": "object"
+																		"type": "array"
 																	}
-																]
+																},
+																"required": [
+																	"mode",
+																	"values"
+																],
+																"type": "object"
 															},
 															"provider": {
-																"anyOf": [
-																	{
+																"properties": {
+																	"mode": {
 																		"enum": [
-																			"partition"
+																			"filter"
 																		],
 																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"match": {
-																				"type": "string"
-																			}
+																	"values": {
+																		"items": {
+																			"type": "string"
 																		},
-																		"required": [
-																			"match"
-																		],
-																		"type": "object"
+																		"type": "array"
 																	}
-																]
+																},
+																"required": [
+																	"mode",
+																	"values"
+																],
+																"type": "object"
 															},
 															"technique": {
 																"default": "sliding",
@@ -617,7 +622,6 @@
 															}
 														},
 														"required": [
-															"id",
 															"limitType",
 															"limit",
 															"window"
@@ -1293,7 +1297,9 @@
 																	"type": "boolean"
 																},
 																"id": {
+																	"default": "a917e27e",
 																	"minLength": 1,
+																	"pattern": "^[a-zA-Z0-9_-]+$",
 																	"type": "string"
 																},
 																"limit": {
@@ -1328,17 +1334,20 @@
 																				"properties": {
 																					"mode": {
 																						"enum": [
-																							"match"
+																							"filter"
 																						],
 																						"type": "string"
 																					},
-																					"value": {
-																						"type": "string"
+																					"values": {
+																						"items": {
+																							"type": "string"
+																						},
+																						"type": "array"
 																					}
 																				},
 																				"required": [
 																					"mode",
-																					"value"
+																					"values"
 																				],
 																				"type": "object"
 																			}
@@ -1347,46 +1356,46 @@
 																	"type": "object"
 																},
 																"model": {
-																	"anyOf": [
-																		{
+																	"properties": {
+																		"mode": {
 																			"enum": [
-																				"partition"
+																				"filter"
 																			],
 																			"type": "string"
 																		},
-																		{
-																			"properties": {
-																				"match": {
-																					"type": "string"
-																				}
+																		"values": {
+																			"items": {
+																				"type": "string"
 																			},
-																			"required": [
-																				"match"
-																			],
-																			"type": "object"
+																			"type": "array"
 																		}
-																	]
+																	},
+																	"required": [
+																		"mode",
+																		"values"
+																	],
+																	"type": "object"
 																},
 																"provider": {
-																	"anyOf": [
-																		{
+																	"properties": {
+																		"mode": {
 																			"enum": [
-																				"partition"
+																				"filter"
 																			],
 																			"type": "string"
 																		},
-																		{
-																			"properties": {
-																				"match": {
-																					"type": "string"
-																				}
+																		"values": {
+																			"items": {
+																				"type": "string"
 																			},
-																			"required": [
-																				"match"
-																			],
-																			"type": "object"
+																			"type": "array"
 																		}
-																	]
+																	},
+																	"required": [
+																		"mode",
+																		"values"
+																	],
+																	"type": "object"
 																},
 																"technique": {
 																	"default": "sliding",
@@ -1403,7 +1412,6 @@
 																}
 															},
 															"required": [
-																"id",
 																"limitType",
 																"limit",
 																"window"
@@ -2195,7 +2203,9 @@
 																"type": "boolean"
 															},
 															"id": {
+																"default": "3bdb21c6",
 																"minLength": 1,
+																"pattern": "^[a-zA-Z0-9_-]+$",
 																"type": "string"
 															},
 															"limit": {
@@ -2230,17 +2240,20 @@
 																			"properties": {
 																				"mode": {
 																					"enum": [
-																						"match"
+																						"filter"
 																					],
 																					"type": "string"
 																				},
-																				"value": {
-																					"type": "string"
+																				"values": {
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
 																				}
 																			},
 																			"required": [
 																				"mode",
-																				"value"
+																				"values"
 																			],
 																			"type": "object"
 																		}
@@ -2249,46 +2262,46 @@
 																"type": "object"
 															},
 															"model": {
-																"anyOf": [
-																	{
+																"properties": {
+																	"mode": {
 																		"enum": [
-																			"partition"
+																			"filter"
 																		],
 																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"match": {
-																				"type": "string"
-																			}
+																	"values": {
+																		"items": {
+																			"type": "string"
 																		},
-																		"required": [
-																			"match"
-																		],
-																		"type": "object"
+																		"type": "array"
 																	}
-																]
+																},
+																"required": [
+																	"mode",
+																	"values"
+																],
+																"type": "object"
 															},
 															"provider": {
-																"anyOf": [
-																	{
+																"properties": {
+																	"mode": {
 																		"enum": [
-																			"partition"
+																			"filter"
 																		],
 																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"match": {
-																				"type": "string"
-																			}
+																	"values": {
+																		"items": {
+																			"type": "string"
 																		},
-																		"required": [
-																			"match"
-																		],
-																		"type": "object"
+																		"type": "array"
 																	}
-																]
+																},
+																"required": [
+																	"mode",
+																	"values"
+																],
+																"type": "object"
 															},
 															"technique": {
 																"default": "sliding",
@@ -2305,7 +2318,6 @@
 															}
 														},
 														"required": [
-															"id",
 															"limitType",
 															"limit",
 															"window"
@@ -3088,7 +3100,9 @@
 																"type": "boolean"
 															},
 															"id": {
+																"default": "2d0da2ef",
 																"minLength": 1,
+																"pattern": "^[a-zA-Z0-9_-]+$",
 																"type": "string"
 															},
 															"limit": {
@@ -3123,17 +3137,20 @@
 																			"properties": {
 																				"mode": {
 																					"enum": [
-																						"match"
+																						"filter"
 																					],
 																					"type": "string"
 																				},
-																				"value": {
-																					"type": "string"
+																				"values": {
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
 																				}
 																			},
 																			"required": [
 																				"mode",
-																				"value"
+																				"values"
 																			],
 																			"type": "object"
 																		}
@@ -3142,46 +3159,46 @@
 																"type": "object"
 															},
 															"model": {
-																"anyOf": [
-																	{
+																"properties": {
+																	"mode": {
 																		"enum": [
-																			"partition"
+																			"filter"
 																		],
 																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"match": {
-																				"type": "string"
-																			}
+																	"values": {
+																		"items": {
+																			"type": "string"
 																		},
-																		"required": [
-																			"match"
-																		],
-																		"type": "object"
+																		"type": "array"
 																	}
-																]
+																},
+																"required": [
+																	"mode",
+																	"values"
+																],
+																"type": "object"
 															},
 															"provider": {
-																"anyOf": [
-																	{
+																"properties": {
+																	"mode": {
 																		"enum": [
-																			"partition"
+																			"filter"
 																		],
 																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"match": {
-																				"type": "string"
-																			}
+																	"values": {
+																		"items": {
+																			"type": "string"
 																		},
-																		"required": [
-																			"match"
-																		],
-																		"type": "object"
+																		"type": "array"
 																	}
-																]
+																},
+																"required": [
+																	"mode",
+																	"values"
+																],
+																"type": "object"
 															},
 															"technique": {
 																"default": "sliding",
@@ -3198,7 +3215,6 @@
 															}
 														},
 														"required": [
-															"id",
 															"limitType",
 															"limit",
 															"window"
@@ -3844,7 +3860,9 @@
 													"type": "boolean"
 												},
 												"id": {
+													"default": "e608f00a",
 													"minLength": 1,
+													"pattern": "^[a-zA-Z0-9_-]+$",
 													"type": "string"
 												},
 												"limit": {
@@ -3879,17 +3897,20 @@
 																"properties": {
 																	"mode": {
 																		"enum": [
-																			"match"
+																			"filter"
 																		],
 																		"type": "string"
 																	},
-																	"value": {
-																		"type": "string"
+																	"values": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
 																	}
 																},
 																"required": [
 																	"mode",
-																	"value"
+																	"values"
 																],
 																"type": "object"
 															}
@@ -3898,46 +3919,46 @@
 													"type": "object"
 												},
 												"model": {
-													"anyOf": [
-														{
+													"properties": {
+														"mode": {
 															"enum": [
-																"partition"
+																"filter"
 															],
 															"type": "string"
 														},
-														{
-															"properties": {
-																"match": {
-																	"type": "string"
-																}
+														"values": {
+															"items": {
+																"type": "string"
 															},
-															"required": [
-																"match"
-															],
-															"type": "object"
+															"type": "array"
 														}
-													]
+													},
+													"required": [
+														"mode",
+														"values"
+													],
+													"type": "object"
 												},
 												"provider": {
-													"anyOf": [
-														{
+													"properties": {
+														"mode": {
 															"enum": [
-																"partition"
+																"filter"
 															],
 															"type": "string"
 														},
-														{
-															"properties": {
-																"match": {
-																	"type": "string"
-																}
+														"values": {
+															"items": {
+																"type": "string"
 															},
-															"required": [
-																"match"
-															],
-															"type": "object"
+															"type": "array"
 														}
-													]
+													},
+													"required": [
+														"mode",
+														"values"
+													],
+													"type": "object"
 												},
 												"technique": {
 													"default": "sliding",
@@ -3954,7 +3975,6 @@
 												}
 											},
 											"required": [
-												"id",
 												"limitType",
 												"limit",
 												"window"
@@ -4506,7 +4526,9 @@
 																"type": "boolean"
 															},
 															"id": {
+																"default": "c05f17e0",
 																"minLength": 1,
+																"pattern": "^[a-zA-Z0-9_-]+$",
 																"type": "string"
 															},
 															"limit": {
@@ -4541,17 +4563,20 @@
 																			"properties": {
 																				"mode": {
 																					"enum": [
-																						"match"
+																						"filter"
 																					],
 																					"type": "string"
 																				},
-																				"value": {
-																					"type": "string"
+																				"values": {
+																					"items": {
+																						"type": "string"
+																					},
+																					"type": "array"
 																				}
 																			},
 																			"required": [
 																				"mode",
-																				"value"
+																				"values"
 																			],
 																			"type": "object"
 																		}
@@ -4560,46 +4585,46 @@
 																"type": "object"
 															},
 															"model": {
-																"anyOf": [
-																	{
+																"properties": {
+																	"mode": {
 																		"enum": [
-																			"partition"
+																			"filter"
 																		],
 																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"match": {
-																				"type": "string"
-																			}
+																	"values": {
+																		"items": {
+																			"type": "string"
 																		},
-																		"required": [
-																			"match"
-																		],
-																		"type": "object"
+																		"type": "array"
 																	}
-																]
+																},
+																"required": [
+																	"mode",
+																	"values"
+																],
+																"type": "object"
 															},
 															"provider": {
-																"anyOf": [
-																	{
+																"properties": {
+																	"mode": {
 																		"enum": [
-																			"partition"
+																			"filter"
 																		],
 																		"type": "string"
 																	},
-																	{
-																		"properties": {
-																			"match": {
-																				"type": "string"
-																			}
+																	"values": {
+																		"items": {
+																			"type": "string"
 																		},
-																		"required": [
-																			"match"
-																		],
-																		"type": "object"
+																		"type": "array"
 																	}
-																]
+																},
+																"required": [
+																	"mode",
+																	"values"
+																],
+																"type": "object"
 															},
 															"technique": {
 																"default": "sliding",
@@ -4616,7 +4641,6 @@
 															}
 														},
 														"required": [
-															"id",
 															"limitType",
 															"limit",
 															"window"
