@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-react-ui",
 	"dist-tags": {
 		"latest": "1.2.0",
-		"staging": "1.2.1-staging.2"
+		"staging": "1.2.1-staging.5"
 	},
 	"versions": {
 		"0.0.0": {
@@ -1899,13 +1899,91 @@
 				"@cloudflare/realtimekit-ui": "1.2.1-staging.2"
 			},
 			"dist": {
-				"integrity": "sha512-N68mnqeKcMYseQQJWapBJJCUwskxN8nLUf7F1rB1Btlx/mwdf46X2T63YcSqYwC+se3bep/4AxJqtpQfWXJzQg==",
 				"shasum": "f2431cc7c052e208a716684965eb3e2b7492706d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-1.2.1-staging.2.tgz",
 				"fileCount": 46,
-				"unpackedSize": 161163,
+				"integrity": "sha512-N68mnqeKcMYseQQJWapBJJCUwskxN8nLUf7F1rB1Btlx/mwdf46X2T63YcSqYwC+se3bep/4AxJqtpQfWXJzQg==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCQxKlI7m+lHyB6LXxI8sUVswCfjSb7y/lzEh3KodQpjgIgAh1BgQnkMcDIConkHERFXlcJutncIJdSJn263+in5lU=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@1.2.1-staging.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 161163
+			}
+		},
+		"1.2.1-staging.3": {
+			"name": "@cloudflare/realtimekit-react-ui",
+			"version": "1.2.1-staging.3",
+			"dependencies": {
+				"@cloudflare/realtimekit-ui": "1.2.1-staging.3"
+			},
+			"dist": {
+				"shasum": "4a8b9d348ba3323c445d0ce1b88a0cf8fad0734e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-1.2.1-staging.3.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-80BzEW6bZv9Fv97R/2axUNQ4AxsxKIIKK69X5uFJFDUjub5b1dOw5RTqmwVQT5Ud8GOUihdIu38iaPOY/KtyzA==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCcmfCzdML7wNPqLmuXoAGRphQ+VnhwiQOXBPWHtHm2hgIhAKKvUCPMySdaMmGqpv9kJ4MKq0uTYPkj4u0LYVpOU19q",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@1.2.1-staging.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 161163
+			}
+		},
+		"1.2.1-staging.4": {
+			"name": "@cloudflare/realtimekit-react-ui",
+			"version": "1.2.1-staging.4",
+			"dependencies": {
+				"@cloudflare/realtimekit-ui": "1.2.1-staging.4"
+			},
+			"dist": {
+				"shasum": "5d79d5ab4c6dc999a0a07f1a29fa829d59ee33e5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-1.2.1-staging.4.tgz",
+				"fileCount": 46,
+				"integrity": "sha512-flqJHcEsqYSVHbC5+Ft9sQhuU4dL40r6kjFhon8NTEw6fPOvIQJ630q8MTE47cfyPqmOll/mX9CfPOida8+Onw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQD5rulOfKf6gEFh47PQQyhcmAlJjuGkj5HtgQVEr5y12AIhANcxbFiKHgqayPa/WX9fONyUkzJLTaB6cL6EX9nid5Lw",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@1.2.1-staging.4",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 161163
+			}
+		},
+		"1.2.1-staging.5": {
+			"name": "@cloudflare/realtimekit-react-ui",
+			"version": "1.2.1-staging.5",
+			"dependencies": {
+				"@cloudflare/realtimekit-ui": "1.2.1-staging.5"
+			},
+			"dist": {
+				"integrity": "sha512-M6RlusYYQN2QItJ5j98eSc/pU+QV+oa/WCSecaG/tipOiNzUPI5TjHrsEJIy2oeId90exqaTn0R0w5HnfYHoxw==",
+				"shasum": "15e9c88def2438c6d99644dd57a6469c3dc3bb61",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-1.2.1-staging.5.tgz",
+				"fileCount": 46,
+				"unpackedSize": 161163,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@1.2.1-staging.5",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -1913,7 +1991,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCQxKlI7m+lHyB6LXxI8sUVswCfjSb7y/lzEh3KodQpjgIgAh1BgQnkMcDIConkHERFXlcJutncIJdSJn263+in5lU="
+						"sig": "MEUCIQC/3QpnieIfLXbZbEh5cKz0GHWL65XmB25q1UYANANb9gIgU6Hmi3ZO7oTtiFjUw6/xSa2yLhRGAzJnQthmYxKOguE="
 					}
 				]
 			}
