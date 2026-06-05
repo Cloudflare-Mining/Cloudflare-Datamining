@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-06-04T04:33:59.353Z",
-	"model_count": 148,
+	"generated_at": "2026-06-05T04:33:49.064Z",
+	"model_count": 159,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -282,6 +282,53 @@
 			"terms": "https://www.anthropic.com/legal/commercial-terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-haiku-4.5.png",
 			"created_at": "2026-05-22 17:52:52"
+		},
+		{
+			"model_id": "anthropic/claude-opus-4.5",
+			"slug": "anthropic/claude-opus-4.5",
+			"display_name": "Claude Opus 4.5",
+			"description": "Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over Opus 4.1, with stronger tool use and tighter instruction following.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning",
+				"Coding",
+				"Agentic"
+			],
+			"context_length": 200000,
+			"max_output_tokens": 32000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "200000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "32000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://www.anthropic.com/legal/commercial-terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://www.anthropic.com/claude/opus"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://www.anthropic.com/claude/opus",
+			"terms": "https://www.anthropic.com/legal/commercial-terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/anthropic/claude-opus-4.5.png",
+			"created_at": "2026-05-22 17:52:54"
 		},
 		{
 			"model_id": "anthropic/claude-opus-4.6",
@@ -2005,6 +2052,52 @@
 			"created_at": "2026-05-22 17:53:25"
 		},
 		{
+			"model_id": "openai/gpt-4.1-nano",
+			"slug": "openai/gpt-4.1-nano",
+			"display_name": "GPT-4.1 nano",
+			"description": "GPT-4.1 Nano is OpenAI’s smallest and cheapest GPT-4.1 variant, optimized for high-throughput, low-latency tasks.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Cost-Efficient"
+			],
+			"context_length": 1000000,
+			"max_output_tokens": 32768,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1000000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "32768"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-4.1-nano.png",
+			"created_at": "2026-05-22 17:53:25"
+		},
+		{
 			"model_id": "openai/gpt-4.1",
 			"slug": "openai/gpt-4.1",
 			"display_name": "GPT-4.1",
@@ -2051,6 +2144,53 @@
 			"created_at": "2026-05-22 17:53:24"
 		},
 		{
+			"model_id": "openai/gpt-4o-mini",
+			"slug": "openai/gpt-4o-mini",
+			"display_name": "GPT-4o mini",
+			"description": "GPT-4o Mini is the lightweight, low-cost variant of GPT-4o, well suited to high-volume tasks with multimodal inputs.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Multimodal",
+				"Fast",
+				"Cost-Efficient"
+			],
+			"context_length": 128000,
+			"max_output_tokens": 16384,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "16384"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-4o-mini.png",
+			"created_at": "2026-05-22 17:53:27"
+		},
+		{
 			"model_id": "openai/gpt-4o-transcribe",
 			"slug": "openai/gpt-4o-transcribe",
 			"display_name": "GPT-4o Transcribe",
@@ -2089,6 +2229,285 @@
 			"terms": "https://openai.com/policies/",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-4o-transcribe.png",
 			"created_at": "2026-05-22 17:53:28"
+		},
+		{
+			"model_id": "openai/gpt-4o",
+			"slug": "openai/gpt-4o",
+			"display_name": "GPT-4o",
+			"description": "GPT-4o is OpenAI’s multimodal flagship, accepting text and images and responding quickly across a wide range of tasks.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Multimodal",
+				"Fast"
+			],
+			"context_length": 128000,
+			"max_output_tokens": 16384,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "16384"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-4o.png",
+			"created_at": "2026-05-22 17:53:26"
+		},
+		{
+			"model_id": "openai/gpt-5-chat",
+			"slug": "openai/gpt-5-chat",
+			"display_name": "GPT-5 Chat",
+			"description": "GPT-5 Chat is the chat-tuned variant of GPT-5, optimised for back-and-forth conversation and instruction following.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Writing"
+			],
+			"context_length": 128000,
+			"max_output_tokens": 16384,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "16384"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5-chat.png",
+			"created_at": "2026-05-22 17:53:30"
+		},
+		{
+			"model_id": "openai/gpt-5-mini",
+			"slug": "openai/gpt-5-mini",
+			"display_name": "GPT-5 mini",
+			"description": "GPT-5 Mini is the lightweight, low-cost variant of GPT-5, well suited to high-volume coding and reasoning tasks.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Cost-Efficient"
+			],
+			"context_length": 128000,
+			"max_output_tokens": 16384,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "16384"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5-mini.png",
+			"created_at": "2026-05-22 17:53:30"
+		},
+		{
+			"model_id": "openai/gpt-5-nano",
+			"slug": "openai/gpt-5-nano",
+			"display_name": "GPT-5 nano",
+			"description": "GPT-5 Nano is OpenAI’s smallest GPT-5 variant, optimized for low latency and cheap, high-throughput tasks.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Cost-Efficient"
+			],
+			"context_length": 128000,
+			"max_output_tokens": 16384,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "16384"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5-nano.png",
+			"created_at": "2026-05-22 17:53:31"
+		},
+		{
+			"model_id": "openai/gpt-5.1-chat",
+			"slug": "openai/gpt-5.1-chat",
+			"display_name": "GPT-5.1 Chat",
+			"description": "GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Writing"
+			],
+			"context_length": 128000,
+			"max_output_tokens": 16384,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "16384"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.1-chat.png",
+			"created_at": "2026-05-22 17:53:33"
+		},
+		{
+			"model_id": "openai/gpt-5.1",
+			"slug": "openai/gpt-5.1",
+			"display_name": "GPT-5.1",
+			"description": "GPT-5.1 is OpenAI’s incremental improvement over GPT-5, with stronger coding, reasoning, and writing.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Writing"
+			],
+			"context_length": 128000,
+			"max_output_tokens": 16384,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "128000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "16384"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.1.png",
+			"created_at": "2026-05-22 17:53:32"
 		},
 		{
 			"model_id": "openai/gpt-5.4-mini",
@@ -2503,6 +2922,101 @@
 			"terms": "https://openai.com/policies/",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-image-2.png",
 			"created_at": "2026-05-22 17:53:39"
+		},
+		{
+			"model_id": "openai/o3-mini",
+			"slug": "openai/o3-mini",
+			"display_name": "o3-mini",
+			"description": "o3-mini is the lightweight, low-cost reasoning variant of o3, well suited to quick analytical tasks at scale.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning",
+				"Fast",
+				"Cost-Efficient"
+			],
+			"context_length": 200000,
+			"max_output_tokens": 100000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "200000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "100000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer",
+				"Thinking": "Yes"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/o3-mini.png",
+			"created_at": "2026-05-22 17:53:41"
+		},
+		{
+			"model_id": "openai/o3",
+			"slug": "openai/o3",
+			"display_name": "o3",
+			"description": "o3 is OpenAI’s general-purpose reasoning model, balancing strong analytical performance with reasonable latency and cost.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning",
+				"Coding"
+			],
+			"context_length": 200000,
+			"max_output_tokens": 100000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "200000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "100000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer",
+				"Thinking": "Yes"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/o3.png",
+			"created_at": "2026-05-22 17:53:40"
 		},
 		{
 			"model_id": "openai/o4-mini",
@@ -4861,13 +5375,13 @@
 			"tags": [],
 			"context_length": 262144,
 			"max_output_tokens": null,
-			"supports_async": true,
+			"supports_async": false,
 			"hosting": "hosted",
 			"data_source": "legacy",
 			"properties": [
 				{
 					"property_id": "async_queue",
-					"value": "true"
+					"value": "false"
 				},
 				{
 					"property_id": "context_window",

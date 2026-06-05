@@ -1,0 +1,88 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"max_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
+		"messages": {
+			"items": {
+				"additionalProperties": false,
+				"properties": {
+					"content": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"source": {},
+										"text": {
+											"type": "string"
+										},
+										"type": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"type"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						]
+					},
+					"role": {
+						"enum": [
+							"user",
+							"assistant"
+						],
+						"type": "string"
+					}
+				},
+				"required": [
+					"role",
+					"content"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"metadata": {
+			"additionalProperties": {},
+			"propertyNames": {
+				"type": "string"
+			},
+			"type": "object"
+		},
+		"stream": {
+			"type": "boolean"
+		},
+		"system": {
+			"type": "string"
+		},
+		"temperature": {
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
+		},
+		"top_k": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
+		"top_p": {
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
+		}
+	},
+	"required": [
+		"messages",
+		"max_tokens"
+	],
+	"type": "object"
+}

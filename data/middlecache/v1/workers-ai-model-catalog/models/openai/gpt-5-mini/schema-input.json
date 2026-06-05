@@ -1,0 +1,132 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"audio": {
+			"additionalProperties": false,
+			"properties": {
+				"format": {
+					"enum": [
+						"wav",
+						"mp3",
+						"flac",
+						"opus",
+						"pcm16"
+					],
+					"type": "string"
+				},
+				"voice": {
+					"enum": [
+						"alloy",
+						"ash",
+						"ballad",
+						"coral",
+						"echo",
+						"sage",
+						"shimmer",
+						"verse"
+					],
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"frequency_penalty": {
+			"maximum": 2,
+			"minimum": -2,
+			"type": "number"
+		},
+		"max_completion_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
+		"max_tokens": {
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
+		"messages": {
+			"items": {
+				"additionalProperties": {},
+				"properties": {
+					"content": {
+						"anyOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "null"
+							},
+							{
+								"items": {},
+								"type": "array"
+							}
+						]
+					},
+					"role": {
+						"enum": [
+							"system",
+							"developer",
+							"user",
+							"assistant",
+							"tool"
+						],
+						"type": "string"
+					}
+				},
+				"required": [
+					"role",
+					"content"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"modalities": {
+			"items": {
+				"enum": [
+					"text",
+					"audio"
+				],
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"presence_penalty": {
+			"maximum": 2,
+			"minimum": -2,
+			"type": "number"
+		},
+		"response_format": {},
+		"stream": {
+			"type": "boolean"
+		},
+		"stream_options": {
+			"additionalProperties": false,
+			"properties": {
+				"include_usage": {
+					"type": "boolean"
+				}
+			},
+			"type": "object"
+		},
+		"temperature": {
+			"maximum": 2,
+			"minimum": 0,
+			"type": "number"
+		},
+		"tool_choice": {},
+		"tools": {
+			"items": {},
+			"type": "array"
+		},
+		"top_p": {
+			"maximum": 1,
+			"minimum": 0,
+			"type": "number"
+		}
+	},
+	"required": [
+		"messages"
+	],
+	"type": "object"
+}
