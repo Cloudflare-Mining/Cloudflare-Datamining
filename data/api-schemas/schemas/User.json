@@ -405,7 +405,7 @@
 			"pro": true
 		}
 	},
-	"GET /users/tenants": {
+	"GET /user/tenants": {
 		"description": "Retrieves list of tenants the authenticated user / method has access to.",
 		"operationId": "User_listUserTenants",
 		"responses": {
@@ -654,6 +654,10 @@
 		"summary": "List user tenants",
 		"tags": [
 			"User"
+		],
+		"x-api-token-group": [
+			"User Details Write",
+			"User Details Read"
 		]
 	},
 	"PATCH /user": {
