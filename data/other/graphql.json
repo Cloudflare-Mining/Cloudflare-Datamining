@@ -1820,12 +1820,18 @@
 	"AccountCf1GatewayNetwork1dGroupsDimensions": {
 		"__description": "",
 		"action": "Gateway firewall decision",
+		"applicationIds": "Union of application IDs observed in the group (rollup of raw applicationIds via groupUniqArrayArray; sorted ascending for deterministic output)",
+		"applicationTypeIds": "Union of application type IDs observed in the group (rollup of raw applicationTypeIds via groupUniqArrayArray; sorted ascending for deterministic output)",
+		"categoryIds": "Union of category IDs observed in the group (rollup of raw categoryIds via groupUniqArrayArray; sorted ascending for deterministic output)",
 		"coloName": "Cloudflare colo code",
 		"datetime": "Day start timestamp (daily granularity)",
 		"destinationCountry": "Destination country code (ISO 3166-1 alpha-2)",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"ruleId": "Policy rule ID",
 		"sni": "Server Name Indication from TLS handshake",
 		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)",
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"transport": "Transport protocol"
 	},
 	"AccountCf1GatewayNetwork1dGroupsFilter_InputObject": {
@@ -1841,6 +1847,7 @@
 	"AccountCf1GatewayNetwork1dGroupsUniq": {
 		"__description": "",
 		"devices": "Unique devices",
+		"sessions": "Unique Gateway sessions (deduplicated across firewall-decision re-evaluations and across rollup buckets when not grouped by datetime)",
 		"users": "Unique users"
 	},
 	"AccountCf1GatewayNetwork1hGroups": {
@@ -1852,12 +1859,18 @@
 	"AccountCf1GatewayNetwork1hGroupsDimensions": {
 		"__description": "",
 		"action": "Gateway firewall decision",
+		"applicationIds": "Union of application IDs observed in the group (rollup of raw applicationIds via groupUniqArrayArray; sorted ascending for deterministic output)",
+		"applicationTypeIds": "Union of application type IDs observed in the group (rollup of raw applicationTypeIds via groupUniqArrayArray; sorted ascending for deterministic output)",
+		"categoryIds": "Union of category IDs observed in the group (rollup of raw categoryIds via groupUniqArrayArray; sorted ascending for deterministic output)",
 		"coloName": "Cloudflare colo code",
 		"datetime": "Hour start timestamp (hourly granularity)",
 		"destinationCountry": "Destination country code (ISO 3166-1 alpha-2)",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"ruleId": "Policy rule ID",
 		"sni": "Server Name Indication from TLS handshake",
 		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)",
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"transport": "Transport protocol"
 	},
 	"AccountCf1GatewayNetwork1hGroupsFilter_InputObject": {
@@ -1873,6 +1886,7 @@
 	"AccountCf1GatewayNetwork1hGroupsUniq": {
 		"__description": "",
 		"devices": "Unique devices",
+		"sessions": "Unique Gateway sessions (deduplicated across firewall-decision re-evaluations and across rollup buckets when not grouped by datetime)",
 		"users": "Unique users"
 	},
 	"AccountCf1GatewayNetworkRawGroups": {
@@ -1884,14 +1898,24 @@
 	"AccountCf1GatewayNetworkRawGroupsDimensions": {
 		"__description": "",
 		"action": "Gateway firewall decision",
+		"applicationIds": "Application IDs detected on the session (Cloudflare application taxonomy)",
+		"applicationTypeIds": "Application Type IDs detected on the session (Cloudflare application-type taxonomy)",
+		"categoryIds": "Category IDs detected on the session (Cloudflare category taxonomy)",
 		"coloName": "Cloudflare colo code",
 		"datetime": "Event timestamp",
 		"datetimeFiveMinutes": "Event timestamp truncated to five minutes",
 		"datetimeHour": "Event timestamp truncated to hour",
 		"destinationCountry": "Destination country code (ISO 3166-1 alpha-2)",
+		"destinationPort": "Destination TCP/UDP port",
+		"detectedProtocol": "Detected L7 protocol (Citadel). Note: column is sparse — empty when detection inconclusive.",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"hostApplicationId": "Host application ID associated with the session (empty when unknown). Complements applicationIds.",
+		"proxyEndpoint": "Gateway proxy endpoint that received the session",
 		"ruleId": "Policy rule ID",
 		"sni": "Server Name Indication from TLS handshake",
 		"sourceCountry": "Source country code (ISO 3166-1 alpha-2)",
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"transport": "Transport protocol"
 	},
 	"AccountCf1GatewayNetworkRawGroupsFilter_InputObject": {
@@ -1907,6 +1931,7 @@
 	"AccountCf1GatewayNetworkRawGroupsUniq": {
 		"__description": "",
 		"devices": "Unique devices",
+		"sessions": "Unique Gateway sessions (deduplicated across firewall-decision re-evaluations within a session)",
 		"users": "Unique users"
 	},
 	"AccountCf1GatewayNetworkSession1dGroups": {
@@ -6482,7 +6507,8 @@
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
 		"datetimeSixHours": "Timestamp bucketed by 6 hours",
-		"kind": "Event kind"
+		"kind": "Event kind",
+		"payload": "JSON-encoded data extracted from the event"
 	},
 	"AccountMconnTelemetryEventsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -6511,7 +6537,8 @@
 		"datetimeHour": "Timestamp bucketed by hour",
 		"datetimeMinute": "Timestamp bucketed by minute",
 		"datetimeSixHours": "Timestamp bucketed by 6 hours",
-		"kind": "Event kind"
+		"kind": "Event kind",
+		"payload": "JSON-encoded data extracted from the event"
 	},
 	"AccountMconnTelemetryEventsStagingAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -9563,6 +9590,7 @@
 		"workersAnalyticsEngineAdaptiveGroups": "",
 		"workersBuildsBuildMinutesAdaptiveGroups": "",
 		"workersInvocationsAdaptive": "",
+		"workersInvocationsByOwnerAndScriptGroups": "",
 		"workersInvocationsScheduled": "",
 		"workersOverviewDataAdaptiveGroups": "",
 		"workersOverviewRequestsAdaptiveGroups": "",
@@ -10795,6 +10823,30 @@
 		"responseBodySize": "Confidence interval for the corresponding point estimate",
 		"subrequests": "Confidence interval for the corresponding point estimate",
 		"wallTime": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountWorkersInvocationsByOwnerAndScriptGroups": {
+		"__description": "Workers dynamic worker invocations. Used for exact distinct dynamic worker counts.",
+		"dimensions": "List of dimensions to group by",
+		"uniq": "Unique count metrics"
+	},
+	"AccountWorkersInvocationsByOwnerAndScriptGroupsDimensions": {
+		"__description": "",
+		"date": "Request datetime, truncated to start of a day",
+		"datetime": "Request datetime",
+		"datetimeFifteenMinutes": "Request datetime, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Request datetime, truncated to five minutes",
+		"datetimeHour": "Request datetime, truncated to start of an hour",
+		"datetimeMinute": "Request datetime, truncated to start of a minute"
+	},
+	"AccountWorkersInvocationsByOwnerAndScriptGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersInvocationsByOwnerAndScriptGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkersInvocationsByOwnerAndScriptGroupsUniq": {
+		"__description": "",
+		"distinctDynamicWorkerCount": "Count of distinct dynamic workers in given timeframe"
 	},
 	"AccountWorkersInvocationsScheduled": {
 		"__description": "Workers scheduled invocations",
@@ -14623,6 +14675,7 @@
 		"workersAnalyticsEngineAdaptiveGroups": "Beta. Custom Events with adaptive sampling",
 		"workersBuildsBuildMinutesAdaptiveGroups": "Workers Builds build minute overview data with adaptive sampling",
 		"workersInvocationsAdaptive": "Beta. Workers invocations with adaptive sampling",
+		"workersInvocationsByOwnerAndScriptGroups": "Workers dynamic worker invocations. Used for exact distinct dynamic worker counts.",
 		"workersInvocationsScheduled": "Workers scheduled invocations",
 		"workersOverviewDataAdaptiveGroups": "Beta. Workers account overview invocation data with adaptive sampling",
 		"workersOverviewRequestsAdaptiveGroups": "Beta. Workers account overview invocation count with adaptive sampling",
