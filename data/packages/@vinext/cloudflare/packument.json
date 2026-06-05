@@ -1,0 +1,36 @@
+{
+	"name": "@vinext/cloudflare",
+	"dist-tags": {
+		"latest": "0.0.1"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "@vinext/cloudflare",
+			"version": "0.0.1",
+			"devDependencies": {
+				"@types/node": "^25.2.3",
+				"vite-plus": "0.1.22",
+				"vinext": "0.0.55"
+			},
+			"peerDependencies": {
+				"vinext": "0.0.55"
+			},
+			"dist": {
+				"integrity": "sha512-t3qX+aGUSxT1RXClbx1VH6KCEVmqFIbQIQwA5xyfvV8/BhHOkSGUgnvu8ISM2uuZIPcRS/GoL9Z6B4DHudKjig==",
+				"shasum": "81ba13f710eac2dbb5e1237def14dfec7225e8ea",
+				"tarball": "https://registry.npmjs.org/@vinext/cloudflare/-/cloudflare-0.0.1.tgz",
+				"fileCount": 18,
+				"unpackedSize": 78754,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQC34Bl95GYzPIaQq6iF3GVMLf/9D2+M4tVN2yHdOBHtPQIhALZrv2DxTXeRrCOW+yPxPNyXMAP30t+NDpN6KDSg2YMv"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		}
+	}
+}
