@@ -25,14 +25,12 @@
 	"NUMA node(s)": "1",
 	"NUMA node0 CPU(s)": "0-3",
 	"Vulnerability Gather data sampling": "Not affected",
-	"Vulnerability Ghostwrite": "Not affected",
 	"Vulnerability Indirect target selection": "Not affected",
 	"Vulnerability Itlb multihit": "Not affected",
 	"Vulnerability L1tf": "Not affected",
 	"Vulnerability Mds": "Not affected",
 	"Vulnerability Meltdown": "Not affected",
 	"Vulnerability Mmio stale data": "Not affected",
-	"Vulnerability Old microcode": "Not affected",
 	"Vulnerability Reg file data sampling": "Not affected",
 	"Vulnerability Retbleed": "Not affected",
 	"Vulnerability Spec rstack overflow": "Vulnerable: Safe RET, no microcode",
@@ -40,7 +38,7 @@
 	"Vulnerability Spectre v1": "Mitigation; usercopy/swapgs barriers and __user pointer sanitization",
 	"Vulnerability Spectre v2": "Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected",
 	"Vulnerability Srbds": "Not affected",
-	"Vulnerability Tsa": "Vulnerable: No microcode",
+	"Vulnerability Tsa": "Vulnerable: Clear CPU buffers attempted, no microcode",
 	"Vulnerability Tsx async abort": "Not affected",
 	"Vulnerability Vmscape": "Not affected"
 }
