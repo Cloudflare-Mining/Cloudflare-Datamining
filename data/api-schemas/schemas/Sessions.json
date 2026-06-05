@@ -1183,7 +1183,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}": {
-		"description": "Returns details of the given peer ID along with call statistics for the given session ID.",
+		"description": "Returns participant details for the given peer ID along with call statistics.",
 		"operationId": "GetParticipantDataFromPeerId",
 		"parameters": [
 			{
@@ -1210,7 +1210,7 @@
 				}
 			},
 			{
-				"description": "Comma separated list of filters to apply. Note that there must be no spaces between the filters.",
+				"description": "Filter to apply to the peer report.",
 				"in": "query",
 				"name": "filters",
 				"schema": {
@@ -1221,6 +1221,7 @@
 						"events",
 						"quality_stats"
 					],
+					"example": "device_info",
 					"type": "string"
 				}
 			},
@@ -1251,8 +1252,8 @@
 						"schema": {
 							"properties": {
 								"data": {
-									"allOf": [
-										{
+									"properties": {
+										"participant": {
 											"properties": {
 												"created_at": {
 													"description": "timestamp when this participant was created.",
@@ -1271,7 +1272,8 @@
 													"type": "number"
 												},
 												"id": {
-													"description": "Participant ID. This maps to the corresponding peerId.",
+													"description": "ID of the participant.",
+													"format": "uuid",
 													"type": "string"
 												},
 												"joined_at": {
@@ -1282,23 +1284,6 @@
 													"description": "timestamp at which participant left the session.",
 													"type": "string"
 												},
-												"preset_name": {
-													"description": "Name of the preset associated with the participant.",
-													"type": "string"
-												},
-												"updated_at": {
-													"description": "timestamp when this participant's data was last updated.",
-													"type": "string"
-												},
-												"user_id": {
-													"description": "User id for this participant.",
-													"type": "string"
-												}
-											},
-											"type": "object"
-										},
-										{
-											"properties": {
 												"peer_events": {
 													"items": {
 														"additionalProperties": true,
@@ -1321,14 +1306,27 @@
 													},
 													"type": "object"
 												},
+												"role": {
+													"description": "Name of the preset associated with the participant.",
+													"type": "string"
+												},
 												"session_id": {
 													"format": "uuid",
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "timestamp when this participant's data was last updated.",
+													"type": "string"
+												},
+												"user_id": {
+													"description": "User id for this participant.",
 													"type": "string"
 												}
 											},
 											"type": "object"
 										}
-									]
+									},
+									"type": "object"
 								},
 								"success": {
 									"type": "boolean"
