@@ -5,33 +5,35 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Bengaluru, India</p>
-<p><strong>About the Role:</strong></p>
-<p>The Oracle Finance Functional Specialist will be a primary functional expert responsible for the configuration, validation, and optimization of the <strong>Oracle Fusion Cloud ERP Financials</strong> modules. This role is critical for the company-wide Oracle migration, focusing on configuring systems to accurately reflect accounting policies and compliance standards across General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing.</p>
-<p><strong>Key Responsibilities</strong></p>
+<p><strong>Available Locations: <span class="collapsed-field-text">Austin, TX, New York, NY, San Francisco, CA</span>&nbsp;</strong></p>
+<p><strong>What You’ll Do</strong></p>
 <ul>
-	<li><strong>Financial Module Ownership:</strong> Define and own the functional configuration roadmap for key financial modules, including General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing<strong>.</strong></li>
-	<li><strong>Compliance and System Configuration:</strong> Directly design and configure Oracle Fusion to ensure enforcement of critical financial compliance standards (e.g., ASC 606/IFRS 15, SOX).</li>
-	<li><strong>Reporting Design:</strong> Define and develop robust financial reports and dashboards that meet the needs of internal and external stakeholders using Oracle Fusion reporting tools (e.g., OTBI, FRS, Smartview).</li>
-	<li><strong>Implementation &amp; Data Migration:</strong> Lead the configuration, unit testing, and cutover activities for financial modules, including defining the strategy and execution for data conversion of critical master and transactional data (e.g., customers, open invoices).</li>
-	<li><strong>Process Alignment:</strong> Partner with Finance Business Users and Business Systems Analysts to ensure system configurations align with corporate policy and drive process efficiency.</li>
+	<li><strong>Lead and Mentor:</strong> Manage a high-performing team of kernel and systems engineers, fostering a culture of "collaboration-first" and continuous knowledge sharing both internally and with the global open-source community.</li>
+	<li><strong>Own the OS Lifecycle:</strong> Oversee the end-to-end delivery of the Linux Kernel and core OS components. Your goal is a fully automated continuous delivery pipeline that moves from merge to 100% production in less than 30 days.</li>
+	<li><strong>Drive Technical Vision:</strong> Steer the Cloudflare kernel development roadmap. You will balance the need for cutting-edge features with the absolute requirements of production stability, security, and performance.</li>
+	<li><strong>Upstream Advocacy:</strong> Promote a "minimal patch" philosophy by ensuring your team is a top contributor to the Linux Kernel. You will support engineers in becoming upstream maintainers for critical subsystems.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Act as a consultant to hardware and service teams, helping them onboard new hardware and optimize workloads for our OS. You’ll lead a "virtual team" environment where any engineer at Cloudflare can contribute to the kernel.</li>
+	<li><strong>Innovate Debugging:</strong> Tackle the "impossible" challenges of kernel-level debugging. You will lead the development of automated systems that collect critical telemetry when a system crashes, even when traditional debuggers cannot run.</li>
+	<li><strong>Measure Success:</strong> Use DORA metrics and team-specific capabilities - such as the "time to fix a kernel issue" and upstream commit volume - to track and improve team impact.</li>
 </ul>
-<p><strong>Required Qualifications</strong></p>
+<p><strong>What You’ll Bring</strong></p>
 <ul>
-	<li>10+ years of progressive experience as a Consultant, specifically supporting financial ERP systems.</li>
-	<li>5+ years of hands-on, end-to-end implementation and <strong>configuration experience with Oracle Fusion Cloud Financials</strong>, focusing on the General Ledger, Account Payables Account Receivables, Intercompany, Fixed Assets, Leasing, and Project Costing.</li>
-	<li>Deep functional understanding of core accounting principles.</li>
-	<li>Proven ability to create/translate detailed functional design documents and author system configuration from design through deployment.</li>
+	<li><strong>Systems Leadership:</strong> 5+ years of experience managing engineering teams, ideally in low-level systems, kernel development, or large-scale infrastructure environments.</li>
+	<li><strong>Low-Level Expertise:</strong> A deep understanding of Linux Kernel internals, x86/ARM architecture, and OS design fundamentals. You should be comfortable discussing memory management, schedulers, and network stacks.</li>
+	<li><strong>Automation Mindset:</strong> Experience building or managing CI/CD pipelines for foundational software. You believe that "toil" is a bug and automation is the feature.</li>
+	<li><strong>Open Source Pedigree:</strong> A proven track record of engaging with the open-source community. You understand the nuances of upstreaming and how to navigate community dynamics effectively.</li>
+	<li><strong>Operational Empathy:</strong> An understanding of the unique challenges of a global "reboot-limited" production environment. You prioritize stability and have experience with pre-production QA and synthetic workload evaluation.</li>
+	<li><strong>Strategic Communication:</strong> The ability to translate complex kernel-level obstacles into actionable business insights for stakeholders across the company.</li>
+	<li><strong>Resilience:</strong> You aren't intimidated by the "impossible." Whether it's a non-reproducible race condition or an unwelcoming upstream thread, you lead your team through the challenge with a pragmatic, solution-oriented mindset.</li>
 </ul>
-<p><strong>Preferred Qualifications</strong></p>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
-	<li>Hands-on experience with other Oracle EPM modules like EDMCS, FCCS and ARCS.</li>
-	<li>Third-party supporting software experience like Avalara, Kyriba, Zip, etc.</li>
-	<li>Exposure to the Data Center Infrastructure industry</li>
-	<li>Relevant professional product/functional certifications (e.g., CPA, PMP, Oracle Cloud certifications)</li>
-	<li>Working knowledge of various AI Agents within Oracle Fusion Cloud Applications</li>
+	<li>For New York City and California (excluding Bay Area) based hires: Estimated annual salary of $170,000 - $275,000.</li>
+	<li>For Bay Area based hires: Estimated annual salary of $190,000 - $303,000</li>
 </ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
