@@ -2,7 +2,7 @@
 	"name": "workerd",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20260605.1"
+		"latest": "1.20260606.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -11404,13 +11404,42 @@
 				"workerd": "bin/workerd"
 			},
 			"dist": {
-				"integrity": "sha512-gOpBUoOficcRaq9ZRL7QkC92WbGigebgxNMHB8JeYopY47+Gh92XtHxxFP6hLWBnwsAxIkKiexCtMwj3LNn0Pg==",
 				"shasum": "f699b3c252a29a85316e1f989f9be4f03f9d4b2d",
 				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20260605.1.tgz",
 				"fileCount": 7,
-				"unpackedSize": 4796685,
+				"integrity": "sha512-gOpBUoOficcRaq9ZRL7QkC92WbGigebgxNMHB8JeYopY47+Gh92XtHxxFP6hLWBnwsAxIkKiexCtMwj3LNn0Pg==",
+				"signatures": [
+					{
+						"sig": "MEQCIHn4EUBupsDRf70/PvhWABYH4JQJigzBWp/YxSvPQJXAAiBd+4pDftnYM24QE1jEEHt303m5hCZ4r4OO3NJWS17GRQ==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/workerd@1.20260605.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4796685
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20260606.1": {
+			"name": "workerd",
+			"version": "1.20260606.1",
+			"bin": {
+				"workerd": "bin/workerd"
+			},
+			"dist": {
+				"integrity": "sha512-imttfZjNwm3VwwlUfkVCD7RWxlfVJY7D4EHrXhmZA7crgXDtSVGCXvaXSTe2C3x4ua/Gyg7SfMf09Gw0XzVgIA==",
+				"shasum": "a28eb2ce7c391aa61f27673699ac74ae862aff6c",
+				"tarball": "https://registry.npmjs.org/workerd/-/workerd-1.20260606.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 4796685,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/workerd@1.20260606.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -11418,7 +11447,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIHn4EUBupsDRf70/PvhWABYH4JQJigzBWp/YxSvPQJXAAiBd+4pDftnYM24QE1jEEHt303m5hCZ4r4OO3NJWS17GRQ=="
+						"sig": "MEQCIFkuu9h9RVKIiIPrLImhQbYsQgv6rHRJLz6BWORuAeQvAiASE/DkmeMokJ5gFekdETVg1M/hQmsEO94FGHAc/yEa7A=="
 					}
 				]
 			},

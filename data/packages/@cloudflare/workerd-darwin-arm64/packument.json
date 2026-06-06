@@ -2,7 +2,7 @@
 	"name": "@cloudflare/workerd-darwin-arm64",
 	"dist-tags": {
 		"beta": "0.20250124.2",
-		"latest": "1.20260605.1"
+		"latest": "1.20260606.1"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -9982,13 +9982,39 @@
 			"name": "@cloudflare/workerd-darwin-arm64",
 			"version": "1.20260605.1",
 			"dist": {
-				"integrity": "sha512-/rO98QTCCGak1Zj8A5UzmIPoPXr6G2j/r/DmwuI/Q5cUcJwgIotSgzyerz58iOflSGF90FKZQuqx1bR3VdiLKA==",
 				"shasum": "590618a4a83d302f28ec8c8827e03b59e1271a48",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20260605.1.tgz",
 				"fileCount": 3,
-				"unpackedSize": 111850484,
+				"integrity": "sha512-/rO98QTCCGak1Zj8A5UzmIPoPXr6G2j/r/DmwuI/Q5cUcJwgIotSgzyerz58iOflSGF90FKZQuqx1bR3VdiLKA==",
+				"signatures": [
+					{
+						"sig": "MEUCIQDy+MjF+/sr8CDKU8uxLqW+GHo5LOpVhSjtWeF/7TF6aAIgQGOU4ARsjzq2AtyVRAH4DUdw+h7+0fmWtFv23/RoVq8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20260605.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 111850484
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20260606.1": {
+			"name": "@cloudflare/workerd-darwin-arm64",
+			"version": "1.20260606.1",
+			"dist": {
+				"integrity": "sha512-Cb2IIqD+Y2Kmn0Pc99nmwl0zlcx6Z/zpbamYd4LKgkheEmj9TndXyAwT9xTQxGuQi+r3mN0ygX07R8+BVxElZQ==",
+				"shasum": "f9dd2eb891372cfe06028eeaf964501f737ce7a6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-arm64/-/workerd-darwin-arm64-1.20260606.1.tgz",
+				"fileCount": 3,
+				"unpackedSize": 111850484,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkerd-darwin-arm64@1.20260606.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -9996,7 +10022,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQDy+MjF+/sr8CDKU8uxLqW+GHo5LOpVhSjtWeF/7TF6aAIgQGOU4ARsjzq2AtyVRAH4DUdw+h7+0fmWtFv23/RoVq8="
+						"sig": "MEQCIHwSF1p6L5CX/iTvBT0Ozlsmy9D3hjSYP0qx3AuHVNrlAiA18jbX1k76GggO100tbVX0fArlaGwsgZ0pDQCh1pcVYg=="
 					}
 				]
 			},
