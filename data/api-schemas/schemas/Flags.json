@@ -1,0 +1,5378 @@
+{
+	"DELETE /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
+		"description": "Permanently deletes a flag. Subsequent evaluations fall back to the caller-supplied default. Cannot be undone.",
+		"operationId": "flagship_delete_flag",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "App identifier.",
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "App identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Flag key (slug).",
+				"in": "path",
+				"name": "flag_key",
+				"required": true,
+				"schema": {
+					"description": "Flag key (slug).",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"key": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"key"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Flag deleted."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Too many requests."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete flag",
+		"tags": [
+			"Flags"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.flagship.delete"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags": {
+		"description": "Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page.",
+		"operationId": "flagship_list_flags",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "App identifier.",
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "App identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Max items to return (1–200).",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Max items to return (1–200).",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Pagination cursor from a previous response.",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"description": "Pagination cursor from a previous response.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"additionalProperties": false,
+										"properties": {
+											"default_variation": {
+												"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+												"minLength": 1,
+												"type": "string"
+											},
+											"description": {
+												"maxLength": 512,
+												"nullable": true,
+												"type": "string"
+											},
+											"enabled": {
+												"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
+												"type": "boolean"
+											},
+											"key": {
+												"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+												"maxLength": 64,
+												"minLength": 1,
+												"pattern": "^[a-zA-Z0-9_-]+$",
+												"type": "string"
+											},
+											"rules": {
+												"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+												"items": {
+													"additionalProperties": false,
+													"properties": {
+														"conditions": {
+															"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+															"items": {
+																"anyOf": [
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"attribute": {
+																				"maxLength": 64,
+																				"minLength": 1,
+																				"type": "string"
+																			},
+																			"operator": {
+																				"enum": [
+																					"equals",
+																					"not_equals",
+																					"greater_than",
+																					"less_than",
+																					"greater_than_or_equals",
+																					"less_than_or_equals",
+																					"contains",
+																					"starts_with",
+																					"ends_with",
+																					"in",
+																					"not_in"
+																				],
+																				"type": "string"
+																			},
+																			"value": {
+																				"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																			}
+																		},
+																		"required": [
+																			"attribute",
+																			"operator",
+																			"value"
+																		],
+																		"type": "object"
+																	},
+																	{
+																		"additionalProperties": false,
+																		"properties": {
+																			"clauses": {
+																				"items": {
+																					"anyOf": [
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"attribute": {
+																									"maxLength": 64,
+																									"minLength": 1,
+																									"type": "string"
+																								},
+																								"operator": {
+																									"enum": [
+																										"equals",
+																										"not_equals",
+																										"greater_than",
+																										"less_than",
+																										"greater_than_or_equals",
+																										"less_than_or_equals",
+																										"contains",
+																										"starts_with",
+																										"ends_with",
+																										"in",
+																										"not_in"
+																									],
+																									"type": "string"
+																								},
+																								"value": {
+																									"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																								}
+																							},
+																							"required": [
+																								"attribute",
+																								"operator",
+																								"value"
+																							],
+																							"type": "object"
+																						},
+																						{
+																							"additionalProperties": false,
+																							"properties": {
+																								"clauses": {
+																									"items": {
+																										"anyOf": [
+																											{
+																												"additionalProperties": false,
+																												"properties": {
+																													"attribute": {
+																														"maxLength": 64,
+																														"minLength": 1,
+																														"type": "string"
+																													},
+																													"operator": {
+																														"enum": [
+																															"equals",
+																															"not_equals",
+																															"greater_than",
+																															"less_than",
+																															"greater_than_or_equals",
+																															"less_than_or_equals",
+																															"contains",
+																															"starts_with",
+																															"ends_with",
+																															"in",
+																															"not_in"
+																														],
+																														"type": "string"
+																													},
+																													"value": {
+																														"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																													}
+																												},
+																												"required": [
+																													"attribute",
+																													"operator",
+																													"value"
+																												],
+																												"type": "object"
+																											},
+																											{
+																												"additionalProperties": false,
+																												"properties": {
+																													"clauses": {
+																														"items": {
+																															"anyOf": [
+																																{
+																																	"additionalProperties": false,
+																																	"properties": {
+																																		"attribute": {
+																																			"maxLength": 64,
+																																			"minLength": 1,
+																																			"type": "string"
+																																		},
+																																		"operator": {
+																																			"enum": [
+																																				"equals",
+																																				"not_equals",
+																																				"greater_than",
+																																				"less_than",
+																																				"greater_than_or_equals",
+																																				"less_than_or_equals",
+																																				"contains",
+																																				"starts_with",
+																																				"ends_with",
+																																				"in",
+																																				"not_in"
+																																			],
+																																			"type": "string"
+																																		},
+																																		"value": {
+																																			"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																		}
+																																	},
+																																	"required": [
+																																		"attribute",
+																																		"operator",
+																																		"value"
+																																	],
+																																	"type": "object"
+																																},
+																																{
+																																	"additionalProperties": false,
+																																	"properties": {
+																																		"clauses": {
+																																			"items": {
+																																				"anyOf": [
+																																					{
+																																						"additionalProperties": false,
+																																						"properties": {
+																																							"attribute": {
+																																								"maxLength": 64,
+																																								"minLength": 1,
+																																								"type": "string"
+																																							},
+																																							"operator": {
+																																								"enum": [
+																																									"equals",
+																																									"not_equals",
+																																									"greater_than",
+																																									"less_than",
+																																									"greater_than_or_equals",
+																																									"less_than_or_equals",
+																																									"contains",
+																																									"starts_with",
+																																									"ends_with",
+																																									"in",
+																																									"not_in"
+																																								],
+																																								"type": "string"
+																																							},
+																																							"value": {
+																																								"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																							}
+																																						},
+																																						"required": [
+																																							"attribute",
+																																							"operator",
+																																							"value"
+																																						],
+																																						"type": "object"
+																																					},
+																																					{
+																																						"additionalProperties": false,
+																																						"properties": {
+																																							"clauses": {
+																																								"items": {
+																																									"anyOf": [
+																																										{
+																																											"additionalProperties": false,
+																																											"properties": {
+																																												"attribute": {
+																																													"maxLength": 64,
+																																													"minLength": 1,
+																																													"type": "string"
+																																												},
+																																												"operator": {
+																																													"enum": [
+																																														"equals",
+																																														"not_equals",
+																																														"greater_than",
+																																														"less_than",
+																																														"greater_than_or_equals",
+																																														"less_than_or_equals",
+																																														"contains",
+																																														"starts_with",
+																																														"ends_with",
+																																														"in",
+																																														"not_in"
+																																													],
+																																													"type": "string"
+																																												},
+																																												"value": {
+																																													"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																												}
+																																											},
+																																											"required": [
+																																												"attribute",
+																																												"operator",
+																																												"value"
+																																											],
+																																											"type": "object"
+																																										},
+																																										{
+																																											"additionalProperties": false,
+																																											"properties": {
+																																												"clauses": {
+																																													"items": {
+																																														"oneOf": [
+																																															{
+																																																"nullable": true,
+																																																"type": "string"
+																																															},
+																																															{
+																																																"type": "number"
+																																															},
+																																															{
+																																																"type": "boolean"
+																																															},
+																																															{
+																																																"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																																"type": "object"
+																																															},
+																																															{
+																																																"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																																"type": "array"
+																																															}
+																																														]
+																																													},
+																																													"minItems": 1,
+																																													"type": "array"
+																																												},
+																																												"logical_operator": {
+																																													"enum": [
+																																														"AND",
+																																														"OR"
+																																													],
+																																													"type": "string"
+																																												}
+																																											},
+																																											"required": [
+																																												"logical_operator",
+																																												"clauses"
+																																											],
+																																											"type": "object"
+																																										}
+																																									]
+																																								},
+																																								"minItems": 1,
+																																								"type": "array"
+																																							},
+																																							"logical_operator": {
+																																								"enum": [
+																																									"AND",
+																																									"OR"
+																																								],
+																																								"type": "string"
+																																							}
+																																						},
+																																						"required": [
+																																							"logical_operator",
+																																							"clauses"
+																																						],
+																																						"type": "object"
+																																					}
+																																				]
+																																			},
+																																			"minItems": 1,
+																																			"type": "array"
+																																		},
+																																		"logical_operator": {
+																																			"enum": [
+																																				"AND",
+																																				"OR"
+																																			],
+																																			"type": "string"
+																																		}
+																																	},
+																																	"required": [
+																																		"logical_operator",
+																																		"clauses"
+																																	],
+																																	"type": "object"
+																																}
+																															]
+																														},
+																														"minItems": 1,
+																														"type": "array"
+																													},
+																													"logical_operator": {
+																														"enum": [
+																															"AND",
+																															"OR"
+																														],
+																														"type": "string"
+																													}
+																												},
+																												"required": [
+																													"logical_operator",
+																													"clauses"
+																												],
+																												"type": "object"
+																											}
+																										]
+																									},
+																									"minItems": 1,
+																									"type": "array"
+																								},
+																								"logical_operator": {
+																									"enum": [
+																										"AND",
+																										"OR"
+																									],
+																									"type": "string"
+																								}
+																							},
+																							"required": [
+																								"logical_operator",
+																								"clauses"
+																							],
+																							"type": "object"
+																						}
+																					]
+																				},
+																				"minItems": 1,
+																				"type": "array"
+																			},
+																			"logical_operator": {
+																				"enum": [
+																					"AND",
+																					"OR"
+																				],
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"logical_operator",
+																			"clauses"
+																		],
+																		"type": "object"
+																	}
+																]
+															},
+															"type": "array"
+														},
+														"priority": {
+															"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+															"minimum": 1,
+															"type": "integer"
+														},
+														"rollout": {
+															"additionalProperties": false,
+															"properties": {
+																"attribute": {
+																	"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
+																	"minLength": 1,
+																	"type": "string"
+																},
+																"percentage": {
+																	"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																	"maximum": 100,
+																	"minimum": 0,
+																	"type": "number"
+																}
+															},
+															"required": [
+																"percentage"
+															],
+															"type": "object"
+														},
+														"serve_variation": {
+															"description": "Variation served when this rule matches. Must be a key in `variations`.",
+															"minLength": 1,
+															"type": "string"
+														}
+													},
+													"required": [
+														"priority",
+														"conditions",
+														"serve_variation"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"type": {
+												"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+												"enum": [
+													"boolean",
+													"string",
+													"number",
+													"json"
+												],
+												"type": "string"
+											},
+											"updated_at": {
+												"type": "string"
+											},
+											"updated_by": {
+												"type": "string"
+											},
+											"variations": {
+												"additionalProperties": {
+													"oneOf": [
+														{
+															"nullable": true,
+															"type": "string"
+														},
+														{
+															"type": "number"
+														},
+														{
+															"type": "boolean"
+														},
+														{
+															"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.variations.additionalProperties]",
+															"type": "object"
+														},
+														{
+															"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.200.content.application/json.schema.properties.result.items.properties.variations.additionalProperties]",
+															"type": "array"
+														}
+													]
+												},
+												"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+												"type": "object"
+											}
+										},
+										"required": [
+											"key",
+											"default_variation",
+											"variations",
+											"rules",
+											"enabled"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"description": "Number of items returned in this page.",
+											"minimum": 0,
+											"type": "integer"
+										},
+										"cursor": {
+											"description": "Cursor to pass back to fetch the next page, or null when this is the last page.",
+											"nullable": true,
+											"type": "string"
+										}
+									},
+									"required": [
+										"count",
+										"cursor"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"result_info",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Paginated list of flags."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Too many requests."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List flags",
+		"tags": [
+			"Flags"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"DNS View Write",
+			"DNS View Read",
+			"SCIM Provisioning",
+			"Load Balancers Account Write",
+			"Load Balancers Account Read",
+			"Zero Trust: PII Read",
+			"DDoS Botnet Feed Write",
+			"DDoS Botnet Feed Read",
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read",
+			"DDoS Protection Write",
+			"DDoS Protection Read",
+			"Workers Tail Read",
+			"Workers KV Storage Write",
+			"Workers KV Storage Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read",
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read",
+			"DNS Firewall Write",
+			"DNS Firewall Read",
+			"Billing Write",
+			"Billing Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.flagship.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
+		"description": "Returns the full flag definition including rules, variations, and audit fields.",
+		"operationId": "flagship_get_flag",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "App identifier.",
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "App identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Flag key (slug).",
+				"in": "path",
+				"name": "flag_key",
+				"required": true,
+				"schema": {
+					"description": "Flag key (slug).",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": false,
+									"properties": {
+										"default_variation": {
+											"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+											"minLength": 1,
+											"type": "string"
+										},
+										"description": {
+											"maxLength": 512,
+											"nullable": true,
+											"type": "string"
+										},
+										"enabled": {
+											"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
+											"type": "boolean"
+										},
+										"key": {
+											"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_-]+$",
+											"type": "string"
+										},
+										"rules": {
+											"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"conditions": {
+														"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+														"items": {
+															"anyOf": [
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"attribute": {
+																			"maxLength": 64,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"operator": {
+																			"enum": [
+																				"equals",
+																				"not_equals",
+																				"greater_than",
+																				"less_than",
+																				"greater_than_or_equals",
+																				"less_than_or_equals",
+																				"contains",
+																				"starts_with",
+																				"ends_with",
+																				"in",
+																				"not_in"
+																			],
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																		}
+																	},
+																	"required": [
+																		"attribute",
+																		"operator",
+																		"value"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"clauses": {
+																			"items": {
+																				"anyOf": [
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"attribute": {
+																								"maxLength": 64,
+																								"minLength": 1,
+																								"type": "string"
+																							},
+																							"operator": {
+																								"enum": [
+																									"equals",
+																									"not_equals",
+																									"greater_than",
+																									"less_than",
+																									"greater_than_or_equals",
+																									"less_than_or_equals",
+																									"contains",
+																									"starts_with",
+																									"ends_with",
+																									"in",
+																									"not_in"
+																								],
+																								"type": "string"
+																							},
+																							"value": {
+																								"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																							}
+																						},
+																						"required": [
+																							"attribute",
+																							"operator",
+																							"value"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"clauses": {
+																								"items": {
+																									"anyOf": [
+																										{
+																											"additionalProperties": false,
+																											"properties": {
+																												"attribute": {
+																													"maxLength": 64,
+																													"minLength": 1,
+																													"type": "string"
+																												},
+																												"operator": {
+																													"enum": [
+																														"equals",
+																														"not_equals",
+																														"greater_than",
+																														"less_than",
+																														"greater_than_or_equals",
+																														"less_than_or_equals",
+																														"contains",
+																														"starts_with",
+																														"ends_with",
+																														"in",
+																														"not_in"
+																													],
+																													"type": "string"
+																												},
+																												"value": {
+																													"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																												}
+																											},
+																											"required": [
+																												"attribute",
+																												"operator",
+																												"value"
+																											],
+																											"type": "object"
+																										},
+																										{
+																											"additionalProperties": false,
+																											"properties": {
+																												"clauses": {
+																													"items": {
+																														"anyOf": [
+																															{
+																																"additionalProperties": false,
+																																"properties": {
+																																	"attribute": {
+																																		"maxLength": 64,
+																																		"minLength": 1,
+																																		"type": "string"
+																																	},
+																																	"operator": {
+																																		"enum": [
+																																			"equals",
+																																			"not_equals",
+																																			"greater_than",
+																																			"less_than",
+																																			"greater_than_or_equals",
+																																			"less_than_or_equals",
+																																			"contains",
+																																			"starts_with",
+																																			"ends_with",
+																																			"in",
+																																			"not_in"
+																																		],
+																																		"type": "string"
+																																	},
+																																	"value": {
+																																		"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																	}
+																																},
+																																"required": [
+																																	"attribute",
+																																	"operator",
+																																	"value"
+																																],
+																																"type": "object"
+																															},
+																															{
+																																"additionalProperties": false,
+																																"properties": {
+																																	"clauses": {
+																																		"items": {
+																																			"anyOf": [
+																																				{
+																																					"additionalProperties": false,
+																																					"properties": {
+																																						"attribute": {
+																																							"maxLength": 64,
+																																							"minLength": 1,
+																																							"type": "string"
+																																						},
+																																						"operator": {
+																																							"enum": [
+																																								"equals",
+																																								"not_equals",
+																																								"greater_than",
+																																								"less_than",
+																																								"greater_than_or_equals",
+																																								"less_than_or_equals",
+																																								"contains",
+																																								"starts_with",
+																																								"ends_with",
+																																								"in",
+																																								"not_in"
+																																							],
+																																							"type": "string"
+																																						},
+																																						"value": {
+																																							"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																						}
+																																					},
+																																					"required": [
+																																						"attribute",
+																																						"operator",
+																																						"value"
+																																					],
+																																					"type": "object"
+																																				},
+																																				{
+																																					"additionalProperties": false,
+																																					"properties": {
+																																						"clauses": {
+																																							"items": {
+																																								"anyOf": [
+																																									{
+																																										"additionalProperties": false,
+																																										"properties": {
+																																											"attribute": {
+																																												"maxLength": 64,
+																																												"minLength": 1,
+																																												"type": "string"
+																																											},
+																																											"operator": {
+																																												"enum": [
+																																													"equals",
+																																													"not_equals",
+																																													"greater_than",
+																																													"less_than",
+																																													"greater_than_or_equals",
+																																													"less_than_or_equals",
+																																													"contains",
+																																													"starts_with",
+																																													"ends_with",
+																																													"in",
+																																													"not_in"
+																																												],
+																																												"type": "string"
+																																											},
+																																											"value": {
+																																												"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																											}
+																																										},
+																																										"required": [
+																																											"attribute",
+																																											"operator",
+																																											"value"
+																																										],
+																																										"type": "object"
+																																									},
+																																									{
+																																										"additionalProperties": false,
+																																										"properties": {
+																																											"clauses": {
+																																												"items": {
+																																													"oneOf": [
+																																														{
+																																															"nullable": true,
+																																															"type": "string"
+																																														},
+																																														{
+																																															"type": "number"
+																																														},
+																																														{
+																																															"type": "boolean"
+																																														},
+																																														{
+																																															"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																															"type": "object"
+																																														},
+																																														{
+																																															"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																															"type": "array"
+																																														}
+																																													]
+																																												},
+																																												"minItems": 1,
+																																												"type": "array"
+																																											},
+																																											"logical_operator": {
+																																												"enum": [
+																																													"AND",
+																																													"OR"
+																																												],
+																																												"type": "string"
+																																											}
+																																										},
+																																										"required": [
+																																											"logical_operator",
+																																											"clauses"
+																																										],
+																																										"type": "object"
+																																									}
+																																								]
+																																							},
+																																							"minItems": 1,
+																																							"type": "array"
+																																						},
+																																						"logical_operator": {
+																																							"enum": [
+																																								"AND",
+																																								"OR"
+																																							],
+																																							"type": "string"
+																																						}
+																																					},
+																																					"required": [
+																																						"logical_operator",
+																																						"clauses"
+																																					],
+																																					"type": "object"
+																																				}
+																																			]
+																																		},
+																																		"minItems": 1,
+																																		"type": "array"
+																																	},
+																																	"logical_operator": {
+																																		"enum": [
+																																			"AND",
+																																			"OR"
+																																		],
+																																		"type": "string"
+																																	}
+																																},
+																																"required": [
+																																	"logical_operator",
+																																	"clauses"
+																																],
+																																"type": "object"
+																															}
+																														]
+																													},
+																													"minItems": 1,
+																													"type": "array"
+																												},
+																												"logical_operator": {
+																													"enum": [
+																														"AND",
+																														"OR"
+																													],
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"logical_operator",
+																												"clauses"
+																											],
+																											"type": "object"
+																										}
+																									]
+																								},
+																								"minItems": 1,
+																								"type": "array"
+																							},
+																							"logical_operator": {
+																								"enum": [
+																									"AND",
+																									"OR"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"logical_operator",
+																							"clauses"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			},
+																			"minItems": 1,
+																			"type": "array"
+																		},
+																		"logical_operator": {
+																			"enum": [
+																				"AND",
+																				"OR"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"logical_operator",
+																		"clauses"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														"type": "array"
+													},
+													"priority": {
+														"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+														"minimum": 1,
+														"type": "integer"
+													},
+													"rollout": {
+														"additionalProperties": false,
+														"properties": {
+															"attribute": {
+																"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
+																"minLength": 1,
+																"type": "string"
+															},
+															"percentage": {
+																"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																"maximum": 100,
+																"minimum": 0,
+																"type": "number"
+															}
+														},
+														"required": [
+															"percentage"
+														],
+														"type": "object"
+													},
+													"serve_variation": {
+														"description": "Variation served when this rule matches. Must be a key in `variations`.",
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"required": [
+													"priority",
+													"conditions",
+													"serve_variation"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"type": {
+											"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+											"enum": [
+												"boolean",
+												"string",
+												"number",
+												"json"
+											],
+											"type": "string"
+										},
+										"updated_at": {
+											"type": "string"
+										},
+										"updated_by": {
+											"type": "string"
+										},
+										"variations": {
+											"additionalProperties": {
+												"oneOf": [
+													{
+														"nullable": true,
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.variations.additionalProperties]",
+														"type": "object"
+													},
+													{
+														"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.variations.additionalProperties]",
+														"type": "array"
+													}
+												]
+											},
+											"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+											"type": "object"
+										}
+									},
+									"required": [
+										"key",
+										"default_variation",
+										"variations",
+										"rules",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Flag details."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Too many requests."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get flag",
+		"tags": [
+			"Flags"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"DNS View Write",
+			"DNS View Read",
+			"SCIM Provisioning",
+			"Load Balancers Account Write",
+			"Load Balancers Account Read",
+			"Zero Trust: PII Read",
+			"DDoS Botnet Feed Write",
+			"DDoS Botnet Feed Read",
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read",
+			"DDoS Protection Write",
+			"DDoS Protection Read",
+			"Workers Tail Read",
+			"Workers KV Storage Write",
+			"Workers KV Storage Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read",
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read",
+			"DNS Firewall Write",
+			"DNS Firewall Read",
+			"Billing Write",
+			"Billing Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.flagship.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/flagship/apps/{app_id}/flags": {
+		"description": "Creates a flag. Returns 409 if the key already exists. `type` is inferred from variation values and may be omitted.",
+		"operationId": "flagship_create_flag",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "App identifier.",
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "App identifier.",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"properties": {
+							"default_variation": {
+								"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+								"minLength": 1,
+								"type": "string"
+							},
+							"description": {
+								"maxLength": 512,
+								"nullable": true,
+								"type": "string"
+							},
+							"enabled": {
+								"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
+								"type": "boolean"
+							},
+							"key": {
+								"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+								"maxLength": 64,
+								"minLength": 1,
+								"pattern": "^[a-zA-Z0-9_-]+$",
+								"type": "string"
+							},
+							"rules": {
+								"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"conditions": {
+											"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+											"items": {
+												"anyOf": [
+													{
+														"additionalProperties": false,
+														"properties": {
+															"attribute": {
+																"maxLength": 64,
+																"minLength": 1,
+																"type": "string"
+															},
+															"operator": {
+																"enum": [
+																	"equals",
+																	"not_equals",
+																	"greater_than",
+																	"less_than",
+																	"greater_than_or_equals",
+																	"less_than_or_equals",
+																	"contains",
+																	"starts_with",
+																	"ends_with",
+																	"in",
+																	"not_in"
+																],
+																"type": "string"
+															},
+															"value": {
+																"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+															}
+														},
+														"required": [
+															"attribute",
+															"operator",
+															"value"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"clauses": {
+																"items": {
+																	"anyOf": [
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"attribute": {
+																					"maxLength": 64,
+																					"minLength": 1,
+																					"type": "string"
+																				},
+																				"operator": {
+																					"enum": [
+																						"equals",
+																						"not_equals",
+																						"greater_than",
+																						"less_than",
+																						"greater_than_or_equals",
+																						"less_than_or_equals",
+																						"contains",
+																						"starts_with",
+																						"ends_with",
+																						"in",
+																						"not_in"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																				}
+																			},
+																			"required": [
+																				"attribute",
+																				"operator",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"clauses": {
+																					"items": {
+																						"anyOf": [
+																							{
+																								"additionalProperties": false,
+																								"properties": {
+																									"attribute": {
+																										"maxLength": 64,
+																										"minLength": 1,
+																										"type": "string"
+																									},
+																									"operator": {
+																										"enum": [
+																											"equals",
+																											"not_equals",
+																											"greater_than",
+																											"less_than",
+																											"greater_than_or_equals",
+																											"less_than_or_equals",
+																											"contains",
+																											"starts_with",
+																											"ends_with",
+																											"in",
+																											"not_in"
+																										],
+																										"type": "string"
+																									},
+																									"value": {
+																										"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																									}
+																								},
+																								"required": [
+																									"attribute",
+																									"operator",
+																									"value"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"additionalProperties": false,
+																								"properties": {
+																									"clauses": {
+																										"items": {
+																											"anyOf": [
+																												{
+																													"additionalProperties": false,
+																													"properties": {
+																														"attribute": {
+																															"maxLength": 64,
+																															"minLength": 1,
+																															"type": "string"
+																														},
+																														"operator": {
+																															"enum": [
+																																"equals",
+																																"not_equals",
+																																"greater_than",
+																																"less_than",
+																																"greater_than_or_equals",
+																																"less_than_or_equals",
+																																"contains",
+																																"starts_with",
+																																"ends_with",
+																																"in",
+																																"not_in"
+																															],
+																															"type": "string"
+																														},
+																														"value": {
+																															"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																														}
+																													},
+																													"required": [
+																														"attribute",
+																														"operator",
+																														"value"
+																													],
+																													"type": "object"
+																												},
+																												{
+																													"additionalProperties": false,
+																													"properties": {
+																														"clauses": {
+																															"items": {
+																																"anyOf": [
+																																	{
+																																		"additionalProperties": false,
+																																		"properties": {
+																																			"attribute": {
+																																				"maxLength": 64,
+																																				"minLength": 1,
+																																				"type": "string"
+																																			},
+																																			"operator": {
+																																				"enum": [
+																																					"equals",
+																																					"not_equals",
+																																					"greater_than",
+																																					"less_than",
+																																					"greater_than_or_equals",
+																																					"less_than_or_equals",
+																																					"contains",
+																																					"starts_with",
+																																					"ends_with",
+																																					"in",
+																																					"not_in"
+																																				],
+																																				"type": "string"
+																																			},
+																																			"value": {
+																																				"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																			}
+																																		},
+																																		"required": [
+																																			"attribute",
+																																			"operator",
+																																			"value"
+																																		],
+																																		"type": "object"
+																																	},
+																																	{
+																																		"additionalProperties": false,
+																																		"properties": {
+																																			"clauses": {
+																																				"items": {
+																																					"anyOf": [
+																																						{
+																																							"additionalProperties": false,
+																																							"properties": {
+																																								"attribute": {
+																																									"maxLength": 64,
+																																									"minLength": 1,
+																																									"type": "string"
+																																								},
+																																								"operator": {
+																																									"enum": [
+																																										"equals",
+																																										"not_equals",
+																																										"greater_than",
+																																										"less_than",
+																																										"greater_than_or_equals",
+																																										"less_than_or_equals",
+																																										"contains",
+																																										"starts_with",
+																																										"ends_with",
+																																										"in",
+																																										"not_in"
+																																									],
+																																									"type": "string"
+																																								},
+																																								"value": {
+																																									"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																								}
+																																							},
+																																							"required": [
+																																								"attribute",
+																																								"operator",
+																																								"value"
+																																							],
+																																							"type": "object"
+																																						},
+																																						{
+																																							"additionalProperties": false,
+																																							"properties": {
+																																								"clauses": {
+																																									"items": {
+																																										"oneOf": [
+																																											{
+																																												"nullable": true,
+																																												"type": "string"
+																																											},
+																																											{
+																																												"type": "number"
+																																											},
+																																											{
+																																												"type": "boolean"
+																																											},
+																																											{
+																																												"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																												"type": "object"
+																																											},
+																																											{
+																																												"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																												"type": "array"
+																																											}
+																																										]
+																																									},
+																																									"minItems": 1,
+																																									"type": "array"
+																																								},
+																																								"logical_operator": {
+																																									"enum": [
+																																										"AND",
+																																										"OR"
+																																									],
+																																									"type": "string"
+																																								}
+																																							},
+																																							"required": [
+																																								"logical_operator",
+																																								"clauses"
+																																							],
+																																							"type": "object"
+																																						}
+																																					]
+																																				},
+																																				"minItems": 1,
+																																				"type": "array"
+																																			},
+																																			"logical_operator": {
+																																				"enum": [
+																																					"AND",
+																																					"OR"
+																																				],
+																																				"type": "string"
+																																			}
+																																		},
+																																		"required": [
+																																			"logical_operator",
+																																			"clauses"
+																																		],
+																																		"type": "object"
+																																	}
+																																]
+																															},
+																															"minItems": 1,
+																															"type": "array"
+																														},
+																														"logical_operator": {
+																															"enum": [
+																																"AND",
+																																"OR"
+																															],
+																															"type": "string"
+																														}
+																													},
+																													"required": [
+																														"logical_operator",
+																														"clauses"
+																													],
+																													"type": "object"
+																												}
+																											]
+																										},
+																										"minItems": 1,
+																										"type": "array"
+																									},
+																									"logical_operator": {
+																										"enum": [
+																											"AND",
+																											"OR"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"logical_operator",
+																									"clauses"
+																								],
+																								"type": "object"
+																							}
+																						]
+																					},
+																					"minItems": 1,
+																					"type": "array"
+																				},
+																				"logical_operator": {
+																					"enum": [
+																						"AND",
+																						"OR"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"logical_operator",
+																				"clauses"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"minItems": 1,
+																"type": "array"
+															},
+															"logical_operator": {
+																"enum": [
+																	"AND",
+																	"OR"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"logical_operator",
+															"clauses"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										},
+										"priority": {
+											"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+											"minimum": 1,
+											"type": "integer"
+										},
+										"rollout": {
+											"additionalProperties": false,
+											"properties": {
+												"attribute": {
+													"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
+													"minLength": 1,
+													"type": "string"
+												},
+												"percentage": {
+													"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+													"maximum": 100,
+													"minimum": 0,
+													"type": "number"
+												}
+											},
+											"required": [
+												"percentage"
+											],
+											"type": "object"
+										},
+										"serve_variation": {
+											"description": "Variation served when this rule matches. Must be a key in `variations`.",
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"required": [
+										"priority",
+										"conditions",
+										"serve_variation"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"type": {
+								"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+								"enum": [
+									"boolean",
+									"string",
+									"number",
+									"json"
+								],
+								"type": "string"
+							},
+							"variations": {
+								"additionalProperties": {
+									"oneOf": [
+										{
+											"nullable": true,
+											"type": "string"
+										},
+										{
+											"type": "number"
+										},
+										{
+											"type": "boolean"
+										},
+										{
+											"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.variations.additionalProperties]",
+											"type": "object"
+										},
+										{
+											"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.requestBody.content.application/json.schema.properties.variations.additionalProperties]",
+											"type": "array"
+										}
+									]
+								},
+								"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+								"type": "object"
+							}
+						},
+						"required": [
+							"key",
+							"default_variation",
+							"variations",
+							"rules",
+							"enabled"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": false,
+									"properties": {
+										"default_variation": {
+											"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+											"minLength": 1,
+											"type": "string"
+										},
+										"description": {
+											"maxLength": 512,
+											"nullable": true,
+											"type": "string"
+										},
+										"enabled": {
+											"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
+											"type": "boolean"
+										},
+										"key": {
+											"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_-]+$",
+											"type": "string"
+										},
+										"rules": {
+											"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"conditions": {
+														"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+														"items": {
+															"anyOf": [
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"attribute": {
+																			"maxLength": 64,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"operator": {
+																			"enum": [
+																				"equals",
+																				"not_equals",
+																				"greater_than",
+																				"less_than",
+																				"greater_than_or_equals",
+																				"less_than_or_equals",
+																				"contains",
+																				"starts_with",
+																				"ends_with",
+																				"in",
+																				"not_in"
+																			],
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																		}
+																	},
+																	"required": [
+																		"attribute",
+																		"operator",
+																		"value"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"clauses": {
+																			"items": {
+																				"anyOf": [
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"attribute": {
+																								"maxLength": 64,
+																								"minLength": 1,
+																								"type": "string"
+																							},
+																							"operator": {
+																								"enum": [
+																									"equals",
+																									"not_equals",
+																									"greater_than",
+																									"less_than",
+																									"greater_than_or_equals",
+																									"less_than_or_equals",
+																									"contains",
+																									"starts_with",
+																									"ends_with",
+																									"in",
+																									"not_in"
+																								],
+																								"type": "string"
+																							},
+																							"value": {
+																								"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																							}
+																						},
+																						"required": [
+																							"attribute",
+																							"operator",
+																							"value"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"clauses": {
+																								"items": {
+																									"anyOf": [
+																										{
+																											"additionalProperties": false,
+																											"properties": {
+																												"attribute": {
+																													"maxLength": 64,
+																													"minLength": 1,
+																													"type": "string"
+																												},
+																												"operator": {
+																													"enum": [
+																														"equals",
+																														"not_equals",
+																														"greater_than",
+																														"less_than",
+																														"greater_than_or_equals",
+																														"less_than_or_equals",
+																														"contains",
+																														"starts_with",
+																														"ends_with",
+																														"in",
+																														"not_in"
+																													],
+																													"type": "string"
+																												},
+																												"value": {
+																													"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																												}
+																											},
+																											"required": [
+																												"attribute",
+																												"operator",
+																												"value"
+																											],
+																											"type": "object"
+																										},
+																										{
+																											"additionalProperties": false,
+																											"properties": {
+																												"clauses": {
+																													"items": {
+																														"anyOf": [
+																															{
+																																"additionalProperties": false,
+																																"properties": {
+																																	"attribute": {
+																																		"maxLength": 64,
+																																		"minLength": 1,
+																																		"type": "string"
+																																	},
+																																	"operator": {
+																																		"enum": [
+																																			"equals",
+																																			"not_equals",
+																																			"greater_than",
+																																			"less_than",
+																																			"greater_than_or_equals",
+																																			"less_than_or_equals",
+																																			"contains",
+																																			"starts_with",
+																																			"ends_with",
+																																			"in",
+																																			"not_in"
+																																		],
+																																		"type": "string"
+																																	},
+																																	"value": {
+																																		"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																	}
+																																},
+																																"required": [
+																																	"attribute",
+																																	"operator",
+																																	"value"
+																																],
+																																"type": "object"
+																															},
+																															{
+																																"additionalProperties": false,
+																																"properties": {
+																																	"clauses": {
+																																		"items": {
+																																			"anyOf": [
+																																				{
+																																					"additionalProperties": false,
+																																					"properties": {
+																																						"attribute": {
+																																							"maxLength": 64,
+																																							"minLength": 1,
+																																							"type": "string"
+																																						},
+																																						"operator": {
+																																							"enum": [
+																																								"equals",
+																																								"not_equals",
+																																								"greater_than",
+																																								"less_than",
+																																								"greater_than_or_equals",
+																																								"less_than_or_equals",
+																																								"contains",
+																																								"starts_with",
+																																								"ends_with",
+																																								"in",
+																																								"not_in"
+																																							],
+																																							"type": "string"
+																																						},
+																																						"value": {
+																																							"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																						}
+																																					},
+																																					"required": [
+																																						"attribute",
+																																						"operator",
+																																						"value"
+																																					],
+																																					"type": "object"
+																																				},
+																																				{
+																																					"additionalProperties": false,
+																																					"properties": {
+																																						"clauses": {
+																																							"items": {
+																																								"anyOf": [
+																																									{
+																																										"additionalProperties": false,
+																																										"properties": {
+																																											"attribute": {
+																																												"maxLength": 64,
+																																												"minLength": 1,
+																																												"type": "string"
+																																											},
+																																											"operator": {
+																																												"enum": [
+																																													"equals",
+																																													"not_equals",
+																																													"greater_than",
+																																													"less_than",
+																																													"greater_than_or_equals",
+																																													"less_than_or_equals",
+																																													"contains",
+																																													"starts_with",
+																																													"ends_with",
+																																													"in",
+																																													"not_in"
+																																												],
+																																												"type": "string"
+																																											},
+																																											"value": {
+																																												"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																											}
+																																										},
+																																										"required": [
+																																											"attribute",
+																																											"operator",
+																																											"value"
+																																										],
+																																										"type": "object"
+																																									},
+																																									{
+																																										"additionalProperties": false,
+																																										"properties": {
+																																											"clauses": {
+																																												"items": {
+																																													"oneOf": [
+																																														{
+																																															"nullable": true,
+																																															"type": "string"
+																																														},
+																																														{
+																																															"type": "number"
+																																														},
+																																														{
+																																															"type": "boolean"
+																																														},
+																																														{
+																																															"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																															"type": "object"
+																																														},
+																																														{
+																																															"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																															"type": "array"
+																																														}
+																																													]
+																																												},
+																																												"minItems": 1,
+																																												"type": "array"
+																																											},
+																																											"logical_operator": {
+																																												"enum": [
+																																													"AND",
+																																													"OR"
+																																												],
+																																												"type": "string"
+																																											}
+																																										},
+																																										"required": [
+																																											"logical_operator",
+																																											"clauses"
+																																										],
+																																										"type": "object"
+																																									}
+																																								]
+																																							},
+																																							"minItems": 1,
+																																							"type": "array"
+																																						},
+																																						"logical_operator": {
+																																							"enum": [
+																																								"AND",
+																																								"OR"
+																																							],
+																																							"type": "string"
+																																						}
+																																					},
+																																					"required": [
+																																						"logical_operator",
+																																						"clauses"
+																																					],
+																																					"type": "object"
+																																				}
+																																			]
+																																		},
+																																		"minItems": 1,
+																																		"type": "array"
+																																	},
+																																	"logical_operator": {
+																																		"enum": [
+																																			"AND",
+																																			"OR"
+																																		],
+																																		"type": "string"
+																																	}
+																																},
+																																"required": [
+																																	"logical_operator",
+																																	"clauses"
+																																],
+																																"type": "object"
+																															}
+																														]
+																													},
+																													"minItems": 1,
+																													"type": "array"
+																												},
+																												"logical_operator": {
+																													"enum": [
+																														"AND",
+																														"OR"
+																													],
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"logical_operator",
+																												"clauses"
+																											],
+																											"type": "object"
+																										}
+																									]
+																								},
+																								"minItems": 1,
+																								"type": "array"
+																							},
+																							"logical_operator": {
+																								"enum": [
+																									"AND",
+																									"OR"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"logical_operator",
+																							"clauses"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			},
+																			"minItems": 1,
+																			"type": "array"
+																		},
+																		"logical_operator": {
+																			"enum": [
+																				"AND",
+																				"OR"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"logical_operator",
+																		"clauses"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														"type": "array"
+													},
+													"priority": {
+														"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+														"minimum": 1,
+														"type": "integer"
+													},
+													"rollout": {
+														"additionalProperties": false,
+														"properties": {
+															"attribute": {
+																"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
+																"minLength": 1,
+																"type": "string"
+															},
+															"percentage": {
+																"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																"maximum": 100,
+																"minimum": 0,
+																"type": "number"
+															}
+														},
+														"required": [
+															"percentage"
+														],
+														"type": "object"
+													},
+													"serve_variation": {
+														"description": "Variation served when this rule matches. Must be a key in `variations`.",
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"required": [
+													"priority",
+													"conditions",
+													"serve_variation"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"type": {
+											"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+											"enum": [
+												"boolean",
+												"string",
+												"number",
+												"json"
+											],
+											"type": "string"
+										},
+										"updated_at": {
+											"type": "string"
+										},
+										"updated_by": {
+											"type": "string"
+										},
+										"variations": {
+											"additionalProperties": {
+												"oneOf": [
+													{
+														"nullable": true,
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"additionalProperties": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.variations.additionalProperties]",
+														"type": "object"
+													},
+													{
+														"items": "[Circular ~.POST /accounts/{account_id}/flagship/apps/{app_id}/flags.responses.201.content.application/json.schema.properties.result.properties.variations.additionalProperties]",
+														"type": "array"
+													}
+												]
+											},
+											"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+											"type": "object"
+										}
+									},
+									"required": [
+										"key",
+										"default_variation",
+										"variations",
+										"rules",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Flag created."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Too many requests."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create flag",
+		"tags": [
+			"Flags"
+		],
+		"x-api-token-group": [
+			"Account Settings Write"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.flagship.create"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}": {
+		"description": "Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. Each update appends a changelog entry.",
+		"operationId": "flagship_update_flag",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "App identifier.",
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "App identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Flag key (slug).",
+				"in": "path",
+				"name": "flag_key",
+				"required": true,
+				"schema": {
+					"description": "Flag key (slug).",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"properties": {
+							"default_variation": {
+								"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+								"minLength": 1,
+								"type": "string"
+							},
+							"description": {
+								"maxLength": 512,
+								"nullable": true,
+								"type": "string"
+							},
+							"enabled": {
+								"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
+								"type": "boolean"
+							},
+							"key": {
+								"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+								"maxLength": 64,
+								"minLength": 1,
+								"pattern": "^[a-zA-Z0-9_-]+$",
+								"type": "string"
+							},
+							"rules": {
+								"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"conditions": {
+											"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+											"items": {
+												"anyOf": [
+													{
+														"additionalProperties": false,
+														"properties": {
+															"attribute": {
+																"maxLength": 64,
+																"minLength": 1,
+																"type": "string"
+															},
+															"operator": {
+																"enum": [
+																	"equals",
+																	"not_equals",
+																	"greater_than",
+																	"less_than",
+																	"greater_than_or_equals",
+																	"less_than_or_equals",
+																	"contains",
+																	"starts_with",
+																	"ends_with",
+																	"in",
+																	"not_in"
+																],
+																"type": "string"
+															},
+															"value": {
+																"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+															}
+														},
+														"required": [
+															"attribute",
+															"operator",
+															"value"
+														],
+														"type": "object"
+													},
+													{
+														"additionalProperties": false,
+														"properties": {
+															"clauses": {
+																"items": {
+																	"anyOf": [
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"attribute": {
+																					"maxLength": 64,
+																					"minLength": 1,
+																					"type": "string"
+																				},
+																				"operator": {
+																					"enum": [
+																						"equals",
+																						"not_equals",
+																						"greater_than",
+																						"less_than",
+																						"greater_than_or_equals",
+																						"less_than_or_equals",
+																						"contains",
+																						"starts_with",
+																						"ends_with",
+																						"in",
+																						"not_in"
+																					],
+																					"type": "string"
+																				},
+																				"value": {
+																					"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																				}
+																			},
+																			"required": [
+																				"attribute",
+																				"operator",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"additionalProperties": false,
+																			"properties": {
+																				"clauses": {
+																					"items": {
+																						"anyOf": [
+																							{
+																								"additionalProperties": false,
+																								"properties": {
+																									"attribute": {
+																										"maxLength": 64,
+																										"minLength": 1,
+																										"type": "string"
+																									},
+																									"operator": {
+																										"enum": [
+																											"equals",
+																											"not_equals",
+																											"greater_than",
+																											"less_than",
+																											"greater_than_or_equals",
+																											"less_than_or_equals",
+																											"contains",
+																											"starts_with",
+																											"ends_with",
+																											"in",
+																											"not_in"
+																										],
+																										"type": "string"
+																									},
+																									"value": {
+																										"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																									}
+																								},
+																								"required": [
+																									"attribute",
+																									"operator",
+																									"value"
+																								],
+																								"type": "object"
+																							},
+																							{
+																								"additionalProperties": false,
+																								"properties": {
+																									"clauses": {
+																										"items": {
+																											"anyOf": [
+																												{
+																													"additionalProperties": false,
+																													"properties": {
+																														"attribute": {
+																															"maxLength": 64,
+																															"minLength": 1,
+																															"type": "string"
+																														},
+																														"operator": {
+																															"enum": [
+																																"equals",
+																																"not_equals",
+																																"greater_than",
+																																"less_than",
+																																"greater_than_or_equals",
+																																"less_than_or_equals",
+																																"contains",
+																																"starts_with",
+																																"ends_with",
+																																"in",
+																																"not_in"
+																															],
+																															"type": "string"
+																														},
+																														"value": {
+																															"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																														}
+																													},
+																													"required": [
+																														"attribute",
+																														"operator",
+																														"value"
+																													],
+																													"type": "object"
+																												},
+																												{
+																													"additionalProperties": false,
+																													"properties": {
+																														"clauses": {
+																															"items": {
+																																"anyOf": [
+																																	{
+																																		"additionalProperties": false,
+																																		"properties": {
+																																			"attribute": {
+																																				"maxLength": 64,
+																																				"minLength": 1,
+																																				"type": "string"
+																																			},
+																																			"operator": {
+																																				"enum": [
+																																					"equals",
+																																					"not_equals",
+																																					"greater_than",
+																																					"less_than",
+																																					"greater_than_or_equals",
+																																					"less_than_or_equals",
+																																					"contains",
+																																					"starts_with",
+																																					"ends_with",
+																																					"in",
+																																					"not_in"
+																																				],
+																																				"type": "string"
+																																			},
+																																			"value": {
+																																				"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																			}
+																																		},
+																																		"required": [
+																																			"attribute",
+																																			"operator",
+																																			"value"
+																																		],
+																																		"type": "object"
+																																	},
+																																	{
+																																		"additionalProperties": false,
+																																		"properties": {
+																																			"clauses": {
+																																				"items": {
+																																					"anyOf": [
+																																						{
+																																							"additionalProperties": false,
+																																							"properties": {
+																																								"attribute": {
+																																									"maxLength": 64,
+																																									"minLength": 1,
+																																									"type": "string"
+																																								},
+																																								"operator": {
+																																									"enum": [
+																																										"equals",
+																																										"not_equals",
+																																										"greater_than",
+																																										"less_than",
+																																										"greater_than_or_equals",
+																																										"less_than_or_equals",
+																																										"contains",
+																																										"starts_with",
+																																										"ends_with",
+																																										"in",
+																																										"not_in"
+																																									],
+																																									"type": "string"
+																																								},
+																																								"value": {
+																																									"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																								}
+																																							},
+																																							"required": [
+																																								"attribute",
+																																								"operator",
+																																								"value"
+																																							],
+																																							"type": "object"
+																																						},
+																																						{
+																																							"additionalProperties": false,
+																																							"properties": {
+																																								"clauses": {
+																																									"items": {
+																																										"oneOf": [
+																																											{
+																																												"nullable": true,
+																																												"type": "string"
+																																											},
+																																											{
+																																												"type": "number"
+																																											},
+																																											{
+																																												"type": "boolean"
+																																											},
+																																											{
+																																												"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																												"type": "object"
+																																											},
+																																											{
+																																												"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																												"type": "array"
+																																											}
+																																										]
+																																									},
+																																									"minItems": 1,
+																																									"type": "array"
+																																								},
+																																								"logical_operator": {
+																																									"enum": [
+																																										"AND",
+																																										"OR"
+																																									],
+																																									"type": "string"
+																																								}
+																																							},
+																																							"required": [
+																																								"logical_operator",
+																																								"clauses"
+																																							],
+																																							"type": "object"
+																																						}
+																																					]
+																																				},
+																																				"minItems": 1,
+																																				"type": "array"
+																																			},
+																																			"logical_operator": {
+																																				"enum": [
+																																					"AND",
+																																					"OR"
+																																				],
+																																				"type": "string"
+																																			}
+																																		},
+																																		"required": [
+																																			"logical_operator",
+																																			"clauses"
+																																		],
+																																		"type": "object"
+																																	}
+																																]
+																															},
+																															"minItems": 1,
+																															"type": "array"
+																														},
+																														"logical_operator": {
+																															"enum": [
+																																"AND",
+																																"OR"
+																															],
+																															"type": "string"
+																														}
+																													},
+																													"required": [
+																														"logical_operator",
+																														"clauses"
+																													],
+																													"type": "object"
+																												}
+																											]
+																										},
+																										"minItems": 1,
+																										"type": "array"
+																									},
+																									"logical_operator": {
+																										"enum": [
+																											"AND",
+																											"OR"
+																										],
+																										"type": "string"
+																									}
+																								},
+																								"required": [
+																									"logical_operator",
+																									"clauses"
+																								],
+																								"type": "object"
+																							}
+																						]
+																					},
+																					"minItems": 1,
+																					"type": "array"
+																				},
+																				"logical_operator": {
+																					"enum": [
+																						"AND",
+																						"OR"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"logical_operator",
+																				"clauses"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"minItems": 1,
+																"type": "array"
+															},
+															"logical_operator": {
+																"enum": [
+																	"AND",
+																	"OR"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"logical_operator",
+															"clauses"
+														],
+														"type": "object"
+													}
+												]
+											},
+											"type": "array"
+										},
+										"priority": {
+											"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+											"minimum": 1,
+											"type": "integer"
+										},
+										"rollout": {
+											"additionalProperties": false,
+											"properties": {
+												"attribute": {
+													"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
+													"minLength": 1,
+													"type": "string"
+												},
+												"percentage": {
+													"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+													"maximum": 100,
+													"minimum": 0,
+													"type": "number"
+												}
+											},
+											"required": [
+												"percentage"
+											],
+											"type": "object"
+										},
+										"serve_variation": {
+											"description": "Variation served when this rule matches. Must be a key in `variations`.",
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"required": [
+										"priority",
+										"conditions",
+										"serve_variation"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"type": {
+								"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+								"enum": [
+									"boolean",
+									"string",
+									"number",
+									"json"
+								],
+								"type": "string"
+							},
+							"variations": {
+								"additionalProperties": {
+									"oneOf": [
+										{
+											"nullable": true,
+											"type": "string"
+										},
+										{
+											"type": "number"
+										},
+										{
+											"type": "boolean"
+										},
+										{
+											"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.variations.additionalProperties]",
+											"type": "object"
+										},
+										{
+											"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.requestBody.content.application/json.schema.properties.variations.additionalProperties]",
+											"type": "array"
+										}
+									]
+								},
+								"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+								"type": "object"
+							}
+						},
+						"required": [
+							"key",
+							"default_variation",
+							"variations",
+							"rules",
+							"enabled"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"additionalProperties": false,
+									"properties": {
+										"default_variation": {
+											"description": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+											"minLength": 1,
+											"type": "string"
+										},
+										"description": {
+											"maxLength": 512,
+											"nullable": true,
+											"type": "string"
+										},
+										"enabled": {
+											"description": "When false, the flag bypasses all rules and always serves `default_variation`.",
+											"type": "boolean"
+										},
+										"key": {
+											"description": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+											"maxLength": 64,
+											"minLength": 1,
+											"pattern": "^[a-zA-Z0-9_-]+$",
+											"type": "string"
+										},
+										"rules": {
+											"description": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+											"items": {
+												"additionalProperties": false,
+												"properties": {
+													"conditions": {
+														"description": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+														"items": {
+															"anyOf": [
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"attribute": {
+																			"maxLength": 64,
+																			"minLength": 1,
+																			"type": "string"
+																		},
+																		"operator": {
+																			"enum": [
+																				"equals",
+																				"not_equals",
+																				"greater_than",
+																				"less_than",
+																				"greater_than_or_equals",
+																				"less_than_or_equals",
+																				"contains",
+																				"starts_with",
+																				"ends_with",
+																				"in",
+																				"not_in"
+																			],
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																		}
+																	},
+																	"required": [
+																		"attribute",
+																		"operator",
+																		"value"
+																	],
+																	"type": "object"
+																},
+																{
+																	"additionalProperties": false,
+																	"properties": {
+																		"clauses": {
+																			"items": {
+																				"anyOf": [
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"attribute": {
+																								"maxLength": 64,
+																								"minLength": 1,
+																								"type": "string"
+																							},
+																							"operator": {
+																								"enum": [
+																									"equals",
+																									"not_equals",
+																									"greater_than",
+																									"less_than",
+																									"greater_than_or_equals",
+																									"less_than_or_equals",
+																									"contains",
+																									"starts_with",
+																									"ends_with",
+																									"in",
+																									"not_in"
+																								],
+																								"type": "string"
+																							},
+																							"value": {
+																								"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																							}
+																						},
+																						"required": [
+																							"attribute",
+																							"operator",
+																							"value"
+																						],
+																						"type": "object"
+																					},
+																					{
+																						"additionalProperties": false,
+																						"properties": {
+																							"clauses": {
+																								"items": {
+																									"anyOf": [
+																										{
+																											"additionalProperties": false,
+																											"properties": {
+																												"attribute": {
+																													"maxLength": 64,
+																													"minLength": 1,
+																													"type": "string"
+																												},
+																												"operator": {
+																													"enum": [
+																														"equals",
+																														"not_equals",
+																														"greater_than",
+																														"less_than",
+																														"greater_than_or_equals",
+																														"less_than_or_equals",
+																														"contains",
+																														"starts_with",
+																														"ends_with",
+																														"in",
+																														"not_in"
+																													],
+																													"type": "string"
+																												},
+																												"value": {
+																													"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																												}
+																											},
+																											"required": [
+																												"attribute",
+																												"operator",
+																												"value"
+																											],
+																											"type": "object"
+																										},
+																										{
+																											"additionalProperties": false,
+																											"properties": {
+																												"clauses": {
+																													"items": {
+																														"anyOf": [
+																															{
+																																"additionalProperties": false,
+																																"properties": {
+																																	"attribute": {
+																																		"maxLength": 64,
+																																		"minLength": 1,
+																																		"type": "string"
+																																	},
+																																	"operator": {
+																																		"enum": [
+																																			"equals",
+																																			"not_equals",
+																																			"greater_than",
+																																			"less_than",
+																																			"greater_than_or_equals",
+																																			"less_than_or_equals",
+																																			"contains",
+																																			"starts_with",
+																																			"ends_with",
+																																			"in",
+																																			"not_in"
+																																		],
+																																		"type": "string"
+																																	},
+																																	"value": {
+																																		"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																	}
+																																},
+																																"required": [
+																																	"attribute",
+																																	"operator",
+																																	"value"
+																																],
+																																"type": "object"
+																															},
+																															{
+																																"additionalProperties": false,
+																																"properties": {
+																																	"clauses": {
+																																		"items": {
+																																			"anyOf": [
+																																				{
+																																					"additionalProperties": false,
+																																					"properties": {
+																																						"attribute": {
+																																							"maxLength": 64,
+																																							"minLength": 1,
+																																							"type": "string"
+																																						},
+																																						"operator": {
+																																							"enum": [
+																																								"equals",
+																																								"not_equals",
+																																								"greater_than",
+																																								"less_than",
+																																								"greater_than_or_equals",
+																																								"less_than_or_equals",
+																																								"contains",
+																																								"starts_with",
+																																								"ends_with",
+																																								"in",
+																																								"not_in"
+																																							],
+																																							"type": "string"
+																																						},
+																																						"value": {
+																																							"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																						}
+																																					},
+																																					"required": [
+																																						"attribute",
+																																						"operator",
+																																						"value"
+																																					],
+																																					"type": "object"
+																																				},
+																																				{
+																																					"additionalProperties": false,
+																																					"properties": {
+																																						"clauses": {
+																																							"items": {
+																																								"anyOf": [
+																																									{
+																																										"additionalProperties": false,
+																																										"properties": {
+																																											"attribute": {
+																																												"maxLength": 64,
+																																												"minLength": 1,
+																																												"type": "string"
+																																											},
+																																											"operator": {
+																																												"enum": [
+																																													"equals",
+																																													"not_equals",
+																																													"greater_than",
+																																													"less_than",
+																																													"greater_than_or_equals",
+																																													"less_than_or_equals",
+																																													"contains",
+																																													"starts_with",
+																																													"ends_with",
+																																													"in",
+																																													"not_in"
+																																												],
+																																												"type": "string"
+																																											},
+																																											"value": {
+																																												"description": "Value to compare against the context attribute. Must be an array for `in` and `not_in`; numeric and ISO-8601 datetime strings are accepted by the ordering operators."
+																																											}
+																																										},
+																																										"required": [
+																																											"attribute",
+																																											"operator",
+																																											"value"
+																																										],
+																																										"type": "object"
+																																									},
+																																									{
+																																										"additionalProperties": false,
+																																										"properties": {
+																																											"clauses": {
+																																												"items": {
+																																													"oneOf": [
+																																														{
+																																															"nullable": true,
+																																															"type": "string"
+																																														},
+																																														{
+																																															"type": "number"
+																																														},
+																																														{
+																																															"type": "boolean"
+																																														},
+																																														{
+																																															"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																															"type": "object"
+																																														},
+																																														{
+																																															"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.rules.items.properties.conditions.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items.anyOf.1.properties.clauses.items]",
+																																															"type": "array"
+																																														}
+																																													]
+																																												},
+																																												"minItems": 1,
+																																												"type": "array"
+																																											},
+																																											"logical_operator": {
+																																												"enum": [
+																																													"AND",
+																																													"OR"
+																																												],
+																																												"type": "string"
+																																											}
+																																										},
+																																										"required": [
+																																											"logical_operator",
+																																											"clauses"
+																																										],
+																																										"type": "object"
+																																									}
+																																								]
+																																							},
+																																							"minItems": 1,
+																																							"type": "array"
+																																						},
+																																						"logical_operator": {
+																																							"enum": [
+																																								"AND",
+																																								"OR"
+																																							],
+																																							"type": "string"
+																																						}
+																																					},
+																																					"required": [
+																																						"logical_operator",
+																																						"clauses"
+																																					],
+																																					"type": "object"
+																																				}
+																																			]
+																																		},
+																																		"minItems": 1,
+																																		"type": "array"
+																																	},
+																																	"logical_operator": {
+																																		"enum": [
+																																			"AND",
+																																			"OR"
+																																		],
+																																		"type": "string"
+																																	}
+																																},
+																																"required": [
+																																	"logical_operator",
+																																	"clauses"
+																																],
+																																"type": "object"
+																															}
+																														]
+																													},
+																													"minItems": 1,
+																													"type": "array"
+																												},
+																												"logical_operator": {
+																													"enum": [
+																														"AND",
+																														"OR"
+																													],
+																													"type": "string"
+																												}
+																											},
+																											"required": [
+																												"logical_operator",
+																												"clauses"
+																											],
+																											"type": "object"
+																										}
+																									]
+																								},
+																								"minItems": 1,
+																								"type": "array"
+																							},
+																							"logical_operator": {
+																								"enum": [
+																									"AND",
+																									"OR"
+																								],
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"logical_operator",
+																							"clauses"
+																						],
+																						"type": "object"
+																					}
+																				]
+																			},
+																			"minItems": 1,
+																			"type": "array"
+																		},
+																		"logical_operator": {
+																			"enum": [
+																				"AND",
+																				"OR"
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"logical_operator",
+																		"clauses"
+																	],
+																	"type": "object"
+																}
+															]
+														},
+														"type": "array"
+													},
+													"priority": {
+														"description": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+														"minimum": 1,
+														"type": "integer"
+													},
+													"rollout": {
+														"additionalProperties": false,
+														"properties": {
+															"attribute": {
+																"description": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request.",
+																"minLength": 1,
+																"type": "string"
+															},
+															"percentage": {
+																"description": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+																"maximum": 100,
+																"minimum": 0,
+																"type": "number"
+															}
+														},
+														"required": [
+															"percentage"
+														],
+														"type": "object"
+													},
+													"serve_variation": {
+														"description": "Variation served when this rule matches. Must be a key in `variations`.",
+														"minLength": 1,
+														"type": "string"
+													}
+												},
+												"required": [
+													"priority",
+													"conditions",
+													"serve_variation"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"type": {
+											"description": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests.",
+											"enum": [
+												"boolean",
+												"string",
+												"number",
+												"json"
+											],
+											"type": "string"
+										},
+										"updated_at": {
+											"type": "string"
+										},
+										"updated_by": {
+											"type": "string"
+										},
+										"variations": {
+											"additionalProperties": {
+												"oneOf": [
+													{
+														"nullable": true,
+														"type": "string"
+													},
+													{
+														"type": "number"
+													},
+													{
+														"type": "boolean"
+													},
+													{
+														"additionalProperties": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.variations.additionalProperties]",
+														"type": "object"
+													},
+													{
+														"items": "[Circular ~.PUT /accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}.responses.200.content.application/json.schema.properties.result.properties.variations.additionalProperties]",
+														"type": "array"
+													}
+												]
+											},
+											"description": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+											"type": "object"
+										}
+									},
+									"required": [
+										"key",
+										"default_variation",
+										"variations",
+										"rules",
+										"enabled"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Updated flag."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Unauthorized."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Not found."
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Too many requests."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update flag",
+		"tags": [
+			"Flags"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.flagship.update"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}

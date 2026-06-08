@@ -1,0 +1,326 @@
+{
+	"GET /accounts/{account_id}/flagship/apps/{app_id}/evaluate": {
+		"description": "Evaluates a flag against the provided context. Pass context attributes as query parameters; boolean and numeric strings are coerced automatically. For low-latency in-Worker evaluation, prefer the Flagship binding over this endpoint.",
+		"operationId": "flagship_evaluate_flag",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Cloudflare account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "App identifier.",
+				"in": "path",
+				"name": "app_id",
+				"required": true,
+				"schema": {
+					"description": "App identifier.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The flag key to evaluate.",
+				"in": "query",
+				"name": "flagKey",
+				"required": true,
+				"schema": {
+					"description": "The flag key to evaluate.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Context targeting key (per OpenFeature spec); used for percentage rollout bucketing.",
+				"in": "query",
+				"name": "targetingKey",
+				"schema": {
+					"description": "Context targeting key (per OpenFeature spec); used for percentage rollout bucketing.",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"flagKey": {
+									"type": "string"
+								},
+								"reason": {
+									"enum": [
+										"TARGETING_MATCH",
+										"DEFAULT",
+										"DISABLED",
+										"SPLIT"
+									],
+									"type": "string"
+								},
+								"value": {
+									"oneOf": [
+										{
+											"nullable": true,
+											"type": "string"
+										},
+										{
+											"type": "number"
+										},
+										{
+											"type": "boolean"
+										},
+										{
+											"additionalProperties": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/evaluate.responses.200.content.application/json.schema.properties.value]",
+											"type": "object"
+										},
+										{
+											"items": "[Circular ~.GET /accounts/{account_id}/flagship/apps/{app_id}/evaluate.responses.200.content.application/json.schema.properties.value]",
+											"type": "array"
+										}
+									]
+								},
+								"variant": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"flagKey",
+								"variant",
+								"reason"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Flag evaluation result."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Missing or invalid flagKey."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Flag or app not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Evaluation error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Evaluate flag",
+		"tags": [
+			"Evaluation"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"DNS View Write",
+			"DNS View Read",
+			"SCIM Provisioning",
+			"Load Balancers Account Write",
+			"Load Balancers Account Read",
+			"Zero Trust: PII Read",
+			"DDoS Botnet Feed Write",
+			"DDoS Botnet Feed Read",
+			"Workers R2 Storage Write",
+			"Workers R2 Storage Read",
+			"DDoS Protection Write",
+			"DDoS Protection Read",
+			"Workers Tail Read",
+			"Workers KV Storage Write",
+			"Workers KV Storage Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Load Balancing: Monitors and Pools Write",
+			"Load Balancing: Monitors and Pools Read",
+			"Account Firewall Access Rules Write",
+			"Account Firewall Access Rules Read",
+			"DNS Firewall Write",
+			"DNS Firewall Read",
+			"Billing Write",
+			"Billing Read",
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.flagship.evaluate"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	}
+}
