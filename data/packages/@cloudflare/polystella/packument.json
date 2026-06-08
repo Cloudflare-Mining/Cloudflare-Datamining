@@ -1,12 +1,59 @@
 {
 	"name": "@cloudflare/polystella",
 	"dist-tags": {
-		"latest": "0.2.0"
+		"latest": "0.2.1"
 	},
 	"versions": {
 		"0.2.0": {
 			"name": "@cloudflare/polystella",
 			"version": "0.2.0",
+			"dependencies": {
+				"yaml": "^2.8.3",
+				"s3mini": "^0.9.4",
+				"p-retry": "^8.0.0",
+				"unified": "^11.0.5",
+				"picomatch": "^4.0.4",
+				"smol-toml": "^1.6.1",
+				"remark-gfm": "^4.0.1",
+				"remark-mdx": "^3.1.1",
+				"remark-parse": "^11.0.0",
+				"remark-frontmatter": "^5.0.0"
+			},
+			"devDependencies": {
+				"vitest": "^3.0.0",
+				"prettier": "3.8.3",
+				"typescript": "^5.6.0",
+				"@types/mdast": "^4.0.4",
+				"@types/react": "^19.2.14",
+				"@changesets/cli": "^2.27.0",
+				"@astrojs/sitemap": "^3.7.2",
+				"@types/picomatch": "^4.0.0",
+				"@changesets/changelog-github": "^0.5.0"
+			},
+			"peerDependencies": {
+				"astro": "^6.0.0",
+				"react": "^17.0.0 || ^18.0.0 || ^19.0.0"
+			},
+			"bin": {
+				"polystella": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "1d049e362275f00500eab44b0589a02bd8ddf1bd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/polystella/-/polystella-0.2.0.tgz",
+				"fileCount": 349,
+				"integrity": "sha512-xONypxYwiMmXZd4F2d6nVCbq8FXs7cOZ/dU6louGqBraUueomhcEwwwpiSjbwT1WhsBMvDj97GRD7GYZaasx1w==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDl6jal9NJV3t1FhiVbgx3BMCwpBD2/doP8O4UGGa0dkQIhAM6hAC9N5IxRwiZiOFblx8ab3u2uPnuXUN7nLI+zMhJC",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1554404
+			}
+		},
+		"0.2.1": {
+			"name": "@cloudflare/polystella",
+			"version": "0.2.1",
 			"dependencies": {
 				"p-retry": "^8.0.0",
 				"picomatch": "^4.0.4",
@@ -38,15 +85,15 @@
 				"polystella": "dist/cli.js"
 			},
 			"dist": {
-				"integrity": "sha512-xONypxYwiMmXZd4F2d6nVCbq8FXs7cOZ/dU6louGqBraUueomhcEwwwpiSjbwT1WhsBMvDj97GRD7GYZaasx1w==",
-				"shasum": "1d049e362275f00500eab44b0589a02bd8ddf1bd",
-				"tarball": "https://registry.npmjs.org/@cloudflare/polystella/-/polystella-0.2.0.tgz",
+				"integrity": "sha512-kh4yAaFhdh82PV+vQTLmsk5yxngoD3CWIesj3vjjsOV7WGwuYUka1PdXSAktJT1Do16o8/RdGVUp8n7vvm8FBg==",
+				"shasum": "d527e5d23c427f25e1791d623a25ddd70c0fdeea",
+				"tarball": "https://registry.npmjs.org/@cloudflare/polystella/-/polystella-0.2.1.tgz",
 				"fileCount": 349,
-				"unpackedSize": 1554404,
+				"unpackedSize": 1556945,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDl6jal9NJV3t1FhiVbgx3BMCwpBD2/doP8O4UGGa0dkQIhAM6hAC9N5IxRwiZiOFblx8ab3u2uPnuXUN7nLI+zMhJC"
+						"sig": "MEYCIQC6EFcI5tC0iJ/cymkOdixIn+ydLOMKXCJemxs1c7u2CgIhAM6yJ8ti1nC1odwF5K6XfkjaGtojzmqyQ/MdAT5Ny5iL"
 					}
 				]
 			}
