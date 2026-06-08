@@ -31,8 +31,15 @@
 </ul>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<p>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated salary of $161,000 - $287,000<br>For Bay Area-based hires: Estimated annual salary of $168,000 - $303,000</p>
-<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual <strong>salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan</strong>.</p>
+<ul>
+	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated salary of $161,000 - $287,000<br>For Bay Area-based hires: Estimated annual salary of $168,000 - $303,000</li>
+	<li>For Portugal based hires: Estimated annual salary is between €68,000 - €94,000.
+		<ul>
+			<li data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</li>
+		</ul>
+	</li>
+</ul>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual&nbsp;<strong>salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan</strong>.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
