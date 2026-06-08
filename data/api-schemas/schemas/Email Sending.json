@@ -448,7 +448,7 @@
 								"type": "string"
 							},
 							"to": {
-								"description": "Recipient(s). A single email string or an array of email strings.",
+								"description": "Recipient(s). Optional if cc or bcc is provided. A single email string or an array of email strings.",
 								"oneOf": [
 									{
 										"description": "An email address as a plain string.",
@@ -473,7 +473,6 @@
 						},
 						"required": [
 							"from",
-							"to",
 							"subject"
 						],
 						"type": "object"
@@ -529,6 +528,7 @@
 										"delivered": [
 											"recipient@example.com"
 										],
+										"message_id": "<aB3xK9mP2qR5sT8uV0wX1yZ4cD6fG7hJ9kL0@example.com>",
 										"permanent_bounces": [],
 										"queued": []
 									},
@@ -543,6 +543,12 @@
 												"type": "string"
 											},
 											"type": "array"
+										},
+										"message_id": {
+											"description": "Message ID of the sent email.",
+											"example": "<aB3xK9mP2qR5sT8uV0wX1yZ4cD6fG7hJ9kL0@example.com>",
+											"pattern": "^[\\x20-\\x7E]+$",
+											"type": "string"
 										},
 										"permanent_bounces": {
 											"description": "Email addresses that permanently bounced.",
@@ -564,6 +570,7 @@
 										}
 									},
 									"required": [
+										"message_id",
 										"delivered",
 										"queued",
 										"permanent_bounces"
@@ -996,6 +1003,7 @@
 										"delivered": [
 											"recipient@example.com"
 										],
+										"message_id": "<aB3xK9mP2qR5sT8uV0wX1yZ4cD6fG7hJ9kL0@example.com>",
 										"permanent_bounces": [],
 										"queued": []
 									},
@@ -1010,6 +1018,12 @@
 												"type": "string"
 											},
 											"type": "array"
+										},
+										"message_id": {
+											"description": "Message ID of the sent email.",
+											"example": "<aB3xK9mP2qR5sT8uV0wX1yZ4cD6fG7hJ9kL0@example.com>",
+											"pattern": "^[\\x20-\\x7E]+$",
+											"type": "string"
 										},
 										"permanent_bounces": {
 											"description": "Email addresses that permanently bounced.",
@@ -1031,6 +1045,7 @@
 										}
 									},
 									"required": [
+										"message_id",
 										"delivered",
 										"queued",
 										"permanent_bounces"
