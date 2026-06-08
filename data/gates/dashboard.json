@@ -179,7 +179,7 @@
 		"enabled": true
 	},
 	"aig-minimax-promotion-banner-2026": {
-		"enabled": true
+		"enabled": false
 	},
 	"aig-unified-catalog-detail-view": {
 		"enabled": true
@@ -725,7 +725,7 @@
 		"enabled": true
 	},
 	"data-audit-logs-history": {
-		"enabled": false
+		"enabled": true
 	},
 	"data-audit-logs-org": {
 		"enabled": false
@@ -1599,6 +1599,9 @@
 	"loui-lex-scheduled-queries": {
 		"enabled": true
 	},
+	"loui-rules-action-first-form": {
+		"enabled": false
+	},
 	"loui-rules-ide-filter-editor": {
 		"enabled": false
 	},
@@ -1625,6 +1628,9 @@
 	},
 	"lrsp-legal-request-intake-form-enabled": {
 		"enabled": true
+	},
+	"lrsp-legal-request-messaging": {
+		"enabled": false
 	},
 	"magic-alerts-stepper-flow": {
 		"enabled": true
@@ -2266,6 +2272,9 @@
 	"r2-sql-studio": {
 		"enabled": false
 	},
+	"r2-sql-studio-inline": {
+		"enabled": false
+	},
 	"rachel-test-delete-okay": {
 		"enabled": true,
 		"branches": [
@@ -2640,6 +2649,9 @@
 			"baseline",
 			"experiment"
 		]
+	},
+	"test-test-test": {
+		"enabled": true
 	},
 	"testing-rl-migration": {
 		"enabled": true
