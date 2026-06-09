@@ -573,6 +573,31 @@
 						}
 					]
 				}
+			},
+			{
+				"description": "Comma-separated list of fields to include in the response. When omitted,\nall fields are returned.\n",
+				"example": "uuid,name,version",
+				"explode": false,
+				"in": "query",
+				"name": "fields",
+				"schema": {
+					"items": {
+						"enum": [
+							"uuid",
+							"name",
+							"created_at",
+							"version",
+							"jurisdiction",
+							"num_tables",
+							"file_size",
+							"running_in_region",
+							"read_replication"
+						],
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"style": "form"
 			}
 		],
 		"responses": {

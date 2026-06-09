@@ -137,6 +137,12 @@
 											"readOnly": true,
 											"type": "array"
 										},
+										"secure_web_gateway": {
+											"default": false,
+											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"example": false,
+											"type": "boolean"
+										},
 										"status": {
 											"default": "waiting",
 											"readOnly": true,
@@ -451,6 +457,12 @@
 												"readOnly": true,
 												"type": "array"
 											},
+											"secure_web_gateway": {
+												"default": false,
+												"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+												"example": false,
+												"type": "boolean"
+											},
 											"status": {
 												"default": "waiting",
 												"readOnly": true,
@@ -749,6 +761,12 @@
 											"readOnly": true,
 											"type": "array"
 										},
+										"secure_web_gateway": {
+											"default": false,
+											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"example": false,
+											"type": "boolean"
+										},
 										"status": {
 											"default": "waiting",
 											"readOnly": true,
@@ -971,6 +989,12 @@
 								"maxLength": 350,
 								"type": "string"
 							},
+							"secure_web_gateway": {
+								"default": false,
+								"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+								"example": false,
+								"type": "boolean"
+							},
 							"updated_prompts": {
 								"items": {
 									"properties": {
@@ -1145,6 +1169,12 @@
 											},
 											"readOnly": true,
 											"type": "array"
+										},
+										"secure_web_gateway": {
+											"default": false,
+											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"example": false,
+											"type": "boolean"
 										},
 										"status": {
 											"default": "waiting",
@@ -1521,6 +1551,12 @@
 								"maxLength": 350,
 								"type": "string"
 							},
+							"secure_web_gateway": {
+								"default": false,
+								"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+								"example": false,
+								"type": "boolean"
+							},
 							"updated_prompts": {
 								"items": {
 									"properties": {
@@ -1689,6 +1725,12 @@
 											},
 											"readOnly": true,
 											"type": "array"
+										},
+										"secure_web_gateway": {
+											"default": false,
+											"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+											"example": false,
+											"type": "boolean"
 										},
 										"status": {
 											"default": "waiting",

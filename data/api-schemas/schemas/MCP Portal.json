@@ -397,6 +397,12 @@
 															"readOnly": true,
 															"type": "array"
 														},
+														"secure_web_gateway": {
+															"default": false,
+															"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+															"example": false,
+															"type": "boolean"
+														},
 														"status": {
 															"default": "waiting",
 															"readOnly": true,
@@ -782,6 +788,12 @@
 														},
 														"readOnly": true,
 														"type": "array"
+													},
+													"secure_web_gateway": {
+														"default": false,
+														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+														"example": false,
+														"type": "boolean"
 													},
 													"status": {
 														"default": "waiting",
@@ -1289,6 +1301,12 @@
 														},
 														"readOnly": true,
 														"type": "array"
+													},
+													"secure_web_gateway": {
+														"default": false,
+														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+														"example": false,
+														"type": "boolean"
 													},
 													"status": {
 														"default": "waiting",
@@ -1803,6 +1821,12 @@
 														},
 														"readOnly": true,
 														"type": "array"
+													},
+													"secure_web_gateway": {
+														"default": false,
+														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
+														"example": false,
+														"type": "boolean"
 													},
 													"status": {
 														"default": "waiting",
