@@ -1208,51 +1208,51 @@
 			"name": "@cloudflare/think",
 			"version": "0.8.8",
 			"dependencies": {
-				"@cloudflare/codemode": "^0.3.8",
-				"@cloudflare/shell": "^0.3.9",
-				"aywson": "^0.0.16",
 				"chat": "^4.30.0",
-				"create-think": "^0.0.3",
+				"yargs": "^18.0.0",
+				"aywson": "^0.0.16",
 				"just-bash": "^3.0.1",
 				"smol-toml": "^1.6.1",
-				"yargs": "^18.0.0"
+				"create-think": "^0.0.3",
+				"@cloudflare/shell": "^0.3.9",
+				"@cloudflare/codemode": "^0.3.8"
 			},
 			"devDependencies": {
-				"@ai-sdk/anthropic": "^3.0.81",
-				"@ai-sdk/openai": "^3.0.67",
-				"@chat-adapter/telegram": "^4.30.0",
-				"@types/yargs": "^17.0.35",
 				"ai": "^6.0.196",
-				"zod": "^4.4.3"
+				"zod": "^4.4.3",
+				"@types/yargs": "^17.0.35",
+				"@ai-sdk/openai": "^3.0.67",
+				"@ai-sdk/anthropic": "^3.0.81",
+				"@chat-adapter/telegram": "^4.30.0"
 			},
 			"peerDependencies": {
-				"@chat-adapter/telegram": "^4.29.0",
-				"agents": ">=0.14.0 <1.0.0",
 				"ai": "^6.0.182",
+				"zod": "^4.0.0",
 				"vite": ">=6 <9",
-				"zod": "^4.0.0"
+				"agents": ">=0.14.0 <1.0.0",
+				"@chat-adapter/telegram": "^4.29.0"
 			},
 			"bin": {
 				"think": "dist/cli/index.js"
 			},
 			"dist": {
-				"integrity": "sha512-JUxivS4StuyNbx+vXCmqAYqnTvqCMxPIqhtTXoIAN2QGvBfeBxlGsBjMlMQJCbDBRo26dXvqnrum1Jd5gOFJeg==",
 				"shasum": "f6ab0616d13d03ff2bbe8cc98de9931f5247650d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/think/-/think-0.8.8.tgz",
 				"fileCount": 62,
-				"unpackedSize": 1511185,
+				"integrity": "sha512-JUxivS4StuyNbx+vXCmqAYqnTvqCMxPIqhtTXoIAN2QGvBfeBxlGsBjMlMQJCbDBRo26dXvqnrum1Jd5gOFJeg==",
+				"signatures": [
+					{
+						"sig": "MEUCID7gGkL/5rbsUyaOWnPoW0K65EOywcID3sSRWPKHsk3dAiEAmQo/Z7OBJ83k0NK0lZ/F2rhxeyq+FL33zczPV7G7oaQ=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fthink@0.8.8",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCID7gGkL/5rbsUyaOWnPoW0K65EOywcID3sSRWPKHsk3dAiEAmQo/Z7OBJ83k0NK0lZ/F2rhxeyq+FL33zczPV7G7oaQ="
-					}
-				]
+				"unpackedSize": 1511185
 			}
 		}
 	}

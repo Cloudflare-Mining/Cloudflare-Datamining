@@ -825,41 +825,41 @@
 			"name": "@cloudflare/codemode",
 			"version": "0.3.8",
 			"dependencies": {
-				"@types/json-schema": "^7.0.15",
-				"acorn": "^8.16.0"
+				"acorn": "^8.16.0",
+				"@types/json-schema": "^7.0.15"
 			},
 			"devDependencies": {
-				"@modelcontextprotocol/sdk": "1.29.0",
-				"@playwright/test": "^1.60.0",
-				"@tanstack/ai": "^0.18.0",
 				"ai": "^6.0.185",
+				"zod": "^4.4.3",
 				"vitest": "4.1.6",
-				"zod": "^4.4.3"
+				"@tanstack/ai": "^0.18.0",
+				"@playwright/test": "^1.60.0",
+				"@modelcontextprotocol/sdk": "1.29.0"
 			},
 			"peerDependencies": {
-				"@modelcontextprotocol/sdk": "^1.25.0",
-				"@tanstack/ai": ">=0.8.0 <1.0.0",
 				"ai": "^6.0.0",
-				"zod": "^4.0.0"
+				"zod": "^4.0.0",
+				"@tanstack/ai": ">=0.8.0 <1.0.0",
+				"@modelcontextprotocol/sdk": "^1.25.0"
 			},
 			"dist": {
-				"integrity": "sha512-PVe99dFf/dvf0JOh1SBTYL7YT0nXusmqaK0lRrrlHGIQdGAnKRSb4VtaE5atiDVgN/U9G16bSkej7Pn5lWhG1g==",
 				"shasum": "0282450763e0be43371479ad7fd455adf391e3db",
 				"tarball": "https://registry.npmjs.org/@cloudflare/codemode/-/codemode-0.3.8.tgz",
 				"fileCount": 29,
-				"unpackedSize": 245264,
+				"integrity": "sha512-PVe99dFf/dvf0JOh1SBTYL7YT0nXusmqaK0lRrrlHGIQdGAnKRSb4VtaE5atiDVgN/U9G16bSkej7Pn5lWhG1g==",
+				"signatures": [
+					{
+						"sig": "MEUCIQC2Y1le0Tzt1c4QZUMUdCqzdDw5mP1388UhTMiPTT95gAIgLZQ/Me5EhX2FCEcUBViwy4JGuw7eMHLoCtx0chTdkq8=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcodemode@0.3.8",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQC2Y1le0Tzt1c4QZUMUdCqzdDw5mP1388UhTMiPTT95gAIgLZQ/Me5EhX2FCEcUBViwy4JGuw7eMHLoCtx0chTdkq8="
-					}
-				]
+				"unpackedSize": 245264
 			}
 		}
 	}

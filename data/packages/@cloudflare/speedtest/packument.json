@@ -1616,40 +1616,40 @@
 			"name": "@cloudflare/speedtest",
 			"version": "1.10.1",
 			"devDependencies": {
-				"@eslint/js": "^9.39.4",
-				"@vitest/browser-playwright": "^4.1.7",
+				"husky": "^9.1.7",
 				"eslint": "^9.27.0",
+				"tsdown": "^0.22.1",
+				"vitest": "^4.1.7",
+				"prettier": "^3.5.3",
+				"@eslint/js": "^9.39.4",
+				"playwright": "^1.60.0",
+				"typescript": "^5.8.3",
+				"lint-staged": "^16.0.0",
+				"typescript-eslint": "^8.60.0",
+				"eslint-plugin-json": "^4.0.1",
 				"eslint-plugin-compat": "^6.0.2",
 				"eslint-plugin-import": "^2.31.0",
-				"eslint-plugin-json": "^4.0.1",
 				"eslint-plugin-prettier": "^5.4.0",
-				"husky": "^9.1.7",
-				"lint-staged": "^16.0.0",
-				"playwright": "^1.60.0",
-				"prettier": "^3.5.3",
-				"tsdown": "^0.22.1",
-				"typescript": "^5.8.3",
-				"typescript-eslint": "^8.60.0",
-				"vitest": "^4.1.7"
+				"@vitest/browser-playwright": "^4.1.7"
 			},
 			"dist": {
-				"integrity": "sha512-VRS5cONxbK82MLufBcihPzQXdYgJexj7x2cu4oIv8lSOFfSrKNM/sfzBpBYbrqPuubOY4Xm111RbM3SEzHCkwQ==",
 				"shasum": "fb178c159fcb9a3cf93731d51ea96513cee6f0bb",
 				"tarball": "https://registry.npmjs.org/@cloudflare/speedtest/-/speedtest-1.10.1.tgz",
 				"fileCount": 6,
-				"unpackedSize": 218139,
+				"integrity": "sha512-VRS5cONxbK82MLufBcihPzQXdYgJexj7x2cu4oIv8lSOFfSrKNM/sfzBpBYbrqPuubOY4Xm111RbM3SEzHCkwQ==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCPXPqCfalc+N/v4GqJQjf9vKnKqwUbIXV5+8rrpQQs3QIhAKlEFl61wtenJajzLVSFzcCq94o+3kAkrCzqMsgrTGZc",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fspeedtest@1.10.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCPXPqCfalc+N/v4GqJQjf9vKnKqwUbIXV5+8rrpQQs3QIhAKlEFl61wtenJajzLVSFzcCq94o+3kAkrCzqMsgrTGZc"
-					}
-				]
+				"unpackedSize": 218139
 			},
 			"engines": {
 				"node": ">=18"

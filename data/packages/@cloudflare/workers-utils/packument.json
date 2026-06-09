@@ -1197,24 +1197,24 @@
 				"undici": "7.24.8"
 			},
 			"devDependencies": {
-				"@types/command-exists": "^1.2.0",
-				"@types/node": "22.15.17",
-				"@types/signal-exit": "^3.0.1",
-				"@vitest/ui": "4.1.0",
-				"cloudflare": "^5.2.0",
-				"command-exists": "^1.2.9",
-				"concurrently": "^8.2.2",
+				"tsup": "8.3.0",
+				"tsdown": "^0.15.9",
+				"vitest": "4.1.0",
 				"empathic": "^2.0.0",
-				"jsonc-parser": "3.2.0",
-				"signal-exit": "3.0.7",
 				"smol-toml": "1.5.2",
 				"ts-dedent": "^2.2.0",
-				"tsdown": "^0.15.9",
-				"tsup": "8.3.0",
+				"@vitest/ui": "4.1.0",
+				"cloudflare": "^5.2.0",
 				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"signal-exit": "3.0.7",
+				"concurrently": "^8.2.2",
+				"jsonc-parser": "3.2.0",
 				"update-check": "^1.5.4",
-				"vitest": "4.1.0",
 				"xdg-app-paths": "^8.3.0",
+				"command-exists": "^1.2.9",
+				"@types/signal-exit": "^3.0.1",
+				"@types/command-exists": "^1.2.0",
 				"@cloudflare/workers-shared": "0.19.6",
 				"@cloudflare/workers-tsconfig": "0.0.0",
 				"@cloudflare/workflows-shared": "0.11.1"
@@ -1223,23 +1223,23 @@
 				"vitest": "^4.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-ICGXdr88XzWqd1KQht4sO61npQhkfaT3uY6lei4I7MmaHzGNxi4DjWoYlQOHFB7wgs+9m4O8tV5MH0+wipLSxw==",
 				"shasum": "d7d16e91091c72e609145f5c1ad5f0c0d50b33d7",
 				"tarball": "https://registry.npmjs.org/@cloudflare/workers-utils/-/workers-utils-0.23.0.tgz",
 				"fileCount": 16,
-				"unpackedSize": 739203,
+				"integrity": "sha512-ICGXdr88XzWqd1KQht4sO61npQhkfaT3uY6lei4I7MmaHzGNxi4DjWoYlQOHFB7wgs+9m4O8tV5MH0+wipLSxw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQDTSHuMbu+muUDWG6a4JrO5pgxHVMzTIN26DkJTj9GL9wIhAMvbETDyMR8KASk3XjAvuSURvZ5VkYPaAwggwVrzm+Vj",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-utils@0.23.0",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQDTSHuMbu+muUDWG6a4JrO5pgxHVMzTIN26DkJTj9GL9wIhAMvbETDyMR8KASk3XjAvuSURvZ5VkYPaAwggwVrzm+Vj"
-					}
-				]
+				"unpackedSize": 739203
 			}
 		}
 	}
