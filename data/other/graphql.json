@@ -1586,7 +1586,6 @@
 		"coloName": "Cloudflare colo code",
 		"country": "Source country code",
 		"datetime": "Day start timestamp (daily granularity)",
-		"destination": "Query name (destination domain)",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"edeErrors": "Union of EDE codes observed in the group (rollup of raw edeErrors via groupUniqArrayArray; sorted ascending for deterministic output)",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
@@ -1609,9 +1608,17 @@
 	},
 	"AccountCf1GatewayDns1dGroupsSum": {
 		"__description": "",
+		"edeErrorArray": "EDE codes observed in the group, for EDE Codes Over Time. Elements correspond to edeErrorCountArray by index.",
+		"edeErrorCountArray": "Query counts per EDE code. Elements correspond to edeErrorArray by index.",
 		"queries": "Total DNS queries",
+		"queryApplicationIdArray": "Application IDs observed in the group, for Top Apps by query count. Elements correspond to queryApplicationIdCountArray by index.",
+		"queryApplicationIdCountArray": "Query counts per application ID. Elements correspond to queryApplicationIdArray by index.",
 		"queryBytes": "Total query bytes",
-		"responseBytes": "Total response bytes"
+		"queryCategoryIdArray": "Query-category IDs observed in the group, for DNS Queries by Category. Elements correspond to queryCategoryIdCountArray by index.",
+		"queryCategoryIdCountArray": "Query counts per query-category ID. Elements correspond to queryCategoryIdArray by index.",
+		"responseBytes": "Total response bytes",
+		"topQueryNameCounts": "Query counts for topQueryNames, most frequent first. Elements correspond to topQueryNames by index.",
+		"topQueryNames": "Top query names (hostnames) by query count, most frequent first (up to 100; backed by a stored top-1000 approx_top_k for merge accuracy). Elements correspond to topQueryNameCounts by index."
 	},
 	"AccountCf1GatewayDns1dGroupsUniq": {
 		"__description": "",
@@ -1629,7 +1636,6 @@
 		"coloName": "Cloudflare colo code",
 		"country": "Source country code",
 		"datetime": "Hour start timestamp (hourly granularity)",
-		"destination": "Query name (destination domain)",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"edeErrors": "Union of EDE codes observed in the group (rollup of raw edeErrors via groupUniqArrayArray; sorted ascending for deterministic output)",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
@@ -1652,9 +1658,17 @@
 	},
 	"AccountCf1GatewayDns1hGroupsSum": {
 		"__description": "",
+		"edeErrorArray": "EDE codes observed in the group, for EDE Codes Over Time. Elements correspond to edeErrorCountArray by index.",
+		"edeErrorCountArray": "Query counts per EDE code. Elements correspond to edeErrorArray by index.",
 		"queries": "Total DNS queries",
+		"queryApplicationIdArray": "Application IDs observed in the group, for Top Apps by query count. Elements correspond to queryApplicationIdCountArray by index.",
+		"queryApplicationIdCountArray": "Query counts per application ID. Elements correspond to queryApplicationIdArray by index.",
 		"queryBytes": "Total query bytes",
-		"responseBytes": "Total response bytes"
+		"queryCategoryIdArray": "Query-category IDs observed in the group, for DNS Queries by Category. Elements correspond to queryCategoryIdCountArray by index.",
+		"queryCategoryIdCountArray": "Query counts per query-category ID. Elements correspond to queryCategoryIdArray by index.",
+		"responseBytes": "Total response bytes",
+		"topQueryNameCounts": "Query counts for topQueryNames, most frequent first. Elements correspond to topQueryNames by index.",
+		"topQueryNames": "Top query names (hostnames) by query count, most frequent first (up to 100; backed by a stored top-1000 approx_top_k for merge accuracy). Elements correspond to topQueryNameCounts by index."
 	},
 	"AccountCf1GatewayDns1hGroupsUniq": {
 		"__description": "",
@@ -1716,11 +1730,24 @@
 	"AccountCf1GatewayHttp1dGroupsDimensions": {
 		"__description": "",
 		"action": "Gateway action taken",
+		"avBlockedFileHashes": "SHA-256 (hex) set of files blocked by Gateway AV in the window",
+		"avResult": "AV outcome: blocked, scannedClean, or notScanned",
+		"blockedFileReason": "Reason a file was blocked: avscan, sandboxScan, or none (no file blocked)",
 		"country": "Source country code",
 		"datetime": "Day start timestamp (daily granularity)",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"httpHost": "HTTP hostname",
+		"isIsolated": "Whether the request was served through Browser Isolation (1 = yes)",
+		"isolatedApplicationCounts": "Isolated request counts per application (index-aligned with isolatedApplicationIds)",
+		"isolatedApplicationIds": "Application IDs for isolated requests (index-aligned with isolatedApplicationNames and isolatedApplicationCounts)",
+		"isolatedApplicationNames": "Application names for isolated requests (index-aligned with isolatedApplicationIds and isolatedApplicationCounts)",
+		"isolatedCategoryCounts": "Isolated request counts per category (index-aligned with isolatedCategoryIds)",
+		"isolatedCategoryIds": "URL category IDs for isolated requests, sorted ascending (index-aligned with isolatedCategoryCounts)",
+		"requestAntivirusScanned": "Whether the request body was scanned by Gateway AV (1 = scanned)",
+		"responseAntivirusScanned": "Whether the response body was scanned by Gateway AV (1 = scanned)",
+		"sandboxResult": "Sandbox outcome: blocked, scanned, or notScanned",
+		"sandboxScanned": "Whether the request was submitted to Gateway sandbox detonation (1 = yes)",
 		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayHttp1dGroupsFilter_InputObject": {
@@ -1731,11 +1758,18 @@
 	},
 	"AccountCf1GatewayHttp1dGroupsSum": {
 		"__description": "",
+		"antivirusRequestScans": "Requests with request-body AV scanning",
+		"antivirusResponseScans": "Requests with response-body AV scanning",
+		"avBlockedFiles": "Files blocked by Gateway AV",
 		"bodyBytesRcvd": "Total body bytes received",
 		"bodyBytesSent": "Total body bytes sent",
+		"filesScanned": "Total files scanned by Gateway AV",
 		"httpHostBytesRcvd": "Total bytes received per host",
 		"httpHostBytesSent": "Total bytes sent per host",
-		"requests": "Total HTTP requests"
+		"isolatedRequests": "Total requests served through Browser Isolation",
+		"requests": "Total HTTP requests",
+		"sandboxBlocks": "Files blocked by Gateway sandbox",
+		"sandboxScans": "Requests submitted to Gateway sandbox detonation"
 	},
 	"AccountCf1GatewayHttp1dGroupsUniq": {
 		"__description": "",
@@ -1750,11 +1784,24 @@
 	"AccountCf1GatewayHttp1hGroupsDimensions": {
 		"__description": "",
 		"action": "Gateway action taken",
+		"avBlockedFileHashes": "SHA-256 (hex) set of files blocked by Gateway AV in the window",
+		"avResult": "AV outcome: blocked, scannedClean, or notScanned",
+		"blockedFileReason": "Reason a file was blocked: avscan, sandboxScan, or none (no file blocked)",
 		"country": "Source country code",
 		"datetime": "Hour start timestamp (hourly granularity)",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"httpHost": "HTTP hostname",
+		"isIsolated": "Whether the request was served through Browser Isolation (1 = yes)",
+		"isolatedApplicationCounts": "Isolated request counts per application (index-aligned with isolatedApplicationIds)",
+		"isolatedApplicationIds": "Application IDs for isolated requests (index-aligned with isolatedApplicationNames and isolatedApplicationCounts)",
+		"isolatedApplicationNames": "Application names for isolated requests (index-aligned with isolatedApplicationIds and isolatedApplicationCounts)",
+		"isolatedCategoryCounts": "Isolated request counts per category (index-aligned with isolatedCategoryIds)",
+		"isolatedCategoryIds": "URL category IDs for isolated requests, sorted ascending (index-aligned with isolatedCategoryCounts)",
+		"requestAntivirusScanned": "Whether the request body was scanned by Gateway AV (1 = scanned)",
+		"responseAntivirusScanned": "Whether the response body was scanned by Gateway AV (1 = scanned)",
+		"sandboxResult": "Sandbox outcome: blocked, scanned, or notScanned",
+		"sandboxScanned": "Whether the request was submitted to Gateway sandbox detonation (1 = yes)",
 		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayHttp1hGroupsFilter_InputObject": {
@@ -1765,11 +1812,18 @@
 	},
 	"AccountCf1GatewayHttp1hGroupsSum": {
 		"__description": "",
+		"antivirusRequestScans": "Requests with request-body AV scanning",
+		"antivirusResponseScans": "Requests with response-body AV scanning",
+		"avBlockedFiles": "Files blocked by Gateway AV",
 		"bodyBytesRcvd": "Total body bytes received",
 		"bodyBytesSent": "Total body bytes sent",
+		"filesScanned": "Total files scanned by Gateway AV",
 		"httpHostBytesRcvd": "Total bytes received per host",
 		"httpHostBytesSent": "Total bytes sent per host",
-		"requests": "Total HTTP requests"
+		"isolatedRequests": "Total requests served through Browser Isolation",
+		"requests": "Total HTTP requests",
+		"sandboxBlocks": "Files blocked by Gateway sandbox",
+		"sandboxScans": "Requests submitted to Gateway sandbox detonation"
 	},
 	"AccountCf1GatewayHttp1hGroupsUniq": {
 		"__description": "",
@@ -1784,13 +1838,25 @@
 	"AccountCf1GatewayHttpRawGroupsDimensions": {
 		"__description": "",
 		"action": "Gateway action taken",
+		"avBlockedFileHash": "SHA-256 (hex) of the file blocked by Gateway AV; empty when no AV-blocked file hash is available",
+		"avResult": "AV outcome: blocked, scannedClean, or notScanned",
+		"blockedFileReason": "Reason a file was blocked: avscan, sandboxScan, or none (no file blocked)",
+		"categoryIds": "URL category IDs matched by the request",
+		"categoryNames": "URL category names",
 		"country": "Source country code",
 		"datetime": "Request timestamp",
 		"datetimeFiveMinutes": "Request timestamp truncated to five minutes",
 		"datetimeHour": "Request timestamp truncated to hour",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"directApplicationIds": "Application IDs matched on the request hostname",
+		"directApplicationNames": "Application names for the matched applications",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"httpHost": "HTTP hostname",
+		"isIsolated": "Whether the request was served through Browser Isolation (1 = yes)",
+		"requestAntivirusScanned": "Whether the request body was scanned by Gateway AV (1 = scanned)",
+		"responseAntivirusScanned": "Whether the response body was scanned by Gateway AV (1 = scanned)",
+		"sandboxResult": "Sandbox outcome: blocked, scanned, or notScanned",
+		"sandboxScanned": "Whether the request was submitted to Gateway sandbox detonation (1 = yes)",
 		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
 	},
 	"AccountCf1GatewayHttpRawGroupsFilter_InputObject": {
@@ -1801,11 +1867,18 @@
 	},
 	"AccountCf1GatewayHttpRawGroupsSum": {
 		"__description": "",
+		"antivirusRequestScans": "Requests with request-body AV scanning",
+		"antivirusResponseScans": "Requests with response-body AV scanning",
+		"avBlockedFiles": "Files blocked by Gateway AV",
 		"bodyBytesRcvd": "Total body bytes received",
 		"bodyBytesSent": "Total body bytes sent",
+		"filesScanned": "Total files scanned by Gateway AV",
 		"httpHostBytesRcvd": "Total bytes received per host",
 		"httpHostBytesSent": "Total bytes sent per host",
-		"requests": "Total HTTP requests"
+		"isolatedRequests": "Total requests served through Browser Isolation",
+		"requests": "Total HTTP requests",
+		"sandboxBlocks": "Files blocked by Gateway sandbox",
+		"sandboxScans": "Requests submitted to Gateway sandbox detonation"
 	},
 	"AccountCf1GatewayHttpRawGroupsUniq": {
 		"__description": "",
@@ -1906,6 +1979,7 @@
 		"datetimeFiveMinutes": "Event timestamp truncated to five minutes",
 		"datetimeHour": "Event timestamp truncated to hour",
 		"destinationCountry": "Destination country code (ISO 3166-1 alpha-2)",
+		"destinationIP": "Destination IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"destinationPort": "Destination TCP/UDP port",
 		"detectedProtocol": "Detected L7 protocol (Citadel). Note: column is sparse — empty when detection inconclusive.",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
@@ -3189,6 +3263,7 @@
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"environmentName": "The name of the script environment",
 		"isPreview": "Whether this invocation is for a preview. 1 if preview, 0 if not.",
+		"name": "The name the Durable Object was created with",
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string",
 		"previewSlug": "The name (slug) of the preview script",
@@ -3267,6 +3342,7 @@
 		"datetimeHour": "Datetime the metrics period started, truncated to start of an hour",
 		"datetimeMinute": "Datetime the metrics period started, truncated to start of a minute",
 		"datetimeSixHours": "Datetime the metrics period started, truncated to start of six hour window",
+		"name": "The name the Durable Object was created with",
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string"
 	},
@@ -3384,6 +3460,7 @@
 		"datetimeMinute": "Request datetime, truncated to start of a minute",
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"environmentName": "The name of the script environment",
+		"name": "The name the Durable Object was created with",
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string",
 		"scriptName": "The name of the script"
@@ -4815,6 +4892,8 @@
 		"clientDeviceType": "",
 		"clientIP": "",
 		"clientRefererHost": "The referrer host",
+		"clientRequestAcceptContentTypeCategories": "List of high-level content type categories (e.g. html, json, images, javascript) accepted by the client, grouped from the Accept request header's MIME types.",
+		"clientRequestAcceptContentTypeCategory": "High-level content type category (e.g. html, json, images, javascript) accepted by the client, grouped from the Accept request header's MIME types. A request that accepts multiple categories is counted under each.",
 		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names accepted by the client (including wildcards)",
 		"clientRequestAcceptContentTypes": "List of MIME content types accepted by the client (including wildcards)",
 		"clientRequestHTTPHost": "Host requested by the client",
@@ -11295,6 +11374,8 @@
 		"clientDeviceType": "",
 		"clientIP": "",
 		"clientRefererHost": "The referrer host",
+		"clientRequestAcceptContentTypeCategories": "List of high-level content type categories (e.g. html, json, images, javascript) accepted by the client, grouped from the Accept request header's MIME types.",
+		"clientRequestAcceptContentTypeCategory": "High-level content type category (e.g. html, json, images, javascript) accepted by the client, grouped from the Accept request header's MIME types. A request that accepts multiple categories is counted under each.",
 		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names accepted by the client (including wildcards)",
 		"clientRequestAcceptContentTypes": "List of MIME content types accepted by the client (including wildcards)",
 		"clientRequestHTTPHost": "Host requested by the client",
@@ -13072,6 +13153,8 @@
 		"clientDeviceType": "",
 		"clientIP": "",
 		"clientRefererHost": "The referrer host",
+		"clientRequestAcceptContentTypeCategories": "List of high-level content type categories (e.g. html, json, images, javascript) accepted by the client, grouped from the Accept request header's MIME types.",
+		"clientRequestAcceptContentTypeCategory": "High-level content type category (e.g. html, json, images, javascript) accepted by the client, grouped from the Accept request header's MIME types. A request that accepts multiple categories is counted under each.",
 		"clientRequestAcceptContentTypeNames": "List of MIME content type extension names accepted by the client (including wildcards)",
 		"clientRequestAcceptContentTypes": "List of MIME content types accepted by the client (including wildcards)",
 		"clientRequestHTTPHost": "Host requested by the client",
@@ -14698,7 +14781,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type types.Float64"
+		"__description": "Scalar type float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
