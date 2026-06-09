@@ -405,6 +405,15 @@
 		"category": "cloudflare_one_and_zero_trust"
 	},
 	{
+		"id": "1d9f8b86d5d84ce497fc64a620be96e5",
+		"name": "Account Abuse Protection PII Read",
+		"description": "Grants read access to Account Abuse Protection PII data",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "app_security"
+	},
+	{
 		"id": "b89a480218d04ceb98b4fe57ca29dc1f",
 		"name": "Account Analytics Read",
 		"description": "Grants read access to analytics",
