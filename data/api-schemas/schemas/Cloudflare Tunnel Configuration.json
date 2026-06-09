@@ -563,6 +563,392 @@
 			"Cloudflare Tunnel Read"
 		]
 	},
+	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
+		"description": "Gets the high-availability configuration for a WARP Connector tunnel.",
+		"operationId": "cloudflare-tunnel-configuration-get-warp-connector-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"config": {
+													"description": "Provider-specific configuration. Present for `aws` and `local` modes.",
+													"nullable": true,
+													"oneOf": [
+														{
+															"properties": {
+																"fnr_id": {
+																	"description": "Floating Network Resource ID — the secondary ENI that is moved between nodes on failover.",
+																	"example": "eni-0123456789abcdef0",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"fnr_id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"vips": {
+																	"description": "VIPs to assign on the CloudflareWARP interface.",
+																	"items": {
+																		"properties": {
+																			"address": {
+																				"description": "Virtual IP address (IPv4 or IPv6).",
+																				"example": "10.0.0.1",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
+																	},
+																	"maxItems": 8,
+																	"minItems": 1,
+																	"type": "array"
+																},
+																"vips_previous": {
+																	"description": "VIPs to clean up on demotion or version drift.",
+																	"items": {
+																		"properties": {
+																			"address": {
+																				"description": "Virtual IP address (IPv4 or IPv6).",
+																				"example": "10.0.0.1",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
+																	},
+																	"maxItems": 8,
+																	"type": "array"
+																}
+															},
+															"required": [
+																"vips"
+															],
+															"type": "object"
+														}
+													],
+													"type": "object"
+												},
+												"configuration_version": {
+													"description": "Monotonically increasing configuration version, incremented on each PUT.",
+													"type": "integer"
+												},
+												"created_at": {
+													"description": "Timestamp of when the resource was created.",
+													"example": "2021-01-25T18:22:34.317854Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"ha_mode": {
+													"description": "High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
+													"enum": [
+														"none",
+														"disabled",
+														"aws",
+														"local"
+													],
+													"example": "aws",
+													"type": "string",
+													"x-auditable": true
+												},
+												"tunnel_id": {
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "Timestamp of the last update. Null if never updated.",
+													"example": "2021-01-25T18:22:34.317854Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"tunnel_id",
+												"configuration_version",
+												"ha_mode",
+												"created_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get WARP Connector HA configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get WARP Connector HA configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "Get WARP Connector HA configuration",
+		"tags": [
+			"Cloudflare Tunnel Configuration"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connectors Read",
+			"Cloudflare One Connector: WARP Write",
+			"Cloudflare One Connector: WARP Read"
+		]
+	},
 	"PUT /accounts/{account_id}/cfd_tunnel/{tunnel_id}/configurations": {
 		"description": "Adds or updates the configuration for a remotely-managed tunnel.",
 		"operationId": "cloudflare-tunnel-configuration-put-configuration",
@@ -1385,6 +1771,487 @@
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: cloudflared Write",
 			"Cloudflare Tunnel Write"
+		]
+	},
+	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
+		"description": "Adds or updates the high-availability configuration for a WARP Connector tunnel.",
+		"operationId": "cloudflare-tunnel-configuration-update-warp-connector-configuration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "tunnel_id",
+				"required": true,
+				"schema": {
+					"description": "UUID of the tunnel.",
+					"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+					"format": "uuid",
+					"maxLength": 36,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"config": {
+								"description": "Provider-specific configuration. Required shape depends on ha_mode. For `aws`, must contain `fnr_id`. For `local`, must contain `vips`. For `none` and `disabled`, must be empty or omitted.",
+								"nullable": true,
+								"oneOf": [
+									{
+										"properties": {
+											"fnr_id": {
+												"description": "Floating Network Resource ID — the secondary ENI that is moved between nodes on failover.",
+												"example": "eni-0123456789abcdef0",
+												"type": "string"
+											}
+										},
+										"required": [
+											"fnr_id"
+										],
+										"type": "object"
+									},
+									{
+										"properties": {
+											"vips": {
+												"description": "VIPs to assign on the CloudflareWARP interface.",
+												"items": {
+													"properties": {
+														"address": {
+															"description": "Virtual IP address (IPv4 or IPv6).",
+															"example": "10.0.0.1",
+															"type": "string"
+														}
+													},
+													"required": [
+														"address"
+													],
+													"type": "object"
+												},
+												"maxItems": 8,
+												"minItems": 1,
+												"type": "array"
+											},
+											"vips_previous": {
+												"description": "VIPs to clean up on demotion or version drift.",
+												"items": {
+													"properties": {
+														"address": {
+															"description": "Virtual IP address (IPv4 or IPv6).",
+															"example": "10.0.0.1",
+															"type": "string"
+														}
+													},
+													"required": [
+														"address"
+													],
+													"type": "object"
+												},
+												"maxItems": 8,
+												"type": "array"
+											}
+										},
+										"required": [
+											"vips"
+										],
+										"type": "object"
+									},
+									{
+										"additionalProperties": false,
+										"description": "Empty object for none/disabled modes.",
+										"type": "object"
+									}
+								],
+								"type": "object"
+							},
+							"ha_mode": {
+								"description": "High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
+								"enum": [
+									"none",
+									"disabled",
+									"aws",
+									"local"
+								],
+								"example": "aws",
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"ha_mode"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"config": {
+													"description": "Provider-specific configuration. Present for `aws` and `local` modes.",
+													"nullable": true,
+													"oneOf": [
+														{
+															"properties": {
+																"fnr_id": {
+																	"description": "Floating Network Resource ID — the secondary ENI that is moved between nodes on failover.",
+																	"example": "eni-0123456789abcdef0",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"fnr_id"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"vips": {
+																	"description": "VIPs to assign on the CloudflareWARP interface.",
+																	"items": {
+																		"properties": {
+																			"address": {
+																				"description": "Virtual IP address (IPv4 or IPv6).",
+																				"example": "10.0.0.1",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
+																	},
+																	"maxItems": 8,
+																	"minItems": 1,
+																	"type": "array"
+																},
+																"vips_previous": {
+																	"description": "VIPs to clean up on demotion or version drift.",
+																	"items": {
+																		"properties": {
+																			"address": {
+																				"description": "Virtual IP address (IPv4 or IPv6).",
+																				"example": "10.0.0.1",
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"address"
+																		],
+																		"type": "object"
+																	},
+																	"maxItems": 8,
+																	"type": "array"
+																}
+															},
+															"required": [
+																"vips"
+															],
+															"type": "object"
+														}
+													],
+													"type": "object"
+												},
+												"configuration_version": {
+													"description": "Monotonically increasing configuration version, incremented on each PUT.",
+													"type": "integer"
+												},
+												"created_at": {
+													"description": "Timestamp of when the resource was created.",
+													"example": "2021-01-25T18:22:34.317854Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"ha_mode": {
+													"description": "High-availability mode for the WARP Connector tunnel. `none` means HA is enabled but no provider is configured yet (newly created tunnels default to this). `disabled` means HA is explicitly turned off. `aws` uses AWS ENI move for failover. `local` uses virtual IPs (VIPs) on the local interface.",
+													"enum": [
+														"none",
+														"disabled",
+														"aws",
+														"local"
+													],
+													"example": "aws",
+													"type": "string",
+													"x-auditable": true
+												},
+												"tunnel_id": {
+													"description": "UUID of the tunnel.",
+													"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"maxLength": 36,
+													"readOnly": true,
+													"type": "string"
+												},
+												"updated_at": {
+													"description": "Timestamp of the last update. Null if never updated.",
+													"example": "2021-01-25T18:22:34.317854Z",
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"tunnel_id",
+												"configuration_version",
+												"ha_mode",
+												"created_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update WARP Connector HA configuration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update WARP Connector HA configuration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			},
+			{
+				"api_token": []
+			},
+			{
+				"user_service_key": []
+			}
+		],
+		"summary": "Update WARP Connector HA configuration",
+		"tags": [
+			"Cloudflare Tunnel Configuration"
+		],
+		"x-api-token-group": [
+			"Cloudflare One Connectors Write",
+			"Cloudflare One Connector: WARP Write"
 		]
 	}
 }
