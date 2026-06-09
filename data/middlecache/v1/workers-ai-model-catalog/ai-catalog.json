@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-06-08T04:33:55.809Z",
-	"model_count": 159,
+	"generated_at": "2026-06-09T04:33:51.741Z",
+	"model_count": 161,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -971,6 +971,43 @@
 			"terms": null,
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/bytedance/seedream-5-lite.png",
 			"created_at": "2026-05-22 17:53:06"
+		},
+		{
+			"model_id": "deepseek/deepseek-v4-pro",
+			"slug": "deepseek/deepseek-v4-pro",
+			"display_name": "DeepSeek V4 Pro",
+			"description": "DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via Fireworks infrastructure for production-grade inference.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Reasoning"
+			],
+			"context_length": 131072,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "131072"
+				},
+				{
+					"property_id": "info",
+					"value": "https://api-docs.deepseek.com"
+				}
+			],
+			"metadata": {
+				"Architecture": "Mixture of Experts"
+			},
+			"external_info": "https://api-docs.deepseek.com",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-08 18:17:18"
 		},
 		{
 			"model_id": "google/gemini-2.5-flash-lite",
@@ -4296,6 +4333,47 @@
 			"terms": "https://x.ai/legal/terms-of-service",
 			"cover_image_url": null,
 			"created_at": "2026-06-03 20:26:50"
+		},
+		{
+			"model_id": "xai/grok-voice",
+			"slug": "xai/grok-voice",
+			"display_name": "Grok Voice",
+			"description": "xAI's real-time voice conversation model with low-latency audio input and output streaming.",
+			"task": {
+				"id": "",
+				"name": "websocket",
+				"description": ""
+			},
+			"tags": [
+				"Voice",
+				"Real-time",
+				"Streaming",
+				"Audio"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://x.ai/legal/terms-of-service"
+				},
+				{
+					"property_id": "info",
+					"value": "https://docs.x.ai/developers/rest-api-reference/inference/voice"
+				}
+			],
+			"metadata": {
+				"Audio Format": "PCM16 24kHz",
+				"Latency": "Real-time",
+				"Turn Detection": "Server VAD"
+			},
+			"external_info": "https://docs.x.ai/developers/rest-api-reference/inference/voice",
+			"terms": "https://x.ai/legal/terms-of-service",
+			"cover_image_url": null,
+			"created_at": "2026-06-08 18:08:26"
 		},
 		{
 			"model_id": "@cf/pipecat-ai/smart-turn-v2",
