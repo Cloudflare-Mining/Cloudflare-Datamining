@@ -892,6 +892,9 @@
 	"deseng-r2-migrate-kumo": {
 		"enabled": false
 	},
+	"deseng-r2-setting": {
+		"enabled": false
+	},
 	"deseng-skip-accounts-list": {
 		"enabled": true
 	},
@@ -1543,11 +1546,17 @@
 	"kumo-traffic-sequence": {
 		"enabled": true
 	},
+	"kumo-workers-access-integration": {
+		"enabled": false
+	},
 	"kumoify-rules": {
 		"enabled": false
 	},
 	"kv-analytics": {
 		"enabled": true
+	},
+	"lb-cname-flattening": {
+		"enabled": false
 	},
 	"lb-select-zone-at-account-level": {
 		"enabled": false
@@ -2372,6 +2381,9 @@
 	},
 	"schema-validation-v2": {
 		"enabled": true
+	},
+	"search-for-agents": {
+		"enabled": false
 	},
 	"search-list-items": {
 		"enabled": true
