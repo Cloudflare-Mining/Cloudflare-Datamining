@@ -760,7 +760,7 @@
 								{
 									"properties": {
 										"result": {
-											"description": "Recursive SPF inspection tree (spflimit-worker format).\n\nBreaking change from previous format:\n- `raw` renamed to `record`\n- `num_lookups` renamed to `total_lookups`\n- `mechanisms` renamed to `components` with new structure\n- `child` array removed; nested trees now in `components[].nested`\n- `errors` is now an array of error objects (was single string)\n",
+											"description": "Recursive SPF inspection tree\n",
 											"properties": {
 												"components": {
 													"description": "Parsed SPF components (mechanisms)",
