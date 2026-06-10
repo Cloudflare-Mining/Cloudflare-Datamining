@@ -259,6 +259,10 @@
 				"read": true,
 				"edit": false
 			},
+			"stream": {
+				"read": true,
+				"edit": false
+			},
 			"r2_bucket": {
 				"read": true,
 				"edit": false
@@ -2075,6 +2079,11 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"stream": {
+				"read": true,
+				"edit": true,
+				"content_read": true
+			},
 			"fraud-detection": {
 				"read": false,
 				"edit": false,
@@ -2271,10 +2280,6 @@
 				"edit": true
 			},
 			"api_gateway": {
-				"read": true,
-				"edit": true
-			},
-			"stream": {
 				"read": true,
 				"edit": true
 			},
@@ -2629,7 +2634,8 @@
 		"permissions": {
 			"stream": {
 				"read": true,
-				"edit": true
+				"edit": true,
+				"content_read": true
 			},
 			"zone": {
 				"read": true,
@@ -2798,6 +2804,11 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read only mode",
 		"permissions": {
+			"stream": {
+				"read": true,
+				"edit": false,
+				"content_read": true
+			},
 			"fraud-detection": {
 				"read": false,
 				"edit": false,
@@ -2976,10 +2987,6 @@
 				"edit": false
 			},
 			"zaraz": {
-				"read": true,
-				"edit": false
-			},
-			"stream": {
 				"read": true,
 				"edit": false
 			},

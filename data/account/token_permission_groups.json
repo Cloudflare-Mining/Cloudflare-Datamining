@@ -2700,6 +2700,15 @@
 		"category": "account_and_billing"
 	},
 	{
+		"id": "b4b22eebb66c447e9f2804d04261fc6f",
+		"name": "Stream Metadata Read",
+		"description": "Grants read access to Cloudflare Stream metadata, excluding sensitive content such as caption files and live input secrets",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "media"
+	},
+	{
 		"id": "de21485a24744b76a004aa153898f7fe",
 		"name": "Stream Read",
 		"description": "Grants read access to Cloudflare Stream",
