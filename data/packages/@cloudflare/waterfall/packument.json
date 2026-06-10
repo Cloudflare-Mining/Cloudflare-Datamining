@@ -1,0 +1,58 @@
+{
+	"name": "@cloudflare/waterfall",
+	"dist-tags": {
+		"latest": "0.1.1"
+	},
+	"versions": {
+		"0.0.0": {
+			"name": "@cloudflare/waterfall",
+			"version": "0.0.0",
+			"dist": {
+				"shasum": "734cd1631c897333221940aada2278fdf327ab28",
+				"tarball": "https://registry.npmjs.org/@cloudflare/waterfall/-/waterfall-0.0.0.tgz",
+				"fileCount": 1,
+				"integrity": "sha512-YGPLqKnl5ZTJcnlwSQf83odbeoExT5D/utBjbZAIWypyZs9FK5kuOm0pjBmT+D4M7+U7lrzrFJ2B6LxCGCEhtg==",
+				"signatures": [
+					{
+						"sig": "MEQCIGOxfBBhjynVpQJJE5l/SzDTlyTtEa+VgUyfpc0ptuUeAiAFsG4b/4tME8FMW5UJuH2q6Wxvb0xRydj3o67a3qef7w==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 109
+			}
+		},
+		"0.1.1": {
+			"name": "@cloudflare/waterfall",
+			"version": "0.1.1",
+			"devDependencies": {
+				"playwright": "^1.60.0",
+				"prettier": "^3.8.1",
+				"typescript": "^5.4.0",
+				"vite": "^8.0.16",
+				"vitest": "^4.1.8"
+			},
+			"bin": {
+				"waterfall": "dist/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-GoMurJ0azo4l31zxcVh2uKQ779h5IYw/FwkoiYMSaoioAKXcQcICLG3yDZ36ByK2jt9ACo7OcNo5aqxofwY2cA==",
+				"shasum": "5f52e39f88aa720440d49dda3d61a1c3541dbe3e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/waterfall/-/waterfall-0.1.1.tgz",
+				"fileCount": 45,
+				"unpackedSize": 388176,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fwaterfall@0.1.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQCfslrtxBDRq99JKrz2n5f9qgmecuiZhZSxDK/gWfO4iQIhAIAHTaPD5FUxPfsc3jg11RNaOM9tCwk9REu5P5w/rTAD"
+					}
+				]
+			}
+		}
+	}
+}
