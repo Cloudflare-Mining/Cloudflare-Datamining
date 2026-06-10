@@ -531,6 +531,9 @@
 	"enable-advanced-test-configuration": {
 		"false": 100
 	},
+	"enhance-user-id-security-analytics": {
+		"false": 100
+	},
 	"event-hub-ui": {
 		"true": 100
 	},
@@ -910,8 +913,8 @@
 		"true": 100
 	},
 	"registrar-unified-checkout-register": {
-		"false": 99,
-		"true": 1
+		"false": 95,
+		"true": 5
 	},
 	"registrar-unified-checkout-renew": {
 		"true": 100
@@ -1161,7 +1164,7 @@
 		"true": 100
 	},
 	"workers-builds-scm-status-github": {
-		"up": 100
+		"degraded": 100
 	},
 	"workers-builds-scm-status-gitlab": {
 		"up": 100
