@@ -531,9 +531,6 @@
 	"enable-advanced-test-configuration": {
 		"false": 100
 	},
-	"enhance-user-id-security-analytics": {
-		"false": 100
-	},
 	"event-hub-ui": {
 		"true": 100
 	},
@@ -668,6 +665,9 @@
 	},
 	"magic-interconnects-create-direct": {
 		"false": 100
+	},
+	"magic-manage-account-apps": {
+		"true": 100
 	},
 	"magic-mconn-visibility": {
 		"true": 100
@@ -1164,7 +1164,7 @@
 		"true": 100
 	},
 	"workers-builds-scm-status-github": {
-		"degraded": 100
+		"up": 100
 	},
 	"workers-builds-scm-status-gitlab": {
 		"up": 100
