@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/binary/{hash}": {
+		"description": "Retrieves a binary file from the Cloudforce One binary storage for analysis.",
 		"operationId": "get_BinDBGetBinary",
 		"parameters": [
 			{
@@ -81,6 +82,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/binary": {
+		"description": "Uploads a binary file to Cloudforce One's binary database for malware analysis and threat intelligence correlation.",
 		"operationId": "post_BinDBPost",
 		"parameters": [
 			{
