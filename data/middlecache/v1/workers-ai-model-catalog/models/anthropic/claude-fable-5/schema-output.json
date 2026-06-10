@@ -1,0 +1,74 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"content": {
+			"items": {
+				"additionalProperties": {},
+				"properties": {
+					"text": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"type"
+				],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"id": {
+			"type": "string"
+		},
+		"model": {
+			"type": "string"
+		},
+		"role": {
+			"const": "assistant",
+			"type": "string"
+		},
+		"stop_reason": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"type": {
+			"const": "message",
+			"type": "string"
+		},
+		"usage": {
+			"additionalProperties": false,
+			"properties": {
+				"input_tokens": {
+					"type": "number"
+				},
+				"output_tokens": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"input_tokens",
+				"output_tokens"
+			],
+			"type": "object"
+		}
+	},
+	"required": [
+		"id",
+		"type",
+		"role",
+		"content",
+		"model",
+		"stop_reason",
+		"usage"
+	],
+	"type": "object"
+}

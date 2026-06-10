@@ -90,6 +90,74 @@
 								],
 								"children": [
 									{
+										"id": "messages.content.1.cache_control",
+										"name": "cache_control",
+										"type": "object",
+										"isArray": false,
+										"isObject": true,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": false,
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											false,
+											true
+										],
+										"children": [
+											{
+												"id": "messages.content.1.cache_control.ttl",
+												"name": "ttl",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": false,
+												"enumValues": [
+													"5m",
+													"1h"
+												],
+												"depth": 4,
+												"isLast": false,
+												"ancestorIsLast": [
+													false,
+													false,
+													true,
+													false
+												]
+											},
+											{
+												"id": "messages.content.1.cache_control.type",
+												"name": "type",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"metadata": {
+													"const": "ephemeral"
+												},
+												"depth": 4,
+												"isLast": true,
+												"ancestorIsLast": [
+													false,
+													false,
+													true,
+													false
+												]
+											}
+										]
+									},
+									{
 										"id": "messages.content.1.source",
 										"name": "source",
 										"type": "",
