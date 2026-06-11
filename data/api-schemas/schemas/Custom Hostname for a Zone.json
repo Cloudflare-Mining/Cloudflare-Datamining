@@ -464,8 +464,28 @@
 				"in": "query",
 				"name": "hostname",
 				"schema": {
-					"description": "Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter.",
+					"description": "Fully qualified domain name to match against. This parameter cannot be used with the 'id', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.",
 					"example": "app.example.com",
+					"maxLength": 255,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hostname.exact",
+				"schema": {
+					"description": "Fully qualified domain name to match against. This parameter cannot be used with the 'id', 'hostname', 'hostname.contain', or 'hostname.startsWith' parameters.",
+					"example": "app.example.com",
+					"maxLength": 255,
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "hostname.startsWith",
+				"schema": {
+					"description": "Filters hostnames by a prefix match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.contain' parameters.",
+					"example": "app",
 					"maxLength": 255,
 					"type": "string"
 				}
@@ -474,7 +494,7 @@
 				"in": "query",
 				"name": "hostname.contain",
 				"schema": {
-					"description": "Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the 'id' parameter.",
+					"description": "Filters hostnames by a substring match on the hostname value. This parameter cannot be used with the 'id', 'hostname', 'hostname.exact', or 'hostname.startsWith' parameters.",
 					"example": "example.com",
 					"maxLength": 255,
 					"type": "string"
@@ -484,7 +504,7 @@
 				"in": "query",
 				"name": "id",
 				"schema": {
-					"description": "Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter.",
+					"description": "Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname', 'hostname.exact', 'hostname.contain', or 'hostname.startsWith' parameters.",
 					"example": "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
 					"maxLength": 36,
 					"minLength": 36,
