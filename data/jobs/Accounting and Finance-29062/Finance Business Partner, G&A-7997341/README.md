@@ -5,48 +5,65 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location: London, UK</strong></p>
-<p><strong><em>This role requires you to be able to come into our London office 3x a week.</em></strong></p>
-<p><strong>About the Department</strong></p>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<p>&nbsp;</p>
-<p><strong>What You’ll do</strong></p>
-<p>Do you love solving complex technical problems and interacting with people? As a Technical Support Engineer Intern at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
-<p>&nbsp;</p>
-<p><strong>Responsibilities</strong>&nbsp;</p>
+<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Role Summary</strong></p>
+<p>We are looking for an exceptional Finance Business Partner to join our FP&amp;A team and act as the primary financial partner to Cloudflare’s CFO, CAO, CIO, and other senior corporate leaders. In this role, which has been elevated to meet the demands of our next phase of global growth, you will completely own the financial strategy, capital allocation, and budgeting for approximately half of our G&amp;A footprint.&nbsp;</p>
+<p>The ideal candidate is a high-performing strategic thinker who can effortlessly blend rigorous financial engineering with executive-level storytelling. We are seeking a professional with an extreme ownership mindset who thrives on high visibility and can drive operational structure in a fast-paced environment. If you are analytical, proactive, and eager to grow into a trusted advisor in a rapidly evolving technological landscape, this is your opportunity to make a real impact..</p>
+<p><strong>Role Responsibilities</strong></p>
 <ul>
-	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
-	<li>Track support requests using our ticketing system</li>
-	<li>Participate in team meetings to discuss and share feedback</li>
-	<li>Help create and update technical documentation and run books&nbsp;</li>
-	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
-	<li>Support the team in testing new releases and reporting bugs</li>
-	<li>Perform other duties/projects as assigned&nbsp;</li>
+	<li><strong>Partner directly with executive leadership</strong> (CFO, CAO, CIO) to translate complex operational decision-making and technological roadmaps into rigorous financial plans, budgets, and headcount allocation strategies.</li>
+	<li><strong>Design, automate, and implement</strong> repeatable forecasting processes leveraging AI to replace manual efforts and optimize efficiency as the business scales.</li>
+	<li><strong>Build, maintain, and stress-test</strong> sophisticated financial models to guide capital allocation decisions and evaluate major enterprise vendor investments.</li>
+	<li><strong>Deliver boardroom-ready monthly financial reporting</strong>, flux analyses, and variance commentary that proactively explain business drivers and outline concrete, strategic next steps for leadership.</li>
+	<li><strong>Collaborate deeply</strong> with the Accounting organization during month-end close to ensure flawless data integrity, reporting accuracy, and corporate compliance across your coverage areas.</li>
+	<li><strong>Coordinate cross-functionally</strong> to ensure a unified approach to Cloudflare's annual and long-range operating plans.</li>
+	<li><strong>Design and implement scalable, automated workflows</strong> and repeatable processes that support our rapid global growth.</li>
+	<li><strong>Contribute to long-range planning</strong> and annual operating plan development for G&amp;A functions, tracking industry trends to maintain market competitiveness.</li>
 </ul>
-<p><strong>Skills and Requirements</strong></p>
+<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<p><strong>Must-Have Skills</strong></p>
 <ul>
-	<li>Currently pursuing an undergraduate degree in a Computer Sciences or related field</li>
-	<li>Self-driven and capable of learning new technologies/systems/features with some guidance</li>
-	<li>Fundamental understanding of how the Internet works (OSI Model); Cloudflare has a variety of products that presently impact Layers 3, 4 &amp; 7</li>
-	<li>Experience using Linux&nbsp;</li>
-	<li>Experience in command line and tools, including curl, dig, traceroute, openssl and git</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
-	<li>Awareness of what DNS, SSL/TLS and HTTP is and how these function</li>
-	<li>Awareness of or experience installing and configuring web servers like Apache, Nginx, and IIS</li>
-	<li>Must be able to work 40 hours a week</li>
-	<li>Must be able to commit to a 12 week program</li>
+	<li><strong>7-8+ years of progressive corporate finance experience</strong> in FP&amp;A, strategic finance, corporate development, or a closely related analytical field.</li>
+	<li><strong>Proven background working within public SaaS</strong> or multinational corporate environments, demonstrating a deep understanding of SaaS metrics and corporate infrastructure costs.</li>
+	<li><strong>Advanced financial modeling</strong> and data manipulation capabilities within Excel or Google Sheets, with a history of building complex, flexible models from scratch.</li>
+	<li><strong>Strong operational mindset </strong>with a passion for process optimization, automation, and scale within an AI-assisted corporate ecosystem.</li>
+	<li><strong>Exceptional verbal and written communication skills</strong>, with a demonstrated ability to challenge senior leaders constructively and distill dense financial data into crisp executive narratives.</li>
+	<li><strong>A proven track record of absolute autonomy</strong>, showing the ability to successfully drive projects, write playbooks, and establish structure in ambiguous situations.</li>
+	<li><strong>Intellectually curious</strong> with a problem-solving orientation—ability to break down complex issues and build automated, data-driven solutions.</li>
+	<li><strong>Bachelor’s degree</strong> in Finance, Accounting, Economics, or a related quantitative field.&nbsp;</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+	<li>Hands-on proficiency navigating and building within enterprise platforms such as Anaplan, Oracle, and Workday.</li>
+	<li>An MBA, CPA, or CFA designation is a distinct plus.</li>
 </ul>
-<p><strong>Super Bonus Points</strong></p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
-	<li>You are fluent and can troubleshoot in Mandarin, Spanish, and Portuguese</li>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
 </ul>
-<p>&nbsp;</p>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
