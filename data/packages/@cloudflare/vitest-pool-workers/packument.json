@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/vitest-pool-workers",
 	"dist-tags": {
-		"latest": "0.16.14"
+		"latest": "0.16.15"
 	},
 	"versions": {
 		"0.1.0": {
@@ -14283,6 +14283,65 @@
 					}
 				},
 				"unpackedSize": 688110
+			}
+		},
+		"0.16.15": {
+			"name": "@cloudflare/vitest-pool-workers",
+			"version": "0.16.15",
+			"dependencies": {
+				"cjs-module-lexer": "1.2.3",
+				"esbuild": "0.27.3",
+				"zod": "3.25.76",
+				"miniflare": "4.20260611.0",
+				"wrangler": "4.100.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20260611.1",
+				"@types/jscodeshift": "^17.3.0",
+				"@types/node": "22.15.17",
+				"@types/semver": "^7.5.1",
+				"@vitest/runner": "4.1.0",
+				"@vitest/snapshot": "4.1.0",
+				"birpc": "0.2.14",
+				"capnp-es": "0.0.14",
+				"devalue": "^5.6.3",
+				"get-port": "^7.1.0",
+				"jscodeshift": "^17.3.0",
+				"semver": "^7.7.1",
+				"tree-kill": "1.2.2",
+				"ts-dedent": "^2.2.0",
+				"tsdown": "0.16.3",
+				"typescript": "5.8.3",
+				"undici": "7.24.8",
+				"vitest": "4.1.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/workers-utils": "0.23.0",
+				"@cloudflare/workflows-shared": "0.11.1",
+				"@cloudflare/mock-npm-registry": "0.0.0"
+			},
+			"peerDependencies": {
+				"@vitest/runner": "^4.1.0",
+				"@vitest/snapshot": "^4.1.0",
+				"vitest": "^4.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-R0kZhIm4uSxOeTWPHY9xYIFPGRBEHPzl/n9BbHZSY/gk0n16uDU7T1JZe372oTF+diXG1uVBWqiiRc7Hxstdow==",
+				"shasum": "7459e41fb2a0a842cf34033c5ee2ac92c4b350ec",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.16.15.tgz",
+				"fileCount": 19,
+				"unpackedSize": 688111,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.16.15",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDGdsDhYFJZYasHRB1svGaqLSSlILLvOLqWKRI7nbzf5gIhAPxCvoYUNV3Oth7q4Czflx2h8J1SC8nJwrveLdO8vbhW"
+					}
+				]
 			}
 		}
 	}
