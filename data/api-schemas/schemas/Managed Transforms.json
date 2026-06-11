@@ -754,7 +754,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "A Managed Transforms object.",
+						"description": "A Managed Transforms patch object. Both fields are optional; only the sections provided will be updated.",
 						"properties": {
 							"managed_request_headers": {
 								"description": "The list of Managed Request Transforms.",
@@ -907,11 +907,7 @@
 								"uniqueItems": true
 							}
 						},
-						"required": [
-							"managed_request_headers",
-							"managed_response_headers"
-						],
-						"title": "Managed Transforms",
+						"title": "Managed Transforms Patch",
 						"type": "object"
 					}
 				}
