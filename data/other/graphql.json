@@ -474,6 +474,7 @@
 		"statusCode": "HTTP Status Code of provider response",
 		"tokensIn": "Number of tokens in the request",
 		"tokensOut": "Number of tokens in the response",
+		"userAgent": "User-Agent header value sent by the calling SDK or client",
 		"wholesale": "Was the request use wholesale: 1 = applied, 0 = not applied"
 	},
 	"AccountAiGatewayRequestsAdaptiveGroupsFilter_InputObject": {
@@ -1736,6 +1737,9 @@
 		"country": "Source country code",
 		"datetime": "Day start timestamp (daily granularity)",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"directApplicationIds": "Application IDs seen in the window",
+		"directApplicationStatuses": "Application approval statuses seen in the window",
+		"directApplicationTypeIds": "Application type IDs seen in the window",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"httpHost": "HTTP hostname",
 		"isIsolated": "Whether the request was served through Browser Isolation (1 = yes)",
@@ -1763,16 +1767,20 @@
 		"avBlockedFiles": "Files blocked by Gateway AV",
 		"bodyBytesRcvd": "Total body bytes received",
 		"bodyBytesSent": "Total body bytes sent",
+		"dlpProfileMatchesTotal": "Total DLP profile matches",
 		"filesScanned": "Total files scanned by Gateway AV",
 		"httpHostBytesRcvd": "Total bytes received per host",
 		"httpHostBytesSent": "Total bytes sent per host",
 		"isolatedRequests": "Total requests served through Browser Isolation",
+		"mcpUrlCountTotal": "Total MCP-path URL accesses across requests",
 		"requests": "Total HTTP requests",
 		"sandboxBlocks": "Files blocked by Gateway sandbox",
 		"sandboxScans": "Requests submitted to Gateway sandbox detonation"
 	},
 	"AccountCf1GatewayHttp1dGroupsUniq": {
 		"__description": "",
+		"applications": "Unique applications",
+		"mcpDistinctUsers": "Unique users with MCP activity",
 		"users": "Unique users"
 	},
 	"AccountCf1GatewayHttp1hGroups": {
@@ -1790,6 +1798,9 @@
 		"country": "Source country code",
 		"datetime": "Hour start timestamp (hourly granularity)",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"directApplicationIds": "Application IDs seen in the window",
+		"directApplicationStatuses": "Application approval statuses seen in the window",
+		"directApplicationTypeIds": "Application type IDs seen in the window",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"httpHost": "HTTP hostname",
 		"isIsolated": "Whether the request was served through Browser Isolation (1 = yes)",
@@ -1817,16 +1828,20 @@
 		"avBlockedFiles": "Files blocked by Gateway AV",
 		"bodyBytesRcvd": "Total body bytes received",
 		"bodyBytesSent": "Total body bytes sent",
+		"dlpProfileMatchesTotal": "Total DLP profile matches",
 		"filesScanned": "Total files scanned by Gateway AV",
 		"httpHostBytesRcvd": "Total bytes received per host",
 		"httpHostBytesSent": "Total bytes sent per host",
 		"isolatedRequests": "Total requests served through Browser Isolation",
+		"mcpUrlCountTotal": "Total MCP-path URL accesses across requests",
 		"requests": "Total HTTP requests",
 		"sandboxBlocks": "Files blocked by Gateway sandbox",
 		"sandboxScans": "Requests submitted to Gateway sandbox detonation"
 	},
 	"AccountCf1GatewayHttp1hGroupsUniq": {
 		"__description": "",
+		"applications": "Unique applications",
+		"mcpDistinctUsers": "Unique users with MCP activity",
 		"users": "Unique users"
 	},
 	"AccountCf1GatewayHttpRawGroups": {
@@ -1850,9 +1865,14 @@
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
 		"directApplicationIds": "Application IDs matched on the request hostname",
 		"directApplicationNames": "Application names for the matched applications",
+		"directApplicationStatuses": "Approval statuses for the matched applications",
+		"directApplicationTypeIds": "Application type IDs for the matched applications",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"hasDlpScans": "Whether the request had any DLP scans (1 = yes)",
 		"httpHost": "HTTP hostname",
 		"isIsolated": "Whether the request was served through Browser Isolation (1 = yes)",
+		"mcpUrlCount": "Number of MCP URLs in the request",
+		"proxyEndpoint": "Proxy endpoint through which the request was forwarded",
 		"requestAntivirusScanned": "Whether the request body was scanned by Gateway AV (1 = scanned)",
 		"responseAntivirusScanned": "Whether the response body was scanned by Gateway AV (1 = scanned)",
 		"sandboxResult": "Sandbox outcome: blocked, scanned, or notScanned",
@@ -1872,16 +1892,19 @@
 		"avBlockedFiles": "Files blocked by Gateway AV",
 		"bodyBytesRcvd": "Total body bytes received",
 		"bodyBytesSent": "Total body bytes sent",
+		"dlpProfileMatchesTotal": "Total DLP profile matches across uploaded and downloaded content",
 		"filesScanned": "Total files scanned by Gateway AV",
 		"httpHostBytesRcvd": "Total bytes received per host",
 		"httpHostBytesSent": "Total bytes sent per host",
 		"isolatedRequests": "Total requests served through Browser Isolation",
+		"mcpUrlCountTotal": "Total MCP-path URL accesses across requests",
 		"requests": "Total HTTP requests",
 		"sandboxBlocks": "Files blocked by Gateway sandbox",
 		"sandboxScans": "Requests submitted to Gateway sandbox detonation"
 	},
 	"AccountCf1GatewayHttpRawGroupsUniq": {
 		"__description": "",
+		"mcpDistinctUsers": "Unique users with MCP activity",
 		"users": "Unique users"
 	},
 	"AccountCf1GatewayNetwork1dGroups": {
@@ -3235,7 +3258,7 @@
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroups": {
 		"__description": "Durable Objects invocations with adaptive sampling",
-		"avg": "The average value used for sample interval",
+		"avg": "The average value for a metric",
 		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
@@ -3245,7 +3268,7 @@
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsAvg": {
 		"__description": "",
-		"sampleInterval": ""
+		"sampleInterval": "Average sample interval"
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsConfidence": {
 		"__description": "",
@@ -3321,11 +3344,16 @@
 	},
 	"AccountDurableObjectsPeriodicGroups": {
 		"__description": "Durable Objects periodic metrics",
+		"avg": "The average value for a metric",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Count of periodic metric events",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
 		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountDurableObjectsPeriodicGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
 	},
 	"AccountDurableObjectsPeriodicGroupsConfidence": {
 		"__description": "",
@@ -3386,6 +3414,7 @@
 		"rowsRead": "Confidence interval for the corresponding point estimate",
 		"rowsWritten": "Confidence interval for the corresponding point estimate",
 		"storageDeletes": "Confidence interval for the corresponding point estimate",
+		"storageReadUnits": "Confidence interval for the corresponding point estimate",
 		"storageWriteUnits": "Confidence interval for the corresponding point estimate",
 		"subrequests": "Confidence interval for the corresponding point estimate"
 	},
@@ -9644,6 +9673,7 @@
 		"rumPerformanceEventsAdaptiveGroups": "",
 		"rumWebVitalsEventsAdaptive": "",
 		"rumWebVitalsEventsAdaptiveGroups": "",
+		"shadowIt1hGroups": "",
 		"sinkholeRequestLogsAdaptive": "",
 		"sinkholeRequestLogsAdaptiveGroups": "",
 		"sippyOperationsAdaptiveGroups": "",
@@ -9680,6 +9710,42 @@
 		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": "",
 		"zeroTrustPrivateNetworkDiscoveryGroups": ""
+	},
+	"AccountShadowIt1hGroups": {
+		"__description": "Shadow IT analytics - applications seen in Gateway HTTP traffic, 1 hour rollup (up to 90d window, 365d back)",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountShadowIt1hGroupsDimensions": {
+		"__description": "",
+		"applicationId": "Application ID",
+		"applicationStatus": "Application approval status",
+		"applicationTypeId": "Application type ID",
+		"country": "Source country code",
+		"datetime": "Hour start timestamp (hourly granularity)",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"httpHost": "HTTP hostname"
+	},
+	"AccountShadowIt1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountShadowIt1hGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountShadowIt1hGroupsSum": {
+		"__description": "",
+		"bodyBytesRcvd": "Total body bytes received",
+		"bodyBytesSent": "Total body bytes sent",
+		"httpHostBytesRcvd": "Total bytes received per host",
+		"httpHostBytesSent": "Total bytes sent per host",
+		"requests": "Total HTTP requests"
+	},
+	"AccountShadowIt1hGroupsUniq": {
+		"__description": "",
+		"applications": "Unique applications",
+		"users": "Unique users"
 	},
 	"AccountSinkholeRequestLogsAdaptive": {
 		"__description": "Sinkhole Request Logs",
@@ -10826,9 +10892,11 @@
 		"__description": "",
 		"cpuTime": "Maximum CPU time for one request - microseconds",
 		"duration": "Maximum duration of one request - GB*s",
+		"memoryUsageBytes": "Maximum V8 isolate memory usage across Worker invocations - bytes",
 		"requestDuration": "Maximum Request Duration in microseconds",
 		"responseBodySize": "Maximum response body size for one request - bytes",
-		"wallTime": "Maximum wall time for one request - microseconds"
+		"wallTime": "Maximum wall time for one request - microseconds",
+		"wasmMemoryBytes": "Maximum WebAssembly linear memory usage across Worker invocations - bytes"
 	},
 	"AccountWorkersInvocationsAdaptiveMin": {
 		"__description": "",
@@ -10857,6 +10925,13 @@
 		"durationP95": "Duration 95th percentile - GB*s",
 		"durationP99": "Duration 99th percentile - GB*s",
 		"durationP999": "Duration 99.9th percentile - GB*s",
+		"memoryUsageBytesP25": "V8 isolate memory usage 25th percentile across Worker invocations - bytes",
+		"memoryUsageBytesP50": "V8 isolate memory usage 50th percentile across Worker invocations - bytes",
+		"memoryUsageBytesP75": "V8 isolate memory usage 75th percentile across Worker invocations - bytes",
+		"memoryUsageBytesP90": "V8 isolate memory usage 90th percentile across Worker invocations - bytes",
+		"memoryUsageBytesP95": "V8 isolate memory usage 95th percentile across Worker invocations - bytes",
+		"memoryUsageBytesP99": "V8 isolate memory usage 99th percentile across Worker invocations - bytes",
+		"memoryUsageBytesP999": "V8 isolate memory usage 99.9th percentile across Worker invocations - bytes",
 		"requestDurationP25": "Request duration 25th percentile - microseconds",
 		"requestDurationP50": "Request duration 50th percentile - microseconds",
 		"requestDurationP75": "Request duration 75th percentile - microseconds",
@@ -10877,7 +10952,14 @@
 		"wallTimeP90": "Wall time 90th percentile - microseconds",
 		"wallTimeP95": "Wall time 95th percentile - microseconds",
 		"wallTimeP99": "Wall time 99th percentile - microseconds",
-		"wallTimeP999": "Wall time 99.9th percentile - microseconds"
+		"wallTimeP999": "Wall time 99.9th percentile - microseconds",
+		"wasmMemoryBytesP25": "WebAssembly linear memory usage 25th percentile across Worker invocations - bytes",
+		"wasmMemoryBytesP50": "WebAssembly linear memory usage 50th percentile across Worker invocations - bytes",
+		"wasmMemoryBytesP75": "WebAssembly linear memory usage 75th percentile across Worker invocations - bytes",
+		"wasmMemoryBytesP90": "WebAssembly linear memory usage 90th percentile across Worker invocations - bytes",
+		"wasmMemoryBytesP95": "WebAssembly linear memory usage 95th percentile across Worker invocations - bytes",
+		"wasmMemoryBytesP99": "WebAssembly linear memory usage 99th percentile across Worker invocations - bytes",
+		"wasmMemoryBytesP999": "WebAssembly linear memory usage 99.9th percentile across Worker invocations - bytes"
 	},
 	"AccountWorkersInvocationsAdaptiveSum": {
 		"__description": "",
@@ -14733,6 +14815,7 @@
 		"rumWebVitalsEventsAdaptive": "Beta. RUM Web Vitals event metrics with adaptive sampling",
 		"rumWebVitalsEventsAdaptiveGroups": "Beta. Aggregated RUM Web Vitals event metrics with adaptive sampling",
 		"settings": "",
+		"shadowIt1hGroups": "Shadow IT analytics - applications seen in Gateway HTTP traffic, 1 hour rollup (up to 90d window, 365d back)",
 		"sinkholeRequestLogsAdaptive": "Sinkhole Request Logs",
 		"sinkholeRequestLogsAdaptiveGroups": "Sinkhole Request Logs",
 		"sippyOperationsAdaptiveGroups": "Sippy operations with adaptive sampling",
