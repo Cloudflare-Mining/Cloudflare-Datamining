@@ -392,6 +392,9 @@
 	"billing-registrar-stripe-paypal": {
 		"enabled": true
 	},
+	"billing-resolution-center": {
+		"enabled": false
+	},
 	"billing-ss-enterprise-purchase": {
 		"enabled": true
 	},
@@ -543,6 +546,9 @@
 		"enabled": false
 	},
 	"cfone-cloudy-threat-events-enabled": {
+		"enabled": true
+	},
+	"cfone-indicators-feature": {
 		"enabled": true
 	},
 	"cfone-threat-actor-profiles-enabled": {
@@ -1520,9 +1526,6 @@
 		"enabled": false
 	},
 	"kumo-advanced-protection": {
-		"enabled": false
-	},
-	"kumo-appsec-security-reports": {
 		"enabled": false
 	},
 	"kumo-authentication": {
@@ -2814,7 +2817,7 @@
 		"enabled": true
 	},
 	"turnstile-ai-deployed-filter": {
-		"enabled": false
+		"enabled": true
 	},
 	"turnstile-enable-filter-widget-table": {
 		"enabled": false
