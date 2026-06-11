@@ -1,0 +1,774 @@
+{
+	"flat": false,
+	"modes": [
+		"sync",
+		"streaming"
+	],
+	"sync": {
+		"input": {
+			"rows": [
+				{
+					"id": "prompt",
+					"name": "prompt",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"description": "The input text prompt for the model to generate a response.",
+					"metadata": {
+						"minLength": 1
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "lora",
+					"name": "lora",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "response_format",
+					"name": "response_format",
+					"type": "object",
+					"isArray": false,
+					"isObject": true,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "response_format.type",
+							"name": "type",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"enumValues": [
+								"json_object",
+								"json_schema"
+							],
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								false
+							]
+						},
+						{
+							"id": "response_format.json_schema",
+							"name": "json_schema",
+							"type": "",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								false
+							]
+						}
+					]
+				},
+				{
+					"id": "raw",
+					"name": "raw",
+					"type": "boolean",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "false",
+					"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "stream",
+					"name": "stream",
+					"type": "boolean",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "false",
+					"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "max_tokens",
+					"name": "max_tokens",
+					"type": "integer",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "256",
+					"description": "The maximum number of tokens to generate in the response.",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "temperature",
+					"name": "temperature",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "0.6",
+					"description": "Controls the randomness of the output; higher values produce more random results.",
+					"metadata": {
+						"minimum": 0,
+						"maximum": 5
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "top_p",
+					"name": "top_p",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+					"metadata": {
+						"minimum": 0.001,
+						"maximum": 1
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "top_k",
+					"name": "top_k",
+					"type": "integer",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+					"metadata": {
+						"minimum": 1,
+						"maximum": 50
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "seed",
+					"name": "seed",
+					"type": "integer",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Random seed for reproducibility of the generation.",
+					"metadata": {
+						"minimum": 1,
+						"maximum": 9999999999
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "repetition_penalty",
+					"name": "repetition_penalty",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Penalty for repeated tokens; higher values discourage repetition.",
+					"metadata": {
+						"minimum": 0,
+						"maximum": 2
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "frequency_penalty",
+					"name": "frequency_penalty",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+					"metadata": {
+						"minimum": -2,
+						"maximum": 2
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "presence_penalty",
+					"name": "presence_penalty",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Increases the likelihood of the model introducing new topics.",
+					"metadata": {
+						"minimum": -2,
+						"maximum": 2
+					},
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "response",
+					"name": "response",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"description": "The generated text response from the model",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "usage",
+					"name": "usage",
+					"type": "object",
+					"isArray": false,
+					"isObject": true,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Usage statistics for the inference request",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "usage.prompt_tokens",
+							"name": "prompt_tokens",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "0",
+							"description": "Total number of tokens in input",
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								false
+							]
+						},
+						{
+							"id": "usage.completion_tokens",
+							"name": "completion_tokens",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "0",
+							"description": "Total number of tokens in output",
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								false
+							]
+						},
+						{
+							"id": "usage.total_tokens",
+							"name": "total_tokens",
+							"type": "number",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"defaultValue": "0",
+							"description": "Total number of input and output tokens",
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								false
+							]
+						}
+					]
+				},
+				{
+					"id": "tool_calls",
+					"name": "tool_calls",
+					"type": "array",
+					"isArray": true,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "An array of tool calls requests made during the response generation",
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "tool_calls.arguments",
+							"name": "arguments",
+							"type": "object",
+							"isArray": false,
+							"isObject": true,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "The arguments passed to be passed to the tool call request",
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								true
+							]
+						},
+						{
+							"id": "tool_calls.name",
+							"name": "name",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"description": "The name of the tool to be called",
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								true
+							]
+						}
+					]
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		}
+	},
+	"streaming": {
+		"input": {
+			"rows": [
+				{
+					"id": "prompt",
+					"name": "prompt",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": true,
+					"description": "The input text prompt for the model to generate a response.",
+					"metadata": {
+						"minLength": 1
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "lora",
+					"name": "lora",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "response_format",
+					"name": "response_format",
+					"type": "object",
+					"isArray": false,
+					"isObject": true,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": [],
+					"children": [
+						{
+							"id": "response_format.type",
+							"name": "type",
+							"type": "string",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"enumValues": [
+								"json_object",
+								"json_schema"
+							],
+							"depth": 1,
+							"isLast": false,
+							"ancestorIsLast": [
+								false
+							]
+						},
+						{
+							"id": "response_format.json_schema",
+							"name": "json_schema",
+							"type": "",
+							"isArray": false,
+							"isObject": false,
+							"isOneOf": false,
+							"isOneOfChild": false,
+							"isFirstOneOfChild": false,
+							"isLastOneOfChild": false,
+							"required": false,
+							"depth": 1,
+							"isLast": true,
+							"ancestorIsLast": [
+								false
+							]
+						}
+					]
+				},
+				{
+					"id": "raw",
+					"name": "raw",
+					"type": "boolean",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "false",
+					"description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting.",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "stream",
+					"name": "stream",
+					"type": "boolean",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "false",
+					"description": "If true, the response will be streamed back incrementally using SSE, Server Sent Events.",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "max_tokens",
+					"name": "max_tokens",
+					"type": "integer",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "256",
+					"description": "The maximum number of tokens to generate in the response.",
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "temperature",
+					"name": "temperature",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"defaultValue": "0.6",
+					"description": "Controls the randomness of the output; higher values produce more random results.",
+					"metadata": {
+						"minimum": 0,
+						"maximum": 5
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "top_p",
+					"name": "top_p",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.",
+					"metadata": {
+						"minimum": 0.001,
+						"maximum": 1
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "top_k",
+					"name": "top_k",
+					"type": "integer",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.",
+					"metadata": {
+						"minimum": 1,
+						"maximum": 50
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "seed",
+					"name": "seed",
+					"type": "integer",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Random seed for reproducibility of the generation.",
+					"metadata": {
+						"minimum": 1,
+						"maximum": 9999999999
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "repetition_penalty",
+					"name": "repetition_penalty",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Penalty for repeated tokens; higher values discourage repetition.",
+					"metadata": {
+						"minimum": 0,
+						"maximum": 2
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "frequency_penalty",
+					"name": "frequency_penalty",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Decreases the likelihood of the model repeating the same lines verbatim.",
+					"metadata": {
+						"minimum": -2,
+						"maximum": 2
+					},
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "presence_penalty",
+					"name": "presence_penalty",
+					"type": "number",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"description": "Increases the likelihood of the model introducing new topics.",
+					"metadata": {
+						"minimum": -2,
+						"maximum": 2
+					},
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": false
+		},
+		"output": {
+			"rows": [
+				{
+					"id": "type",
+					"name": "type",
+					"type": "string",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": false,
+					"ancestorIsLast": []
+				},
+				{
+					"id": "format",
+					"name": "format",
+					"type": "binary",
+					"isArray": false,
+					"isObject": false,
+					"isOneOf": false,
+					"isOneOfChild": false,
+					"isFirstOneOfChild": false,
+					"isLastOneOfChild": false,
+					"required": false,
+					"depth": 0,
+					"isLast": true,
+					"ancestorIsLast": []
+				}
+			],
+			"variants": null,
+			"isFlat": true
+		}
+	}
+}
