@@ -1276,6 +1276,38 @@
 		"deleted_date": ""
 	},
 	{
+		"id": "rulesets.ratelimit_max_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 168261,
+			"key": "rulesets.ratelimit_max_rules",
+			"name": "Rulesets - Rate Limiting Max Rules"
+		},
+		"allocation": {
+			"value": 1,
+			"type": "max_count"
+		},
+		"created_date": "2026-06-11T15:56:26.389942",
+		"edited_date": "2026-06-11T15:56:26.389942",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.ratelimit_max_rulesets",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 168262,
+			"key": "rulesets.ratelimit_max_rulesets",
+			"name": "Rulesets - Rate Limiting Max Rulesets"
+		},
+		"allocation": {
+			"value": 1,
+			"type": "max_count"
+		},
+		"created_date": "2026-06-11T15:56:26.334382",
+		"edited_date": "2026-06-11T15:56:26.334382",
+		"deleted_date": ""
+	},
+	{
 		"id": "rulesets.ratelimit_sampling_period",
 		"feature": {
 			"feature_set": "rulesets",
