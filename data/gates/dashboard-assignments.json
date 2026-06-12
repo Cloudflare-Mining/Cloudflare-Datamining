@@ -460,6 +460,9 @@
 	"domain-connect-sig-and-key-fix": {
 		"false": 100
 	},
+	"durable-objects-filter-metrics-by-name-id": {
+		"true": 100
+	},
 	"durable-objects-ui-tweaks": {
 		"true": 100
 	},
@@ -523,8 +526,7 @@
 		"true": 100
 	},
 	"email-deprecate-old-ui": {
-		"true": 74,
-		"false": 26
+		"true": 100
 	},
 	"email-sending-smtp-ui": {
 		"true": 100
@@ -920,8 +922,8 @@
 		"true": 100
 	},
 	"registrar-unified-checkout-register": {
-		"false": 95,
-		"true": 5
+		"false": 90,
+		"true": 10
 	},
 	"registrar-unified-checkout-renew": {
 		"true": 100
