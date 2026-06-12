@@ -1362,9 +1362,9 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
-					"maxLength": 100,
+					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"maxLength": 271,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -2085,9 +2085,9 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
-					"maxLength": 100,
+					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"maxLength": 271,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -4645,9 +4645,9 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
-					"maxLength": 100,
+					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"maxLength": 271,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -5458,9 +5458,9 @@
 				"name": "instance_id",
 				"required": true,
 				"schema": {
-					"maxLength": 100,
+					"description": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+					"maxLength": 271,
 					"minLength": 1,
-					"pattern": "^[a-zA-Z0-9_][a-zA-Z0-9-_]*$",
 					"type": "string"
 				}
 			},
@@ -6435,7 +6435,7 @@
 								"items": {
 									"properties": {
 										"cron": {
-											"maxLength": 255,
+											"maxLength": 256,
 											"minLength": 1,
 											"type": "string"
 										}

@@ -5674,6 +5674,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/browser-rendering/devtools/browser": {
+		"description": "Acquire a new browser DevTools session",
 		"operationId": "brapi-post_DevtoolsAcquire",
 		"parameters": [
 			{
