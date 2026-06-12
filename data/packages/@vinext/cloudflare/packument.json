@@ -1,7 +1,7 @@
 {
 	"name": "@vinext/cloudflare",
 	"dist-tags": {
-		"latest": "0.1.0"
+		"latest": "0.1.1"
 	},
 	"versions": {
 		"0.0.1": {
@@ -36,21 +36,55 @@
 			"name": "@vinext/cloudflare",
 			"version": "0.1.0",
 			"devDependencies": {
-				"@types/node": "^25.9.2",
+				"vinext": "0.1.0",
 				"vite-plus": "0.1.24",
-				"vinext": "0.1.0"
+				"@types/node": "^25.9.2"
 			},
 			"peerDependencies": {
 				"vinext": ">=0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-2ZqTMXwlaA16nFmlQwqGhIYIKWFyPcTHC4K+bbN8pgTh8IJhnNqqZ1mtDEMhJRTguedbYcHrtKuWv4LwFLm/7g==",
 				"shasum": "a747ad7fd94d1ba93e99d15578ff9f380e42a48d",
 				"tarball": "https://registry.npmjs.org/@vinext/cloudflare/-/cloudflare-0.1.0.tgz",
 				"fileCount": 13,
-				"unpackedSize": 33972,
+				"integrity": "sha512-2ZqTMXwlaA16nFmlQwqGhIYIKWFyPcTHC4K+bbN8pgTh8IJhnNqqZ1mtDEMhJRTguedbYcHrtKuWv4LwFLm/7g==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCnBtgi1LaeFAK3gqN9DHXgmfSKgS7i3UzohewX5PmYCQIhAJrUHGyrNZBz/LaXOWnrSLJWdwUIMF+11Adv+9mj0CoD",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@vinext%2fcloudflare@0.1.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 33972
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.1.1": {
+			"name": "@vinext/cloudflare",
+			"version": "0.1.1",
+			"devDependencies": {
+				"@types/node": "^25.9.2",
+				"vite-plus": "0.1.24",
+				"vinext": "0.1.2"
+			},
+			"peerDependencies": {
+				"vinext": ">=0.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-QBEadJDYOVw2/sorOPErEPL4jcDYKLjkOntJ5Fe9zG6OsjfNWE1wrBJywDxefma2c1cEuiKauUY35iAjfspCpA==",
+				"shasum": "4550bdefbf2d8cdfa50d889acf504647f215d602",
+				"tarball": "https://registry.npmjs.org/@vinext/cloudflare/-/cloudflare-0.1.1.tgz",
+				"fileCount": 13,
+				"unpackedSize": 34339,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@vinext%2fcloudflare@0.1.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -58,7 +92,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCnBtgi1LaeFAK3gqN9DHXgmfSKgS7i3UzohewX5PmYCQIhAJrUHGyrNZBz/LaXOWnrSLJWdwUIMF+11Adv+9mj0CoD"
+						"sig": "MEYCIQDnwf2W6XJuDVIQ0KnJxAx1BF6X4HemW5cI+Doe1VaTSgIhAM3UKc+NM4ircRoBvAbm6T7MiVW0fxIx0z1PAh7FklSa"
 					}
 				]
 			},
