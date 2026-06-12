@@ -390,6 +390,61 @@
 		]
 	},
 	{
+		"id": "c29c7295-ff20-4b9b-bdcc-25136c19b21d",
+		"source": 1,
+		"name": "@cf/moonshotai/kimi-k2.7-code",
+		"description": "Kimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.",
+		"task": {
+			"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+			"name": "Text Generation",
+			"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+		},
+		"created_at": "2026-06-12 11:45:20.582",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "context_window",
+				"value": "262144"
+			},
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.95,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 4,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M cached input tokens",
+						"price": 0.19,
+						"currency": "USD"
+					}
+				]
+			},
+			{
+				"property_id": "function_calling",
+				"value": "true"
+			},
+			{
+				"property_id": "reasoning",
+				"value": "true"
+			},
+			{
+				"property_id": "terms",
+				"value": "https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE"
+			},
+			{
+				"property_id": "vision",
+				"value": "true"
+			}
+		]
+	},
+	{
 		"id": "c1c12ce4-c36a-4aa6-8da4-f63ba4b8984d",
 		"source": 1,
 		"name": "@cf/openai/whisper",
