@@ -1,14 +1,15 @@
 {
 	"DELETE /accounts/{account_id}/dex/rules/{rule_id}": {
-		"description": "Delete a DEX Rule",
+		"description": "Delete a DEX Rule.",
 		"operationId": "delete-dex-rule",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -16,7 +17,7 @@
 				}
 			},
 			{
-				"description": "unique identifier of the rule",
+				"description": "Unique identifier of the rule.",
 				"in": "path",
 				"name": "rule_id",
 				"required": true,
@@ -133,7 +134,7 @@
 						}
 					}
 				},
-				"description": "success response"
+				"description": "Success response."
 			},
 			"4XX": {
 				"content": {
@@ -246,7 +247,7 @@
 						}
 					}
 				},
-				"description": "Update DEX Rule failure response"
+				"description": "Update DEX Rule failure response."
 			}
 		},
 		"security": [
@@ -270,15 +271,16 @@
 		]
 	},
 	"GET /accounts/{account_id}/dex/rules": {
-		"description": "List DEX Rules",
+		"description": "List DEX Rules.",
 		"operationId": "list-dex-rules",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -286,28 +288,31 @@
 				}
 			},
 			{
-				"description": "Page number of paginated results",
+				"description": "Page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"required": true,
 				"schema": {
+					"default": 1,
+					"example": 1,
 					"minimum": 1,
 					"type": "number"
 				}
 			},
 			{
-				"description": "Number of items per page",
+				"description": "Number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"required": true,
 				"schema": {
+					"example": 10,
 					"maximum": 50,
 					"minimum": 1,
 					"type": "number"
 				}
 			},
 			{
-				"description": "Sort direction for sort_by property",
+				"description": "Sort direction for sort_by property.",
 				"in": "query",
 				"name": "sort_order",
 				"schema": {
@@ -320,7 +325,7 @@
 				}
 			},
 			{
-				"description": "Which property to sort results by",
+				"description": "Which property to sort results by.",
 				"in": "query",
 				"name": "sort_by",
 				"schema": {
@@ -334,7 +339,7 @@
 				}
 			},
 			{
-				"description": "Filter results by rule name",
+				"description": "Filter results by rule name.",
 				"in": "query",
 				"name": "name",
 				"schema": {
@@ -487,10 +492,16 @@
 																"type": "string"
 															},
 															"id": {
-																"description": "API Resource UUID tag.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string"
+																	}
+																],
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed"
 															},
 															"match": {
 																"type": "string"
@@ -503,44 +514,49 @@
 																"items": {
 																	"properties": {
 																		"data": {
-																			"description": "The configuration object which contains the details for the WARP client to conduct the test.",
-																			"example": {
-																				"host": "https://dash.cloudflare.com",
-																				"kind": "http",
-																				"method": "GET"
-																			},
-																			"properties": {
-																				"host": {
-																					"description": "The desired endpoint to test.",
-																					"example": "https://dash.cloudflare.com",
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"kind": {
-																					"description": "The type of test.",
-																					"enum": [
-																						"http",
-																						"traceroute"
+																			"allOf": [
+																				{
+																					"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+																					"example": {
+																						"host": "https://dash.cloudflare.com",
+																						"kind": "http",
+																						"method": "GET"
+																					},
+																					"properties": {
+																						"host": {
+																							"description": "The desired endpoint to test.",
+																							"example": "https://dash.cloudflare.com",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"kind": {
+																							"description": "The type of test.",
+																							"enum": [
+																								"http",
+																								"traceroute"
+																							],
+																							"example": "http",
+																							"type": "string",
+																							"x-auditable": true
+																						},
+																						"method": {
+																							"description": "The HTTP request method type.",
+																							"enum": [
+																								"GET"
+																							],
+																							"example": "GET",
+																							"type": "string",
+																							"x-auditable": true
+																						}
+																					},
+																					"required": [
+																						"kind",
+																						"host"
 																					],
-																					"example": "http",
-																					"type": "string",
-																					"x-auditable": true
-																				},
-																				"method": {
-																					"description": "The HTTP request method type.",
-																					"enum": [
-																						"GET"
-																					],
-																					"example": "GET",
-																					"type": "string",
-																					"x-auditable": true
+																					"type": "object"
 																				}
-																			},
-																			"required": [
-																				"kind",
-																				"host"
 																			],
-																			"type": "object"
+																			"x-auditable": true
 																		},
 																		"enabled": {
 																			"type": "boolean",
@@ -593,7 +609,7 @@
 						}
 					}
 				},
-				"description": "success response"
+				"description": "Success response."
 			},
 			"4XX": {
 				"content": {
@@ -706,7 +722,7 @@
 						}
 					}
 				},
-				"description": "List DEX Rules failure response"
+				"description": "List DEX Rules failure response."
 			}
 		},
 		"security": [
@@ -733,15 +749,16 @@
 		]
 	},
 	"GET /accounts/{account_id}/dex/rules/{rule_id}": {
-		"description": "Get details for a DEX Rule",
+		"description": "Get details for a DEX Rule.",
 		"operationId": "get-dex-rule",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -749,7 +766,7 @@
 				}
 			},
 			{
-				"description": "unique identifier of the rule",
+				"description": "Unique identifier of the rule.",
 				"in": "path",
 				"name": "rule_id",
 				"required": true,
@@ -868,10 +885,16 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "API Resource UUID tag.",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"maxLength": 36,
-													"type": "string"
+													"allOf": [
+														{
+															"description": "API Resource UUID tag.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														}
+													],
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"match": {
 													"type": "string"
@@ -884,44 +907,49 @@
 													"items": {
 														"properties": {
 															"data": {
-																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
-																"example": {
-																	"host": "https://dash.cloudflare.com",
-																	"kind": "http",
-																	"method": "GET"
-																},
-																"properties": {
-																	"host": {
-																		"description": "The desired endpoint to test.",
-																		"example": "https://dash.cloudflare.com",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"kind": {
-																		"description": "The type of test.",
-																		"enum": [
-																			"http",
-																			"traceroute"
+																"allOf": [
+																	{
+																		"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+																		"example": {
+																			"host": "https://dash.cloudflare.com",
+																			"kind": "http",
+																			"method": "GET"
+																		},
+																		"properties": {
+																			"host": {
+																				"description": "The desired endpoint to test.",
+																				"example": "https://dash.cloudflare.com",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"kind": {
+																				"description": "The type of test.",
+																				"enum": [
+																					"http",
+																					"traceroute"
+																				],
+																				"example": "http",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"method": {
+																				"description": "The HTTP request method type.",
+																				"enum": [
+																					"GET"
+																				],
+																				"example": "GET",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"kind",
+																			"host"
 																		],
-																		"example": "http",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"method": {
-																		"description": "The HTTP request method type.",
-																		"enum": [
-																			"GET"
-																		],
-																		"example": "GET",
-																		"type": "string",
-																		"x-auditable": true
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"kind",
-																	"host"
 																],
-																"type": "object"
+																"x-auditable": true
 															},
 															"enabled": {
 																"type": "boolean",
@@ -969,7 +997,7 @@
 						}
 					}
 				},
-				"description": "success response"
+				"description": "Success response."
 			},
 			"4XX": {
 				"content": {
@@ -1082,7 +1110,7 @@
 						}
 					}
 				},
-				"description": "List DEX Rule failure response"
+				"description": "List DEX Rule failure response."
 			}
 		},
 		"security": [
@@ -1109,15 +1137,16 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/dex/rules/{rule_id}": {
-		"description": "Update a DEX Rule",
+		"description": "Update a DEX Rule.",
 		"operationId": "update-dex-rule",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1125,7 +1154,7 @@
 				}
 			},
 			{
-				"description": "unique identifier of the rule",
+				"description": "Unique identifier of the rule.",
 				"in": "path",
 				"name": "rule_id",
 				"required": true,
@@ -1269,10 +1298,16 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "API Resource UUID tag.",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"maxLength": 36,
-													"type": "string"
+													"allOf": [
+														{
+															"description": "API Resource UUID tag.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														}
+													],
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"match": {
 													"type": "string"
@@ -1285,44 +1320,49 @@
 													"items": {
 														"properties": {
 															"data": {
-																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
-																"example": {
-																	"host": "https://dash.cloudflare.com",
-																	"kind": "http",
-																	"method": "GET"
-																},
-																"properties": {
-																	"host": {
-																		"description": "The desired endpoint to test.",
-																		"example": "https://dash.cloudflare.com",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"kind": {
-																		"description": "The type of test.",
-																		"enum": [
-																			"http",
-																			"traceroute"
+																"allOf": [
+																	{
+																		"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+																		"example": {
+																			"host": "https://dash.cloudflare.com",
+																			"kind": "http",
+																			"method": "GET"
+																		},
+																		"properties": {
+																			"host": {
+																				"description": "The desired endpoint to test.",
+																				"example": "https://dash.cloudflare.com",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"kind": {
+																				"description": "The type of test.",
+																				"enum": [
+																					"http",
+																					"traceroute"
+																				],
+																				"example": "http",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"method": {
+																				"description": "The HTTP request method type.",
+																				"enum": [
+																					"GET"
+																				],
+																				"example": "GET",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"kind",
+																			"host"
 																		],
-																		"example": "http",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"method": {
-																		"description": "The HTTP request method type.",
-																		"enum": [
-																			"GET"
-																		],
-																		"example": "GET",
-																		"type": "string",
-																		"x-auditable": true
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"kind",
-																	"host"
 																],
-																"type": "object"
+																"x-auditable": true
 															},
 															"enabled": {
 																"type": "boolean",
@@ -1370,7 +1410,7 @@
 						}
 					}
 				},
-				"description": "success response"
+				"description": "Success response."
 			},
 			"4XX": {
 				"content": {
@@ -1483,7 +1523,7 @@
 						}
 					}
 				},
-				"description": "Update DEX Rule failure response"
+				"description": "Update DEX Rule failure response."
 			}
 		},
 		"security": [
@@ -1507,15 +1547,16 @@
 		]
 	},
 	"POST /accounts/{account_id}/dex/rules": {
-		"description": "Create a DEX Rule",
+		"description": "Create a DEX Rule.",
 		"operationId": "create-dex-rule",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1659,10 +1700,16 @@
 													"type": "string"
 												},
 												"id": {
-													"description": "API Resource UUID tag.",
-													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-													"maxLength": 36,
-													"type": "string"
+													"allOf": [
+														{
+															"description": "API Resource UUID tag.",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+															"maxLength": 36,
+															"type": "string"
+														}
+													],
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed"
 												},
 												"match": {
 													"type": "string"
@@ -1675,44 +1722,49 @@
 													"items": {
 														"properties": {
 															"data": {
-																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
-																"example": {
-																	"host": "https://dash.cloudflare.com",
-																	"kind": "http",
-																	"method": "GET"
-																},
-																"properties": {
-																	"host": {
-																		"description": "The desired endpoint to test.",
-																		"example": "https://dash.cloudflare.com",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"kind": {
-																		"description": "The type of test.",
-																		"enum": [
-																			"http",
-																			"traceroute"
+																"allOf": [
+																	{
+																		"description": "The configuration object which contains the details for the WARP client to conduct the test.",
+																		"example": {
+																			"host": "https://dash.cloudflare.com",
+																			"kind": "http",
+																			"method": "GET"
+																		},
+																		"properties": {
+																			"host": {
+																				"description": "The desired endpoint to test.",
+																				"example": "https://dash.cloudflare.com",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"kind": {
+																				"description": "The type of test.",
+																				"enum": [
+																					"http",
+																					"traceroute"
+																				],
+																				"example": "http",
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"method": {
+																				"description": "The HTTP request method type.",
+																				"enum": [
+																					"GET"
+																				],
+																				"example": "GET",
+																				"type": "string",
+																				"x-auditable": true
+																			}
+																		},
+																		"required": [
+																			"kind",
+																			"host"
 																		],
-																		"example": "http",
-																		"type": "string",
-																		"x-auditable": true
-																	},
-																	"method": {
-																		"description": "The HTTP request method type.",
-																		"enum": [
-																			"GET"
-																		],
-																		"example": "GET",
-																		"type": "string",
-																		"x-auditable": true
+																		"type": "object"
 																	}
-																},
-																"required": [
-																	"kind",
-																	"host"
 																],
-																"type": "object"
+																"x-auditable": true
 															},
 															"enabled": {
 																"type": "boolean",
@@ -1760,7 +1812,7 @@
 						}
 					}
 				},
-				"description": "success response"
+				"description": "Success response."
 			},
 			"4XX": {
 				"content": {
@@ -1873,7 +1925,7 @@
 						}
 					}
 				},
-				"description": "Create DEX Rule failure response"
+				"description": "Create DEX Rule failure response."
 			}
 		},
 		"security": [

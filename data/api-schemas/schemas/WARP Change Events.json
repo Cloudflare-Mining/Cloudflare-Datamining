@@ -4,11 +4,12 @@
 		"operationId": "list-warp-change-events",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -16,28 +17,31 @@
 				}
 			},
 			{
-				"description": "Page number of paginated results",
+				"description": "Page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"required": true,
 				"schema": {
+					"default": 1,
+					"example": 1,
 					"minimum": 1,
 					"type": "number"
 				}
 			},
 			{
-				"description": "Number of items per page",
+				"description": "Number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"required": true,
 				"schema": {
+					"example": 10,
 					"maximum": 50,
 					"minimum": 1,
 					"type": "number"
 				}
 			},
 			{
-				"description": "Start time for the query in ISO (RFC3339 - ISO 8601) format",
+				"description": "Start time for the query in ISO (RFC3339 - ISO 8601) format.",
 				"in": "query",
 				"name": "from",
 				"required": true,
@@ -47,7 +51,7 @@
 				}
 			},
 			{
-				"description": "End time for the query in ISO (RFC3339 - ISO 8601) format",
+				"description": "End time for the query in ISO (RFC3339 - ISO 8601) format.",
 				"in": "query",
 				"name": "to",
 				"required": true,
@@ -57,7 +61,7 @@
 				}
 			},
 			{
-				"description": "Filter events by type 'config' or 'toggle'",
+				"description": "Filter events by type 'config' or 'toggle'.",
 				"in": "query",
 				"name": "type",
 				"schema": {
@@ -256,35 +260,58 @@
 																"type": "string"
 															},
 															"device_id": {
-																"description": "API Resource UUID tag.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string"
+																	}
+																],
+																"description": "The device ID."
 															},
 															"device_registration": {
-																"description": "API Resource UUID tag.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string"
+																	}
+																],
+																"deprecated": true,
+																"description": "Deprecated: use registration_id. The device registration ID.",
+																"x-stainless-deprecation-message": "Use `registration_id` instead."
 															},
 															"hostname": {
-																"description": "The hostname of the machine the event is from",
+																"description": "The hostname of the machine the event is from.",
 																"type": "string"
 															},
 															"registration_id": {
-																"description": "API Resource UUID tag.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
+																		"type": "string"
+																	}
+																],
+																"description": "The device registration ID."
 															},
 															"serial_number": {
-																"description": "The serial number of the machine the event is from",
+																"description": "The serial number of the machine the event is from.",
 																"type": "string"
 															},
 															"timestamp": {
-																"description": "Timestamp in ISO format",
-																"example": "2023-10-11T00:00:00Z",
-																"type": "string"
+																"allOf": [
+																	{
+																		"description": "Timestamp in ISO 8601 datetime format.",
+																		"example": "2023-10-11T00:00:00Z",
+																		"format": "date-time",
+																		"type": "string"
+																	}
+																],
+																"description": "The event time."
 															},
 															"toggle": {
 																"description": "The state of the WARP toggle.",
@@ -295,7 +322,7 @@
 																"type": "string"
 															},
 															"user_email": {
-																"description": "Email tied to the device",
+																"description": "Email tied to the device.",
 																"type": "string"
 															}
 														},
@@ -304,76 +331,119 @@
 													{
 														"properties": {
 															"device_id": {
-																"description": "API Resource UUID tag.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"type": "string"
-															},
-															"device_registration": {
-																"description": "API Resource UUID tag.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"type": "string"
-															},
-															"from": {
-																"properties": {
-																	"account_name": {
-																		"description": "The account name.",
-																		"type": "string"
-																	},
-																	"account_tag": {
+																"allOf": [
+																	{
 																		"description": "API Resource UUID tag.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
-																	},
-																	"config_name": {
-																		"description": "The name of the WARP configuration.",
+																	}
+																],
+																"description": "The device ID."
+															},
+															"device_registration": {
+																"allOf": [
+																	{
+																		"description": "API Resource UUID tag.",
+																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																		"maxLength": 36,
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																],
+																"deprecated": true,
+																"description": "Deprecated: use registration_id. The device registration ID.",
+																"x-stainless-deprecation-message": "Use `registration_id` instead."
+															},
+															"from": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"account_name": {
+																				"description": "The account name.",
+																				"type": "string"
+																			},
+																			"account_tag": {
+																				"allOf": [
+																					{
+																						"description": "API Resource UUID tag.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"type": "string"
+																					}
+																				],
+																				"description": "The public account identifier."
+																			},
+																			"config_name": {
+																				"description": "The name of the WARP configuration.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																],
+																"description": "The details for the WARP configuration that was switched from."
 															},
 															"hostname": {
-																"description": "The hostname of the machine the event is from",
+																"description": "The hostname of the machine the event is from.",
 																"type": "string"
 															},
 															"registration_id": {
-																"description": "API Resource UUID tag.",
-																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-																"maxLength": 36,
-																"type": "string"
-															},
-															"serial_number": {
-																"description": "The serial number of the machine the event is from",
-																"type": "string"
-															},
-															"timestamp": {
-																"description": "Timestamp in ISO format",
-																"example": "2023-10-11T00:00:00Z",
-																"type": "string"
-															},
-															"to": {
-																"properties": {
-																	"account_name": {
-																		"description": "The account name.",
-																		"type": "string"
-																	},
-																	"account_tag": {
+																"allOf": [
+																	{
 																		"description": "API Resource UUID tag.",
 																		"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 																		"maxLength": 36,
 																		"type": "string"
-																	},
-																	"config_name": {
-																		"description": "The name of the WARP configuration.",
+																	}
+																],
+																"description": "The device registration ID."
+															},
+															"serial_number": {
+																"description": "The serial number of the machine the event is from.",
+																"type": "string"
+															},
+															"timestamp": {
+																"allOf": [
+																	{
+																		"description": "Timestamp in ISO 8601 datetime format.",
+																		"example": "2023-10-11T00:00:00Z",
+																		"format": "date-time",
 																		"type": "string"
 																	}
-																},
-																"type": "object"
+																],
+																"description": "The event time."
+															},
+															"to": {
+																"allOf": [
+																	{
+																		"properties": {
+																			"account_name": {
+																				"description": "The account name.",
+																				"type": "string"
+																			},
+																			"account_tag": {
+																				"allOf": [
+																					{
+																						"description": "API Resource UUID tag.",
+																						"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																						"maxLength": 36,
+																						"type": "string"
+																					}
+																				],
+																				"description": "The public account identifier."
+																			},
+																			"config_name": {
+																				"description": "The name of the WARP configuration.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	}
+																],
+																"description": "The details for the WARP configuration that was switched to."
 															},
 															"user_email": {
-																"description": "Email tied to the device",
+																"description": "Email tied to the device.",
 																"type": "string"
 															}
 														},
@@ -389,7 +459,7 @@
 						}
 					}
 				},
-				"description": "success response"
+				"description": "Success response."
 			},
 			"4XX": {
 				"content": {
@@ -502,7 +572,7 @@
 						}
 					}
 				},
-				"description": "List WARP change events failure response"
+				"description": "List WARP change events failure response."
 			}
 		},
 		"security": [

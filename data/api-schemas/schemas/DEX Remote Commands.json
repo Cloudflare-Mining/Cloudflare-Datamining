@@ -4,11 +4,12 @@
 		"operationId": "get-commands",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -16,27 +17,31 @@
 				}
 			},
 			{
-				"description": "Page number for pagination",
+				"description": "Page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"required": true,
 				"schema": {
+					"default": 1,
 					"example": 1,
+					"minimum": 1,
 					"type": "number"
 				}
 			},
 			{
-				"description": "Number of results per page",
+				"description": "Number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"required": true,
 				"schema": {
-					"example": 50,
+					"example": 10,
+					"maximum": 50,
+					"minimum": 1,
 					"type": "number"
 				}
 			},
 			{
-				"description": "Start time for the query in ISO (RFC3339 - ISO 8601) format",
+				"description": "Start time for the query in ISO (RFC3339 - ISO 8601) format.",
 				"in": "query",
 				"name": "from",
 				"schema": {
@@ -46,7 +51,7 @@
 				}
 			},
 			{
-				"description": "End time for the query in ISO (RFC3339 - ISO 8601) format",
+				"description": "End time for the query in ISO (RFC3339 - ISO 8601) format.",
 				"in": "query",
 				"name": "to",
 				"schema": {
@@ -56,7 +61,7 @@
 				}
 			},
 			{
-				"description": "Unique identifier for a device",
+				"description": "Unique identifier for a device.",
 				"in": "query",
 				"name": "device_id",
 				"schema": {
@@ -64,7 +69,7 @@
 				}
 			},
 			{
-				"description": "Email tied to the device",
+				"description": "Email tied to the device.",
 				"in": "query",
 				"name": "user_email",
 				"schema": {
@@ -72,7 +77,7 @@
 				}
 			},
 			{
-				"description": "Optionally filter executed commands by command type",
+				"description": "Optionally filter executed commands by command type.",
 				"in": "query",
 				"name": "command_type",
 				"schema": {
@@ -85,7 +90,7 @@
 				}
 			},
 			{
-				"description": "Optionally filter executed commands by status",
+				"description": "Optionally filter executed commands by status.",
 				"in": "query",
 				"name": "status",
 				"schema": {
@@ -280,7 +285,7 @@
 						}
 					}
 				},
-				"description": "Get commands response"
+				"description": "Get commands response."
 			},
 			"4XX": {
 				"content": {
@@ -393,7 +398,7 @@
 						}
 					}
 				},
-				"description": "Get commands failure response"
+				"description": "Get commands failure response."
 			}
 		},
 		"security": [
@@ -424,11 +429,12 @@
 		"operationId": "get-commands-command-id-downloads-filename",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -436,7 +442,7 @@
 				}
 			},
 			{
-				"description": "Unique identifier for command",
+				"description": "Unique identifier for command.",
 				"in": "path",
 				"name": "command_id",
 				"required": true,
@@ -447,7 +453,7 @@
 				}
 			},
 			{
-				"description": "The name of the file to be downloaded, including the `.zip` extension",
+				"description": "The name of the file to be downloaded, including the `.zip` extension.",
 				"in": "path",
 				"name": "filename",
 				"required": true,
@@ -466,10 +472,10 @@
 						}
 					}
 				},
-				"description": "Get command artifacts response",
+				"description": "Get command artifacts response.",
 				"headers": {
 					"Accept-Ranges": {
-						"description": "Indicates that the file supports byte-range requests",
+						"description": "Indicates that the file supports byte-range requests.",
 						"schema": {
 							"example": "bytes",
 							"type": "string"
@@ -483,34 +489,34 @@
 						}
 					},
 					"Content-Encoding": {
-						"description": "Specifies the encoding of the file content, if any",
+						"description": "Specifies the encoding of the file content, if any.",
 						"schema": {
 							"example": "gzip",
 							"type": "string"
 						}
 					},
 					"Content-Length": {
-						"description": "The size of the file in bytes",
+						"description": "The size of the file in bytes.",
 						"schema": {
 							"type": "integer"
 						}
 					},
 					"Content-Type": {
-						"description": "Specifies the media type of the file",
+						"description": "Specifies the media type of the file.",
 						"schema": {
 							"example": "application/zip",
 							"type": "string"
 						}
 					},
 					"ETag": {
-						"description": "The entity tag of the file for cache validation",
+						"description": "The entity tag of the file for cache validation.",
 						"schema": {
 							"example": "34f9b5e9c8a6",
 							"type": "string"
 						}
 					},
 					"Last-Modified": {
-						"description": "The last modification date of the file",
+						"description": "The last modification date of the file.",
 						"schema": {
 							"example": "Wed, 21 Oct 2023 07:28:00 GMT",
 							"format": "date-time",
@@ -630,7 +636,7 @@
 						}
 					}
 				},
-				"description": "Get downloaded commands failure response"
+				"description": "Get downloaded commands failure response."
 			}
 		},
 		"security": [
@@ -661,11 +667,12 @@
 		"operationId": "get-commands-eligible-devices",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -673,28 +680,31 @@
 				}
 			},
 			{
-				"description": "Page number of paginated results",
+				"description": "Page number of paginated results.",
 				"in": "query",
 				"name": "page",
 				"required": true,
 				"schema": {
+					"default": 1,
+					"example": 1,
 					"minimum": 1,
 					"type": "number"
 				}
 			},
 			{
-				"description": "Number of items per page",
+				"description": "Number of results per page.",
 				"in": "query",
 				"name": "per_page",
 				"required": true,
 				"schema": {
+					"example": 10,
 					"maximum": 50,
 					"minimum": 1,
 					"type": "number"
 				}
 			},
 			{
-				"description": "Filter devices by name or email",
+				"description": "Filter devices by name or email.",
 				"in": "query",
 				"name": "search",
 				"schema": {
@@ -859,7 +869,7 @@
 																"type": "string"
 															},
 															"platform": {
-																"description": "Operating system",
+																"description": "Operating system.",
 																"example": "windows",
 																"type": "string"
 															},
@@ -868,17 +878,16 @@
 																"type": "string"
 															},
 															"status": {
-																"description": "Network status",
+																"description": "Network status.",
 																"example": "connected",
 																"type": "string"
 															},
 															"timestamp": {
-																"description": "Timestamp in ISO format",
-																"example": "2023-10-11T00:00:00Z",
+																"example": "2023-10-11 00:00:00+00",
 																"type": "string"
 															},
 															"version": {
-																"description": "WARP client version",
+																"description": "WARP client version.",
 																"example": "1.0.0",
 																"type": "string"
 															}
@@ -896,7 +905,7 @@
 						}
 					}
 				},
-				"description": "List of eligible devices"
+				"description": "List of eligible devices."
 			},
 			"4XX": {
 				"content": {
@@ -1009,7 +1018,7 @@
 						}
 					}
 				},
-				"description": "List eligible devices failure response"
+				"description": "List eligible devices failure response."
 			}
 		},
 		"security": [
@@ -1040,11 +1049,12 @@
 		"operationId": "get-commands-quota",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1185,15 +1195,15 @@
 										"result": {
 											"properties": {
 												"quota": {
-													"description": "The remaining number of commands that can be initiated for an account",
+													"description": "The total number of commands that can be initiated for an account.",
 													"type": "number"
 												},
 												"quota_usage": {
-													"description": "The number of commands that have been initiated for an account",
+													"description": "The number of commands that have been initiated for an account.",
 													"type": "number"
 												},
 												"reset_time": {
-													"description": "The time when the quota resets",
+													"description": "The time when the quota resets.",
 													"format": "date-time",
 													"type": "string"
 												}
@@ -1211,7 +1221,7 @@
 						}
 					}
 				},
-				"description": "Get commands quota response"
+				"description": "Get commands quota response."
 			},
 			"4XX": {
 				"content": {
@@ -1324,7 +1334,7 @@
 						}
 					}
 				},
-				"description": "Get commands quota failure response"
+				"description": "Get commands quota failure response."
 			}
 		},
 		"security": [
@@ -1351,15 +1361,16 @@
 		]
 	},
 	"POST /accounts/{account_id}/dex/commands": {
-		"description": "Initiate commands for up to 10 devices per account",
+		"description": "Initiate commands for up to 10 devices per account.",
 		"operationId": "post-commands",
 		"parameters": [
 			{
-				"description": "unique identifier linked to an account in the API request path",
+				"description": "Unique Cloudflare account ID.",
 				"in": "path",
 				"name": "account_id",
 				"required": true,
 				"schema": {
+					"description": "Unique identifier linked to an account.",
 					"example": "01a7362d577a6c3019a474fd6f485823",
 					"maxLength": 32,
 					"readOnly": true,
@@ -1669,7 +1680,7 @@
 						}
 					}
 				},
-				"description": "Create commands response"
+				"description": "Create commands response."
 			},
 			"4XX": {
 				"content": {
@@ -1782,7 +1793,7 @@
 						}
 					}
 				},
-				"description": "Create commands failure response"
+				"description": "Create commands failure response."
 			}
 		},
 		"security": [
