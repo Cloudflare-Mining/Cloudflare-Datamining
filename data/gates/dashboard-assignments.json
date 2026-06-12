@@ -206,6 +206,10 @@
 	"billing-registrar-stripe-paypal": {
 		"true": 100
 	},
+	"billing-resolution-center": {
+		"false": 99,
+		"true": 1
+	},
 	"billing-ss-enterprise-purchase": {
 		"true": 100
 	},
@@ -519,8 +523,8 @@
 		"true": 100
 	},
 	"email-deprecate-old-ui": {
-		"false": 50,
-		"true": 50
+		"true": 74,
+		"false": 26
 	},
 	"email-sending-smtp-ui": {
 		"true": 100
