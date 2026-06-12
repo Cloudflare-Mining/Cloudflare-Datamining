@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Available Locations: Austin, TX, San Francisco, CA, Denver, CO, Seattle, WA</strong></p>
 <p><strong>Role Summary</strong></p>
 <p>We are looking for an exceptional Finance Business Partner to join our FP&amp;A team and act as the primary financial partner to Cloudflare’s CFO, CAO, CIO, and other senior corporate leaders. In this role, which has been elevated to meet the demands of our next phase of global growth, you will completely own the financial strategy, capital allocation, and budgeting for approximately half of our G&amp;A footprint.&nbsp;</p>
 <p>The ideal candidate is a high-performing strategic thinker who can effortlessly blend rigorous financial engineering with executive-level storytelling. We are seeking a professional with an extreme ownership mindset who thrives on high visibility and can drive operational structure in a fast-paced environment. If you are analytical, proactive, and eager to grow into a trusted advisor in a rapidly evolving technological landscape, this is your opportunity to make a real impact..</p>
@@ -37,6 +37,11 @@
 	<li>Hands-on proficiency navigating and building within enterprise platforms such as Anaplan, Oracle, and Workday.</li>
 	<li>An MBA, CPA, or CFA designation is a distinct plus.</li>
 </ul>
+<h3 data-path-to-node="1"><strong data-path-to-node="1" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="2">Compensation may be adjusted depending on work location.</p>
+<p data-path-to-node="3">● For San Francisco Bay Area based hires: Estimated annual salary of $154,000 - $211,000.</p>
+<p data-path-to-node="4">● For Washington based hires: Estimated annual salary of $147,000 - $202,000.</p>
+<p data-path-to-node="5">● For Colorado based hires: Estimated annual salary of $134,000 - $184,000.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
