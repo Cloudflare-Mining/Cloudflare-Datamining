@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-06-12T04:34:22.225Z",
-	"model_count": 177,
+	"generated_at": "2026-06-13T04:33:45.780Z",
+	"model_count": 178,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -240,7 +240,7 @@
 			"model_id": "anthropic/claude-fable-5",
 			"slug": "anthropic/claude-fable-5",
 			"display_name": "Claude Fable 5",
-			"description": "Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.",
+			"description": "**NOTE: Anthropic is limiting access to Claude Fable 5 due to a directive from the US Government. During that time, the model will return errors. Read more here: https://www.anthropic.com/news/fable-mythos-access **\n  \n  \n\nClaude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.",
 			"task": {
 				"id": "",
 				"name": "Text Generation",
@@ -5254,6 +5254,76 @@
 			"terms": "https://deepgram.com/terms",
 			"cover_image_url": null,
 			"created_at": "2025-10-09 22:42:37.002"
+		},
+		{
+			"model_id": "@cf/moonshotai/kimi-k2.7-code",
+			"slug": "cf/moonshotai/kimi-k2.7-code",
+			"display_name": "kimi-k2.7-code",
+			"description": "Kimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"tags": [],
+			"context_length": 262144,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "hosted",
+			"data_source": "legacy",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "262144"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.95,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 4,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M cached input tokens",
+							"price": 0.19,
+							"currency": "USD"
+						}
+					]
+				},
+				{
+					"property_id": "function_calling",
+					"value": "true"
+				},
+				{
+					"property_id": "reasoning",
+					"value": "true"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE"
+				},
+				{
+					"property_id": "vision",
+					"value": "true"
+				}
+			],
+			"metadata": {
+				"beta": false,
+				"lora": false,
+				"function_calling": true,
+				"partner": false,
+				"realtime": false
+			},
+			"external_info": null,
+			"terms": "https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE",
+			"cover_image_url": null,
+			"created_at": "2026-06-12 11:45:20.582"
 		},
 		{
 			"model_id": "@cf/openai/whisper",
