@@ -1,4 +1,16 @@
 {
+	"PARAMETERS /accounts/{account_id}/analytics_engine/sql": [
+		{
+			"description": "Cloudflare account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/artifacts/namespaces": [
 		{
 			"description": "Cloudflare account ID.",

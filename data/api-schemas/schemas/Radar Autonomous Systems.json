@@ -103,6 +103,16 @@
 														"example": "United Kingdom",
 														"type": "string"
 													},
+													"estimatedUsers": {
+														"properties": {
+															"estimatedUsers": {
+																"description": "Total estimated users.",
+																"example": 86099,
+																"type": "integer"
+															}
+														},
+														"type": "object"
+													},
 													"name": {
 														"example": "Apple Inc.",
 														"type": "string"
@@ -119,7 +129,8 @@
 													"name",
 													"asn",
 													"country",
-													"countryName"
+													"countryName",
+													"estimatedUsers"
 												],
 												"type": "object"
 											},

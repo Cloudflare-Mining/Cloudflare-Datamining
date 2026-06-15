@@ -1,6 +1,6 @@
 {
 	"GET /radar/ai/inference/summary/{dimension}": {
-		"description": "Retrieves an aggregated summary of unique accounts using Workers AI inference grouped by the specified dimension.",
+		"description": "Retrieves an aggregated summary of the number of inferences run on Workers AI, grouped by the specified dimension.",
 		"operationId": "radar-get-ai-inference-summary",
 		"parameters": [
 			{
@@ -216,6 +216,13 @@
 																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
+																	},
+																	"tags": {
+																		"items": {
+																			"example": "BOT_CLASS",
+																			"type": "string"
+																		},
+																		"type": "array"
 																	}
 																},
 																"required": [
@@ -415,7 +422,7 @@
 	},
 	"GET /radar/ai/inference/summary/model": {
 		"deprecated": true,
-		"description": "Retrieves the distribution of unique accounts by model.",
+		"description": "Retrieves the distribution of the number of inferences by model.",
 		"operationId": "radar-get-ai-inference-summary-by-model",
 		"parameters": [
 			{
@@ -578,6 +585,13 @@
 																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
+																	},
+																	"tags": {
+																		"items": {
+																			"example": "BOT_CLASS",
+																			"type": "string"
+																		},
+																		"type": "array"
 																	}
 																},
 																"required": [
@@ -778,7 +792,7 @@
 	},
 	"GET /radar/ai/inference/summary/task": {
 		"deprecated": true,
-		"description": "Retrieves the distribution of unique accounts by task.",
+		"description": "Retrieves the distribution of the number of inferences by task.",
 		"operationId": "radar-get-ai-inference-summary-by-task",
 		"parameters": [
 			{
@@ -941,6 +955,13 @@
 																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
+																	},
+																	"tags": {
+																		"items": {
+																			"example": "BOT_CLASS",
+																			"type": "string"
+																		},
+																		"type": "array"
 																	}
 																},
 																"required": [
@@ -1139,7 +1160,7 @@
 		"x-stainless-deprecation-message": "Use [Radar AI Inference Summary By Dimension](https://developers.cloudflare.com/api/resources/radar/subresources/ai/subresources/inference/methods/summary_v2/) instead."
 	},
 	"GET /radar/ai/inference/timeseries_groups/{dimension}": {
-		"description": "Retrieves the distribution of unique accounts using Workers AI inference, grouped by the specified dimension over time.",
+		"description": "Retrieves the distribution of the number of inferences run on Workers AI, grouped by the specified dimension over time.",
 		"operationId": "radar-get-ai-inference-timeseries-group",
 		"parameters": [
 			{
@@ -1397,6 +1418,13 @@
 																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
+																	},
+																	"tags": {
+																		"items": {
+																			"example": "BOT_CLASS",
+																			"type": "string"
+																		},
+																		"type": "array"
 																	}
 																},
 																"required": [
@@ -1618,7 +1646,7 @@
 	},
 	"GET /radar/ai/inference/timeseries_groups/model": {
 		"deprecated": true,
-		"description": "Retrieves the distribution of unique accounts by model over time.",
+		"description": "Retrieves the distribution of the number of inferences by model over time.",
 		"operationId": "radar-get-ai-inference-timeseries-group-by-model",
 		"parameters": [
 			{
@@ -1808,6 +1836,13 @@
 																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
+																	},
+																	"tags": {
+																		"items": {
+																			"example": "BOT_CLASS",
+																			"type": "string"
+																		},
+																		"type": "array"
 																	}
 																},
 																"required": [
@@ -2027,7 +2062,7 @@
 	},
 	"GET /radar/ai/inference/timeseries_groups/task": {
 		"deprecated": true,
-		"description": "Retrieves the distribution of unique accounts by task over time.",
+		"description": "Retrieves the distribution of the number of inferences by task over time.",
 		"operationId": "radar-get-ai-inference-timeseries-group-by-task",
 		"parameters": [
 			{
@@ -2217,6 +2252,13 @@
 																	"startDate": {
 																		"format": "date-time",
 																		"type": "string"
+																	},
+																	"tags": {
+																		"items": {
+																			"example": "BOT_CLASS",
+																			"type": "string"
+																		},
+																		"type": "array"
 																	}
 																},
 																"required": [
