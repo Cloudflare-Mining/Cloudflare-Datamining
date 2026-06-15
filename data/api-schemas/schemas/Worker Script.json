@@ -8709,6 +8709,151 @@
 		],
 		"requestBody": {
 			"content": {
+				"application/json": {
+					"schema": {
+						"description": "JSON Merge Patch (RFC 7396) request body for bulk secret changes.\n",
+						"properties": {
+							"secrets": {
+								"additionalProperties": {
+									"allOf": [
+										{
+											"description": "A secret value accessible through a binding.",
+											"discriminator": {
+												"mapping": {
+													"secret_key": "#/components/schemas/workers_binding_kind_secret_key",
+													"secret_text": "#/components/schemas/workers_binding_kind_secret_text"
+												},
+												"propertyName": "type"
+											},
+											"oneOf": [
+												{
+													"properties": {
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"text": {
+															"description": "The secret value to use.",
+															"example": "My secret.",
+															"type": "string",
+															"writeOnly": true,
+															"x-sensitive": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"secret_text"
+															],
+															"type": "string",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"text"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"algorithm": {
+															"description": "Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).",
+															"type": "object",
+															"x-auditable": true
+														},
+														"format": {
+															"description": "Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).",
+															"enum": [
+																"raw",
+																"pkcs8",
+																"spki",
+																"jwk"
+															],
+															"example": "raw",
+															"type": "string",
+															"x-auditable": true
+														},
+														"key_base64": {
+															"description": "Base64-encoded key data. Required if `format` is \"raw\", \"pkcs8\", or \"spki\".",
+															"type": "string",
+															"writeOnly": true,
+															"x-sensitive": true
+														},
+														"key_jwk": {
+															"description": "Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is \"jwk\".",
+															"type": "object",
+															"writeOnly": true,
+															"x-sensitive": true
+														},
+														"name": {
+															"description": "A JavaScript variable name for the binding.",
+															"example": "myBinding",
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": {
+															"description": "The kind of resource that the binding provides.",
+															"enum": [
+																"secret_key"
+															],
+															"type": "string",
+															"x-auditable": true
+														},
+														"usages": {
+															"description": "Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).",
+															"example": [
+																"encrypt",
+																"decrypt"
+															],
+															"items": {
+																"enum": [
+																	"encrypt",
+																	"decrypt",
+																	"sign",
+																	"verify",
+																	"deriveKey",
+																	"deriveBits",
+																	"wrapKey",
+																	"unwrapKey"
+																],
+																"type": "string"
+															},
+															"type": "array",
+															"x-auditable": true,
+															"x-stainless-collection-type": "set"
+														}
+													},
+													"required": [
+														"name",
+														"type",
+														"format",
+														"algorithm",
+														"usages"
+													],
+													"type": "object"
+												}
+											],
+											"type": "object"
+										}
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"description": "Map of secret names to secret values:\n- Set to a secret object to create or update.\n- Set to `null` to delete.\n- Omit to leave unchanged.\n",
+								"type": "object"
+							},
+							"version_tags": {
+								"additionalProperties": true,
+								"description": "Optional version tags to apply to the new script version.",
+								"type": "object"
+							}
+						},
+						"type": "object"
+					}
+				},
 				"application/merge-patch+json": {
 					"schema": {
 						"description": "JSON Merge Patch (RFC 7396) request body for bulk secret changes.\n",
@@ -19031,7 +19176,7 @@
 												"x-stainless-collection-type": "set"
 											},
 											"keep_assets": {
-												"description": "Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.",
+												"description": "Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.",
 												"example": false,
 												"type": "boolean"
 											},
