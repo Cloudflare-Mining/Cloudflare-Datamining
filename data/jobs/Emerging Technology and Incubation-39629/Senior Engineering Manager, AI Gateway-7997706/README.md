@@ -5,36 +5,36 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin</strong></p>
-<h2>About the Team</h2>
-<p>The Town Lake team's mission is building a centralized data platform for Cloudflare that provides secure, democratized access to data for internal customers throughout the company. We operate infrastructure and craft tools to empower both technical and non-technical users to answer their most important questions. We are now evolving our platform to go beyond raw data access, integrating semantic intelligence and knowledge graphs to power the next generation of AI-driven decision-making. You can learn more about our platform at <a href="https://blog.cloudflare.com/our-unified-data-platform/">Cloudflare’s blog</a>.</p>
-<h2>About the Role</h2>
-<p>We are looking for a software engineer with a strong background in data to help us expand and maintain our data infrastructure. You’ll contribute to the technical implementation of our scaling unified data platform, manage access while accounting for privacy and security, build data pipelines, and develop tools to automate accessibility and usefulness of data. You’ll collaborate with teams including Trust and Safety, Fintech and product teams across the company to help them make informed decisions and bring new data-driven solutions to Cloudflare customers.</p>
-<h2>What You’ll Do</h2>
+<p><strong>Available Locations: Austin, TX | Hybrid</strong></p>
+<p><strong>What You'll Do&nbsp;</strong></p>
+<p>As the Engineering Manager for AI Gateway, you will lead a small, high-velocity team building that layer. This is a deeply hands-on role. You will be in the code, in the design docs, in customer conversations, and in the trenches with your team. We're looking for a generative builder who can move from half-formed idea to working prototype quickly, and bring a team along with that energy. We are obsessively agent-pilled. We don't just build the product; we build the environment that builds the product: the agents, harnesses, skills, tools, and context that let a small team ship like a much larger one. We dogfood AI Gateway, Workers AI, and the broader Cloudflare agent stack relentlessly, and we expect you to as well.</p>
+<p><strong>In This Role, You Will</strong></p>
 <ul>
-	<li>Contribute to the design and execution of technical architecture for highly visible data infrastructure.</li>
-	<li>Design and develop tools and infrastructure to improve and scale Cloudflare’s data systems.</li>
-	<li>Build and maintain data pipelines and data products to serve customers throughout the company, including tools to automate delivery of those services.</li>
-	<li>Gain deep knowledge of our data platforms and tools to guide and enable stakeholders with their data needs.</li>
-	<li>Work across our tech stack, which includes Kubernetes, Trino, Iceberg, Clickhouse, and PostgreSQL, with software built using Go, Javascript/Typescript, Python, and others.</li>
-	<li>Collaborate with peers to reinforce a culture of exceptional delivery and accountability on the team.</li>
+	<li>Set the technical and product direction for AI Gateway alongside engineers and PMs, then roll up your sleeves and help build it.</li>
+	<li>Build the software and the software that builds the software. Your team needs to build the context and toolchain that let agents help build, operate, monitor, and improve AI Gateway itself.</li>
+	<li>Inspire and energize a team shipping at the pace the AI ecosystem demands. Provider APIs change weekly, new models drop daily, and the gap between "good idea" and "in production" is measured in days, not quarters.</li>
+	<li>Obsess over developer experience. Every error message, SDK choice, dashboard flow, and line of docs matters. You should have strong taste about what makes developer tools feel great.</li>
+	<li>Recruit, mentor, and grow engineers. Build a small team that punches massively above its weight.</li>
+	<li>Partner closely with Workers AI, Agents, and the broader Developer Platform teams to deliver a unified inference layer that feels like one product</li>
 </ul>
-<h2>Requirements</h2>
+<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
 <ul>
-	<li>3-5+ years of experience as a software engineer with a focus on building and maintaining data infrastructure.</li>
-	<li>Experience participating in technical initiatives in a cross-functional context, working with stakeholders to deliver value.</li>
-	<li>Proficient using backend languages like Go, Python, or Typescript, along with strong SQL skills.</li>
-	<li>Hands-on experience building and debugging data pipelines.</li>
-	<li>Strong analytical skills, with a focus on understanding how data is used to drive business value.</li>
-	<li>Solid communication skills, with the ability to explain technical concepts to both technical and non-technical audiences.</li>
+	<li>A minimum of 8 years of relevant industry experience, including at least 4 years managing software engineering teams.</li>
+	<li>Proven track record leading teams that have shipped and operated complex, large-scale systems, preferably in AI infrastructure, developer platforms, cloud infrastructure, edge/proxy systems, or high-scale APIs.</li>
+	<li>Significant technical depth, with the ability to guide architectural discussions, make credible technical decisions, review designs, and unblock your team.</li>
+	<li>Strong developer tools taste. You have used and built enough APIs, SDKs, dashboards, CLIs, and internal platforms to know what makes them delightful or painful.</li>
+	<li>Demonstrated ability to hire, coach, and develop senior engineers, and to build high-performing, inclusive teams that ship. You care about teams and team culture.</li>
+	<li>A hands-on approach to leadership: you consider yourself a builder, stay close to the code, know the numbers, know the customer, and know what to build next.</li>
 </ul>
-<h2>Desirable Skills</h2>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Practical experience with data infrastructure components, such as Trino, Spark, Iceberg/Delta Lake, Kafka, Clickhouse, or PostgreSQL.</li>
-	<li>Experience with data orchestration and infrastructure platforms like Airflow and DBT.</li>
-	<li>Experience deploying and managing services in Kubernetes.</li>
-	<li>Familiarity with data governance processes, privacy requirements, or auditability.</li>
-	<li>Interest in or knowledge of machine learning models and MLOps.</li>
+	<li>Experience building AI/ML infrastructure, inference platforms, model gateways, or LLM-powered applications.</li>
+	<li>Experience building developer-facing APIs or SDKs at scale.</li>
+	<li>Hands-on experience with proxy, edge, or gateway systems.</li>
+	<li>You've built or heavily customized your own agentic dev environment: custom agents, harnesses, or tooling that changed how you ship.</li>
+	<li>Familiarity with the current AI ecosystem: providers, model capabilities, agent frameworks, and where the rough edges are.</li>
+	<li>A track record of writing publicly about developer tools or systems you've built.</li>
+	<li>You've built something with AI Gateway, Workers AI, or a competing product, and have opinions about what's missing.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,37 +5,59 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>This role will be located in either Austin or located in our Central/East regions</strong></p>
-<p><strong>About the Department</strong></p>
-<p>Account Executives, Channel Account Managers, Business Development Representatives, Solution Engineers, Product Specialists, Customer Success, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences. The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
-<p>Our Cloudflare One Go-To-Market Specialist team provides deep subject matter expertise on converging Network and Security services in our Cloudflare One (CF1) portfolio, including Secure Access Service Edge (SASE), Security Service Edge (SSE), Zero Trust Network Access (ZTNA), Secure Web Gateway (SWG), Cloud Access Security Broker (CASB), Remote Browser Isolation (RBI), Data Protection (including DLP), and Email Security (CES).</p>
-<p><strong>What you’ll do</strong></p>
-<p>As a <strong>Senior Cloudflare One GTM Specialist</strong> you will be responsible for growing CloudflareOne (CF1) revenue and product adoption. In this role, you will serve as the segment lead for CF1 sales. You will advise the sales leaders on opportunities and programs to grow CF1 revenue, partner with the technical sales teams, enable account executives on product positioning and competitive intelligence, grow partner engagement around CF1, and support strategic deals from discovery to close. The ideal candidate possesses a consultative mindset, strong selling skills, and a deep technical background to drive engagement internally among the sales organization and externally with decision-makers and influencers within security, networking, and IT and operations.</p>
+<p><strong>Available Locations: Austin, TX, New York, NY</strong></p>
+<p><strong>Department: People &amp; Culture</strong></p>
+<p><strong>Reports to: VP, Talent</strong></p>
+<h3><strong>The Mission</strong></h3>
+<p><strong>This is an invitation to redefine workforce architecture for the AI era. </strong>Cloudflare is reimagining every internal process,&nbsp; from engineering to finance to sales, to run on an agentic AI backbone. We are building the global teams and talent ecosystems that will define what Cloudflare looks like for the next decade of the Internet. Getting top talent here is our number priority.</p>
+<p>As our Vice President of Talent Acquisition, you will be the chief architect of our human capital infrastructure and lead a global team of customer obsessed recruiters and operators. You will design a predictive, highly automated talent system—one that maps company growth to workforce requirements, isolates where human judgment is irreplaceable, and deploys AI agents to handle the repetitive mechanics. We are looking for a visionary leader and highly operational leader whose instinct isn’t to simply deploy a traditional recruiting playbook, but to model the organizational system, identify the core constraints, and ship elegant, scalable solutions.</p>
+<h3><strong>What you’re walking into</strong></h3>
+<p>Cloudflare’s internal AI agent usage has increased exponentially, with our teams running thousands of daily agent sessions to build, ship, and scale products. This is our default operating rhythm.</p>
+<p>Our talent acquisition strategy reflects this modern architecture. In the agentic AI era, you will lead the function that answers the ultimate organizational question: <em>how do we optimize for the roles that require uniquely human capabilities?</em></p>
+<p>You will focus our human hiring pipelines on where human capital matters most: deep creative judgment, complex systems problem-solving, and intense relationship depth. Every talent strategy you implement is a high-impact design choice for Cloudflare’s future organizational capacity.</p>
+<h3><strong>What you’ll own</strong></h3>
+<h4><strong>1. Customer Obsession &amp; Outcome-Driven Systems</strong></h4>
 <ul>
-	<li>Present to strategic customers as an expert of our SASE, SSE, AI Security, and Email Security solutions.</li>
-	<li>Align Director and C-Level perceived business value with Cloudflare solutions in the transformational objectives of securing remote work, safe AI adoption, corporate network modernization, adoption of SASE/SSE, and data protection</li>
-	<li>Develop and advise on sales strategies and pipeline generation in partnership with regional and country sales leaders.&nbsp;</li>
-	<li>Provide regular business reviews to the management team highlighting pipeline health, attainment progress and challenges to closing business</li>
-	<li>Generate a succinct feedback loop with PM, PMM, Demand Generation, Enablement, Programs, and Partner Organization to deliver relevant CF1 anecdotes and data points.</li>
+	<li><strong>Thinking Backward from the Customer:</strong> Treat our candidates and hiring managers as your ultimate customers. You will design the entire talent acquisition architecture by thinking backward from their experience—ensuring unmatched speed, absolute transparency, and mutual respect for everyone’s time.</li>
+	<li><strong>Outcomes Over Process:</strong> Ruthlessly eliminate "process for process's sake." You believe that workflows exist to enable great hiring, not to create bureaucratic hurdles. You will empower your team to be agile, adaptive, and focused on delivering high-quality matches rather than checking compliance boxes.</li>
 </ul>
-<p>The Senior Cloudflare One GTM Specialist Role is a consultative sales excellence role that directly supports sales delivery of regional CF1 quota. In order to be successful, you will need to become a thought leader, trusted advisor, and spokesperson for Cloudflare One - Cloudflare's SASE platform.</p>
-<h4><strong>Requirements</strong></h4>
+<h4><strong>2. Talent System Architecture &amp; Strategic Planning</strong></h4>
 <ul>
-	<li>Minimum 4 years of experience selling or supporting the sales of cyber security, networking, identity management, cloud or SaaS solutions.</li>
-	<li>Technical expertise in SASE, SSE, AI Security, ZTNA, SWG, CASB, DLP, SD-WAN, and Email Security</li>
-	<li>Experience building territory plans, prospecting and bringing in new logos in a competitive market</li>
-	<li>Knowledge of key market players/competitors in the software defined networking, zero trust and cybersecurity solution spaces.</li>
-	<li>Familiarity with AI concepts and terminology, specifically related to MCP servers and Agents</li>
-	<li>Demonstrated ability to think strategically and develop/execute corresponding objectives.</li>
-	<li>Strong verbal and written communications, as well as the ability to work effectively across internal and external organizations.</li>
-	<li>Excellent presentation and public speaking skills.</li>
-	<li>Bachelor’s Degree</li>
-	<li>10-20% travel</li>
+	<li><strong>Enterprise Strategy:</strong> Partner with executive leadership to translate Cloudflare’s long-term product roadmaps and financial models into a predictive, multi-year global talent strategy.</li>
+	<li><strong>Pipeline Instrumentation:</strong> Build and monitor a highly data-driven talent funnel. Instrument key metrics—funnel health, passive-to-active conversion velocity, segment-specific time-to-fill, and quality-of-hire at the 6 and 12-month marks—to continuously tune the engine.</li>
+	<li><strong>AI-First Operations:</strong> Seamlessly deploy and scale AI agents across sourcing workflows, initial technical screening, scheduling logistics, and candidate communication loops to free up your team for deep relationship building.</li>
 </ul>
+<h4><strong>3. High-Credibility Partnerships</strong></h4>
+<ul>
+	<li><strong>Peer-Level Alignment:</strong> Earn deep trust with our organizations through genuine technical fluency.&nbsp;</li>
+	<li><strong>Market Intelligence:</strong> Bring proactive talent market insights to organizational design conversations, advising leaders on global talent pool elasticity, compensation trends, and site selection before hiring needs even arise.</li>
+</ul>
+<h4><strong>4. Global Operations &amp; Team Leadership</strong></h4>
+<ul>
+	<li><strong>Inspirational Leadership:</strong> Lead, mentor, and elevate a global team of recruiters, technical sourcers, operational specialists, and passionate members of our team globally.&nbsp;</li>
+	<li><strong>Global Compliance Velocity:</strong> Maintain uncompromised data privacy and regulatory compliance (GDPR, pay transparency, local employment laws) across the US, EMEA, and APAC.&nbsp;</li>
+</ul>
+<ol>
+	<li><strong> Employer Brand as a Product</strong></li>
+</ol>
+<ul>
+	<li><strong>Authentic Narrative:</strong> Position Cloudflare’s employer brand as an authentic reflection of our&nbsp; culture, attracting builders and sellers who are passionate about shaping an AI-first Internet.</li>
+	<li><strong>Future Talent Pipelines:</strong> Run early-career, university, and diversity recruiting initiatives with the same structured, metrics-driven approach applied to our senior staff engineering hires.</li>
+</ul>
+<h4><strong>Highly Valued Signals</strong></h4>
+<ul>
+	<li><strong>Ideal Non-Traditional Backgrounds: </strong>We highly value senior people leaders&nbsp; from Management Consulting, Investment Banking, Engineering, Sales or corporate strategy environments, other functions within people leadership, where problem-solving begins with systems-level modeling, rigorous data diagnostics, and structural thinking.&nbsp;</li>
+	<li><strong>Infrastructure Tech Deep Roots:</strong> Prior leadership experience at a SaaS, cloud infrastructure, cybersecurity, consumer, company where keeping a world-class technical bar is foundational to the company's success.</li>
+	<li><strong>Organizational Agility:</strong> Experience successfully guiding talent operations through corporate reorganizations, high-growth scaling phases, or post-acquisition integrations with clear intent and structure.</li>
+	<li><strong>Compensation Architecture Fluency:</strong> Strong familiarity with market data platforms (Radford, Levels.fyi, Carta) and an understanding of equity design and localized compensation bands to help structure complex executive offers seamlessly.</li>
+	<li><strong>Global Scope:</strong> Direct experience scaling international tech hubs (specifically across EMEA and APJC), including a strong working knowledge of cross-border talent mobilization and regional employment practices.</li>
+</ul>
+<p>&nbsp;</p>
 <p><strong>Compensation</strong></p>
 <p>Compensation may be adjusted depending on work location.</p>
-<p>For Colorado based hires: Estimated annual salary of $146,000 - $257,000<br>For California (excluding Bay Area) and Washington based hires: Estimated salary of $161,000 - $287,000<br>For Bay Area-based hires: Estimated annual salary of $168,000 - $303,000</p>
-<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual <strong>salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan</strong>.</p>
+<ul>
+	<li><span data-sheets-root="1">For New York City based hires: Estimated annual salary of $375,000 - $400,000</span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
