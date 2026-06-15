@@ -67,6 +67,9 @@
 	"agent-memory-enabled": {
 		"enabled": true
 	},
+	"agent-readiness": {
+		"enabled": false
+	},
 	"agents-in-dash": {
 		"enabled": false
 	},
@@ -556,6 +559,9 @@
 	},
 	"cfone-threat-events-visualizations-enabled": {
 		"enabled": true
+	},
+	"cfone-vulnerability-intelligence-enabled": {
+		"enabled": false
 	},
 	"cfsa-444-more-feedback": {
 		"enabled": true
@@ -1291,7 +1297,13 @@
 	"email-deprecate-old-ui": {
 		"enabled": true
 	},
+	"email-onboarding-wizard": {
+		"enabled": false
+	},
 	"email-routing-email-worker-maze-study": {
+		"enabled": false
+	},
+	"email-routing-subdomains": {
 		"enabled": false
 	},
 	"email-routing-suppressions": {
@@ -1660,7 +1672,7 @@
 		"enabled": true
 	},
 	"lrsp-legal-request-messaging": {
-		"enabled": false
+		"enabled": true
 	},
 	"magic-alerts-stepper-flow": {
 		"enabled": true
@@ -2947,6 +2959,9 @@
 	},
 	"wobs-issues": {
 		"enabled": true
+	},
+	"wobs-query-tabs": {
+		"enabled": false
 	},
 	"wobs-trace-query-v3": {
 		"enabled": false
