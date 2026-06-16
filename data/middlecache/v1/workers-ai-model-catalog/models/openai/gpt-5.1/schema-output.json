@@ -1,124 +1,192 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": {},
-	"properties": {
-		"choices": {
-			"items": {
-				"additionalProperties": {},
-				"properties": {
-					"finish_reason": {
-						"anyOf": [
-							{
-								"type": "string"
-							},
-							{
-								"type": "null"
-							}
-						]
-					},
-					"index": {
-						"type": "number"
-					},
-					"message": {
+	"oneOf": [
+		{
+			"additionalProperties": {},
+			"properties": {
+				"choices": {
+					"items": {
 						"additionalProperties": {},
 						"properties": {
-							"audio": {
+							"finish_reason": {
+								"anyOf": [
+									{
+										"type": "string"
+									},
+									{
+										"type": "null"
+									}
+								]
+							},
+							"index": {
+								"type": "number"
+							},
+							"message": {
 								"additionalProperties": {},
 								"properties": {
-									"data": {
+									"audio": {
+										"additionalProperties": {},
+										"properties": {
+											"data": {
+												"type": "string"
+											},
+											"expires_at": {
+												"type": "number"
+											},
+											"id": {
+												"type": "string"
+											},
+											"transcript": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"content": {
+										"anyOf": [
+											{
+												"type": "string"
+											},
+											{
+												"type": "null"
+											}
+										]
+									},
+									"role": {
 										"type": "string"
 									},
-									"expires_at": {
-										"type": "number"
-									},
-									"id": {
-										"type": "string"
-									},
-									"transcript": {
-										"type": "string"
+									"tool_calls": {
+										"anyOf": [
+											{
+												"items": {},
+												"type": "array"
+											},
+											{
+												"type": "null"
+											}
+										]
 									}
 								},
+								"required": [
+									"role"
+								],
 								"type": "object"
-							},
-							"content": {
-								"anyOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "null"
-									}
-								]
-							},
-							"role": {
-								"type": "string"
-							},
-							"tool_calls": {
-								"anyOf": [
-									{
-										"items": {},
-										"type": "array"
-									},
-									{
-										"type": "null"
-									}
-								]
 							}
 						},
 						"required": [
-							"role"
+							"index",
+							"message",
+							"finish_reason"
 						],
 						"type": "object"
-					}
+					},
+					"type": "array"
 				},
-				"required": [
-					"index",
-					"message",
-					"finish_reason"
-				],
-				"type": "object"
-			},
-			"type": "array"
-		},
-		"created": {
-			"type": "number"
-		},
-		"id": {
-			"type": "string"
-		},
-		"model": {
-			"type": "string"
-		},
-		"object": {
-			"type": "string"
-		},
-		"usage": {
-			"additionalProperties": {},
-			"properties": {
-				"completion_tokens": {
+				"created": {
 					"type": "number"
 				},
-				"prompt_tokens": {
-					"type": "number"
+				"id": {
+					"type": "string"
 				},
-				"total_tokens": {
-					"type": "number"
+				"model": {
+					"type": "string"
+				},
+				"object": {
+					"type": "string"
+				},
+				"usage": {
+					"additionalProperties": {},
+					"properties": {
+						"completion_tokens": {
+							"type": "number"
+						},
+						"prompt_tokens": {
+							"type": "number"
+						},
+						"total_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"prompt_tokens",
+						"completion_tokens",
+						"total_tokens"
+					],
+					"type": "object"
 				}
 			},
 			"required": [
-				"prompt_tokens",
-				"completion_tokens",
-				"total_tokens"
+				"id",
+				"object",
+				"created",
+				"model",
+				"choices"
 			],
+			"title": "Chat Completions",
+			"type": "object"
+		},
+		{
+			"additionalProperties": {},
+			"properties": {
+				"created_at": {
+					"type": "number"
+				},
+				"id": {
+					"type": "string"
+				},
+				"model": {
+					"type": "string"
+				},
+				"object": {
+					"const": "response",
+					"type": "string"
+				},
+				"output": {
+					"items": {},
+					"type": "array"
+				},
+				"output_text": {
+					"type": "string"
+				},
+				"status": {
+					"enum": [
+						"in_progress",
+						"completed",
+						"failed",
+						"incomplete"
+					],
+					"type": "string"
+				},
+				"usage": {
+					"additionalProperties": {},
+					"properties": {
+						"input_tokens": {
+							"type": "number"
+						},
+						"output_tokens": {
+							"type": "number"
+						},
+						"total_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"input_tokens",
+						"output_tokens",
+						"total_tokens"
+					],
+					"type": "object"
+				}
+			},
+			"required": [
+				"id",
+				"object",
+				"created_at",
+				"model",
+				"output"
+			],
+			"title": "Responses",
 			"type": "object"
 		}
-	},
-	"required": [
-		"id",
-		"object",
-		"created",
-		"model",
-		"choices"
-	],
-	"type": "object"
+	]
 }

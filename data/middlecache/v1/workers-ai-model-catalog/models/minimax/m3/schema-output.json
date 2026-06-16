@@ -1,151 +1,230 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": {},
-	"properties": {
-		"base_resp": {
-			"additionalProperties": false,
+	"oneOf": [
+		{
+			"additionalProperties": {},
 			"properties": {
-				"status_code": {
-					"type": "number"
+				"base_resp": {
+					"additionalProperties": false,
+					"properties": {
+						"status_code": {
+							"type": "number"
+						},
+						"status_msg": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"status_code",
+						"status_msg"
+					],
+					"type": "object"
 				},
-				"status_msg": {
-					"type": "string"
-				}
-			},
-			"required": [
-				"status_code",
-				"status_msg"
-			],
-			"type": "object"
-		},
-		"choices": {
-			"items": {
-				"additionalProperties": {},
-				"properties": {
-					"finish_reason": {
-						"enum": [
-							"stop",
-							"length",
-							"tool_calls"
-						],
-						"type": "string"
-					},
-					"index": {
-						"type": "number"
-					},
-					"message": {
+				"choices": {
+					"items": {
 						"additionalProperties": {},
 						"properties": {
-							"content": {
+							"finish_reason": {
+								"enum": [
+									"stop",
+									"length",
+									"tool_calls"
+								],
 								"type": "string"
 							},
-							"role": {
-								"const": "assistant",
-								"type": "string"
+							"index": {
+								"type": "number"
 							},
-							"tool_calls": {
-								"items": {
-									"additionalProperties": false,
-									"properties": {
-										"function": {
+							"message": {
+								"additionalProperties": {},
+								"properties": {
+									"content": {
+										"type": "string"
+									},
+									"role": {
+										"const": "assistant",
+										"type": "string"
+									},
+									"tool_calls": {
+										"items": {
 											"additionalProperties": false,
 											"properties": {
-												"arguments": {
+												"function": {
+													"additionalProperties": false,
+													"properties": {
+														"arguments": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"name",
+														"arguments"
+													],
+													"type": "object"
+												},
+												"id": {
 													"type": "string"
 												},
-												"name": {
+												"type": {
+													"const": "function",
 													"type": "string"
 												}
 											},
 											"required": [
-												"name",
-												"arguments"
+												"id",
+												"type",
+												"function"
 											],
 											"type": "object"
 										},
-										"id": {
-											"type": "string"
-										},
-										"type": {
-											"const": "function",
-											"type": "string"
-										}
-									},
-									"required": [
-										"id",
-										"type",
-										"function"
-									],
-									"type": "object"
+										"type": "array"
+									}
 								},
-								"type": "array"
+								"required": [
+									"role",
+									"content"
+								],
+								"type": "object"
 							}
 						},
 						"required": [
-							"role",
-							"content"
+							"index",
+							"message",
+							"finish_reason"
 						],
 						"type": "object"
-					}
+					},
+					"type": "array"
 				},
-				"required": [
-					"index",
-					"message",
-					"finish_reason"
-				],
-				"type": "object"
-			},
-			"type": "array"
-		},
-		"created": {
-			"type": "number"
-		},
-		"id": {
-			"type": "string"
-		},
-		"input_sensitive": {
-			"type": "boolean"
-		},
-		"model": {
-			"type": "string"
-		},
-		"object": {
-			"enum": [
-				"chat.completion",
-				"chat.completion.chunk"
-			],
-			"type": "string"
-		},
-		"output_sensitive": {
-			"type": "boolean"
-		},
-		"usage": {
-			"additionalProperties": {},
-			"properties": {
-				"completion_tokens": {
+				"created": {
 					"type": "number"
 				},
-				"prompt_tokens": {
-					"type": "number"
+				"id": {
+					"type": "string"
 				},
-				"total_tokens": {
-					"type": "number"
+				"input_sensitive": {
+					"type": "boolean"
+				},
+				"model": {
+					"type": "string"
+				},
+				"object": {
+					"enum": [
+						"chat.completion",
+						"chat.completion.chunk"
+					],
+					"type": "string"
+				},
+				"output_sensitive": {
+					"type": "boolean"
+				},
+				"usage": {
+					"additionalProperties": {},
+					"properties": {
+						"completion_tokens": {
+							"type": "number"
+						},
+						"prompt_tokens": {
+							"type": "number"
+						},
+						"total_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"total_tokens",
+						"prompt_tokens",
+						"completion_tokens"
+					],
+					"type": "object"
 				}
 			},
 			"required": [
-				"total_tokens",
-				"prompt_tokens",
-				"completion_tokens"
+				"id",
+				"choices",
+				"created",
+				"model",
+				"object"
 			],
+			"title": "Chat Completions",
+			"type": "object"
+		},
+		{
+			"additionalProperties": {},
+			"properties": {
+				"content": {
+					"items": {
+						"additionalProperties": {},
+						"properties": {
+							"text": {
+								"type": "string"
+							},
+							"type": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"type"
+						],
+						"type": "object"
+					},
+					"type": "array"
+				},
+				"id": {
+					"type": "string"
+				},
+				"model": {
+					"type": "string"
+				},
+				"role": {
+					"const": "assistant",
+					"type": "string"
+				},
+				"stop_reason": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"type": {
+					"const": "message",
+					"type": "string"
+				},
+				"usage": {
+					"additionalProperties": false,
+					"properties": {
+						"input_tokens": {
+							"type": "number"
+						},
+						"output_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"input_tokens",
+						"output_tokens"
+					],
+					"type": "object"
+				}
+			},
+			"required": [
+				"id",
+				"type",
+				"role",
+				"content",
+				"model",
+				"stop_reason",
+				"usage"
+			],
+			"title": "Messages",
 			"type": "object"
 		}
-	},
-	"required": [
-		"id",
-		"choices",
-		"created",
-		"model",
-		"object"
-	],
-	"type": "object"
+	]
 }

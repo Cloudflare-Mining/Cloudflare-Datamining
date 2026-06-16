@@ -1,0 +1,168 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": false,
+	"properties": {
+		"content_moderation": {
+			"additionalProperties": false,
+			"description": "Settings that affect the behavior of the content moderation system",
+			"properties": {
+				"public_figure_threshold": {
+					"description": "When set to \"low\", content moderation is less strict about recognizable public figures",
+					"enum": [
+						"auto",
+						"low"
+					],
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"duration": {
+			"description": "Duration of the source video in seconds. Used for billing only — not sent to RunwayML. Provide this so the gateway can compute per-second video cost accurately.",
+			"exclusiveMinimum": 0,
+			"type": "number"
+		},
+		"keyframes": {
+			"description": "Timed guidance images placed at specific points in the input video. Each entry has a uri and either seconds (absolute timestamp) or at (fractional position). Up to 5.",
+			"items": {
+				"anyOf": [
+					{
+						"additionalProperties": false,
+						"properties": {
+							"seconds": {
+								"description": "Absolute timestamp in seconds from the start of the input video",
+								"maximum": 30,
+								"minimum": 0,
+								"type": "number"
+							},
+							"uri": {
+								"description": "HTTPS URL, Runway URI, or data URI of the guidance image",
+								"type": "string"
+							}
+						},
+						"required": [
+							"uri",
+							"seconds"
+						],
+						"type": "object"
+					},
+					{
+						"additionalProperties": false,
+						"properties": {
+							"at": {
+								"description": "Position as a fraction [0.0, 1.0] of the input video duration",
+								"maximum": 1,
+								"minimum": 0,
+								"type": "number"
+							},
+							"uri": {
+								"description": "HTTPS URL, Runway URI, or data URI of the guidance image",
+								"type": "string"
+							}
+						},
+						"required": [
+							"uri",
+							"at"
+						],
+						"type": "object"
+					}
+				]
+			},
+			"maxItems": 5,
+			"minItems": 1,
+			"type": "array"
+		},
+		"prompt": {
+			"description": "Text prompt describing the edit to apply to the input video",
+			"maxLength": 1000,
+			"minLength": 1,
+			"type": "string"
+		},
+		"prompt_images": {
+			"description": "Image keyframes for guiding the edit at specific points in the output video. Up to 5.",
+			"items": {
+				"additionalProperties": false,
+				"properties": {
+					"position": {
+						"anyOf": [
+							{
+								"enum": [
+									"first",
+									"last"
+								],
+								"type": "string"
+							},
+							{
+								"additionalProperties": false,
+								"properties": {
+									"timestampSeconds": {
+										"description": "Absolute timestamp in seconds from the start of the output video",
+										"minimum": 0,
+										"type": "number"
+									},
+									"type": {
+										"const": "timestamp",
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"timestampSeconds"
+								],
+								"type": "object"
+							},
+							{
+								"additionalProperties": false,
+								"properties": {
+									"positionPercentage": {
+										"description": "Position as a fraction [0.0, 1.0] of the total video duration",
+										"maximum": 1,
+										"minimum": 0,
+										"type": "number"
+									},
+									"type": {
+										"const": "position",
+										"type": "string"
+									}
+								},
+								"required": [
+									"type",
+									"positionPercentage"
+								],
+								"type": "object"
+							}
+						],
+						"description": "Where in the output video this image applies: \"first\", \"last\", { type: \"timestamp\", timestampSeconds }, or { type: \"position\", positionPercentage }"
+					},
+					"uri": {
+						"description": "HTTPS URL, Runway URI, or data URI of the keyframe image",
+						"type": "string"
+					}
+				},
+				"required": [
+					"uri",
+					"position"
+				],
+				"type": "object"
+			},
+			"maxItems": 5,
+			"minItems": 1,
+			"type": "array"
+		},
+		"seed": {
+			"description": "Random seed for reproducible results",
+			"maximum": 4294967295,
+			"minimum": 0,
+			"type": "integer"
+		},
+		"video_uri": {
+			"description": "HTTPS URL, Runway URI, or data URI of the source video to edit (≤30 seconds)",
+			"type": "string"
+		}
+	},
+	"required": [
+		"prompt",
+		"video_uri"
+	],
+	"type": "object"
+}

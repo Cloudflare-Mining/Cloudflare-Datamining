@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-06-15T04:33:57.334Z",
-	"model_count": 178,
+	"generated_at": "2026-06-16T04:33:44.033Z",
+	"model_count": 179,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -3830,6 +3830,48 @@
 			"terms": "https://www.recraft.ai/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/recraft/recraftv4.png",
 			"created_at": "2026-05-22 17:53:50"
+		},
+		{
+			"model_id": "runwayml/aleph-2",
+			"slug": "runwayml/aleph-2",
+			"display_name": "RunwayML Aleph 2",
+			"description": "RunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Editing",
+				"Video-to-Video",
+				"Keyframe Control",
+				"Multimodal"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://runwayml.com/terms-of-use"
+				},
+				{
+					"property_id": "info",
+					"value": "https://runwayml.com/"
+				}
+			],
+			"metadata": {
+				"Input Modalities": "Text, Image, Video",
+				"Max Input Duration": "30 seconds",
+				"Max Keyframes": "5",
+				"Operation": "Video-to-Video Editing"
+			},
+			"external_info": "https://runwayml.com/",
+			"terms": "https://runwayml.com/terms-of-use",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/runwayml/aleph-2.png",
+			"created_at": "2026-06-15 19:47:34"
 		},
 		{
 			"model_id": "runwayml/gen-4.5",

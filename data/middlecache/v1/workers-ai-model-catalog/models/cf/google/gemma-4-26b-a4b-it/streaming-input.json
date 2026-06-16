@@ -955,6 +955,7 @@
 															"enum": [
 																"text",
 																"image_url",
+																"video_url",
 																"input_audio",
 																"file"
 															]
@@ -976,6 +977,14 @@
 																		"high"
 																	],
 																	"default": "auto"
+																}
+															}
+														},
+														"video_url": {
+															"type": "object",
+															"properties": {
+																"url": {
+																	"type": "string"
 																}
 															}
 														},

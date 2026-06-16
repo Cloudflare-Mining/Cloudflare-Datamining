@@ -2624,6 +2624,7 @@
 															"enumValues": [
 																"text",
 																"image_url",
+																"video_url",
 																"input_audio",
 																"file"
 															],
@@ -2714,6 +2715,49 @@
 																		"low",
 																		"high"
 																	],
+																	"depth": 5,
+																	"isLast": true,
+																	"ancestorIsLast": [
+																		false,
+																		false,
+																		false,
+																		true,
+																		false
+																	]
+																}
+															]
+														},
+														{
+															"id": "messages.2.content.1.video_url",
+															"name": "video_url",
+															"type": "object",
+															"isArray": false,
+															"isObject": true,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": false,
+															"depth": 4,
+															"isLast": false,
+															"ancestorIsLast": [
+																false,
+																false,
+																false,
+																true
+															],
+															"children": [
+																{
+																	"id": "messages.2.content.1.video_url.url",
+																	"name": "url",
+																	"type": "string",
+																	"isArray": false,
+																	"isObject": false,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": false,
 																	"depth": 5,
 																	"isLast": true,
 																	"ancestorIsLast": [
@@ -9498,6 +9542,7 @@
 															"enumValues": [
 																"text",
 																"image_url",
+																"video_url",
 																"input_audio",
 																"file"
 															],
@@ -9588,6 +9633,49 @@
 																		"low",
 																		"high"
 																	],
+																	"depth": 5,
+																	"isLast": true,
+																	"ancestorIsLast": [
+																		false,
+																		false,
+																		false,
+																		true,
+																		false
+																	]
+																}
+															]
+														},
+														{
+															"id": "messages.2.content.1.video_url",
+															"name": "video_url",
+															"type": "object",
+															"isArray": false,
+															"isObject": true,
+															"isOneOf": false,
+															"isOneOfChild": false,
+															"isFirstOneOfChild": false,
+															"isLastOneOfChild": false,
+															"required": false,
+															"depth": 4,
+															"isLast": false,
+															"ancestorIsLast": [
+																false,
+																false,
+																false,
+																true
+															],
+															"children": [
+																{
+																	"id": "messages.2.content.1.video_url.url",
+																	"name": "url",
+																	"type": "string",
+																	"isArray": false,
+																	"isObject": false,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": false,
 																	"depth": 5,
 																	"isLast": true,
 																	"ancestorIsLast": [
@@ -15767,6 +15855,7 @@
 																	"enumValues": [
 																		"text",
 																		"image_url",
+																		"video_url",
 																		"input_audio",
 																		"file"
 																	],
@@ -15865,6 +15954,53 @@
 																				"low",
 																				"high"
 																			],
+																			"depth": 7,
+																			"isLast": true,
+																			"ancestorIsLast": [
+																				true,
+																				true,
+																				false,
+																				false,
+																				false,
+																				true,
+																				false
+																			]
+																		}
+																	]
+																},
+																{
+																	"id": "requests.1.messages.2.content.1.video_url",
+																	"name": "video_url",
+																	"type": "object",
+																	"isArray": false,
+																	"isObject": true,
+																	"isOneOf": false,
+																	"isOneOfChild": false,
+																	"isFirstOneOfChild": false,
+																	"isLastOneOfChild": false,
+																	"required": false,
+																	"depth": 6,
+																	"isLast": false,
+																	"ancestorIsLast": [
+																		true,
+																		true,
+																		false,
+																		false,
+																		false,
+																		true
+																	],
+																	"children": [
+																		{
+																			"id": "requests.1.messages.2.content.1.video_url.url",
+																			"name": "url",
+																			"type": "string",
+																			"isArray": false,
+																			"isObject": false,
+																			"isOneOf": false,
+																			"isOneOfChild": false,
+																			"isFirstOneOfChild": false,
+																			"isLastOneOfChild": false,
+																			"required": false,
 																			"depth": 7,
 																			"isLast": true,
 																			"ancestorIsLast": [
