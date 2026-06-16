@@ -1587,9 +1587,9 @@
 		"coloName": "Cloudflare colo code",
 		"country": "Source country code",
 		"datetime": "Day start timestamp (daily granularity)",
-		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
 		"edeErrors": "Union of EDE codes observed in the group (rollup of raw edeErrors via groupUniqArrayArray; sorted ascending for deterministic output)",
-		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
 		"location": "Gateway location ID",
 		"matchedCategoryIds": "Union of matched categories observed in the group (rollup of raw matchedCategoryIds via groupUniqArrayArray; sorted ascending for deterministic output)",
 		"policyId": "Policy ID",
@@ -1599,7 +1599,7 @@
 		"queryType": "DNS query type",
 		"rcode": "DNS response code",
 		"resolverDecision": "Gateway resolver decision. To filter for all \"block\" outcomes, use resolverDecision_in with [\"blockedRule\", \"blockedByQueryName\", \"blockedByCategory\"]. Other values: allowedOnNoPolicyMatch, allowedOnPolicyMatch, allowedByQueryName, overrideRule, safesearchRule, ytRestrictedModeRule, allowedOnNoLocation, allowedOnNoRule, overrideOnlyRule.",
-		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \"REDACTED\""
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\""
 	},
 	"AccountCf1GatewayDns1dGroupsFilter_InputObject": {
 		"__description": ""
@@ -1672,6 +1672,125 @@
 		"topQueryNames": "Top query names (hostnames) by query count, most frequent first (up to 100; backed by a stored top-1000 approx_top_k for merge accuracy). Elements correspond to topQueryNameCounts by index."
 	},
 	"AccountCf1GatewayDns1hGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayDnsLuga1dGroups": {
+		"__description": "CF1 Gateway DNS LUGA analytics - 1 day rollup",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayDnsLuga1dGroupsDimensions": {
+		"__description": "",
+		"coloName": "Cloudflare colo code",
+		"country": "Source country code",
+		"datetime": "Day start timestamp (daily granularity)",
+		"destination": "Query name (destination domain)",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
+		"location": "Gateway location ID",
+		"policyId": "Policy ID",
+		"protocol": "DNS protocol",
+		"queryType": "DNS query type",
+		"rcode": "DNS response code",
+		"resolverDecision": "Gateway resolver decision",
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\""
+	},
+	"AccountCf1GatewayDnsLuga1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDnsLuga1dGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDnsLuga1dGroupsSum": {
+		"__description": "",
+		"queries": "Total DNS queries",
+		"queryBytes": "Total query bytes",
+		"responseBytes": "Total response bytes"
+	},
+	"AccountCf1GatewayDnsLuga1dGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayDnsLuga1hGroups": {
+		"__description": "CF1 Gateway DNS LUGA analytics - 1 hour rollup",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayDnsLuga1hGroupsDimensions": {
+		"__description": "",
+		"coloName": "Cloudflare colo code",
+		"country": "Source country code",
+		"datetime": "Hour start timestamp (hourly granularity)",
+		"destination": "Query name (destination domain)",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
+		"location": "Gateway location ID",
+		"policyId": "Policy ID",
+		"protocol": "DNS protocol",
+		"queryType": "DNS query type",
+		"rcode": "DNS response code",
+		"resolverDecision": "Gateway resolver decision",
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\""
+	},
+	"AccountCf1GatewayDnsLuga1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDnsLuga1hGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDnsLuga1hGroupsSum": {
+		"__description": "",
+		"queries": "Total DNS queries",
+		"queryBytes": "Total query bytes",
+		"responseBytes": "Total response bytes"
+	},
+	"AccountCf1GatewayDnsLuga1hGroupsUniq": {
+		"__description": "",
+		"devices": "Unique devices",
+		"users": "Unique users"
+	},
+	"AccountCf1GatewayDnsLugaRawGroups": {
+		"__description": "CF1 Gateway DNS LUGA analytics - raw data (max 3h query window). Use cf1GatewayDnsLuga1hGroups for longer ranges, or cf1GatewayDnsLuga1dGroups for 10d+",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1GatewayDnsLugaRawGroupsDimensions": {
+		"__description": "",
+		"coloName": "Cloudflare colo code",
+		"country": "Source country code",
+		"datetime": "Query timestamp",
+		"datetimeFiveMinutes": "Query timestamp truncated to five minutes",
+		"datetimeHour": "Query timestamp truncated to hour",
+		"destination": "Query name (destination domain)",
+		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
+		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
+		"location": "Gateway location ID",
+		"policyId": "Policy ID",
+		"protocol": "DNS protocol",
+		"queryType": "DNS query type",
+		"rcode": "DNS response code",
+		"resolverDecision": "Gateway resolver decision",
+		"sourceIP": "Source IP address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\""
+	},
+	"AccountCf1GatewayDnsLugaRawGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDnsLugaRawGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1GatewayDnsLugaRawGroupsSum": {
+		"__description": "",
+		"queries": "Total DNS queries",
+		"queryBytes": "Total query bytes",
+		"responseBytes": "Total response bytes"
+	},
+	"AccountCf1GatewayDnsLugaRawGroupsUniq": {
 		"__description": "",
 		"devices": "Unique devices",
 		"users": "Unique users"
@@ -9040,6 +9159,84 @@
 	"AccountR2StorageAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroups": {
+		"__description": "R2 SQL requests with adaptive sampling",
+		"avg": "The average value for a metric per dimension",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Total number of R2 SQL requests",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension",
+		"min": "The min of values for a metric per dimension",
+		"quantiles": "Quantiles of a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsAvg": {
+		"__description": "",
+		"latencyMs": "Average query latency in milliseconds",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Total number of R2 SQL requests, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsDimensions": {
+		"__description": "",
+		"bucket": "The R2 bucket name",
+		"date": "Request timestamp, truncated to start of a day",
+		"datetime": "Request timestamp",
+		"datetimeFifteenMinutes": "Request timestamp, truncated to start of fifteen minutes",
+		"datetimeFiveMinutes": "Request timestamp, truncated to start of five minutes",
+		"datetimeHour": "Request timestamp, truncated to start of an hour",
+		"datetimeMinute": "Request timestamp, truncated to start of a minute",
+		"errorCode": "R2 SQL error code",
+		"httpStatus": "HTTP response status code",
+		"namespace": "The Iceberg namespace targeted by the request",
+		"table": "The Iceberg table targeted by the request"
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsMax": {
+		"__description": "",
+		"latencyMs": "Maximum query latency in milliseconds"
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsMin": {
+		"__description": "",
+		"latencyMs": "Minimum query latency in milliseconds"
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsQuantiles": {
+		"__description": "",
+		"latencyMsP25": "25th percentile query latency (milliseconds)",
+		"latencyMsP50": "50th percentile query latency (milliseconds)",
+		"latencyMsP75": "75th percentile query latency (milliseconds)",
+		"latencyMsP90": "90th percentile query latency (milliseconds)",
+		"latencyMsP95": "95th percentile query latency (milliseconds)",
+		"latencyMsP99": "99th percentile query latency (milliseconds)",
+		"latencyMsP999": "99.9th percentile query latency (milliseconds)"
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsSum": {
+		"__description": "",
+		"latencyMs": "Total query latency in milliseconds",
+		"r2BytesRead": "Total compressed bytes read from R2",
+		"r2ColdReads": "Total R2 requests that did not hit cache",
+		"r2HotReads": "Total cache hits",
+		"r2Reads": "Total number of R2 requests",
+		"r2ScannedFiles": "Total files scanned"
+	},
+	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"latencyMs": "Confidence interval for the corresponding point estimate",
+		"r2BytesRead": "Confidence interval for the corresponding point estimate",
+		"r2ColdReads": "Confidence interval for the corresponding point estimate",
+		"r2HotReads": "Confidence interval for the corresponding point estimate",
+		"r2Reads": "Confidence interval for the corresponding point estimate",
+		"r2ScannedFiles": "Confidence interval for the corresponding point estimate"
+	},
 	"AccountRealtimeKitUsageAdaptiveGroups": {
 		"__description": "RealtimeKit usage metrics",
 		"avg": "The average of values for a metric per dimension",
@@ -9542,6 +9739,9 @@
 		"cf1AccessLoginsRawGroups": "",
 		"cf1GatewayDns1dGroups": "",
 		"cf1GatewayDns1hGroups": "",
+		"cf1GatewayDnsLuga1dGroups": "",
+		"cf1GatewayDnsLuga1hGroups": "",
+		"cf1GatewayDnsLugaRawGroups": "",
 		"cf1GatewayDnsRawGroups": "",
 		"cf1GatewayHttp1dGroups": "",
 		"cf1GatewayHttp1hGroups": "",
@@ -9668,6 +9868,7 @@
 		"r2CatalogTableMaintenanceAdaptiveGroups": "",
 		"r2OperationsAdaptiveGroups": "",
 		"r2StorageAdaptiveGroups": "",
+		"r2sqlRequestsByAccountBucketAdaptiveGroups": "",
 		"realtimeKitUsageAdaptiveGroups": "",
 		"rumPageloadEventsAdaptiveGroups": "",
 		"rumPerformanceEventsAdaptiveGroups": "",
@@ -14683,6 +14884,9 @@
 		"cf1AccessLoginsRawGroups": "CF1 Access login analytics - raw data (max 3h window, up to 31d back). Supports unique user counts. Use cf1AccessLogins1hGroups for longer ranges.",
 		"cf1GatewayDns1dGroups": "CF1 Gateway DNS analytics - 1 day rollup",
 		"cf1GatewayDns1hGroups": "CF1 Gateway DNS analytics - 1 hour rollup",
+		"cf1GatewayDnsLuga1dGroups": "CF1 Gateway DNS LUGA analytics - 1 day rollup",
+		"cf1GatewayDnsLuga1hGroups": "CF1 Gateway DNS LUGA analytics - 1 hour rollup",
+		"cf1GatewayDnsLugaRawGroups": "CF1 Gateway DNS LUGA analytics - raw data (max 3h query window). Use cf1GatewayDnsLuga1hGroups for longer ranges, or cf1GatewayDnsLuga1dGroups for 10d+",
 		"cf1GatewayDnsRawGroups": "CF1 Gateway DNS analytics - raw data (max 3h query window). Use cf1GatewayDns1hGroups for longer ranges, or cf1GatewayDns1dGroups for 10d+",
 		"cf1GatewayHttp1dGroups": "CF1 Gateway HTTP analytics - 1 day rollup (up to 90d window, 365d back)",
 		"cf1GatewayHttp1hGroups": "CF1 Gateway HTTP analytics - 1 hour rollup (up to 31d window, 62d back)",
@@ -14809,6 +15013,7 @@
 		"r2CatalogTableMaintenanceAdaptiveGroups": "R2 Data Catalog table maintenance job metrics (compaction, snapshot expiration) with adaptive sampling",
 		"r2OperationsAdaptiveGroups": "Beta. R2 operations with adaptive sampling",
 		"r2StorageAdaptiveGroups": "Beta. R2 storage with adaptive sampling",
+		"r2sqlRequestsByAccountBucketAdaptiveGroups": "R2 SQL requests with adaptive sampling",
 		"realtimeKitUsageAdaptiveGroups": "RealtimeKit usage metrics",
 		"rumPageloadEventsAdaptiveGroups": "Beta. Aggregated RUM pageload event metrics with adaptive sampling",
 		"rumPerformanceEventsAdaptiveGroups": "Beta. Aggregated RUM performance event metrics with adaptive sampling",
