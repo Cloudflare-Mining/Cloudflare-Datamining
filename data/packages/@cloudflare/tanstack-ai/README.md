@@ -46,7 +46,7 @@ The simplest way to use AI in a Cloudflare Worker. No API keys needed for Worker
 import { createWorkersAiChat } from "@cloudflare/tanstack-ai";
 import { chat, toHttpResponse } from "@tanstack/ai";
 
-const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.5", {
+const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.7-code", {
 	binding: env.AI,
 });
 
@@ -62,7 +62,7 @@ return toHttpResponse(response);
 **Using REST credentials:**
 
 ```typescript
-const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.5", {
+const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.7-code", {
 	accountId: "your-account-id",
 	apiKey: "your-api-key",
 });
@@ -102,7 +102,7 @@ See the [Workers AI docs](https://developers.cloudflare.com/workers-ai/) for per
 Send images to vision-capable chat models:
 
 ```typescript
-const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.5", {
+const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.7-code", {
 	accountId: "your-account-id",
 	apiKey: "your-api-key",
 });
@@ -234,7 +234,7 @@ const adapter = createOpenAiChat("gpt-4o", {
 ### Workers AI through Gateway
 
 ```typescript
-const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.5", {
+const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.7-code", {
 	binding: env.AI.gateway("my-gateway-id"),
 	apiKey: env.WORKERS_AI_TOKEN,
 });
@@ -343,7 +343,7 @@ Third-party providers (OpenAI, Anthropic, Gemini, Grok, OpenRouter) only support
 All Workers AI config modes also accept `sessionAffinity` to route requests with the same key to the same backend replica for prefix-cache optimization:
 
 ```typescript
-const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.5", {
+const adapter = createWorkersAiChat("@cf/moonshotai/kimi-k2.7-code", {
 	binding: env.AI,
 	sessionAffinity: "my-unique-session-id",
 });
