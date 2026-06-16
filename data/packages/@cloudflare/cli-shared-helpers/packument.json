@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/cli-shared-helpers",
 	"dist-tags": {
-		"latest": "0.1.7"
+		"latest": "0.1.8"
 	},
 	"versions": {
 		"0.0.1": {
@@ -320,6 +320,42 @@
 					}
 				},
 				"unpackedSize": 51534
+			}
+		},
+		"0.1.8": {
+			"name": "@cloudflare/cli-shared-helpers",
+			"version": "0.1.8",
+			"dependencies": {
+				"@clack/core": "1.2.0",
+				"chalk": "5.3.0",
+				"ci-info": "4.4.0",
+				"cross-spawn": "7.0.6",
+				"log-update": "5.0.1",
+				"@cloudflare/workers-utils": "0.23.1"
+			},
+			"devDependencies": {
+				"@types/cross-spawn": "^6.0.2",
+				"tsdown": "^0.15.9",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-8E5YLf2i2Br0CNvHgsEQuEjyaDCOvz0dYku2xNockZQIzSox7vX4WAWfN/8tfF39LnvjmM7v5af0qqgqmSUm9A==",
+				"shasum": "16f54445ed0f41f4f88fdd3b27d38178add4201b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/cli-shared-helpers/-/cli-shared-helpers-0.1.8.tgz",
+				"fileCount": 26,
+				"unpackedSize": 51534,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fcli-shared-helpers@0.1.8",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDEvLLuTYpDL6PpV6IhZuJtEru3LMRclQtQl6v4WC5mJQIgMSn0LGS71nuFMfJfo/MZthNIchoBFGSt7K2WXGVQMD4="
+					}
+				]
 			}
 		}
 	}
