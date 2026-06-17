@@ -35,11 +35,9 @@
 <h4><strong>4. Global Operations &amp; Team Leadership</strong></h4>
 <ul>
 	<li><strong>Inspirational Leadership:</strong> Lead, mentor, and elevate a global team of recruiters, technical sourcers, operational specialists, and passionate members of our team globally.&nbsp;</li>
-	<li><strong>Global Compliance Velocity:</strong> Maintain uncompromised data privacy and regulatory compliance (GDPR, pay transparency, local employment laws) across the US, EMEA, and APAC.&nbsp;</li>
+	<li><strong>Global Compliance Velocity:</strong> Maintain uncompromised data privacy and regulatory compliance (GDPR, pay transparency, local employment laws) across the US, EMEA, and APAC.</li>
 </ul>
-<ol>
-	<li><strong> Employer Brand as a Product</strong></li>
-</ol>
+<p><strong>5. Employer Brand as a Product</strong></p>
 <ul>
 	<li><strong>Authentic Narrative:</strong> Position Cloudflare’s employer brand as an authentic reflection of our&nbsp; culture, attracting builders and sellers who are passionate about shaping an AI-first Internet.</li>
 	<li><strong>Future Talent Pipelines:</strong> Run early-career, university, and diversity recruiting initiatives with the same structured, metrics-driven approach applied to our senior staff engineering hires.</li>
