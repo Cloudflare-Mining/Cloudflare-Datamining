@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-angular-ui",
 	"dist-tags": {
 		"latest": "1.2.0",
-		"staging": "1.2.1-staging.5"
+		"staging": "1.2.1-staging.6"
 	},
 	"versions": {
 		"0.0.0": {
@@ -2312,6 +2312,37 @@
 					}
 				},
 				"unpackedSize": 1705916
+			}
+		},
+		"1.2.1-staging.6": {
+			"name": "@cloudflare/realtimekit-angular-ui",
+			"version": "1.2.1-staging.6",
+			"dependencies": {
+				"tslib": "^2.3.0",
+				"@cloudflare/realtimekit-ui": "1.2.1-staging.6"
+			},
+			"peerDependencies": {
+				"@angular/common": ">=12",
+				"@angular/core": ">=12"
+			},
+			"dist": {
+				"integrity": "sha512-AIZzeixn+3PKZJqgQMR514a5dR4bqvr/MV546fJV1N3MMDxmw4SNpee13hONYzJg4iW+sxyAmMf8mgvAI/pvPQ==",
+				"shasum": "5a893bbba4a8c0b6f0279b962dcc0e23a82378c9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-angular-ui/-/realtimekit-angular-ui-1.2.1-staging.6.tgz",
+				"fileCount": 18,
+				"unpackedSize": 1705916,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-angular-ui@1.2.1-staging.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIAVW8UHCcJ3xQOxL+ZGvOZk49no6Ek0EYkcW0wRr1ievAiAKit97tEkBrlg5V2AzrOsiNKhKFyiqv85l9rJniSwYuw=="
+					}
+				]
 			}
 		}
 	}
