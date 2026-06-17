@@ -9159,7 +9159,7 @@
 	"AccountR2StorageAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroups": {
+	"AccountR2sqlOperationsAdaptiveGroups": {
 		"__description": "R2 SQL requests with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
 		"confidence": "ALPHA - DO NOT USE",
@@ -9170,18 +9170,18 @@
 		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsAvg": {
+	"AccountR2sqlOperationsAdaptiveGroupsAvg": {
 		"__description": "",
 		"latencyMs": "Average query latency in milliseconds",
 		"sampleInterval": "Average sample interval"
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsConfidence": {
+	"AccountR2sqlOperationsAdaptiveGroupsConfidence": {
 		"__description": "",
 		"count": "Total number of R2 SQL requests, with confidence intervals",
 		"level": "Confidence level that was requested",
 		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsDimensions": {
+	"AccountR2sqlOperationsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"bucket": "The R2 bucket name",
 		"date": "Request timestamp, truncated to start of a day",
@@ -9195,21 +9195,21 @@
 		"namespace": "The Iceberg namespace targeted by the request",
 		"table": "The Iceberg table targeted by the request"
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsFilter_InputObject": {
+	"AccountR2sqlOperationsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsMax": {
+	"AccountR2sqlOperationsAdaptiveGroupsMax": {
 		"__description": "",
 		"latencyMs": "Maximum query latency in milliseconds"
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsMin": {
+	"AccountR2sqlOperationsAdaptiveGroupsMin": {
 		"__description": "",
 		"latencyMs": "Minimum query latency in milliseconds"
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsOrderBy": {
+	"AccountR2sqlOperationsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsQuantiles": {
+	"AccountR2sqlOperationsAdaptiveGroupsQuantiles": {
 		"__description": "",
 		"latencyMsP25": "25th percentile query latency (milliseconds)",
 		"latencyMsP50": "50th percentile query latency (milliseconds)",
@@ -9219,7 +9219,7 @@
 		"latencyMsP99": "99th percentile query latency (milliseconds)",
 		"latencyMsP999": "99.9th percentile query latency (milliseconds)"
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsSum": {
+	"AccountR2sqlOperationsAdaptiveGroupsSum": {
 		"__description": "",
 		"latencyMs": "Total query latency in milliseconds",
 		"r2BytesRead": "Total compressed bytes read from R2",
@@ -9228,7 +9228,7 @@
 		"r2Reads": "Total number of R2 requests",
 		"r2ScannedFiles": "Total files scanned"
 	},
-	"AccountR2sqlRequestsByAccountBucketAdaptiveGroupsSumConfidence": {
+	"AccountR2sqlOperationsAdaptiveGroupsSumConfidence": {
 		"__description": "",
 		"latencyMs": "Confidence interval for the corresponding point estimate",
 		"r2BytesRead": "Confidence interval for the corresponding point estimate",
@@ -9868,7 +9868,7 @@
 		"r2CatalogTableMaintenanceAdaptiveGroups": "",
 		"r2OperationsAdaptiveGroups": "",
 		"r2StorageAdaptiveGroups": "",
-		"r2sqlRequestsByAccountBucketAdaptiveGroups": "",
+		"r2sqlOperationsAdaptiveGroups": "",
 		"realtimeKitUsageAdaptiveGroups": "",
 		"rumPageloadEventsAdaptiveGroups": "",
 		"rumPerformanceEventsAdaptiveGroups": "",
@@ -11188,8 +11188,15 @@
 	},
 	"AccountWorkersInvocationsByOwnerAndScriptGroups": {
 		"__description": "Workers dynamic worker invocations. Used for exact distinct dynamic worker counts.",
+		"confidence": "ALPHA - DO NOT USE",
 		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension",
 		"uniq": "Unique count metrics"
+	},
+	"AccountWorkersInvocationsByOwnerAndScriptGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
 	},
 	"AccountWorkersInvocationsByOwnerAndScriptGroupsDimensions": {
 		"__description": "",
@@ -11205,6 +11212,16 @@
 	},
 	"AccountWorkersInvocationsByOwnerAndScriptGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountWorkersInvocationsByOwnerAndScriptGroupsSum": {
+		"__description": "",
+		"cpuTimeUs": "Sum of cpu time in us",
+		"requests": "Sum of Requests"
+	},
+	"AccountWorkersInvocationsByOwnerAndScriptGroupsSumConfidence": {
+		"__description": "",
+		"cpuTimeUs": "Confidence interval for the corresponding point estimate",
+		"requests": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountWorkersInvocationsByOwnerAndScriptGroupsUniq": {
 		"__description": "",
@@ -15013,7 +15030,7 @@
 		"r2CatalogTableMaintenanceAdaptiveGroups": "R2 Data Catalog table maintenance job metrics (compaction, snapshot expiration) with adaptive sampling",
 		"r2OperationsAdaptiveGroups": "Beta. R2 operations with adaptive sampling",
 		"r2StorageAdaptiveGroups": "Beta. R2 storage with adaptive sampling",
-		"r2sqlRequestsByAccountBucketAdaptiveGroups": "R2 SQL requests with adaptive sampling",
+		"r2sqlOperationsAdaptiveGroups": "R2 SQL requests with adaptive sampling",
 		"realtimeKitUsageAdaptiveGroups": "RealtimeKit usage metrics",
 		"rumPageloadEventsAdaptiveGroups": "Beta. Aggregated RUM pageload event metrics with adaptive sampling",
 		"rumPerformanceEventsAdaptiveGroups": "Beta. Aggregated RUM performance event metrics with adaptive sampling",
