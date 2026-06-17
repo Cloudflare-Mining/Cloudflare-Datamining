@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-06-16T04:33:44.033Z",
-	"model_count": 179,
+	"generated_at": "2026-06-17T04:33:46.101Z",
+	"model_count": 180,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -6732,6 +6732,68 @@
 			"terms": null,
 			"cover_image_url": null,
 			"created_at": "2025-02-27 00:31:43.829"
+		},
+		{
+			"model_id": "@cf/zai-org/glm-5.2",
+			"slug": "cf/zai-org/glm-5.2",
+			"display_name": "glm-5.2",
+			"description": "Z.ai's flagship agentic coding model",
+			"task": {
+				"id": "c329a1f9-323d-4e91-b2aa-582dd4188d34",
+				"name": "Text Generation",
+				"description": "Family of generative text models, such as large language models (LLM), that can be adapted for a variety of natural language tasks."
+			},
+			"tags": [],
+			"context_length": 262144,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "hosted",
+			"data_source": "legacy",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "262144"
+				},
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 1.4,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 4.4,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M cached input tokens",
+							"price": 0.26,
+							"currency": "USD"
+						}
+					]
+				},
+				{
+					"property_id": "function_calling",
+					"value": "true"
+				},
+				{
+					"property_id": "reasoning",
+					"value": "true"
+				}
+			],
+			"metadata": {
+				"beta": false,
+				"lora": false,
+				"function_calling": true,
+				"partner": false,
+				"realtime": false
+			},
+			"external_info": null,
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-15 09:51:05.921"
 		},
 		{
 			"model_id": "@hf/nousresearch/hermes-2-pro-mistral-7b",
