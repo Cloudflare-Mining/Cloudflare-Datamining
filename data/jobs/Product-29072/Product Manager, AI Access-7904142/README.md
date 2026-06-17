@@ -24,9 +24,7 @@
 <p><strong>What we're looking for</strong></p>
 <ul>
 	<li>5+ years as a PM in infrastructure, developer tools, or AI/ML.&nbsp;</li>
-	<ul>
-		<li>Developer-facing experience required; data, crawling, or search is a strong plus</li>
-	</ul>
+	<li>Developer-facing experience required; data, crawling, or search is a strong plus</li>
 	<li>A strong communicator who is comfortable with ambiguity</li>
 	<li>Technically literate — you don't need to write Rust, but you should be able to push back on a tech lead on the merits of a particular direction</li>
 	<li>Alignment with Cloudflare's goals and values - learn more on our<a href="https://www.cloudflare.com/en-gb/careers/"> Careers page</a></li>
