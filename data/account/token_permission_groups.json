@@ -2916,6 +2916,15 @@
 		"category": "ai_and_machine_learning"
 	},
 	{
+		"id": "c3149113b86a4aebafe59e5bac3b6690",
+		"name": "Workers AI Metadata Read",
+		"description": "Grants read-only access to Workers AI metadata (model catalog, finetune list, tasks, authors) without access to inference or mutation endpoints.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "ai_and_machine_learning"
+	},
+	{
 		"id": "a92d2450e05d4e7bb7d0a64968f83d11",
 		"name": "Workers AI Read",
 		"description": "Grants access to invoke Workers AI models",
