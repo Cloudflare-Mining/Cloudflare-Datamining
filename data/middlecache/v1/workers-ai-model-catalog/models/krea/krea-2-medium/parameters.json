@@ -1,0 +1,387 @@
+{
+	"flat": true,
+	"modes": null,
+	"input": {
+		"rows": [
+			{
+				"id": "aspect_ratio",
+				"name": "aspect_ratio",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Aspect ratio of the generated image.",
+				"enumValues": [
+					"1:1",
+					"4:3",
+					"3:2",
+					"16:9",
+					"2.35:1",
+					"4:5",
+					"2:3",
+					"9:16"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "complexity",
+				"name": "complexity",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"defaultValue": "0",
+				"description": "K2 Complexity slider (-100 to 100). 0 disables the slider LoRA.",
+				"metadata": {
+					"maximum": 100,
+					"minimum": -100
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "creativity",
+				"name": "creativity",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"defaultValue": "low",
+				"description": "Prompt expansion mode. `raw` disables expansion; `low`, `medium`, `high` control strength. Does not affect the K2 Intensity, Complexity, or Movement slider LoRAs.",
+				"enumValues": [
+					"raw",
+					"low",
+					"medium",
+					"high"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "image_style_references",
+				"name": "image_style_references",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Reference images to drive the visual style (up to 10).",
+				"metadata": {
+					"maxItems": 10
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "image_style_references.strength",
+						"name": "strength",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"defaultValue": "0.5",
+						"description": "Style influence (0 = no influence, 1 = maximum). Default 0.5.",
+						"metadata": {
+							"maximum": 1,
+							"minimum": 0
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "image_style_references.url",
+						"name": "url",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"description": "URL of the reference image (max 1024 chars).",
+						"metadata": {
+							"format": "uri"
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "intensity",
+				"name": "intensity",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"defaultValue": "0",
+				"description": "K2 Intensity slider (-100 to 100). 0 disables the slider LoRA.",
+				"metadata": {
+					"maximum": 100,
+					"minimum": -100
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "moodboards",
+				"name": "moodboards",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Moodboard references (currently limited to one).",
+				"metadata": {
+					"maxItems": 1
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "moodboards.id",
+						"name": "id",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"description": "Moodboard identifier.",
+						"metadata": {
+							"format": "uuid",
+							"pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+						},
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "moodboards.strength",
+						"name": "strength",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"defaultValue": "0.23",
+						"description": "Moodboard influence (0 = no influence, 1 = maximum). Default 0.23.",
+						"metadata": {
+							"maximum": 1,
+							"minimum": 0
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "movement",
+				"name": "movement",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"defaultValue": "0",
+				"description": "K2 Movement slider (-100 to 100). 0 disables the slider LoRA.",
+				"metadata": {
+					"maximum": 100,
+					"minimum": -100
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Text prompt describing the image to generate.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "resolution",
+				"name": "resolution",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Resolution scale.",
+				"enumValues": [
+					"1K"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "seed",
+				"name": "seed",
+				"type": "number | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Random seed for reproducible generations. Pass null or omit for a random seed.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "styles",
+				"name": "styles",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Styles (typically LoRAs) to apply to the generation.",
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "styles.id",
+						"name": "id",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"description": "Style (typically LoRA) identifier.",
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "styles.strength",
+						"name": "strength",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"description": "Style strength, between -2 and 2.",
+						"metadata": {
+							"maximum": 2,
+							"minimum": -2
+						},
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							true
+						]
+					}
+				]
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	},
+	"output": {
+		"rows": [
+			{
+				"id": "image",
+				"name": "image",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Presigned URL for the generated image.",
+				"metadata": {
+					"format": "uri"
+				},
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": []
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	}
+}

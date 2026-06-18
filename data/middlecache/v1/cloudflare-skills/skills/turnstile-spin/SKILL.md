@@ -89,6 +89,8 @@ Spin validates the Turnstile token via a managed Worker before the user's existi
 
 ### Recovery flow: respect existing widget configuration
 
+When the user has Cloudflare dashboard access, the in-dashboard **Fix with Spin** banner is the preferred recovery path; it deploys the managed siteverify Worker server-side without requiring `wrangler` or an API token. This skill's recovery flow below is the fallback: use it when the user is driving from their editor without leaving it, or when the dashboard recovery does not apply (FedRAMP, gate-restricted account, etc.).
+
 If the user tells you they already have a Turnstile widget set up and want to wire siteverify to it without rotating the sitekey (e.g. "I have a sitekey but siteverify never worked", "set up Spin against my existing widget `<sitekey>`"):
 
 1. Skip Step 8 (widget creation). The sitekey already exists; get it from the user.
@@ -98,7 +100,9 @@ If the user tells you they already have a Turnstile widget set up and want to wi
 3. Check `clearance_level` from the response (or the user's answer):
    - `no_clearance`: standard recovery (deploy Worker, wire siteverify).
    - anything else: ask whether they want siteverify on top of pre-clearance, or exit per the scope boundary.
-4. Continue from Step 9 (Worker deploy). Site key does not change. Dashboard's `Deployment` column flips from `Manual` to `Spin` on the first request carrying `data-action="turnstile-spin-v1"`.
+4. Continue from Step 9 (Worker deploy). Site key does not change. Dashboard's `Deployment` column flips from `Manual` to `Spin` on the first request carrying `data-action="turnstile-spin-v1"` (this skill) or `data-action="turnstile-spin-v2"` (dashboard "Set up with Spin" button).
+
+If the user is recovering a widget that was created via the dashboard "Set up with Spin" button, a managed Worker is likely already deployed in the account. Confirm with the user whether they want a fresh Worker (proceed) or just need help wiring the frontend to the existing one (skip to Step 10 and ask for the existing Worker URL).
 5. Never recreate the widget to get a fresh secret. That breaks the existing sitekey everywhere it's deployed.
 
 ### The frontend-edit contract
@@ -152,7 +156,7 @@ Edge cases to surface to the user:
 
 ## Telemetry marker
 
-Every snippet you write must include `data-action="turnstile-spin-v1"`. Account-level aggregate telemetry, never per-user. Cloudflare uses it to measure activation. If the user removes the attribute, the integration still works; only the analytics segmentation is lost.
+Every snippet this skill writes must include `data-action="turnstile-spin-v1"`. Widgets created via the dashboard "Set up with Spin" button use `data-action="turnstile-spin-v2"` instead; preserve that marker if you encounter it on an existing widget you are modifying. Both feed the same account-level aggregate telemetry, never per-user. Cloudflare uses it to measure activation. If the user removes the attribute, the integration still works; only the analytics segmentation is lost.
 
 ## Do not
 

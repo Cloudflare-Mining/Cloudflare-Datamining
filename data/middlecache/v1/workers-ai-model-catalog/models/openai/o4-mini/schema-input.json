@@ -4,6 +4,74 @@
 		{
 			"additionalProperties": {},
 			"properties": {
+				"input": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {},
+							"type": "array"
+						}
+					]
+				},
+				"instructions": {
+					"type": "string"
+				},
+				"max_output_tokens": {
+					"exclusiveMinimum": 0,
+					"type": "number"
+				},
+				"reasoning": {
+					"additionalProperties": {},
+					"properties": {
+						"effort": {
+							"enum": [
+								"none",
+								"low",
+								"medium",
+								"high"
+							],
+							"type": "string"
+						}
+					},
+					"type": "object"
+				},
+				"stream": {
+					"type": "boolean"
+				},
+				"temperature": {
+					"maximum": 2,
+					"minimum": 0,
+					"type": "number"
+				},
+				"text": {
+					"additionalProperties": {},
+					"properties": {
+						"format": {}
+					},
+					"type": "object"
+				},
+				"tool_choice": {},
+				"tools": {
+					"items": {},
+					"type": "array"
+				},
+				"top_p": {
+					"maximum": 1,
+					"minimum": 0,
+					"type": "number"
+				}
+			},
+			"required": [
+				"input"
+			],
+			"title": "Responses",
+			"type": "object"
+		},
+		{
+			"additionalProperties": {},
+			"properties": {
 				"audio": {
 					"additionalProperties": false,
 					"properties": {
@@ -131,74 +199,6 @@
 				"messages"
 			],
 			"title": "Chat Completions",
-			"type": "object"
-		},
-		{
-			"additionalProperties": false,
-			"properties": {
-				"input": {
-					"anyOf": [
-						{
-							"type": "string"
-						},
-						{
-							"items": {},
-							"type": "array"
-						}
-					]
-				},
-				"instructions": {
-					"type": "string"
-				},
-				"max_output_tokens": {
-					"exclusiveMinimum": 0,
-					"type": "number"
-				},
-				"reasoning": {
-					"additionalProperties": {},
-					"properties": {
-						"effort": {
-							"enum": [
-								"none",
-								"low",
-								"medium",
-								"high"
-							],
-							"type": "string"
-						}
-					},
-					"type": "object"
-				},
-				"stream": {
-					"type": "boolean"
-				},
-				"temperature": {
-					"maximum": 2,
-					"minimum": 0,
-					"type": "number"
-				},
-				"text": {
-					"additionalProperties": {},
-					"properties": {
-						"format": {}
-					},
-					"type": "object"
-				},
-				"tool_choice": {},
-				"tools": {
-					"items": {},
-					"type": "array"
-				},
-				"top_p": {
-					"maximum": 1,
-					"minimum": 0,
-					"type": "number"
-				}
-			},
-			"required": [
-				"input"
-			],
-			"title": "Responses",
 			"type": "object"
 		}
 	]
