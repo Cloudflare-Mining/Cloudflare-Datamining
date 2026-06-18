@@ -14140,15 +14140,21 @@
 	},
 	"ZoneUserProfilesAdaptiveGroupsSum": {
 		"__description": "",
-		"lccFailures": "Number of leaked credential check failures for a user id.",
+		"eventCount": "Total number of events for a user id.",
+		"failedLoginCount": "Number of failed login attempts for a user id.",
+		"leakedCredentialHitCount": "Number of events with any leaked credential check hit (username leaked, password leaked, or username/password similar) for a user id. Broader than passwordLeakedCount, which counts password-leaked results only.",
+		"passwordLeakedCount": "Number of leaked credential check results where the password was leaked (username_and_password_leaked or password_leaked) for a user id.",
 		"topASNs": "Array of top 5 ASNs for a user id.",
+		"topCities": "Array of top 5 city names for a user id.",
 		"topCountries": "Array of top 5 country codes (alpha2) for a user id.",
 		"topIPs": "Array of top 5 IP addresses for a user id.",
 		"topUserAgents": "Array of top 5 user agents for a user id."
 	},
 	"ZoneUserProfilesAdaptiveGroupsUniq": {
 		"__description": "",
-		"ipCount": "Number of unique IPs for a user id."
+		"browserCount": "Number of unique browser families for a user id.",
+		"ipCount": "Number of unique IPs for a user id.",
+		"osCount": "Number of unique operating system families for a user id."
 	},
 	"ZoneUserProfilesRawEventsGroups": {
 		"__description": "Historical login and signup events per user.",
@@ -14167,6 +14173,7 @@
 		"deviceBrowser": "Device browser name.",
 		"deviceOS": "Device OS name.",
 		"deviceType": "The type of device associated with the event. Possible values are Mobile, Desktop, Tablet, Bot, Other, Unknown.",
+		"ephemeralId": "The Turnstile ephemeral device ID associated with the event. Returns an empty string if not present.",
 		"eventTimestamp": "When the event happened.",
 		"eventType": "Type of the event. Possible values are signup or login.",
 		"fraudEmailRisk": "Risk level of the email address in the event.",
@@ -14174,6 +14181,7 @@
 		"leakedCredentialCheckResult": "The distinct result of checking for leaked credentials. Possible values are clean, username_leaked, username_password_similar, username_and_password_leaked, password_leaked, none.",
 		"rayId": "The RayId of the event.",
 		"securityAction": "The first-class action the Cloudflare Firewall took on this event.",
+		"userAgent": "The user agent string associated with the event.",
 		"userId": "Unique identifier for a user."
 	},
 	"ZoneUserProfilesRawEventsGroupsFilter_InputObject": {
