@@ -2,7 +2,7 @@
 	"name": "@cloudflare/realtimekit-react-ui",
 	"dist-tags": {
 		"latest": "1.2.0",
-		"staging": "1.2.1-staging.6"
+		"staging": "2.0.0-staging.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -2003,13 +2003,39 @@
 				"@cloudflare/realtimekit-ui": "1.2.1-staging.6"
 			},
 			"dist": {
-				"integrity": "sha512-qeMqQgxlYsA/SYFAGqeCn4fHCrSnHXt8FDmZoewyGlgj+rji0q6zQnEEajmzvedtubPkQqilimgktoexv2ZJow==",
 				"shasum": "51b1de58a1a83f458394cd5ee23f8e4dd0b0b59d",
 				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-1.2.1-staging.6.tgz",
 				"fileCount": 46,
-				"unpackedSize": 161163,
+				"integrity": "sha512-qeMqQgxlYsA/SYFAGqeCn4fHCrSnHXt8FDmZoewyGlgj+rji0q6zQnEEajmzvedtubPkQqilimgktoexv2ZJow==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCQReGDexCa//Vh9CihMZHWtvuEOB3qdPfJb/Tp8Rmh/QIgJa26OHZI22HL/SiWfDWkYSbYUXibmZHsSgKYabzES1k=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@1.2.1-staging.6",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 161163
+			}
+		},
+		"2.0.0-staging.1": {
+			"name": "@cloudflare/realtimekit-react-ui",
+			"version": "2.0.0-staging.1",
+			"dependencies": {
+				"@cloudflare/realtimekit-ui": "2.0.0-staging.1"
+			},
+			"dist": {
+				"integrity": "sha512-+tUma/hr1rgKSrbNzS7c3viDqJYskB9SdaaSO9PigpNcP2vaOtpyzfME9RqvQN9C93Zs0ckhul9XoWcVM7EXHA==",
+				"shasum": "289fcbba681804e8f6e39f8d8549717f8e8c0c38",
+				"tarball": "https://registry.npmjs.org/@cloudflare/realtimekit-react-ui/-/realtimekit-react-ui-2.0.0-staging.1.tgz",
+				"fileCount": 46,
+				"unpackedSize": 161163,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2frealtimekit-react-ui@2.0.0-staging.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -2017,7 +2043,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCQReGDexCa//Vh9CihMZHWtvuEOB3qdPfJb/Tp8Rmh/QIgJa26OHZI22HL/SiWfDWkYSbYUXibmZHsSgKYabzES1k="
+						"sig": "MEUCIQCiC8FMtlB0BuWHeovR9FgIQMP6vW8jNBFaEER+5ULsJgIgQySTOtr5b3kCu8DxrVucqK5SIxFjzEHrARj9A0INwt8="
 					}
 				]
 			}
