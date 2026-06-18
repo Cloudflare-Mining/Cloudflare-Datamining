@@ -4130,6 +4130,24 @@
 						"compatEnableDate": "2026-05-26"
 					},
 					"type": "Bool"
+				},
+				{
+					"name": "throwOnNotImplementedTlsOptions",
+					"annotations": {
+						"compatEnableFlag": "throw_on_not_implemented_tls_options",
+						"compatDisableFlag": "no_throw_on_not_implemented_tls_options",
+						"compatEnableDate": "2026-06-16"
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "autoGrpcConvert",
+					"annotations": {
+						"compatEnableFlag": "auto_grpc_convert",
+						"neededByFl": true,
+						"experimental": true
+					},
+					"type": "Bool"
 				}
 			]
 		},
@@ -4907,19 +4925,19 @@
 					"type": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.Type"
 				},
 				{
-					"name": "name",
+					"name": "service",
 					"annotations": {},
-					"type": "Text"
+					"type": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.service"
 				},
 				{
-					"name": "entrypoint",
+					"name": "actor",
 					"annotations": {},
-					"type": "Text"
+					"type": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.actor"
 				},
 				{
-					"name": "props",
+					"name": "restored",
 					"annotations": {},
-					"type": "workerd/src/workerd/io/frankenvalue.capnp:Frankenvalue"
+					"type": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.restored"
 				}
 			]
 		},
@@ -4938,6 +4956,11 @@
 				},
 				{
 					"name": "actorClassChannel",
+					"annotations": {},
+					"type": "Data"
+				},
+				{
+					"name": "rpcChannel",
 					"annotations": {},
 					"type": "Data"
 				}
@@ -7203,7 +7226,7 @@
 					"type": "Text"
 				},
 				{
-					"name": "pythonRequirement",
+					"name": "obsoletePythonRequirement",
 					"annotations": {},
 					"type": "Text"
 				},
@@ -8118,6 +8141,10 @@
 				{
 					"name": "internalError",
 					"annotations": {}
+				},
+				{
+					"name": "exceededWallTime",
+					"annotations": {}
 				}
 			]
 		},
@@ -8221,6 +8248,10 @@
 				},
 				{
 					"name": "actorClass",
+					"annotations": {}
+				},
+				{
+					"name": "rpc",
 					"annotations": {}
 				}
 			]
