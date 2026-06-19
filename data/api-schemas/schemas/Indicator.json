@@ -1181,6 +1181,225 @@
 			"Cloudforce One Read"
 		]
 	},
+	"GET /accounts/{account_id}/cloudforce-one/events/indicators/aggregate": {
+		"description": "Aggregate threat indicators by one or more columns (e.g., indicatorType, value) across datasets. Returns top-N groups ordered by count.",
+		"operationId": "get_IndicatorAggregate",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'indicatorType', 'value', 'indicatorType,value')",
+				"in": "query",
+				"name": "aggregateBy",
+				"required": true,
+				"schema": {
+					"description": "Column(s) to aggregate by - single column or comma-separated list (e.g., 'indicatorType', 'value', 'indicatorType,value')",
+					"type": "string"
+				}
+			},
+			{
+				"description": "What to count per group: 'indicators' (catalog rows, default) or 'relationships' (linked events per indicator). Use 'relationships' for 'top indicator by event activity'.",
+				"in": "query",
+				"name": "measure",
+				"schema": {
+					"default": "indicators",
+					"description": "What to count per group: 'indicators' (catalog rows, default) or 'relationships' (linked events per indicator). Use 'relationships' for 'top indicator by event activity'.",
+					"enum": [
+						"indicators",
+						"relationships"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Scope to indicators associated with this tag/actor UUID. Combine with measure=relationships for 'top indicator for an actor'.",
+				"in": "query",
+				"name": "tagUuid",
+				"schema": {
+					"description": "Scope to indicators associated with this tag/actor UUID. Combine with measure=relationships for 'top indicator for an actor'.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset ID(s) to filter by. Can be a single dataset ID or comma-separated list. If not provided, aggregates across all accessible datasets",
+				"in": "query",
+				"name": "datasetIds",
+				"schema": {
+					"description": "Dataset ID(s) to filter by. Can be a single dataset ID or comma-separated list. If not provided, aggregates across all accessible datasets",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Filter indicators created after this date (ISO 8601 format, e.g., '2024-01-01')",
+				"in": "query",
+				"name": "createdAfter",
+				"schema": {
+					"description": "Filter indicators created after this date (ISO 8601 format, e.g., '2024-01-01')",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter indicators created before this date (ISO 8601 format, e.g., '2024-12-31')",
+				"in": "query",
+				"name": "createdBefore",
+				"schema": {
+					"description": "Filter indicators created before this date (ISO 8601 format, e.g., '2024-12-31')",
+					"type": "string"
+				}
+			},
+			{
+				"description": "For measure=relationships: only count event links whose eventDate is on/after this date (ISO 8601). Use to bound 'top indicator' to recent activity.",
+				"in": "query",
+				"name": "eventDateAfter",
+				"schema": {
+					"description": "For measure=relationships: only count event links whose eventDate is on/after this date (ISO 8601). Use to bound 'top indicator' to recent activity.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "For measure=relationships: only count event links whose eventDate is on/before this date (ISO 8601).",
+				"in": "query",
+				"name": "eventDateBefore",
+				"schema": {
+					"description": "For measure=relationships: only count event links whose eventDate is on/before this date (ISO 8601).",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Maximum number of aggregation results to return (1-100)",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 10,
+					"description": "Maximum number of aggregation results to return (1-100)",
+					"maximum": 100,
+					"minimum": 1,
+					"type": "number"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"aggregateBy": {
+									"description": "Column(s) that were aggregated by",
+									"type": "string"
+								},
+								"aggregations": {
+									"description": "Array of aggregation results with dynamic fields based on aggregateBy columns",
+									"items": {
+										"allOf": [
+											{
+												"additionalProperties": {
+													"nullable": true,
+													"type": "string"
+												},
+												"type": "object"
+											},
+											{
+												"properties": {
+													"count": {
+														"description": "Number of indicators for this aggregation",
+														"type": "number"
+													}
+												},
+												"required": [
+													"count"
+												],
+												"type": "object"
+											}
+										]
+									},
+									"type": "array"
+								},
+								"failedDatasets": {
+									"description": "Number of datasets whose aggregation failed and were excluded from the result",
+									"type": "number"
+								},
+								"total": {
+									"description": "Total count in the aggregation: indicator rows when measure=indicators, or linked-event rows when measure=relationships",
+									"type": "number"
+								}
+							},
+							"required": [
+								"aggregations",
+								"total",
+								"aggregateBy",
+								"failedDatasets"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns aggregated indicator data."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Aggregate indicators by column(s)",
+		"tags": [
+			"Indicator"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/indicators/{indicator_id}": {
 		"description": "Updates an existing indicator's properties.",
 		"operationId": "patch_IndicatorUpdate",

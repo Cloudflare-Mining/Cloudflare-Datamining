@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
-		"description": "Deletes a dataset given a datasetId.",
+		"description": "Soft-deletes a dataset given a datasetId.",
 		"operationId": "delete_DatasetDelete",
 		"parameters": [
 			{
@@ -151,6 +151,15 @@
 					"description": "Account ID.",
 					"type": "string"
 				}
+			},
+			{
+				"description": "When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false.",
+				"in": "query",
+				"name": "includeDeleted",
+				"schema": {
+					"description": "When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false.",
+					"type": "boolean"
+				}
 			}
 		],
 		"responses": {
@@ -160,6 +169,9 @@
 						"schema": {
 							"items": {
 								"properties": {
+									"deletedAt": {
+										"type": "string"
+									},
 									"isPublic": {
 										"example": true,
 										"type": "boolean"
@@ -270,6 +282,9 @@
 					"application/json": {
 						"schema": {
 							"properties": {
+								"deletedAt": {
+									"type": "string"
+								},
 								"isPublic": {
 									"example": true,
 									"type": "boolean"
@@ -402,6 +417,9 @@
 					"application/json": {
 						"schema": {
 							"properties": {
+								"deletedAt": {
+									"type": "string"
+								},
 								"isPublic": {
 									"example": true,
 									"type": "boolean"
@@ -533,6 +551,9 @@
 					"application/json": {
 						"schema": {
 							"properties": {
+								"deletedAt": {
+									"type": "string"
+								},
 								"isPublic": {
 									"example": true,
 									"type": "boolean"
@@ -654,6 +675,9 @@
 					"application/json": {
 						"schema": {
 							"properties": {
+								"deletedAt": {
+									"type": "string"
+								},
 								"isPublic": {
 									"example": true,
 									"type": "boolean"

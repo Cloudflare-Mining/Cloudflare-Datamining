@@ -1,6 +1,7 @@
 {
 	"DELETE /accounts/{account_id}/moq/relays/{relay_id}": {
 		"description": "Soft-deletes a MoQ relay.",
+		"operationId": "moq-relays-delete",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -269,6 +270,7 @@
 	},
 	"GET /accounts/{account_id}/moq/relays": {
 		"description": "Lists all MoQ relays for the account. Returns only metadata.\nConfig, status, and tokens are omitted.\n\nResults are cursor-paginated (keyset on the `created` timestamp).\nUse `created_before` / `created_after` with the `created` value of the\nfirst/last item in a page to fetch the adjacent page. `result_info`\nreports the page `count` and the `total` matching the cursor filters.\n",
+		"operationId": "moq-relays-list",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -490,6 +492,7 @@
 	},
 	"GET /accounts/{account_id}/moq/relays/{relay_id}": {
 		"description": "Retrieves a single MoQ relay including config and status.\nTokens are NOT included.\n",
+		"operationId": "moq-relays-get",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -836,6 +839,7 @@
 	},
 	"POST /accounts/{account_id}/moq/relays": {
 		"description": "Provisions a new MoQ relay instance. Auto-creates a publish+subscribe\ntoken and a subscribe-only token. Token values are included in the\nresponse (shown once). Config is set to defaults (lingering subscribe\nenabled, 30s ceiling, origin fallback off). Use PUT to modify.\n",
+		"operationId": "moq-relays-create",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -1255,6 +1259,7 @@
 	},
 	"POST /accounts/{account_id}/moq/relays/{relay_id}/tokens/rotate": {
 		"description": "Generates a new token for the specified type. The old token is\nimmediately invalidated. Token value is shown once in the response.\n",
+		"operationId": "moq-relays-tokens-rotate",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",
@@ -1564,6 +1569,7 @@
 	},
 	"PUT /accounts/{account_id}/moq/relays/{relay_id}": {
 		"description": "Updates a relay's name and/or configuration. Partial updates:\nomitted fields are preserved. Config sub-objects replace as\nwhole objects when present. origin_fallback and lingering_subscribe\nare mutually exclusive.\n",
+		"operationId": "moq-relays-update",
 		"parameters": [
 			{
 				"description": "Cloudflare account identifier.",

@@ -559,21 +559,22 @@
 				}
 			},
 			{
-				"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
+				"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
 				"in": "query",
 				"name": "filters",
 				"schema": {
-					"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
+					"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
 					"items": {
 						"properties": {
 							"field": {
-								"description": "Tag field to search on. Allowed: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority.",
+								"description": "Tag field to search on. Allowed: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority.",
 								"enum": [
 									"uuid",
 									"value",
 									"actorCategory",
 									"aliasGroupNames",
 									"attributionConfidence",
+									"attributionConfidenceScore",
 									"attributionOrganization",
 									"categoryName",
 									"motive",
@@ -692,11 +693,51 @@
 												},
 												"type": "array"
 											},
+											"aliases": {
+												"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+												"items": {
+													"properties": {
+														"confidence": {
+															"example": 8,
+															"maximum": 10,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"tlp": {
+															"enum": [
+																"red",
+																"amber",
+																"green",
+																"white"
+															],
+															"example": "amber",
+															"nullable": true,
+															"type": "string"
+														},
+														"value": {
+															"example": "Fancy Bear",
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
 											"analyticPriority": {
 												"type": "number"
 											},
 											"attributionConfidence": {
 												"type": "string"
+											},
+											"attributionConfidenceScore": {
+												"example": 7,
+												"maximum": 10,
+												"minimum": 1,
+												"type": "integer"
 											},
 											"attributionOrganization": {
 												"type": "string"
@@ -709,9 +750,47 @@
 												"example": "12345678-1234-1234-1234-1234567890ab",
 												"type": "string"
 											},
+											"dateOfDiscovery": {
+												"example": "2024-01-15",
+												"type": "string"
+											},
 											"externalReferenceLinks": {
 												"items": {
 													"type": "string"
+												},
+												"type": "array"
+											},
+											"internalAliases": {
+												"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+												"items": {
+													"properties": {
+														"confidence": {
+															"example": 8,
+															"maximum": 10,
+															"minimum": 1,
+															"nullable": true,
+															"type": "integer"
+														},
+														"tlp": {
+															"enum": [
+																"red",
+																"amber",
+																"green",
+																"white"
+															],
+															"example": "amber",
+															"nullable": true,
+															"type": "string"
+														},
+														"value": {
+															"example": "Fancy Bear",
+															"type": "string"
+														}
+													},
+													"required": [
+														"value"
+													],
+													"type": "object"
 												},
 												"type": "array"
 											},
@@ -1232,6 +1311,8 @@
 								"type": "string"
 							},
 							"actorCategory": {
+								"description": "Actor variety. Allowed values: Activist, Competitor, Customer, Crime Syndicate, Former Employee, Nation State, Organized Crime, Nation State Affiliated, Terrorist, Unaffiliated.",
+								"example": "Nation State",
 								"type": "string"
 							},
 							"aliasGroupNames": {
@@ -1246,11 +1327,51 @@
 								},
 								"type": "array"
 							},
+							"aliases": {
+								"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"items": {
+									"properties": {
+										"confidence": {
+											"example": 8,
+											"maximum": 10,
+											"minimum": 1,
+											"nullable": true,
+											"type": "integer"
+										},
+										"tlp": {
+											"enum": [
+												"red",
+												"amber",
+												"green",
+												"white"
+											],
+											"example": "amber",
+											"nullable": true,
+											"type": "string"
+										},
+										"value": {
+											"example": "Fancy Bear",
+											"type": "string"
+										}
+									},
+									"required": [
+										"value"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
 							"analyticPriority": {
 								"type": "number"
 							},
 							"attributionConfidence": {
 								"type": "string"
+							},
+							"attributionConfidenceScore": {
+								"example": 7,
+								"maximum": 10,
+								"minimum": 1,
+								"type": "integer"
 							},
 							"attributionOrganization": {
 								"type": "string"
@@ -1259,9 +1380,49 @@
 								"example": "12345678-1234-1234-1234-1234567890ab",
 								"type": "string"
 							},
+							"dateOfDiscovery": {
+								"description": "Date the actor was discovered (ISO YYYY-MM-DD).",
+								"example": "2024-01-15",
+								"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+								"type": "string"
+							},
 							"externalReferenceLinks": {
 								"items": {
 									"type": "string"
+								},
+								"type": "array"
+							},
+							"internalAliases": {
+								"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+								"items": {
+									"properties": {
+										"confidence": {
+											"example": 8,
+											"maximum": 10,
+											"minimum": 1,
+											"nullable": true,
+											"type": "integer"
+										},
+										"tlp": {
+											"enum": [
+												"red",
+												"amber",
+												"green",
+												"white"
+											],
+											"example": "amber",
+											"nullable": true,
+											"type": "string"
+										},
+										"value": {
+											"example": "Fancy Bear",
+											"type": "string"
+										}
+									},
+									"required": [
+										"value"
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -1269,6 +1430,8 @@
 								"type": "string"
 							},
 							"motive": {
+								"description": "Actor motive. Allowed values: Convenience, Fear, Fun, Financial, Grudge, Ideology, Espionage.",
+								"example": "Espionage",
 								"type": "string"
 							},
 							"opsecLevel": {
@@ -1317,11 +1480,51 @@
 									},
 									"type": "array"
 								},
+								"aliases": {
+									"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"items": {
+										"properties": {
+											"confidence": {
+												"example": 8,
+												"maximum": 10,
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											},
+											"tlp": {
+												"enum": [
+													"red",
+													"amber",
+													"green",
+													"white"
+												],
+												"example": "amber",
+												"nullable": true,
+												"type": "string"
+											},
+											"value": {
+												"example": "Fancy Bear",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
 								"analyticPriority": {
 									"type": "number"
 								},
 								"attributionConfidence": {
 									"type": "string"
+								},
+								"attributionConfidenceScore": {
+									"example": 7,
+									"maximum": 10,
+									"minimum": 1,
+									"type": "integer"
 								},
 								"attributionOrganization": {
 									"type": "string"
@@ -1334,9 +1537,47 @@
 									"example": "12345678-1234-1234-1234-1234567890ab",
 									"type": "string"
 								},
+								"dateOfDiscovery": {
+									"example": "2024-01-15",
+									"type": "string"
+								},
 								"externalReferenceLinks": {
 									"items": {
 										"type": "string"
+									},
+									"type": "array"
+								},
+								"internalAliases": {
+									"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+									"items": {
+										"properties": {
+											"confidence": {
+												"example": 8,
+												"maximum": 10,
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											},
+											"tlp": {
+												"enum": [
+													"red",
+													"amber",
+													"green",
+													"white"
+												],
+												"example": "amber",
+												"nullable": true,
+												"type": "string"
+											},
+											"value": {
+												"example": "Fancy Bear",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
 									},
 									"type": "array"
 								},
@@ -1495,6 +1736,8 @@
 								"type": "string"
 							},
 							"actorCategory": {
+								"description": "Actor variety. Allowed values: Activist, Competitor, Customer, Crime Syndicate, Former Employee, Nation State, Organized Crime, Nation State Affiliated, Terrorist, Unaffiliated.",
+								"example": "Nation State",
 								"type": "string"
 							},
 							"aliasGroupNames": {
@@ -1509,11 +1752,51 @@
 								},
 								"type": "array"
 							},
+							"aliases": {
+								"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"items": {
+									"properties": {
+										"confidence": {
+											"example": 8,
+											"maximum": 10,
+											"minimum": 1,
+											"nullable": true,
+											"type": "integer"
+										},
+										"tlp": {
+											"enum": [
+												"red",
+												"amber",
+												"green",
+												"white"
+											],
+											"example": "amber",
+											"nullable": true,
+											"type": "string"
+										},
+										"value": {
+											"example": "Fancy Bear",
+											"type": "string"
+										}
+									},
+									"required": [
+										"value"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
 							"analyticPriority": {
 								"type": "number"
 							},
 							"attributionConfidence": {
 								"type": "string"
+							},
+							"attributionConfidenceScore": {
+								"example": 7,
+								"maximum": 10,
+								"minimum": 1,
+								"type": "integer"
 							},
 							"attributionOrganization": {
 								"type": "string"
@@ -1522,9 +1805,49 @@
 								"example": "12345678-1234-1234-1234-1234567890ab",
 								"type": "string"
 							},
+							"dateOfDiscovery": {
+								"description": "Date the actor was discovered (ISO YYYY-MM-DD).",
+								"example": "2024-01-15",
+								"pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+								"type": "string"
+							},
 							"externalReferenceLinks": {
 								"items": {
 									"type": "string"
+								},
+								"type": "array"
+							},
+							"internalAliases": {
+								"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+								"items": {
+									"properties": {
+										"confidence": {
+											"example": 8,
+											"maximum": 10,
+											"minimum": 1,
+											"nullable": true,
+											"type": "integer"
+										},
+										"tlp": {
+											"enum": [
+												"red",
+												"amber",
+												"green",
+												"white"
+											],
+											"example": "amber",
+											"nullable": true,
+											"type": "string"
+										},
+										"value": {
+											"example": "Fancy Bear",
+											"type": "string"
+										}
+									},
+									"required": [
+										"value"
+									],
+									"type": "object"
 								},
 								"type": "array"
 							},
@@ -1532,6 +1855,8 @@
 								"type": "string"
 							},
 							"motive": {
+								"description": "Actor motive. Allowed values: Convenience, Fear, Fun, Financial, Grudge, Ideology, Espionage.",
+								"example": "Espionage",
 								"type": "string"
 							},
 							"opsecLevel": {
@@ -1583,11 +1908,51 @@
 									},
 									"type": "array"
 								},
+								"aliases": {
+									"description": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"items": {
+										"properties": {
+											"confidence": {
+												"example": 8,
+												"maximum": 10,
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											},
+											"tlp": {
+												"enum": [
+													"red",
+													"amber",
+													"green",
+													"white"
+												],
+												"example": "amber",
+												"nullable": true,
+												"type": "string"
+											},
+											"value": {
+												"example": "Fancy Bear",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
 								"analyticPriority": {
 									"type": "number"
 								},
 								"attributionConfidence": {
 									"type": "string"
+								},
+								"attributionConfidenceScore": {
+									"example": 7,
+									"maximum": 10,
+									"minimum": 1,
+									"type": "integer"
 								},
 								"attributionOrganization": {
 									"type": "string"
@@ -1600,9 +1965,47 @@
 									"example": "12345678-1234-1234-1234-1234567890ab",
 									"type": "string"
 								},
+								"dateOfDiscovery": {
+									"example": "2024-01-15",
+									"type": "string"
+								},
 								"externalReferenceLinks": {
 									"items": {
 										"type": "string"
+									},
+									"type": "array"
+								},
+								"internalAliases": {
+									"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
+									"items": {
+										"properties": {
+											"confidence": {
+												"example": 8,
+												"maximum": 10,
+												"minimum": 1,
+												"nullable": true,
+												"type": "integer"
+											},
+											"tlp": {
+												"enum": [
+													"red",
+													"amber",
+													"green",
+													"white"
+												],
+												"example": "amber",
+												"nullable": true,
+												"type": "string"
+											},
+											"value": {
+												"example": "Fancy Bear",
+												"type": "string"
+											}
+										},
+										"required": [
+											"value"
+										],
+										"type": "object"
 									},
 									"type": "array"
 								},

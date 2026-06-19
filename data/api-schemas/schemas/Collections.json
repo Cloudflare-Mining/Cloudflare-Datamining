@@ -649,6 +649,17 @@
 					"description": "Items per page",
 					"type": "number"
 				}
+			},
+			{
+				"description": "Case-insensitive substring search across all columns. Matches any column containing the term. No relevance ranking.",
+				"in": "query",
+				"name": "q",
+				"schema": {
+					"description": "Case-insensitive substring search across all columns. Matches any column containing the term. No relevance ranking.",
+					"maxLength": 500,
+					"minLength": 1,
+					"type": "string"
+				}
 			}
 		],
 		"responses": {

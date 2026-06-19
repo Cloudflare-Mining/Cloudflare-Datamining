@@ -295,6 +295,12 @@
 								"minimum": 1,
 								"type": "integer"
 							},
+							"q": {
+								"description": "Case-insensitive substring search across all columns. Matches any column containing the term. No relevance ranking.",
+								"maxLength": 500,
+								"minLength": 1,
+								"type": "string"
+							},
 							"sort": {
 								"properties": {
 									"field": {
