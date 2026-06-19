@@ -1,5 +1,6 @@
 {
 	"GET /user": {
+		"description": "Retrieves detailed information about the currently authenticated user, including email, name, and account memberships.",
 		"operationId": "user-user-details",
 		"responses": {
 			"200": {

@@ -1516,6 +1516,7 @@
 										"result": {
 											"example": [
 												{
+													"category": "account_and_billing",
 													"id": "7cf72faf220841aabcfdfab81c43c4f6",
 													"name": "Billing Read",
 													"scopes": [
@@ -1523,6 +1524,7 @@
 													]
 												},
 												{
+													"category": "network_services",
 													"id": "9d24387c6e8544e2bc4024a03991339f",
 													"name": "Load Balancing: Monitors and Pools Read",
 													"scopes": [
@@ -1530,6 +1532,7 @@
 													]
 												},
 												{
+													"category": "network_services",
 													"id": "d2a1802cc9a34e30852f8b33869b2f3c",
 													"name": "Load Balancing: Monitors and Pools Write",
 													"scopes": [
@@ -1537,6 +1540,7 @@
 													]
 												},
 												{
+													"category": "developer_platform",
 													"id": "8b47d2786a534c08a1f94ee8f9f599ef",
 													"name": "Workers KV Storage Read",
 													"scopes": [
@@ -1544,6 +1548,7 @@
 													]
 												},
 												{
+													"category": "developer_platform",
 													"id": "f7f0eda5697f475c90846e879bab8666",
 													"name": "Workers KV Storage Write",
 													"scopes": [
@@ -1551,6 +1556,7 @@
 													]
 												},
 												{
+													"category": "developer_platform",
 													"id": "1a71c399035b4950a1bd1466bbe4f420",
 													"name": "Workers Scripts Read",
 													"scopes": [
@@ -1558,6 +1564,7 @@
 													]
 												},
 												{
+													"category": "developer_platform",
 													"id": "e086da7e2179491d91ee5f35b3ca210a",
 													"name": "Workers Scripts Write",
 													"scopes": [
@@ -1567,6 +1574,26 @@
 											],
 											"items": {
 												"properties": {
+													"category": {
+														"description": "Product category that this permission group belongs to.",
+														"enum": [
+															"developer_platform",
+															"ai_and_machine_learning",
+															"dns_and_zones",
+															"app_security",
+															"rules_and_configuration",
+															"cloudflare_one_and_zero_trust",
+															"analytics_and_logs",
+															"network_services",
+															"media",
+															"email_and_messaging",
+															"cache_and_performance",
+															"account_and_billing",
+															"other"
+														],
+														"type": "string",
+														"x-auditable": true
+													},
 													"id": {
 														"description": "Public ID.",
 														"type": "string",

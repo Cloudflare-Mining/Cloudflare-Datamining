@@ -749,7 +749,8 @@
 																"items": {
 																	"type": "string"
 																},
-																"type": "array"
+																"type": "array",
+																"x-auditable": true
 															},
 															"client_name": {
 																"description": "Human-readable name of the OAuth client.",
@@ -760,7 +761,8 @@
 															"client_uri": {
 																"description": "URL of the home page of the client.",
 																"example": "https://example.com",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"grant_types": {
 																"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
@@ -775,17 +777,20 @@
 																	],
 																	"type": "string"
 																},
-																"type": "array"
+																"type": "array",
+																"x-auditable": true
 															},
 															"logo_uri": {
 																"description": "URL of the client's logo.",
 																"example": "https://example.com/logo.png",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"policy_uri": {
 																"description": "URL that points to a privacy policy document.",
 																"example": "https://example.com/privacy",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															},
 															"post_logout_redirect_uris": {
 																"description": "Array of allowed post-logout redirect URIs.",
@@ -795,7 +800,8 @@
 																"items": {
 																	"type": "string"
 																},
-																"type": "array"
+																"type": "array",
+																"x-auditable": true
 															},
 															"redirect_uris": {
 																"description": "Array of allowed redirect URIs for the client.",
@@ -805,7 +811,8 @@
 																"items": {
 																	"type": "string"
 																},
-																"type": "array"
+																"type": "array",
+																"x-auditable": true
 															},
 															"response_types": {
 																"description": "Array of OAuth response types the client is allowed to use.",
@@ -820,7 +827,8 @@
 																	],
 																	"type": "string"
 																},
-																"type": "array"
+																"type": "array",
+																"x-auditable": true
 															},
 															"scopes": {
 																"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
@@ -830,7 +838,8 @@
 																"items": {
 																	"type": "string"
 																},
-																"type": "array"
+																"type": "array",
+																"x-auditable": true
 															},
 															"token_endpoint_auth_method": {
 																"description": "The authentication method the client uses at the token endpoint.",
@@ -846,7 +855,8 @@
 															"tos_uri": {
 																"description": "URL that points to a terms of service document.",
 																"example": "https://example.com/tos",
-																"type": "string"
+																"type": "string",
+																"x-auditable": true
 															}
 														},
 														"title": "OAuth Client Common Fields",
@@ -1240,7 +1250,8 @@
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"client_name": {
 															"description": "Human-readable name of the OAuth client.",
@@ -1251,7 +1262,8 @@
 														"client_uri": {
 															"description": "URL of the home page of the client.",
 															"example": "https://example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"grant_types": {
 															"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
@@ -1266,17 +1278,20 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"logo_uri": {
 															"description": "URL of the client's logo.",
 															"example": "https://example.com/logo.png",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"policy_uri": {
 															"description": "URL that points to a privacy policy document.",
 															"example": "https://example.com/privacy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"post_logout_redirect_uris": {
 															"description": "Array of allowed post-logout redirect URIs.",
@@ -1286,7 +1301,8 @@
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"redirect_uris": {
 															"description": "Array of allowed redirect URIs for the client.",
@@ -1296,7 +1312,8 @@
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"response_types": {
 															"description": "Array of OAuth response types the client is allowed to use.",
@@ -1311,7 +1328,8 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"scopes": {
 															"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
@@ -1321,7 +1339,8 @@
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"token_endpoint_auth_method": {
 															"description": "The authentication method the client uses at the token endpoint.",
@@ -1337,7 +1356,8 @@
 														"tos_uri": {
 															"description": "URL that points to a terms of service document.",
 															"example": "https://example.com/tos",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"title": "OAuth Client Common Fields",
@@ -1947,7 +1967,8 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"client_name": {
 										"description": "Human-readable name of the OAuth client.",
@@ -1958,7 +1979,8 @@
 									"client_uri": {
 										"description": "URL of the home page of the client.",
 										"example": "https://example.com",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"grant_types": {
 										"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
@@ -1973,17 +1995,20 @@
 											],
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"logo_uri": {
 										"description": "URL of the client's logo.",
 										"example": "https://example.com/logo.png",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"policy_uri": {
 										"description": "URL that points to a privacy policy document.",
 										"example": "https://example.com/privacy",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"post_logout_redirect_uris": {
 										"description": "Array of allowed post-logout redirect URIs.",
@@ -1993,7 +2018,8 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"redirect_uris": {
 										"description": "Array of allowed redirect URIs for the client.",
@@ -2003,7 +2029,8 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"response_types": {
 										"description": "Array of OAuth response types the client is allowed to use.",
@@ -2018,7 +2045,8 @@
 											],
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"scopes": {
 										"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
@@ -2028,7 +2056,8 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"token_endpoint_auth_method": {
 										"description": "The authentication method the client uses at the token endpoint.",
@@ -2044,7 +2073,8 @@
 									"tos_uri": {
 										"description": "URL that points to a terms of service document.",
 										"example": "https://example.com/tos",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"title": "OAuth Client Common Fields",
@@ -2179,7 +2209,8 @@
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"client_name": {
 															"description": "Human-readable name of the OAuth client.",
@@ -2190,7 +2221,8 @@
 														"client_uri": {
 															"description": "URL of the home page of the client.",
 															"example": "https://example.com",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"grant_types": {
 															"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
@@ -2205,17 +2237,20 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"logo_uri": {
 															"description": "URL of the client's logo.",
 															"example": "https://example.com/logo.png",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"policy_uri": {
 															"description": "URL that points to a privacy policy document.",
 															"example": "https://example.com/privacy",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														},
 														"post_logout_redirect_uris": {
 															"description": "Array of allowed post-logout redirect URIs.",
@@ -2225,7 +2260,8 @@
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"redirect_uris": {
 															"description": "Array of allowed redirect URIs for the client.",
@@ -2235,7 +2271,8 @@
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"response_types": {
 															"description": "Array of OAuth response types the client is allowed to use.",
@@ -2250,7 +2287,8 @@
 																],
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"scopes": {
 															"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
@@ -2260,7 +2298,8 @@
 															"items": {
 																"type": "string"
 															},
-															"type": "array"
+															"type": "array",
+															"x-auditable": true
 														},
 														"token_endpoint_auth_method": {
 															"description": "The authentication method the client uses at the token endpoint.",
@@ -2276,7 +2315,8 @@
 														"tos_uri": {
 															"description": "URL that points to a terms of service document.",
 															"example": "https://example.com/tos",
-															"type": "string"
+															"type": "string",
+															"x-auditable": true
 														}
 													},
 													"title": "OAuth Client Common Fields",
@@ -2564,7 +2604,8 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"client_name": {
 										"description": "Human-readable name of the OAuth client.",
@@ -2575,7 +2616,8 @@
 									"client_uri": {
 										"description": "URL of the home page of the client.",
 										"example": "https://example.com",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"grant_types": {
 										"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
@@ -2590,17 +2632,20 @@
 											],
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"logo_uri": {
 										"description": "URL of the client's logo.",
 										"example": "https://example.com/logo.png",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"policy_uri": {
 										"description": "URL that points to a privacy policy document.",
 										"example": "https://example.com/privacy",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									},
 									"post_logout_redirect_uris": {
 										"description": "Array of allowed post-logout redirect URIs.",
@@ -2610,7 +2655,8 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"redirect_uris": {
 										"description": "Array of allowed redirect URIs for the client.",
@@ -2620,7 +2666,8 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"response_types": {
 										"description": "Array of OAuth response types the client is allowed to use.",
@@ -2635,7 +2682,8 @@
 											],
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"scopes": {
 										"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
@@ -2645,7 +2693,8 @@
 										"items": {
 											"type": "string"
 										},
-										"type": "array"
+										"type": "array",
+										"x-auditable": true
 									},
 									"token_endpoint_auth_method": {
 										"description": "The authentication method the client uses at the token endpoint.",
@@ -2661,7 +2710,8 @@
 									"tos_uri": {
 										"description": "URL that points to a terms of service document.",
 										"example": "https://example.com/tos",
-										"type": "string"
+										"type": "string",
+										"x-auditable": true
 									}
 								},
 								"title": "OAuth Client Common Fields",
@@ -2795,7 +2845,8 @@
 																	"items": {
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"client_name": {
 																	"description": "Human-readable name of the OAuth client.",
@@ -2806,7 +2857,8 @@
 																"client_uri": {
 																	"description": "URL of the home page of the client.",
 																	"example": "https://example.com",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"grant_types": {
 																	"description": "Array of OAuth grant types the client is allowed to use. `authorization_code` is required; `refresh_token` may be included optionally.",
@@ -2821,17 +2873,20 @@
 																		],
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"logo_uri": {
 																	"description": "URL of the client's logo.",
 																	"example": "https://example.com/logo.png",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"policy_uri": {
 																	"description": "URL that points to a privacy policy document.",
 																	"example": "https://example.com/privacy",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																},
 																"post_logout_redirect_uris": {
 																	"description": "Array of allowed post-logout redirect URIs.",
@@ -2841,7 +2896,8 @@
 																	"items": {
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"redirect_uris": {
 																	"description": "Array of allowed redirect URIs for the client.",
@@ -2851,7 +2907,8 @@
 																	"items": {
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"response_types": {
 																	"description": "Array of OAuth response types the client is allowed to use.",
@@ -2866,7 +2923,8 @@
 																		],
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"scopes": {
 																	"description": "Array of OAuth scopes the client is allowed to request. Colon-delimited scopes are not accepted. Dot-delimited scopes are validated against available OAuth API scopes; simple identity scopes are allowed. Protocol scopes `offline_access` and `openid` are added or removed automatically based on `grant_types` and `response_types`.",
@@ -2876,7 +2934,8 @@
 																	"items": {
 																		"type": "string"
 																	},
-																	"type": "array"
+																	"type": "array",
+																	"x-auditable": true
 																},
 																"token_endpoint_auth_method": {
 																	"description": "The authentication method the client uses at the token endpoint.",
@@ -2892,7 +2951,8 @@
 																"tos_uri": {
 																	"description": "URL that points to a terms of service document.",
 																	"example": "https://example.com/tos",
-																	"type": "string"
+																	"type": "string",
+																	"x-auditable": true
 																}
 															},
 															"title": "OAuth Client Common Fields",
