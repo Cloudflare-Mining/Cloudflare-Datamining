@@ -929,6 +929,93 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/bulk": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/bulk/{job_id}": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "job_id",
+			"required": true,
+			"schema": {
+				"format": "uuid",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "job_id",
+			"required": true,
+			"schema": {
+				"format": "uuid",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages": [
+		{
+			"description": "Account identifier tag.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"description": "Identifier.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"type": "string",
+				"x-auditable": true
+			}
+		},
+		{
+			"in": "path",
+			"name": "job_id",
+			"required": true,
+			"schema": {
+				"format": "uuid",
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/email-security/investigate/move": [
 		{
 			"description": "Account identifier tag.",

@@ -1,4 +1,254 @@
 {
+	"DELETE /accounts/{account_id}/email-security/investigate/bulk/{job_id}": {
+		"description": "Soft-deletes the job, hiding it from all list and detail endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`, `FAILED`, or `SKIPPED`) can be deleted. To stop an in-progress job without removing it, use the cancel endpoint instead.",
+		"operationId": "email_security_delete_bulk_job",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Job deleted"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a bulk action job",
+		"tags": [
+			"Email Security"
+		]
+	},
 	"GET /accounts/{account_id}/email-security/investigate": {
 		"description": "Returns information for each email that matches the search parameter(s).",
 		"operationId": "email_security_investigate",
@@ -3337,6 +3587,1521 @@
 			"Cloud Email Security: Read"
 		]
 	},
+	"GET /accounts/{account_id}/email-security/investigate/bulk": {
+		"operationId": "email_security_get_bulk_jobs",
+		"parameters": [
+			{
+				"description": "Current page within paginated list of results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"example": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The number of results per page. Maximum value is 1000.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"example": 20,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "action_type",
+				"schema": {
+					"enum": [
+						"MOVE",
+						"RELEASE"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"enum": [
+						"PENDING",
+						"DISCOVERING",
+						"PROCESSING",
+						"COMPLETED",
+						"FAILED",
+						"CANCELLED",
+						"SKIPPED"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"action_params": {
+														"discriminator": {
+															"propertyName": "type"
+														},
+														"oneOf": [
+															{
+																"properties": {
+																	"destination": {
+																		"enum": [
+																			"Inbox",
+																			"JunkEmail",
+																			"DeletedItems",
+																			"RecoverableItemsDeletions",
+																			"RecoverableItemsPurges"
+																		],
+																		"type": "string"
+																	},
+																	"expected_disposition": {
+																		"enum": [
+																			"MALICIOUS",
+																			"MALICIOUS-BEC",
+																			"SUSPICIOUS",
+																			"SPOOF",
+																			"SPAM",
+																			"BULK",
+																			"ENCRYPTED",
+																			"EXTERNAL",
+																			"UNKNOWN",
+																			"NONE"
+																		],
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"MOVE"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"destination"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"RELEASE"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"action_type": {
+														"enum": [
+															"MOVE",
+															"RELEASE"
+														],
+														"type": "string"
+													},
+													"comment": {
+														"nullable": true,
+														"type": "string"
+													},
+													"completed_at": {
+														"format": "date-time",
+														"nullable": true,
+														"type": "string"
+													},
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"job_id": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"messages_failed": {
+														"type": "integer"
+													},
+													"messages_pending": {
+														"type": "integer"
+													},
+													"messages_successful": {
+														"type": "integer"
+													},
+													"search_params": {
+														"properties": {
+															"action_log": {
+																"default": false,
+																"deprecated": true,
+																"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
+																"type": "boolean"
+															},
+															"alert_id": {
+																"nullable": true,
+																"type": "string"
+															},
+															"delivery_status": {
+																"description": "Delivery status of the message.",
+																"enum": [
+																	"delivered",
+																	"moved",
+																	"quarantined",
+																	"rejected",
+																	"deferred",
+																	"bounced",
+																	"queued"
+																],
+																"type": "string"
+															},
+															"detections_only": {
+																"default": true,
+																"type": "boolean"
+															},
+															"domain": {
+																"nullable": true,
+																"type": "string"
+															},
+															"end": {
+																"description": "End of search date range",
+																"example": "2022-07-25T14:30:00Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"exact_subject": {
+																"nullable": true,
+																"type": "string"
+															},
+															"final_disposition": {
+																"enum": [
+																	"MALICIOUS",
+																	"MALICIOUS-BEC",
+																	"SUSPICIOUS",
+																	"SPOOF",
+																	"SPAM",
+																	"BULK",
+																	"ENCRYPTED",
+																	"EXTERNAL",
+																	"UNKNOWN",
+																	"NONE"
+																],
+																"type": "string"
+															},
+															"message_action": {
+																"enum": [
+																	"PREVIEW",
+																	"QUARANTINE_RELEASED",
+																	"MOVED"
+																],
+																"nullable": true,
+																"type": "string"
+															},
+															"message_id": {
+																"nullable": true,
+																"type": "string"
+															},
+															"metric": {
+																"nullable": true,
+																"type": "string"
+															},
+															"query": {
+																"nullable": true,
+																"type": "string"
+															},
+															"recipient": {
+																"nullable": true,
+																"type": "string"
+															},
+															"sender": {
+																"nullable": true,
+																"type": "string"
+															},
+															"start": {
+																"description": "Beginning of search date range",
+																"example": "2022-06-25T14:30:00Z",
+																"format": "date-time",
+																"type": "string"
+															},
+															"subject": {
+																"nullable": true,
+																"type": "string"
+															},
+															"submissions": {
+																"default": false,
+																"type": "boolean"
+															}
+														},
+														"type": "object"
+													},
+													"started_at": {
+														"format": "date-time",
+														"nullable": true,
+														"type": "string"
+													},
+													"status": {
+														"enum": [
+															"PENDING",
+															"DISCOVERING",
+															"PROCESSING",
+															"COMPLETED",
+															"FAILED",
+															"CANCELLED",
+															"SKIPPED"
+														],
+														"type": "string"
+													},
+													"status_message": {
+														"nullable": true,
+														"type": "string"
+													},
+													"total_messages_discovered": {
+														"type": "integer"
+													}
+												},
+												"required": [
+													"job_id",
+													"action_type",
+													"action_params",
+													"search_params",
+													"status",
+													"total_messages_discovered",
+													"messages_pending",
+													"messages_successful",
+													"messages_failed",
+													"created_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"description": "Number of items in current page",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"next": {
+													"description": "Cursor for next page",
+													"nullable": true,
+													"type": "string"
+												},
+												"page": {
+													"deprecated": true,
+													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"per_page": {
+													"description": "Number of items per page",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"previous": {
+													"description": "Cursor for previous page",
+													"nullable": true,
+													"type": "string"
+												},
+												"total_count": {
+													"deprecated": true,
+													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
+													"minimum": 0,
+													"type": "integer"
+												}
+											},
+											"required": [
+												"per_page",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result",
+										"result_info"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Jobs retrieved successfully"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List bulk action jobs",
+		"tags": [
+			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		]
+	},
+	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}": {
+		"operationId": "email_security_get_bulk_job",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action_params": {
+													"discriminator": {
+														"propertyName": "type"
+													},
+													"oneOf": [
+														{
+															"properties": {
+																"destination": {
+																	"enum": [
+																		"Inbox",
+																		"JunkEmail",
+																		"DeletedItems",
+																		"RecoverableItemsDeletions",
+																		"RecoverableItemsPurges"
+																	],
+																	"type": "string"
+																},
+																"expected_disposition": {
+																	"enum": [
+																		"MALICIOUS",
+																		"MALICIOUS-BEC",
+																		"SUSPICIOUS",
+																		"SPOOF",
+																		"SPAM",
+																		"BULK",
+																		"ENCRYPTED",
+																		"EXTERNAL",
+																		"UNKNOWN",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"enum": [
+																		"MOVE"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"destination"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"RELEASE"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"action_type": {
+													"enum": [
+														"MOVE",
+														"RELEASE"
+													],
+													"type": "string"
+												},
+												"comment": {
+													"nullable": true,
+													"type": "string"
+												},
+												"completed_at": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"job_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"messages_failed": {
+													"type": "integer"
+												},
+												"messages_pending": {
+													"type": "integer"
+												},
+												"messages_successful": {
+													"type": "integer"
+												},
+												"search_params": {
+													"properties": {
+														"action_log": {
+															"default": false,
+															"deprecated": true,
+															"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
+															"type": "boolean"
+														},
+														"alert_id": {
+															"nullable": true,
+															"type": "string"
+														},
+														"delivery_status": {
+															"description": "Delivery status of the message.",
+															"enum": [
+																"delivered",
+																"moved",
+																"quarantined",
+																"rejected",
+																"deferred",
+																"bounced",
+																"queued"
+															],
+															"type": "string"
+														},
+														"detections_only": {
+															"default": true,
+															"type": "boolean"
+														},
+														"domain": {
+															"nullable": true,
+															"type": "string"
+														},
+														"end": {
+															"description": "End of search date range",
+															"example": "2022-07-25T14:30:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"exact_subject": {
+															"nullable": true,
+															"type": "string"
+														},
+														"final_disposition": {
+															"enum": [
+																"MALICIOUS",
+																"MALICIOUS-BEC",
+																"SUSPICIOUS",
+																"SPOOF",
+																"SPAM",
+																"BULK",
+																"ENCRYPTED",
+																"EXTERNAL",
+																"UNKNOWN",
+																"NONE"
+															],
+															"type": "string"
+														},
+														"message_action": {
+															"enum": [
+																"PREVIEW",
+																"QUARANTINE_RELEASED",
+																"MOVED"
+															],
+															"nullable": true,
+															"type": "string"
+														},
+														"message_id": {
+															"nullable": true,
+															"type": "string"
+														},
+														"metric": {
+															"nullable": true,
+															"type": "string"
+														},
+														"query": {
+															"nullable": true,
+															"type": "string"
+														},
+														"recipient": {
+															"nullable": true,
+															"type": "string"
+														},
+														"sender": {
+															"nullable": true,
+															"type": "string"
+														},
+														"start": {
+															"description": "Beginning of search date range",
+															"example": "2022-06-25T14:30:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"subject": {
+															"nullable": true,
+															"type": "string"
+														},
+														"submissions": {
+															"default": false,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"started_at": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"PENDING",
+														"DISCOVERING",
+														"PROCESSING",
+														"COMPLETED",
+														"FAILED",
+														"CANCELLED",
+														"SKIPPED"
+													],
+													"type": "string"
+												},
+												"status_message": {
+													"nullable": true,
+													"type": "string"
+												},
+												"total_messages_discovered": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"job_id",
+												"action_type",
+												"action_params",
+												"search_params",
+												"status",
+												"total_messages_discovered",
+												"messages_pending",
+												"messages_successful",
+												"messages_failed",
+												"created_at"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Job details retrieved"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get bulk action job details",
+		"tags": [
+			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		]
+	},
+	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages": {
+		"operationId": "email_security_get_bulk_job_messages",
+		"parameters": [
+			{
+				"description": "Current page within paginated list of results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"example": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "The number of results per page. Maximum value is 1000.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"example": 20,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"enum": [
+						"PENDING",
+						"DISCOVERING",
+						"PROCESSING",
+						"COMPLETED",
+						"FAILED",
+						"CANCELLED",
+						"SKIPPED"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"action_params": {
+														"discriminator": {
+															"propertyName": "type"
+														},
+														"oneOf": [
+															{
+																"properties": {
+																	"client_recipient": {
+																		"type": "string"
+																	},
+																	"destination": {
+																		"enum": [
+																			"Inbox",
+																			"JunkEmail",
+																			"DeletedItems",
+																			"RecoverableItemsDeletions",
+																			"RecoverableItemsPurges"
+																		],
+																		"type": "string"
+																	},
+																	"expected_disposition": {
+																		"enum": [
+																			"MALICIOUS",
+																			"MALICIOUS-BEC",
+																			"SUSPICIOUS",
+																			"SPOOF",
+																			"SPAM",
+																			"BULK",
+																			"ENCRYPTED",
+																			"EXTERNAL",
+																			"UNKNOWN",
+																			"NONE"
+																		],
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"MOVE"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"destination",
+																	"client_recipient"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"client_recipient": {
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"RELEASE"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"client_recipient"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"action_type": {
+														"enum": [
+															"MOVE",
+															"RELEASE"
+														],
+														"type": "string"
+													},
+													"alert_id": {
+														"nullable": true,
+														"type": "string"
+													},
+													"created_at": {
+														"format": "date-time",
+														"type": "string"
+													},
+													"email_message_id": {
+														"nullable": true,
+														"type": "string"
+													},
+													"message_id": {
+														"format": "uuid",
+														"type": "string"
+													},
+													"postfix_id": {
+														"type": "string"
+													},
+													"processed_at": {
+														"format": "date-time",
+														"nullable": true,
+														"type": "string"
+													},
+													"retry_after": {
+														"description": "When to retry the action if it failed",
+														"format": "date-time",
+														"nullable": true,
+														"type": "string"
+													},
+													"retry_count": {
+														"type": "integer"
+													},
+													"status": {
+														"enum": [
+															"PENDING",
+															"DISCOVERING",
+															"PROCESSING",
+															"COMPLETED",
+															"FAILED",
+															"CANCELLED",
+															"SKIPPED"
+														],
+														"type": "string"
+													},
+													"status_message": {
+														"nullable": true,
+														"type": "string"
+													}
+												},
+												"required": [
+													"message_id",
+													"postfix_id",
+													"action_type",
+													"action_params",
+													"status",
+													"retry_count",
+													"created_at"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"description": "Number of items in current page",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"next": {
+													"description": "Cursor for next page",
+													"nullable": true,
+													"type": "string"
+												},
+												"page": {
+													"deprecated": true,
+													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"per_page": {
+													"description": "Number of items per page",
+													"minimum": 0,
+													"type": "integer"
+												},
+												"previous": {
+													"description": "Cursor for previous page",
+													"nullable": true,
+													"type": "string"
+												},
+												"total_count": {
+													"deprecated": true,
+													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
+													"minimum": 0,
+													"type": "integer"
+												}
+											},
+											"required": [
+												"per_page",
+												"count",
+												"total_count"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result",
+										"result_info"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Messages for the bulk job"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List messages for a bulk action job",
+		"tags": [
+			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		]
+	},
 	"GET /accounts/{account_id}/email-security/phishguard/reports": {
 		"description": "Retrieves PhishGuard security alert reports for a specified date range. Reports include detected threats, dispositions, and contextual information. Use for security monitoring and threat analysis.",
 		"operationId": "email_security_get_phishguard_reports",
@@ -4880,6 +6645,1121 @@
 			}
 		],
 		"summary": "Change email classification",
+		"tags": [
+			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/investigate/bulk": {
+		"operationId": "email_security_create_bulk_job",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"action": {
+								"enum": [
+									"MOVE",
+									"RELEASE"
+								],
+								"type": "string"
+							},
+							"comment": {
+								"nullable": true,
+								"type": "string"
+							},
+							"destination": {
+								"enum": [
+									"Inbox",
+									"JunkEmail",
+									"DeletedItems",
+									"RecoverableItemsDeletions",
+									"RecoverableItemsPurges"
+								],
+								"type": "string"
+							},
+							"expected_disposition": {
+								"enum": [
+									"MALICIOUS",
+									"MALICIOUS-BEC",
+									"SUSPICIOUS",
+									"SPOOF",
+									"SPAM",
+									"BULK",
+									"ENCRYPTED",
+									"EXTERNAL",
+									"UNKNOWN",
+									"NONE"
+								],
+								"type": "string"
+							},
+							"search_params": {
+								"properties": {
+									"action_log": {
+										"default": false,
+										"deprecated": true,
+										"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
+										"type": "boolean"
+									},
+									"alert_id": {
+										"nullable": true,
+										"type": "string"
+									},
+									"delivery_status": {
+										"description": "Delivery status of the message.",
+										"enum": [
+											"delivered",
+											"moved",
+											"quarantined",
+											"rejected",
+											"deferred",
+											"bounced",
+											"queued"
+										],
+										"type": "string"
+									},
+									"detections_only": {
+										"default": true,
+										"type": "boolean"
+									},
+									"domain": {
+										"nullable": true,
+										"type": "string"
+									},
+									"end": {
+										"description": "End of search date range",
+										"example": "2022-07-25T14:30:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"exact_subject": {
+										"nullable": true,
+										"type": "string"
+									},
+									"final_disposition": {
+										"enum": [
+											"MALICIOUS",
+											"MALICIOUS-BEC",
+											"SUSPICIOUS",
+											"SPOOF",
+											"SPAM",
+											"BULK",
+											"ENCRYPTED",
+											"EXTERNAL",
+											"UNKNOWN",
+											"NONE"
+										],
+										"type": "string"
+									},
+									"message_action": {
+										"enum": [
+											"PREVIEW",
+											"QUARANTINE_RELEASED",
+											"MOVED"
+										],
+										"nullable": true,
+										"type": "string"
+									},
+									"message_id": {
+										"nullable": true,
+										"type": "string"
+									},
+									"metric": {
+										"nullable": true,
+										"type": "string"
+									},
+									"query": {
+										"nullable": true,
+										"type": "string"
+									},
+									"recipient": {
+										"nullable": true,
+										"type": "string"
+									},
+									"sender": {
+										"nullable": true,
+										"type": "string"
+									},
+									"start": {
+										"description": "Beginning of search date range",
+										"example": "2022-06-25T14:30:00Z",
+										"format": "date-time",
+										"type": "string"
+									},
+									"subject": {
+										"nullable": true,
+										"type": "string"
+									},
+									"submissions": {
+										"default": false,
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"required": [
+							"action",
+							"search_params"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action_params": {
+													"discriminator": {
+														"propertyName": "type"
+													},
+													"oneOf": [
+														{
+															"properties": {
+																"destination": {
+																	"enum": [
+																		"Inbox",
+																		"JunkEmail",
+																		"DeletedItems",
+																		"RecoverableItemsDeletions",
+																		"RecoverableItemsPurges"
+																	],
+																	"type": "string"
+																},
+																"expected_disposition": {
+																	"enum": [
+																		"MALICIOUS",
+																		"MALICIOUS-BEC",
+																		"SUSPICIOUS",
+																		"SPOOF",
+																		"SPAM",
+																		"BULK",
+																		"ENCRYPTED",
+																		"EXTERNAL",
+																		"UNKNOWN",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"enum": [
+																		"MOVE"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"destination"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"RELEASE"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"action_type": {
+													"enum": [
+														"MOVE",
+														"RELEASE"
+													],
+													"type": "string"
+												},
+												"comment": {
+													"nullable": true,
+													"type": "string"
+												},
+												"completed_at": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"job_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"messages_failed": {
+													"type": "integer"
+												},
+												"messages_pending": {
+													"type": "integer"
+												},
+												"messages_successful": {
+													"type": "integer"
+												},
+												"search_params": {
+													"properties": {
+														"action_log": {
+															"default": false,
+															"deprecated": true,
+															"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
+															"type": "boolean"
+														},
+														"alert_id": {
+															"nullable": true,
+															"type": "string"
+														},
+														"delivery_status": {
+															"description": "Delivery status of the message.",
+															"enum": [
+																"delivered",
+																"moved",
+																"quarantined",
+																"rejected",
+																"deferred",
+																"bounced",
+																"queued"
+															],
+															"type": "string"
+														},
+														"detections_only": {
+															"default": true,
+															"type": "boolean"
+														},
+														"domain": {
+															"nullable": true,
+															"type": "string"
+														},
+														"end": {
+															"description": "End of search date range",
+															"example": "2022-07-25T14:30:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"exact_subject": {
+															"nullable": true,
+															"type": "string"
+														},
+														"final_disposition": {
+															"enum": [
+																"MALICIOUS",
+																"MALICIOUS-BEC",
+																"SUSPICIOUS",
+																"SPOOF",
+																"SPAM",
+																"BULK",
+																"ENCRYPTED",
+																"EXTERNAL",
+																"UNKNOWN",
+																"NONE"
+															],
+															"type": "string"
+														},
+														"message_action": {
+															"enum": [
+																"PREVIEW",
+																"QUARANTINE_RELEASED",
+																"MOVED"
+															],
+															"nullable": true,
+															"type": "string"
+														},
+														"message_id": {
+															"nullable": true,
+															"type": "string"
+														},
+														"metric": {
+															"nullable": true,
+															"type": "string"
+														},
+														"query": {
+															"nullable": true,
+															"type": "string"
+														},
+														"recipient": {
+															"nullable": true,
+															"type": "string"
+														},
+														"sender": {
+															"nullable": true,
+															"type": "string"
+														},
+														"start": {
+															"description": "Beginning of search date range",
+															"example": "2022-06-25T14:30:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"subject": {
+															"nullable": true,
+															"type": "string"
+														},
+														"submissions": {
+															"default": false,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"started_at": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"PENDING",
+														"DISCOVERING",
+														"PROCESSING",
+														"COMPLETED",
+														"FAILED",
+														"CANCELLED",
+														"SKIPPED"
+													],
+													"type": "string"
+												},
+												"status_message": {
+													"nullable": true,
+													"type": "string"
+												},
+												"total_messages_discovered": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"job_id",
+												"action_type",
+												"action_params",
+												"search_params",
+												"status",
+												"total_messages_discovered",
+												"messages_pending",
+												"messages_successful",
+												"messages_failed",
+												"created_at"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Bulk job created"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a bulk action job",
+		"tags": [
+			"Email Security"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		]
+	},
+	"POST /accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel": {
+		"description": "Marks the job as cancelled and stops any pending message processing. The job record remains visible in list and detail endpoints.",
+		"operationId": "email_security_cancel_bulk_job",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"action_params": {
+													"discriminator": {
+														"propertyName": "type"
+													},
+													"oneOf": [
+														{
+															"properties": {
+																"destination": {
+																	"enum": [
+																		"Inbox",
+																		"JunkEmail",
+																		"DeletedItems",
+																		"RecoverableItemsDeletions",
+																		"RecoverableItemsPurges"
+																	],
+																	"type": "string"
+																},
+																"expected_disposition": {
+																	"enum": [
+																		"MALICIOUS",
+																		"MALICIOUS-BEC",
+																		"SUSPICIOUS",
+																		"SPOOF",
+																		"SPAM",
+																		"BULK",
+																		"ENCRYPTED",
+																		"EXTERNAL",
+																		"UNKNOWN",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"type": {
+																	"enum": [
+																		"MOVE"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type",
+																"destination"
+															],
+															"type": "object"
+														},
+														{
+															"properties": {
+																"type": {
+																	"enum": [
+																		"RELEASE"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"action_type": {
+													"enum": [
+														"MOVE",
+														"RELEASE"
+													],
+													"type": "string"
+												},
+												"comment": {
+													"nullable": true,
+													"type": "string"
+												},
+												"completed_at": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"job_id": {
+													"format": "uuid",
+													"type": "string"
+												},
+												"messages_failed": {
+													"type": "integer"
+												},
+												"messages_pending": {
+													"type": "integer"
+												},
+												"messages_successful": {
+													"type": "integer"
+												},
+												"search_params": {
+													"properties": {
+														"action_log": {
+															"default": false,
+															"deprecated": true,
+															"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
+															"type": "boolean"
+														},
+														"alert_id": {
+															"nullable": true,
+															"type": "string"
+														},
+														"delivery_status": {
+															"description": "Delivery status of the message.",
+															"enum": [
+																"delivered",
+																"moved",
+																"quarantined",
+																"rejected",
+																"deferred",
+																"bounced",
+																"queued"
+															],
+															"type": "string"
+														},
+														"detections_only": {
+															"default": true,
+															"type": "boolean"
+														},
+														"domain": {
+															"nullable": true,
+															"type": "string"
+														},
+														"end": {
+															"description": "End of search date range",
+															"example": "2022-07-25T14:30:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"exact_subject": {
+															"nullable": true,
+															"type": "string"
+														},
+														"final_disposition": {
+															"enum": [
+																"MALICIOUS",
+																"MALICIOUS-BEC",
+																"SUSPICIOUS",
+																"SPOOF",
+																"SPAM",
+																"BULK",
+																"ENCRYPTED",
+																"EXTERNAL",
+																"UNKNOWN",
+																"NONE"
+															],
+															"type": "string"
+														},
+														"message_action": {
+															"enum": [
+																"PREVIEW",
+																"QUARANTINE_RELEASED",
+																"MOVED"
+															],
+															"nullable": true,
+															"type": "string"
+														},
+														"message_id": {
+															"nullable": true,
+															"type": "string"
+														},
+														"metric": {
+															"nullable": true,
+															"type": "string"
+														},
+														"query": {
+															"nullable": true,
+															"type": "string"
+														},
+														"recipient": {
+															"nullable": true,
+															"type": "string"
+														},
+														"sender": {
+															"nullable": true,
+															"type": "string"
+														},
+														"start": {
+															"description": "Beginning of search date range",
+															"example": "2022-06-25T14:30:00Z",
+															"format": "date-time",
+															"type": "string"
+														},
+														"subject": {
+															"nullable": true,
+															"type": "string"
+														},
+														"submissions": {
+															"default": false,
+															"type": "boolean"
+														}
+													},
+													"type": "object"
+												},
+												"started_at": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"PENDING",
+														"DISCOVERING",
+														"PROCESSING",
+														"COMPLETED",
+														"FAILED",
+														"CANCELLED",
+														"SKIPPED"
+													],
+													"type": "string"
+												},
+												"status_message": {
+													"nullable": true,
+													"type": "string"
+												},
+												"total_messages_discovered": {
+													"type": "integer"
+												}
+											},
+											"required": [
+												"job_id",
+												"action_type",
+												"action_params",
+												"search_params",
+												"status",
+												"total_messages_discovered",
+												"messages_pending",
+												"messages_successful",
+												"messages_failed",
+												"created_at"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Job cancelled"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Cancel a bulk action job",
 		"tags": [
 			"Email Security"
 		],
