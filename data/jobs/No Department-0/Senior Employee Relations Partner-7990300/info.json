@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7997341?gh_jid=7997341",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/7990300?gh_jid=7990300",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -10,7 +10,7 @@
 			"demographic_data_consent_applies": false
 		}
 	],
-	"internal_job_id": 3468612,
+	"internal_job_id": 3466503,
 	"location": {
 		"name": "Hybrid"
 	},
@@ -18,17 +18,19 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "6330 - FP&A Business Ops",
+			"value": "6500 - Human Resources",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
+				"Atlanta, US",
 				"Austin, US",
 				"Denver, US",
-				"San Francisco, US",
-				"Seattle, US"
+				"New York, US",
+				"Seattle, US",
+				"Washington DC, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -36,27 +38,20 @@
 			"id": 46546702,
 			"name": "Career Site Department",
 			"value": [
-				"Accounting & Finance"
+				"People & Places"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 7997341,
+	"id": 7990300,
 	"updated_at": "2026-06-19T14:39:05-04:00",
 	"requisition_id": null,
-	"title": "Finance Business Partner, G&A",
+	"title": "Senior Employee Relations Partner",
 	"company_name": "Cloudflare",
-	"first_published": "2026-06-11T09:10:49-04:00",
+	"first_published": "2026-06-09T10:00:10-04:00",
 	"language": "en",
 	"application_deadline": null,
-	"departments": [
-		{
-			"id": 29062,
-			"name": "Accounting and Finance",
-			"child_ids": [],
-			"parent_id": null
-		}
-	],
+	"departments": [],
 	"offices": [
 		{
 			"id": 19983,
@@ -66,9 +61,16 @@
 			"parent_id": 48752
 		},
 		{
-			"id": 19991,
-			"name": "San Francisco, CA",
-			"location": "San Francisco, CA, United States",
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19994,
+			"name": "Washington, DC",
+			"location": "Washington, DC, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		},
@@ -76,6 +78,13 @@
 			"id": 65527,
 			"name": "Denver, CO",
 			"location": "Denver, Colorado, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 66815,
+			"name": "Atlanta, GA",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		},
