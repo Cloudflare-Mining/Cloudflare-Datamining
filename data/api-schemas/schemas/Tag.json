@@ -135,8 +135,9 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/tags/{tag_uuid}/indicators": {
-		"description": "Returns indicators associated with the provided tag UUID across all indicator datasets, with pagination.",
-		"operationId": "get_TagIndicatorsList",
+		"deprecated": true,
+		"description": "This endpoint is deprecated. Use GET /:account_id/events/tags/:tag_uuid/indicators with the optional datasetIds query parameter instead. Returns indicators associated with the provided tag UUID within a single dataset's indicator shards, with pagination.",
+		"operationId": "get_DatasetTagIndicatorsList",
 		"parameters": [
 			{
 				"description": "Account ID.",
@@ -198,6 +199,752 @@
 					"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
 					"items": {
 						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
+					"items": {
+						"properties": {
+							"field": {
+								"description": "The indicator field to search on. Allowed: value, indicatorType.",
+								"enum": [
+									"value",
+									"indicatorType"
+								],
+								"example": "value",
+								"type": "string"
+							},
+							"op": {
+								"description": "Search operator. Use 'in' for bulk lookup of up to 100 values at once, e.g. {field:'value', op:'in', value:['evil.com','bad.org']}.",
+								"enum": [
+									"equals",
+									"not",
+									"gt",
+									"gte",
+									"lt",
+									"lte",
+									"like",
+									"contains",
+									"startsWith",
+									"endsWith",
+									"in",
+									"find"
+								],
+								"example": "contains",
+								"type": "string"
+							},
+							"value": {
+								"anyOf": [
+									{
+										"example": "malicious",
+										"type": "string"
+									},
+									{
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								],
+								"description": "Search value. String for most operators. Array of strings for 'in' operator (max 100 items)."
+							}
+						},
+						"required": [
+							"field",
+							"op",
+							"value"
+						],
+						"type": "object"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"indicators": {
+									"items": {
+										"properties": {
+											"createdAt": {
+												"example": "2022-04-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"datasetId": {
+												"description": "The dataset ID this indicator belongs to. Included in list responses.",
+												"example": "dataset-uuid-123",
+												"type": "string"
+											},
+											"indicatorType": {
+												"example": "domain",
+												"type": "string"
+											},
+											"relatedEvents": {
+												"items": {
+													"properties": {
+														"datasetId": {
+															"example": "dataset-uuid-123",
+															"type": "string"
+														},
+														"eventId": {
+															"example": "event-uuid-456",
+															"type": "string"
+														}
+													},
+													"required": [
+														"datasetId",
+														"eventId"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"tags": {
+												"items": {
+													"properties": {
+														"categoryName": {
+															"type": "string"
+														},
+														"uuid": {
+															"type": "string"
+														},
+														"value": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"updatedAt": {
+												"example": "2022-04-01T00:00:00Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"uuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											},
+											"value": {
+												"example": "malicious-domain.com",
+												"type": "string"
+											}
+										},
+										"required": [
+											"uuid",
+											"indicatorType",
+											"value",
+											"createdAt",
+											"updatedAt"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"pagination": {
+									"properties": {
+										"page": {
+											"type": "number"
+										},
+										"pageSize": {
+											"type": "number"
+										},
+										"totalCount": {
+											"type": "number"
+										},
+										"totalPages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"pageSize",
+										"totalCount",
+										"totalPages"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"indicators",
+								"pagination"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a paginated list of indicators."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List indicators related to a tag within a dataset (deprecated)",
+		"tags": [
+			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
+		"description": "Returns all Source-of-Truth tags for an account. Supports legacy free-text `search` on tag value and `categoryUuid` exact match, plus a structured `filters` JSON array for filtering by metadata fields (originCountryISO, actorCategory, motive, priority, etc.). Country values may be passed as alpha-2, alpha-3, name, or common alias.",
+		"operationId": "get_TagList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"description": "Legacy free-text substring match on tag value.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Legacy free-text substring match on tag value.",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "categoryUuid",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
+				"in": "query",
+				"name": "filters",
+				"schema": {
+					"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
+					"items": {
+						"properties": {
+							"field": {
+								"description": "Tag field to search on. Allowed: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority.",
+								"enum": [
+									"uuid",
+									"value",
+									"actorCategory",
+									"aliasGroupNames",
+									"attributionConfidence",
+									"attributionOrganization",
+									"categoryName",
+									"motive",
+									"opsecLevel",
+									"originCountryISO",
+									"sophisticationLevel",
+									"priority",
+									"analyticPriority"
+								],
+								"example": "originCountryISO",
+								"type": "string"
+							},
+							"op": {
+								"description": "Search operator. Use 'in' for bulk OR within a single field, e.g. {field:\"originCountryISO\", op:\"in\", value:[\"IR\",\"CN\"]}.",
+								"enum": [
+									"equals",
+									"not",
+									"gt",
+									"gte",
+									"lt",
+									"lte",
+									"like",
+									"contains",
+									"startsWith",
+									"endsWith",
+									"in",
+									"find"
+								],
+								"example": "in",
+								"type": "string"
+							},
+							"value": {
+								"anyOf": [
+									{
+										"example": "IR",
+										"type": "string"
+									},
+									{
+										"example": 5,
+										"type": "number"
+									},
+									{
+										"items": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "number"
+												}
+											]
+										},
+										"type": "array"
+									}
+								],
+								"description": "Search value. String or number for most operators. Array for 'in' (max 100 items). Country values may be passed as alpha-2, alpha-3, name, or common alias (e.g. 'iran', 'IR', 'IRN') and are normalized to alpha-2 server-side."
+							}
+						},
+						"required": [
+							"field",
+							"op"
+						],
+						"type": "object"
+					},
+					"type": "array"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"pagination": {
+									"properties": {
+										"page": {
+											"type": "number"
+										},
+										"pageSize": {
+											"type": "number"
+										},
+										"totalCount": {
+											"type": "number"
+										},
+										"totalPages": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"page",
+										"pageSize",
+										"totalCount",
+										"totalPages"
+									],
+									"type": "object"
+								},
+								"tags": {
+									"items": {
+										"properties": {
+											"activeDuration": {
+												"type": "string"
+											},
+											"actorCategory": {
+												"type": "string"
+											},
+											"aliasGroupNames": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"aliasGroupNamesInternal": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"analyticPriority": {
+												"type": "number"
+											},
+											"attributionConfidence": {
+												"type": "string"
+											},
+											"attributionOrganization": {
+												"type": "string"
+											},
+											"categoryName": {
+												"example": "Nation State",
+												"type": "string"
+											},
+											"categoryUuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											},
+											"externalReferenceLinks": {
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											},
+											"internalDescription": {
+												"type": "string"
+											},
+											"motive": {
+												"type": "string"
+											},
+											"opsecLevel": {
+												"type": "string"
+											},
+											"originCountryISO": {
+												"type": "string"
+											},
+											"originCountryISOAlpha3": {
+												"example": "IRN",
+												"type": "string"
+											},
+											"priority": {
+												"type": "number"
+											},
+											"sophisticationLevel": {
+												"type": "string"
+											},
+											"uuid": {
+												"example": "12345678-1234-1234-1234-1234567890ab",
+												"type": "string"
+											},
+											"value": {
+												"example": "APT28",
+												"type": "string"
+											}
+										},
+										"required": [
+											"uuid",
+											"value"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"tags",
+								"pagination"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns a paginated list of tags."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Lists all tags (SoT)",
+		"tags": [
+			"Tag"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	},
+	"GET /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators": {
+		"description": "Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every indicator dataset the account can read; pass datasetIds to scope to specific datasets.",
+		"operationId": "get_TagIndicatorsList",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Tag UUID.",
+				"in": "path",
+				"name": "tag_uuid",
+				"required": true,
+				"schema": {
+					"description": "Tag UUID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset UUIDs to scope to (repeat the param for multiple), or 'all' / '*' for every readable indicator dataset. Omit to search all readable datasets.",
+				"in": "query",
+				"name": "datasetIds",
+				"schema": {
+					"description": "Dataset UUIDs to scope to (repeat the param for multiple), or 'all' / '*' for every readable indicator dataset. Omit to search all readable datasets.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "pageSize",
+				"schema": {
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "indicatorType",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
+				"in": "query",
+				"name": "relatedEvent",
+				"schema": {
+					"description": "Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"description": "Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request.",
+					"items": {
+						"properties": {
+							"field": {
+								"description": "The indicator field to search on. Allowed: value, indicatorType.",
+								"enum": [
+									"value",
+									"indicatorType"
+								],
+								"example": "value",
+								"type": "string"
+							},
+							"op": {
+								"description": "Search operator. Use 'in' for bulk lookup of up to 100 values at once, e.g. {field:'value', op:'in', value:['evil.com','bad.org']}.",
+								"enum": [
+									"equals",
+									"not",
+									"gt",
+									"gte",
+									"lt",
+									"lte",
+									"like",
+									"contains",
+									"startsWith",
+									"endsWith",
+									"in",
+									"find"
+								],
+								"example": "contains",
+								"type": "string"
+							},
+							"value": {
+								"anyOf": [
+									{
+										"example": "malicious",
+										"type": "string"
+									},
+									{
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								],
+								"description": "Search value. String for most operators. Array of strings for 'in' operator (max 100 items)."
+							}
+						},
+						"required": [
+							"field",
+							"op",
+							"value"
+						],
+						"type": "object"
 					},
 					"type": "array"
 				}
@@ -451,306 +1198,6 @@
 			"Cloudforce One Read"
 		]
 	},
-	"GET /accounts/{account_id}/cloudforce-one/events/tags": {
-		"description": "Returns all Source-of-Truth tags for an account. Supports legacy free-text `search` on tag value and `categoryUuid` exact match, plus a structured `filters` JSON array for filtering by metadata fields (originCountryISO, actorCategory, motive, priority, etc.). Country values may be passed as alpha-2, alpha-3, name, or common alias.",
-		"operationId": "get_TagList",
-		"parameters": [
-			{
-				"description": "Account ID.",
-				"in": "path",
-				"name": "account_id",
-				"required": true,
-				"schema": {
-					"description": "Account ID.",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "page",
-				"schema": {
-					"type": "number"
-				}
-			},
-			{
-				"in": "query",
-				"name": "pageSize",
-				"schema": {
-					"type": "number"
-				}
-			},
-			{
-				"description": "Legacy free-text substring match on tag value.",
-				"in": "query",
-				"name": "search",
-				"schema": {
-					"description": "Legacy free-text substring match on tag value.",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "categoryUuid",
-				"schema": {
-					"type": "string"
-				}
-			},
-			{
-				"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
-				"in": "query",
-				"name": "filters",
-				"schema": {
-					"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
-					"items": {
-						"properties": {
-							"field": {
-								"description": "Tag field to search on. Allowed: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority.",
-								"enum": [
-									"uuid",
-									"value",
-									"actorCategory",
-									"aliasGroupNames",
-									"attributionConfidence",
-									"attributionOrganization",
-									"categoryName",
-									"motive",
-									"opsecLevel",
-									"originCountryISO",
-									"sophisticationLevel",
-									"priority",
-									"analyticPriority"
-								],
-								"example": "originCountryISO",
-								"type": "string"
-							},
-							"op": {
-								"description": "Search operator. Use 'in' for bulk OR within a single field, e.g. {field:\"originCountryISO\", op:\"in\", value:[\"IR\",\"CN\"]}.",
-								"enum": [
-									"equals",
-									"not",
-									"gt",
-									"gte",
-									"lt",
-									"lte",
-									"like",
-									"contains",
-									"startsWith",
-									"endsWith",
-									"in",
-									"find"
-								],
-								"example": "in",
-								"type": "string"
-							},
-							"value": {
-								"anyOf": [
-									{
-										"example": "IR",
-										"type": "string"
-									},
-									{
-										"example": 5,
-										"type": "number"
-									},
-									{
-										"items": {
-											"anyOf": [
-												{
-													"type": "string"
-												},
-												{
-													"type": "number"
-												}
-											]
-										},
-										"type": "array"
-									}
-								],
-								"description": "Search value. String or number for most operators. Array for 'in' (max 100 items). Country values may be passed as alpha-2, alpha-3, name, or common alias (e.g. 'iran', 'IR', 'IRN') and are normalized to alpha-2 server-side."
-							}
-						},
-						"required": [
-							"field",
-							"op"
-						],
-						"type": "object"
-					},
-					"type": "array"
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"pagination": {
-									"properties": {
-										"page": {
-											"type": "number"
-										},
-										"pageSize": {
-											"type": "number"
-										},
-										"totalCount": {
-											"type": "number"
-										},
-										"totalPages": {
-											"type": "number"
-										}
-									},
-									"required": [
-										"page",
-										"pageSize",
-										"totalCount",
-										"totalPages"
-									],
-									"type": "object"
-								},
-								"tags": {
-									"items": {
-										"properties": {
-											"activeDuration": {
-												"type": "string"
-											},
-											"actorCategory": {
-												"type": "string"
-											},
-											"aliasGroupNames": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"aliasGroupNamesInternal": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"analyticPriority": {
-												"type": "number"
-											},
-											"attributionConfidence": {
-												"type": "string"
-											},
-											"attributionOrganization": {
-												"type": "string"
-											},
-											"categoryName": {
-												"example": "Nation State",
-												"type": "string"
-											},
-											"categoryUuid": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
-												"type": "string"
-											},
-											"externalReferenceLinks": {
-												"items": {
-													"type": "string"
-												},
-												"type": "array"
-											},
-											"internalDescription": {
-												"type": "string"
-											},
-											"motive": {
-												"type": "string"
-											},
-											"opsecLevel": {
-												"type": "string"
-											},
-											"originCountryISO": {
-												"type": "string"
-											},
-											"priority": {
-												"type": "number"
-											},
-											"sophisticationLevel": {
-												"type": "string"
-											},
-											"uuid": {
-												"example": "12345678-1234-1234-1234-1234567890ab",
-												"type": "string"
-											},
-											"value": {
-												"example": "APT28",
-												"type": "string"
-											}
-										},
-										"required": [
-											"uuid",
-											"value"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								}
-							},
-							"required": [
-								"tags",
-								"pagination"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Returns a paginated list of tags."
-			},
-			"400": {
-				"content": {
-					"application/json": {
-						"schema": {
-							"properties": {
-								"errors": {
-									"items": {
-										"properties": {
-											"message": {
-												"example": "An error occurred.",
-												"type": "string"
-											}
-										},
-										"required": [
-											"message"
-										],
-										"type": "object"
-									},
-									"type": "array"
-								},
-								"result": {
-									"type": "object"
-								},
-								"success": {
-									"type": "boolean"
-								}
-							},
-							"required": [
-								"result",
-								"success",
-								"errors"
-							],
-							"type": "object"
-						}
-					}
-				},
-				"description": "Bad Request."
-			}
-		},
-		"security": [
-			{
-				"api_token": []
-			}
-		],
-		"summary": "Lists all tags (SoT)",
-		"tags": [
-			"Tag"
-		],
-		"x-api-token-group": [
-			"Cloudforce One Write",
-			"Cloudforce One Read"
-		]
-	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}": {
 		"description": "Updates a Source-of-Truth tag by UUID.",
 		"operationId": "patch_TagUpdate",
@@ -903,6 +1350,10 @@
 									"type": "string"
 								},
 								"originCountryISO": {
+									"type": "string"
+								},
+								"originCountryISOAlpha3": {
+									"example": "IRN",
 									"type": "string"
 								},
 								"priority": {
@@ -1165,6 +1616,10 @@
 									"type": "string"
 								},
 								"originCountryISO": {
+									"type": "string"
+								},
+								"originCountryISOAlpha3": {
+									"example": "IRN",
 									"type": "string"
 								},
 								"priority": {

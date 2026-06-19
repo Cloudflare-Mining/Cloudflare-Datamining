@@ -173,7 +173,9 @@
 																	},
 																	"provider_type": {
 																		"enum": [
-																			"github"
+																			"github",
+																			"gitlab",
+																			"gitlab_internal"
 																		],
 																		"example": "github",
 																		"type": "string"
@@ -338,7 +340,9 @@
 																			},
 																			"provider_type": {
 																				"enum": [
-																					"github"
+																					"github",
+																					"gitlab",
+																					"gitlab_internal"
 																				],
 																				"example": "github",
 																				"type": "string"
@@ -584,7 +588,9 @@
 														},
 														"provider_type": {
 															"enum": [
-																"github"
+																"github",
+																"gitlab",
+																"gitlab_internal"
 															],
 															"example": "github",
 															"type": "string"
@@ -749,7 +755,9 @@
 																},
 																"provider_type": {
 																	"enum": [
-																		"github"
+																		"github",
+																		"gitlab",
+																		"gitlab_internal"
 																	],
 																	"example": "github",
 																	"type": "string"
@@ -1289,7 +1297,9 @@
 																	},
 																	"provider_type": {
 																		"enum": [
-																			"github"
+																			"github",
+																			"gitlab",
+																			"gitlab_internal"
 																		],
 																		"example": "github",
 																		"type": "string"
@@ -1454,7 +1464,9 @@
 																			},
 																			"provider_type": {
 																				"enum": [
-																					"github"
+																					"github",
+																					"gitlab",
+																					"gitlab_internal"
 																				],
 																				"example": "github",
 																				"type": "string"

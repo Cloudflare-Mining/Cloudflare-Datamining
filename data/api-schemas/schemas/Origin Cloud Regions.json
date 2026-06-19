@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}": {
+		"deprecated": true,
 		"description": "Removes the cloud region mapping for a single origin IP address. The IP path parameter is normalized before lookup. Returns the deleted entry on success. Returns 404 (code 1163) if no mapping exists for the specified IP. When the last mapping for the zone is removed the underlying rule record is also deleted.",
 		"operationId": "origin-cloud-regions-delete",
 		"parameters": [
@@ -322,6 +323,12 @@
 		"tags": [
 			"Origin Cloud Regions"
 		],
+		"x-cfDeprecation": {
+			"description": "Use the v2 endpoints under `/zones/{zone_id}/origin/cloud_regions` instead. The v2 API uses idempotent PUT semantics for create+update, provides a flat response shape, and is the supported path for Terraform and SDK clients. The v1 endpoints under `/zones/{zone_id}/cache/origin_cloud_regions` will be removed on 2026-10-01.",
+			"display": true,
+			"eol": "2026-10-01",
+			"id": "opcr_v1_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -330,6 +337,7 @@
 		}
 	},
 	"DELETE /zones/{zone_id}/cache/origin_cloud_regions/batch": {
+		"deprecated": true,
 		"description": "Removes up to 100 IP-to-cloud-region mappings in a single request. Each IP is validated independently — successfully deleted items are returned in the `succeeded` array and IPs that could not be found or are invalid are returned in the `failed` array.",
 		"operationId": "origin-cloud-regions-batch-delete",
 		"parameters": [
@@ -807,6 +815,12 @@
 		"tags": [
 			"Origin Cloud Regions"
 		],
+		"x-cfDeprecation": {
+			"description": "Use the v2 endpoints under `/zones/{zone_id}/origin/cloud_regions` instead. The v2 API uses idempotent PUT semantics for create+update, provides a flat response shape, and is the supported path for Terraform and SDK clients. The v1 endpoints under `/zones/{zone_id}/cache/origin_cloud_regions` will be removed on 2026-10-01.",
+			"display": true,
+			"eol": "2026-10-01",
+			"id": "opcr_v1_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1419,6 +1433,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/cache/origin_cloud_regions": {
+		"deprecated": true,
 		"description": "Returns all IP-to-cloud-region mappings configured for the zone. Each mapping tells Cloudflare which cloud vendor and region hosts the origin at that IP, enabling the edge to route via the nearest Tiered Cache upper-tier co-located with that cloud provider. Returns an empty array when no mappings exist.",
 		"operationId": "origin-cloud-regions-list",
 		"parameters": [
@@ -1741,6 +1756,12 @@
 		"tags": [
 			"Origin Cloud Regions"
 		],
+		"x-cfDeprecation": {
+			"description": "Use the v2 endpoints under `/zones/{zone_id}/origin/cloud_regions` instead. The v2 API uses idempotent PUT semantics for create+update, provides a flat response shape, and is the supported path for Terraform and SDK clients. The v1 endpoints under `/zones/{zone_id}/cache/origin_cloud_regions` will be removed on 2026-10-01.",
+			"display": true,
+			"eol": "2026-10-01",
+			"id": "opcr_v1_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1749,6 +1770,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/cache/origin_cloud_regions/{origin_ip}": {
+		"deprecated": true,
 		"description": "Returns the cloud region mapping for a single origin IP address. The IP path parameter is normalized before lookup (RFC 5952 for IPv6). Returns 404 (code 1142) if the zone has no mappings or if the specified IP has no mapping.",
 		"operationId": "origin-cloud-regions-get",
 		"parameters": [
@@ -2071,6 +2093,12 @@
 		"tags": [
 			"Origin Cloud Regions"
 		],
+		"x-cfDeprecation": {
+			"description": "Use the v2 endpoints under `/zones/{zone_id}/origin/cloud_regions` instead. The v2 API uses idempotent PUT semantics for create+update, provides a flat response shape, and is the supported path for Terraform and SDK clients. The v1 endpoints under `/zones/{zone_id}/cache/origin_cloud_regions` will be removed on 2026-10-01.",
+			"display": true,
+			"eol": "2026-10-01",
+			"id": "opcr_v1_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -2079,6 +2107,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions": {
+		"deprecated": true,
 		"description": "Returns the cloud vendors and regions that are valid values for origin cloud region mappings. Each region includes the Tiered Cache upper-tier colocation codes that will be used for cache routing when a mapping targeting that region is active. Requires the zone to have Tiered Cache enabled.",
 		"operationId": "origin-cloud-regions-supported-regions",
 		"parameters": [
@@ -2370,6 +2399,12 @@
 		"tags": [
 			"Origin Cloud Regions"
 		],
+		"x-cfDeprecation": {
+			"description": "Use the v2 endpoints under `/zones/{zone_id}/origin/cloud_regions` instead. The v2 API uses idempotent PUT semantics for create+update, provides a flat response shape, and is the supported path for Terraform and SDK clients. The v1 endpoints under `/zones/{zone_id}/cache/origin_cloud_regions` will be removed on 2026-10-01.",
+			"display": true,
+			"eol": "2026-10-01",
+			"id": "opcr_v1_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3355,6 +3390,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/cache/origin_cloud_regions": {
+		"deprecated": true,
 		"description": "Adds or updates a single IP-to-cloud-region mapping for the zone. Unlike POST, this operation is idempotent — if a mapping for the IP already exists it is overwritten. Returns the complete updated list of all mappings for the zone. Returns 403 (code 1164) when the zone has reached the limit of 3,500 IP mappings.",
 		"operationId": "origin-cloud-regions-upsert",
 		"parameters": [
@@ -3743,6 +3779,12 @@
 		"tags": [
 			"Origin Cloud Regions"
 		],
+		"x-cfDeprecation": {
+			"description": "Use the v2 endpoints under `/zones/{zone_id}/origin/cloud_regions` instead. The v2 API uses idempotent PUT semantics for create+update, provides a flat response shape, and is the supported path for Terraform and SDK clients. The v1 endpoints under `/zones/{zone_id}/cache/origin_cloud_regions` will be removed on 2026-10-01.",
+			"display": true,
+			"eol": "2026-10-01",
+			"id": "opcr_v1_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -3751,6 +3793,7 @@
 		}
 	},
 	"PATCH /zones/{zone_id}/cache/origin_cloud_regions/batch": {
+		"deprecated": true,
 		"description": "Adds or updates up to 100 IP-to-cloud-region mappings in a single request. Each item is validated independently — valid items are applied and invalid items are returned in the `failed` array. The vendor and region for every item are validated against the list from `GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`.",
 		"operationId": "origin-cloud-regions-batch-upsert",
 		"parameters": [
@@ -4294,6 +4337,12 @@
 		"tags": [
 			"Origin Cloud Regions"
 		],
+		"x-cfDeprecation": {
+			"description": "Use the v2 endpoints under `/zones/{zone_id}/origin/cloud_regions` instead. The v2 API uses idempotent PUT semantics for create+update, provides a flat response shape, and is the supported path for Terraform and SDK clients. The v1 endpoints under `/zones/{zone_id}/cache/origin_cloud_regions` will be removed on 2026-10-01.",
+			"display": true,
+			"eol": "2026-10-01",
+			"id": "opcr_v1_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -4302,6 +4351,7 @@
 		}
 	},
 	"POST /zones/{zone_id}/cache/origin_cloud_regions": {
+		"deprecated": true,
 		"description": "Adds a single IP-to-cloud-region mapping for the zone. The IP must be a valid IPv4 or IPv6 address and is normalized to canonical form before storage (RFC 5952 for IPv6). Returns 400 (code 1145) if a mapping for that IP already exists — use PATCH to update an existing entry. The vendor and region are validated against the list from `GET /zones/{zone_id}/cache/origin_cloud_regions/supported_regions`.",
 		"operationId": "origin-cloud-regions-create",
 		"parameters": [
@@ -4691,6 +4741,12 @@
 		"tags": [
 			"Origin Cloud Regions"
 		],
+		"x-cfDeprecation": {
+			"description": "Use the v2 endpoints under `/zones/{zone_id}/origin/cloud_regions` instead. The v2 API uses idempotent PUT semantics for create+update, provides a flat response shape, and is the supported path for Terraform and SDK clients. The v1 endpoints under `/zones/{zone_id}/cache/origin_cloud_regions` will be removed on 2026-10-01.",
+			"display": true,
+			"eol": "2026-10-01",
+			"id": "opcr_v1_deprecation"
+		},
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,

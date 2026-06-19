@@ -552,5 +552,560 @@
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
 		]
+	},
+	"GET /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}": {
+		"description": "Returns full Apache Iceberg metadata for a single table: schema,\npartition specs, sort orders, properties, and recent snapshot history.\nDesigned for catalog introspection UIs that need per-table details\nwithout holding R2 credentials.\n\nThe `metadata.snapshots`, `metadata.snapshot-log`, and\n`metadata.metadata-log` arrays are pruned to the most recent 10\nentries by `timestamp-ms`. Use `total_snapshots` and\n`returned_snapshots` to surface the truncation to end users.\n",
+		"operationId": "get-table",
+		"parameters": [
+			{
+				"description": "Identifies the account.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Use this to identify the account.",
+					"example": "0123456789abcdef0123456789abcdef",
+					"pattern": "^[a-fA-F0-9]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Specifies the R2 bucket name.",
+				"in": "path",
+				"name": "bucket_name",
+				"required": true,
+				"schema": {
+					"description": "Specifies the R2 bucket name.",
+					"example": "my-data-bucket",
+					"maxLength": 63,
+					"minLength": 3,
+					"pattern": "^[a-z0-9]([a-z0-9\\-]*[a-z0-9])?$",
+					"type": "string"
+				}
+			},
+			{
+				"description": "The namespace identifier.\nFor nested namespaces, use %1F as separator (e.g., \"bronze%1Fanalytics\").\n",
+				"example": "bronze",
+				"in": "path",
+				"name": "namespace",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "The table name within the given namespace.",
+				"example": "events",
+				"in": "path",
+				"name": "table_name",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": {
+							"errors": [],
+							"messages": [],
+							"result": {
+								"identifier": {
+									"name": "events",
+									"namespace": [
+										"bronze"
+									]
+								},
+								"metadata": {
+									"current-schema-id": 1,
+									"current-snapshot-id": 3055729675574597000,
+									"default-spec-id": 0,
+									"format-version": 2,
+									"location": "s3://my-bucket/__r2_data_catalog/wh-id/table-id",
+									"partition-specs": [
+										{
+											"fields": [
+												{
+													"field-id": 1000,
+													"name": "user_id_bucket",
+													"source-id": 1,
+													"transform": "bucket[16]"
+												}
+											],
+											"spec-id": 0
+										}
+									],
+									"properties": {
+										"write.parquet.compression-codec": "zstd"
+									},
+									"schemas": [
+										{
+											"fields": [
+												{
+													"id": 1,
+													"name": "user_id",
+													"required": true,
+													"type": "long"
+												}
+											],
+											"schema-id": 1,
+											"type": "struct"
+										}
+									],
+									"snapshots": [
+										{
+											"sequence-number": 1,
+											"snapshot-id": 3055729675574597000,
+											"summary": {
+												"operation": "append"
+											},
+											"timestamp-ms": 1555100955770
+										}
+									],
+									"table-uuid": "550e8400-e29b-41d4-a716-446655440000"
+								},
+								"metadata_location": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/00001-abc.metadata.json",
+								"returned_snapshots": 10,
+								"table_uuid": "550e8400-e29b-41d4-a716-446655440000",
+								"total_snapshots": 122113
+							},
+							"success": true
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"description": "Contains errors if the API call was unsuccessful.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the error code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Describes the error.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Contains informational messages.",
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Specifies the message code.",
+														"type": "integer"
+													},
+													"message": {
+														"description": "Contains the message text.",
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Indicates whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Single-table detail response wrapping standard Iceberg `TableMetadata`\nwith snapshot-pruning counters.\n",
+											"properties": {
+												"identifier": {
+													"description": "Specifies a unique table identifier within a catalog.",
+													"properties": {
+														"name": {
+															"description": "Specifies the table name.",
+															"example": "events",
+															"type": "string"
+														},
+														"namespace": {
+															"description": "Specifies the hierarchical namespace parts as an array of strings.\nFor example, [\"bronze\", \"analytics\"] represents the namespace \"bronze.analytics\".\n",
+															"example": [
+																"bronze",
+																"analytics"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 16,
+															"minItems": 1,
+															"type": "array"
+														}
+													},
+													"required": [
+														"namespace",
+														"name"
+													],
+													"type": "object"
+												},
+												"metadata": {
+													"additionalProperties": true,
+													"description": "Contains standard Apache Iceberg table metadata (format version 1 or 2).\nSee https://iceberg.apache.org/spec/#table-metadata-fields for the full\nfield reference. Uses the `s3://` URI scheme for S3 compatibility,\nregardless of the underlying R2 backend.\n\nLimits the `snapshots`, `snapshot-log`, and `metadata-log` arrays to the\nmost recent 10 entries (by `timestamp-ms`). Always keeps the current\nsnapshot (via `current-snapshot-id`) even when it falls outside that\nwindow.\n",
+													"example": {
+														"current-schema-id": 1,
+														"current-snapshot-id": 3055729675574597000,
+														"default-sort-order-id": 0,
+														"default-spec-id": 0,
+														"format-version": 2,
+														"last-column-id": 3,
+														"last-sequence-number": 34,
+														"last-updated-ms": 1602638573590,
+														"location": "s3://my-bucket/__r2_data_catalog/wh-id/table-id",
+														"metadata-log": [],
+														"partition-specs": [
+															{
+																"fields": [
+																	{
+																		"field-id": 1000,
+																		"name": "user_id_bucket",
+																		"source-id": 1,
+																		"transform": "bucket[16]"
+																	}
+																],
+																"spec-id": 0
+															}
+														],
+														"properties": {
+															"write.parquet.compression-codec": "zstd"
+														},
+														"refs": {
+															"main": {
+																"snapshot-id": 3055729675574597000,
+																"type": "branch"
+															}
+														},
+														"schemas": [
+															{
+																"fields": [
+																	{
+																		"id": 1,
+																		"name": "user_id",
+																		"required": true,
+																		"type": "long"
+																	},
+																	{
+																		"id": 2,
+																		"name": "email",
+																		"required": true,
+																		"type": "string"
+																	}
+																],
+																"identifier-field-ids": [
+																	1
+																],
+																"schema-id": 1,
+																"type": "struct"
+															}
+														],
+														"snapshot-log": [
+															{
+																"snapshot-id": 3055729675574597000,
+																"timestamp-ms": 1555100955770
+															}
+														],
+														"snapshots": [
+															{
+																"manifest-list": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/snap-3055729675574597004.avro",
+																"schema-id": 1,
+																"sequence-number": 1,
+																"snapshot-id": 3055729675574597000,
+																"summary": {
+																	"operation": "append"
+																},
+																"timestamp-ms": 1555100955770
+															}
+														],
+														"sort-orders": [
+															{
+																"fields": [],
+																"order-id": 0
+															}
+														],
+														"table-uuid": "550e8400-e29b-41d4-a716-446655440000"
+													},
+													"type": "object"
+												},
+												"metadata_location": {
+													"description": "Specifies the S3-compatible URI to the current Iceberg metadata file\nin R2. Omitted for staged tables that have not yet been committed.\n",
+													"example": "s3://my-bucket/__r2_data_catalog/wh-id/table-id/metadata/00001-abc.metadata.json",
+													"type": "string"
+												},
+												"returned_snapshots": {
+													"description": "Describes the number of snapshots that appear in `metadata.snapshots`. Caps the\nlist at 10 (the most recent by `timestamp-ms`), but if the current\nsnapshot falls outside the recent window, the result includes it in the\nset, leading to a possible total of 11.\n",
+													"example": 10,
+													"minimum": 0,
+													"type": "integer"
+												},
+												"table_uuid": {
+													"description": "Contains the Iceberg table UUID, stable across renames.",
+													"example": "550e8400-e29b-41d4-a716-446655440000",
+													"format": "uuid",
+													"type": "string"
+												},
+												"total_snapshots": {
+													"description": "Indicates the total number of snapshots stored for the table, before pruning.",
+													"example": 122113,
+													"minimum": 0,
+													"type": "integer"
+												}
+											},
+											"required": [
+												"identifier",
+												"table_uuid",
+												"total_snapshots",
+												"returned_snapshots",
+												"metadata"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Table details retrieved successfully."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request (e.g., malformed namespace)."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication failed."
+			},
+			"403": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Forbidden — JWT claims do not match account."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Catalog, namespace, or table not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "integer"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal server error."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get table details",
+		"tags": [
+			"Table Management"
+		],
+		"x-api-token-group": [
+			"Workers R2 Data Catalog Write",
+			"Workers R2 Data Catalog Read"
+		]
 	}
 }

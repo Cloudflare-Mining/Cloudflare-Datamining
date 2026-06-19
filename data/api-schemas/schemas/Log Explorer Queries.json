@@ -643,6 +643,7 @@
 				"text/plain": {
 					"schema": {
 						"description": "SQL query to execute.",
+						"format": "binary",
 						"type": "string"
 					}
 				}
@@ -933,7 +934,8 @@
 			"Logs Write",
 			"Logs Read"
 		],
-		"x-auditable": false
+		"x-auditable": false,
+		"x-stability": "beta"
 	},
 	"POST /zones/{zone_id}/logs/explorer/query/sql": {
 		"description": "Run a SQL query against zone-level datasets.\n\nTimestamp fields are RFC3339 strings. Filter with:\n  WHERE {timestamp_field} >= now() - INTERVAL '30' DAY\n  WHERE {timestamp_field} >= '2026-04-01T00:00:00Z'\n  WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z'\n\nCheck /zones/{zone_id}/logs/explorer/datasets to see enabled zone level datasets.\nCheck /zones/{zone_id}/logs/explorer/datasets/available for the schemas and the name of the timestamp fields.\n\nFor account-level datasets use the account-scoped endpoint: POST /accounts/{account_id}/logs/explorer/query/sql\n\nFor more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
@@ -955,6 +957,7 @@
 				"text/plain": {
 					"schema": {
 						"description": "SQL query to execute.",
+						"format": "binary",
 						"type": "string"
 					}
 				}
@@ -1245,6 +1248,7 @@
 			"Logs Write",
 			"Logs Read"
 		],
-		"x-auditable": false
+		"x-auditable": false,
+		"x-stability": "beta"
 	}
 }

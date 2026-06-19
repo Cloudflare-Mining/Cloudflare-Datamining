@@ -4298,6 +4298,21 @@
 									"RecoverableItemsPurges"
 								],
 								"type": "string"
+							},
+							"expected_disposition": {
+								"enum": [
+									"MALICIOUS",
+									"MALICIOUS-BEC",
+									"SUSPICIOUS",
+									"SPOOF",
+									"SPAM",
+									"BULK",
+									"ENCRYPTED",
+									"EXTERNAL",
+									"UNKNOWN",
+									"NONE"
+								],
+								"type": "string"
 							}
 						},
 						"required": [
@@ -4887,6 +4902,21 @@
 									"DeletedItems",
 									"RecoverableItemsDeletions",
 									"RecoverableItemsPurges"
+								],
+								"type": "string"
+							},
+							"expected_disposition": {
+								"enum": [
+									"MALICIOUS",
+									"MALICIOUS-BEC",
+									"SUSPICIOUS",
+									"SPOOF",
+									"SPAM",
+									"BULK",
+									"ENCRYPTED",
+									"EXTERNAL",
+									"UNKNOWN",
+									"NONE"
 								],
 								"type": "string"
 							},

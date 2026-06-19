@@ -284,6 +284,383 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/email/routing/rules": {
+		"description": "Lists existing routing rules across all zones in the account.",
+		"operationId": "email-routing-routing-rules-list-account-routing-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"description": "Page number of paginated results.",
+					"minimum": 1,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"description": "Maximum number of results per page.",
+					"maximum": 50,
+					"minimum": 5,
+					"type": "number"
+				}
+			},
+			{
+				"in": "query",
+				"name": "enabled",
+				"schema": {
+					"description": "Filter by enabled routing rules.",
+					"enum": [
+						true,
+						false
+					],
+					"example": true,
+					"type": "boolean"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"properties": {
+														"count": {
+															"description": "Total number of results for the requested service.",
+															"example": 1,
+															"type": "number"
+														},
+														"page": {
+															"description": "Current page within paginated list of results.",
+															"example": 1,
+															"type": "number"
+														},
+														"per_page": {
+															"description": "Number of results per page of results.",
+															"example": 20,
+															"type": "number"
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters.",
+															"example": 2000,
+															"type": "number"
+														},
+														"total_pages": {
+															"description": "The number of total pages in the entire result set.",
+															"example": 100,
+															"type": "number"
+														}
+													},
+													"type": "object"
+												}
+											},
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"allOf": [
+													{
+														"properties": {
+															"actions": {
+																"description": "List actions patterns.",
+																"items": {
+																	"description": "Actions pattern.",
+																	"properties": {
+																		"type": {
+																			"description": "Type of supported action.",
+																			"enum": [
+																				"drop",
+																				"forward",
+																				"worker"
+																			],
+																			"example": "forward",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"value": {
+																			"items": {
+																				"description": "Value for action.",
+																				"example": "destinationaddress@example.net",
+																				"maxLength": 90,
+																				"type": "string",
+																				"x-auditable": true
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"maxItems": 1,
+																"minItems": 1,
+																"type": "array"
+															},
+															"enabled": {
+																"default": true,
+																"description": "Routing rule status.",
+																"enum": [
+																	true,
+																	false
+																],
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"id": {
+																"description": "Routing rule identifier.",
+																"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string",
+																"x-auditable": true
+															},
+															"matchers": {
+																"description": "Matching patterns to forward to your actions.",
+																"items": {
+																	"description": "Matching pattern to forward your actions.",
+																	"properties": {
+																		"field": {
+																			"description": "Field for type matcher.",
+																			"enum": [
+																				"to"
+																			],
+																			"example": "to",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"type": {
+																			"description": "Type of matcher.",
+																			"enum": [
+																				"all",
+																				"literal"
+																			],
+																			"example": "literal",
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"value": {
+																			"description": "Value for matcher.",
+																			"example": "test@example.com",
+																			"maxLength": 90,
+																			"type": "string",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"type"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"name": {
+																"description": "Routing rule name.",
+																"example": "Send to user@example.net rule.",
+																"maxLength": 256,
+																"type": "string",
+																"x-auditable": true
+															},
+															"priority": {
+																"default": 0,
+																"description": "Priority of the routing rule.",
+																"minimum": 0,
+																"type": "number",
+																"x-auditable": true
+															},
+															"tag": {
+																"deprecated": true,
+																"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
+																"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													{
+														"properties": {
+															"zone": {
+																"description": "Zone information for the routing rule.",
+																"properties": {
+																	"name": {
+																		"description": "Zone name.",
+																		"example": "example.com",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"tag": {
+																		"description": "Zone tag.",
+																		"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														}
+													}
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"properties": {
+												"count": {
+													"example": 1
+												},
+												"page": {
+													"example": 1
+												},
+												"per_page": {
+													"example": 20
+												},
+												"total_count": {
+													"example": 1
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List account routing rules response"
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List account routing rules",
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-api-token-group": null,
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /zones/{zone_id}/email/routing/rules": {
 		"description": "Lists existing routing rules.",
 		"operationId": "email-routing-routing-rules-list-routing-rules",

@@ -119,6 +119,16 @@
 				}
 			},
 			{
+				"description": "The page number to return.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
 				"description": "The number of IP profiles to return per page.",
 				"in": "query",
 				"name": "per_page",

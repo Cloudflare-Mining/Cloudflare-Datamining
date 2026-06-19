@@ -609,6 +609,10 @@
 										"example": "CN",
 										"type": "string"
 									},
+									"attackerCountryAlpha3": {
+										"example": "CHN",
+										"type": "string"
+									},
 									"category": {
 										"example": "Domain Resolution",
 										"type": "string"
@@ -710,6 +714,10 @@
 										"example": "US",
 										"type": "string"
 									},
+									"targetCountryAlpha3": {
+										"example": "USA",
+										"type": "string"
+									},
 									"targetIndustry": {
 										"example": "Agriculture",
 										"type": "string"
@@ -727,8 +735,10 @@
 									"uuid",
 									"date",
 									"targetCountry",
+									"targetCountryAlpha3",
 									"attacker",
 									"attackerCountry",
+									"attackerCountryAlpha3",
 									"targetIndustry",
 									"rawId",
 									"indicatorTypeId",
@@ -851,6 +861,10 @@
 									"example": "CN",
 									"type": "string"
 								},
+								"attackerCountryAlpha3": {
+									"example": "CHN",
+									"type": "string"
+								},
 								"category": {
 									"example": "Domain Resolution",
 									"type": "string"
@@ -952,6 +966,10 @@
 									"example": "US",
 									"type": "string"
 								},
+								"targetCountryAlpha3": {
+									"example": "USA",
+									"type": "string"
+								},
 								"targetIndustry": {
 									"example": "Agriculture",
 									"type": "string"
@@ -969,8 +987,10 @@
 								"uuid",
 								"date",
 								"targetCountry",
+								"targetCountryAlpha3",
 								"attacker",
 								"attackerCountry",
+								"attackerCountryAlpha3",
 								"targetIndustry",
 								"rawId",
 								"indicatorTypeId",
@@ -1311,6 +1331,10 @@
 										"example": "CN",
 										"type": "string"
 									},
+									"attackerCountryAlpha3": {
+										"example": "CHN",
+										"type": "string"
+									},
 									"category": {
 										"example": "Domain Resolution",
 										"type": "string"
@@ -1412,6 +1436,10 @@
 										"example": "US",
 										"type": "string"
 									},
+									"targetCountryAlpha3": {
+										"example": "USA",
+										"type": "string"
+									},
 									"targetIndustry": {
 										"example": "Agriculture",
 										"type": "string"
@@ -1429,8 +1457,10 @@
 									"uuid",
 									"date",
 									"targetCountry",
+									"targetCountryAlpha3",
 									"attacker",
 									"attackerCountry",
+									"attackerCountryAlpha3",
 									"targetIndustry",
 									"rawId",
 									"indicatorTypeId",
@@ -1758,6 +1788,10 @@
 									"example": "CN",
 									"type": "string"
 								},
+								"attackerCountryAlpha3": {
+									"example": "CHN",
+									"type": "string"
+								},
 								"category": {
 									"example": "Domain Resolution",
 									"type": "string"
@@ -1859,6 +1893,10 @@
 									"example": "US",
 									"type": "string"
 								},
+								"targetCountryAlpha3": {
+									"example": "USA",
+									"type": "string"
+								},
 								"targetIndustry": {
 									"example": "Agriculture",
 									"type": "string"
@@ -1876,8 +1914,10 @@
 								"uuid",
 								"date",
 								"targetCountry",
+								"targetCountryAlpha3",
 								"attacker",
 								"attackerCountry",
+								"attackerCountryAlpha3",
 								"targetIndustry",
 								"rawId",
 								"indicatorTypeId",
@@ -2560,6 +2600,10 @@
 									"example": "CN",
 									"type": "string"
 								},
+								"attackerCountryAlpha3": {
+									"example": "CHN",
+									"type": "string"
+								},
 								"category": {
 									"example": "Domain Resolution",
 									"type": "string"
@@ -2661,6 +2705,10 @@
 									"example": "US",
 									"type": "string"
 								},
+								"targetCountryAlpha3": {
+									"example": "USA",
+									"type": "string"
+								},
 								"targetIndustry": {
 									"example": "Agriculture",
 									"type": "string"
@@ -2678,8 +2726,10 @@
 								"uuid",
 								"date",
 								"targetCountry",
+								"targetCountryAlpha3",
 								"attacker",
 								"attackerCountry",
+								"attackerCountryAlpha3",
 								"targetIndustry",
 								"rawId",
 								"indicatorTypeId",
@@ -3464,6 +3514,10 @@
 									"example": "CN",
 									"type": "string"
 								},
+								"attackerCountryAlpha3": {
+									"example": "CHN",
+									"type": "string"
+								},
 								"category": {
 									"example": "Domain Resolution",
 									"type": "string"
@@ -3565,6 +3619,10 @@
 									"example": "US",
 									"type": "string"
 								},
+								"targetCountryAlpha3": {
+									"example": "USA",
+									"type": "string"
+								},
 								"targetIndustry": {
 									"example": "Agriculture",
 									"type": "string"
@@ -3582,8 +3640,10 @@
 								"uuid",
 								"date",
 								"targetCountry",
+								"targetCountryAlpha3",
 								"attacker",
 								"attackerCountry",
+								"attackerCountryAlpha3",
 								"targetIndustry",
 								"rawId",
 								"indicatorTypeId",
@@ -3949,6 +4009,10 @@
 									"example": "CN",
 									"type": "string"
 								},
+								"attackerCountryAlpha3": {
+									"example": "CHN",
+									"type": "string"
+								},
 								"category": {
 									"example": "Domain Resolution",
 									"type": "string"
@@ -4050,6 +4114,10 @@
 									"example": "US",
 									"type": "string"
 								},
+								"targetCountryAlpha3": {
+									"example": "USA",
+									"type": "string"
+								},
 								"targetIndustry": {
 									"example": "Agriculture",
 									"type": "string"
@@ -4067,8 +4135,10 @@
 								"uuid",
 								"date",
 								"targetCountry",
+								"targetCountryAlpha3",
 								"attacker",
 								"attackerCountry",
+								"attackerCountryAlpha3",
 								"targetIndustry",
 								"rawId",
 								"indicatorTypeId",

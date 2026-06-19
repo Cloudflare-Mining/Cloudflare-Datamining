@@ -586,38 +586,6 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
-														"crawl_options": {
-															"properties": {
-																"depth": {
-																	"maximum": 100000,
-																	"minimum": 1,
-																	"type": "number"
-																},
-																"include_external_links": {
-																	"default": false,
-																	"type": "boolean"
-																},
-																"include_subdomains": {
-																	"default": true,
-																	"type": "boolean"
-																},
-																"max_age": {
-																	"maximum": 604800,
-																	"minimum": 0,
-																	"type": "number"
-																},
-																"source": {
-																	"default": "all",
-																	"enum": [
-																		"all",
-																		"sitemaps",
-																		"links"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -689,7 +657,7 @@
 																	"type": "array"
 																},
 																"use_browser_rendering": {
-																	"default": false,
+																	"default": true,
 																	"type": "boolean"
 																}
 															},
@@ -699,32 +667,9 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss",
 																"crawl"
 															],
 															"type": "string"
-														},
-														"store_options": {
-															"properties": {
-																"r2_jurisdiction": {
-																	"default": "default",
-																	"type": "string"
-																},
-																"storage_id": {
-																	"type": "string"
-																},
-																"storage_type": {
-																	"default": "r2",
-																	"enum": [
-																		"r2"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"storage_id"
-															],
-															"type": "object"
 														}
 													},
 													"type": "object"
@@ -1493,38 +1438,6 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
-														"crawl_options": {
-															"properties": {
-																"depth": {
-																	"maximum": 100000,
-																	"minimum": 1,
-																	"type": "number"
-																},
-																"include_external_links": {
-																	"default": false,
-																	"type": "boolean"
-																},
-																"include_subdomains": {
-																	"default": true,
-																	"type": "boolean"
-																},
-																"max_age": {
-																	"maximum": 604800,
-																	"minimum": 0,
-																	"type": "number"
-																},
-																"source": {
-																	"default": "all",
-																	"enum": [
-																		"all",
-																		"sitemaps",
-																		"links"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -1596,7 +1509,7 @@
 																	"type": "array"
 																},
 																"use_browser_rendering": {
-																	"default": false,
+																	"default": true,
 																	"type": "boolean"
 																}
 															},
@@ -1606,32 +1519,9 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss",
 																"crawl"
 															],
 															"type": "string"
-														},
-														"store_options": {
-															"properties": {
-																"r2_jurisdiction": {
-																	"default": "default",
-																	"type": "string"
-																},
-																"storage_id": {
-																	"type": "string"
-																},
-																"storage_type": {
-																	"default": "r2",
-																	"enum": [
-																		"r2"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"storage_id"
-															],
-															"type": "object"
 														}
 													},
 													"type": "object"
@@ -2453,38 +2343,6 @@
 															"parse_type": "sitemap"
 														},
 														"properties": {
-															"crawl_options": {
-																"properties": {
-																	"depth": {
-																		"maximum": 100000,
-																		"minimum": 1,
-																		"type": "number"
-																	},
-																	"include_external_links": {
-																		"default": false,
-																		"type": "boolean"
-																	},
-																	"include_subdomains": {
-																		"default": true,
-																		"type": "boolean"
-																	},
-																	"max_age": {
-																		"maximum": 604800,
-																		"minimum": 0,
-																		"type": "number"
-																	},
-																	"source": {
-																		"default": "all",
-																		"enum": [
-																			"all",
-																			"sitemaps",
-																			"links"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
 															"parse_options": {
 																"properties": {
 																	"content_selector": {
@@ -2556,7 +2414,7 @@
 																		"type": "array"
 																	},
 																	"use_browser_rendering": {
-																		"default": false,
+																		"default": true,
 																		"type": "boolean"
 																	}
 																},
@@ -2566,32 +2424,9 @@
 																"default": "sitemap",
 																"enum": [
 																	"sitemap",
-																	"feed-rss",
 																	"crawl"
 																],
 																"type": "string"
-															},
-															"store_options": {
-																"properties": {
-																	"r2_jurisdiction": {
-																		"default": "default",
-																		"type": "string"
-																	},
-																	"storage_id": {
-																		"type": "string"
-																	},
-																	"storage_type": {
-																		"default": "r2",
-																		"enum": [
-																			"r2"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"storage_id"
-																],
-																"type": "object"
 															}
 														},
 														"type": "object"
@@ -3386,38 +3221,6 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
-														"crawl_options": {
-															"properties": {
-																"depth": {
-																	"maximum": 100000,
-																	"minimum": 1,
-																	"type": "number"
-																},
-																"include_external_links": {
-																	"default": false,
-																	"type": "boolean"
-																},
-																"include_subdomains": {
-																	"default": true,
-																	"type": "boolean"
-																},
-																"max_age": {
-																	"maximum": 604800,
-																	"minimum": 0,
-																	"type": "number"
-																},
-																"source": {
-																	"default": "all",
-																	"enum": [
-																		"all",
-																		"sitemaps",
-																		"links"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -3489,7 +3292,7 @@
 																	"type": "array"
 																},
 																"use_browser_rendering": {
-																	"default": false,
+																	"default": true,
 																	"type": "boolean"
 																}
 															},
@@ -3499,32 +3302,9 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss",
 																"crawl"
 															],
 															"type": "string"
-														},
-														"store_options": {
-															"properties": {
-																"r2_jurisdiction": {
-																	"default": "default",
-																	"type": "string"
-																},
-																"storage_id": {
-																	"type": "string"
-																},
-																"storage_type": {
-																	"default": "r2",
-																	"enum": [
-																		"r2"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"storage_id"
-															],
-															"type": "object"
 														}
 													},
 													"type": "object"
@@ -4552,38 +4332,6 @@
 															"parse_type": "sitemap"
 														},
 														"properties": {
-															"crawl_options": {
-																"properties": {
-																	"depth": {
-																		"maximum": 100000,
-																		"minimum": 1,
-																		"type": "number"
-																	},
-																	"include_external_links": {
-																		"default": false,
-																		"type": "boolean"
-																	},
-																	"include_subdomains": {
-																		"default": true,
-																		"type": "boolean"
-																	},
-																	"max_age": {
-																		"maximum": 604800,
-																		"minimum": 0,
-																		"type": "number"
-																	},
-																	"source": {
-																		"default": "all",
-																		"enum": [
-																			"all",
-																			"sitemaps",
-																			"links"
-																		],
-																		"type": "string"
-																	}
-																},
-																"type": "object"
-															},
 															"parse_options": {
 																"properties": {
 																	"content_selector": {
@@ -4655,7 +4403,7 @@
 																		"type": "array"
 																	},
 																	"use_browser_rendering": {
-																		"default": false,
+																		"default": true,
 																		"type": "boolean"
 																	}
 																},
@@ -4665,32 +4413,9 @@
 																"default": "sitemap",
 																"enum": [
 																	"sitemap",
-																	"feed-rss",
 																	"crawl"
 																],
 																"type": "string"
-															},
-															"store_options": {
-																"properties": {
-																	"r2_jurisdiction": {
-																		"default": "default",
-																		"type": "string"
-																	},
-																	"storage_id": {
-																		"type": "string"
-																	},
-																	"storage_type": {
-																		"default": "r2",
-																		"enum": [
-																			"r2"
-																		],
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"storage_id"
-																],
-																"type": "object"
 															}
 														},
 														"type": "object"
@@ -5495,38 +5220,6 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
-														"crawl_options": {
-															"properties": {
-																"depth": {
-																	"maximum": 100000,
-																	"minimum": 1,
-																	"type": "number"
-																},
-																"include_external_links": {
-																	"default": false,
-																	"type": "boolean"
-																},
-																"include_subdomains": {
-																	"default": true,
-																	"type": "boolean"
-																},
-																"max_age": {
-																	"maximum": 604800,
-																	"minimum": 0,
-																	"type": "number"
-																},
-																"source": {
-																	"default": "all",
-																	"enum": [
-																		"all",
-																		"sitemaps",
-																		"links"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -5598,7 +5291,7 @@
 																	"type": "array"
 																},
 																"use_browser_rendering": {
-																	"default": false,
+																	"default": true,
 																	"type": "boolean"
 																}
 															},
@@ -5608,32 +5301,9 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss",
 																"crawl"
 															],
 															"type": "string"
-														},
-														"store_options": {
-															"properties": {
-																"r2_jurisdiction": {
-																	"default": "default",
-																	"type": "string"
-																},
-																"storage_id": {
-																	"type": "string"
-																},
-																"storage_type": {
-																	"default": "r2",
-																	"enum": [
-																		"r2"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"storage_id"
-															],
-															"type": "object"
 														}
 													},
 													"type": "object"
@@ -6539,38 +6209,6 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
-											"crawl_options": {
-												"properties": {
-													"depth": {
-														"maximum": 100000,
-														"minimum": 1,
-														"type": "number"
-													},
-													"include_external_links": {
-														"default": false,
-														"type": "boolean"
-													},
-													"include_subdomains": {
-														"default": true,
-														"type": "boolean"
-													},
-													"max_age": {
-														"maximum": 604800,
-														"minimum": 0,
-														"type": "number"
-													},
-													"source": {
-														"default": "all",
-														"enum": [
-															"all",
-															"sitemaps",
-															"links"
-														],
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
 											"parse_options": {
 												"properties": {
 													"content_selector": {
@@ -6642,7 +6280,7 @@
 														"type": "array"
 													},
 													"use_browser_rendering": {
-														"default": false,
+														"default": true,
 														"type": "boolean"
 													}
 												},
@@ -6652,32 +6290,9 @@
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
-													"feed-rss",
 													"crawl"
 												],
 												"type": "string"
-											},
-											"store_options": {
-												"properties": {
-													"r2_jurisdiction": {
-														"default": "default",
-														"type": "string"
-													},
-													"storage_id": {
-														"type": "string"
-													},
-													"storage_type": {
-														"default": "r2",
-														"enum": [
-															"r2"
-														],
-														"type": "string"
-													}
-												},
-												"required": [
-													"storage_id"
-												],
-												"type": "object"
 											}
 										},
 										"type": "object"
@@ -7329,38 +6944,6 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
-														"crawl_options": {
-															"properties": {
-																"depth": {
-																	"maximum": 100000,
-																	"minimum": 1,
-																	"type": "number"
-																},
-																"include_external_links": {
-																	"default": false,
-																	"type": "boolean"
-																},
-																"include_subdomains": {
-																	"default": true,
-																	"type": "boolean"
-																},
-																"max_age": {
-																	"maximum": 604800,
-																	"minimum": 0,
-																	"type": "number"
-																},
-																"source": {
-																	"default": "all",
-																	"enum": [
-																		"all",
-																		"sitemaps",
-																		"links"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -7432,7 +7015,7 @@
 																	"type": "array"
 																},
 																"use_browser_rendering": {
-																	"default": false,
+																	"default": true,
 																	"type": "boolean"
 																}
 															},
@@ -7442,32 +7025,9 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss",
 																"crawl"
 															],
 															"type": "string"
-														},
-														"store_options": {
-															"properties": {
-																"r2_jurisdiction": {
-																	"default": "default",
-																	"type": "string"
-																},
-																"storage_id": {
-																	"type": "string"
-																},
-																"storage_type": {
-																	"default": "r2",
-																	"enum": [
-																		"r2"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"storage_id"
-															],
-															"type": "object"
 														}
 													},
 													"type": "object"
@@ -7874,8 +7434,7 @@
 												"type": "string"
 											},
 											"keyword_match_mode": {
-												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -8446,8 +8005,7 @@
 												"type": "string"
 											},
 											"keyword_match_mode": {
-												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -9284,38 +8842,6 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
-											"crawl_options": {
-												"properties": {
-													"depth": {
-														"maximum": 100000,
-														"minimum": 1,
-														"type": "number"
-													},
-													"include_external_links": {
-														"default": false,
-														"type": "boolean"
-													},
-													"include_subdomains": {
-														"default": true,
-														"type": "boolean"
-													},
-													"max_age": {
-														"maximum": 604800,
-														"minimum": 0,
-														"type": "number"
-													},
-													"source": {
-														"default": "all",
-														"enum": [
-															"all",
-															"sitemaps",
-															"links"
-														],
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
 											"parse_options": {
 												"properties": {
 													"content_selector": {
@@ -9387,7 +8913,7 @@
 														"type": "array"
 													},
 													"use_browser_rendering": {
-														"default": false,
+														"default": true,
 														"type": "boolean"
 													}
 												},
@@ -9397,32 +8923,9 @@
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
-													"feed-rss",
 													"crawl"
 												],
 												"type": "string"
-											},
-											"store_options": {
-												"properties": {
-													"r2_jurisdiction": {
-														"default": "default",
-														"type": "string"
-													},
-													"storage_id": {
-														"type": "string"
-													},
-													"storage_type": {
-														"default": "r2",
-														"enum": [
-															"r2"
-														],
-														"type": "string"
-													}
-												},
-												"required": [
-													"storage_id"
-												],
-												"type": "object"
 											}
 										},
 										"type": "object"
@@ -10074,38 +9577,6 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
-														"crawl_options": {
-															"properties": {
-																"depth": {
-																	"maximum": 100000,
-																	"minimum": 1,
-																	"type": "number"
-																},
-																"include_external_links": {
-																	"default": false,
-																	"type": "boolean"
-																},
-																"include_subdomains": {
-																	"default": true,
-																	"type": "boolean"
-																},
-																"max_age": {
-																	"maximum": 604800,
-																	"minimum": 0,
-																	"type": "number"
-																},
-																"source": {
-																	"default": "all",
-																	"enum": [
-																		"all",
-																		"sitemaps",
-																		"links"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -10177,7 +9648,7 @@
 																	"type": "array"
 																},
 																"use_browser_rendering": {
-																	"default": false,
+																	"default": true,
 																	"type": "boolean"
 																}
 															},
@@ -10187,32 +9658,9 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss",
 																"crawl"
 															],
 															"type": "string"
-														},
-														"store_options": {
-															"properties": {
-																"r2_jurisdiction": {
-																	"default": "default",
-																	"type": "string"
-																},
-																"storage_id": {
-																	"type": "string"
-																},
-																"storage_type": {
-																	"default": "r2",
-																	"enum": [
-																		"r2"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"storage_id"
-															],
-															"type": "object"
 														}
 													},
 													"type": "object"
@@ -10629,8 +10077,7 @@
 												"type": "string"
 											},
 											"keyword_match_mode": {
-												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -11211,8 +10658,7 @@
 												"type": "string"
 											},
 											"keyword_match_mode": {
-												"default": "and",
-												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+												"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.",
 												"enum": [
 													"and",
 													"or"
@@ -11987,6 +11433,11 @@
 								"type": "number",
 								"x-auditable": true
 							},
+							"source": {
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
 							"source_params": {
 								"nullable": true,
 								"properties": {
@@ -12032,38 +11483,6 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
-											"crawl_options": {
-												"properties": {
-													"depth": {
-														"maximum": 100000,
-														"minimum": 1,
-														"type": "number"
-													},
-													"include_external_links": {
-														"default": false,
-														"type": "boolean"
-													},
-													"include_subdomains": {
-														"default": true,
-														"type": "boolean"
-													},
-													"max_age": {
-														"maximum": 604800,
-														"minimum": 0,
-														"type": "number"
-													},
-													"source": {
-														"default": "all",
-														"enum": [
-															"all",
-															"sitemaps",
-															"links"
-														],
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
 											"parse_options": {
 												"properties": {
 													"content_selector": {
@@ -12135,7 +11554,7 @@
 														"type": "array"
 													},
 													"use_browser_rendering": {
-														"default": false,
+														"default": true,
 														"type": "boolean"
 													}
 												},
@@ -12145,32 +11564,9 @@
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
-													"feed-rss",
 													"crawl"
 												],
 												"type": "string"
-											},
-											"store_options": {
-												"properties": {
-													"r2_jurisdiction": {
-														"default": "default",
-														"type": "string"
-													},
-													"storage_id": {
-														"type": "string"
-													},
-													"storage_type": {
-														"default": "r2",
-														"enum": [
-															"r2"
-														],
-														"type": "string"
-													}
-												},
-												"required": [
-													"storage_id"
-												],
-												"type": "object"
 											}
 										},
 										"type": "object"
@@ -12867,38 +12263,6 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
-														"crawl_options": {
-															"properties": {
-																"depth": {
-																	"maximum": 100000,
-																	"minimum": 1,
-																	"type": "number"
-																},
-																"include_external_links": {
-																	"default": false,
-																	"type": "boolean"
-																},
-																"include_subdomains": {
-																	"default": true,
-																	"type": "boolean"
-																},
-																"max_age": {
-																	"maximum": 604800,
-																	"minimum": 0,
-																	"type": "number"
-																},
-																"source": {
-																	"default": "all",
-																	"enum": [
-																		"all",
-																		"sitemaps",
-																		"links"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -12970,7 +12334,7 @@
 																	"type": "array"
 																},
 																"use_browser_rendering": {
-																	"default": false,
+																	"default": true,
 																	"type": "boolean"
 																}
 															},
@@ -12980,32 +12344,9 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss",
 																"crawl"
 															],
 															"type": "string"
-														},
-														"store_options": {
-															"properties": {
-																"r2_jurisdiction": {
-																	"default": "default",
-																	"type": "string"
-																},
-																"storage_id": {
-																	"type": "string"
-																},
-																"storage_type": {
-																	"default": "r2",
-																	"enum": [
-																		"r2"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"storage_id"
-															],
-															"type": "object"
 														}
 													},
 													"type": "object"
@@ -13703,6 +13044,11 @@
 								"type": "number",
 								"x-auditable": true
 							},
+							"source": {
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
 							"source_params": {
 								"nullable": true,
 								"properties": {
@@ -13748,38 +13094,6 @@
 											"parse_type": "sitemap"
 										},
 										"properties": {
-											"crawl_options": {
-												"properties": {
-													"depth": {
-														"maximum": 100000,
-														"minimum": 1,
-														"type": "number"
-													},
-													"include_external_links": {
-														"default": false,
-														"type": "boolean"
-													},
-													"include_subdomains": {
-														"default": true,
-														"type": "boolean"
-													},
-													"max_age": {
-														"maximum": 604800,
-														"minimum": 0,
-														"type": "number"
-													},
-													"source": {
-														"default": "all",
-														"enum": [
-															"all",
-															"sitemaps",
-															"links"
-														],
-														"type": "string"
-													}
-												},
-												"type": "object"
-											},
 											"parse_options": {
 												"properties": {
 													"content_selector": {
@@ -13851,7 +13165,7 @@
 														"type": "array"
 													},
 													"use_browser_rendering": {
-														"default": false,
+														"default": true,
 														"type": "boolean"
 													}
 												},
@@ -13861,32 +13175,9 @@
 												"default": "sitemap",
 												"enum": [
 													"sitemap",
-													"feed-rss",
 													"crawl"
 												],
 												"type": "string"
-											},
-											"store_options": {
-												"properties": {
-													"r2_jurisdiction": {
-														"default": "default",
-														"type": "string"
-													},
-													"storage_id": {
-														"type": "string"
-													},
-													"storage_type": {
-														"default": "r2",
-														"enum": [
-															"r2"
-														],
-														"type": "string"
-													}
-												},
-												"required": [
-													"storage_id"
-												],
-												"type": "object"
 											}
 										},
 										"type": "object"
@@ -14583,38 +13874,6 @@
 														"parse_type": "sitemap"
 													},
 													"properties": {
-														"crawl_options": {
-															"properties": {
-																"depth": {
-																	"maximum": 100000,
-																	"minimum": 1,
-																	"type": "number"
-																},
-																"include_external_links": {
-																	"default": false,
-																	"type": "boolean"
-																},
-																"include_subdomains": {
-																	"default": true,
-																	"type": "boolean"
-																},
-																"max_age": {
-																	"maximum": 604800,
-																	"minimum": 0,
-																	"type": "number"
-																},
-																"source": {
-																	"default": "all",
-																	"enum": [
-																		"all",
-																		"sitemaps",
-																		"links"
-																	],
-																	"type": "string"
-																}
-															},
-															"type": "object"
-														},
 														"parse_options": {
 															"properties": {
 																"content_selector": {
@@ -14686,7 +13945,7 @@
 																	"type": "array"
 																},
 																"use_browser_rendering": {
-																	"default": false,
+																	"default": true,
 																	"type": "boolean"
 																}
 															},
@@ -14696,32 +13955,9 @@
 															"default": "sitemap",
 															"enum": [
 																"sitemap",
-																"feed-rss",
 																"crawl"
 															],
 															"type": "string"
-														},
-														"store_options": {
-															"properties": {
-																"r2_jurisdiction": {
-																	"default": "default",
-																	"type": "string"
-																},
-																"storage_id": {
-																	"type": "string"
-																},
-																"storage_type": {
-																	"default": "r2",
-																	"enum": [
-																		"r2"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"storage_id"
-															],
-															"type": "object"
 														}
 													},
 													"type": "object"

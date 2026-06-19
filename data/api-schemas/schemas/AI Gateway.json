@@ -2833,7 +2833,8 @@
 		}
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/spending-limit": {
-		"description": "Configure a spending limit with amount, strategy, and duration.",
+		"deprecated": true,
+		"description": "Deprecated: spending limits can no longer be created, enabled, or modified and this endpoint always responds 403. Use the new AI Gateway spend limits instead: https://developers.cloudflare.com/ai-gateway/features/spend-limits/. Existing limits can be removed via DELETE /spending-limit.",
 		"operationId": "aig-billing-set-spending-limit",
 		"parameters": [
 			{
@@ -3121,7 +3122,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Set spending limit",
+		"summary": "Set spending limit (deprecated)",
 		"tags": [
 			"AI Gateway"
 		],

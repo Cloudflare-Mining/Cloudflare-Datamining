@@ -20,7 +20,9 @@
 				"required": true,
 				"schema": {
 					"enum": [
-						"github"
+						"github",
+						"gitlab",
+						"gitlab_internal"
 					],
 					"example": "github",
 					"type": "string"

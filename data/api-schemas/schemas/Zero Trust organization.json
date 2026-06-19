@@ -232,7 +232,7 @@
 																	"totp",
 																	"biometrics",
 																	"security_key",
-																	"ssh_piv_key"
+																	"piv_key"
 																],
 																"type": "string"
 															},
@@ -258,15 +258,8 @@
 													"type": "object",
 													"x-auditable": true
 												},
-												"mfa_required_for_all_apps": {
-													"default": false,
-													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
-													"example": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"mfa_ssh_piv_key_requirements": {
-													"description": "Configures SSH PIV key requirements for MFA using hardware security keys.",
+												"mfa_piv_key_requirements": {
+													"description": "Configures PIV key requirements for MFA using hardware security keys.",
 													"properties": {
 														"pin_policy": {
 															"description": "Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).",
@@ -279,7 +272,7 @@
 															"type": "string"
 														},
 														"require_fips_device": {
-															"description": "Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
+															"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -330,6 +323,13 @@
 														}
 													},
 													"type": "object",
+													"x-auditable": true
+												},
+												"mfa_required_for_all_apps": {
+													"default": false,
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+													"example": false,
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"name": {
@@ -979,7 +979,7 @@
 												"totp",
 												"biometrics",
 												"security_key",
-												"ssh_piv_key"
+												"piv_key"
 											],
 											"type": "string"
 										},
@@ -1005,15 +1005,8 @@
 								"type": "object",
 								"x-auditable": true
 							},
-							"mfa_required_for_all_apps": {
-								"default": false,
-								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
-								"example": false,
-								"type": "boolean",
-								"x-auditable": true
-							},
-							"mfa_ssh_piv_key_requirements": {
-								"description": "Configures SSH PIV key requirements for MFA using hardware security keys.",
+							"mfa_piv_key_requirements": {
+								"description": "Configures PIV key requirements for MFA using hardware security keys.",
 								"properties": {
 									"pin_policy": {
 										"description": "Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).",
@@ -1026,7 +1019,7 @@
 										"type": "string"
 									},
 									"require_fips_device": {
-										"description": "Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
+										"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 										"example": true,
 										"type": "boolean"
 									},
@@ -1077,6 +1070,13 @@
 									}
 								},
 								"type": "object",
+								"x-auditable": true
+							},
+							"mfa_required_for_all_apps": {
+								"default": false,
+								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+								"example": false,
+								"type": "boolean",
 								"x-auditable": true
 							},
 							"name": {
@@ -1334,7 +1334,7 @@
 																	"totp",
 																	"biometrics",
 																	"security_key",
-																	"ssh_piv_key"
+																	"piv_key"
 																],
 																"type": "string"
 															},
@@ -1360,15 +1360,8 @@
 													"type": "object",
 													"x-auditable": true
 												},
-												"mfa_required_for_all_apps": {
-													"default": false,
-													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
-													"example": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"mfa_ssh_piv_key_requirements": {
-													"description": "Configures SSH PIV key requirements for MFA using hardware security keys.",
+												"mfa_piv_key_requirements": {
+													"description": "Configures PIV key requirements for MFA using hardware security keys.",
 													"properties": {
 														"pin_policy": {
 															"description": "Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).",
@@ -1381,7 +1374,7 @@
 															"type": "string"
 														},
 														"require_fips_device": {
-															"description": "Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
+															"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -1432,6 +1425,13 @@
 														}
 													},
 													"type": "object",
+													"x-auditable": true
+												},
+												"mfa_required_for_all_apps": {
+													"default": false,
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+													"example": false,
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"name": {
@@ -1964,7 +1964,7 @@
 												"totp",
 												"biometrics",
 												"security_key",
-												"ssh_piv_key"
+												"piv_key"
 											],
 											"type": "string"
 										},
@@ -1990,15 +1990,8 @@
 								"type": "object",
 								"x-auditable": true
 							},
-							"mfa_required_for_all_apps": {
-								"default": false,
-								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
-								"example": false,
-								"type": "boolean",
-								"x-auditable": true
-							},
-							"mfa_ssh_piv_key_requirements": {
-								"description": "Configures SSH PIV key requirements for MFA using hardware security keys.",
+							"mfa_piv_key_requirements": {
+								"description": "Configures PIV key requirements for MFA using hardware security keys.",
 								"properties": {
 									"pin_policy": {
 										"description": "Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).",
@@ -2011,7 +2004,7 @@
 										"type": "string"
 									},
 									"require_fips_device": {
-										"description": "Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
+										"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 										"example": true,
 										"type": "boolean"
 									},
@@ -2062,6 +2055,13 @@
 									}
 								},
 								"type": "object",
+								"x-auditable": true
+							},
+							"mfa_required_for_all_apps": {
+								"default": false,
+								"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+								"example": false,
+								"type": "boolean",
 								"x-auditable": true
 							},
 							"name": {
@@ -2315,7 +2315,7 @@
 																	"totp",
 																	"biometrics",
 																	"security_key",
-																	"ssh_piv_key"
+																	"piv_key"
 																],
 																"type": "string"
 															},
@@ -2341,15 +2341,8 @@
 													"type": "object",
 													"x-auditable": true
 												},
-												"mfa_required_for_all_apps": {
-													"default": false,
-													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
-													"example": false,
-													"type": "boolean",
-													"x-auditable": true
-												},
-												"mfa_ssh_piv_key_requirements": {
-													"description": "Configures SSH PIV key requirements for MFA using hardware security keys.",
+												"mfa_piv_key_requirements": {
+													"description": "Configures PIV key requirements for MFA using hardware security keys.",
 													"properties": {
 														"pin_policy": {
 															"description": "Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use).",
@@ -2362,7 +2355,7 @@
 															"type": "string"
 														},
 														"require_fips_device": {
-															"description": "Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
+															"description": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.",
 															"example": true,
 															"type": "boolean"
 														},
@@ -2413,6 +2406,13 @@
 														}
 													},
 													"type": "object",
+													"x-auditable": true
+												},
+												"mfa_required_for_all_apps": {
+													"default": false,
+													"description": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.",
+													"example": false,
+													"type": "boolean",
 													"x-auditable": true
 												},
 												"name": {

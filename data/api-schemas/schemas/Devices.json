@@ -432,6 +432,62 @@
 														"example": "699d98642c564d2e855e9661899b7252",
 														"type": "string"
 													},
+													"global_acceleration": {
+														"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+														"nullable": true,
+														"properties": {
+															"api_endpoints": {
+																"description": "IP:port entries for the API endpoints.",
+																"example": [
+																	"198.51.100.1:443"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"maxItems": 5,
+																"type": "array",
+																"x-auditable": true
+															},
+															"enabled": {
+																"description": "Global acceleration settings are used only when \"enabled\".",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"masque_endpoints": {
+																"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																"example": [
+																	"198.51.100.1:443"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"maxItems": 5,
+																"type": "array",
+																"x-auditable": true
+															},
+															"wireguard_endpoints": {
+																"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																"example": [
+																	"198.51.100.1:2408"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"maxItems": 5,
+																"type": "array",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"enabled",
+															"wireguard_endpoints",
+															"masque_endpoints",
+															"api_endpoints"
+														],
+														"type": "object",
+														"x-auditable": true
+													},
 													"include": {
 														"description": "List of routes included in the WARP client's tunnel.",
 														"items": {
@@ -1029,6 +1085,62 @@
 															"gateway_unique_id": {
 																"example": "699d98642c564d2e855e9661899b7252",
 																"type": "string"
+															},
+															"global_acceleration": {
+																"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+																"nullable": true,
+																"properties": {
+																	"api_endpoints": {
+																		"description": "IP:port entries for the API endpoints.",
+																		"example": [
+																			"198.51.100.1:443"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 5,
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Global acceleration settings are used only when \"enabled\".",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"masque_endpoints": {
+																		"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																		"example": [
+																			"198.51.100.1:443"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 5,
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"wireguard_endpoints": {
+																		"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																		"example": [
+																			"198.51.100.1:2408"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 5,
+																		"type": "array",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"enabled",
+																	"wireguard_endpoints",
+																	"masque_endpoints",
+																	"api_endpoints"
+																],
+																"type": "object",
+																"x-auditable": true
 															},
 															"include": {
 																"description": "List of routes included in the WARP client's tunnel.",
@@ -3550,6 +3662,62 @@
 														"example": "699d98642c564d2e855e9661899b7252",
 														"type": "string"
 													},
+													"global_acceleration": {
+														"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+														"nullable": true,
+														"properties": {
+															"api_endpoints": {
+																"description": "IP:port entries for the API endpoints.",
+																"example": [
+																	"198.51.100.1:443"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"maxItems": 5,
+																"type": "array",
+																"x-auditable": true
+															},
+															"enabled": {
+																"description": "Global acceleration settings are used only when \"enabled\".",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"masque_endpoints": {
+																"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																"example": [
+																	"198.51.100.1:443"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"maxItems": 5,
+																"type": "array",
+																"x-auditable": true
+															},
+															"wireguard_endpoints": {
+																"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																"example": [
+																	"198.51.100.1:2408"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"maxItems": 5,
+																"type": "array",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"enabled",
+															"wireguard_endpoints",
+															"masque_endpoints",
+															"api_endpoints"
+														],
+														"type": "object",
+														"x-auditable": true
+													},
 													"include": {
 														"description": "List of routes included in the WARP client's tunnel.",
 														"items": {
@@ -4147,6 +4315,62 @@
 															"gateway_unique_id": {
 																"example": "699d98642c564d2e855e9661899b7252",
 																"type": "string"
+															},
+															"global_acceleration": {
+																"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+																"nullable": true,
+																"properties": {
+																	"api_endpoints": {
+																		"description": "IP:port entries for the API endpoints.",
+																		"example": [
+																			"198.51.100.1:443"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 5,
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"description": "Global acceleration settings are used only when \"enabled\".",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"masque_endpoints": {
+																		"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																		"example": [
+																			"198.51.100.1:443"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 5,
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"wireguard_endpoints": {
+																		"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																		"example": [
+																			"198.51.100.1:2408"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"maxItems": 5,
+																		"type": "array",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"enabled",
+																	"wireguard_endpoints",
+																	"masque_endpoints",
+																	"api_endpoints"
+																],
+																"type": "object",
+																"x-auditable": true
 															},
 															"include": {
 																"description": "List of routes included in the WARP client's tunnel.",
@@ -4830,6 +5054,62 @@
 													"example": "699d98642c564d2e855e9661899b7252",
 													"type": "string"
 												},
+												"global_acceleration": {
+													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+													"nullable": true,
+													"properties": {
+														"api_endpoints": {
+															"description": "IP:port entries for the API endpoints.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Global acceleration settings are used only when \"enabled\".",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"masque_endpoints": {
+															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"wireguard_endpoints": {
+															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:2408"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled",
+														"wireguard_endpoints",
+														"masque_endpoints",
+														"api_endpoints"
+													],
+													"type": "object",
+													"x-auditable": true
+												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
@@ -5355,6 +5635,62 @@
 														"gateway_unique_id": {
 															"example": "699d98642c564d2e855e9661899b7252",
 															"type": "string"
+														},
+														"global_acceleration": {
+															"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+															"nullable": true,
+															"properties": {
+																"api_endpoints": {
+																	"description": "IP:port entries for the API endpoints.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Global acceleration settings are used only when \"enabled\".",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"masque_endpoints": {
+																	"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"wireguard_endpoints": {
+																	"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:2408"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"enabled",
+																"wireguard_endpoints",
+																"masque_endpoints",
+																"api_endpoints"
+															],
+															"type": "object",
+															"x-auditable": true
 														},
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",
@@ -6010,6 +6346,62 @@
 													"example": "699d98642c564d2e855e9661899b7252",
 													"type": "string"
 												},
+												"global_acceleration": {
+													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+													"nullable": true,
+													"properties": {
+														"api_endpoints": {
+															"description": "IP:port entries for the API endpoints.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Global acceleration settings are used only when \"enabled\".",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"masque_endpoints": {
+															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"wireguard_endpoints": {
+															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:2408"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled",
+														"wireguard_endpoints",
+														"masque_endpoints",
+														"api_endpoints"
+													],
+													"type": "object",
+													"x-auditable": true
+												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
 													"items": {
@@ -6584,6 +6976,62 @@
 														"gateway_unique_id": {
 															"example": "699d98642c564d2e855e9661899b7252",
 															"type": "string"
+														},
+														"global_acceleration": {
+															"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+															"nullable": true,
+															"properties": {
+																"api_endpoints": {
+																	"description": "IP:port entries for the API endpoints.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Global acceleration settings are used only when \"enabled\".",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"masque_endpoints": {
+																	"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"wireguard_endpoints": {
+																	"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:2408"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"enabled",
+																"wireguard_endpoints",
+																"masque_endpoints",
+																"api_endpoints"
+															],
+															"type": "object",
+															"x-auditable": true
 														},
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",
@@ -10270,6 +10718,62 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"global_acceleration": {
+								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+								"nullable": true,
+								"properties": {
+									"api_endpoints": {
+										"description": "IP:port entries for the API endpoints.",
+										"example": [
+											"198.51.100.1:443"
+										],
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 5,
+										"type": "array",
+										"x-auditable": true
+									},
+									"enabled": {
+										"description": "Global acceleration settings are used only when \"enabled\".",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"masque_endpoints": {
+										"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+										"example": [
+											"198.51.100.1:443"
+										],
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 5,
+										"type": "array",
+										"x-auditable": true
+									},
+									"wireguard_endpoints": {
+										"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+										"example": [
+											"198.51.100.1:2408"
+										],
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 5,
+										"type": "array",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"enabled",
+									"wireguard_endpoints",
+									"masque_endpoints",
+									"api_endpoints"
+								],
+								"type": "object",
+								"x-auditable": true
+							},
 							"include": {
 								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"items": {
@@ -10794,6 +11298,62 @@
 												"gateway_unique_id": {
 													"example": "699d98642c564d2e855e9661899b7252",
 													"type": "string"
+												},
+												"global_acceleration": {
+													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+													"nullable": true,
+													"properties": {
+														"api_endpoints": {
+															"description": "IP:port entries for the API endpoints.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Global acceleration settings are used only when \"enabled\".",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"masque_endpoints": {
+															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"wireguard_endpoints": {
+															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:2408"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled",
+														"wireguard_endpoints",
+														"masque_endpoints",
+														"api_endpoints"
+													],
+													"type": "object",
+													"x-auditable": true
 												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
@@ -11321,6 +11881,62 @@
 															"example": "699d98642c564d2e855e9661899b7252",
 															"type": "string"
 														},
+														"global_acceleration": {
+															"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+															"nullable": true,
+															"properties": {
+																"api_endpoints": {
+																	"description": "IP:port entries for the API endpoints.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Global acceleration settings are used only when \"enabled\".",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"masque_endpoints": {
+																	"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"wireguard_endpoints": {
+																	"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:2408"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"enabled",
+																"wireguard_endpoints",
+																"masque_endpoints",
+																"api_endpoints"
+															],
+															"type": "object",
+															"x-auditable": true
+														},
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",
 															"items": {
@@ -11733,6 +12349,62 @@
 								"description": "Whether to add Microsoft IPs to Split Tunnel exclusions.",
 								"example": true,
 								"type": "boolean"
+							},
+							"global_acceleration": {
+								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+								"nullable": true,
+								"properties": {
+									"api_endpoints": {
+										"description": "IP:port entries for the API endpoints.",
+										"example": [
+											"198.51.100.1:443"
+										],
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 5,
+										"type": "array",
+										"x-auditable": true
+									},
+									"enabled": {
+										"description": "Global acceleration settings are used only when \"enabled\".",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"masque_endpoints": {
+										"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+										"example": [
+											"198.51.100.1:443"
+										],
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 5,
+										"type": "array",
+										"x-auditable": true
+									},
+									"wireguard_endpoints": {
+										"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+										"example": [
+											"198.51.100.1:2408"
+										],
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 5,
+										"type": "array",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"enabled",
+									"wireguard_endpoints",
+									"masque_endpoints",
+									"api_endpoints"
+								],
+								"type": "object",
+								"x-auditable": true
 							},
 							"include": {
 								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
@@ -12281,6 +12953,62 @@
 												"gateway_unique_id": {
 													"example": "699d98642c564d2e855e9661899b7252",
 													"type": "string"
+												},
+												"global_acceleration": {
+													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+													"nullable": true,
+													"properties": {
+														"api_endpoints": {
+															"description": "IP:port entries for the API endpoints.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Global acceleration settings are used only when \"enabled\".",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"masque_endpoints": {
+															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"wireguard_endpoints": {
+															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:2408"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled",
+														"wireguard_endpoints",
+														"masque_endpoints",
+														"api_endpoints"
+													],
+													"type": "object",
+													"x-auditable": true
 												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
@@ -12856,6 +13584,62 @@
 														"gateway_unique_id": {
 															"example": "699d98642c564d2e855e9661899b7252",
 															"type": "string"
+														},
+														"global_acceleration": {
+															"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+															"nullable": true,
+															"properties": {
+																"api_endpoints": {
+																	"description": "IP:port entries for the API endpoints.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Global acceleration settings are used only when \"enabled\".",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"masque_endpoints": {
+																	"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"wireguard_endpoints": {
+																	"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:2408"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"enabled",
+																"wireguard_endpoints",
+																"masque_endpoints",
+																"api_endpoints"
+															],
+															"type": "object",
+															"x-auditable": true
 														},
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",
@@ -13704,6 +14488,62 @@
 								"example": true,
 								"type": "boolean"
 							},
+							"global_acceleration": {
+								"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+								"nullable": true,
+								"properties": {
+									"api_endpoints": {
+										"description": "IP:port entries for the API endpoints.",
+										"example": [
+											"198.51.100.1:443"
+										],
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 5,
+										"type": "array",
+										"x-auditable": true
+									},
+									"enabled": {
+										"description": "Global acceleration settings are used only when \"enabled\".",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"masque_endpoints": {
+										"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+										"example": [
+											"198.51.100.1:443"
+										],
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 5,
+										"type": "array",
+										"x-auditable": true
+									},
+									"wireguard_endpoints": {
+										"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+										"example": [
+											"198.51.100.1:2408"
+										],
+										"items": {
+											"type": "string"
+										},
+										"maxItems": 5,
+										"type": "array",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"enabled",
+									"wireguard_endpoints",
+									"masque_endpoints",
+									"api_endpoints"
+								],
+								"type": "object",
+								"x-auditable": true
+							},
 							"include": {
 								"description": "List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.",
 								"items": {
@@ -14256,6 +15096,62 @@
 												"gateway_unique_id": {
 													"example": "699d98642c564d2e855e9661899b7252",
 													"type": "string"
+												},
+												"global_acceleration": {
+													"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+													"nullable": true,
+													"properties": {
+														"api_endpoints": {
+															"description": "IP:port entries for the API endpoints.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"enabled": {
+															"description": "Global acceleration settings are used only when \"enabled\".",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"masque_endpoints": {
+															"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:443"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														},
+														"wireguard_endpoints": {
+															"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+															"example": [
+																"198.51.100.1:2408"
+															],
+															"items": {
+																"type": "string"
+															},
+															"maxItems": 5,
+															"type": "array",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled",
+														"wireguard_endpoints",
+														"masque_endpoints",
+														"api_endpoints"
+													],
+													"type": "object",
+													"x-auditable": true
 												},
 												"include": {
 													"description": "List of routes included in the WARP client's tunnel.",
@@ -14831,6 +15727,62 @@
 														"gateway_unique_id": {
 															"example": "699d98642c564d2e855e9661899b7252",
 															"type": "string"
+														},
+														"global_acceleration": {
+															"description": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.",
+															"nullable": true,
+															"properties": {
+																"api_endpoints": {
+																	"description": "IP:port entries for the API endpoints.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"enabled": {
+																	"description": "Global acceleration settings are used only when \"enabled\".",
+																	"example": true,
+																	"type": "boolean",
+																	"x-auditable": true
+																},
+																"masque_endpoints": {
+																	"description": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:443"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"wireguard_endpoints": {
+																	"description": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+																	"example": [
+																		"198.51.100.1:2408"
+																	],
+																	"items": {
+																		"type": "string"
+																	},
+																	"maxItems": 5,
+																	"type": "array",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"enabled",
+																"wireguard_endpoints",
+																"masque_endpoints",
+																"api_endpoints"
+															],
+															"type": "object",
+															"x-auditable": true
 														},
 														"include": {
 															"description": "List of routes included in the WARP client's tunnel.",

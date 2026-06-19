@@ -908,18 +908,38 @@
 														"type": "string"
 													},
 													"durable_objects": {
-														"description": "Durable object configuration using a namespace ID",
-														"properties": {
-															"namespace_id": {
-																"description": "The namespace ID of the durable object namespace to use for this application.",
-																"example": "14758f1afd44c09b7992073ccf00b43d",
-																"type": "string"
+														"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
+														"oneOf": [
+															{
+																"description": "Durable object configuration using a namespace ID",
+																"properties": {
+																	"namespace_id": {
+																		"description": "The namespace ID of the durable object namespace to use for this application.",
+																		"example": "14758f1afd44c09b7992073ccf00b43d",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"namespace_id"
+																],
+																"type": "object"
+															},
+															{
+																"description": "Durable object configuration for a Cloudchamber-managed customer durable object namespace.",
+																"properties": {
+																	"type": {
+																		"enum": [
+																			"managed"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
 															}
-														},
-														"required": [
-															"namespace_id"
-														],
-														"type": "object"
+														]
 													},
 													"health": {
 														"properties": {
@@ -1792,18 +1812,38 @@
 													"type": "string"
 												},
 												"durable_objects": {
-													"description": "Durable object configuration using a namespace ID",
-													"properties": {
-														"namespace_id": {
-															"description": "The namespace ID of the durable object namespace to use for this application.",
-															"example": "14758f1afd44c09b7992073ccf00b43d",
-															"type": "string"
+													"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
+													"oneOf": [
+														{
+															"description": "Durable object configuration using a namespace ID",
+															"properties": {
+																"namespace_id": {
+																	"description": "The namespace ID of the durable object namespace to use for this application.",
+																	"example": "14758f1afd44c09b7992073ccf00b43d",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"namespace_id"
+															],
+															"type": "object"
+														},
+														{
+															"description": "Durable object configuration for a Cloudchamber-managed customer durable object namespace.",
+															"properties": {
+																"type": {
+																	"enum": [
+																		"managed"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"namespace_id"
-													],
-													"type": "object"
+													]
 												},
 												"health": {
 													"properties": {
@@ -5376,18 +5416,38 @@
 													"type": "string"
 												},
 												"durable_objects": {
-													"description": "Durable object configuration using a namespace ID",
-													"properties": {
-														"namespace_id": {
-															"description": "The namespace ID of the durable object namespace to use for this application.",
-															"example": "14758f1afd44c09b7992073ccf00b43d",
-															"type": "string"
+													"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
+													"oneOf": [
+														{
+															"description": "Durable object configuration using a namespace ID",
+															"properties": {
+																"namespace_id": {
+																	"description": "The namespace ID of the durable object namespace to use for this application.",
+																	"example": "14758f1afd44c09b7992073ccf00b43d",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"namespace_id"
+															],
+															"type": "object"
+														},
+														{
+															"description": "Durable object configuration for a Cloudchamber-managed customer durable object namespace.",
+															"properties": {
+																"type": {
+																	"enum": [
+																		"managed"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"namespace_id"
-													],
-													"type": "object"
+													]
 												},
 												"health": {
 													"properties": {
@@ -6404,6 +6464,21 @@
 											"class_name"
 										],
 										"type": "object"
+									},
+									{
+										"description": "Durable object configuration for a Cloudchamber-managed customer durable object namespace.",
+										"properties": {
+											"type": {
+												"enum": [
+													"managed"
+												],
+												"type": "string"
+											}
+										},
+										"required": [
+											"type"
+										],
+										"type": "object"
 									}
 								]
 							},
@@ -6884,18 +6959,38 @@
 													"type": "string"
 												},
 												"durable_objects": {
-													"description": "Durable object configuration using a namespace ID",
-													"properties": {
-														"namespace_id": {
-															"description": "The namespace ID of the durable object namespace to use for this application.",
-															"example": "14758f1afd44c09b7992073ccf00b43d",
-															"type": "string"
+													"description": "Durable object configuration stored on and returned from a Cloudchamber application.",
+													"oneOf": [
+														{
+															"description": "Durable object configuration using a namespace ID",
+															"properties": {
+																"namespace_id": {
+																	"description": "The namespace ID of the durable object namespace to use for this application.",
+																	"example": "14758f1afd44c09b7992073ccf00b43d",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"namespace_id"
+															],
+															"type": "object"
+														},
+														{
+															"description": "Durable object configuration for a Cloudchamber-managed customer durable object namespace.",
+															"properties": {
+																"type": {
+																	"enum": [
+																		"managed"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
 														}
-													},
-													"required": [
-														"namespace_id"
-													],
-													"type": "object"
+													]
 												},
 												"health": {
 													"properties": {
@@ -8838,7 +8933,7 @@
 						}
 					}
 				},
-				"description": "Successful response."
+				"description": "Application rollout created successfully"
 			},
 			"400": {
 				"content": {

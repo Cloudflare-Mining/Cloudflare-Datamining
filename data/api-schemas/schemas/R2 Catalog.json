@@ -1,0 +1,304 @@
+{
+	"GET /accounts/{account_id}/cloudforce-one/events/graph": {
+		"description": "Returns the single-level relationship neighborhood of a node (event, indicator, or tag) from R2 Data Catalog. Hydrates neighbor entities with summary data from Durable Objects. Supports filtering by relationship type and dataset scope.",
+		"operationId": "get_EventGraph",
+		"parameters": [
+			{
+				"description": "Account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account ID.",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Node type: event, indicator, or tag",
+				"in": "query",
+				"name": "nodeType",
+				"required": true,
+				"schema": {
+					"description": "Node type: event, indicator, or tag",
+					"example": "event",
+					"type": "string"
+				}
+			},
+			{
+				"description": "UUID of the node to query",
+				"in": "query",
+				"name": "nodeId",
+				"required": true,
+				"schema": {
+					"description": "UUID of the node to query",
+					"example": "550e8400-e29b-41d4-a716-446655440000",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Dataset UUID hint for the root node (events/indicators only). Optional; derived from relationships if omitted.",
+				"in": "query",
+				"name": "datasetId",
+				"schema": {
+					"description": "Dataset UUID hint for the root node (events/indicators only). Optional; derived from relationships if omitted.",
+					"example": "550e8400-e29b-41d4-a716-446655440001",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "relationshipTypes",
+				"schema": {
+					"description": "Comma-separated relationship types to filter (tagged_with, appears_in, related_to, caused_by, attributed_to)",
+					"example": "related_to,caused_by",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Edge direction: out (node→neighbors), in (neighbors→node), both (default: both)",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"description": "Edge direction: out (node→neighbors), in (neighbors→node), both (default: both)",
+					"example": "both",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "datasetIds",
+				"schema": {
+					"description": "Comma-separated dataset UUIDs to restrict scope. Only neighbors in these datasets are returned.",
+					"example": "550e8400-e29b-41d4-a716-446655440001,550e8400-e29b-41d4-a716-446655440002",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Max results to return (default: 100, max: 10000)",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"description": "Max results to return (default: 100, max: 10000)",
+					"example": 100,
+					"type": "number"
+				}
+			},
+			{
+				"description": "Cursor from previous response for pagination (not yet implemented)",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"description": "Cursor from previous response for pagination (not yet implemented)",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"additionalProperties": true,
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"additionalProperties": true,
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"edges": {
+											"items": {
+												"properties": {
+													"relationshipType": {
+														"type": "string"
+													},
+													"sourceId": {
+														"type": "string"
+													},
+													"sourceType": {
+														"type": "string"
+													},
+													"targetId": {
+														"type": "string"
+													},
+													"targetType": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"sourceType",
+													"sourceId",
+													"targetType",
+													"targetId",
+													"relationshipType"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"node": {
+											"nullable": true,
+											"type": "object"
+										},
+										"nodes": {
+											"items": {
+												"additionalProperties": true,
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"node",
+										"nodes",
+										"edges"
+									],
+									"type": "object"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"edge_count": {
+											"type": "number"
+										},
+										"query_time_ms": {
+											"type": "number"
+										},
+										"total_count": {
+											"type": "number"
+										}
+									},
+									"required": [
+										"count",
+										"total_count",
+										"edge_count",
+										"query_time_ms"
+									],
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"result",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns graph neighborhood from R2 Data Catalog"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Query graph neighborhood from R2 Data Catalog",
+		"tags": [
+			"Events",
+			"R2 Catalog"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write",
+			"Cloudforce One Read"
+		]
+	}
+}

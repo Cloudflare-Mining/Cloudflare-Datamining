@@ -489,6 +489,20 @@
 													}
 												},
 												"type": "object"
+											},
+											"virtual_ipv4": {
+												"description": "The virtual IPv4 address assigned to the network interface of the tunnel for this registration.",
+												"example": "100.96.0.1",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
+											},
+											"virtual_ipv6": {
+												"description": "The virtual IPv6 address assigned to the network interface of the tunnel for this registration.",
+												"example": "2606:4700:0cf1:1000::1",
+												"nullable": true,
+												"type": "string",
+												"x-auditable": true
 											}
 										},
 										"required": [
@@ -786,6 +800,20 @@
 												}
 											},
 											"type": "object"
+										},
+										"virtual_ipv4": {
+											"description": "The virtual IPv4 address assigned to the network interface of the tunnel for this registration.",
+											"example": "100.96.0.1",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"virtual_ipv6": {
+											"description": "The virtual IPv6 address assigned to the network interface of the tunnel for this registration.",
+											"example": "2606:4700:0cf1:1000::1",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
 										}
 									},
 									"required": [

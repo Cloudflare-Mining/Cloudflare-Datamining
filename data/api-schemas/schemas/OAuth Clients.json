@@ -928,7 +928,8 @@
 																"example": "private",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-terraform-configurability": "computed_optional"
 															}
 														},
 														"required": [
@@ -1418,7 +1419,8 @@
 															"example": "private",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"required": [
@@ -2356,7 +2358,8 @@
 															"example": "private",
 															"readOnly": true,
 															"type": "string",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-terraform-configurability": "computed_optional"
 														}
 													},
 													"required": [
@@ -2971,7 +2974,8 @@
 																	"example": "private",
 																	"readOnly": true,
 																	"type": "string",
-																	"x-auditable": true
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "computed_optional"
 																}
 															},
 															"required": [

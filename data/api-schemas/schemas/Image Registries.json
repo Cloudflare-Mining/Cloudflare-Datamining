@@ -693,7 +693,8 @@
 																"description": "The type of external registry that is being configured.",
 																"enum": [
 																	"ECR",
-																	"DockerHub"
+																	"DockerHub",
+																	"GAR"
 																],
 																"example": "ECR",
 																"type": "string"
@@ -711,7 +712,7 @@
 														"properties": {
 															"secret_name": {
 																"description": "Name of the secret being referenced",
-																"example": "AWS_SECRET_ACCESS_KEY",
+																"example": "API_KEY",
 																"maxLength": 255,
 																"minLength": 1,
 																"pattern": "^[A-z0-9-_]+$",
@@ -907,7 +908,7 @@
 												"properties": {
 													"secret_name": {
 														"description": "Name of the secret being referenced",
-														"example": "AWS_SECRET_ACCESS_KEY",
+														"example": "API_KEY",
 														"maxLength": 255,
 														"minLength": 1,
 														"pattern": "^[A-z0-9-_]+$",
@@ -955,7 +956,8 @@
 								"description": "The type of external registry that is being configured.",
 								"enum": [
 									"ECR",
-									"DockerHub"
+									"DockerHub",
+									"GAR"
 								],
 								"example": "ECR",
 								"type": "string"
@@ -1077,7 +1079,8 @@
 															"description": "The type of external registry that is being configured.",
 															"enum": [
 																"ECR",
-																"DockerHub"
+																"DockerHub",
+																"GAR"
 															],
 															"example": "ECR",
 															"type": "string"
@@ -1095,7 +1098,7 @@
 													"properties": {
 														"secret_name": {
 															"description": "Name of the secret being referenced",
-															"example": "AWS_SECRET_ACCESS_KEY",
+															"example": "API_KEY",
 															"maxLength": 255,
 															"minLength": 1,
 															"pattern": "^[A-z0-9-_]+$",
@@ -1615,7 +1618,8 @@
 						"description": "Specifies the configuration for the image registry credential to create.",
 						"properties": {
 							"expiration_minutes": {
-								"description": "The number of minutes the credentials will be valid for.",
+								"description": "The minimum number of minutes the token will be valid for. Must be positive. We make a best effort to respect this value, but some registry providers do not let us configure the token lifetime, so the token may be valid for longer.",
+								"minimum": 1,
 								"type": "integer"
 							},
 							"permissions": {

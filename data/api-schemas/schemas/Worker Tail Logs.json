@@ -270,6 +270,7 @@
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/tails": {
 		"description": "Get list of tails currently deployed on a Worker.",
+		"operationId": "worker-tail-logs-list-tails",
 		"parameters": [
 			{
 				"in": "path",
