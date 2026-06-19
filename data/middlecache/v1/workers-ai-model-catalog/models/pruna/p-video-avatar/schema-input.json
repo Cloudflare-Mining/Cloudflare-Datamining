@@ -1,0 +1,134 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"audio": {
+			"description": "URL of uploaded audio to drive speech. HTTP(S) URL or data URI. If both audio and voice_script are provided, audio takes priority.",
+			"type": "string"
+		},
+		"disable_prompt_upsampling": {
+			"default": false,
+			"description": "When true, skip the prompt upsampler and pass the raw user prompt.",
+			"type": "boolean"
+		},
+		"disable_safety_filter": {
+			"default": true,
+			"description": "Disable safety filter for prompts and input image.",
+			"type": "boolean"
+		},
+		"image": {
+			"description": "Input portrait image (first frame). HTTP(S) URL or data URI. Supports jpg, jpeg, png, webp.",
+			"type": "string"
+		},
+		"negative_prompt": {
+			"default": "",
+			"description": "Mention what you do NOT want in the video. Disabled if empty.",
+			"type": "string"
+		},
+		"resolution": {
+			"default": "720p",
+			"description": "Resolution of the video.",
+			"enum": [
+				"720p",
+				"1080p"
+			],
+			"type": "string"
+		},
+		"seed": {
+			"description": "Random seed for reproducible generation.",
+			"maximum": 9007199254740991,
+			"minimum": -9007199254740991,
+			"type": "integer"
+		},
+		"strength_negative_prompt": {
+			"default": 0.5,
+			"description": "Strength of the negative prompt (0-4).",
+			"maximum": 4,
+			"minimum": 0,
+			"type": "number"
+		},
+		"video_prompt": {
+			"default": "The person is talking.",
+			"description": "Optional prompt for the video.",
+			"type": "string"
+		},
+		"voice": {
+			"default": "Zephyr (Female)",
+			"description": "Voice for generated speech.",
+			"enum": [
+				"Zephyr (Female)",
+				"Puck (Male)",
+				"Charon (Male)",
+				"Kore (Female)",
+				"Fenrir (Male)",
+				"Leda (Female)",
+				"Orus (Male)",
+				"Aoede (Female)",
+				"Callirrhoe (Female)",
+				"Autonoe (Female)",
+				"Enceladus (Male)",
+				"Iapetus (Male)",
+				"Umbriel (Male)",
+				"Algenib (Male)",
+				"Despina (Female)",
+				"Erinome (Female)",
+				"Laomedeia (Female)",
+				"Achernar (Female)",
+				"Algieba (Male)",
+				"Schedar (Male)",
+				"Gacrux (Female)",
+				"Pulcherrima (Female)",
+				"Achird (Male)",
+				"Zubenelgenubi (Male)",
+				"Vindemiatrix (Female)",
+				"Sadachbia (Male)",
+				"Sadaltager (Male)",
+				"Sulafat (Female)",
+				"Alnilam (Male)",
+				"Rasalgethi (Male)"
+			],
+			"type": "string"
+		},
+		"voice_language": {
+			"default": "English (US)",
+			"description": "Output language.",
+			"enum": [
+				"English (US)",
+				"English (UK)",
+				"Spanish",
+				"French",
+				"German",
+				"Italian",
+				"Portuguese (Brazil)",
+				"Japanese",
+				"Korean",
+				"Hindi"
+			],
+			"type": "string"
+		},
+		"voice_prompt": {
+			"default": "Say the following.",
+			"description": "Optional speaking style, tone, pacing or emotion instructions.",
+			"type": "string"
+		},
+		"voice_script": {
+			"default": "",
+			"description": "Script for the person to say when no audio is uploaded.",
+			"type": "string"
+		}
+	},
+	"required": [
+		"image",
+		"voice",
+		"voice_script",
+		"voice_language",
+		"resolution",
+		"video_prompt",
+		"voice_prompt",
+		"negative_prompt",
+		"strength_negative_prompt",
+		"disable_safety_filter",
+		"disable_prompt_upsampling"
+	],
+	"type": "object"
+}

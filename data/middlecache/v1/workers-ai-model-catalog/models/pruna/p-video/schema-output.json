@@ -1,0 +1,15 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"video": {
+			"description": "Presigned URL for the generated video.",
+			"format": "uri",
+			"type": "string"
+		}
+	},
+	"required": [
+		"video"
+	],
+	"type": "object"
+}

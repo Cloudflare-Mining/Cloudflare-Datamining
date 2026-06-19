@@ -1,0 +1,59 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"disable_safety_checker": {
+			"default": false,
+			"description": "Disable safety checker for generated images.",
+			"type": "boolean"
+		},
+		"enhance_details": {
+			"default": false,
+			"description": "Enhance fine textures and small details.",
+			"type": "boolean"
+		},
+		"enhance_realism": {
+			"default": false,
+			"description": "Improve realism. Recommended for AI-generated images.",
+			"type": "boolean"
+		},
+		"image": {
+			"description": "Input image to upscale. A publicly reachable HTTP(S) URL or a base64 data URI (data:image/...;base64,...).",
+			"type": "string"
+		},
+		"output_format": {
+			"default": "jpg",
+			"description": "Format of the output image.",
+			"enum": [
+				"webp",
+				"jpg",
+				"png"
+			],
+			"type": "string"
+		},
+		"output_quality": {
+			"default": 80,
+			"description": "Quality when saving the output image (0-100). Not relevant for .png outputs.",
+			"maximum": 100,
+			"minimum": 0,
+			"type": "integer"
+		},
+		"target": {
+			"default": 4,
+			"description": "Target resolution in megapixels (1-128). Output is capped at 128 MP.",
+			"maximum": 128,
+			"minimum": 1,
+			"type": "integer"
+		}
+	},
+	"required": [
+		"image",
+		"target",
+		"output_format",
+		"output_quality",
+		"enhance_details",
+		"enhance_realism",
+		"disable_safety_checker"
+	],
+	"type": "object"
+}

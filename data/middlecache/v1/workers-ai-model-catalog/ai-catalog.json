@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-06-18T04:33:51.197Z",
-	"model_count": 182,
+	"generated_at": "2026-06-19T04:33:45.093Z",
+	"model_count": 191,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -240,7 +240,7 @@
 			"model_id": "anthropic/claude-fable-5",
 			"slug": "anthropic/claude-fable-5",
 			"display_name": "Claude Fable 5",
-			"description": "**NOTE: Anthropic is limiting access to Claude Fable 5 due to a directive from the US Government. During that time, the model will return errors. Read more here: https://www.anthropic.com/news/fable-mythos-access **\n  \n  \n\nClaude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.",
+			"description": "Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.",
 			"task": {
 				"id": "",
 				"name": "Text Generation",
@@ -1318,6 +1318,54 @@
 			"terms": "https://ai.google.dev/gemini-api/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.1-pro.png",
 			"created_at": "2026-05-22 17:53:11"
+		},
+		{
+			"model_id": "google/gemini-3.5-flash",
+			"slug": "google/gemini-3.5-flash",
+			"display_name": "Gemini 3.5 Flash",
+			"description": "Gemini 3.5 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Fast",
+				"Multimodal",
+				"Reasoning"
+			],
+			"context_length": 1048576,
+			"max_output_tokens": 65536,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1048576"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "65536"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://ai.google.dev/gemini-api/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://deepmind.google/technologies/gemini/"
+				}
+			],
+			"metadata": {
+				"Architecture": "Transformer (multimodal)",
+				"Thinking": "Yes"
+			},
+			"external_info": "https://deepmind.google/technologies/gemini/",
+			"terms": "https://ai.google.dev/gemini-api/terms",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/google/gemini-3.5-flash.png",
+			"created_at": "2026-06-17 23:03:54"
 		},
 		{
 			"model_id": "google/imagen-4",
@@ -3401,6 +3449,287 @@
 			"terms": "https://pixverse.ai/terms",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/pixverse/v6.png",
 			"created_at": "2026-05-22 17:53:46"
+		},
+		{
+			"model_id": "pruna/p-image-edit",
+			"slug": "pruna/p-image-edit",
+			"display_name": "P-Image-Edit",
+			"description": "Pruna's P-Image-Edit edits and composes 1-5 reference images with text instructions. It supports complex compositions, style transfers, and targeted edits with flexible output aspect ratios.",
+			"task": {
+				"id": "",
+				"name": "Image-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Editing",
+				"Image-to-Image",
+				"Composition"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://docs.api.pruna.ai/guides/quickstart"
+				}
+			],
+			"metadata": {
+				"Reference Images": "1-5",
+				"Output Formats": "jpg"
+			},
+			"external_info": "https://docs.api.pruna.ai/guides/quickstart",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-18 15:48:19"
+		},
+		{
+			"model_id": "pruna/p-image-try-on",
+			"slug": "pruna/p-image-try-on",
+			"display_name": "P-Image Try-On",
+			"description": "Pruna's P-Image Try-On virtually fits one or more garments onto a person's photo. Provide a photo of a person plus garment reference images and the model realistically dresses the person in the provided garments.",
+			"task": {
+				"id": "",
+				"name": "Image-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Editing",
+				"Virtual Try-On",
+				"Fashion"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://docs.api.pruna.ai/guides/quickstart"
+				}
+			],
+			"metadata": {
+				"Garments": "1 required, up to 6 recommended, up to 11 supported",
+				"Input Modalities": "Image",
+				"Output Formats": "jpg, png, webp"
+			},
+			"external_info": "https://docs.api.pruna.ai/guides/quickstart",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-18 15:52:42"
+		},
+		{
+			"model_id": "pruna/p-image-upscale",
+			"slug": "pruna/p-image-upscale",
+			"display_name": "P-Image-Upscale",
+			"description": "Pruna's P-Image-Upscale increases image resolution using AI, targeting 1-128 megapixels with optional detail and realism enhancement for sharper, cleaner results.",
+			"task": {
+				"id": "",
+				"name": "Image-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Image Upscaling",
+				"Image-to-Image",
+				"Enhancement"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://docs.api.pruna.ai/guides/quickstart"
+				}
+			],
+			"metadata": {
+				"Target Resolution": "1-128 MP",
+				"Output Formats": "jpg, png, webp"
+			},
+			"external_info": "https://docs.api.pruna.ai/guides/quickstart",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-18 15:52:26"
+		},
+		{
+			"model_id": "pruna/p-image",
+			"slug": "pruna/p-image",
+			"display_name": "P-Image",
+			"description": "Pruna's P-Image is an ultra-fast text-to-image model with automatic prompt enhancement and 2-stage refinement, combining exceptional speed with high-quality output and flexible aspect ratios.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Image",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Image",
+				"Image Generation"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://docs.api.pruna.ai/guides/quickstart"
+				}
+			],
+			"metadata": {
+				"Aspect Ratios": "1:1, 16:9, 9:16, 4:3, 3:4, 3:2, 2:3, custom",
+				"Output Formats": "jpg"
+			},
+			"external_info": "https://docs.api.pruna.ai/guides/quickstart",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-18 15:45:31"
+		},
+		{
+			"model_id": "pruna/p-video-animate",
+			"slug": "pruna/p-video-animate",
+			"display_name": "P-Video-Animate",
+			"description": "Pruna's P-Video-Animate takes a source video and a subject reference image, then animates the referenced subject using the motion and audio from the source video.",
+			"task": {
+				"id": "",
+				"name": "Image-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Generation",
+				"Motion Transfer",
+				"Animation"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://docs.api.pruna.ai/guides/quickstart"
+				}
+			],
+			"metadata": {
+				"Resolutions": "720p, 1080p",
+				"Input Modalities": "Video + Image"
+			},
+			"external_info": "https://docs.api.pruna.ai/guides/quickstart",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-18 15:53:19"
+		},
+		{
+			"model_id": "pruna/p-video-avatar",
+			"slug": "pruna/p-video-avatar",
+			"display_name": "P-Video-Avatar",
+			"description": "Pruna's P-Video-Avatar generates talking-head videos from a single portrait image driven by a text script or audio file, with multiple voices, languages, and output resolutions.",
+			"task": {
+				"id": "",
+				"name": "Image-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Generation",
+				"Talking Head",
+				"Avatar"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://docs.api.pruna.ai/guides/quickstart"
+				}
+			],
+			"metadata": {
+				"Resolutions": "720p, 1080p",
+				"Input Modalities": "Image + (script or audio)"
+			},
+			"external_info": "https://docs.api.pruna.ai/guides/quickstart",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-18 15:52:58"
+		},
+		{
+			"model_id": "pruna/p-video-replace",
+			"slug": "pruna/p-video-replace",
+			"display_name": "P-Video-Replace",
+			"description": "Pruna's P-Video-Replace takes a source video and one or more identity reference images, then places the referenced person or people into the video while preserving the source motion and audio.",
+			"task": {
+				"id": "",
+				"name": "Image-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Generation",
+				"Character Replacement",
+				"Identity"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://docs.api.pruna.ai/guides/quickstart"
+				}
+			],
+			"metadata": {
+				"Resolutions": "720p, 1080p",
+				"Reference Images": "1-3"
+			},
+			"external_info": "https://docs.api.pruna.ai/guides/quickstart",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-18 15:53:11"
+		},
+		{
+			"model_id": "pruna/p-video",
+			"slug": "pruna/p-video",
+			"display_name": "P-Video",
+			"description": "Pruna's P-Video is a premium video generation model supporting text-to-video, image-to-video, and audio-conditioned generation up to 1080p at 24 or 48 fps, with configurable duration up to 20 seconds.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Video Generation",
+				"Text-to-Video",
+				"Image-to-Video"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "info",
+					"value": "https://docs.api.pruna.ai/guides/quickstart"
+				}
+			],
+			"metadata": {
+				"Resolutions": "720p, 1080p",
+				"Frame Rates": "24, 48 fps",
+				"Max Duration": "20s"
+			},
+			"external_info": "https://docs.api.pruna.ai/guides/quickstart",
+			"terms": null,
+			"cover_image_url": null,
+			"created_at": "2026-06-18 16:10:42"
 		},
 		{
 			"model_id": "recraft/recraftv3",

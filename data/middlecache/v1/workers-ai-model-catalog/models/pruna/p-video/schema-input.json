@@ -1,0 +1,104 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"aspect_ratio": {
+			"default": "16:9",
+			"description": "Aspect ratio of the video. Ignored when an input image is provided.",
+			"enum": [
+				"16:9",
+				"9:16",
+				"4:3",
+				"3:4",
+				"3:2",
+				"2:3",
+				"1:1"
+			],
+			"type": "string"
+		},
+		"audio": {
+			"description": "Input audio to condition video generation. HTTP(S) URL or data URI. Supports flac, mp3, wav. When provided, duration is ignored.",
+			"type": "string"
+		},
+		"disable_safety_filter": {
+			"default": true,
+			"description": "Disable safety filter for prompts and input images.",
+			"type": "boolean"
+		},
+		"draft": {
+			"default": false,
+			"description": "Draft mode. Generates a lower-quality preview of the video.",
+			"type": "boolean"
+		},
+		"duration": {
+			"default": 5,
+			"description": "Duration of the video in seconds (1-20). Ignored when audio is provided.",
+			"maximum": 20,
+			"minimum": 1,
+			"type": "integer"
+		},
+		"fps": {
+			"anyOf": [
+				{
+					"const": 24,
+					"type": "number"
+				},
+				{
+					"const": 48,
+					"type": "number"
+				}
+			],
+			"default": 24,
+			"description": "Frames per second: 24 or 48."
+		},
+		"image": {
+			"description": "Input image to generate video from (image-to-video). HTTP(S) URL or data URI. Supports jpg, jpeg, png, webp. When provided, aspect_ratio is ignored.",
+			"type": "string"
+		},
+		"last_frame_image": {
+			"description": "Reference image for the last frame of the video. HTTP(S) URL or data URI.",
+			"type": "string"
+		},
+		"prompt": {
+			"description": "Text prompt for video generation.",
+			"type": "string"
+		},
+		"prompt_upsampling": {
+			"default": true,
+			"description": "Use prompt upsampling to enhance the prompt.",
+			"type": "boolean"
+		},
+		"resolution": {
+			"default": "720p",
+			"description": "Video resolution.",
+			"enum": [
+				"720p",
+				"1080p"
+			],
+			"type": "string"
+		},
+		"save_audio": {
+			"default": true,
+			"description": "Save the video with audio.",
+			"type": "boolean"
+		},
+		"seed": {
+			"description": "Random seed for reproducible generation.",
+			"maximum": 9007199254740991,
+			"minimum": -9007199254740991,
+			"type": "integer"
+		}
+	},
+	"required": [
+		"prompt",
+		"duration",
+		"resolution",
+		"fps",
+		"aspect_ratio",
+		"draft",
+		"save_audio",
+		"prompt_upsampling",
+		"disable_safety_filter"
+	],
+	"type": "object"
+}

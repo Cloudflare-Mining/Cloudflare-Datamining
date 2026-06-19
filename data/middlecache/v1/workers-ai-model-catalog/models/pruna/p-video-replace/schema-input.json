@@ -1,0 +1,81 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": {},
+	"properties": {
+		"disable_safety_checker": {
+			"default": false,
+			"description": "Disable safety checker for generated videos.",
+			"type": "boolean"
+		},
+		"ignore_audio": {
+			"default": false,
+			"description": "Ignore source audio during generation.",
+			"type": "boolean"
+		},
+		"images": {
+			"description": "Identity reference image(s), 1 to 3, to place into the video. Each entry is an HTTP(S) URL or a data URI.",
+			"items": {
+				"type": "string"
+			},
+			"maxItems": 3,
+			"minItems": 1,
+			"type": "array"
+		},
+		"instruction_prompt": {
+			"default": "",
+			"description": "Further instruction on how to place people from the reference images into the scene.",
+			"type": "string"
+		},
+		"resolution": {
+			"default": "720p",
+			"description": "Target resolution.",
+			"enum": [
+				"720p",
+				"1080p"
+			],
+			"type": "string"
+		},
+		"save_audio": {
+			"default": true,
+			"description": "Save the video with audio.",
+			"type": "boolean"
+		},
+		"seed": {
+			"description": "Random seed for reproducible generation.",
+			"maximum": 9007199254740991,
+			"minimum": -9007199254740991,
+			"type": "integer"
+		},
+		"target_fps": {
+			"default": "original",
+			"description": "Target FPS for the working video.",
+			"enum": [
+				"24",
+				"48",
+				"original"
+			],
+			"type": "string"
+		},
+		"turbo": {
+			"default": false,
+			"description": "Turbo mode: faster generation for slightly lower quality.",
+			"type": "boolean"
+		},
+		"video": {
+			"description": "Source RGB video (.mp4) used as the motion and audio source. HTTP(S) URL or data URI.",
+			"type": "string"
+		}
+	},
+	"required": [
+		"video",
+		"images",
+		"turbo",
+		"resolution",
+		"save_audio",
+		"ignore_audio",
+		"target_fps",
+		"instruction_prompt",
+		"disable_safety_checker"
+	],
+	"type": "object"
+}
