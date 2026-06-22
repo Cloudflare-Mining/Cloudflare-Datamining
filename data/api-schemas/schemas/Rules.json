@@ -231,9 +231,34 @@
 				}
 			},
 			{
+				"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+				"in": "query",
+				"name": "path",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {
+								"type": "string"
+							},
+							"maxItems": 50,
+							"type": "array"
+						}
+					],
+					"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+					"example": [
+						"yara/workers"
+					]
+				}
+			},
+			{
+				"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
 				"in": "query",
 				"name": "recursive",
 				"schema": {
+					"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
 					"enum": [
 						"true",
 						"false"
@@ -346,6 +371,11 @@
 												"type": "array",
 												"x-auditable": true
 											},
+											"path": {
+												"example": "yara/workers",
+												"type": "string",
+												"x-auditable": true
+											},
 											"pending_approval_id": {
 												"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 												"nullable": true,
@@ -365,6 +395,7 @@
 										"required": [
 											"id",
 											"name",
+											"path",
 											"description",
 											"namespaces",
 											"content",
@@ -512,6 +543,11 @@
 									"type": "array",
 									"x-auditable": true
 								},
+								"path": {
+									"example": "yara/workers",
+									"type": "string",
+									"x-auditable": true
+								},
 								"pending_approval_id": {
 									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 									"nullable": true,
@@ -531,6 +567,7 @@
 							"required": [
 								"id",
 								"name",
+								"path",
 								"description",
 								"namespaces",
 								"content",
@@ -739,9 +776,34 @@
 				}
 			},
 			{
+				"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+				"in": "query",
+				"name": "path",
+				"schema": {
+					"anyOf": [
+						{
+							"type": "string"
+						},
+						{
+							"items": {
+								"type": "string"
+							},
+							"maxItems": 50,
+							"type": "array"
+						}
+					],
+					"description": "Filter by path using exact-match semantics (no descendant matching). Omit the parameter to return rules from all paths. Pass an empty string (path=) to return only rules with an empty/uncategorized path. Pass a non-empty value (e.g. path=yara) for an exact match against that path. Repeat the parameter (e.g. path=yara&path=expr) to OR-match across multiple paths (SQL `IN (...)` semantics). Note: the `recursive` flag does NOT affect path filtering — it only affects namespace filtering for customer accounts.",
+					"example": [
+						"yara/workers"
+					]
+				}
+			},
+			{
+				"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
 				"in": "query",
 				"name": "recursive",
 				"schema": {
+					"description": "Customer accounts only: when true, namespace filtering matches descendants. Does NOT affect path filtering (paths are always exact-match).",
 					"enum": [
 						"true",
 						"false"
@@ -930,6 +992,11 @@
 														"type": "array",
 														"x-auditable": true
 													},
+													"path": {
+														"example": "yara/workers",
+														"type": "string",
+														"x-auditable": true
+													},
 													"pending_approval_id": {
 														"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 														"nullable": true,
@@ -949,6 +1016,7 @@
 												"required": [
 													"id",
 													"name",
+													"path",
 													"description",
 													"namespaces",
 													"content",
@@ -1363,22 +1431,27 @@
 								"x-auditable": true
 							},
 							"namespaces": {
-								"example": [
-									"yara/workers"
-								],
+								"default": [],
+								"description": "Optional WfP deployment tags (customer rules only). Internal rules leave empty.",
+								"example": [],
 								"items": {
 									"maxLength": 255,
 									"minLength": 1,
 									"type": "string"
 								},
-								"minItems": 1,
 								"type": "array",
+								"x-auditable": true
+							},
+							"path": {
+								"example": "yara/workers",
+								"minLength": 1,
+								"type": "string",
 								"x-auditable": true
 							}
 						},
 						"required": [
 							"name",
-							"namespaces",
+							"path",
 							"content"
 						],
 						"type": "object"
@@ -1442,6 +1515,11 @@
 									"type": "array",
 									"x-auditable": true
 								},
+								"path": {
+									"example": "yara/workers",
+									"type": "string",
+									"x-auditable": true
+								},
 								"pending_approval_id": {
 									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 									"nullable": true,
@@ -1461,6 +1539,7 @@
 							"required": [
 								"id",
 								"name",
+								"path",
 								"description",
 								"namespaces",
 								"content",
@@ -1553,7 +1632,8 @@
 		"summary": "Create a rule",
 		"tags": [
 			"Rules"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/cloudforce-one/rules/validate": {
 		"description": "Validate rule syntax, name uniqueness, namespace, and meta checks.",
@@ -1589,18 +1669,21 @@
 								"type": "string"
 							},
 							"namespaces": {
+								"default": [],
 								"items": {
 									"maxLength": 255,
 									"minLength": 1,
 									"type": "string"
 								},
-								"minItems": 1,
 								"type": "array"
+							},
+							"path": {
+								"minLength": 1,
+								"type": "string"
 							}
 						},
 						"required": [
 							"name",
-							"namespaces",
 							"content"
 						],
 						"type": "object"
@@ -1738,6 +1821,13 @@
 								},
 								"type": "array",
 								"x-auditable": true
+							},
+							"path": {
+								"description": "Path change goes through approval workflow.",
+								"example": "yara/workers",
+								"minLength": 1,
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"type": "object"
@@ -1801,6 +1891,11 @@
 									"type": "array",
 									"x-auditable": true
 								},
+								"path": {
+									"example": "yara/workers",
+									"type": "string",
+									"x-auditable": true
+								},
 								"pending_approval_id": {
 									"description": "ID of an open approval workflow targeting this rule, or null if none is pending.",
 									"nullable": true,
@@ -1820,6 +1915,7 @@
 							"required": [
 								"id",
 								"name",
+								"path",
 								"description",
 								"namespaces",
 								"content",
