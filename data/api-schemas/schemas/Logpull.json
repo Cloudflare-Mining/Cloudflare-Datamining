@@ -1,0 +1,418 @@
+{
+	"GET /accounts/{account_id}/logs/list": {
+		"description": "Lists R2 objects containing logs matching the provided query parameters.",
+		"operationId": "logpull-list-log-files",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID (32-character hex string).",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "991fff3d2f1084b343f5a84db801fea8",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "R2-Access-Key-Id",
+				"required": true,
+				"schema": {
+					"example": "29a92f1a6e6887d79f3401a41",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "R2-Secret-Access-Key",
+				"required": true,
+				"schema": {
+					"example": "869b6e19534a6715ab69a07d76492d673f8134d",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start time in RFC3339 format.",
+				"in": "query",
+				"name": "start",
+				"required": true,
+				"schema": {
+					"example": "2022-06-06T16:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time in RFC3339 format.",
+				"in": "query",
+				"name": "end",
+				"required": true,
+				"schema": {
+					"example": "2022-06-06T16:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "R2 bucket name.",
+				"in": "query",
+				"name": "bucket",
+				"required": true,
+				"schema": {
+					"example": "cloudflare-logs",
+					"type": "string"
+				}
+			},
+			{
+				"description": "R2 bucket prefix logs are stored under.",
+				"in": "query",
+				"name": "prefix",
+				"schema": {
+					"example": "http_requests/example.com/{DATE}",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Maximum number of results to return.",
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"example": 1000,
+					"maximum": 1000,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"keys": {
+											"description": "Array of object keys containing logs that match the query.",
+											"example": [
+												"http_requests/20220501/20220501T000000Z_20220501T000130Z_921f59f6.log.gz",
+												"http_requests/20220501/20220501T000000Z_20220501T000130Z_921f59f6.log.gz"
+											],
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "List of keys matching query."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"example": "start must be before end",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error message detailing issue with request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"example": "Unable to access bucket with the provided credentials.",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication credentials are missing or invalid."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List log files",
+		"tags": [
+			"Logpull"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		]
+	},
+	"GET /accounts/{account_id}/logs/retrieve": {
+		"description": "Returns logs stored in R2 that match the provided query parameters.",
+		"operationId": "logpull-retrieve-logs",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID (32-character hex string).",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "991fff3d2f1084b343f5a84db801fea8",
+					"pattern": "^[0-9a-f]{32}$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "R2-Access-Key-Id",
+				"required": true,
+				"schema": {
+					"example": "29a92f1a6e6887d79f3401a41",
+					"type": "string"
+				}
+			},
+			{
+				"in": "header",
+				"name": "R2-Secret-Access-Key",
+				"required": true,
+				"schema": {
+					"example": "869b6e19534a6715ab69a07d76492d673f8134d",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Start time in RFC3339 format.",
+				"in": "query",
+				"name": "start",
+				"required": true,
+				"schema": {
+					"example": "2022-06-06T16:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "End time in RFC3339 format.",
+				"in": "query",
+				"name": "end",
+				"required": true,
+				"schema": {
+					"example": "2022-06-06T16:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "R2 bucket name.",
+				"in": "query",
+				"name": "bucket",
+				"required": true,
+				"schema": {
+					"example": "cloudflare-logs",
+					"type": "string"
+				}
+			},
+			{
+				"description": "R2 bucket prefix logs are stored under.",
+				"in": "query",
+				"name": "prefix",
+				"schema": {
+					"example": "http_requests/example.com/{DATE}",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"example": "{\"ClientIP\":\"1.1.1.1\",\"ClientRequestHost\":\"example.com\",\"ClientRequestMethod\":\"GET\",\"ClientRequestURI\":\"/\",\"EdgeEndTimestamp\":\"2022-05-11T09:59:42Z\",\"EdgeResponseBytes\":363,\"EdgeResponseStatus\":200,\"EdgeStartTimestamp\":\"2022-05-11T09:59:42Z\",\"RayID\":\"709a103c4cefe918\"}\n{\"ClientIP\":\"1.1.1.1\",\"ClientRequestHost\":\"example.com\",\"ClientRequestMethod\":\"GET\",\"ClientRequestURI\":\"/\",\"EdgeEndTimestamp\":\"2022-05-11T10:00:05Z\",\"EdgeResponseBytes\":368,\"EdgeResponseStatus\":200,\"EdgeStartTimestamp\":\"2022-05-11T10:00:05Z\",\"RayID\":\"709a10ccce7240c9\"}\n"
+					}
+				},
+				"description": "Newline-delimited JSON logs."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"example": "start must be before end",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Error message detailing issue with request."
+			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"example": "Unable to access bucket with the provided credentials.",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Authentication credentials are missing or invalid."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Retrieve logs",
+		"tags": [
+			"Logpull"
+		],
+		"x-api-token-group": [
+			"Logs Write",
+			"Logs Read"
+		]
+	}
+}

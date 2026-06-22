@@ -190,6 +190,17 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
+												"primary": {
+													"default": true,
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"site_id": {
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -205,7 +216,8 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates"
+												"interrupt_window_embargo_dates",
+												"primary"
 											],
 											"type": "object"
 										}
@@ -796,6 +808,17 @@
 														"x-auditable": true,
 														"x-stainless-terraform-configurability": "computed_optional"
 													},
+													"primary": {
+														"default": true,
+														"type": "boolean",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
+													"site_id": {
+														"type": "string",
+														"x-auditable": true,
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"timezone": {
 														"type": "string",
 														"x-auditable": true,
@@ -811,7 +834,8 @@
 													"interrupt_window_hour_of_day",
 													"interrupt_window_duration_hours",
 													"interrupt_window_days_of_week",
-													"interrupt_window_embargo_dates"
+													"interrupt_window_embargo_dates",
+													"primary"
 												],
 												"type": "object"
 											},
@@ -1329,6 +1353,17 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
+												"primary": {
+													"default": true,
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"site_id": {
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -1344,7 +1379,8 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates"
+												"interrupt_window_embargo_dates",
+												"primary"
 											],
 											"type": "object"
 										}
@@ -1883,12 +1919,10 @@
 													{
 														"properties": {
 															"submitted_at": {
-																"type": "string",
-																"x-go-type": "time.Time"
+																"type": "string"
 															},
 															"triggered_at": {
-																"type": "string",
-																"x-go-type": "time.Time"
+																"type": "string"
 															}
 														},
 														"required": [
@@ -8069,6 +8103,17 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
+									"primary": {
+										"default": true,
+										"type": "boolean",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"site_id": {
+										"type": "string",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"timezone": {
 										"type": "string",
 										"x-auditable": true,
@@ -8081,12 +8126,7 @@
 								"properties": {
 									"provision_license": {
 										"description": "When true, regenerate license key for the connector.",
-										"type": "boolean",
-										"x-go-type": "maybe.Maybe[bool]",
-										"x-go-type-import": {
-											"path": "go.cfdata.org/mconn/api/maybe"
-										},
-										"x-go-type-skip-optional-pointer": true
+										"type": "boolean"
 									}
 								},
 								"type": "object"
@@ -8264,6 +8304,17 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
+												"primary": {
+													"default": true,
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"site_id": {
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -8279,7 +8330,8 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates"
+												"interrupt_window_embargo_dates",
+												"primary"
 											],
 											"type": "object"
 										}
@@ -8779,6 +8831,17 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
+									"primary": {
+										"default": true,
+										"type": "boolean",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"site_id": {
+										"type": "string",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"timezone": {
 										"type": "string",
 										"x-auditable": true,
@@ -8960,6 +9023,17 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
+												"primary": {
+													"default": true,
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"site_id": {
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -8975,7 +9049,8 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates"
+												"interrupt_window_embargo_dates",
+												"primary"
 											],
 											"type": "object"
 										}
@@ -9633,12 +9708,10 @@
 												{
 													"properties": {
 														"submitted_at": {
-															"type": "string",
-															"x-go-type": "time.Time"
+															"type": "string"
 														},
 														"triggered_at": {
-															"type": "string",
-															"x-go-type": "time.Time"
+															"type": "string"
 														}
 													},
 													"required": [
@@ -10193,6 +10266,17 @@
 										"x-auditable": true,
 										"x-stainless-terraform-configurability": "computed_optional"
 									},
+									"primary": {
+										"default": true,
+										"type": "boolean",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
+									"site_id": {
+										"type": "string",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "computed_optional"
+									},
 									"timezone": {
 										"type": "string",
 										"x-auditable": true,
@@ -10205,12 +10289,7 @@
 								"properties": {
 									"provision_license": {
 										"description": "When true, regenerate license key for the connector.",
-										"type": "boolean",
-										"x-go-type": "maybe.Maybe[bool]",
-										"x-go-type-import": {
-											"path": "go.cfdata.org/mconn/api/maybe"
-										},
-										"x-go-type-skip-optional-pointer": true
+										"type": "boolean"
 									}
 								},
 								"type": "object"
@@ -10388,6 +10467,17 @@
 													"x-auditable": true,
 													"x-stainless-terraform-configurability": "computed_optional"
 												},
+												"primary": {
+													"default": true,
+													"type": "boolean",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
+												"site_id": {
+													"type": "string",
+													"x-auditable": true,
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"timezone": {
 													"type": "string",
 													"x-auditable": true,
@@ -10403,7 +10493,8 @@
 												"interrupt_window_hour_of_day",
 												"interrupt_window_duration_hours",
 												"interrupt_window_days_of_week",
-												"interrupt_window_embargo_dates"
+												"interrupt_window_embargo_dates",
+												"primary"
 											],
 											"type": "object"
 										}

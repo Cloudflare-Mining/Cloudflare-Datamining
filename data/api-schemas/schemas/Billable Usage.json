@@ -156,6 +156,12 @@
 												"example": "Workers Standard",
 												"type": "string"
 											},
+											"SubscriptionId": {
+												"description": "The identifier for the Cloudflare subscription.",
+												"example": "3F3CD4CQ6N7FXO7IK6NVFJBOYA",
+												"nullable": true,
+												"type": "string"
+											},
 											"ZoneId": {
 												"description": "The identifier for the Cloudflare zone (zone tag).",
 												"example": "023e105f4ecef8ad9ca31a8372d0c353",
