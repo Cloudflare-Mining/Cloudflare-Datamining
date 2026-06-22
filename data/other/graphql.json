@@ -991,14 +991,14 @@
 		"__description": ""
 	},
 	"AccountBrowserRenderingApiAdaptive": {
-		"__description": "Browser Rendering API events with adaptive sampling",
+		"__description": "Browser Run API events with adaptive sampling",
 		"browserSessionEndTime": "End date and time of the browser session pertaining to the request",
 		"browserSessionStartTime": "Start date and time of the browser session pertaining to the request",
-		"crawlJobId": "Job ID of a request to the Browser Rendering crawl endpoints",
+		"crawlJobId": "Job ID of a request to the Browser Run crawl endpoints",
 		"datetime": "The time of the event",
-		"endpoint": "Browser Rendering REST API endpoint of the request",
+		"endpoint": "Browser Run REST API endpoint of the request",
 		"requestEndTime": "End date and time of the request",
-		"requestId": "Browser Rendering REST API unique request ID",
+		"requestId": "Browser Run REST API unique request ID",
 		"requestStartTime": "Start date and time of the request",
 		"sampleInterval": "ABR sample interval",
 		"sessionId": "Browser session ID",
@@ -1009,30 +1009,30 @@
 		"__description": ""
 	},
 	"AccountBrowserRenderingApiAdaptiveGroups": {
-		"__description": "Aggregated Browser Rendering API events with adaptive sampling",
+		"__description": "Aggregated Browser Run API events with adaptive sampling",
 		"confidence": "ALPHA - DO NOT USE",
-		"count": "Total number of Browser Rendering REST API requests for an account",
+		"count": "Total number of Browser Run REST API requests for an account",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountBrowserRenderingApiAdaptiveGroupsConfidence": {
 		"__description": "",
-		"count": "Total number of Browser Rendering REST API requests for an account, with confidence intervals",
+		"count": "Total number of Browser Run REST API requests for an account, with confidence intervals",
 		"level": "Confidence level that was requested"
 	},
 	"AccountBrowserRenderingApiAdaptiveGroupsDimensions": {
 		"__description": "",
 		"browserSessionEndTime": "End date and time of the browser session pertaining to the request",
 		"browserSessionStartTime": "Start date and time of the browser session pertaining to the request",
-		"crawlJobId": "Job ID of a request to the Browser Rendering crawl endpoints",
+		"crawlJobId": "Job ID of a request to the Browser Run crawl endpoints",
 		"date": "The date of the event",
 		"datetime": "The date and time the event occurred",
 		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
 		"datetimeHour": "The date and time of the event truncated to the hour",
 		"datetimeMinute": "The date and time of the event truncated to the minute",
-		"endpoint": "Browser Rendering REST API endpoint of the request",
+		"endpoint": "Browser Run REST API endpoint of the request",
 		"requestEndTime": "End date and time of the request",
-		"requestId": "Browser Rendering REST API unique request ID",
+		"requestId": "Browser Run REST API unique request ID",
 		"requestStartTime": "Start date and time of the request",
 		"sessionId": "Browser session ID",
 		"status": "HTTP response status code",
@@ -1048,7 +1048,7 @@
 		"__description": ""
 	},
 	"AccountBrowserRenderingBindingSessionsAdaptiveGroups": {
-		"__description": "Aggregated Browser Rendering worker binding sessions with adaptive sampling",
+		"__description": "Aggregated Browser Run worker binding sessions with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of sessions for an account",
@@ -1091,10 +1091,10 @@
 		"sessionIdCount": "Unique browser sessions"
 	},
 	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroups": {
-		"__description": "Aggregated Browser Rendering and Browser Rendering REST API browser sessions with adaptive sampling",
+		"__description": "Aggregated Browser Run and Browser Run REST API browser sessions with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
 		"confidence": "ALPHA - DO NOT USE",
-		"count": "Total number of Browser Rendering and Browser Rendering REST API browser sessions for an account",
+		"count": "Total number of Browser Run and Browser Run REST API browser sessions for an account",
 		"dimensions": "List of dimensions to group by",
 		"max": "The maximum value for a metric per dimension",
 		"min": "The minimum value for a metric per dimension",
@@ -1106,7 +1106,7 @@
 	},
 	"AccountBrowserRenderingBrowserTimeUsageAdaptiveGroupsConfidence": {
 		"__description": "",
-		"count": "Total number of Browser Rendering and Browser Rendering REST API browser sessions for an account, with confidence intervals",
+		"count": "Total number of Browser Run and Browser Run REST API browser sessions for an account, with confidence intervals",
 		"level": "Confidence level that was requested",
 		"sum": "The total value for a metric per dimension, with confidence intervals"
 	},
@@ -1146,7 +1146,7 @@
 		"totalSessionDurationMs": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountBrowserRenderingEventsAdaptive": {
-		"__description": "Browser Rendering events with adaptive sampling",
+		"__description": "Browser Run events with adaptive sampling",
 		"browserCloseReason": "Browser session close code. Enum (-1, N/A) (0, Unknown) (1, NormalClosure) (2, BrowserIdle) (3, ClientClosedEarly) (4, ChromiumChrashed) (5, ClientAbnormalClosure) (6, ServerAbnormalClosure) (7, ClientError) (8, ServerError) (9, WorkerError) (10, ClientNeverConnected) (11, BrowserSessionEvicted) (12, UsedBrowserTimeLimitExceeded)\n",
 		"browserEndTime": "Browser session end time",
 		"browserStartTime": "Browser session start time",
@@ -1165,7 +1165,7 @@
 		"__description": ""
 	},
 	"AccountBrowserRenderingEventsAdaptiveGroups": {
-		"__description": "Aggregated Browser Rendering events with adaptive sampling",
+		"__description": "Aggregated Browser Run events with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "Total number of events for an account",
@@ -14098,6 +14098,7 @@
 		"nelReportsAdaptiveGroups": "",
 		"pageShieldReportsAdaptiveGroups": "",
 		"userProfilesAdaptiveGroups": "",
+		"userProfilesPiiGroups": "",
 		"userProfilesRawEventsGroups": "",
 		"waitingRoomAnalyticsAdaptive": "",
 		"waitingRoomAnalyticsAdaptiveGroups": "",
@@ -14155,6 +14156,29 @@
 		"browserCount": "Number of unique browser families for a user id.",
 		"ipCount": "Number of unique IPs for a user id.",
 		"osCount": "Number of unique operating system families for a user id."
+	},
+	"ZoneUserProfilesPiiGroups": {
+		"__description": "Per-user PII attribute lookup for login and signup events. PII fields such as email require the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; callers without it receive the literal REDACTED.",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of events for the user.",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneUserProfilesPiiGroupsConfidence": {
+		"__description": "",
+		"count": "Number of events for the user., with confidence intervals",
+		"level": "Confidence level that was requested"
+	},
+	"ZoneUserProfilesPiiGroupsDimensions": {
+		"__description": "",
+		"date": "Date of the event.",
+		"email": "The email address associated with the user. Requires the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; otherwise returned as REDACTED.",
+		"userId": "Unique identifier for a user. 128-bit hash."
+	},
+	"ZoneUserProfilesPiiGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneUserProfilesPiiGroupsOrderBy": {
+		"__description": ""
 	},
 	"ZoneUserProfilesRawEventsGroups": {
 		"__description": "Historical login and signup events per user.",
@@ -14894,12 +14918,12 @@
 		"autoRAGEngineAdaptiveGroups": "AutoRAG Engine Ingestion Analytics",
 		"browserIsolationSessionsAdaptiveGroups": "Aggregated count of Browser Isolation sessions",
 		"browserIsolationUserActionsAdaptiveGroups": "Aggregated count of Browser Isolation User Actions matches",
-		"browserRenderingApiAdaptive": "Browser Rendering API events with adaptive sampling",
-		"browserRenderingApiAdaptiveGroups": "Aggregated Browser Rendering API events with adaptive sampling",
-		"browserRenderingBindingSessionsAdaptiveGroups": "Aggregated Browser Rendering worker binding sessions with adaptive sampling",
-		"browserRenderingBrowserTimeUsageAdaptiveGroups": "Aggregated Browser Rendering and Browser Rendering REST API browser sessions with adaptive sampling",
-		"browserRenderingEventsAdaptive": "Browser Rendering events with adaptive sampling",
-		"browserRenderingEventsAdaptiveGroups": "Aggregated Browser Rendering events with adaptive sampling",
+		"browserRenderingApiAdaptive": "Browser Run API events with adaptive sampling",
+		"browserRenderingApiAdaptiveGroups": "Aggregated Browser Run API events with adaptive sampling",
+		"browserRenderingBindingSessionsAdaptiveGroups": "Aggregated Browser Run worker binding sessions with adaptive sampling",
+		"browserRenderingBrowserTimeUsageAdaptiveGroups": "Aggregated Browser Run and Browser Run REST API browser sessions with adaptive sampling",
+		"browserRenderingEventsAdaptive": "Browser Run events with adaptive sampling",
+		"browserRenderingEventsAdaptiveGroups": "Aggregated Browser Run events with adaptive sampling",
 		"callsStatusAdaptive": "(TESTING ONLY, NOT FOR PRODUCTION) Raw Calls events with adaptive sampling",
 		"callsTurnUsageAdaptiveGroups": "Aggregated Calls TURN bandwidth usage with adaptive sampling\"",
 		"callsUsageAdaptiveGroups": "Beta. Aggregated Calls SFU bandwidth usage with adaptive sampling",
@@ -15176,6 +15200,7 @@
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
 		"settings": "",
 		"userProfilesAdaptiveGroups": "User ID profiles for login and sign up attempts",
+		"userProfilesPiiGroups": "Per-user PII attribute lookup for login and signup events. PII fields such as email require the com.cloudflare.api.account.zone.fraud-detection.pii.read permission; callers without it receive the literal REDACTED.",
 		"userProfilesRawEventsGroups": "Historical login and signup events per user.",
 		"waitingRoomAnalyticsAdaptive": "Raw Waiting Room analytics logs",
 		"waitingRoomAnalyticsAdaptiveGroups": "Aggregated Waiting Room analytics logs with adaptive sampling",
