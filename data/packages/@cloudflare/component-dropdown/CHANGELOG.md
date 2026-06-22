@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.1.1
+
+### Patch Changes
+
+- e3db92eea0: Remove stale react-router-dom peer dependencies from packages that do not import router APIs.
+
 ## 8.1.0
 
 ### Minor Changes
