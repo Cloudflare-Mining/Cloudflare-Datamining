@@ -22,7 +22,6 @@
 	"default_branch": "main",
 	"branches": [
 		"alt/prerender-rsc-sidechannel",
-		"changeset-release/main",
 		"chonky-list",
 		"chore/bundle-zero-dep-leaves",
 		"ci/commit-version-bump",
@@ -65,6 +64,7 @@
 		"codex/fix-root-params-execution-parity",
 		"codex/fix-runtime-export-conditions-wave2",
 		"codex/fix-shallow-rewrite-query-parity-27858251903",
+		"codex/fix-ssr-css-media-paths",
 		"codex/fix-trailingslash-isr-gsp",
 		"codex/fix-web-worker-deployment-id",
 		"codex/fix-wrangler-suspense-streaming",
@@ -91,6 +91,7 @@
 		"fix/block-dangerous-uri-schemes",
 		"fix/cli-version",
 		"fix/client-trace-metadata-esm-1782072684",
+		"fix/dev-cold-start-threshold",
 		"fix/dev-overlay-build-error-recovery-flake",
 		"fix/include-query-in-route-handler-isr-key",
 		"fix/isr-always-mark-dynamic-with-searchparams",
