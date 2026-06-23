@@ -1,7 +1,7 @@
 {
 	"name": "vinext",
 	"dist-tags": {
-		"latest": "0.1.7"
+		"latest": "0.1.8"
 	},
 	"versions": {
 		"0.0.0": {
@@ -3304,13 +3304,71 @@
 			"name": "vinext",
 			"version": "0.1.7",
 			"dependencies": {
+				"ipaddr.js": "^2.1.0",
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"web-vitals": "^4.2.4",
+				"@unpic/react": "^1.0.2",
+				"magic-string": "^0.30.21",
+				"vite-tsconfig-paths": "^6.1.1",
+				"vite-plugin-commonjs": "^0.10.4"
+			},
+			"devDependencies": {
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.2.1",
+				"vite-plus": "0.2.1",
+				"@types/node": "^25.9.2",
+				"@types/react": "^19.2.16",
+				"@types/react-dom": "^19.2.3",
+				"@vinext/cloudflare": "0.1.2",
+				"@vitejs/plugin-rsc": "^0.5.27",
+				"@vitejs/plugin-react": "^6.0.1",
+				"react-server-dom-webpack": "^19.2.7"
+			},
+			"peerDependencies": {
+				"vite": "^7.0.0 || ^8.0.0",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"react-server-dom-webpack": "^19.2.6"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"shasum": "567c7a271a7c21da600ff3886e478382806de954",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.1.7.tgz",
+				"fileCount": 799,
+				"integrity": "sha512-fJgnObyrOiI2vob1+CtHs/Mo/NmQcyPLKM3mlNV5/VmM88er4ggIUvDouODnbQbgQR2HT/K3Ok2hpUlQ0cx2lQ==",
+				"signatures": [
+					{
+						"sig": "MEUCIQCCvoYMwMgB8zQfylgqkWMeWzCq0IsIpAm1LSKtsFAtkAIgeDc/xUDTg34IoNraafjDhqtmRuUK8kEmSDP1mTul10Y=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.1.7",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 4277232
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"0.1.8": {
+			"name": "vinext",
+			"version": "0.1.8",
+			"dependencies": {
 				"@unpic/react": "^1.0.2",
 				"@vercel/og": "^0.8.6",
 				"image-size": "2.0.2",
 				"ipaddr.js": "^2.1.0",
 				"magic-string": "^0.30.21",
 				"vite-plugin-commonjs": "^0.10.4",
-				"vite-tsconfig-paths": "^6.1.1",
 				"web-vitals": "^4.2.4"
 			},
 			"devDependencies": {
@@ -3322,6 +3380,7 @@
 				"react-server-dom-webpack": "^19.2.7",
 				"vite": "npm:@voidzero-dev/vite-plus-core@0.2.1",
 				"vite-plus": "0.2.1",
+				"vite-tsconfig-paths": "^6.1.1",
 				"@vinext/cloudflare": "0.1.2"
 			},
 			"peerDependencies": {
@@ -3331,19 +3390,20 @@
 				"react": "^19.2.6",
 				"react-dom": "^19.2.6",
 				"react-server-dom-webpack": "^19.2.6",
-				"vite": "^7.0.0 || ^8.0.0"
+				"vite": "^7.0.0 || ^8.0.0",
+				"vite-tsconfig-paths": "^6.1.1"
 			},
 			"bin": {
 				"vinext": "dist/cli.js"
 			},
 			"dist": {
-				"integrity": "sha512-fJgnObyrOiI2vob1+CtHs/Mo/NmQcyPLKM3mlNV5/VmM88er4ggIUvDouODnbQbgQR2HT/K3Ok2hpUlQ0cx2lQ==",
-				"shasum": "567c7a271a7c21da600ff3886e478382806de954",
-				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.1.7.tgz",
-				"fileCount": 799,
-				"unpackedSize": 4277232,
+				"integrity": "sha512-TCr5Z4O2JqSm/7JjuOcVnXWTZ4dqHeqzphdEPplMQpKc9Czdper9q/MIgtx0eiP3eq6YWBi1iRCSyVAvccCe0Q==",
+				"shasum": "e6571f927fe5b6b7f5b100232f0164bfab11b6b5",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-0.1.8.tgz",
+				"fileCount": 805,
+				"unpackedSize": 4322326,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.1.7",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@0.1.8",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -3351,7 +3411,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIQCCvoYMwMgB8zQfylgqkWMeWzCq0IsIpAm1LSKtsFAtkAIgeDc/xUDTg34IoNraafjDhqtmRuUK8kEmSDP1mTul10Y="
+						"sig": "MEUCIQDApgsKqp6IpFs8B40YVI/rKimOzG8b/j4302vdyA14WAIgMKPK1BMIJw+ux8zFXPo75dGQszb2SrGzKgumhT+Oeko="
 					}
 				]
 			},
