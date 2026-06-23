@@ -4621,6 +4621,1000 @@
 			"Applications"
 		]
 	},
+	"GET /applications": {
+		"description": "Returns a list of available applications with use cases and permissions.",
+		"operationId": "list_applications_v2",
+		"parameters": [
+			{
+				"description": "Filter by supported environment (standard, fedramp).",
+				"in": "query",
+				"name": "environment",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Microsoft365": {
+								"summary": "Microsoft 365 application",
+								"value": [
+									{
+										"auth_methods": [
+											{
+												"display_name": "OAuth 2.0 Admin Consent",
+												"slug": "oauth2_standard"
+											}
+										],
+										"category": "Productivity",
+										"description": "Monitor OneDrive, SharePoint, Teams, and Outlook.",
+										"display_name": "Microsoft",
+										"dlp_enabled": true,
+										"logo": "/api/v4/accounts/12345678/casb/static/microsoft_internal.svg",
+										"permissions": [
+											{
+												"display_name": "Read all users' full profiles",
+												"scope": "User.Read.All",
+												"severity": "high"
+											},
+											{
+												"display_name": "Read all files",
+												"scope": "Files.Read.All",
+												"severity": "high"
+											},
+											{
+												"display_name": "Read and write mail",
+												"scope": "Mail.ReadWrite",
+												"severity": "critical"
+											}
+										],
+										"slug": "MICROSOFT_INTERNAL",
+										"supported_environments": [
+											"standard",
+											"fedramp"
+										],
+										"use_cases": [
+											{
+												"display_name": "Cloud Access Security Broker",
+												"slug": "casb"
+											},
+											{
+												"display_name": "Cloud Email Security",
+												"slug": "ces"
+											}
+										]
+									}
+								]
+							}
+						},
+						"schema": {
+							"items": {
+								"description": "Application item in list response.",
+								"properties": {
+									"auth_methods": {
+										"description": "Available auth methods.",
+										"items": {
+											"description": "Auth method summary for list endpoint.",
+											"properties": {
+												"display_name": {
+													"description": "Human-readable auth method name.",
+													"type": "string"
+												},
+												"slug": {
+													"description": "Auth method identifier.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"display_name",
+												"slug"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"category": {
+										"description": "Vendor category (e.g. Productivity, AI).",
+										"type": "string"
+									},
+									"description": {
+										"description": "Brief description of the integration.",
+										"type": "string"
+									},
+									"display_name": {
+										"description": "Human-readable vendor name.",
+										"type": "string"
+									},
+									"dlp_enabled": {
+										"description": "Whether DLP scanning is supported.",
+										"type": "boolean"
+									},
+									"logo": {
+										"description": "Logo path.",
+										"nullable": true,
+										"type": "string"
+									},
+									"permissions": {
+										"description": "All permissions with severity.",
+										"items": {
+											"description": "Permission/scope with severity for display.",
+											"properties": {
+												"display_name": {
+													"description": "Human-readable permission name.",
+													"type": "string"
+												},
+												"scope": {
+													"description": "Vendor-native scope identifier.",
+													"type": "string"
+												},
+												"severity": {
+													"description": "Permission sensitivity level.\n\n* `low` - low\n* `medium` - medium\n* `high` - high\n* `critical` - critical",
+													"enum": [
+														"low",
+														"medium",
+														"high",
+														"critical"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"display_name",
+												"scope",
+												"severity"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"slug": {
+										"description": "Vendor identifier (e.g. microsoft_internal, google_workspace).\n\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+										"enum": [
+											"GITHUB",
+											"GOOGLE_WORKSPACE",
+											"MICROSOFT_INTERNAL",
+											"SALESFORCE",
+											"SLACK"
+										],
+										"type": "string"
+									},
+									"supported_environments": {
+										"description": "Environments this vendor supports (standard, fedramp).",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"use_cases": {
+										"description": "Supported use cases.",
+										"items": {
+											"description": "Lightweight use case for list endpoint.",
+											"properties": {
+												"display_name": {
+													"description": "Human-readable use case name.",
+													"type": "string"
+												},
+												"slug": {
+													"description": "Use case identifier (e.g. casb, ces).",
+													"type": "string"
+												}
+											},
+											"required": [
+												"display_name",
+												"slug"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"auth_methods",
+									"category",
+									"description",
+									"display_name",
+									"dlp_enabled",
+									"logo",
+									"permissions",
+									"slug",
+									"supported_environments",
+									"use_cases"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "List of applications."
+			},
+			"400": {
+				"description": "Invalid request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List applications",
+		"tags": [
+			"Applications"
+		],
+		"x-stability": "beta"
+	},
+	"GET /applications/{slug}": {
+		"description": "Returns full application details including auth methods, use cases, and permissions.",
+		"operationId": "get_application_v2",
+		"parameters": [
+			{
+				"description": "Application/vendor identifier.",
+				"in": "path",
+				"name": "slug",
+				"required": true,
+				"schema": {
+					"enum": [
+						"GITHUB",
+						"GOOGLE_WORKSPACE",
+						"MICROSOFT_INTERNAL",
+						"SALESFORCE",
+						"SLACK"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"Microsoft365": {
+								"summary": "Microsoft 365 application detail",
+								"value": {
+									"auth_methods": [
+										{
+											"display_name": "OAuth 2.0 Admin Consent",
+											"is_default": true,
+											"slug": "oauth2",
+											"supported_environments": [
+												"standard",
+												"fedramp"
+											]
+										}
+									],
+									"category": "Productivity",
+									"description": "Monitor OneDrive, SharePoint, Teams, and Outlook.",
+									"display_name": "Microsoft",
+									"dlp_enabled": true,
+									"instructions": "You'll need a Microsoft 365 admin account with Global Admin or Application Admin role.",
+									"logo": "/api/v4/accounts/12345678/casb/static/microsoft_internal.svg",
+									"slug": "MICROSOFT_INTERNAL",
+									"use_cases": [
+										{
+											"base_scopes": [
+												{
+													"display_name": "Read all users' full profiles",
+													"scope": "User.Read.All",
+													"severity": "high"
+												},
+												{
+													"display_name": "Read all files",
+													"scope": "Files.Read.All",
+													"severity": "high"
+												}
+											],
+											"description": "Discover and secure SaaS applications",
+											"display_name": "Cloud Access Security Broker",
+											"features": [
+												{
+													"description": "Automatically remediate security issues",
+													"display_name": "Auto Remediation",
+													"scopes": [
+														{
+															"display_name": "Read and write all files",
+															"scope": "Files.ReadWrite.All",
+															"severity": "critical"
+														}
+													],
+													"slug": "auto_remediation"
+												}
+											],
+											"slug": "casb"
+										}
+									]
+								}
+							}
+						},
+						"schema": {
+							"description": "Full application detail for onboarding UI.",
+							"properties": {
+								"auth_methods": {
+									"description": "Available authentication methods.",
+									"items": {
+										"description": "Authentication method available for a vendor.",
+										"properties": {
+											"display_name": {
+												"description": "Human-readable auth method name.",
+												"type": "string"
+											},
+											"is_default": {
+												"description": "Whether this is the default auth method.",
+												"type": "boolean"
+											},
+											"slug": {
+												"description": "Auth method identifier.",
+												"type": "string"
+											},
+											"supported_environments": {
+												"description": "Environments this auth method supports.",
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"display_name",
+											"is_default",
+											"slug",
+											"supported_environments"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"category": {
+									"description": "Vendor category.",
+									"type": "string"
+								},
+								"description": {
+									"description": "Brief description.",
+									"type": "string"
+								},
+								"display_name": {
+									"description": "Human-readable vendor name.",
+									"type": "string"
+								},
+								"dlp_enabled": {
+									"description": "Whether DLP scanning is supported.",
+									"type": "boolean"
+								},
+								"instructions": {
+									"description": "Setup instructions for the user.",
+									"nullable": true,
+									"type": "string"
+								},
+								"logo": {
+									"description": "Logo path.",
+									"nullable": true,
+									"type": "string"
+								},
+								"slug": {
+									"description": "Vendor identifier.\n\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+									"enum": [
+										"GITHUB",
+										"GOOGLE_WORKSPACE",
+										"MICROSOFT_INTERNAL",
+										"SALESFORCE",
+										"SLACK"
+									],
+									"type": "string"
+								},
+								"use_cases": {
+									"description": "Use cases with full scope details.",
+									"items": {
+										"description": "Full use case with scopes and features for detail endpoint.",
+										"properties": {
+											"base_scopes": {
+												"description": "Scopes always required for this use case.",
+												"items": {
+													"description": "Permission/scope with severity for display.",
+													"properties": {
+														"display_name": {
+															"description": "Human-readable permission name.",
+															"type": "string"
+														},
+														"scope": {
+															"description": "Vendor-native scope identifier.",
+															"type": "string"
+														},
+														"severity": {
+															"description": "Permission sensitivity level.\n\n* `low` - low\n* `medium` - medium\n* `high` - high\n* `critical` - critical",
+															"enum": [
+																"low",
+																"medium",
+																"high",
+																"critical"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"display_name",
+														"scope",
+														"severity"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"description": {
+												"description": "Use case description.",
+												"type": "string"
+											},
+											"display_name": {
+												"description": "Human-readable use case name.",
+												"type": "string"
+											},
+											"features": {
+												"description": "Optional features with extra scopes.",
+												"items": {
+													"description": "A feature with its additional scopes.",
+													"properties": {
+														"description": {
+															"description": "Feature description.",
+															"type": "string"
+														},
+														"display_name": {
+															"description": "Human-readable feature name.",
+															"type": "string"
+														},
+														"scopes": {
+															"description": "Additional scopes when feature is enabled.",
+															"items": {
+																"description": "Permission/scope with severity for display.",
+																"properties": {
+																	"display_name": {
+																		"description": "Human-readable permission name.",
+																		"type": "string"
+																	},
+																	"scope": {
+																		"description": "Vendor-native scope identifier.",
+																		"type": "string"
+																	},
+																	"severity": {
+																		"description": "Permission sensitivity level.\n\n* `low` - low\n* `medium` - medium\n* `high` - high\n* `critical` - critical",
+																		"enum": [
+																			"low",
+																			"medium",
+																			"high",
+																			"critical"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"display_name",
+																	"scope",
+																	"severity"
+																],
+																"type": "object"
+															},
+															"type": "array"
+														},
+														"slug": {
+															"description": "Feature identifier.",
+															"type": "string"
+														}
+													},
+													"required": [
+														"description",
+														"display_name",
+														"scopes",
+														"slug"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"slug": {
+												"description": "Use case identifier.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"base_scopes",
+											"description",
+											"display_name",
+											"features",
+											"slug"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"auth_methods",
+								"category",
+								"description",
+								"display_name",
+								"dlp_enabled",
+								"instructions",
+								"logo",
+								"slug",
+								"use_cases"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Application details."
+			},
+			"404": {
+				"description": "Application not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get application details",
+		"tags": [
+			"Applications"
+		],
+		"x-stability": "beta"
+	},
+	"GET /applications/{slug}/setup-flows": {
+		"description": "Returns all available setup flows for the application, one per auth method.",
+		"operationId": "get_application_setup_flows_v2",
+		"parameters": [
+			{
+				"description": "Filter by auth method slug. Get available slugs from GET /v2/applications.",
+				"in": "query",
+				"name": "auth_method",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by environment.",
+				"in": "query",
+				"name": "environment",
+				"schema": {
+					"enum": [
+						"fedramp",
+						"standard"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "slug",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"ComplexFlow": {
+								"summary": "Google Workspace Service Account with dynamic content",
+								"value": [
+									{
+										"default": true,
+										"description": "Connect via a Google Cloud Service Account with Domain-Wide Delegation.",
+										"id": "google_workspace_service_account",
+										"name": "Google Workspace (Service Account)",
+										"steps": [
+											{
+												"component_id": "common/name_integration",
+												"parameters": null,
+												"type": "component"
+											},
+											{
+												"description": "In the Google Cloud Console, create a service account...",
+												"dynamic_content": null,
+												"title": "Create a Service Account",
+												"type": "instruction"
+											},
+											{
+												"description": "Upload the JSON service account key file.",
+												"dynamic_content": null,
+												"form_fields": [
+													{
+														"label": "Service Account JSON File",
+														"name": "service_account_credentials",
+														"placeholder": null,
+														"required": true,
+														"supported_file_types": [
+															".json"
+														],
+														"type": "file_upload"
+													}
+												],
+												"is_required": true,
+												"title": "Upload JSON Key",
+												"type": "form_input"
+											},
+											{
+												"description": "Navigate to your Google admin console and add the client ID.",
+												"dynamic_content": [
+													{
+														"label": "Client ID",
+														"type": "copy_block",
+														"value_from": "credentials.client_id"
+													},
+													{
+														"label": "OAuth Scopes",
+														"type": "copy_block",
+														"value_from": "required_scopes"
+													},
+													{
+														"label": "Open Domain-Wide Delegation Settings",
+														"type": "external_link",
+														"url_template": "https://admin.google.com/ac/owl/domainwidedelegation"
+													}
+												],
+												"title": "Delegate Domain-Wide Authority",
+												"type": "instruction"
+											},
+											{
+												"description": "Provide the email of a Google Workspace Super Administrator.",
+												"dynamic_content": null,
+												"form_fields": [
+													{
+														"label": "Super Administrator Email",
+														"name": "administrator_email",
+														"placeholder": "admin@your-domain.com",
+														"required": true,
+														"supported_file_types": null,
+														"type": "email"
+													}
+												],
+												"is_required": true,
+												"title": "Confirm Administrator Email",
+												"type": "form_input"
+											}
+										],
+										"supported_environments": [
+											"standard"
+										]
+									}
+								]
+							},
+							"OAuthFlow": {
+								"summary": "Microsoft OAuth 2.0 setup flow",
+								"value": [
+									{
+										"auth_config": {
+											"authorization_url": "https://login.microsoftonline.com/common/adminconsent",
+											"client_id": "abc123-def456",
+											"requires_pkce": false,
+											"scopes": [
+												"https://graph.microsoft.com/.default"
+											],
+											"url_placeholders": []
+										},
+										"default": true,
+										"description": "Connect to Microsoft using OAuth 2.0 Admin Consent.",
+										"id": "microsoft_internal_oauth2",
+										"name": "Microsoft (OAuth 2.0 Admin Consent)",
+										"steps": [
+											{
+												"component_id": "common/name_integration",
+												"parameters": null,
+												"type": "component"
+											},
+											{
+												"description": "Click the button to be redirected to the vendor and grant access.",
+												"dynamic_content": null,
+												"title": "Authorize Application",
+												"type": "oauth_redirect"
+											}
+										],
+										"supported_environments": [
+											"standard",
+											"fedramp"
+										]
+									}
+								]
+							},
+							"SimpleAPIKeyFlow": {
+								"summary": "Anthropic Admin API Key setup flow",
+								"value": [
+									{
+										"default": true,
+										"description": "Connect to Anthropic using an admin API key.",
+										"id": "anthropic_admin_api_key",
+										"name": "Anthropic Admin API Key",
+										"steps": [
+											{
+												"component_id": "common/name_integration",
+												"parameters": null,
+												"type": "component"
+											},
+											{
+												"description": "Generate an Admin API key in the Anthropic Console.",
+												"dynamic_content": null,
+												"form_fields": [
+													{
+														"label": "Admin API Key",
+														"name": "api_key",
+														"placeholder": null,
+														"required": true,
+														"supported_file_types": null,
+														"type": "password"
+													}
+												],
+												"is_required": true,
+												"title": "Provide Admin API Key",
+												"type": "form_input"
+											}
+										],
+										"supported_environments": [
+											"standard"
+										]
+									}
+								]
+							}
+						},
+						"schema": {
+							"items": {
+								"description": "Setup flow for an application auth method.",
+								"properties": {
+									"auth_config": {
+										"allOf": [
+											{
+												"description": "OAuth configuration for setup flows that use OAuth.",
+												"properties": {
+													"authorization_url": {
+														"description": "Authorization URL for the requested environment.",
+														"nullable": true,
+														"type": "string"
+													},
+													"client_id": {
+														"description": "OAuth client ID.",
+														"nullable": true,
+														"type": "string"
+													},
+													"requires_pkce": {
+														"description": "Whether PKCE is required.",
+														"type": "boolean"
+													},
+													"scopes": {
+														"description": "OAuth scopes to request.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"url_placeholders": {
+														"description": "Placeholders in authorization URL that frontend must fill.",
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"authorization_url",
+													"client_id",
+													"requires_pkce",
+													"scopes",
+													"url_placeholders"
+												],
+												"type": "object"
+											}
+										],
+										"description": "OAuth configuration (present for OAuth-based flows)."
+									},
+									"default": {
+										"description": "Whether this is the default auth method.",
+										"type": "boolean"
+									},
+									"description": {
+										"description": "Flow description.",
+										"type": "string"
+									},
+									"id": {
+										"description": "Setup flow identifier.",
+										"type": "string"
+									},
+									"name": {
+										"description": "Human-readable flow name.",
+										"type": "string"
+									},
+									"steps": {
+										"description": "Ordered list of setup steps.",
+										"items": {
+											"description": "A single step in the setup flow. Polymorphic based on type.",
+											"properties": {
+												"component_id": {
+													"description": "Component identifier (for component type).",
+													"nullable": true,
+													"type": "string"
+												},
+												"description": {
+													"description": "Step description with markdown support.",
+													"nullable": true,
+													"type": "string"
+												},
+												"dynamic_content": {
+													"description": "Dynamic content blocks (for instruction/form_input).",
+													"items": {
+														"description": "Dynamic content for instruction/form_input steps.",
+														"properties": {
+															"label": {
+																"description": "Display label.",
+																"type": "string"
+															},
+															"type": {
+																"description": "Content type.\n\n* `copy_block` - copy_block\n* `external_link` - external_link",
+																"enum": [
+																	"copy_block",
+																	"external_link"
+																],
+																"type": "string"
+															},
+															"url_template": {
+																"description": "URL template with {{ variable }} interpolation (for external_link).",
+																"nullable": true,
+																"type": "string"
+															},
+															"value_from": {
+																"description": "Field path to get value from (for copy_block).",
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"required": [
+															"label",
+															"type"
+														],
+														"type": "object"
+													},
+													"nullable": true,
+													"type": "array"
+												},
+												"form_fields": {
+													"description": "Form fields (for form_input).",
+													"items": {
+														"description": "A form field within a form_input step.",
+														"properties": {
+															"label": {
+																"description": "Human-readable field label.",
+																"type": "string"
+															},
+															"name": {
+																"description": "Field identifier (maps to credentials key).",
+																"type": "string"
+															},
+															"placeholder": {
+																"description": "Placeholder text.",
+																"nullable": true,
+																"type": "string"
+															},
+															"required": {
+																"description": "Whether field is required.",
+																"type": "boolean"
+															},
+															"supported_file_types": {
+																"description": "Allowed file extensions for file_upload type.",
+																"items": {
+																	"type": "string"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"type": {
+																"description": "Field input type.\n\n* `text` - text\n* `password` - password\n* `email` - email\n* `file_upload` - file_upload",
+																"enum": [
+																	"text",
+																	"password",
+																	"email",
+																	"file_upload"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"label",
+															"name",
+															"placeholder",
+															"required",
+															"supported_file_types",
+															"type"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"is_required": {
+													"description": "Whether step is required (for form_input).",
+													"type": "boolean"
+												},
+												"parameters": {
+													"additionalProperties": {
+														"type": "string"
+													},
+													"description": "Component parameters (for component type).",
+													"nullable": true,
+													"type": "object"
+												},
+												"title": {
+													"description": "Step title (for instruction/form_input/oauth_redirect).",
+													"type": "string"
+												},
+												"type": {
+													"description": "Step type.\n\n* `component` - component\n* `instruction` - instruction\n* `form_input` - form_input\n* `oauth_redirect` - oauth_redirect",
+													"enum": [
+														"component",
+														"instruction",
+														"form_input",
+														"oauth_redirect"
+													],
+													"type": "string"
+												}
+											},
+											"required": [
+												"type"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"supported_environments": {
+										"description": "Environments this auth method supports (standard, fedramp).",
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"default",
+									"description",
+									"id",
+									"name",
+									"steps",
+									"supported_environments"
+								],
+								"type": "object"
+							},
+							"type": "array"
+						}
+					}
+				},
+				"description": "List of setup flows."
+			},
+			"404": {
+				"description": "Application not found or no flows available."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get application setup flows",
+		"tags": [
+			"Applications"
+		],
+		"x-stability": "beta"
+	},
 	"PATCH /accounts/{account_id}/containers/applications/{application_id}": {
 		"description": "Modifies a single application by id.",
 		"operationId": "modifyApplication",

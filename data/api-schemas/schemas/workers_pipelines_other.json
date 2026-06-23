@@ -161,10 +161,11 @@
 				}
 			},
 			{
+				"deprecated": true,
 				"in": "query",
 				"name": "force",
 				"schema": {
-					"description": "Delete sink forcefully, including deleting any dependent pipelines.",
+					"description": "Deprecated: Delete sink forcefully, including deleting any dependent pipelines.",
 					"type": "string"
 				}
 			}
@@ -223,10 +224,11 @@
 		"operationId": "deleteV4AccountsByAccount_idPipelinesV1StreamsByStream_id",
 		"parameters": [
 			{
+				"deprecated": true,
 				"in": "query",
 				"name": "force",
 				"schema": {
-					"description": "Delete stream forcefully, including deleting any dependent pipelines.",
+					"description": "Deprecated: Delete stream forcefully, including deleting any dependent pipelines.",
 					"type": "string"
 				}
 			},
