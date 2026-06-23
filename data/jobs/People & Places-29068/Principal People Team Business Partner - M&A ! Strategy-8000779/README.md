@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX or San Francisco, CA</strong></p>
+<p><strong>Available Locations: Austin, Denver, San Francisco, Seattle, Atlanta, New York City</strong></p>
 <p><strong>Position Overview:</strong> We are seeking a high-velocity, strategic People M&amp;A Leader to own the human side of our mergers and acquisitions end-to-end. In this role, you will be the single designated point person (DRI) and strategic counterpart to our Corporate Development team. You will own the People lifecycle for all deals—from early-stage confirmatory due diligence through post-close integration.</p>
 <p>Acting as the ultimate "Hub to the Spokes," you will translate deal rationale into practical execution strategies, coordinating fluidly across Recruiting, Total Rewards, People Operations, Workplace Immigration, and Employment Legal. This is a builder role for someone who thrives under compressed timelines, loves creating order out of ambiguity, and is obsessed with delivering a world-class onboarding experience for newly acquired teams.</p>
 <p><strong>Key Responsibilities:</strong></p>
@@ -43,13 +43,34 @@
 	<li><strong>Influence Without Authority:</strong> Exceptional communication and relationship-building skills. Ability to earn the trust of elite technical founders and seamlessly align cross-functional internal executives.</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
-<p>● For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000.</p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
-<p>Health &amp; Welfare Benefits<br>● Medical/Rx Insurance<br>● Dental Insurance<br>● Vision Insurance<br>● Flexible Spending Accounts<br>● Commuter Spending Accounts<br>● Fertility &amp; Family Forming Benefits<br>● On-demand mental health support and Employee Assistance Program<br>● Global Travel Medical Insurance</p>
-<p>Financial Benefits<br>● Short and Long Term Disability Insurance<br>● Life &amp; Accident Insurance<br>● 401(k) Retirement Savings Plan<br>● Employee Stock Participation Plan</p>
-<p>Time Off<br>● Flexible paid time off covering vacation and sick leave<br>● Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<p id="p-rc_c04f13ccf84ecacb-27" data-path-to-node="1"><span class="citation-31 citation-end-31">Compensation may be adjusted depending on work location.</span></p>
+<p data-path-to-node="2">● For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000.</p>
+<p data-path-to-node="3">● For New York City and Washington based hires: Estimated annual salary of $178,000 - $245,000.</p>
+<p id="p-rc_c04f13ccf84ecacb-28" data-path-to-node="4">● For Colorado based hires: Estimated annual salary of $162,000 - $223,<span class="citation-29 citation-30 citation-end-30">000</span></p>
+<p>&nbsp;</p>
+<p id="p-rc_c04f13ccf84ecacb-29" data-path-to-node="5"><span class="citation-24 citation-25 citation-26 citation-27 citation-28 citation-end-28">This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan.</span><span class="citation-24 citation-25 citation-26 citation-27 citation-end-27"> The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the </span><span class="citation-24 citation-25 citation-end-25">Sales Compensation Plan.</span></p>
+<h3 data-path-to-node="6"><strong data-path-to-node="6" data-index-in-node="0">Equity</strong></h3>
+<p id="p-rc_c04f13ccf84ecacb-30" data-path-to-node="7"><span class="citation-23 citation-end-23">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
+<h3 data-path-to-node="8"><strong data-path-to-node="8" data-index-in-node="0">Benefits</strong></h3>
+<p id="p-rc_c04f13ccf84ecacb-31" data-path-to-node="9"><span class="citation-19 citation-20 citation-21 citation-22 citation-end-22">Cloudflare offers a complete package of benefits and programs to support you and your family.</span><span class="citation-19 citation-20 citation-21 citation-end-21"> Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little ea</span><span class="citation-19 citation-20 citation-end-20">sier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employee</span><span class="citation-19 citation-end-19">s based outside the U.S.</span></p>
+<p id="p-rc_c04f13ccf84ecacb-32" data-path-to-node="10">Health &amp; Welfare Benefits</p>
+<p id="p-rc_c04f13ccf84ecacb-32" data-path-to-node="10">● Medical/Rx Insurance</p>
+<p id="p-rc_c04f13ccf84ecacb-32" data-path-to-node="10"><span class="citation-18 citation-end-18">● Dental Insurance</span></p>
+<p id="p-rc_c04f13ccf84ecacb-32" data-path-to-node="10">● Vision Insurance</p>
+<p id="p-rc_c04f13ccf84ecacb-32" data-path-to-node="10">● Flexible Spending Accounts</p>
+<p id="p-rc_c04f13ccf84ecacb-32" data-path-to-node="10">● Commuter Spending Accounts</p>
+<p id="p-rc_c04f13ccf84ecacb-32" data-path-to-node="10">● Fertility &amp; Family Forming Benefits</p>
+<p id="p-rc_c04f13ccf84ecacb-32" data-path-to-node="10">● On-demand mental health support and Employee Assistance Program</p>
+<p id="p-rc_c04f13ccf84ecacb-32" data-path-to-node="10">● Global Travel Medical Insurance</p>
+<p id="p-rc_c04f13ccf84ecacb-33" data-path-to-node="11">Financial Benefits</p>
+<p id="p-rc_c04f13ccf84ecacb-33" data-path-to-node="11"><span class="citation-17 citation-end-17">● Short and Long Term Disability Insurance</span></p>
+<p id="p-rc_c04f13ccf84ecacb-33" data-path-to-node="11">● Life &amp; Accident Insurance</p>
+<p id="p-rc_c04f13ccf84ecacb-33" data-path-to-node="11">● 401(k) Retirement Savings Plan</p>
+<p id="p-rc_c04f13ccf84ecacb-33" data-path-to-node="11">● Employee Stock Participation Plan</p>
+<p id="p-rc_c04f13ccf84ecacb-34" data-path-to-node="12">Time Off</p>
+<p id="p-rc_c04f13ccf84ecacb-34" data-path-to-node="12"><span class="citation-16 citation-end-16">● Flexible paid time off covering vacation and sick leave</span></p>
+<p id="p-rc_c04f13ccf84ecacb-34" data-path-to-node="12">● Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

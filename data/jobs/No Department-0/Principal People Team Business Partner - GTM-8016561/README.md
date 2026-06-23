@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Available Locations: Austin, Denver, San Francisco, Seattle, Atlanta, New York City</strong></p>
 <p><strong>What You Would Do Here:</strong></p>
 <p>Cloudflare is growing our People team. Our focus is finding the best people to work at Cloudflare and then allowing you to do your best work. As we continue to build out our Business Partner team, we are looking for a trusted business partner who is naturally curious about what we do and driven to help our people thrive. In this role, you will report to the Senior Director, GTM People Team Business Partner and support our strategic initiatives, partnering closely with Go-To-Market leaders.</p>
 <p>You will develop and implement proactive solutions for a broad scope of activities, ensuring alignment on initiatives and priorities, maintaining open and transparent lines of communication and keeping our teams thriving and well supported. You will serve as a strategic partner with strong client partnership based in business acumen. You will focus on organizational design, talent management, and driving initiatives and change leadership.</p>
@@ -28,6 +28,12 @@
 	<li>Uncompromising when it comes to your integrity, you speak truth, act with respect and lead with dignity.</li>
 	<li>Demonstrated success utilizing AI as a strategic force multiplier to enhance personal productivity and operational efficiency, while leveraging AI-driven insights to solve complex organizational challenges and support decision-making.</li>
 </ul>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<p id="p-rc_c04f13ccf84ecacb-27" data-path-to-node="1"><span class="citation-31 citation-end-31">Compensation may be adjusted depending on work location.</span></p>
+<p data-path-to-node="2">● For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000.</p>
+<p data-path-to-node="3">● For New York City and Washington based hires: Estimated annual salary of $178,000 - $245,000.</p>
+<p id="p-rc_c04f13ccf84ecacb-28" data-path-to-node="4">● For Colorado based hires: Estimated annual salary of $162,000 - $223,<span class="citation-29 citation-30 citation-end-30">000.</span></p>
+<p data-path-to-node="4"><span class="citation-24 citation-25 citation-26 citation-27 citation-28 citation-end-28">This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan.</span><span class="citation-24 citation-25 citation-26 citation-27 citation-end-27"> The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the </span><span class="citation-24 citation-25 citation-end-25">Sales Compensation Plan.</span>&nbsp;</p>
 <p>&nbsp;</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
