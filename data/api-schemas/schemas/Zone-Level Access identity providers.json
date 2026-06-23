@@ -8835,7 +8835,8 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"PUT /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {
 		"description": "Updates a configured identity provider.",
@@ -12923,6 +12924,7 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-stability": "beta"
 	}
 }

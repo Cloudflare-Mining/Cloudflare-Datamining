@@ -247,8 +247,69 @@
 									"additionalProperties": true,
 									"properties": {
 										"content": {
-											"nullable": true,
-											"type": "string"
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"items": {
+														"oneOf": [
+															{
+																"properties": {
+																	"text": {
+																		"minLength": 1,
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"text"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"text"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"image_url": {
+																		"properties": {
+																			"url": {
+																				"maxLength": 20971520,
+																				"minLength": 1,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"url"
+																		],
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"image_url"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"image_url"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"minItems": 1,
+													"type": "array"
+												},
+												{
+													"nullable": true
+												}
+											]
 										},
 										"role": {
 											"enum": [
@@ -344,8 +405,69 @@
 												"additionalProperties": true,
 												"properties": {
 													"content": {
-														"nullable": true,
-														"type": "string"
+														"anyOf": [
+															{
+																"type": "string"
+															},
+															{
+																"items": {
+																	"oneOf": [
+																		{
+																			"properties": {
+																				"text": {
+																					"minLength": 1,
+																					"type": "string"
+																				},
+																				"type": {
+																					"enum": [
+																						"text"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"text"
+																			],
+																			"type": "object"
+																		},
+																		{
+																			"properties": {
+																				"image_url": {
+																					"properties": {
+																						"url": {
+																							"maxLength": 20971520,
+																							"minLength": 1,
+																							"type": "string"
+																						}
+																					},
+																					"required": [
+																						"url"
+																					],
+																					"type": "object"
+																				},
+																				"type": {
+																					"enum": [
+																						"image_url"
+																					],
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"image_url"
+																			],
+																			"type": "object"
+																		}
+																	]
+																},
+																"minItems": 1,
+																"type": "array"
+															},
+															{
+																"nullable": true
+															}
+														]
 													},
 													"role": {
 														"enum": [
@@ -847,12 +969,74 @@
 								"type": "object"
 							},
 							"messages": {
+								"description": "OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities.",
 								"items": {
 									"additionalProperties": true,
 									"properties": {
 										"content": {
-											"nullable": true,
-											"type": "string"
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"items": {
+														"oneOf": [
+															{
+																"properties": {
+																	"text": {
+																		"minLength": 1,
+																		"type": "string"
+																	},
+																	"type": {
+																		"enum": [
+																			"text"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"text"
+																],
+																"type": "object"
+															},
+															{
+																"properties": {
+																	"image_url": {
+																		"properties": {
+																			"url": {
+																				"maxLength": 20971520,
+																				"minLength": 1,
+																				"type": "string"
+																			}
+																		},
+																		"required": [
+																			"url"
+																		],
+																		"type": "object"
+																	},
+																	"type": {
+																		"enum": [
+																			"image_url"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"image_url"
+																],
+																"type": "object"
+															}
+														]
+													},
+													"minItems": 1,
+													"type": "array"
+												},
+												{
+													"nullable": true
+												}
+											]
 										},
 										"role": {
 											"enum": [
@@ -996,12 +1180,20 @@
 											},
 											"type": "array"
 										},
+										"query_kind": {
+											"enum": [
+												"text",
+												"image",
+												"multimodal"
+											],
+											"type": "string"
+										},
 										"search_query": {
 											"type": "string"
 										}
 									},
 									"required": [
-										"search_query",
+										"query_kind",
 										"chunks"
 									],
 									"type": "object"

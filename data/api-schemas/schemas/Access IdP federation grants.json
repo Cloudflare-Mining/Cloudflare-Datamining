@@ -540,11 +540,17 @@
 											"items": {
 												"properties": {
 													"created_at": {
-														"description": "When the grant was created.",
-														"example": "2026-05-07T19:11:00Z",
-														"format": "date-time",
-														"readOnly": true,
-														"type": "string"
+														"allOf": [
+															{
+																"x-stainless-skip": true
+															},
+															{
+																"example": "2014-01-01T05:20:00.12345Z",
+																"format": "date-time",
+																"type": "string",
+																"x-auditable": true
+															}
+														]
 													},
 													"id": {
 														"allOf": [
@@ -557,13 +563,15 @@
 															}
 														],
 														"description": "UID of the IdP federation grant.",
-														"readOnly": true
+														"readOnly": true,
+														"x-auditable": true
 													},
 													"idp_id": {
 														"description": "UID of the identity provider being federated.",
 														"example": "a79de439-0e7f-4ebb-8a02-222222222222",
 														"format": "uuid",
-														"type": "string"
+														"type": "string",
+														"x-auditable": true
 													}
 												},
 												"required": [
@@ -708,7 +716,8 @@
 		"summary": "List IdP federation grants",
 		"tags": [
 			"Access IdP federation grants"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/access/idp_federation_grants/{grant_id}": {
 		"description": "Retrieves a single IdP federation grant by its UID.",
@@ -838,11 +847,17 @@
 										"result": {
 											"properties": {
 												"created_at": {
-													"description": "When the grant was created.",
-													"example": "2026-05-07T19:11:00Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"id": {
 													"allOf": [
@@ -855,13 +870,15 @@
 														}
 													],
 													"description": "UID of the IdP federation grant.",
-													"readOnly": true
+													"readOnly": true,
+													"x-auditable": true
 												},
 												"idp_id": {
 													"description": "UID of the identity provider being federated.",
 													"example": "a79de439-0e7f-4ebb-8a02-222222222222",
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1117,10 +1134,11 @@
 		"summary": "Get an IdP federation grant",
 		"tags": [
 			"Access IdP federation grants"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/access/idp_federation_grants": {
-		"description": "Creates an IdP federation grant for the specified identity provider, making it\navailable for federation to other accounts in the same Cloudflare organization.\n\nThe account must belong to a Cloudflare organization. One-time pin and\nCloudflare-managed identity providers cannot be federated. An identity\nprovider may only have one active grant at a time.\n",
+		"description": "Creates an IdP federation grant for the specified identity provider, making it\navailable for federation to other accounts in the same Cloudflare organization.\n\nThe account must belong to a Cloudflare organization. One-time pin and\nCloudflare-managed identity providers cannot be federated. An account\ncan federate at most five identity providers at a time.\n",
 		"operationId": "access-idp-federation-grants-create",
 		"parameters": [
 			{
@@ -1145,7 +1163,8 @@
 								"description": "UID of the identity provider to federate. Must be an existing identity provider in this account. One-time pin and Cloudflare-managed identity providers cannot be federated.",
 								"example": "a79de439-0e7f-4ebb-8a02-222222222222",
 								"format": "uuid",
-								"type": "string"
+								"type": "string",
+								"x-auditable": true
 							}
 						},
 						"required": [
@@ -1255,11 +1274,17 @@
 										"result": {
 											"properties": {
 												"created_at": {
-													"description": "When the grant was created.",
-													"example": "2026-05-07T19:11:00Z",
-													"format": "date-time",
-													"readOnly": true,
-													"type": "string"
+													"allOf": [
+														{
+															"x-stainless-skip": true
+														},
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													]
 												},
 												"id": {
 													"allOf": [
@@ -1272,13 +1297,15 @@
 														}
 													],
 													"description": "UID of the IdP federation grant.",
-													"readOnly": true
+													"readOnly": true,
+													"x-auditable": true
 												},
 												"idp_id": {
 													"description": "UID of the identity provider being federated.",
 													"example": "a79de439-0e7f-4ebb-8a02-222222222222",
 													"format": "uuid",
-													"type": "string"
+													"type": "string",
+													"x-auditable": true
 												}
 											},
 											"required": [
@@ -1421,6 +1448,7 @@
 		"summary": "Create an IdP federation grant",
 		"tags": [
 			"Access IdP federation grants"
-		]
+		],
+		"x-stability": "beta"
 	}
 }

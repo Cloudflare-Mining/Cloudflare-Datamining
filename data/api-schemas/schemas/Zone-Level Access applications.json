@@ -916,6 +916,12 @@
 																		"example": "test.example.com/admin",
 																		"type": "string"
 																	},
+																	"eager_redirect_cookie_setting": {
+																		"default": true,
+																		"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																		"example": true,
+																		"type": "boolean"
+																	},
 																	"enable_binding_cookie": {
 																		"default": false,
 																		"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -2213,6 +2219,12 @@
 																				"example": "test.example.com/admin",
 																				"type": "string"
 																			},
+																			"eager_redirect_cookie_setting": {
+																				"default": true,
+																				"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																				"example": true,
+																				"type": "boolean"
+																			},
 																			"enable_binding_cookie": {
 																				"default": false,
 																				"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -2778,6 +2790,12 @@
 																				"description": "The domain and path that Access will secure.",
 																				"example": "test.example.com/admin",
 																				"type": "string"
+																			},
+																			"eager_redirect_cookie_setting": {
+																				"default": true,
+																				"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																				"example": true,
+																				"type": "boolean"
 																			},
 																			"enable_binding_cookie": {
 																				"default": false,
@@ -4798,7 +4816,8 @@
 			"Access: Apps and Policies Revoke",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}": {
 		"description": "Fetches information about an Access application.",
@@ -5418,6 +5437,12 @@
 																	"description": "The domain and path that Access will secure.",
 																	"example": "test.example.com/admin",
 																	"type": "string"
+																},
+																"eager_redirect_cookie_setting": {
+																	"default": true,
+																	"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																	"example": true,
+																	"type": "boolean"
 																},
 																"enable_binding_cookie": {
 																	"default": false,
@@ -6716,6 +6741,12 @@
 																			"example": "test.example.com/admin",
 																			"type": "string"
 																		},
+																		"eager_redirect_cookie_setting": {
+																			"default": true,
+																			"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"enable_binding_cookie": {
 																			"default": false,
 																			"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -7281,6 +7312,12 @@
 																			"description": "The domain and path that Access will secure.",
 																			"example": "test.example.com/admin",
 																			"type": "string"
+																		},
+																		"eager_redirect_cookie_setting": {
+																			"default": true,
+																			"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"enable_binding_cookie": {
 																			"default": false,
@@ -9297,7 +9334,8 @@
 			"Access: Apps and Policies Read",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}/user_policy_checks": {
 		"description": "Tests if a specific user has permission to access an application.",
@@ -10494,6 +10532,12 @@
 												"description": "The domain and path that Access will secure.",
 												"example": "test.example.com/admin",
 												"type": "string"
+											},
+											"eager_redirect_cookie_setting": {
+												"default": true,
+												"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+												"example": true,
+												"type": "boolean"
 											},
 											"enable_binding_cookie": {
 												"default": false,
@@ -11792,6 +11836,12 @@
 														"example": "test.example.com/admin",
 														"type": "string"
 													},
+													"eager_redirect_cookie_setting": {
+														"default": true,
+														"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+														"example": true,
+														"type": "boolean"
+													},
 													"enable_binding_cookie": {
 														"default": false,
 														"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -12357,6 +12407,12 @@
 														"description": "The domain and path that Access will secure.",
 														"example": "test.example.com/admin",
 														"type": "string"
+													},
+													"eager_redirect_cookie_setting": {
+														"default": true,
+														"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+														"example": true,
+														"type": "boolean"
 													},
 													"enable_binding_cookie": {
 														"default": false,
@@ -14820,6 +14876,12 @@
 																			"example": "test.example.com/admin",
 																			"type": "string"
 																		},
+																		"eager_redirect_cookie_setting": {
+																			"default": true,
+																			"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"enable_binding_cookie": {
 																			"default": false,
 																			"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -16117,6 +16179,12 @@
 																					"example": "test.example.com/admin",
 																					"type": "string"
 																				},
+																				"eager_redirect_cookie_setting": {
+																					"default": true,
+																					"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"enable_binding_cookie": {
 																					"default": false,
 																					"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -16682,6 +16750,12 @@
 																					"description": "The domain and path that Access will secure.",
 																					"example": "test.example.com/admin",
 																					"type": "string"
+																				},
+																				"eager_redirect_cookie_setting": {
+																					"default": true,
+																					"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																					"example": true,
+																					"type": "boolean"
 																				},
 																				"enable_binding_cookie": {
 																					"default": false,
@@ -19051,6 +19125,12 @@
 																	"example": "test.example.com/admin",
 																	"type": "string"
 																},
+																"eager_redirect_cookie_setting": {
+																	"default": true,
+																	"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"enable_binding_cookie": {
 																	"default": false,
 																	"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -20348,6 +20428,12 @@
 																			"example": "test.example.com/admin",
 																			"type": "string"
 																		},
+																		"eager_redirect_cookie_setting": {
+																			"default": true,
+																			"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"enable_binding_cookie": {
 																			"default": false,
 																			"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -20913,6 +20999,12 @@
 																			"description": "The domain and path that Access will secure.",
 																			"example": "test.example.com/admin",
 																			"type": "string"
+																		},
+																		"eager_redirect_cookie_setting": {
+																			"default": true,
+																			"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"enable_binding_cookie": {
 																			"default": false,
@@ -22926,7 +23018,8 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /zones/{zone_id}/access/apps/{app_id}/revoke_tokens": {
 		"description": "Revokes all tokens issued for an application.",
@@ -23654,6 +23747,12 @@
 												"description": "The domain and path that Access will secure.",
 												"example": "test.example.com/admin",
 												"type": "string"
+											},
+											"eager_redirect_cookie_setting": {
+												"default": true,
+												"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+												"example": true,
+												"type": "boolean"
 											},
 											"enable_binding_cookie": {
 												"default": false,
@@ -24952,6 +25051,12 @@
 														"example": "test.example.com/admin",
 														"type": "string"
 													},
+													"eager_redirect_cookie_setting": {
+														"default": true,
+														"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+														"example": true,
+														"type": "boolean"
+													},
 													"enable_binding_cookie": {
 														"default": false,
 														"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -25517,6 +25622,12 @@
 														"description": "The domain and path that Access will secure.",
 														"example": "test.example.com/admin",
 														"type": "string"
+													},
+													"eager_redirect_cookie_setting": {
+														"default": true,
+														"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+														"example": true,
+														"type": "boolean"
 													},
 													"enable_binding_cookie": {
 														"default": false,
@@ -27980,6 +28091,12 @@
 																			"example": "test.example.com/admin",
 																			"type": "string"
 																		},
+																		"eager_redirect_cookie_setting": {
+																			"default": true,
+																			"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"enable_binding_cookie": {
 																			"default": false,
 																			"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -29277,6 +29394,12 @@
 																					"example": "test.example.com/admin",
 																					"type": "string"
 																				},
+																				"eager_redirect_cookie_setting": {
+																					"default": true,
+																					"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																					"example": true,
+																					"type": "boolean"
+																				},
 																				"enable_binding_cookie": {
 																					"default": false,
 																					"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -29842,6 +29965,12 @@
 																					"description": "The domain and path that Access will secure.",
 																					"example": "test.example.com/admin",
 																					"type": "string"
+																				},
+																				"eager_redirect_cookie_setting": {
+																					"default": true,
+																					"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																					"example": true,
+																					"type": "boolean"
 																				},
 																				"enable_binding_cookie": {
 																					"default": false,
@@ -32211,6 +32340,12 @@
 																	"example": "test.example.com/admin",
 																	"type": "string"
 																},
+																"eager_redirect_cookie_setting": {
+																	"default": true,
+																	"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																	"example": true,
+																	"type": "boolean"
+																},
 																"enable_binding_cookie": {
 																	"default": false,
 																	"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -33508,6 +33643,12 @@
 																			"example": "test.example.com/admin",
 																			"type": "string"
 																		},
+																		"eager_redirect_cookie_setting": {
+																			"default": true,
+																			"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																			"example": true,
+																			"type": "boolean"
+																		},
 																		"enable_binding_cookie": {
 																			"default": false,
 																			"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
@@ -34073,6 +34214,12 @@
 																			"description": "The domain and path that Access will secure.",
 																			"example": "test.example.com/admin",
 																			"type": "string"
+																		},
+																		"eager_redirect_cookie_setting": {
+																			"default": true,
+																			"description": "Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.",
+																			"example": true,
+																			"type": "boolean"
 																		},
 																		"enable_binding_cookie": {
 																			"default": false,
@@ -36086,7 +36233,8 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"PUT /zones/{zone_id}/access/apps/{app_id}/settings": {
 		"description": "Updates application settings.",
