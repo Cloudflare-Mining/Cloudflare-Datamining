@@ -1,5 +1,17 @@
 # Change Log
 
+## 7.1.15
+
+### Patch Changes
+
+- @cloudflare/component-link@10.0.5
+
+## 7.1.14
+
+### Patch Changes
+
+- e3db92eea0: Remove stale react-router-dom peer dependencies from packages that do not import router APIs.
+
 ## 7.1.13
 
 ### Patch Changes

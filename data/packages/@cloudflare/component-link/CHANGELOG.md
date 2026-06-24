@@ -1,5 +1,12 @@
 # Change Log
 
+## 10.0.5
+
+### Patch Changes
+
+- Updated dependencies [abfced25d3]
+  - @cloudflare/util-cl1-compat-router@3.0.0
+
 ## 10.0.4
 
 ### Patch Changes
