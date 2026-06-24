@@ -1809,15 +1809,6 @@
 		"category": "app_security"
 	},
 	{
-		"id": "b071dbca5f0a412e96ab95749da01a7c",
-		"name": "Granular Workers Scripts Read",
-		"description": "Grants read access to a single Cloudflare Worker resource.",
-		"scopes": [
-			"com.cloudflare.edge.worker.script"
-		],
-		"category": "developer_platform"
-	},
-	{
 		"id": "fac65912d42144aa86b7dd33281bf79e",
 		"name": "Health Checks Read",
 		"description": "Grants read access to Health Checks",
@@ -3146,15 +3137,6 @@
 		"description": "Grants `wrangler tail` read permissions",
 		"scopes": [
 			"com.cloudflare.api.account"
-		],
-		"category": "developer_platform"
-	},
-	{
-		"id": "7be86e6d99394878b4c8753de0be5e6a",
-		"name": "Workers Websearch Bind",
-		"description": "Grants permission to bind Websearch to Cloudflare Workers.",
-		"scopes": [
-			"com.cloudflare.api.account.websearch"
 		],
 		"category": "developer_platform"
 	},
