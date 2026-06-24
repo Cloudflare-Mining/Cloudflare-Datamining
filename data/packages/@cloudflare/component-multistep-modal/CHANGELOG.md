@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.38
+
+### Patch Changes
+
+- e3db92eea0: Remove stale react-router-dom peer dependencies from packages that do not import router APIs.
+- Updated dependencies [e3db92eea0]
+  - @cloudflare/component-progress@10.0.36
+
 ## 6.0.37
 
 ### Patch Changes

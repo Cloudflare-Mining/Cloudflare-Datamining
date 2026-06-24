@@ -1,5 +1,11 @@
 # Change Log
 
+## 10.0.36
+
+### Patch Changes
+
+- e3db92eea0: Remove stale react-router-dom peer dependencies from packages that do not import router APIs.
+
 ## 10.0.35
 
 ### Patch Changes
