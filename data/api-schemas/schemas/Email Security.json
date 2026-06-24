@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/email-security/investigate/bulk/{job_id}": {
-		"description": "Soft-deletes the job, hiding it from all list and detail endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`, `FAILED`, or `SKIPPED`) can be deleted. To stop an in-progress job without removing it, use the cancel endpoint instead.",
+		"description": "Deletes the job, removing it from all list and detail endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`, `FAILED`, or `SKIPPED`) can be deleted. To stop an in-progress job without removing it, use the cancel endpoint instead.",
 		"operationId": "email_security_delete_bulk_job",
 		"responses": {
 			"200": {
