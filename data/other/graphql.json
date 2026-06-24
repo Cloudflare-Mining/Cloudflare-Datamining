@@ -3468,6 +3468,7 @@
 		"count": "Count of periodic metric events",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
+		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountDurableObjectsPeriodicGroupsAvg": {
@@ -3498,10 +3499,21 @@
 	},
 	"AccountDurableObjectsPeriodicGroupsMax": {
 		"__description": "",
-		"activeWebsocketConnections": "Maximum active websocket connections in the time window"
+		"activeWebsocketConnections": "Maximum active websocket connections in the time window",
+		"memoryUsageBytes": "Maximum isolate memory usage reported by Durable Object periodic metrics - bytes"
 	},
 	"AccountDurableObjectsPeriodicGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountDurableObjectsPeriodicGroupsQuantiles": {
+		"__description": "",
+		"memoryUsageBytesP25": "Isolate memory usage 25th percentile across Durable Object periodic metrics - bytes",
+		"memoryUsageBytesP50": "Isolate memory usage 50th percentile across Durable Object periodic metrics - bytes",
+		"memoryUsageBytesP75": "Isolate memory usage 75th percentile across Durable Object periodic metrics - bytes",
+		"memoryUsageBytesP90": "Isolate memory usage 90th percentile across Durable Object periodic metrics - bytes",
+		"memoryUsageBytesP95": "Isolate memory usage 95th percentile across Durable Object periodic metrics - bytes",
+		"memoryUsageBytesP99": "Isolate memory usage 99th percentile across Durable Object periodic metrics - bytes",
+		"memoryUsageBytesP999": "Isolate memory usage 99.9th percentile across Durable Object periodic metrics - bytes"
 	},
 	"AccountDurableObjectsPeriodicGroupsSum": {
 		"__description": "",
@@ -9898,6 +9910,7 @@
 		"webSearchRequestsAdaptiveGroups": "",
 		"workerPlacementAdaptiveGroups": "",
 		"workersAnalyticsEngineAdaptiveGroups": "",
+		"workersAssetsRequestsAdaptiveGroups": "",
 		"workersBuildsBuildMinutesAdaptiveGroups": "",
 		"workersInvocationsAdaptive": "",
 		"workersInvocationsByOwnerAndScriptGroups": "",
@@ -11010,6 +11023,45 @@
 	},
 	"AccountWorkersAnalyticsEngineAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountWorkersAssetsRequestsAdaptiveGroups": {
+		"__description": "Workers Assets requests with adaptive sampling",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountWorkersAssetsRequestsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountWorkersAssetsRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"cacheStatus": "The cache status for the asset request",
+		"coloCode": "IATA airport code for the Cloudflare datacenter that served the asset request",
+		"date": "Asset request timestamp, truncated to start of a day",
+		"datetime": "Asset request timestamp",
+		"datetimeFifteenMinutes": "Asset request timestamp, truncated to fifteen minutes",
+		"datetimeFiveMinutes": "Asset request timestamp, truncated to five minutes",
+		"datetimeHour": "Asset request timestamp, truncated to start of an hour",
+		"datetimeMinute": "Asset request timestamp, truncated to start of a minute",
+		"datetimeSixHours": "Asset request timestamp, truncated to start of six hour window",
+		"hostname": "The request hostname",
+		"statusCode": "HTTP response status code"
+	},
+	"AccountWorkersAssetsRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersAssetsRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkersAssetsRequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"requests": "Total number of asset requests"
+	},
+	"AccountWorkersAssetsRequestsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"requests": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountWorkersBuildsBuildMinutesAdaptiveGroups": {
 		"__description": "Workers Builds build minute overview data with adaptive sampling",
@@ -15093,6 +15145,7 @@
 		"webSearchRequestsAdaptiveGroups": "Web Search Requests Analytics",
 		"workerPlacementAdaptiveGroups": "Worker placement metrics",
 		"workersAnalyticsEngineAdaptiveGroups": "Beta. Custom Events with adaptive sampling",
+		"workersAssetsRequestsAdaptiveGroups": "Workers Assets requests with adaptive sampling",
 		"workersBuildsBuildMinutesAdaptiveGroups": "Workers Builds build minute overview data with adaptive sampling",
 		"workersInvocationsAdaptive": "Beta. Workers invocations with adaptive sampling",
 		"workersInvocationsByOwnerAndScriptGroups": "Workers dynamic worker invocations. Used for exact distinct dynamic worker counts.",
@@ -15118,7 +15171,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
