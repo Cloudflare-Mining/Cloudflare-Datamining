@@ -96,6 +96,21 @@ export default {
 };
 ```
 
+## Caching
+
+The server provider can cache evaluations to avoid a network round-trip (HTTP mode) or binding call (binding mode) for repeated flag/context pairs. Caching is **off by default** and enabled by setting `cacheTtl`:
+
+```typescript
+new FlagshipServerProvider({
+  appId: 'your-app-id',
+  accountId: 'your-account-id',
+  cacheTtl: 30_000, // ms — enables caching; values may be up to this stale
+  cacheMaxSize: 1000, // max cached entries, LRU-evicted (default: 1000)
+});
+```
+
+Each entry is keyed by flag key, type, and the **full evaluation context**, so distinct contexts never share a value. Cache hits resolve with `reason: 'CACHED'`. Disabled flags and errors are never cached. Because freshness is TTL-based, a flag change in Flagship takes effect after the entry expires.
+
 ## Quick start — browser
 
 ```typescript
@@ -128,6 +143,7 @@ const darkMode = client.getBooleanValue('dark-mode', false);
 | All flag types        | Boolean, string, number, and object (JSON)                                   |
 | Authentication        | `authToken` option adds `Authorization: Bearer` to every request (HTTP only) |
 | Logging               | `logging` option surfaces fetch errors and cache misses (off by default)     |
+| Response caching      | Opt-in per-context TTL + LRU cache via `cacheTtl` (off by default)           |
 | Retries + timeouts    | Configurable retry logic with `AbortController`-based timeouts (HTTP only)   |
 | Hooks                 | Built-in `LoggingHook` and `TelemetryHook`                                   |
 | Tree-shakeable        | Server and client bundles are fully isolated                                 |
