@@ -4,6 +4,105 @@
 	"input": {
 		"rows": [
 			{
+				"id": "text",
+				"name": "text",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "The text to convert to speech. Maximum 10,000 characters.",
+				"metadata": {
+					"maxLength": 10000
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "voice_id",
+				"name": "voice_id",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "English_expressive_narrator",
+				"description": "The voice ID to use for synthesis",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "speed",
+				"name": "speed",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "1",
+				"description": "Speech speed (0.5 to 2)",
+				"metadata": {
+					"minimum": 0.5,
+					"maximum": 2
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "volume",
+				"name": "volume",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "1",
+				"description": "Speech volume (0 to 10)",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 10
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "pitch",
+				"name": "pitch",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "0",
+				"description": "Pitch adjustment (-12 to 12)",
+				"metadata": {
+					"minimum": -12,
+					"maximum": 12
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "emotion",
 				"name": "emotion",
 				"type": "string",
@@ -52,27 +151,6 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "pitch",
-				"name": "pitch",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "0",
-				"description": "Pitch adjustment (-12 to 12)",
-				"metadata": {
-					"maximum": 12,
-					"minimum": -12
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "sample_rate",
 				"name": "sample_rate",
 				"type": "one of",
@@ -84,7 +162,7 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"depth": 0,
-				"isLast": false,
+				"isLast": true,
 				"ancestorIsLast": [],
 				"children": [
 					{
@@ -105,7 +183,7 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					},
 					{
@@ -126,7 +204,7 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					},
 					{
@@ -147,7 +225,7 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					},
 					{
@@ -168,7 +246,7 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					},
 					{
@@ -189,7 +267,7 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					},
 					{
@@ -210,88 +288,10 @@
 						"depth": 1,
 						"isLast": true,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					}
 				]
-			},
-			{
-				"id": "speed",
-				"name": "speed",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "1",
-				"description": "Speech speed (0.5 to 2)",
-				"metadata": {
-					"maximum": 2,
-					"minimum": 0.5
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "text",
-				"name": "text",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "The text to convert to speech. Maximum 10,000 characters.",
-				"metadata": {
-					"maxLength": 10000
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "voice_id",
-				"name": "voice_id",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "English_expressive_narrator",
-				"description": "The voice ID to use for synthesis",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "volume",
-				"name": "volume",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "1",
-				"description": "Speech volume (0 to 10)",
-				"metadata": {
-					"maximum": 10,
-					"minimum": 0
-				},
-				"depth": 0,
-				"isLast": true,
-				"ancestorIsLast": []
 			}
 		],
 		"variants": null,

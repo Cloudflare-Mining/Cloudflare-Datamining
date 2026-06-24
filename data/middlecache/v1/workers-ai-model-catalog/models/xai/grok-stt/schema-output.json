@@ -1,11 +1,51 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": {},
+	"type": "object",
 	"properties": {
+		"text": {
+			"description": "Full transcript text.",
+			"type": "string"
+		},
+		"language": {
+			"description": "Detected language name (e.g. \"English\", \"French\").",
+			"type": "string"
+		},
+		"duration": {
+			"description": "Audio duration in seconds (2 d.p.).",
+			"type": "number"
+		},
+		"words": {
+			"description": "Word-level segments. Each entry has text, start, end (seconds). Includes speaker integer when diarize=true.",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"text": {
+						"type": "string"
+					},
+					"start": {
+						"type": "number"
+					},
+					"end": {
+						"type": "number"
+					},
+					"speaker": {
+						"type": "number"
+					}
+				},
+				"required": [
+					"text",
+					"start",
+					"end"
+				],
+				"additionalProperties": {}
+			}
+		},
 		"channels": {
 			"description": "Per-channel transcripts when multichannel=true.",
+			"type": "array",
 			"items": {
-				"additionalProperties": {},
+				"type": "object",
 				"properties": {
 					"index": {
 						"type": "number"
@@ -14,17 +54,18 @@
 						"type": "string"
 					},
 					"words": {
+						"type": "array",
 						"items": {
-							"additionalProperties": {},
+							"type": "object",
 							"properties": {
-								"end": {
-									"type": "number"
+								"text": {
+									"type": "string"
 								},
 								"start": {
 									"type": "number"
 								},
-								"text": {
-									"type": "string"
+								"end": {
+									"type": "number"
 								}
 							},
 							"required": [
@@ -32,61 +73,20 @@
 								"start",
 								"end"
 							],
-							"type": "object"
-						},
-						"type": "array"
+							"additionalProperties": {}
+						}
 					}
 				},
 				"required": [
 					"index",
 					"text"
 				],
-				"type": "object"
-			},
-			"type": "array"
-		},
-		"duration": {
-			"description": "Audio duration in seconds (2 d.p.).",
-			"type": "number"
-		},
-		"language": {
-			"description": "Detected language name (e.g. \"English\", \"French\").",
-			"type": "string"
-		},
-		"text": {
-			"description": "Full transcript text.",
-			"type": "string"
-		},
-		"words": {
-			"description": "Word-level segments. Each entry has text, start, end (seconds). Includes speaker integer when diarize=true.",
-			"items": {
-				"additionalProperties": {},
-				"properties": {
-					"end": {
-						"type": "number"
-					},
-					"speaker": {
-						"type": "number"
-					},
-					"start": {
-						"type": "number"
-					},
-					"text": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"text",
-					"start",
-					"end"
-				],
-				"type": "object"
-			},
-			"type": "array"
+				"additionalProperties": {}
+			}
 		}
 	},
 	"required": [
 		"text"
 	],
-	"type": "object"
+	"additionalProperties": {}
 }

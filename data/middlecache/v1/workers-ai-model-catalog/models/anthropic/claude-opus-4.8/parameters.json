@@ -4,24 +4,6 @@
 	"input": {
 		"rows": [
 			{
-				"id": "max_tokens",
-				"name": "max_tokens",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"metadata": {
-					"exclusiveMinimum": 0
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "messages",
 				"name": "messages",
 				"type": "array",
@@ -37,6 +19,27 @@
 				"ancestorIsLast": [],
 				"children": [
 					{
+						"id": "messages.role",
+						"name": "role",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"enumValues": [
+							"user",
+							"assistant"
+						],
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
 						"id": "messages.content",
 						"name": "content",
 						"type": "one of",
@@ -48,7 +51,7 @@
 						"isLastOneOfChild": false,
 						"required": true,
 						"depth": 1,
-						"isLast": false,
+						"isLast": true,
 						"ancestorIsLast": [
 							false
 						],
@@ -68,7 +71,7 @@
 								"isLast": false,
 								"ancestorIsLast": [
 									false,
-									false
+									true
 								]
 							},
 							{
@@ -86,93 +89,25 @@
 								"isLast": true,
 								"ancestorIsLast": [
 									false,
-									false
+									true
 								],
 								"children": [
 									{
-										"id": "messages.content.1.cache_control",
-										"name": "cache_control",
-										"type": "object",
-										"isArray": false,
-										"isObject": true,
-										"isOneOf": false,
-										"isOneOfChild": false,
-										"isFirstOneOfChild": false,
-										"isLastOneOfChild": false,
-										"required": false,
-										"depth": 3,
-										"isLast": false,
-										"ancestorIsLast": [
-											false,
-											false,
-											true
-										],
-										"children": [
-											{
-												"id": "messages.content.1.cache_control.ttl",
-												"name": "ttl",
-												"type": "string",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": false,
-												"enumValues": [
-													"5m",
-													"1h"
-												],
-												"depth": 4,
-												"isLast": false,
-												"ancestorIsLast": [
-													false,
-													false,
-													true,
-													false
-												]
-											},
-											{
-												"id": "messages.content.1.cache_control.type",
-												"name": "type",
-												"type": "string",
-												"isArray": false,
-												"isObject": false,
-												"isOneOf": false,
-												"isOneOfChild": false,
-												"isFirstOneOfChild": false,
-												"isLastOneOfChild": false,
-												"required": true,
-												"metadata": {
-													"const": "ephemeral"
-												},
-												"depth": 4,
-												"isLast": true,
-												"ancestorIsLast": [
-													false,
-													false,
-													true,
-													false
-												]
-											}
-										]
-									},
-									{
-										"id": "messages.content.1.source",
-										"name": "source",
-										"type": "",
+										"id": "messages.content.1.type",
+										"name": "type",
+										"type": "string",
 										"isArray": false,
 										"isObject": false,
 										"isOneOf": false,
 										"isOneOfChild": false,
 										"isFirstOneOfChild": false,
 										"isLastOneOfChild": false,
-										"required": false,
+										"required": true,
 										"depth": 3,
 										"isLast": false,
 										"ancestorIsLast": [
 											false,
-											false,
+											true,
 											true
 										]
 									},
@@ -191,62 +126,127 @@
 										"isLast": false,
 										"ancestorIsLast": [
 											false,
-											false,
+											true,
 											true
 										]
 									},
 									{
-										"id": "messages.content.1.type",
-										"name": "type",
-										"type": "string",
+										"id": "messages.content.1.source",
+										"name": "source",
+										"type": "",
 										"isArray": false,
 										"isObject": false,
 										"isOneOf": false,
 										"isOneOfChild": false,
 										"isFirstOneOfChild": false,
 										"isLastOneOfChild": false,
-										"required": true,
+										"required": false,
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											true
+										]
+									},
+									{
+										"id": "messages.content.1.cache_control",
+										"name": "cache_control",
+										"type": "object",
+										"isArray": false,
+										"isObject": true,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": false,
 										"depth": 3,
 										"isLast": true,
 										"ancestorIsLast": [
 											false,
-											false,
+											true,
 											true
+										],
+										"children": [
+											{
+												"id": "messages.content.1.cache_control.type",
+												"name": "type",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": true,
+												"metadata": {
+													"const": "ephemeral"
+												},
+												"depth": 4,
+												"isLast": false,
+												"ancestorIsLast": [
+													false,
+													true,
+													true,
+													true
+												]
+											},
+											{
+												"id": "messages.content.1.cache_control.ttl",
+												"name": "ttl",
+												"type": "string",
+												"isArray": false,
+												"isObject": false,
+												"isOneOf": false,
+												"isOneOfChild": false,
+												"isFirstOneOfChild": false,
+												"isLastOneOfChild": false,
+												"required": false,
+												"enumValues": [
+													"5m",
+													"1h"
+												],
+												"depth": 4,
+												"isLast": true,
+												"ancestorIsLast": [
+													false,
+													true,
+													true,
+													true
+												]
+											}
 										]
 									}
 								]
 							}
 						]
-					},
-					{
-						"id": "messages.role",
-						"name": "role",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"enumValues": [
-							"user",
-							"assistant"
-						],
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						]
 					}
 				]
 			},
 			{
-				"id": "metadata",
-				"name": "metadata",
-				"type": "object",
+				"id": "max_tokens",
+				"name": "max_tokens",
+				"type": "number",
 				"isArray": false,
-				"isObject": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"metadata": {
+					"exclusiveMinimum": 0
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "system",
+				"name": "system",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
 				"isOneOf": false,
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
@@ -254,26 +254,7 @@
 				"required": false,
 				"depth": 0,
 				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "metadata.additionalProperties",
-						"name": "additionalProperties",
-						"type": "",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						]
-					}
-				]
+				"ancestorIsLast": []
 			},
 			{
 				"id": "stream",
@@ -291,11 +272,11 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "system",
-				"name": "system",
-				"type": "string",
+				"id": "metadata",
+				"name": "metadata",
+				"type": "object",
 				"isArray": false,
-				"isObject": false,
+				"isObject": true,
 				"isOneOf": false,
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
@@ -303,33 +284,12 @@
 				"required": false,
 				"depth": 0,
 				"isLast": true,
-				"ancestorIsLast": []
-			}
-		],
-		"variants": null,
-		"isFlat": false
-	},
-	"output": {
-		"rows": [
-			{
-				"id": "content",
-				"name": "content",
-				"type": "array",
-				"isArray": true,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"depth": 0,
-				"isLast": false,
 				"ancestorIsLast": [],
 				"children": [
 					{
-						"id": "content.text",
-						"name": "text",
-						"type": "string",
+						"id": "metadata.additionalProperties",
+						"name": "additionalProperties",
+						"type": "",
 						"isArray": false,
 						"isObject": false,
 						"isOneOf": false,
@@ -338,82 +298,23 @@
 						"isLastOneOfChild": false,
 						"required": false,
 						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "content.type",
-						"name": "type",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"depth": 1,
 						"isLast": true,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					}
 				]
-			},
+			}
+		],
+		"variants": null,
+		"isFlat": false
+	},
+	"output": {
+		"rows": [
 			{
 				"id": "id",
 				"name": "id",
 				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "model",
-				"name": "model",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "role",
-				"name": "role",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"metadata": {
-					"const": "assistant"
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "stop_reason",
-				"name": "stop_reason",
-				"type": "string | null",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -439,6 +340,105 @@
 				"metadata": {
 					"const": "message"
 				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "role",
+				"name": "role",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"metadata": {
+					"const": "assistant"
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "content",
+				"name": "content",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "content.type",
+						"name": "type",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "content.text",
+						"name": "text",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "model",
+				"name": "model",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "stop_reason",
+				"name": "stop_reason",
+				"type": "string | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []

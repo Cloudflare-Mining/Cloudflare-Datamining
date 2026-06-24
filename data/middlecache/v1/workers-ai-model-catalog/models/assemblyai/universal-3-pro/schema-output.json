@@ -1,93 +1,29 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": false,
+	"type": "object",
 	"properties": {
-		"confidence": {
-			"anyOf": [
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
-			],
-			"description": "Overall confidence score for the transcription."
-		},
-		"language_code": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
-			],
-			"description": "Detected or specified language code."
-		},
-		"language_confidence": {
-			"anyOf": [
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
-			],
-			"description": "Confidence score for language detection."
-		},
 		"text": {
 			"description": "The transcribed text.",
 			"type": "string"
 		},
-		"utterances": {
+		"words": {
+			"description": "Word-level timestamps and confidence scores.",
 			"anyOf": [
 				{
+					"type": "array",
 					"items": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
-							"confidence": {
-								"type": "number"
-							},
-							"end": {
-								"type": "number"
-							},
-							"speaker": {
+							"text": {
 								"type": "string"
 							},
 							"start": {
 								"type": "number"
 							},
-							"text": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"text",
-							"start",
-							"end",
-							"confidence",
-							"speaker"
-						],
-						"type": "object"
-					},
-					"type": "array"
-				},
-				{
-					"type": "null"
-				}
-			],
-			"description": "Speaker-separated utterances (when speaker_labels is enabled)."
-		},
-		"words": {
-			"anyOf": [
-				{
-					"items": {
-						"additionalProperties": false,
-						"properties": {
-							"confidence": {
+							"end": {
 								"type": "number"
 							},
-							"end": {
+							"confidence": {
 								"type": "number"
 							},
 							"speaker": {
@@ -99,12 +35,6 @@
 										"type": "null"
 									}
 								]
-							},
-							"start": {
-								"type": "number"
-							},
-							"text": {
-								"type": "string"
 							}
 						},
 						"required": [
@@ -113,19 +43,89 @@
 							"end",
 							"confidence"
 						],
-						"type": "object"
-					},
-					"type": "array"
+						"additionalProperties": false
+					}
 				},
 				{
 					"type": "null"
 				}
-			],
-			"description": "Word-level timestamps and confidence scores."
+			]
+		},
+		"utterances": {
+			"description": "Speaker-separated utterances (when speaker_labels is enabled).",
+			"anyOf": [
+				{
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"text": {
+								"type": "string"
+							},
+							"start": {
+								"type": "number"
+							},
+							"end": {
+								"type": "number"
+							},
+							"confidence": {
+								"type": "number"
+							},
+							"speaker": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"text",
+							"start",
+							"end",
+							"confidence",
+							"speaker"
+						],
+						"additionalProperties": false
+					}
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"confidence": {
+			"description": "Overall confidence score for the transcription.",
+			"anyOf": [
+				{
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"language_code": {
+			"description": "Detected or specified language code.",
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"language_confidence": {
+			"description": "Confidence score for language detection.",
+			"anyOf": [
+				{
+					"type": "number"
+				},
+				{
+					"type": "null"
+				}
+			]
 		}
 	},
 	"required": [
 		"text"
 	],
-	"type": "object"
+	"additionalProperties": false
 }

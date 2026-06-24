@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-06-22T04:33:53.678Z",
-	"model_count": 191,
+	"generated_at": "2026-06-24T04:34:17.917Z",
+	"model_count": 194,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -79,6 +79,125 @@
 			"terms": "https://www.alibabacloud.com/help/en/legal",
 			"cover_image_url": null,
 			"created_at": "2026-05-22 17:52:50"
+		},
+		{
+			"model_id": "alibaba/hh1.1-i2v",
+			"slug": "alibaba/hh1.1-i2v",
+			"display_name": "HappyHorse 1.1 I2V",
+			"description": "Alibaba's HappyHorse 1.1 image-to-video model. Animates a reference image with an optional text prompt, with smoother motion, natural skin textures, and improved close-up quality over 1.0. Supports 720P and 1080P output with durations from 3 to 15 seconds.",
+			"task": {
+				"id": "",
+				"name": "Image-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Image-to-Video",
+				"Video Generation"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.alibabacloud.com/help/en/legal"
+				},
+				{
+					"property_id": "info",
+					"value": "https://modelstudio.console.alibabacloud.com/"
+				}
+			],
+			"metadata": {
+				"Input": "Image URL (no base64)",
+				"Max Duration": "15 seconds",
+				"Resolutions": "720P, 1080P"
+			},
+			"external_info": "https://modelstudio.console.alibabacloud.com/",
+			"terms": "https://www.alibabacloud.com/help/en/legal",
+			"cover_image_url": null,
+			"created_at": "2026-06-24 01:06:13"
+		},
+		{
+			"model_id": "alibaba/hh1.1-r2v",
+			"slug": "alibaba/hh1.1-r2v",
+			"display_name": "HappyHorse 1.1 R2V",
+			"description": "Alibaba's HappyHorse 1.1 reference-to-video model. Takes 1-9 reference images (characters and scenes) and a prompt that choreographs them into a single video, keeping each subject's identity consistent. Supports 720P and 1080P output with durations from 3 to 15 seconds.",
+			"task": {
+				"id": "",
+				"name": "Image-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Image-to-Video",
+				"Reference-to-Video",
+				"Video Generation"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.alibabacloud.com/help/en/legal"
+				},
+				{
+					"property_id": "info",
+					"value": "https://modelstudio.console.alibabacloud.com/"
+				}
+			],
+			"metadata": {
+				"Aspect Ratios": "16:9, 9:16, 3:4, 4:3, 1:1, 21:9, 9:21, 5:4, 4:5",
+				"Input": "1-9 reference image URLs (no base64)",
+				"Max Duration": "15 seconds",
+				"Resolutions": "720P, 1080P"
+			},
+			"external_info": "https://modelstudio.console.alibabacloud.com/",
+			"terms": "https://www.alibabacloud.com/help/en/legal",
+			"cover_image_url": null,
+			"created_at": "2026-06-24 01:07:11"
+		},
+		{
+			"model_id": "alibaba/hh1.1-t2v",
+			"slug": "alibaba/hh1.1-t2v",
+			"display_name": "HappyHorse 1.1 T2V",
+			"description": "Alibaba's HappyHorse 1.1 text-to-video model. Generates videos from a text prompt with stronger dynamic expressiveness, better visual quality, and improved instruction following over 1.0. Configurable resolution, aspect ratio, and duration (3-15s).",
+			"task": {
+				"id": "",
+				"name": "Text-to-Video",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Video",
+				"Video Generation"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://www.alibabacloud.com/help/en/legal"
+				},
+				{
+					"property_id": "info",
+					"value": "https://modelstudio.console.alibabacloud.com/"
+				}
+			],
+			"metadata": {
+				"Aspect Ratios": "16:9, 9:16, 1:1, 4:3, 3:4",
+				"Max Duration": "15 seconds",
+				"Resolutions": "720P, 1080P"
+			},
+			"external_info": "https://modelstudio.console.alibabacloud.com/",
+			"terms": "https://www.alibabacloud.com/help/en/legal",
+			"cover_image_url": null,
+			"created_at": "2026-06-24 01:03:23"
 		},
 		{
 			"model_id": "alibaba/qwen3-max",
@@ -7687,10 +7806,14 @@
 			"tags": [],
 			"context_length": 256000,
 			"max_output_tokens": null,
-			"supports_async": false,
+			"supports_async": true,
 			"hosting": "hosted",
 			"data_source": "legacy",
 			"properties": [
+				{
+					"property_id": "async_queue",
+					"value": "true"
+				},
 				{
 					"property_id": "context_window",
 					"value": "256000"

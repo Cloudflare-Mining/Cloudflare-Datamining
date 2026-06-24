@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": false,
+	"type": "object",
 	"properties": {
 		"audio": {
 			"description": "Base64-encoded audio data (WAV format)",
@@ -10,5 +10,5 @@
 	"required": [
 		"audio"
 	],
-	"type": "object"
+	"additionalProperties": false
 }

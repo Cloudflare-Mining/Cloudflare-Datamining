@@ -4,81 +4,6 @@
 	"input": {
 		"rows": [
 			{
-				"id": "maxOutputTokens",
-				"name": "maxOutputTokens",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Maximum number of tokens to generate",
-				"metadata": {
-					"exclusiveMinimum": 0,
-					"maximum": 9007199254740991
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "stopSequences",
-				"name": "stopSequences",
-				"type": "array",
-				"isArray": true,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Sequences where the model will stop generating further tokens",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "stopSequences.items",
-						"name": "items",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						]
-					}
-				]
-			},
-			{
-				"id": "temperature",
-				"name": "temperature",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Controls randomness in generation (0-2)",
-				"metadata": {
-					"maximum": 2,
-					"minimum": 0
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "text",
 				"name": "text",
 				"type": "string",
@@ -92,46 +17,6 @@
 				"description": "The text to convert to speech. Maximum 10,000 characters.",
 				"metadata": {
 					"maxLength": 10000
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "topK",
-				"name": "topK",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Only sample from the top K tokens. Smaller K = more focused, larger K = more diverse",
-				"metadata": {
-					"exclusiveMinimum": 0,
-					"maximum": 9007199254740991
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "topP",
-				"name": "topP",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Nucleus sampling threshold (0-1). Tokens with cumulative probability up to topP are considered",
-				"metadata": {
-					"maximum": 1,
-					"minimum": 0
 				},
 				"depth": 0,
 				"isLast": false,
@@ -182,8 +67,123 @@
 					"Sulafat"
 				],
 				"depth": 0,
-				"isLast": true,
+				"isLast": false,
 				"ancestorIsLast": []
+			},
+			{
+				"id": "temperature",
+				"name": "temperature",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Controls randomness in generation (0-2)",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 2
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "topP",
+				"name": "topP",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Nucleus sampling threshold (0-1). Tokens with cumulative probability up to topP are considered",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 1
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "topK",
+				"name": "topK",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Only sample from the top K tokens. Smaller K = more focused, larger K = more diverse",
+				"metadata": {
+					"exclusiveMinimum": 0,
+					"maximum": 9007199254740991
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "maxOutputTokens",
+				"name": "maxOutputTokens",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Maximum number of tokens to generate",
+				"metadata": {
+					"exclusiveMinimum": 0,
+					"maximum": 9007199254740991
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "stopSequences",
+				"name": "stopSequences",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Sequences where the model will stop generating further tokens",
+				"depth": 0,
+				"isLast": true,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "stopSequences.items",
+						"name": "items",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							true
+						]
+					}
+				]
 			}
 		],
 		"variants": null,

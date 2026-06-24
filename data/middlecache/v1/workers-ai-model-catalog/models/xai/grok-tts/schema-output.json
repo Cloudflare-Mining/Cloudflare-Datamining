@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": false,
+	"type": "object",
 	"properties": {
 		"audio": {
 			"description": "Presigned R2 URL for the generated audio file. MIME type reflects the requested codec (audio/mpeg for mp3, audio/wav for wav, etc.).",
@@ -10,5 +10,5 @@
 	"required": [
 		"audio"
 	],
-	"type": "object"
+	"additionalProperties": false
 }

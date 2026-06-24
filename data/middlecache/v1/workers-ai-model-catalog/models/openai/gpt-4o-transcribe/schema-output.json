@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": false,
+	"type": "object",
 	"properties": {
 		"text": {
 			"description": "The transcribed text.",
@@ -10,5 +10,5 @@
 	"required": [
 		"text"
 	],
-	"type": "object"
+	"additionalProperties": false
 }

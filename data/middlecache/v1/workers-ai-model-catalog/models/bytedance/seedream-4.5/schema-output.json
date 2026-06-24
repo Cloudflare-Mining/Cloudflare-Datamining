@@ -1,18 +1,18 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": false,
+	"type": "object",
 	"properties": {
 		"images": {
-			"items": {
-				"format": "uri",
-				"type": "string"
-			},
 			"minItems": 1,
-			"type": "array"
+			"type": "array",
+			"items": {
+				"type": "string",
+				"format": "uri"
+			}
 		}
 	},
 	"required": [
 		"images"
 	],
-	"type": "object"
+	"additionalProperties": false
 }

@@ -4,9 +4,25 @@
 	"input": {
 		"rows": [
 			{
-				"id": "guidance",
-				"name": "guidance",
-				"type": "number",
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Text prompt for image generation or editing.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "seed",
+				"name": "seed",
+				"type": "integer",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -14,10 +30,30 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Classifier-free guidance scale (1.5–10). Higher values follow the prompt more strictly at the cost of realism.",
+				"description": "Optional seed for reproducible generation.",
 				"metadata": {
-					"maximum": 10,
-					"minimum": 1.5
+					"minimum": -9007199254740991,
+					"maximum": 9007199254740991
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "width",
+				"name": "width",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Width of the generated image in pixels (minimum 64). Omit to let BFL pick.",
+				"metadata": {
+					"minimum": 64,
+					"maximum": 9007199254740991
 				},
 				"depth": 0,
 				"isLast": false,
@@ -36,9 +72,50 @@
 				"required": false,
 				"description": "Height of the generated image in pixels (minimum 64). Omit to let BFL pick.",
 				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": 64
+					"minimum": 64,
+					"maximum": 9007199254740991
 				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "safety_tolerance",
+				"name": "safety_tolerance",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Tolerance for input/output moderation. 0 is the strictest, 5 the most permissive. Defaults to 2.",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 5
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "output_format",
+				"name": "output_format",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Output image format. Defaults to jpeg.",
+				"enumValues": [
+					"jpeg",
+					"png",
+					"webp"
+				],
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -82,43 +159,6 @@
 				]
 			},
 			{
-				"id": "output_format",
-				"name": "output_format",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Output image format. Defaults to jpeg.",
-				"enumValues": [
-					"jpeg",
-					"png",
-					"webp"
-				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "Text prompt for image generation or editing.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "prompt_upsampling",
 				"name": "prompt_upsampling",
 				"type": "boolean",
@@ -135,9 +175,9 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "safety_tolerance",
-				"name": "safety_tolerance",
-				"type": "integer",
+				"id": "guidance",
+				"name": "guidance",
+				"type": "number",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -145,30 +185,10 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Tolerance for input/output moderation. 0 is the strictest, 5 the most permissive. Defaults to 2.",
+				"description": "Classifier-free guidance scale (1.5–10). Higher values follow the prompt more strictly at the cost of realism.",
 				"metadata": {
-					"maximum": 5,
-					"minimum": 0
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "seed",
-				"name": "seed",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Optional seed for reproducible generation.",
-				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": -9007199254740991
+					"minimum": 1.5,
+					"maximum": 10
 				},
 				"depth": 0,
 				"isLast": false,
@@ -187,28 +207,8 @@
 				"required": false,
 				"description": "Number of denoising steps (1–50). Higher steps yield more detail at the cost of latency.",
 				"metadata": {
-					"maximum": 50,
-					"minimum": 1
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "width",
-				"name": "width",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Width of the generated image in pixels (minimum 64). Omit to let BFL pick.",
-				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": 64
+					"minimum": 1,
+					"maximum": 50
 				},
 				"depth": 0,
 				"isLast": true,

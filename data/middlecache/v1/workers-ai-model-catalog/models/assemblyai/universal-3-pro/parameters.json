@@ -4,46 +4,6 @@
 	"input": {
 		"rows": [
 			{
-				"id": "audio_end_at",
-				"name": "audio_end_at",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Timestamp (in milliseconds) to end transcription at.",
-				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": 0
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "audio_start_from",
-				"name": "audio_start_from",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Timestamp (in milliseconds) to start transcription from.",
-				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": 0
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "audio_url",
 				"name": "audio_url",
 				"type": "string",
@@ -55,6 +15,161 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"description": "The URL of the audio file to transcribe. Can be a publicly accessible URL or a data URI (data:audio/...;base64,...). For data URIs, the audio will be uploaded to AssemblyAI automatically. Required for pre-recorded transcription (when stream is false or not set).",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "websocket",
+				"name": "websocket",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Enable real-time WebSocket streaming for live audio transcription. When true, a WebSocket connection is established instead of submitting a pre-recorded transcription job. Cannot be used with audio_url.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "language_code",
+				"name": "language_code",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "The language code for the audio file (e.g., \"en\", \"es\", \"fr\"). Defaults to automatic language detection.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "language_detection",
+				"name": "language_detection",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Enable automatic language detection. When enabled with speech_models, the system will automatically select the best model for the detected language.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "A custom prompt to guide transcription style, formatting, and output characteristics. Maximum 1,500 words.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "keyterms_prompt",
+				"name": "keyterms_prompt",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "An array of up to 1,000 words or phrases (max 6 words per phrase) to improve transcription accuracy. Cannot be used with the prompt parameter.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "keyterms_prompt.items",
+						"name": "items",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "temperature",
+				"name": "temperature",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Controls randomness in model output (0.0-1.0). Lower values make output more deterministic. Default is 0.0.",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 1
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "speaker_labels",
+				"name": "speaker_labels",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Enable speaker diarization to identify different speakers in the audio.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "speakers_expected",
+				"name": "speakers_expected",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Expected number of speakers for speaker diarization.",
+				"metadata": {
+					"minimum": 1,
+					"maximum": 9007199254740991
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -76,6 +191,38 @@
 				"ancestorIsLast": []
 			},
 			{
+				"id": "entity_detection",
+				"name": "entity_detection",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Enable detection of entities like names, organizations, and locations.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "sentiment_analysis",
+				"name": "sentiment_analysis",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Enable sentiment analysis for each sentence.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "auto_highlights",
 				"name": "auto_highlights",
 				"type": "boolean",
@@ -92,27 +239,6 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "boost_param",
-				"name": "boost_param",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "How much to boost the words in word_boost.",
-				"enumValues": [
-					"low",
-					"default",
-					"high"
-				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "content_safety",
 				"name": "content_safety",
 				"type": "boolean",
@@ -124,6 +250,22 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"description": "Enable content safety detection for sensitive content.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "iab_categories",
+				"name": "iab_categories",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Enable IAB (Interactive Advertising Bureau) content taxonomy classification.",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -217,9 +359,9 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "domain",
-				"name": "domain",
-				"type": "string",
+				"id": "multichannel",
+				"name": "multichannel",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -227,10 +369,7 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Domain-specific transcription mode. \"medical-v1\" enables medical terminology optimization.",
-				"enumValues": [
-					"medical-v1"
-				],
+				"description": "Process each audio channel separately for multi-channel audio files.",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -252,9 +391,9 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "entity_detection",
-				"name": "entity_detection",
-				"type": "boolean",
+				"id": "webhook_url",
+				"name": "webhook_url",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -262,15 +401,18 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Enable detection of entities like names, organizations, and locations.",
+				"description": "URL to receive webhook notifications when transcription is complete.",
+				"metadata": {
+					"format": "uri"
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "filter_profanity",
-				"name": "filter_profanity",
-				"type": "boolean",
+				"id": "audio_start_from",
+				"name": "audio_start_from",
+				"type": "integer",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -278,15 +420,19 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Filter profanity from the transcription.",
+				"description": "Timestamp (in milliseconds) to start transcription from.",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "iab_categories",
-				"name": "iab_categories",
-				"type": "boolean",
+				"id": "audio_end_at",
+				"name": "audio_end_at",
+				"type": "integer",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -294,14 +440,18 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Enable IAB (Interactive Advertising Bureau) content taxonomy classification.",
+				"description": "Timestamp (in milliseconds) to end transcription at.",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 9007199254740991
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "keyterms_prompt",
-				"name": "keyterms_prompt",
+				"id": "word_boost",
+				"name": "word_boost",
 				"type": "array",
 				"isArray": true,
 				"isObject": false,
@@ -310,13 +460,13 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "An array of up to 1,000 words or phrases (max 6 words per phrase) to improve transcription accuracy. Cannot be used with the prompt parameter.",
+				"description": "Array of words to boost recognition accuracy (legacy - use keyterms_prompt instead).",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": [],
 				"children": [
 					{
-						"id": "keyterms_prompt.items",
+						"id": "word_boost.items",
 						"name": "items",
 						"type": "string",
 						"isArray": false,
@@ -335,8 +485,8 @@
 				]
 			},
 			{
-				"id": "language_code",
-				"name": "language_code",
+				"id": "boost_param",
+				"name": "boost_param",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -345,14 +495,19 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "The language code for the audio file (e.g., \"en\", \"es\", \"fr\"). Defaults to automatic language detection.",
+				"description": "How much to boost the words in word_boost.",
+				"enumValues": [
+					"low",
+					"default",
+					"high"
+				],
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "language_detection",
-				"name": "language_detection",
+				"id": "filter_profanity",
+				"name": "filter_profanity",
 				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
@@ -361,39 +516,7 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Enable automatic language detection. When enabled with speech_models, the system will automatically select the best model for the detected language.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "multichannel",
-				"name": "multichannel",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Process each audio channel separately for multi-channel audio files.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "A custom prompt to guide transcription style, formatting, and output characteristics. Maximum 1,500 words.",
+				"description": "Filter profanity from the transcription.",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -486,58 +609,6 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "sentiment_analysis",
-				"name": "sentiment_analysis",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Enable sentiment analysis for each sentence.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "speaker_labels",
-				"name": "speaker_labels",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Enable speaker diarization to identify different speakers in the audio.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "speakers_expected",
-				"name": "speakers_expected",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Expected number of speakers for speaker diarization.",
-				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": 1
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "speech_threshold",
 				"name": "speech_threshold",
 				"type": "number",
@@ -550,36 +621,16 @@
 				"required": false,
 				"description": "Confidence threshold for speech detection.",
 				"metadata": {
-					"maximum": 1,
-					"minimum": 0
+					"minimum": 0,
+					"maximum": 1
 				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "temperature",
-				"name": "temperature",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Controls randomness in model output (0.0-1.0). Lower values make output more deterministic. Default is 0.0.",
-				"metadata": {
-					"maximum": 1,
-					"minimum": 0
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "webhook_url",
-				"name": "webhook_url",
+				"id": "domain",
+				"name": "domain",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -588,64 +639,13 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "URL to receive webhook notifications when transcription is complete.",
-				"metadata": {
-					"format": "uri"
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "websocket",
-				"name": "websocket",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Enable real-time WebSocket streaming for live audio transcription. When true, a WebSocket connection is established instead of submitting a pre-recorded transcription job. Cannot be used with audio_url.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "word_boost",
-				"name": "word_boost",
-				"type": "array",
-				"isArray": true,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Array of words to boost recognition accuracy (legacy - use keyterms_prompt instead).",
+				"description": "Domain-specific transcription mode. \"medical-v1\" enables medical terminology optimization.",
+				"enumValues": [
+					"medical-v1"
+				],
 				"depth": 0,
 				"isLast": true,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "word_boost.items",
-						"name": "items",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							true
-						]
-					}
-				]
+				"ancestorIsLast": []
 			}
 		],
 		"variants": null,
@@ -653,6 +653,54 @@
 	},
 	"output": {
 		"rows": [
+			{
+				"id": "text",
+				"name": "text",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "The transcribed text.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "words",
+				"name": "words",
+				"type": "array | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Word-level timestamps and confidence scores.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "utterances",
+				"name": "utterances",
+				"type": "array | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Speaker-separated utterances (when speaker_labels is enabled).",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
 			{
 				"id": "confidence",
 				"name": "confidence",
@@ -697,54 +745,6 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"description": "Confidence score for language detection.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "text",
-				"name": "text",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "The transcribed text.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "utterances",
-				"name": "utterances",
-				"type": "array | null",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Speaker-separated utterances (when speaker_labels is enabled).",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "words",
-				"name": "words",
-				"type": "array | null",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Word-level timestamps and confidence scores.",
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

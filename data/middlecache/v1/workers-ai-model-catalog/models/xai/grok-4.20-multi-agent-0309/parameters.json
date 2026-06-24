@@ -4,36 +4,6 @@
 	"input": {
 		"rows": [
 			{
-				"id": "context_management",
-				"name": "context_management",
-				"type": "array | null",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "include",
-				"name": "include",
-				"type": "array | null",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "input",
 				"name": "input",
 				"type": "one of",
@@ -111,21 +81,6 @@
 				"id": "instructions",
 				"name": "instructions",
 				"type": "string | null",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "logprobs",
-				"name": "logprobs",
-				"type": "boolean | null",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -528,6 +483,27 @@
 						],
 						"children": [
 							{
+								"id": "tool_choice.1.type",
+								"name": "type",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"metadata": {
+									"const": "function"
+								},
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							},
+							{
 								"id": "tool_choice.1.function",
 								"name": "function",
 								"type": "object",
@@ -539,7 +515,7 @@
 								"isLastOneOfChild": false,
 								"required": true,
 								"depth": 2,
-								"isLast": false,
+								"isLast": true,
 								"ancestorIsLast": [
 									false,
 									true
@@ -561,30 +537,9 @@
 										"ancestorIsLast": [
 											false,
 											true,
-											false
+											true
 										]
 									}
-								]
-							},
-							{
-								"id": "tool_choice.1.type",
-								"name": "type",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"metadata": {
-									"const": "function"
-								},
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									true
 								]
 							}
 						]
@@ -610,6 +565,21 @@
 				"id": "top_logprobs",
 				"name": "top_logprobs",
 				"type": "integer | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "logprobs",
+				"name": "logprobs",
+				"type": "boolean | null",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -648,6 +618,36 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "context_management",
+				"name": "context_management",
+				"type": "array | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "include",
+				"name": "include",
+				"type": "array | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []
 			}
@@ -658,16 +658,34 @@
 	"output": {
 		"rows": [
 			{
-				"id": "completed_at",
-				"name": "completed_at",
-				"type": "number | null",
+				"id": "id",
+				"name": "id",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": false,
+				"required": true,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "object",
+				"name": "object",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"metadata": {
+					"const": "response"
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -688,69 +706,9 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "error",
-				"name": "error",
-				"type": "",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "id",
-				"name": "id",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "incomplete_details",
-				"name": "incomplete_details",
-				"type": "",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "instructions",
-				"name": "instructions",
-				"type": "string | null",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "metadata",
-				"name": "metadata",
-				"type": "",
+				"id": "completed_at",
+				"name": "completed_at",
+				"type": "number | null",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -778,8 +736,8 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "object",
-				"name": "object",
+				"id": "status",
+				"name": "status",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -788,9 +746,12 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"metadata": {
-					"const": "response"
-				},
+				"enumValues": [
+					"in_progress",
+					"completed",
+					"incomplete",
+					"failed"
+				],
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -863,57 +824,6 @@
 				"id": "reasoning",
 				"name": "reasoning",
 				"type": "",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "status",
-				"name": "status",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"enumValues": [
-					"in_progress",
-					"completed",
-					"incomplete",
-					"failed"
-				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "store",
-				"name": "store",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "temperature",
-				"name": "temperature",
-				"type": "number | null",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -1005,6 +915,111 @@
 				"ancestorIsLast": []
 			},
 			{
+				"id": "temperature",
+				"name": "temperature",
+				"type": "number | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "instructions",
+				"name": "instructions",
+				"type": "string | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "incomplete_details",
+				"name": "incomplete_details",
+				"type": "",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "metadata",
+				"name": "metadata",
+				"type": "",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "store",
+				"name": "store",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "user",
+				"name": "user",
+				"type": "string | null",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "error",
+				"name": "error",
+				"type": "",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "usage",
 				"name": "usage",
 				"type": "object",
@@ -1016,26 +1031,9 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"depth": 0,
-				"isLast": false,
+				"isLast": true,
 				"ancestorIsLast": [],
 				"children": [
-					{
-						"id": "usage.cost_in_usd_ticks",
-						"name": "cost_in_usd_ticks",
-						"type": "number | null",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
 					{
 						"id": "usage.input_tokens",
 						"name": "input_tokens",
@@ -1050,78 +1048,7 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "usage.input_tokens_details",
-						"name": "input_tokens_details",
-						"type": "object",
-						"isArray": false,
-						"isObject": true,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						],
-						"children": [
-							{
-								"id": "usage.input_tokens_details.cached_tokens",
-								"name": "cached_tokens",
-								"type": "number",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									false
-								]
-							}
-						]
-					},
-					{
-						"id": "usage.num_server_side_tools_used",
-						"name": "num_server_side_tools_used",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						]
-					},
-					{
-						"id": "usage.num_sources_used",
-						"name": "num_sources_used",
-						"type": "number",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
+							true
 						]
 					},
 					{
@@ -1138,7 +1065,61 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
+							true
+						]
+					},
+					{
+						"id": "usage.total_tokens",
+						"name": "total_tokens",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "usage.input_tokens_details",
+						"name": "input_tokens_details",
+						"type": "object",
+						"isArray": false,
+						"isObject": true,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						],
+						"children": [
+							{
+								"id": "usage.input_tokens_details.cached_tokens",
+								"name": "cached_tokens",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									true,
+									false
+								]
+							}
 						]
 					},
 					{
@@ -1155,7 +1136,7 @@
 						"depth": 1,
 						"isLast": false,
 						"ancestorIsLast": [
-							false
+							true
 						],
 						"children": [
 							{
@@ -1172,15 +1153,32 @@
 								"depth": 2,
 								"isLast": true,
 								"ancestorIsLast": [
-									false,
+									true,
 									false
 								]
 							}
 						]
 					},
 					{
-						"id": "usage.total_tokens",
-						"name": "total_tokens",
+						"id": "usage.cost_in_usd_ticks",
+						"name": "cost_in_usd_ticks",
+						"type": "number | null",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "usage.num_sources_used",
+						"name": "num_sources_used",
 						"type": "number",
 						"isArray": false,
 						"isObject": false,
@@ -1188,29 +1186,31 @@
 						"isOneOfChild": false,
 						"isFirstOneOfChild": false,
 						"isLastOneOfChild": false,
-						"required": true,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							true
+						]
+					},
+					{
+						"id": "usage.num_server_side_tools_used",
+						"name": "num_server_side_tools_used",
+						"type": "number",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
 						"depth": 1,
 						"isLast": true,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					}
 				]
-			},
-			{
-				"id": "user",
-				"name": "user",
-				"type": "string | null",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": true,
-				"ancestorIsLast": []
 			}
 		],
 		"variants": null,

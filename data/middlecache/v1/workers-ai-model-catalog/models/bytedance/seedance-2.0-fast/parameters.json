@@ -4,8 +4,8 @@
 	"input": {
 		"rows": [
 			{
-				"id": "aspect_ratio",
-				"name": "aspect_ratio",
+				"id": "prompt",
+				"name": "prompt",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -14,91 +14,10 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"defaultValue": "16:9",
-				"description": "Video aspect ratio. Ignored if an image is used.",
-				"enumValues": [
-					"16:9",
-					"4:3",
-					"1:1",
-					"3:4",
-					"9:16",
-					"21:9",
-					"9:21"
-				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "camera_fixed",
-				"name": "camera_fixed",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "false",
-				"description": "Whether to fix camera position",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "duration",
-				"name": "duration",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "5",
-				"description": "Video duration in seconds",
+				"description": "Text prompt describing the video to generate",
 				"metadata": {
-					"maximum": 12,
-					"minimum": 4
+					"maxLength": 2000
 				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "fps",
-				"name": "fps",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "24",
-				"description": "Frame rate (frames per second)",
-				"metadata": {
-					"const": 24
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "generate_audio",
-				"name": "generate_audio",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Whether to generate audio with the video",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -120,6 +39,22 @@
 				"ancestorIsLast": []
 			},
 			{
+				"id": "reference_video",
+				"name": "reference_video",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Reference video (HTTP(S) URL or base64 data URI) for style/motion guidance",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "last_frame_image",
 				"name": "last_frame_image",
 				"type": "string",
@@ -131,25 +66,6 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"description": "Reference image (HTTP(S) URL or base64 data URI) for last-frame guidance. Only works if an image start frame is also given.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "Text prompt describing the video to generate",
-				"metadata": {
-					"maxLength": 2000
-				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -193,17 +109,22 @@
 				]
 			},
 			{
-				"id": "reference_video",
-				"name": "reference_video",
-				"type": "string",
+				"id": "duration",
+				"name": "duration",
+				"type": "integer",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Reference video (HTTP(S) URL or base64 data URI) for style/motion guidance",
+				"required": true,
+				"defaultValue": "5",
+				"description": "Video duration in seconds",
+				"metadata": {
+					"minimum": 4,
+					"maximum": 12
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -230,9 +151,72 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "seed",
-				"name": "seed",
-				"type": "integer",
+				"id": "aspect_ratio",
+				"name": "aspect_ratio",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "16:9",
+				"description": "Video aspect ratio. Ignored if an image is used.",
+				"enumValues": [
+					"16:9",
+					"4:3",
+					"1:1",
+					"3:4",
+					"9:16",
+					"21:9",
+					"9:21"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "fps",
+				"name": "fps",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "24",
+				"description": "Frame rate (frames per second)",
+				"metadata": {
+					"const": 24
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "camera_fixed",
+				"name": "camera_fixed",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "false",
+				"description": "Whether to fix camera position",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "generate_audio",
+				"name": "generate_audio",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -240,11 +224,7 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Random seed for reproducible generation",
-				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": -9007199254740991
-				},
+				"description": "Whether to generate audio with the video",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -262,6 +242,26 @@
 				"required": true,
 				"defaultValue": "false",
 				"description": "Whether to add a watermark to the output video",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "seed",
+				"name": "seed",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Random seed for reproducible generation",
+				"metadata": {
+					"minimum": -9007199254740991,
+					"maximum": 9007199254740991
+				},
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

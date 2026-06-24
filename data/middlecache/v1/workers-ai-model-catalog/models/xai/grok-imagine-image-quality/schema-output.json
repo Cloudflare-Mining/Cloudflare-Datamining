@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": false,
+	"type": "object",
 	"properties": {
 		"image": {
 			"description": "Generated image. Either a base64 data URI (`data:image/png;base64,...`) or an `https://` URL, depending on the upstream `response_format` (defaults to base64).",
@@ -10,5 +10,5 @@
 	"required": [
 		"image"
 	],
-	"type": "object"
+	"additionalProperties": false
 }

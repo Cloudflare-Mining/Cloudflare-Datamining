@@ -1,15 +1,15 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": {},
+	"type": "object",
 	"properties": {
 		"video": {
 			"description": "Presigned URL for the generated avatar video.",
-			"format": "uri",
-			"type": "string"
+			"type": "string",
+			"format": "uri"
 		}
 	},
 	"required": [
 		"video"
 	],
-	"type": "object"
+	"additionalProperties": {}
 }

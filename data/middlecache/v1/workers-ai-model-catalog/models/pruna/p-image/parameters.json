@@ -4,6 +4,22 @@
 	"input": {
 		"rows": [
 			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Text description of the image to generate. The model automatically enhances prompts for better results.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "aspect_ratio",
 				"name": "aspect_ratio",
 				"type": "string",
@@ -31,18 +47,22 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "disable_safety_checker",
-				"name": "disable_safety_checker",
-				"type": "boolean",
+				"id": "width",
+				"name": "width",
+				"type": "integer",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "false",
-				"description": "Disable safety checker for generated images.",
+				"required": false,
+				"description": "Custom width in pixels (256-1440, multiple of 16). Only used when aspect_ratio=\"custom\".",
+				"metadata": {
+					"minimum": 256,
+					"maximum": 1440,
+					"multipleOf": 16
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -60,46 +80,9 @@
 				"required": false,
 				"description": "Custom height in pixels (256-1440, multiple of 16). Only used when aspect_ratio=\"custom\".",
 				"metadata": {
-					"maximum": 1440,
 					"minimum": 256,
+					"maximum": 1440,
 					"multipleOf": 16
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "hf_api_token",
-				"name": "hf_api_token",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "HuggingFace API token for accessing private LoRAs. This credential is forwarded verbatim to Pruna. It is only written to gateway request-body logs when the gateway-level collectLogPayload debug flag is explicitly enabled — it never appears in structured analytics logs.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "lora_scale",
-				"name": "lora_scale",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "0.5",
-				"description": "How strongly the LoRA should be applied (-1 to 3).",
-				"metadata": {
-					"maximum": 3,
-					"minimum": -1
 				},
 				"depth": 0,
 				"isLast": false,
@@ -122,9 +105,9 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
+				"id": "lora_scale",
+				"name": "lora_scale",
+				"type": "number",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -132,7 +115,28 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"description": "Text description of the image to generate. The model automatically enhances prompts for better results.",
+				"defaultValue": "0.5",
+				"description": "How strongly the LoRA should be applied (-1 to 3).",
+				"metadata": {
+					"minimum": -1,
+					"maximum": 3
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "hf_api_token",
+				"name": "hf_api_token",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "HuggingFace API token for accessing private LoRAs. This credential is forwarded verbatim to Pruna. It is only written to gateway request-body logs when the gateway-level collectLogPayload debug flag is explicitly enabled — it never appears in structured analytics logs.",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -167,30 +171,26 @@
 				"required": false,
 				"description": "Random seed for reproducible generation.",
 				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": -9007199254740991
+					"minimum": -9007199254740991,
+					"maximum": 9007199254740991
 				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "width",
-				"name": "width",
-				"type": "integer",
+				"id": "disable_safety_checker",
+				"name": "disable_safety_checker",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Custom width in pixels (256-1440, multiple of 16). Only used when aspect_ratio=\"custom\".",
-				"metadata": {
-					"maximum": 1440,
-					"minimum": 256,
-					"multipleOf": 16
-				},
+				"required": true,
+				"defaultValue": "false",
+				"description": "Disable safety checker for generated images.",
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

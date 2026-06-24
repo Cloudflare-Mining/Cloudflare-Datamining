@@ -1,11 +1,28 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": false,
+	"type": "object",
 	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"object": {
+			"type": "string",
+			"const": "chat.completion"
+		},
+		"created": {
+			"type": "number"
+		},
+		"model": {
+			"type": "string"
+		},
 		"choices": {
+			"type": "array",
 			"items": {
-				"additionalProperties": false,
+				"type": "object",
 				"properties": {
+					"index": {
+						"type": "number"
+					},
 					"finish_reason": {
 						"anyOf": [
 							{
@@ -16,39 +33,12 @@
 							}
 						]
 					},
-					"index": {
-						"type": "number"
-					},
-					"logprobs": {
-						"anyOf": [
-							{
-								"additionalProperties": false,
-								"properties": {
-									"content": {
-										"anyOf": [
-											{
-												"items": {},
-												"type": "array"
-											},
-											{
-												"type": "null"
-											}
-										]
-									}
-								},
-								"required": [
-									"content"
-								],
-								"type": "object"
-							},
-							{
-								"type": "null"
-							}
-						]
-					},
 					"message": {
-						"additionalProperties": false,
+						"type": "object",
 						"properties": {
+							"role": {
+								"type": "string"
+							},
 							"content": {
 								"anyOf": [
 									{
@@ -79,22 +69,26 @@
 									}
 								]
 							},
-							"role": {
-								"type": "string"
-							},
 							"tool_calls": {
 								"anyOf": [
 									{
+										"type": "array",
 										"items": {
-											"additionalProperties": false,
+											"type": "object",
 											"properties": {
+												"id": {
+													"type": "string"
+												},
+												"type": {
+													"type": "string"
+												},
 												"function": {
-													"additionalProperties": false,
+													"type": "object",
 													"properties": {
-														"arguments": {
+														"name": {
 															"type": "string"
 														},
-														"name": {
+														"arguments": {
 															"type": "string"
 														}
 													},
@@ -102,13 +96,7 @@
 														"name",
 														"arguments"
 													],
-													"type": "object"
-												},
-												"id": {
-													"type": "string"
-												},
-												"type": {
-													"type": "string"
+													"additionalProperties": false
 												}
 											},
 											"required": [
@@ -116,9 +104,8 @@
 												"type",
 												"function"
 											],
-											"type": "object"
-										},
-										"type": "array"
+											"additionalProperties": false
+										}
 									},
 									{
 										"type": "null"
@@ -130,7 +117,34 @@
 							"role",
 							"content"
 						],
-						"type": "object"
+						"additionalProperties": false
+					},
+					"logprobs": {
+						"anyOf": [
+							{
+								"type": "object",
+								"properties": {
+									"content": {
+										"anyOf": [
+											{
+												"type": "array",
+												"items": {}
+											},
+											{
+												"type": "null"
+											}
+										]
+									}
+								},
+								"required": [
+									"content"
+								],
+								"additionalProperties": false
+							},
+							{
+								"type": "null"
+							}
+						]
 					}
 				},
 				"required": [
@@ -138,39 +152,25 @@
 					"finish_reason",
 					"message"
 				],
-				"type": "object"
-			},
-			"type": "array"
+				"additionalProperties": false
+			}
 		},
 		"citations": {
 			"anyOf": [
 				{
-					"items": {},
-					"type": "array"
+					"type": "array",
+					"items": {}
 				},
 				{
 					"type": "null"
 				}
 			]
 		},
-		"created": {
-			"type": "number"
-		},
-		"id": {
-			"type": "string"
-		},
-		"model": {
-			"type": "string"
-		},
-		"object": {
-			"const": "chat.completion",
-			"type": "string"
-		},
 		"output_files": {
 			"anyOf": [
 				{
-					"items": {},
-					"type": "array"
+					"type": "array",
+					"items": {}
 				},
 				{
 					"type": "null"
@@ -188,21 +188,51 @@
 			]
 		},
 		"usage": {
-			"additionalProperties": false,
+			"type": "object",
 			"properties": {
+				"prompt_tokens": {
+					"type": "number"
+				},
 				"completion_tokens": {
 					"type": "number"
 				},
-				"completion_tokens_details": {
-					"additionalProperties": false,
+				"total_tokens": {
+					"type": "number"
+				},
+				"prompt_tokens_details": {
+					"type": "object",
 					"properties": {
-						"accepted_prediction_tokens": {
+						"text_tokens": {
 							"type": "number"
 						},
 						"audio_tokens": {
 							"type": "number"
 						},
+						"image_tokens": {
+							"type": "number"
+						},
+						"cached_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"text_tokens",
+						"audio_tokens",
+						"image_tokens",
+						"cached_tokens"
+					],
+					"additionalProperties": false
+				},
+				"completion_tokens_details": {
+					"type": "object",
+					"properties": {
 						"reasoning_tokens": {
+							"type": "number"
+						},
+						"audio_tokens": {
+							"type": "number"
+						},
+						"accepted_prediction_tokens": {
 							"type": "number"
 						},
 						"rejected_prediction_tokens": {
@@ -215,42 +245,12 @@
 						"accepted_prediction_tokens",
 						"rejected_prediction_tokens"
 					],
-					"type": "object"
+					"additionalProperties": false
 				},
 				"cost_in_usd_ticks": {
 					"type": "number"
 				},
 				"num_sources_used": {
-					"type": "number"
-				},
-				"prompt_tokens": {
-					"type": "number"
-				},
-				"prompt_tokens_details": {
-					"additionalProperties": false,
-					"properties": {
-						"audio_tokens": {
-							"type": "number"
-						},
-						"cached_tokens": {
-							"type": "number"
-						},
-						"image_tokens": {
-							"type": "number"
-						},
-						"text_tokens": {
-							"type": "number"
-						}
-					},
-					"required": [
-						"text_tokens",
-						"audio_tokens",
-						"image_tokens",
-						"cached_tokens"
-					],
-					"type": "object"
-				},
-				"total_tokens": {
 					"type": "number"
 				}
 			},
@@ -259,7 +259,7 @@
 				"completion_tokens",
 				"total_tokens"
 			],
-			"type": "object"
+			"additionalProperties": false
 		}
 	},
 	"required": [
@@ -269,5 +269,5 @@
 		"model",
 		"choices"
 	],
-	"type": "object"
+	"additionalProperties": false
 }

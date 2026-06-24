@@ -1,33 +1,37 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": {},
+	"type": "object",
 	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"type": {
+			"type": "string",
+			"const": "message"
+		},
+		"role": {
+			"type": "string",
+			"const": "assistant"
+		},
 		"content": {
+			"type": "array",
 			"items": {
-				"additionalProperties": {},
+				"type": "object",
 				"properties": {
-					"text": {
+					"type": {
 						"type": "string"
 					},
-					"type": {
+					"text": {
 						"type": "string"
 					}
 				},
 				"required": [
 					"type"
 				],
-				"type": "object"
-			},
-			"type": "array"
-		},
-		"id": {
-			"type": "string"
+				"additionalProperties": {}
+			}
 		},
 		"model": {
-			"type": "string"
-		},
-		"role": {
-			"const": "assistant",
 			"type": "string"
 		},
 		"stop_reason": {
@@ -40,12 +44,8 @@
 				}
 			]
 		},
-		"type": {
-			"const": "message",
-			"type": "string"
-		},
 		"usage": {
-			"additionalProperties": false,
+			"type": "object",
 			"properties": {
 				"input_tokens": {
 					"type": "number"
@@ -58,7 +58,7 @@
 				"input_tokens",
 				"output_tokens"
 			],
-			"type": "object"
+			"additionalProperties": false
 		}
 	},
 	"required": [
@@ -70,5 +70,5 @@
 		"stop_reason",
 		"usage"
 	],
-	"type": "object"
+	"additionalProperties": {}
 }

@@ -4,8 +4,8 @@
 	"input": {
 		"rows": [
 			{
-				"id": "background",
-				"name": "background",
+				"id": "prompt",
+				"name": "prompt",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -13,13 +13,8 @@
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Background transparency setting. Use transparent for images with no background, opaque for a solid background, or auto to let the model decide.",
-				"enumValues": [
-					"transparent",
-					"opaque",
-					"auto"
-				],
+				"required": true,
+				"description": "Text prompt describing the image to generate or edit",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -63,43 +58,6 @@
 				]
 			},
 			{
-				"id": "output_format",
-				"name": "output_format",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Output format for the generated image",
-				"enumValues": [
-					"png",
-					"webp",
-					"jpeg"
-				],
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "Text prompt describing the image to generate or edit",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "quality",
 				"name": "quality",
 				"type": "string",
@@ -138,6 +96,48 @@
 					"1024x1536",
 					"1536x1024",
 					"auto"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "background",
+				"name": "background",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Background transparency setting. Use transparent for images with no background, opaque for a solid background, or auto to let the model decide.",
+				"enumValues": [
+					"transparent",
+					"opaque",
+					"auto"
+				],
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "output_format",
+				"name": "output_format",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Output format for the generated image",
+				"enumValues": [
+					"png",
+					"webp",
+					"jpeg"
 				],
 				"depth": 0,
 				"isLast": true,

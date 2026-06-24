@@ -26,6 +26,22 @@
 	"output": {
 		"rows": [
 			{
+				"id": "url",
+				"name": "url",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "WebSocket URL for the realtime connection (e.g., wss://...)",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "headers",
 				"name": "headers",
 				"type": "object",
@@ -38,7 +54,7 @@
 				"required": false,
 				"description": "Optional headers to include when establishing the WebSocket connection (e.g., Authorization)",
 				"depth": 0,
-				"isLast": false,
+				"isLast": true,
 				"ancestorIsLast": [],
 				"children": [
 					{
@@ -55,26 +71,10 @@
 						"depth": 1,
 						"isLast": true,
 						"ancestorIsLast": [
-							false
+							true
 						]
 					}
 				]
-			},
-			{
-				"id": "url",
-				"name": "url",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "WebSocket URL for the realtime connection (e.g., wss://...)",
-				"depth": 0,
-				"isLast": true,
-				"ancestorIsLast": []
 			}
 		],
 		"variants": null,

@@ -4,6 +4,22 @@
 	"input": {
 		"rows": [
 			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Text prompt describing the image to generate or edit",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "images",
 				"name": "images",
 				"type": "array",
@@ -40,22 +56,6 @@
 						]
 					}
 				]
-			},
-			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "Text prompt describing the image to generate or edit",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
 			},
 			{
 				"id": "quality",

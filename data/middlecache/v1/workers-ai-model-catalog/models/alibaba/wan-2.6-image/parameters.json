@@ -4,21 +4,6 @@
 	"input": {
 		"rows": [
 			{
-				"id": "negative_prompt",
-				"name": "negative_prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "prompt",
 				"name": "prompt",
 				"type": "string",
@@ -47,6 +32,21 @@
 				"metadata": {
 					"pattern": "^\\d+x\\d+$"
 				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "negative_prompt",
+				"name": "negative_prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

@@ -1,15 +1,15 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": {},
+	"type": "object",
 	"properties": {
 		"image": {
 			"description": "Presigned URL for the edited image.",
-			"format": "uri",
-			"type": "string"
+			"type": "string",
+			"format": "uri"
 		}
 	},
 	"required": [
 		"image"
 	],
-	"type": "object"
+	"additionalProperties": {}
 }

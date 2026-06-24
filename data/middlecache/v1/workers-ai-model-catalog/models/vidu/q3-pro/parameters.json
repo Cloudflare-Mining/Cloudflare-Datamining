@@ -4,8 +4,8 @@
 	"input": {
 		"rows": [
 			{
-				"id": "aspect_ratio",
-				"name": "aspect_ratio",
+				"id": "prompt",
+				"name": "prompt",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -14,22 +14,18 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Video aspect ratio (text-to-video only). Default: 16:9",
-				"enumValues": [
-					"16:9",
-					"9:16",
-					"3:4",
-					"4:3",
-					"1:1"
-				],
+				"description": "Text prompt describing what should appear in the video",
+				"metadata": {
+					"maxLength": 5000
+				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "audio",
-				"name": "audio",
-				"type": "boolean",
+				"id": "start_image",
+				"name": "start_image",
+				"type": "string",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -37,28 +33,7 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Enable audio-video synchronization. Default: true for Q3 models. When false, outputs silent video",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "duration",
-				"name": "duration",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "5",
-				"description": "Video duration in seconds (1-16)",
-				"metadata": {
-					"maximum": 16,
-					"minimum": 1
-				},
+				"description": "Start image for video generation. Use alone for image-to-video, or with end_image for start/end-to-video. Accepts public URL or Base64 data URI (data:image/png;base64,...)",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -80,19 +55,21 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
+				"id": "duration",
+				"name": "duration",
+				"type": "integer",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
 				"isOneOfChild": false,
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Text prompt describing what should appear in the video",
+				"required": true,
+				"defaultValue": "5",
+				"description": "Video duration in seconds (1-16)",
 				"metadata": {
-					"maxLength": 5000
+					"minimum": 1,
+					"maximum": 16
 				},
 				"depth": 0,
 				"isLast": false,
@@ -121,8 +98,24 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "start_image",
-				"name": "start_image",
+				"id": "audio",
+				"name": "audio",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Enable audio-video synchronization. Default: true for Q3 models. When false, outputs silent video",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "aspect_ratio",
+				"name": "aspect_ratio",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -131,7 +124,14 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"description": "Start image for video generation. Use alone for image-to-video, or with end_image for start/end-to-video. Accepts public URL or Base64 data URI (data:image/png;base64,...)",
+				"description": "Video aspect ratio (text-to-video only). Default: 16:9",
+				"enumValues": [
+					"16:9",
+					"9:16",
+					"3:4",
+					"4:3",
+					"1:1"
+				],
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

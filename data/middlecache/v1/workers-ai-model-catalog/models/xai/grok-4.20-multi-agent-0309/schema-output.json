@@ -1,7 +1,17 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": {},
+	"type": "object",
 	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"object": {
+			"type": "string",
+			"const": "response"
+		},
+		"created_at": {
+			"type": "number"
+		},
 		"completed_at": {
 			"anyOf": [
 				{
@@ -12,49 +22,21 @@
 				}
 			]
 		},
-		"created_at": {
-			"type": "number"
-		},
-		"error": {
-			"anyOf": [
-				{},
-				{
-					"type": "null"
-				}
-			]
-		},
-		"id": {
-			"type": "string"
-		},
-		"incomplete_details": {
-			"anyOf": [
-				{},
-				{
-					"type": "null"
-				}
-			]
-		},
-		"instructions": {
-			"anyOf": [
-				{
-					"type": "string"
-				},
-				{
-					"type": "null"
-				}
-			]
-		},
-		"metadata": {},
 		"model": {
 			"type": "string"
 		},
-		"object": {
-			"const": "response",
-			"type": "string"
+		"status": {
+			"type": "string",
+			"enum": [
+				"in_progress",
+				"completed",
+				"incomplete",
+				"failed"
+			]
 		},
 		"output": {
-			"items": {},
-			"type": "array"
+			"type": "array",
+			"items": {}
 		},
 		"parallel_tool_calls": {
 			"type": "boolean"
@@ -77,33 +59,11 @@
 				}
 			]
 		},
-		"status": {
-			"enum": [
-				"in_progress",
-				"completed",
-				"incomplete",
-				"failed"
-			],
-			"type": "string"
-		},
-		"store": {
-			"type": "boolean"
-		},
-		"temperature": {
-			"anyOf": [
-				{
-					"type": "number"
-				},
-				{
-					"type": "null"
-				}
-			]
-		},
 		"text": {},
 		"tool_choice": {},
 		"tools": {
-			"items": {},
-			"type": "array"
+			"type": "array",
+			"items": {}
 		},
 		"top_p": {
 			"anyOf": [
@@ -115,65 +75,37 @@
 				}
 			]
 		},
-		"usage": {
-			"additionalProperties": {},
-			"properties": {
-				"cost_in_usd_ticks": {
-					"anyOf": [
-						{
-							"type": "number"
-						},
-						{
-							"type": "null"
-						}
-					]
-				},
-				"input_tokens": {
+		"temperature": {
+			"anyOf": [
+				{
 					"type": "number"
 				},
-				"input_tokens_details": {
-					"additionalProperties": {},
-					"properties": {
-						"cached_tokens": {
-							"type": "number"
-						}
-					},
-					"required": [
-						"cached_tokens"
-					],
-					"type": "object"
-				},
-				"num_server_side_tools_used": {
-					"type": "number"
-				},
-				"num_sources_used": {
-					"type": "number"
-				},
-				"output_tokens": {
-					"type": "number"
-				},
-				"output_tokens_details": {
-					"additionalProperties": {},
-					"properties": {
-						"reasoning_tokens": {
-							"type": "number"
-						}
-					},
-					"required": [
-						"reasoning_tokens"
-					],
-					"type": "object"
-				},
-				"total_tokens": {
-					"type": "number"
+				{
+					"type": "null"
 				}
-			},
-			"required": [
-				"input_tokens",
-				"output_tokens",
-				"total_tokens"
-			],
-			"type": "object"
+			]
+		},
+		"instructions": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"incomplete_details": {
+			"anyOf": [
+				{},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"metadata": {},
+		"store": {
+			"type": "boolean"
 		},
 		"user": {
 			"anyOf": [
@@ -184,6 +116,74 @@
 					"type": "null"
 				}
 			]
+		},
+		"error": {
+			"anyOf": [
+				{},
+				{
+					"type": "null"
+				}
+			]
+		},
+		"usage": {
+			"type": "object",
+			"properties": {
+				"input_tokens": {
+					"type": "number"
+				},
+				"output_tokens": {
+					"type": "number"
+				},
+				"total_tokens": {
+					"type": "number"
+				},
+				"input_tokens_details": {
+					"type": "object",
+					"properties": {
+						"cached_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"cached_tokens"
+					],
+					"additionalProperties": {}
+				},
+				"output_tokens_details": {
+					"type": "object",
+					"properties": {
+						"reasoning_tokens": {
+							"type": "number"
+						}
+					},
+					"required": [
+						"reasoning_tokens"
+					],
+					"additionalProperties": {}
+				},
+				"cost_in_usd_ticks": {
+					"anyOf": [
+						{
+							"type": "number"
+						},
+						{
+							"type": "null"
+						}
+					]
+				},
+				"num_sources_used": {
+					"type": "number"
+				},
+				"num_server_side_tools_used": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"input_tokens",
+				"output_tokens",
+				"total_tokens"
+			],
+			"additionalProperties": {}
 		}
 	},
 	"required": [
@@ -194,5 +194,5 @@
 		"status",
 		"output"
 	],
-	"type": "object"
+	"additionalProperties": {}
 }

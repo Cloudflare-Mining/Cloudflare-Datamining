@@ -1,14 +1,14 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"additionalProperties": false,
+	"type": "object",
 	"properties": {
 		"video": {
-			"format": "uri",
-			"type": "string"
+			"type": "string",
+			"format": "uri"
 		}
 	},
 	"required": [
 		"video"
 	],
-	"type": "object"
+	"additionalProperties": false
 }

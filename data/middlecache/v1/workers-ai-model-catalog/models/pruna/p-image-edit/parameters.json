@@ -4,6 +4,78 @@
 	"input": {
 		"rows": [
 			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Text instruction describing the desired edit or composition.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "images",
+				"name": "images",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Array of 1-5 reference images. Each entry is an HTTP(S) URL or a base64 data URI (data:image/...;base64,...).",
+				"metadata": {
+					"minItems": 1,
+					"maxItems": 5
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "images.items",
+						"name": "items",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "turbo",
+				"name": "turbo",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "true",
+				"description": "Run faster with additional optimizations. For complicated tasks, it is recommended to turn this off.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "aspect_ratio",
 				"name": "aspect_ratio",
 				"type": "string",
@@ -31,78 +103,6 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "disable_safety_checker",
-				"name": "disable_safety_checker",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "false",
-				"description": "Disable safety checker for generated images.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "images",
-				"name": "images",
-				"type": "array",
-				"isArray": true,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "Array of 1-5 reference images. Each entry is an HTTP(S) URL or a base64 data URI (data:image/...;base64,...).",
-				"metadata": {
-					"maxItems": 5,
-					"minItems": 1
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "images.items",
-						"name": "items",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						]
-					}
-				]
-			},
-			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "Text instruction describing the desired edit or composition.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "seed",
 				"name": "seed",
 				"type": "integer",
@@ -115,16 +115,16 @@
 				"required": false,
 				"description": "Random seed for reproducible generation.",
 				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": -9007199254740991
+					"minimum": -9007199254740991,
+					"maximum": 9007199254740991
 				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "turbo",
-				"name": "turbo",
+				"id": "disable_safety_checker",
+				"name": "disable_safety_checker",
 				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
@@ -133,8 +133,8 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"defaultValue": "true",
-				"description": "Run faster with additional optimizations. For complicated tasks, it is recommended to turn this off.",
+				"defaultValue": "false",
+				"description": "Disable safety checker for generated images.",
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

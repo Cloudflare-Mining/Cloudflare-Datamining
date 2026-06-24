@@ -90,6 +90,25 @@
 				"ancestorIsLast": []
 			},
 			{
+				"id": "temperature",
+				"name": "temperature",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"metadata": {
+					"minimum": 0,
+					"maximum": 2
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "max_output_tokens",
 				"name": "max_output_tokens",
 				"type": "number",
@@ -108,63 +127,8 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "reasoning",
-				"name": "reasoning",
-				"type": "object",
-				"isArray": false,
-				"isObject": true,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "reasoning.effort",
-						"name": "effort",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"enumValues": [
-							"none",
-							"low",
-							"medium",
-							"high"
-						],
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						]
-					}
-				]
-			},
-			{
-				"id": "stream",
-				"name": "stream",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "temperature",
-				"name": "temperature",
+				"id": "top_p",
+				"name": "top_p",
 				"type": "number",
 				"isArray": false,
 				"isObject": false,
@@ -174,51 +138,17 @@
 				"isLastOneOfChild": false,
 				"required": false,
 				"metadata": {
-					"maximum": 2,
-					"minimum": 0
+					"minimum": 0,
+					"maximum": 1
 				},
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
 			},
 			{
-				"id": "text",
-				"name": "text",
-				"type": "object",
-				"isArray": false,
-				"isObject": true,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "text.format",
-						"name": "format",
-						"type": "",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						]
-					}
-				]
-			},
-			{
-				"id": "tool_choice",
-				"name": "tool_choice",
-				"type": "",
+				"id": "stream",
+				"name": "stream",
+				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -265,9 +195,9 @@
 				]
 			},
 			{
-				"id": "top_p",
-				"name": "top_p",
-				"type": "number",
+				"id": "tool_choice",
+				"name": "tool_choice",
+				"type": "",
 				"isArray": false,
 				"isObject": false,
 				"isOneOf": false,
@@ -275,13 +205,83 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": false,
-				"metadata": {
-					"maximum": 1,
-					"minimum": 0
-				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "text",
+				"name": "text",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "text.format",
+						"name": "format",
+						"type": "",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						]
+					}
+				]
+			},
+			{
+				"id": "reasoning",
+				"name": "reasoning",
+				"type": "object",
+				"isArray": false,
+				"isObject": true,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
 				"depth": 0,
 				"isLast": true,
-				"ancestorIsLast": []
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "reasoning.effort",
+						"name": "effort",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": false,
+						"enumValues": [
+							"none",
+							"low",
+							"medium",
+							"high"
+						],
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							true
+						]
+					}
+				]
 			}
 		],
 		"variants": null,
@@ -290,38 +290,8 @@
 	"output": {
 		"rows": [
 			{
-				"id": "created_at",
-				"name": "created_at",
-				"type": "number",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
 				"id": "id",
 				"name": "id",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "model",
-				"name": "model",
 				"type": "string",
 				"isArray": false,
 				"isObject": false,
@@ -348,6 +318,36 @@
 				"metadata": {
 					"const": "response"
 				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "created_at",
+				"name": "created_at",
+				"type": "number",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "model",
+				"name": "model",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []

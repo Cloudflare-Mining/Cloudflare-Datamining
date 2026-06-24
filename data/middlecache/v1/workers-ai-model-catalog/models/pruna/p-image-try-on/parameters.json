@@ -4,6 +4,22 @@
 	"input": {
 		"rows": [
 			{
+				"id": "person_image",
+				"name": "person_image",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Image of the person to dress. A publicly reachable HTTP(S) URL or a base64 data URI (data:image/...;base64,...).",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "garment_images",
 				"name": "garment_images",
 				"type": "array",
@@ -16,8 +32,8 @@
 				"required": true,
 				"description": "Garment reference images to fit onto the person. Each entry is an HTTP(S) URL or a base64 data URI. Up to 6 recommended, up to 11 supported.",
 				"metadata": {
-					"maxItems": 11,
-					"minItems": 1
+					"minItems": 1,
+					"maxItems": 11
 				},
 				"depth": 0,
 				"isLast": false,
@@ -41,6 +57,60 @@
 						]
 					}
 				]
+			},
+			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "",
+				"description": "Experimental guidance for non-flatlay garment images, e.g. which garment from which image to use.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "seed",
+				"name": "seed",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Random seed. Leave unset for a random seed.",
+				"metadata": {
+					"minimum": -9007199254740991,
+					"maximum": 9007199254740991
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "turbo",
+				"name": "turbo",
+				"type": "boolean",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"defaultValue": "false",
+				"description": "Run faster with additional optimizations. Not recommended for more than 4 garments.",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
 			},
 			{
 				"id": "output_format",
@@ -78,59 +148,9 @@
 				"defaultValue": "95",
 				"description": "Quality for jpg/webp outputs, from 0 to 100.",
 				"metadata": {
-					"maximum": 100,
-					"minimum": 0
+					"minimum": 0,
+					"maximum": 100
 				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "person_image",
-				"name": "person_image",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "Image of the person to dress. A publicly reachable HTTP(S) URL or a base64 data URI (data:image/...;base64,...).",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "preserve_input_size",
-				"name": "preserve_input_size",
-				"type": "boolean",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "true",
-				"description": "Return the output at the original input resolution.",
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"defaultValue": "",
-				"description": "Experimental guidance for non-flatlay garment images, e.g. which garment from which image to use.",
 				"depth": 0,
 				"isLast": false,
 				"ancestorIsLast": []
@@ -152,28 +172,8 @@
 				"ancestorIsLast": []
 			},
 			{
-				"id": "seed",
-				"name": "seed",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Random seed. Leave unset for a random seed.",
-				"metadata": {
-					"maximum": 9007199254740991,
-					"minimum": -9007199254740991
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "turbo",
-				"name": "turbo",
+				"id": "preserve_input_size",
+				"name": "preserve_input_size",
 				"type": "boolean",
 				"isArray": false,
 				"isObject": false,
@@ -182,8 +182,8 @@
 				"isFirstOneOfChild": false,
 				"isLastOneOfChild": false,
 				"required": true,
-				"defaultValue": "false",
-				"description": "Run faster with additional optimizations. Not recommended for more than 4 garments.",
+				"defaultValue": "true",
+				"description": "Return the output at the original input resolution.",
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []

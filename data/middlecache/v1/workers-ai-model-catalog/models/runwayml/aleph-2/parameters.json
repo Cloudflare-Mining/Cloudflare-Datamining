@@ -4,6 +4,421 @@
 	"input": {
 		"rows": [
 			{
+				"id": "prompt",
+				"name": "prompt",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "Text prompt describing the edit to apply to the input video",
+				"metadata": {
+					"minLength": 1,
+					"maxLength": 1000
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "video_uri",
+				"name": "video_uri",
+				"type": "string",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": true,
+				"description": "HTTPS URL, Runway URI, or data URI of the source video to edit (≤30 seconds)",
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
+				"id": "keyframes",
+				"name": "keyframes",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Timed guidance images placed at specific points in the input video. Each entry has a uri and either seconds (absolute timestamp) or at (fractional position). Up to 5.",
+				"metadata": {
+					"minItems": 1,
+					"maxItems": 5
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "keyframes.0",
+						"name": "Option 1",
+						"type": "object",
+						"isArray": false,
+						"isObject": true,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": true,
+						"isLastOneOfChild": false,
+						"required": false,
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "keyframes.0.uri",
+								"name": "uri",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"description": "HTTPS URL, Runway URI, or data URI of the guidance image",
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							},
+							{
+								"id": "keyframes.0.seconds",
+								"name": "seconds",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"description": "Absolute timestamp in seconds from the start of the input video",
+								"metadata": {
+									"minimum": 0,
+									"maximum": 30
+								},
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									false
+								]
+							}
+						]
+					},
+					{
+						"id": "keyframes.1",
+						"name": "Option 2",
+						"type": "object",
+						"isArray": false,
+						"isObject": true,
+						"isOneOf": false,
+						"isOneOfChild": true,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": true,
+						"required": false,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "keyframes.1.uri",
+								"name": "uri",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"description": "HTTPS URL, Runway URI, or data URI of the guidance image",
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							},
+							{
+								"id": "keyframes.1.at",
+								"name": "at",
+								"type": "number",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": false,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": true,
+								"description": "Position as a fraction [0.0, 1.0] of the input video duration",
+								"metadata": {
+									"minimum": 0,
+									"maximum": 1
+								},
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "prompt_images",
+				"name": "prompt_images",
+				"type": "array",
+				"isArray": true,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Image keyframes for guiding the edit at specific points in the output video. Up to 5.",
+				"metadata": {
+					"minItems": 1,
+					"maxItems": 5
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": [],
+				"children": [
+					{
+						"id": "prompt_images.uri",
+						"name": "uri",
+						"type": "string",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": false,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"description": "HTTPS URL, Runway URI, or data URI of the keyframe image",
+						"depth": 1,
+						"isLast": false,
+						"ancestorIsLast": [
+							false
+						]
+					},
+					{
+						"id": "prompt_images.position",
+						"name": "position",
+						"type": "one of",
+						"isArray": false,
+						"isObject": false,
+						"isOneOf": true,
+						"isOneOfChild": false,
+						"isFirstOneOfChild": false,
+						"isLastOneOfChild": false,
+						"required": true,
+						"depth": 1,
+						"isLast": true,
+						"ancestorIsLast": [
+							false
+						],
+						"children": [
+							{
+								"id": "prompt_images.position.0",
+								"name": "Option 1",
+								"type": "string",
+								"isArray": false,
+								"isObject": false,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": true,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Where in the output video this image applies: \"first\", \"last\", { type: \"timestamp\", timestampSeconds }, or { type: \"position\", positionPercentage }",
+								"enumValues": [
+									"first",
+									"last"
+								],
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								]
+							},
+							{
+								"id": "prompt_images.position.1",
+								"name": "Option 2",
+								"type": "object",
+								"isArray": false,
+								"isObject": true,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": false,
+								"required": false,
+								"description": "Where in the output video this image applies: \"first\", \"last\", { type: \"timestamp\", timestampSeconds }, or { type: \"position\", positionPercentage }",
+								"depth": 2,
+								"isLast": false,
+								"ancestorIsLast": [
+									false,
+									true
+								],
+								"children": [
+									{
+										"id": "prompt_images.position.1.type",
+										"name": "type",
+										"type": "string",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"metadata": {
+											"const": "timestamp"
+										},
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										]
+									},
+									{
+										"id": "prompt_images.position.1.timestampSeconds",
+										"name": "timestampSeconds",
+										"type": "number",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"description": "Absolute timestamp in seconds from the start of the output video",
+										"metadata": {
+											"minimum": 0
+										},
+										"depth": 3,
+										"isLast": true,
+										"ancestorIsLast": [
+											false,
+											true,
+											false
+										]
+									}
+								]
+							},
+							{
+								"id": "prompt_images.position.2",
+								"name": "Option 3",
+								"type": "object",
+								"isArray": false,
+								"isObject": true,
+								"isOneOf": false,
+								"isOneOfChild": true,
+								"isFirstOneOfChild": false,
+								"isLastOneOfChild": true,
+								"required": false,
+								"description": "Where in the output video this image applies: \"first\", \"last\", { type: \"timestamp\", timestampSeconds }, or { type: \"position\", positionPercentage }",
+								"depth": 2,
+								"isLast": true,
+								"ancestorIsLast": [
+									false,
+									true
+								],
+								"children": [
+									{
+										"id": "prompt_images.position.2.type",
+										"name": "type",
+										"type": "string",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"metadata": {
+											"const": "position"
+										},
+										"depth": 3,
+										"isLast": false,
+										"ancestorIsLast": [
+											false,
+											true,
+											true
+										]
+									},
+									{
+										"id": "prompt_images.position.2.positionPercentage",
+										"name": "positionPercentage",
+										"type": "number",
+										"isArray": false,
+										"isObject": false,
+										"isOneOf": false,
+										"isOneOfChild": false,
+										"isFirstOneOfChild": false,
+										"isLastOneOfChild": false,
+										"required": true,
+										"description": "Position as a fraction [0.0, 1.0] of the total video duration",
+										"metadata": {
+											"minimum": 0,
+											"maximum": 1
+										},
+										"depth": 3,
+										"isLast": true,
+										"ancestorIsLast": [
+											false,
+											true,
+											true
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"id": "seed",
+				"name": "seed",
+				"type": "integer",
+				"isArray": false,
+				"isObject": false,
+				"isOneOf": false,
+				"isOneOfChild": false,
+				"isFirstOneOfChild": false,
+				"isLastOneOfChild": false,
+				"required": false,
+				"description": "Random seed for reproducible results",
+				"metadata": {
+					"minimum": 0,
+					"maximum": 4294967295
+				},
+				"depth": 0,
+				"isLast": false,
+				"ancestorIsLast": []
+			},
+			{
 				"id": "content_moderation",
 				"name": "content_moderation",
 				"type": "object",
@@ -58,421 +473,6 @@
 				"metadata": {
 					"exclusiveMinimum": 0
 				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "keyframes",
-				"name": "keyframes",
-				"type": "array",
-				"isArray": true,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Timed guidance images placed at specific points in the input video. Each entry has a uri and either seconds (absolute timestamp) or at (fractional position). Up to 5.",
-				"metadata": {
-					"maxItems": 5,
-					"minItems": 1
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "keyframes.0",
-						"name": "Option 1",
-						"type": "object",
-						"isArray": false,
-						"isObject": true,
-						"isOneOf": false,
-						"isOneOfChild": true,
-						"isFirstOneOfChild": true,
-						"isLastOneOfChild": false,
-						"required": false,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						],
-						"children": [
-							{
-								"id": "keyframes.0.seconds",
-								"name": "seconds",
-								"type": "number",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"description": "Absolute timestamp in seconds from the start of the input video",
-								"metadata": {
-									"maximum": 30,
-									"minimum": 0
-								},
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									false
-								]
-							},
-							{
-								"id": "keyframes.0.uri",
-								"name": "uri",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"description": "HTTPS URL, Runway URI, or data URI of the guidance image",
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									false
-								]
-							}
-						]
-					},
-					{
-						"id": "keyframes.1",
-						"name": "Option 2",
-						"type": "object",
-						"isArray": false,
-						"isObject": true,
-						"isOneOf": false,
-						"isOneOfChild": true,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": true,
-						"required": false,
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						],
-						"children": [
-							{
-								"id": "keyframes.1.at",
-								"name": "at",
-								"type": "number",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"description": "Position as a fraction [0.0, 1.0] of the input video duration",
-								"metadata": {
-									"maximum": 1,
-									"minimum": 0
-								},
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							},
-							{
-								"id": "keyframes.1.uri",
-								"name": "uri",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": false,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": true,
-								"description": "HTTPS URL, Runway URI, or data URI of the guidance image",
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									true
-								]
-							}
-						]
-					}
-				]
-			},
-			{
-				"id": "prompt",
-				"name": "prompt",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "Text prompt describing the edit to apply to the input video",
-				"metadata": {
-					"maxLength": 1000,
-					"minLength": 1
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "prompt_images",
-				"name": "prompt_images",
-				"type": "array",
-				"isArray": true,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Image keyframes for guiding the edit at specific points in the output video. Up to 5.",
-				"metadata": {
-					"maxItems": 5,
-					"minItems": 1
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": [],
-				"children": [
-					{
-						"id": "prompt_images.position",
-						"name": "position",
-						"type": "one of",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": true,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"depth": 1,
-						"isLast": false,
-						"ancestorIsLast": [
-							false
-						],
-						"children": [
-							{
-								"id": "prompt_images.position.0",
-								"name": "Option 1",
-								"type": "string",
-								"isArray": false,
-								"isObject": false,
-								"isOneOf": false,
-								"isOneOfChild": true,
-								"isFirstOneOfChild": true,
-								"isLastOneOfChild": false,
-								"required": false,
-								"description": "Where in the output video this image applies: \"first\", \"last\", { type: \"timestamp\", timestampSeconds }, or { type: \"position\", positionPercentage }",
-								"enumValues": [
-									"first",
-									"last"
-								],
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									false
-								]
-							},
-							{
-								"id": "prompt_images.position.1",
-								"name": "Option 2",
-								"type": "object",
-								"isArray": false,
-								"isObject": true,
-								"isOneOf": false,
-								"isOneOfChild": true,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": false,
-								"required": false,
-								"description": "Where in the output video this image applies: \"first\", \"last\", { type: \"timestamp\", timestampSeconds }, or { type: \"position\", positionPercentage }",
-								"depth": 2,
-								"isLast": false,
-								"ancestorIsLast": [
-									false,
-									false
-								],
-								"children": [
-									{
-										"id": "prompt_images.position.1.timestampSeconds",
-										"name": "timestampSeconds",
-										"type": "number",
-										"isArray": false,
-										"isObject": false,
-										"isOneOf": false,
-										"isOneOfChild": false,
-										"isFirstOneOfChild": false,
-										"isLastOneOfChild": false,
-										"required": true,
-										"description": "Absolute timestamp in seconds from the start of the output video",
-										"metadata": {
-											"minimum": 0
-										},
-										"depth": 3,
-										"isLast": false,
-										"ancestorIsLast": [
-											false,
-											false,
-											false
-										]
-									},
-									{
-										"id": "prompt_images.position.1.type",
-										"name": "type",
-										"type": "string",
-										"isArray": false,
-										"isObject": false,
-										"isOneOf": false,
-										"isOneOfChild": false,
-										"isFirstOneOfChild": false,
-										"isLastOneOfChild": false,
-										"required": true,
-										"metadata": {
-											"const": "timestamp"
-										},
-										"depth": 3,
-										"isLast": true,
-										"ancestorIsLast": [
-											false,
-											false,
-											false
-										]
-									}
-								]
-							},
-							{
-								"id": "prompt_images.position.2",
-								"name": "Option 3",
-								"type": "object",
-								"isArray": false,
-								"isObject": true,
-								"isOneOf": false,
-								"isOneOfChild": true,
-								"isFirstOneOfChild": false,
-								"isLastOneOfChild": true,
-								"required": false,
-								"description": "Where in the output video this image applies: \"first\", \"last\", { type: \"timestamp\", timestampSeconds }, or { type: \"position\", positionPercentage }",
-								"depth": 2,
-								"isLast": true,
-								"ancestorIsLast": [
-									false,
-									false
-								],
-								"children": [
-									{
-										"id": "prompt_images.position.2.positionPercentage",
-										"name": "positionPercentage",
-										"type": "number",
-										"isArray": false,
-										"isObject": false,
-										"isOneOf": false,
-										"isOneOfChild": false,
-										"isFirstOneOfChild": false,
-										"isLastOneOfChild": false,
-										"required": true,
-										"description": "Position as a fraction [0.0, 1.0] of the total video duration",
-										"metadata": {
-											"maximum": 1,
-											"minimum": 0
-										},
-										"depth": 3,
-										"isLast": false,
-										"ancestorIsLast": [
-											false,
-											false,
-											true
-										]
-									},
-									{
-										"id": "prompt_images.position.2.type",
-										"name": "type",
-										"type": "string",
-										"isArray": false,
-										"isObject": false,
-										"isOneOf": false,
-										"isOneOfChild": false,
-										"isFirstOneOfChild": false,
-										"isLastOneOfChild": false,
-										"required": true,
-										"metadata": {
-											"const": "position"
-										},
-										"depth": 3,
-										"isLast": true,
-										"ancestorIsLast": [
-											false,
-											false,
-											true
-										]
-									}
-								]
-							}
-						]
-					},
-					{
-						"id": "prompt_images.uri",
-						"name": "uri",
-						"type": "string",
-						"isArray": false,
-						"isObject": false,
-						"isOneOf": false,
-						"isOneOfChild": false,
-						"isFirstOneOfChild": false,
-						"isLastOneOfChild": false,
-						"required": true,
-						"description": "HTTPS URL, Runway URI, or data URI of the keyframe image",
-						"depth": 1,
-						"isLast": true,
-						"ancestorIsLast": [
-							false
-						]
-					}
-				]
-			},
-			{
-				"id": "seed",
-				"name": "seed",
-				"type": "integer",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": false,
-				"description": "Random seed for reproducible results",
-				"metadata": {
-					"maximum": 4294967295,
-					"minimum": 0
-				},
-				"depth": 0,
-				"isLast": false,
-				"ancestorIsLast": []
-			},
-			{
-				"id": "video_uri",
-				"name": "video_uri",
-				"type": "string",
-				"isArray": false,
-				"isObject": false,
-				"isOneOf": false,
-				"isOneOfChild": false,
-				"isFirstOneOfChild": false,
-				"isLastOneOfChild": false,
-				"required": true,
-				"description": "HTTPS URL, Runway URI, or data URI of the source video to edit (≤30 seconds)",
 				"depth": 0,
 				"isLast": true,
 				"ancestorIsLast": []
