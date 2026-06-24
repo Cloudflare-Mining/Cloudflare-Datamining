@@ -67,7 +67,9 @@
 		</ul>
 	</li>
 </ul>
-<p>&nbsp;</p>
+<h3 data-path-to-node="1"><strong data-path-to-node="1" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="2">Compensation may be adjusted depending on work location.</p>
+<p data-path-to-node="3">● For Denver based hires: Estimated annual salary of $84,000 - $116,000.</p>
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
