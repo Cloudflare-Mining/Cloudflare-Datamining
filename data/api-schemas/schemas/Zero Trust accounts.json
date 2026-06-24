@@ -1682,6 +1682,16 @@
 																	"type": "object",
 																	"x-stainless-terraform-configurability": "optional"
 																},
+																"max_ttl_secs": {
+																	"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																	"example": 3600,
+																	"maximum": 36000,
+																	"minimum": 60,
+																	"nullable": true,
+																	"type": "integer",
+																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
+																},
 																"protocol_detection": {
 																	"description": "Specify whether to detect protocols from the initial bytes of client traffic.",
 																	"nullable": true,
@@ -2212,6 +2222,16 @@
 																				}
 																			},
 																			"type": "object",
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"max_ttl_secs": {
+																			"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																			"example": 3600,
+																			"maximum": 36000,
+																			"minimum": 60,
+																			"nullable": true,
+																			"type": "integer",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"protocol_detection": {
@@ -3943,7 +3963,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/gateway/configuration": {
-		"description": "Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `certificate` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.",
+		"description": "Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, `certificate`, or `max_ttl_secs` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.",
 		"operationId": "zero-trust-accounts-patch-zero-trust-account-configuration",
 		"parameters": [
 			{
@@ -4325,6 +4345,16 @@
 											}
 										},
 										"type": "object",
+										"x-stainless-terraform-configurability": "optional"
+									},
+									"max_ttl_secs": {
+										"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+										"example": 3600,
+										"maximum": 36000,
+										"minimum": 60,
+										"nullable": true,
+										"type": "integer",
+										"x-auditable": true,
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"protocol_detection": {
@@ -4830,6 +4860,16 @@
 																		}
 																	},
 																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"max_ttl_secs": {
+																	"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																	"example": 3600,
+																	"maximum": 36000,
+																	"minimum": 60,
+																	"nullable": true,
+																	"type": "integer",
+																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"protocol_detection": {
@@ -5362,6 +5402,16 @@
 																				}
 																			},
 																			"type": "object",
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"max_ttl_secs": {
+																			"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																			"example": 3600,
+																			"maximum": 36000,
+																			"minimum": 60,
+																			"nullable": true,
+																			"type": "integer",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"protocol_detection": {
@@ -6774,6 +6824,16 @@
 										"type": "object",
 										"x-stainless-terraform-configurability": "optional"
 									},
+									"max_ttl_secs": {
+										"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+										"example": 3600,
+										"maximum": 36000,
+										"minimum": 60,
+										"nullable": true,
+										"type": "integer",
+										"x-auditable": true,
+										"x-stainless-terraform-configurability": "optional"
+									},
 									"protocol_detection": {
 										"description": "Specify whether to detect protocols from the initial bytes of client traffic.",
 										"nullable": true,
@@ -7277,6 +7337,16 @@
 																		}
 																	},
 																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"max_ttl_secs": {
+																	"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																	"example": 3600,
+																	"maximum": 36000,
+																	"minimum": 60,
+																	"nullable": true,
+																	"type": "integer",
+																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"protocol_detection": {
@@ -7809,6 +7879,16 @@
 																				}
 																			},
 																			"type": "object",
+																			"x-stainless-terraform-configurability": "optional"
+																		},
+																		"max_ttl_secs": {
+																			"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																			"example": 3600,
+																			"maximum": 36000,
+																			"minimum": 60,
+																			"nullable": true,
+																			"type": "integer",
+																			"x-auditable": true,
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"protocol_detection": {

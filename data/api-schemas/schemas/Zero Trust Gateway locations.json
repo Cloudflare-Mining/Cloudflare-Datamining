@@ -630,6 +630,40 @@
 														"type": "string",
 														"x-stainless-terraform-configurability": "computed"
 													},
+													"max_ttl": {
+														"default": {
+															"mode": "inherit"
+														},
+														"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+														"nullable": true,
+														"properties": {
+															"mode": {
+																"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																"enum": [
+																	"inherit",
+																	"override",
+																	"disabled"
+																],
+																"example": "override",
+																"type": "string",
+																"x-auditable": true
+															},
+															"ttl_secs": {
+																"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																"example": 3600,
+																"maximum": 36000,
+																"minimum": 60,
+																"nullable": true,
+																"type": "integer",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"mode"
+														],
+														"type": "object",
+														"x-stainless-terraform-configurability": "computed_optional"
+													},
 													"name": {
 														"description": "Specify the location name.",
 														"example": "Austin Office Location",
@@ -983,6 +1017,40 @@
 																"readOnly": true,
 																"type": "string",
 																"x-stainless-terraform-configurability": "computed"
+															},
+															"max_ttl": {
+																"default": {
+																	"mode": "inherit"
+																},
+																"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+																"nullable": true,
+																"properties": {
+																	"mode": {
+																		"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																		"enum": [
+																			"inherit",
+																			"override",
+																			"disabled"
+																		],
+																		"example": "override",
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"ttl_secs": {
+																		"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																		"example": 3600,
+																		"maximum": 36000,
+																		"minimum": 60,
+																		"nullable": true,
+																		"type": "integer",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"mode"
+																],
+																"type": "object",
+																"x-stainless-terraform-configurability": "computed_optional"
 															},
 															"name": {
 																"description": "Specify the location name.",
@@ -1438,6 +1506,40 @@
 													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
 												},
+												"max_ttl": {
+													"default": {
+														"mode": "inherit"
+													},
+													"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+													"nullable": true,
+													"properties": {
+														"mode": {
+															"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+															"enum": [
+																"inherit",
+																"override",
+																"disabled"
+															],
+															"example": "override",
+															"type": "string",
+															"x-auditable": true
+														},
+														"ttl_secs": {
+															"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+															"example": 3600,
+															"maximum": 36000,
+															"minimum": 60,
+															"nullable": true,
+															"type": "integer",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"mode"
+													],
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
+												},
 												"name": {
 													"description": "Specify the location name.",
 													"example": "Austin Office Location",
@@ -1758,6 +1860,40 @@
 															"readOnly": true,
 															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
+														},
+														"max_ttl": {
+															"default": {
+																"mode": "inherit"
+															},
+															"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+															"nullable": true,
+															"properties": {
+																"mode": {
+																	"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																	"enum": [
+																		"inherit",
+																		"override",
+																		"disabled"
+																	],
+																	"example": "override",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"ttl_secs": {
+																	"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																	"example": 3600,
+																	"maximum": 36000,
+																	"minimum": 60,
+																	"nullable": true,
+																	"type": "integer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"mode"
+															],
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -2081,6 +2217,40 @@
 								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
+							"max_ttl": {
+								"default": {
+									"mode": "inherit"
+								},
+								"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+								"nullable": true,
+								"properties": {
+									"mode": {
+										"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+										"enum": [
+											"inherit",
+											"override",
+											"disabled"
+										],
+										"example": "override",
+										"type": "string",
+										"x-auditable": true
+									},
+									"ttl_secs": {
+										"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+										"example": 3600,
+										"maximum": 36000,
+										"minimum": 60,
+										"nullable": true,
+										"type": "integer",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"mode"
+								],
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
 							"name": {
 								"description": "Specify the location name.",
 								"example": "Austin Office Location",
@@ -2391,6 +2561,40 @@
 													"readOnly": true,
 													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
+												},
+												"max_ttl": {
+													"default": {
+														"mode": "inherit"
+													},
+													"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+													"nullable": true,
+													"properties": {
+														"mode": {
+															"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+															"enum": [
+																"inherit",
+																"override",
+																"disabled"
+															],
+															"example": "override",
+															"type": "string",
+															"x-auditable": true
+														},
+														"ttl_secs": {
+															"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+															"example": 3600,
+															"maximum": 36000,
+															"minimum": 60,
+															"nullable": true,
+															"type": "integer",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"mode"
+													],
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -2712,6 +2916,40 @@
 															"readOnly": true,
 															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
+														},
+														"max_ttl": {
+															"default": {
+																"mode": "inherit"
+															},
+															"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+															"nullable": true,
+															"properties": {
+																"mode": {
+																	"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																	"enum": [
+																		"inherit",
+																		"override",
+																		"disabled"
+																	],
+																	"example": "override",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"ttl_secs": {
+																	"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																	"example": 3600,
+																	"maximum": 36000,
+																	"minimum": 60,
+																	"nullable": true,
+																	"type": "integer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"mode"
+															],
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -3044,6 +3282,40 @@
 								"type": "object",
 								"x-stainless-terraform-configurability": "optional"
 							},
+							"max_ttl": {
+								"default": {
+									"mode": "inherit"
+								},
+								"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+								"nullable": true,
+								"properties": {
+									"mode": {
+										"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+										"enum": [
+											"inherit",
+											"override",
+											"disabled"
+										],
+										"example": "override",
+										"type": "string",
+										"x-auditable": true
+									},
+									"ttl_secs": {
+										"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+										"example": 3600,
+										"maximum": 36000,
+										"minimum": 60,
+										"nullable": true,
+										"type": "integer",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"mode"
+								],
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
+							},
 							"name": {
 								"description": "Specify the location name.",
 								"example": "Austin Office Location",
@@ -3354,6 +3626,40 @@
 													"readOnly": true,
 													"type": "string",
 													"x-stainless-terraform-configurability": "computed"
+												},
+												"max_ttl": {
+													"default": {
+														"mode": "inherit"
+													},
+													"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+													"nullable": true,
+													"properties": {
+														"mode": {
+															"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+															"enum": [
+																"inherit",
+																"override",
+																"disabled"
+															],
+															"example": "override",
+															"type": "string",
+															"x-auditable": true
+														},
+														"ttl_secs": {
+															"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+															"example": 3600,
+															"maximum": 36000,
+															"minimum": 60,
+															"nullable": true,
+															"type": "integer",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"mode"
+													],
+													"type": "object",
+													"x-stainless-terraform-configurability": "computed_optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -3675,6 +3981,40 @@
 															"readOnly": true,
 															"type": "string",
 															"x-stainless-terraform-configurability": "computed"
+														},
+														"max_ttl": {
+															"default": {
+																"mode": "inherit"
+															},
+															"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+															"nullable": true,
+															"properties": {
+																"mode": {
+																	"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																	"enum": [
+																		"inherit",
+																		"override",
+																		"disabled"
+																	],
+																	"example": "override",
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"ttl_secs": {
+																	"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																	"example": 3600,
+																	"maximum": 36000,
+																	"minimum": 60,
+																	"nullable": true,
+																	"type": "integer",
+																	"x-auditable": true
+																}
+															},
+															"required": [
+																"mode"
+															],
+															"type": "object",
+															"x-stainless-terraform-configurability": "computed_optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
