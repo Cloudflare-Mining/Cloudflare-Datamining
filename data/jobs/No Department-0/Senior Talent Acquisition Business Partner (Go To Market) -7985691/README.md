@@ -7,7 +7,7 @@
 </div>
 <p><strong>Location:</strong> Tokyo, Japan</p>
 <p><strong>About the Role:</strong></p>
-<p>We are hiring for a Senior Recruiter to join our Japan Go To Market hiring efforts. In this role, you will act as a true talent advisor and go-to-market specialist, driving the expansion of our sales and GTM teams. You will operate autonomously, utilizing your deep market expertise, AI-driven strategies, and extensive network to hire top-tier talent for Cloudflare.</p>
+<p>We are hiring for a Senior Talent Acquisition Business Partner to join our Japan Go To Market hiring efforts. In this role, you will act as a true talent advisor and go-to-market specialist, driving the expansion of our sales and GTM teams. You will operate autonomously, utilizing your deep market expertise, AI-driven strategies, and extensive network to hire top-tier talent for Cloudflare.</p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
 	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong> Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.&nbsp;</li>
