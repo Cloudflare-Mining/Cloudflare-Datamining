@@ -25,7 +25,9 @@
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"New York, US",
+				"San Francisco, US"
 			],
 			"value_type": "multi_select"
 		},
@@ -39,7 +41,7 @@
 		}
 	],
 	"id": 7567848,
-	"updated_at": "2026-06-21T06:58:16-04:00",
+	"updated_at": "2026-06-25T10:42:42-04:00",
 	"requisition_id": null,
 	"title": "Principal People Team Business Partner - R&D",
 	"company_name": "Cloudflare",
@@ -59,6 +61,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19990,
+			"name": "New York, NY",
+			"location": "New York, New York, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
 			"child_ids": [],
 			"parent_id": 48752
 		}

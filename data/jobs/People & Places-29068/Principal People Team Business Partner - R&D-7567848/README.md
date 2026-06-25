@@ -5,7 +5,7 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
+<p><strong>Available Locations: Austin, TX, San Francisco, CA, New York, NY</strong></p>
 <h2><strong>What You Would Do Here</strong></h2>
 <p>Cloudflare is growing our People team. Our focus is finding the best people to work at Cloudflare and then allowing them to do their best work. As we continue to scale our global organization, we are looking for a trusted Business Partner who is naturally curious about our technology, deeply invested in our business strategy, and driven to help our people thrive.</p>
 <p>In this role, you will report to the Senior Director, People Team Business Partners and serve as a heavy-hitting strategic partner to our senior leadership across Product, Engineering and Security.</p>
@@ -29,7 +29,13 @@
 	<li><strong>Change Leadership:</strong> Guide leadership and teams through structural evolutions, hyper-growth scaling, and shifting business priorities with minimal disruption to engagement and output.</li>
 	<li><strong>Talent &amp; Capability Building:</strong> Partner with business leaders and People team Centers of Excellence (COEs) to design high-impact initiatives around talent development, performance elevation, and total rewards.</li>
 </ul>
-<p>&nbsp;</p>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<p id="p-rc_c04f13ccf84ecacb-27" data-path-to-node="1"><span class="citation-31 citation-end-31">Compensation may be adjusted depending on work location.</span></p>
+<p data-path-to-node="2">● For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000.</p>
+<p data-path-to-node="3">● For New York City and Washington based hires: Estimated annual salary of $178,000 - $245,000.</p>
+<p data-path-to-node="4"><span class="citation-24 citation-25 citation-26 citation-27 citation-28 citation-end-28">This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan.</span><span class="citation-24 citation-25 citation-26 citation-27 citation-end-27">&nbsp;The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the&nbsp;</span><span class="citation-24 citation-25 citation-end-25">Sales Compensation Plan.</span>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
 <p>Health &amp; Welfare Benefits<br>● Medical/Rx Insurance<br>● Dental Insurance<br>● Vision Insurance<br>● Flexible Spending Accounts<br>● Commuter Spending Accounts<br>● Fertility &amp; Family Forming Benefits<br>● On-demand mental health support and Employee Assistance Program<br>● Global Travel Medical Insurance</p>
 <p>Financial Benefits<br>● Short and Long Term Disability Insurance<br>● Life &amp; Accident Insurance<br>● 401(k) Retirement Savings Plan<br>● Employee Stock Participation Plan</p>
