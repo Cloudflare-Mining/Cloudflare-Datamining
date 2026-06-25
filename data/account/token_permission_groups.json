@@ -2439,6 +2439,24 @@
 		"category": "developer_platform"
 	},
 	{
+		"id": "de5cf65aae2140d6ba2e272db44e4fc1",
+		"name": "Precursor Read",
+		"description": "Grants read access to Precursor",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"category": "app_security"
+	},
+	{
+		"id": "4b79f5066b1d408b832ef4407f686c5b",
+		"name": "Precursor Write",
+		"description": "Grants write access to Precursor",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"category": "app_security"
+	},
+	{
 		"id": "fd7f886c75a244389e892c4c3c068292",
 		"name": "Pubsub Configuration Read",
 		"description": "Grants read access to Pubsub Configurations\n",
