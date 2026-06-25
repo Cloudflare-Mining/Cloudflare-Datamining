@@ -80,7 +80,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"ca-certificates": {
-		"version": "20240203",
+		"version": "20260601~24.04.1",
 		"short_description": "Common CA certificates",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -90,7 +90,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"containerd.io": {
-		"version": "2.2.4-1~ubuntu.24.04~noble",
+		"version": "2.2.5-1~ubuntu.24.04~noble",
 		"short_description": "An open and reliable container runtime",
 		"author": "Containerd team <help@containerd.io>"
 	},
@@ -200,27 +200,27 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"docker-buildx-plugin": {
-		"version": "0.34.1-1~ubuntu.24.04~noble",
+		"version": "0.35.0-1~ubuntu.24.04~noble",
 		"short_description": "Docker Buildx plugin extends build capabilities with BuildKit.",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce": {
-		"version": "5:29.5.3-1~ubuntu.24.04~noble",
+		"version": "5:29.6.0-1~ubuntu.24.04~noble",
 		"short_description": "Docker: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-cli": {
-		"version": "5:29.5.3-1~ubuntu.24.04~noble",
+		"version": "5:29.6.0-1~ubuntu.24.04~noble",
 		"short_description": "Docker CLI: the open-source application container engine",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-ce-rootless-extras": {
-		"version": "5:29.5.3-1~ubuntu.24.04~noble",
+		"version": "5:29.6.0-1~ubuntu.24.04~noble",
 		"short_description": "Rootless support for Docker.",
 		"author": "Docker <support@docker.com>"
 	},
 	"docker-compose-plugin": {
-		"version": "5.1.4-1~ubuntu.24.04~noble",
+		"version": "5.2.0-1~ubuntu.24.04~noble",
 		"short_description": "Docker Compose (V2) plugin for the Docker CLI.",
 		"author": "Docker <support@docker.com>"
 	},
@@ -1260,12 +1260,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgraphite2-3:amd64": {
-		"version": "1.3.14-2build1",
+		"version": "1.3.14-2ubuntu0.24.04.1",
 		"short_description": "Font rendering engine for Complex Scripts -- library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libgraphite2-dev:amd64": {
-		"version": "1.3.14-2build1",
+		"version": "1.3.14-2ubuntu0.24.04.1",
 		"short_description": "Development files for libgraphite2",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1350,22 +1350,22 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libheif-dev:amd64": {
-		"version": "1.17.6-1ubuntu4.3",
+		"version": "1.17.6-1ubuntu4.4",
 		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libheif-plugin-aomdec:amd64": {
-		"version": "1.17.6-1ubuntu4.3",
+		"version": "1.17.6-1ubuntu4.4",
 		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - aomdec plugin",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libheif-plugin-aomenc:amd64": {
-		"version": "1.17.6-1ubuntu4.3",
+		"version": "1.17.6-1ubuntu4.4",
 		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - aomenc plugin",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libheif1:amd64": {
-		"version": "1.17.6-1ubuntu4.3",
+		"version": "1.17.6-1ubuntu4.4",
 		"short_description": "ISO/IEC 23008-12:2017 HEIF file format decoder - shared library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -1960,7 +1960,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libperl5.38t64:amd64": {
-		"version": "5.38.2-3.2ubuntu0.2",
+		"version": "5.38.2-3.2ubuntu0.3",
 		"short_description": "shared Perl library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2485,12 +2485,12 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libxml2-dev:amd64": {
-		"version": "2.9.14+dfsg-1.3ubuntu3.7",
+		"version": "2.9.14+dfsg-1.3ubuntu3.8",
 		"short_description": "GNOME XML library - development files",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libxml2:amd64": {
-		"version": "2.9.14+dfsg-1.3ubuntu3.7",
+		"version": "2.9.14+dfsg-1.3ubuntu3.8",
 		"short_description": "GNOME XML library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2675,17 +2675,17 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"perl": {
-		"version": "5.38.2-3.2ubuntu0.2",
+		"version": "5.38.2-3.2ubuntu0.3",
 		"short_description": "Larry Wall's Practical Extraction and Report Language",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"perl-base": {
-		"version": "5.38.2-3.2ubuntu0.2",
+		"version": "5.38.2-3.2ubuntu0.3",
 		"short_description": "minimal Perl system",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"perl-modules-5.38": {
-		"version": "5.38.2-3.2ubuntu0.2",
+		"version": "5.38.2-3.2ubuntu0.3",
 		"short_description": "Core Perl modules",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
