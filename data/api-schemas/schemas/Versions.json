@@ -2177,6 +2177,36 @@
 														"type": "integer",
 														"x-auditable": true
 													},
+													"package_dependencies": {
+														"description": "The list of npm packages that were installed and used when this Worker\nversion was built.\n",
+														"items": {
+															"properties": {
+																"installedVersion": {
+																	"description": "The exact version that was resolved and installed by the package manager.",
+																	"example": "4.17.22",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "The npm package name.",
+																	"example": "lodash",
+																	"type": "string"
+																},
+																"packageJsonVersion": {
+																	"description": "The version constraint as written in package.json.",
+																	"example": "^4.17.21",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"packageJsonVersion",
+																"installedVersion"
+															],
+															"type": "object"
+														},
+														"type": "array",
+														"x-auditable": true
+													},
 													"placement": {
 														"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 														"oneOf": [
@@ -4468,6 +4498,36 @@
 													"type": "integer",
 													"x-auditable": true
 												},
+												"package_dependencies": {
+													"description": "The list of npm packages that were installed and used when this Worker\nversion was built.\n",
+													"items": {
+														"properties": {
+															"installedVersion": {
+																"description": "The exact version that was resolved and installed by the package manager.",
+																"example": "4.17.22",
+																"type": "string"
+															},
+															"name": {
+																"description": "The npm package name.",
+																"example": "lodash",
+																"type": "string"
+															},
+															"packageJsonVersion": {
+																"description": "The version constraint as written in package.json.",
+																"example": "^4.17.21",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"packageJsonVersion",
+															"installedVersion"
+														],
+														"type": "object"
+													},
+													"type": "array",
+													"x-auditable": true
+												},
 												"placement": {
 													"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 													"oneOf": [
@@ -6660,6 +6720,36 @@
 										"type": "integer",
 										"x-auditable": true
 									},
+									"package_dependencies": {
+										"description": "The list of npm packages that were installed and used when this Worker\nversion was built.\n",
+										"items": {
+											"properties": {
+												"installedVersion": {
+													"description": "The exact version that was resolved and installed by the package manager.",
+													"example": "4.17.22",
+													"type": "string"
+												},
+												"name": {
+													"description": "The npm package name.",
+													"example": "lodash",
+													"type": "string"
+												},
+												"packageJsonVersion": {
+													"description": "The version constraint as written in package.json.",
+													"example": "^4.17.21",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"packageJsonVersion",
+												"installedVersion"
+											],
+											"type": "object"
+										},
+										"type": "array",
+										"x-auditable": true
+									},
 									"placement": {
 										"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 										"oneOf": [
@@ -8675,6 +8765,36 @@
 										"description": "The integer version number, starting from one.",
 										"readOnly": true,
 										"type": "integer",
+										"x-auditable": true
+									},
+									"package_dependencies": {
+										"description": "The list of npm packages that were installed and used when this Worker\nversion was built.\n",
+										"items": {
+											"properties": {
+												"installedVersion": {
+													"description": "The exact version that was resolved and installed by the package manager.",
+													"example": "4.17.22",
+													"type": "string"
+												},
+												"name": {
+													"description": "The npm package name.",
+													"example": "lodash",
+													"type": "string"
+												},
+												"packageJsonVersion": {
+													"description": "The version constraint as written in package.json.",
+													"example": "^4.17.21",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"packageJsonVersion",
+												"installedVersion"
+											],
+											"type": "object"
+										},
+										"type": "array",
 										"x-auditable": true
 									},
 									"placement": {
@@ -10782,6 +10902,36 @@
 													"description": "The integer version number, starting from one.",
 													"readOnly": true,
 													"type": "integer",
+													"x-auditable": true
+												},
+												"package_dependencies": {
+													"description": "The list of npm packages that were installed and used when this Worker\nversion was built.\n",
+													"items": {
+														"properties": {
+															"installedVersion": {
+																"description": "The exact version that was resolved and installed by the package manager.",
+																"example": "4.17.22",
+																"type": "string"
+															},
+															"name": {
+																"description": "The npm package name.",
+																"example": "lodash",
+																"type": "string"
+															},
+															"packageJsonVersion": {
+																"description": "The version constraint as written in package.json.",
+																"example": "^4.17.21",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"packageJsonVersion",
+															"installedVersion"
+														],
+														"type": "object"
+													},
+													"type": "array",
 													"x-auditable": true
 												},
 												"placement": {
@@ -12969,6 +13119,36 @@
 								"type": "integer",
 								"x-auditable": true
 							},
+							"package_dependencies": {
+								"description": "The list of npm packages that were installed and used when this Worker\nversion was built.\n",
+								"items": {
+									"properties": {
+										"installedVersion": {
+											"description": "The exact version that was resolved and installed by the package manager.",
+											"example": "4.17.22",
+											"type": "string"
+										},
+										"name": {
+											"description": "The npm package name.",
+											"example": "lodash",
+											"type": "string"
+										},
+										"packageJsonVersion": {
+											"description": "The version constraint as written in package.json.",
+											"example": "^4.17.21",
+											"type": "string"
+										}
+									},
+									"required": [
+										"name",
+										"packageJsonVersion",
+										"installedVersion"
+									],
+									"type": "object"
+								},
+								"type": "array",
+								"x-auditable": true
+							},
 							"placement": {
 								"description": "Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host.",
 								"oneOf": [
@@ -15070,6 +15250,36 @@
 													"description": "The integer version number, starting from one.",
 													"readOnly": true,
 													"type": "integer",
+													"x-auditable": true
+												},
+												"package_dependencies": {
+													"description": "The list of npm packages that were installed and used when this Worker\nversion was built.\n",
+													"items": {
+														"properties": {
+															"installedVersion": {
+																"description": "The exact version that was resolved and installed by the package manager.",
+																"example": "4.17.22",
+																"type": "string"
+															},
+															"name": {
+																"description": "The npm package name.",
+																"example": "lodash",
+																"type": "string"
+															},
+															"packageJsonVersion": {
+																"description": "The version constraint as written in package.json.",
+																"example": "^4.17.21",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"packageJsonVersion",
+															"installedVersion"
+														],
+														"type": "object"
+													},
+													"type": "array",
 													"x-auditable": true
 												},
 												"placement": {

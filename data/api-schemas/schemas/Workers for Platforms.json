@@ -21357,6 +21357,36 @@
 										],
 										"type": "object"
 									},
+									"package_dependencies": {
+										"description": "The list of npm packages that were installed and used when this Worker\nversion was built.\n",
+										"items": {
+											"properties": {
+												"installedVersion": {
+													"description": "The exact version that was resolved and installed by the package manager.",
+													"example": "4.17.22",
+													"type": "string"
+												},
+												"name": {
+													"description": "The npm package name.",
+													"example": "lodash",
+													"type": "string"
+												},
+												"packageJsonVersion": {
+													"description": "The version constraint as written in package.json.",
+													"example": "^4.17.21",
+													"type": "string"
+												}
+											},
+											"required": [
+												"name",
+												"packageJsonVersion",
+												"installedVersion"
+											],
+											"type": "object"
+										},
+										"type": "array",
+										"x-auditable": true
+									},
 									"placement": {
 										"allOf": [
 											{
