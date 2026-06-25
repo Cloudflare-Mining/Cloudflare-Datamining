@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/vitest-pool-workers",
 	"dist-tags": {
-		"latest": "0.16.19"
+		"latest": "0.16.20"
 	},
 	"versions": {
 		"0.1.0": {
@@ -14525,14 +14525,73 @@
 			"name": "@cloudflare/vitest-pool-workers",
 			"version": "0.16.19",
 			"dependencies": {
+				"zod": "3.25.76",
+				"esbuild": "0.28.1",
+				"wrangler": "4.104.0",
+				"miniflare": "4.20260623.0",
+				"cjs-module-lexer": "1.2.3"
+			},
+			"devDependencies": {
+				"birpc": "0.2.14",
+				"semver": "^7.7.1",
+				"tsdown": "0.16.3",
+				"undici": "7.28.0",
+				"vitest": "4.1.0",
+				"devalue": "^5.6.3",
+				"capnp-es": "0.0.14",
+				"get-port": "^7.1.0",
+				"tree-kill": "1.2.2",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"jscodeshift": "^17.3.0",
+				"@types/semver": "^7.5.1",
+				"@vitest/runner": "4.1.0",
+				"@vitest/snapshot": "4.1.0",
+				"@types/jscodeshift": "^17.3.0",
+				"@cloudflare/workers-types": "^4.20260623.1",
+				"@cloudflare/workers-utils": "0.24.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/workflows-shared": "0.11.2",
+				"@cloudflare/mock-npm-registry": "0.0.0"
+			},
+			"peerDependencies": {
+				"vitest": "^4.1.0",
+				"@vitest/runner": "^4.1.0",
+				"@vitest/snapshot": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "aa7e2048a00578418e3c3220bdf3ed4220883eaf",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.16.19.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-9NQ4xtEBw12xBADSYWOaac+ZxBj0H4UDKHYjD//oBE5P9RD3Cb6JfllB7JqbMOukv/o8d8cEFSqv3NjLRJTCLA==",
+				"signatures": [
+					{
+						"sig": "MEUCIBzMtw138h5klW4WWb5ECr52656PTxw2FMRxjSITV7X/AiEA9qgcLGwHqOe45JacN/nJ0keTTuMzTOBLtJ6d8GWG3NI=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.16.19",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 688111
+			}
+		},
+		"0.16.20": {
+			"name": "@cloudflare/vitest-pool-workers",
+			"version": "0.16.20",
+			"dependencies": {
 				"cjs-module-lexer": "1.2.3",
 				"esbuild": "0.28.1",
 				"zod": "3.25.76",
-				"miniflare": "4.20260623.0",
-				"wrangler": "4.104.0"
+				"miniflare": "4.20260625.0",
+				"wrangler": "4.105.0"
 			},
 			"devDependencies": {
-				"@cloudflare/workers-types": "^4.20260623.1",
+				"@cloudflare/workers-types": "^4.20260625.1",
 				"@types/jscodeshift": "^17.3.0",
 				"@types/node": "22.15.17",
 				"@types/semver": "^7.5.1",
@@ -14551,8 +14610,8 @@
 				"undici": "7.28.0",
 				"vitest": "4.1.0",
 				"@cloudflare/mock-npm-registry": "0.0.0",
-				"@cloudflare/workers-utils": "0.24.0",
 				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/workers-utils": "0.24.0",
 				"@cloudflare/workflows-shared": "0.11.2"
 			},
 			"peerDependencies": {
@@ -14561,13 +14620,13 @@
 				"vitest": "^4.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-9NQ4xtEBw12xBADSYWOaac+ZxBj0H4UDKHYjD//oBE5P9RD3Cb6JfllB7JqbMOukv/o8d8cEFSqv3NjLRJTCLA==",
-				"shasum": "aa7e2048a00578418e3c3220bdf3ed4220883eaf",
-				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.16.19.tgz",
+				"integrity": "sha512-buw0YgsAMT7s60wcmyxbtciEJjMJzKcWzayDMPhWaqMqfQzW+0WPLV67Lobn4C80nkNQhYocEJPnrEhLWnOf+A==",
+				"shasum": "281e9fbf662ba5dc3b224f6e067f9c2427f5e7de",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.16.20.tgz",
 				"fileCount": 19,
-				"unpackedSize": 688111,
+				"unpackedSize": 692721,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.16.19",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.16.20",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -14575,7 +14634,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIBzMtw138h5klW4WWb5ECr52656PTxw2FMRxjSITV7X/AiEA9qgcLGwHqOe45JacN/nJ0keTTuMzTOBLtJ6d8GWG3NI="
+						"sig": "MEUCIGhjy+yZRQguVsrHKQJSSNnGCtz68L0H5H4WwCWszmIuAiEA4kkx0GXUU1Hyz/RbrHheDKA6I/qTvMk1A6XjPlexrWw="
 					}
 				]
 			}

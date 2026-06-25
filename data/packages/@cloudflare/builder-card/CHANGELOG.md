@@ -1,5 +1,13 @@
 # Change Log
 
+## 11.0.0
+
+### Patch Changes
+
+- Updated dependencies [7ecedcf71d]
+  - @cloudflare/component-page@11.0.0
+  - @cloudflare/component-card@12.0.0
+
 ## 10.0.39
 
 ### Patch Changes

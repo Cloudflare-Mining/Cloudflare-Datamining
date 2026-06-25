@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.0.0
+
+### Major Changes
+
+- 7ecedcf71d: Use router location from the CL1 compat router context and use it for page autofocus behavior while removing the `react-router-dom` peer dependency from the page component.
+
 ## 10.1.21
 
 ### Patch Changes
