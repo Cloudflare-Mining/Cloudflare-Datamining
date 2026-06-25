@@ -17,7 +17,6 @@
 	<li>At least 4 years relevant experience including a mix of law firm and in-house experience for a technology company (either on secondment or after leaving the law firm) with at least 2 years of experience working for an internationally recognized law firm.</li>
 	<li>A demonstrated ability to learn new systems and tools, the better to adapt to AI tooling.</li>
 	<li>Substantive experience with drafting, reviewing, and negotiating a variety of complex commercial agreements, including SaaS agreements and consulting services statements of work.</li>
-	<li>Excellent written and oral communication skills and the ability to communicate and draft fluently in English.&nbsp;&nbsp;</li>
 	<li>Resourceful self-starter with an eye for detail, excellent problem-solving capabilities, judgment, negotiation, communication (written and verbal) and interpersonal skills.</li>
 	<li>Good strategic, business sense, and demonstrated negotiation skills with respect to legal issues.&nbsp;</li>
 </ul>
@@ -29,7 +28,6 @@
 </ul>
 <p><strong>Bonus Points:&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <ul>
-	<li>Fluency in Japanese or Mandarin Chinese.</li>
 	<li>Solid understanding of local and international privacy and data protection laws.&nbsp;</li>
 	<li>Experience using administrative management systems such Salesforce, DocuSign, Ironclad and/or JIRA.</li>
 </ul>
