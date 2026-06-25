@@ -231,7 +231,8 @@
 		"true": 100
 	},
 	"billing-unified-checkout-page-rules": {
-		"false": 100
+		"false": 77,
+		"true": 23
 	},
 	"billing-unified-checkout-pay-bad-debt": {
 		"true": 100
@@ -261,7 +262,8 @@
 		"true": 100
 	},
 	"billing-unified-checkout-zone-plan-downgrade": {
-		"false": 100
+		"false": 75,
+		"true": 25
 	},
 	"billing-usage-modern-enabled": {
 		"true": 100
@@ -298,6 +300,9 @@
 		"false": 100
 	},
 	"cfone-cloudy-threat-events-enabled": {
+		"true": 100
+	},
+	"cfone-vulnerability-intelligence-enabled": {
 		"true": 100
 	},
 	"cfsa-444-more-feedback": {
@@ -591,6 +596,9 @@
 		"false": 100
 	},
 	"hyperdrive-vpc-integration": {
+		"true": 100
+	},
+	"iam-api-tokens-search": {
 		"true": 100
 	},
 	"iam-frh-signup-require-bootstrap-jwt": {
@@ -963,8 +971,7 @@
 		"true": 100
 	},
 	"registrar-unified-checkout-register": {
-		"true": 77,
-		"false": 23
+		"true": 100
 	},
 	"registrar-unified-checkout-renew": {
 		"true": 100
