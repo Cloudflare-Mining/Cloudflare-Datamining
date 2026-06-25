@@ -4188,6 +4188,11 @@
 					"name": "capTable",
 					"annotations": {},
 					"type": "AnyPointer"
+				},
+				{
+					"name": "capability",
+					"annotations": {},
+					"type": "workerd/src/workerd/io/frankenvalue.capnp:Frankenvalue.capability"
 				}
 			]
 		},
@@ -5701,7 +5706,7 @@
 					"annotations": {
 						"name": "Entrypoint"
 					},
-					"type": "Text"
+					"type": "List(Text)"
 				},
 				{
 					"name": "image",
