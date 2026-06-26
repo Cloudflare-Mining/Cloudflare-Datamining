@@ -25,7 +25,7 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-That's it. Think handles the WebSocket chat protocol, message persistence, the agentic loop, message sanitization, stream resumption, client tool support, and workspace file tools. Connect from the browser with `useAgentChat` from `@cloudflare/ai-chat`.
+That's it. Think handles the WebSocket chat protocol, message persistence, the agentic loop, message sanitization, stream resumption, client tool support, and workspace file tools. Connect from the browser with `useAgentChat` from `@cloudflare/think/react`.
 
 ## Think framework
 
@@ -53,8 +53,8 @@ add `src/server.ts`; the generated entry still wraps it and injects
 The framework supports one sub-agent layer today. If you need nested sub-agents,
 please reach out with your use case so we can design that model deliberately.
 
-See the full Think framework docs in `docs/think/index.md` for conventions,
-custom server handlers, diagnostics, and route-prefix configuration.
+The published package includes the full Think documentation at
+`docs/index.md`.
 
 ## Messengers
 
@@ -64,23 +64,20 @@ Chat SDK adapters are not bundled.
 
 ```ts
 import { Think } from "@cloudflare/think";
-import {
-  defineMessengers,
-  ThinkMessengerStateAgent
-} from "@cloudflare/think/messengers";
+import { ThinkMessengerStateAgent } from "@cloudflare/think/messengers";
 import telegramMessenger from "@cloudflare/think/messengers/telegram";
 
 export { ThinkMessengerStateAgent };
 
 export class SupportAgent extends Think<Env> {
   getMessengers() {
-    return defineMessengers({
+    return {
       telegram: telegramMessenger({
         token: this.env.TELEGRAM_BOT_TOKEN,
         userName: "support_bot",
         secretToken: this.env.TELEGRAM_WEBHOOK_SECRET_TOKEN
       })
-    });
+    };
   }
 }
 ```
@@ -173,7 +170,7 @@ export class Assistant extends Think<Env> {
 The parent broadcasts `agent-tool-event` frames for live UI rendering and keeps
 the child facet until `clearAgentToolRuns()` deletes retained runs.
 
-See the full [Agent Tools guide](../../docs/agent-tools.md) for rendering,
+See the full [Agent Tools guide](../../docs/agents/agent-tools.md) for rendering,
 drill-in, and cleanup patterns.
 
 ## Built-in workspace
@@ -325,7 +322,7 @@ Script execution requires a Worker Loader binding:
 | Export                                  | Description                                                   |
 | --------------------------------------- | ------------------------------------------------------------- |
 | `@cloudflare/think`                     | `Think`, `Session`, `Workspace` — main class + re-exports     |
-| `@cloudflare/think/framework`           | Framework manifest discovery and declarative `agent()` helper |
+| `@cloudflare/think/framework`           | Framework manifest discovery and Worker config helpers        |
 | `@cloudflare/think/server-entry`        | Framework Worker entry helpers for custom server handlers     |
 | `@cloudflare/think/messengers`          | Messenger contracts, Chat SDK bridge, state agent, delivery   |
 | `@cloudflare/think/messengers/telegram` | Telegram messenger provider and delivery helpers              |
@@ -510,11 +507,7 @@ an inline timezone, a task `timezone`, or `getDefaultTimezone()`. If an alarm is
 late, Think runs the intended occurrence once and schedules the next future
 occurrence; it does not backfill missed runs.
 
-The return type annotation gives TypeScript literal checks for schedule strings.
-If you prefer not to annotate the method, wrap the object with
-`defineScheduledTasks(...)` to keep the same checks. Think also validates
-scheduled tasks at runtime during startup reconciliation, so dynamically built
-objects still fail before schedules are persisted.
+The return type annotation gives TypeScript literal checks for schedule strings. Think also validates scheduled tasks at runtime during startup reconciliation, so dynamically built objects still fail before schedules are persisted.
 
 Each task must define exactly one of `prompt` or `handler`. Prompt tasks create a
 durable submission with `submitMessages()`. Handler tasks receive
@@ -865,7 +858,7 @@ For values you want broadcast to connected clients, use `state` / `setState` fro
 
 ### Production features
 
-- **WebSocket protocol** — wire-compatible with `useAgentChat` from `@cloudflare/ai-chat`
+- **WebSocket protocol** — wire-compatible with `useAgentChat` from `@cloudflare/think/react`
 - **Built-in workspace** — every agent gets `this.workspace` with file tools auto-wired
 - **Lifecycle hooks** — `beforeTurn`, `beforeStep`, `onStepFinish`, `onChunk`, `onChatResponse` fire on every turn
 - **Stream resumption** — page refresh replays buffered chunks via `ResumableStream`

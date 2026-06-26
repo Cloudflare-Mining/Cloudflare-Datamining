@@ -2,6 +2,8 @@
 
 Voice pipeline for [Cloudflare Agents](https://github.com/cloudflare/agents) -- continuous STT, TTS, streaming, and real-time audio over WebSocket.
 
+The published package includes the complete Voice guide at `docs/index.md`.
+
 > **Experimental.** This API is under active development and will break between releases. Pin your version and expect to rewrite when upgrading.
 
 ## Install
@@ -43,7 +45,7 @@ export class MyAgent extends VoiceAgent<Env> {
 }
 ```
 
-`onTurn()` can also return streaming text, including AI SDK `textStream` values:
+`onTurn()` can also return streaming text, including AI SDK `fullStream` values:
 
 ```typescript
 import { streamText } from "ai";
@@ -55,7 +57,7 @@ async onTurn(transcript: string) {
     messages: [{ role: "user", content: transcript }]
   });
 
-  return result.textStream;
+  return result.fullStream;
 }
 ```
 
@@ -70,7 +72,7 @@ async onTurn(transcript: string) {
 
 | Method                           | Description                                                                                                    |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `onTurn(transcript, context)`    | **Required.** Handle a user utterance. Return `string` or `AsyncIterable<string>`.                             |
+| `onTurn(transcript, context)`    | **Required.** Handle a user utterance. Return `string`, AI SDK `fullStream`, or `AsyncIterable<string>`.       |
 | `createTranscriber(connection)`  | Override to create a transcriber dynamically per connection.                                                   |
 | `onCallStart(connection)`        | Called when a voice call begins.                                                                               |
 | `onCallEnd(connection)`          | Called when a voice call ends.                                                                                 |
