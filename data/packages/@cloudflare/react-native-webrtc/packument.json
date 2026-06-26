@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/react-native-webrtc",
 	"dist-tags": {
-		"staging": "125.0.5-staging.1",
+		"staging": "125.0.6-staging.0",
 		"latest": "125.0.5"
 	},
 	"versions": {
@@ -462,6 +462,32 @@
 					}
 				],
 				"unpackedSize": 1025636
+			}
+		},
+		"125.0.6-staging.0": {
+			"name": "@cloudflare/react-native-webrtc",
+			"version": "125.0.6-staging.0",
+			"dependencies": {
+				"base64-js": "1.5.1",
+				"debug": "4.3.4",
+				"event-target-shim": "6.0.2",
+				"expo-build-properties": "0.11.0"
+			},
+			"peerDependencies": {
+				"react-native": ">=0.60.0"
+			},
+			"dist": {
+				"integrity": "sha512-67y6ndnbYw2+h2iKJ1AfxFpplUrRc0udArsKMlP60fqFbNzvsnF+/RUXokxMAaxVEOHOF5Lcs4cM5qylalH3lA==",
+				"shasum": "c3948d71fc20b3da659546385c34848272b669b5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-125.0.6-staging.0.tgz",
+				"fileCount": 282,
+				"unpackedSize": 1045176,
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIHdwVvL88wbuwtloAImdCHnmYi8JsJ3k9V8LzX5sDF+TAiEA8F/ZwIHfJGfTPcgSmqR17y66zXUoCvp1bZaU3KXsx1Y="
+					}
+				]
 			}
 		}
 	}
