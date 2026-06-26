@@ -5,65 +5,51 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations:</strong> Austin, Denver, Atlanta, Washington DC, Seattle, New York, Toronto (Canada)</p>
-<div><strong>About the team</strong></div>
-<div><br>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. We are not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.<br><br><strong>What you’ll do</strong></div>
-<div><br>You’ll build and operate secure and resilient distributed systems for secrets and key management, running across our network that spans more than 310 cities in over 120 countries. Our focus is strengthening/re-architecting internal PKI and machine/workload identity. You’ll run and support the systems we build, both in an operational sense and by helping other internal developers use them. You’ll consult on the design and architecture of new systems and products to ensure they are built securely and use our services correctly.</div>
-<div>&nbsp;</div>
-<div>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.<br><br><strong>Requirements</strong></div>
-<div>
-	<ul>
-		<li>8+ years of relevant professional experience</li>
-		<li>Software development and distributed systems design expertise</li>
-		<li>Strong security background with a focus on implementation, not policy/compliance</li>
-	</ul>
-</div>
-<div><strong>Bonus / nice-to-have skills</strong></div>
-<div>
-	<ul>
-		<li>Track record of contributing to open source security or distributed systems projects</li>
-		<li>Cryptography background and ability to work with cryptosystems at the primitives level</li>
-		<li>Experience with HSMs, TPMs, or other platform TEEs (e.g. AMD SEV, Intel SGX, Apple Secure Enclave)</li>
-		<li>Familiarity with HashiCorp Vault or OpenBao, or similar</li>
-		<li>Linux/UNIX system administration proficiency</li>
-		<li>Familiarity with Go and/or Python + Salt specifically</li>
-	</ul>
-</div>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<h3><strong>Available Locations: Austin, TX&nbsp;</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>About the team</strong></h3>
+<p>As a Models Engineer at Cloudflare, you will be the technical heartbeat of our AI community, bridging the gap between cutting-edge models and the developers building on our platform. You'll work directly with model creators and research teams to bring new models to Cloudflare, while simultaneously educating and inspiring our global developer base. We're looking for someone who can navigate a technical partnership call in the morning and debug a developer's issue on Discord in the afternoon.</p>
+<h3><strong>Role Responsibilities</strong></h3>
 <ul>
-	<li>For New York City based hires: Estimated annual salary of 185,000 ~ 275,000 USD</li>
-	<li>For Washington D.C. based hires: Estimated annual salary of 185,000 ~ 275,000 USD</li>
-	<li>For Seattle based hires: Estimated annual salary of 185,000 ~ 275,000 USD</li>
-	<li>For Denver based hires: Estimated annual salary of 168,000 ~ 250,000 USD</li>
-	<li>For Toronto, Canada based hires: Estimated annual salary of 150,000 ~ 240,000 CAD</li>
+	<li><strong>Model Partnerships &amp; Integration:</strong> Identify and evaluate promising new models. Work directly with external model teams — research labs, open-source maintainers, and partner organizations — to bring their work to Cloudflare. Serve as the technical point of contact through integration and launch.</li>
+	<li><strong>Technical Content &amp; Education:</strong> Author tutorials, technical blog posts, and documentation that help developers understand and adopt our AI offerings. Make complex concepts accessible.</li>
+	<li><strong>Community Engagement &amp; Support:</strong> Actively participate in developer communities like Discord. Provide technical support, gather feedback, and build relationships with developers and contributors.</li>
+	<li><strong>Engineering &amp; Prototyping:</strong> Build demos, sample applications, and reference implementations that showcase what's possible with Cloudflare's AI infrastructure.</li>
+	<li><strong>Internal Product Advocacy:</strong> Synthesize feedback from developers and model partners into actionable insights for Product and Engineering teams. Influence roadmap, API design, and feature prioritization.</li>
+	<li><strong>Event Representation:</strong> Present at conferences, meetups, and online events through technical talks, workshops, and live demonstrations.</li>
 </ul>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h2>Role Requirements</h2>
+<h3>Must-Have</h3>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
+	<li><strong>Technical Depth:</strong> Strong experience with Python and ML frameworks (PyTorch, Hugging Face Transformers and Diffusers, Cog). Solid understanding of how models work and how to work with them.</li>
+	<li><strong>Content Creation:</strong> Portfolio of technical writing — blog posts, documentation, tutorials — that demonstrates clear explanation of complex topics.</li>
+	<li><strong>Public Speaking:</strong> Experience presenting technical content at conferences, meetups, or through video content.</li>
+	<li><strong>Community Presence:</strong> Active participation in developer communities. You're visible, helpful, and engaged.</li>
+	<li><strong>Partnership Experience:</strong> Track record of working with external teams — whether open-source maintainers, research groups, or partner engineering teams.</li>
+	<li><strong>Prototyping Ability:</strong> Can build end-to-end applications that integrate models and serve as examples for developers.</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Nice-to-Have</h3>
 <ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
+	<li>Familiarity with Cloudflare Workers or serverless/edge architectures.</li>
+	<li>Full-stack experience (JavaScript/TypeScript) for building complete applications.</li>
+	<li>Experience with model fine-tuning or vector databases.</li>
+	<li>Background in ML research or contributions to model development.</li>
+	<li>Experience with image, video, or audio models.</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h2>Common Daily Activities</h2>
 <ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Call with a model team to discuss integration requirements for an upcoming release.</li>
+	<li>Troubleshooting a developer's issue in Discord or triaging GitHub issues.</li>
+	<li>Writing a blog post on performance characteristics of a newly launched model.</li>
+	<li>Collaborating with Engineering on how an API change will affect the developer experience.</li>
+	<li>Building a demo application for an upcoming launch.</li>
+	<li>Reviewing community feedback and distilling it into product recommendations.</li>
+</ul>
+<h2>Application Materials</h2>
+<ul>
+	<li>Resume/CV</li>
+	<li>Portfolio: GitHub, blog, or links to talks and technical writing</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
