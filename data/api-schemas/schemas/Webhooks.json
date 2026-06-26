@@ -32,6 +32,7 @@
 				"name": "webhook_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -205,7 +206,8 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks": {
 		"description": "Returns details of all webhooks for an App.",
@@ -396,6 +398,7 @@
 				"name": "webhook_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -569,7 +572,8 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/webhooks/all": {
 		"description": "Returns the list of webhook event names supported by RealtimeKit.",
@@ -685,6 +689,7 @@
 				"name": "webhook_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -912,7 +917,8 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/webhooks": {
 		"description": "Adds a new webhook to an App.",
@@ -1208,6 +1214,7 @@
 				"name": "webhook_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -1453,6 +1460,7 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-stability": "beta"
 	}
 }

@@ -121,7 +121,9 @@
 							"INVOKED",
 							"RECORDING",
 							"UPLOADING",
-							"UPLOADED"
+							"UPLOADED",
+							"ERRORED",
+							"PAUSED"
 						],
 						"type": "string"
 					},
@@ -706,6 +708,7 @@
 				"name": "recording_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -1011,7 +1014,8 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/recordings/active-recording/{meeting_id}": {
 		"description": "Returns the active recording details for the given meeting ID.",
@@ -1545,6 +1549,9 @@
 								"type": "object"
 							}
 						},
+						"required": [
+							"meeting_id"
+						],
 						"type": "object"
 					}
 				}
@@ -1852,7 +1859,8 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/realtime/kit/{app_id}/recordings/track": {
 		"description": "Starts track recording for a meeting. Track recording currently records separate participant audio tracks as WebM files in the RealtimeKit bucket. Video track recording is in development. For more information, refer to [Track recording](/realtime/realtimekit/recording-guide/track-recording/).",
@@ -2144,6 +2152,7 @@
 				"name": "recording_id",
 				"required": true,
 				"schema": {
+					"format": "uuid",
 					"type": "string"
 				}
 			}
@@ -2472,6 +2481,7 @@
 		"x-api-token-group": [
 			"Realtime Admin",
 			"Realtime"
-		]
+		],
+		"x-stability": "beta"
 	}
 }

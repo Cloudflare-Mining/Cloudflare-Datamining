@@ -787,6 +787,72 @@
 														"description": "timestamp at which participant left the session.",
 														"type": "string"
 													},
+													"peer_events": {
+														"description": "Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true.",
+														"items": {
+															"description": "A connection lifecycle event recorded for a participant's peer.",
+															"properties": {
+																"created_at": {
+																	"description": "Timestamp when this peer event was created.",
+																	"type": "string"
+																},
+																"event_name": {
+																	"description": "Name of the peer event.",
+																	"enum": [
+																		"PEER_CREATED",
+																		"PEER_JOINING",
+																		"PEER_LEAVING"
+																	],
+																	"type": "string"
+																},
+																"id": {
+																	"description": "ID of the peer event.",
+																	"type": "string"
+																},
+																"minutes_consumed": {
+																	"description": "Minutes consumed attributed to this event.",
+																	"type": "number"
+																},
+																"participant_id": {
+																	"description": "ID of the participant this event belongs to.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"peer_id": {
+																	"description": "Peer ID this event belongs to.",
+																	"type": "string"
+																},
+																"preset_view_type": {
+																	"description": "View type of the preset associated with the peer.",
+																	"enum": [
+																		"GROUP_CALL",
+																		"WEBINAR",
+																		"AUDIO_ROOM",
+																		"LIVESTREAM",
+																		"CHAT"
+																	],
+																	"nullable": true,
+																	"type": "string"
+																},
+																"session_id": {
+																	"description": "ID of the session this event belongs to.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"socket_session_id": {
+																	"description": "ID of the socket session associated with this event.",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"updated_at": {
+																	"description": "Timestamp when this peer event was last updated.",
+																	"type": "string"
+																}
+															},
+															"type": "object"
+														},
+														"type": "array"
+													},
 													"preset_name": {
 														"description": "Name of the preset associated with the participant.",
 														"type": "string"
@@ -943,6 +1009,72 @@
 												"left_at": {
 													"description": "timestamp at which participant left the session.",
 													"type": "string"
+												},
+												"peer_events": {
+													"description": "Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true.",
+													"items": {
+														"description": "A connection lifecycle event recorded for a participant's peer.",
+														"properties": {
+															"created_at": {
+																"description": "Timestamp when this peer event was created.",
+																"type": "string"
+															},
+															"event_name": {
+																"description": "Name of the peer event.",
+																"enum": [
+																	"PEER_CREATED",
+																	"PEER_JOINING",
+																	"PEER_LEAVING"
+																],
+																"type": "string"
+															},
+															"id": {
+																"description": "ID of the peer event.",
+																"type": "string"
+															},
+															"minutes_consumed": {
+																"description": "Minutes consumed attributed to this event.",
+																"type": "number"
+															},
+															"participant_id": {
+																"description": "ID of the participant this event belongs to.",
+																"nullable": true,
+																"type": "string"
+															},
+															"peer_id": {
+																"description": "Peer ID this event belongs to.",
+																"type": "string"
+															},
+															"preset_view_type": {
+																"description": "View type of the preset associated with the peer.",
+																"enum": [
+																	"GROUP_CALL",
+																	"WEBINAR",
+																	"AUDIO_ROOM",
+																	"LIVESTREAM",
+																	"CHAT"
+																],
+																"nullable": true,
+																"type": "string"
+															},
+															"session_id": {
+																"description": "ID of the session this event belongs to.",
+																"nullable": true,
+																"type": "string"
+															},
+															"socket_session_id": {
+																"description": "ID of the socket session associated with this event.",
+																"nullable": true,
+																"type": "string"
+															},
+															"updated_at": {
+																"description": "Timestamp when this peer event was last updated.",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
 												},
 												"preset_name": {
 													"description": "Name of the preset associated with the participant.",
@@ -1285,22 +1417,1864 @@
 													"type": "string"
 												},
 												"peer_events": {
+													"description": "Connection lifecycle events for the participant's peer.",
 													"items": {
-														"additionalProperties": true,
+														"description": "A connection lifecycle event recorded for a participant's peer.",
+														"properties": {
+															"created_at": {
+																"description": "Timestamp when this peer event was created.",
+																"type": "string"
+															},
+															"event_name": {
+																"description": "Name of the peer event.",
+																"enum": [
+																	"PEER_CREATED",
+																	"PEER_JOINING",
+																	"PEER_LEAVING"
+																],
+																"type": "string"
+															},
+															"id": {
+																"description": "ID of the peer event.",
+																"type": "string"
+															},
+															"minutes_consumed": {
+																"description": "Minutes consumed attributed to this event.",
+																"type": "number"
+															},
+															"participant_id": {
+																"description": "ID of the participant this event belongs to.",
+																"nullable": true,
+																"type": "string"
+															},
+															"peer_id": {
+																"description": "Peer ID this event belongs to.",
+																"type": "string"
+															},
+															"preset_view_type": {
+																"description": "View type of the preset associated with the peer.",
+																"enum": [
+																	"GROUP_CALL",
+																	"WEBINAR",
+																	"AUDIO_ROOM",
+																	"LIVESTREAM",
+																	"CHAT"
+																],
+																"nullable": true,
+																"type": "string"
+															},
+															"session_id": {
+																"description": "ID of the session this event belongs to.",
+																"nullable": true,
+																"type": "string"
+															},
+															"socket_session_id": {
+																"description": "ID of the socket session associated with this event.",
+																"nullable": true,
+																"type": "string"
+															},
+															"updated_at": {
+																"description": "Timestamp when this peer event was last updated.",
+																"type": "string"
+															}
+														},
 														"type": "object"
 													},
 													"type": "array"
 												},
 												"peer_report": {
-													"additionalProperties": true,
 													"description": "Peer call statistics report.",
 													"properties": {
 														"metadata": {
-															"additionalProperties": true,
+															"description": "Connection and device metadata for the participant.",
+															"properties": {
+																"audio_devices_updates": {
+																	"items": {
+																		"description": "A change to the set of available devices at a point in time.",
+																		"properties": {
+																			"added": {
+																				"description": "Devices that became available.",
+																				"items": {
+																					"description": "A media device (camera, microphone, or speaker).",
+																					"properties": {
+																						"device_id": {
+																							"description": "ID of the device.",
+																							"type": "string"
+																						},
+																						"kind": {
+																							"description": "Kind of device, for example audioinput or videoinput.",
+																							"type": "string"
+																						},
+																						"label": {
+																							"description": "Human-readable label of the device.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"removed": {
+																				"description": "Devices that became unavailable.",
+																				"items": {
+																					"description": "A media device (camera, microphone, or speaker).",
+																					"properties": {
+																						"device_id": {
+																							"description": "ID of the device.",
+																							"type": "string"
+																						},
+																						"kind": {
+																							"description": "Kind of device, for example audioinput or videoinput.",
+																							"type": "string"
+																						},
+																						"label": {
+																							"description": "Human-readable label of the device.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"timestamp": {
+																				"description": "Timestamp of the device update.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"browser_metadata": {
+																	"properties": {
+																		"browser": {
+																			"type": "string"
+																		},
+																		"browser_version": {
+																			"type": "string"
+																		},
+																		"engine": {
+																			"type": "string"
+																		},
+																		"user_agent": {
+																			"type": "string"
+																		},
+																		"webgl_support": {
+																			"nullable": true,
+																			"type": "boolean"
+																		}
+																	},
+																	"type": "object"
+																},
+																"candidate_pairs": {
+																	"properties": {
+																		"consuming_transport": {
+																			"items": {
+																				"description": "ICE candidate pair statistics for a transport.",
+																				"properties": {
+																					"available_incoming_bitrate": {
+																						"type": "number"
+																					},
+																					"available_outgoing_bitrate": {
+																						"type": "number"
+																					},
+																					"bytes_discarded_on_send": {
+																						"type": "number"
+																					},
+																					"bytes_received": {
+																						"type": "number"
+																					},
+																					"bytes_sent": {
+																						"type": "number"
+																					},
+																					"current_round_trip_time": {
+																						"type": "number"
+																					},
+																					"last_packet_received_timestamp": {
+																						"description": "Epoch milliseconds when the last packet was received.",
+																						"type": "number"
+																					},
+																					"last_packet_sent_timestamp": {
+																						"description": "Epoch milliseconds when the last packet was sent.",
+																						"type": "number"
+																					},
+																					"local_candidate_address": {
+																						"type": "string"
+																					},
+																					"local_candidate_id": {
+																						"type": "string"
+																					},
+																					"local_candidate_network_type": {
+																						"type": "string"
+																					},
+																					"local_candidate_port": {
+																						"type": "number"
+																					},
+																					"local_candidate_protocol": {
+																						"type": "string"
+																					},
+																					"local_candidate_related_address": {
+																						"type": "string"
+																					},
+																					"local_candidate_related_port": {
+																						"type": "number"
+																					},
+																					"local_candidate_type": {
+																						"type": "string"
+																					},
+																					"local_candidate_url": {
+																						"type": "string"
+																					},
+																					"nominated": {
+																						"type": "boolean"
+																					},
+																					"packets_discarded_on_send": {
+																						"type": "number"
+																					},
+																					"packets_received": {
+																						"type": "number"
+																					},
+																					"packets_sent": {
+																						"type": "number"
+																					},
+																					"remote_candidate_address": {
+																						"type": "string"
+																					},
+																					"remote_candidate_id": {
+																						"type": "string"
+																					},
+																					"remote_candidate_port": {
+																						"type": "number"
+																					},
+																					"remote_candidate_protocol": {
+																						"type": "string"
+																					},
+																					"remote_candidate_type": {
+																						"type": "string"
+																					},
+																					"remote_candidate_url": {
+																						"type": "string"
+																					},
+																					"total_round_trip_time": {
+																						"type": "number"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"producing_transport": {
+																			"items": {
+																				"description": "ICE candidate pair statistics for a transport.",
+																				"properties": {
+																					"available_incoming_bitrate": {
+																						"type": "number"
+																					},
+																					"available_outgoing_bitrate": {
+																						"type": "number"
+																					},
+																					"bytes_discarded_on_send": {
+																						"type": "number"
+																					},
+																					"bytes_received": {
+																						"type": "number"
+																					},
+																					"bytes_sent": {
+																						"type": "number"
+																					},
+																					"current_round_trip_time": {
+																						"type": "number"
+																					},
+																					"last_packet_received_timestamp": {
+																						"description": "Epoch milliseconds when the last packet was received.",
+																						"type": "number"
+																					},
+																					"last_packet_sent_timestamp": {
+																						"description": "Epoch milliseconds when the last packet was sent.",
+																						"type": "number"
+																					},
+																					"local_candidate_address": {
+																						"type": "string"
+																					},
+																					"local_candidate_id": {
+																						"type": "string"
+																					},
+																					"local_candidate_network_type": {
+																						"type": "string"
+																					},
+																					"local_candidate_port": {
+																						"type": "number"
+																					},
+																					"local_candidate_protocol": {
+																						"type": "string"
+																					},
+																					"local_candidate_related_address": {
+																						"type": "string"
+																					},
+																					"local_candidate_related_port": {
+																						"type": "number"
+																					},
+																					"local_candidate_type": {
+																						"type": "string"
+																					},
+																					"local_candidate_url": {
+																						"type": "string"
+																					},
+																					"nominated": {
+																						"type": "boolean"
+																					},
+																					"packets_discarded_on_send": {
+																						"type": "number"
+																					},
+																					"packets_received": {
+																						"type": "number"
+																					},
+																					"packets_sent": {
+																						"type": "number"
+																					},
+																					"remote_candidate_address": {
+																						"type": "string"
+																					},
+																					"remote_candidate_id": {
+																						"type": "string"
+																					},
+																					"remote_candidate_port": {
+																						"type": "number"
+																					},
+																					"remote_candidate_protocol": {
+																						"type": "string"
+																					},
+																					"remote_candidate_type": {
+																						"type": "string"
+																					},
+																					"remote_candidate_url": {
+																						"type": "string"
+																					},
+																					"total_round_trip_time": {
+																						"type": "number"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"type": "array"
+																		}
+																	},
+																	"type": "object"
+																},
+																"device_info": {
+																	"properties": {
+																		"cpus": {
+																			"type": "number"
+																		},
+																		"is_mobile": {
+																			"type": "boolean"
+																		},
+																		"os": {
+																			"type": "string"
+																		},
+																		"os_version": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"events": {
+																	"items": {
+																		"description": "A timestamped event recorded during the participant's connection.",
+																		"properties": {
+																			"metadata": {
+																				"additionalProperties": true,
+																				"description": "Event-specific metadata. Keys vary per event; values are primitive scalars (string, number, boolean, or null).",
+																				"type": "object"
+																			},
+																			"name": {
+																				"description": "Name of the event.",
+																				"type": "string"
+																			},
+																			"timestamp": {
+																				"description": "Timestamp when the event occurred.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"ip_information": {
+																	"properties": {
+																		"asn": {
+																			"properties": {
+																				"asn": {
+																					"type": "string"
+																				},
+																				"domain": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"route": {
+																					"type": "string"
+																				},
+																				"type": {
+																					"type": "string"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"city": {
+																			"type": "string"
+																		},
+																		"country": {
+																			"type": "string"
+																		},
+																		"ipv4": {
+																			"type": "string"
+																		},
+																		"org": {
+																			"type": "string"
+																		},
+																		"region": {
+																			"type": "string"
+																		},
+																		"timezone": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"native_metadata": {
+																	"properties": {
+																		"audio_encoder": {
+																			"type": "string"
+																		},
+																		"video_encoder": {
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"pc_metadata": {
+																	"items": {
+																		"properties": {
+																			"effective_network_type": {
+																				"type": "string"
+																			},
+																			"reflexive_connectivity": {
+																				"type": "boolean"
+																			},
+																			"relay_connectivity": {
+																				"type": "boolean"
+																			},
+																			"sdp": {
+																				"items": {
+																					"type": "string"
+																				},
+																				"type": "array"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			},
+																			"turn_connectivity": {
+																				"type": "boolean"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"room_view_type": {
+																	"type": "string"
+																},
+																"sdk_name": {
+																	"type": "string"
+																},
+																"sdk_type": {
+																	"type": "string"
+																},
+																"sdk_version": {
+																	"type": "string"
+																},
+																"selected_device_updates": {
+																	"items": {
+																		"properties": {
+																			"device": {
+																				"description": "A media device (camera, microphone, or speaker).",
+																				"properties": {
+																					"device_id": {
+																						"description": "ID of the device.",
+																						"type": "string"
+																					},
+																					"kind": {
+																						"description": "Kind of device, for example audioinput or videoinput.",
+																						"type": "string"
+																					},
+																					"label": {
+																						"description": "Human-readable label of the device.",
+																						"type": "string"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"speaker_devices_updates": {
+																	"items": {
+																		"description": "A change to the set of available devices at a point in time.",
+																		"properties": {
+																			"added": {
+																				"description": "Devices that became available.",
+																				"items": {
+																					"description": "A media device (camera, microphone, or speaker).",
+																					"properties": {
+																						"device_id": {
+																							"description": "ID of the device.",
+																							"type": "string"
+																						},
+																						"kind": {
+																							"description": "Kind of device, for example audioinput or videoinput.",
+																							"type": "string"
+																						},
+																						"label": {
+																							"description": "Human-readable label of the device.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"removed": {
+																				"description": "Devices that became unavailable.",
+																				"items": {
+																					"description": "A media device (camera, microphone, or speaker).",
+																					"properties": {
+																						"device_id": {
+																							"description": "ID of the device.",
+																							"type": "string"
+																						},
+																						"kind": {
+																							"description": "Kind of device, for example audioinput or videoinput.",
+																							"type": "string"
+																						},
+																						"label": {
+																							"description": "Human-readable label of the device.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"timestamp": {
+																				"description": "Timestamp of the device update.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"video_devices_updates": {
+																	"items": {
+																		"description": "A change to the set of available devices at a point in time.",
+																		"properties": {
+																			"added": {
+																				"description": "Devices that became available.",
+																				"items": {
+																					"description": "A media device (camera, microphone, or speaker).",
+																					"properties": {
+																						"device_id": {
+																							"description": "ID of the device.",
+																							"type": "string"
+																						},
+																						"kind": {
+																							"description": "Kind of device, for example audioinput or videoinput.",
+																							"type": "string"
+																						},
+																						"label": {
+																							"description": "Human-readable label of the device.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"removed": {
+																				"description": "Devices that became unavailable.",
+																				"items": {
+																					"description": "A media device (camera, microphone, or speaker).",
+																					"properties": {
+																						"device_id": {
+																							"description": "ID of the device.",
+																							"type": "string"
+																						},
+																						"kind": {
+																							"description": "Kind of device, for example audioinput or videoinput.",
+																							"type": "string"
+																						},
+																						"label": {
+																							"description": "Human-readable label of the device.",
+																							"type": "string"
+																						}
+																					},
+																					"type": "object"
+																				},
+																				"type": "array"
+																			},
+																			"timestamp": {
+																				"description": "Timestamp of the device update.",
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																}
+															},
 															"type": "object"
 														},
 														"quality": {
-															"additionalProperties": true,
+															"description": "Media quality statistics for the participant.",
+															"properties": {
+																"audio_consumer": {
+																	"items": {
+																		"description": "Per-sample inbound (consumer) audio statistics.",
+																		"properties": {
+																			"bytes_received": {
+																				"type": "number"
+																			},
+																			"concealment_events": {
+																				"type": "number"
+																			},
+																			"consumer_id": {
+																				"type": "string"
+																			},
+																			"jitter": {
+																				"type": "number"
+																			},
+																			"jitter_buffer_delay": {
+																				"type": "number"
+																			},
+																			"jitter_buffer_emitted_count": {
+																				"type": "number"
+																			},
+																			"mid": {
+																				"type": "string"
+																			},
+																			"mos_quality": {
+																				"type": "number"
+																			},
+																			"packets_lost": {
+																				"type": "number"
+																			},
+																			"packets_received": {
+																				"type": "number"
+																			},
+																			"peer_id": {
+																				"type": "string"
+																			},
+																			"producer_id": {
+																				"type": "string"
+																			},
+																			"ssrc": {
+																				"type": "number"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"audio_consumer_cumulative": {
+																	"description": "Aggregated inbound (consumer) audio statistics for the session.",
+																	"properties": {
+																		"jitter_buffer_delay": {
+																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"properties": {
+																				"100ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"250ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"500ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"packet_loss": {
+																			"description": "Cumulative packet loss distribution.",
+																			"properties": {
+																				"10_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"25_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"50_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"5_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"quality_mos": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"audio_producer": {
+																	"items": {
+																		"description": "Per-sample outbound (producer) audio statistics.",
+																		"properties": {
+																			"bytes_sent": {
+																				"type": "number"
+																			},
+																			"jitter": {
+																				"type": "number"
+																			},
+																			"mid": {
+																				"type": "string"
+																			},
+																			"mos_quality": {
+																				"type": "number"
+																			},
+																			"packets_lost": {
+																				"type": "number"
+																			},
+																			"packets_sent": {
+																				"type": "number"
+																			},
+																			"producer_id": {
+																				"type": "string"
+																			},
+																			"rtt": {
+																				"type": "number"
+																			},
+																			"ssrc": {
+																				"type": "number"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"audio_producer_cumulative": {
+																	"description": "Aggregated outbound (producer) audio statistics for the session.",
+																	"properties": {
+																		"packet_loss": {
+																			"description": "Cumulative packet loss distribution.",
+																			"properties": {
+																				"10_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"25_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"50_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"5_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"quality_mos": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"rtt": {
+																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"properties": {
+																				"100ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"250ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"500ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"screenshare_audio_consumer": {
+																	"items": {
+																		"description": "Per-sample inbound (consumer) audio statistics.",
+																		"properties": {
+																			"bytes_received": {
+																				"type": "number"
+																			},
+																			"concealment_events": {
+																				"type": "number"
+																			},
+																			"consumer_id": {
+																				"type": "string"
+																			},
+																			"jitter": {
+																				"type": "number"
+																			},
+																			"jitter_buffer_delay": {
+																				"type": "number"
+																			},
+																			"jitter_buffer_emitted_count": {
+																				"type": "number"
+																			},
+																			"mid": {
+																				"type": "string"
+																			},
+																			"mos_quality": {
+																				"type": "number"
+																			},
+																			"packets_lost": {
+																				"type": "number"
+																			},
+																			"packets_received": {
+																				"type": "number"
+																			},
+																			"peer_id": {
+																				"type": "string"
+																			},
+																			"producer_id": {
+																				"type": "string"
+																			},
+																			"ssrc": {
+																				"type": "number"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"screenshare_audio_consumer_cumulative": {
+																	"description": "Aggregated inbound (consumer) audio statistics for the session.",
+																	"properties": {
+																		"jitter_buffer_delay": {
+																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"properties": {
+																				"100ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"250ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"500ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"packet_loss": {
+																			"description": "Cumulative packet loss distribution.",
+																			"properties": {
+																				"10_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"25_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"50_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"5_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"quality_mos": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"screenshare_audio_producer": {
+																	"items": {
+																		"description": "Per-sample outbound (producer) audio statistics.",
+																		"properties": {
+																			"bytes_sent": {
+																				"type": "number"
+																			},
+																			"jitter": {
+																				"type": "number"
+																			},
+																			"mid": {
+																				"type": "string"
+																			},
+																			"mos_quality": {
+																				"type": "number"
+																			},
+																			"packets_lost": {
+																				"type": "number"
+																			},
+																			"packets_sent": {
+																				"type": "number"
+																			},
+																			"producer_id": {
+																				"type": "string"
+																			},
+																			"rtt": {
+																				"type": "number"
+																			},
+																			"ssrc": {
+																				"type": "number"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"screenshare_audio_producer_cumulative": {
+																	"description": "Aggregated outbound (producer) audio statistics for the session.",
+																	"properties": {
+																		"packet_loss": {
+																			"description": "Cumulative packet loss distribution.",
+																			"properties": {
+																				"10_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"25_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"50_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"5_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"quality_mos": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"rtt": {
+																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"properties": {
+																				"100ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"250ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"500ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"screenshare_video_consumer": {
+																	"items": {
+																		"description": "Per-sample inbound (consumer) video statistics.",
+																		"properties": {
+																			"bytes_received": {
+																				"type": "number"
+																			},
+																			"consumer_id": {
+																				"type": "string"
+																			},
+																			"fir_count": {
+																				"type": "number"
+																			},
+																			"frame_height": {
+																				"type": "number"
+																			},
+																			"frame_width": {
+																				"type": "number"
+																			},
+																			"frames_decoded": {
+																				"type": "number"
+																			},
+																			"frames_dropped": {
+																				"type": "number"
+																			},
+																			"frames_per_second": {
+																				"type": "number"
+																			},
+																			"jitter": {
+																				"type": "number"
+																			},
+																			"jitter_buffer_delay": {
+																				"type": "number"
+																			},
+																			"jitter_buffer_emitted_count": {
+																				"type": "number"
+																			},
+																			"key_frames_decoded": {
+																				"type": "number"
+																			},
+																			"mid": {
+																				"type": "string"
+																			},
+																			"mos_quality": {
+																				"type": "number"
+																			},
+																			"packets_lost": {
+																				"type": "number"
+																			},
+																			"packets_received": {
+																				"type": "number"
+																			},
+																			"peer_id": {
+																				"type": "string"
+																			},
+																			"producer_id": {
+																				"type": "string"
+																			},
+																			"ssrc": {
+																				"type": "number"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"screenshare_video_consumer_cumulative": {
+																	"description": "Aggregated inbound (consumer) video statistics for the session.",
+																	"properties": {
+																		"frame_per_second": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"frame_width": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"issues": {
+																			"properties": {
+																				"lag_fraction": {
+																					"type": "number"
+																				},
+																				"no_video_fraction": {
+																					"type": "number"
+																				},
+																				"poor_resolution_fraction": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"jitter_buffer_delay": {
+																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"properties": {
+																				"100ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"250ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"500ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"key_frames_decoded_fraction": {
+																			"type": "number"
+																		},
+																		"packet_loss": {
+																			"description": "Cumulative packet loss distribution.",
+																			"properties": {
+																				"10_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"25_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"50_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"5_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"quality_mos": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"screenshare_video_producer": {
+																	"items": {
+																		"description": "Per-sample outbound (producer) video statistics.",
+																		"properties": {
+																			"bytes_sent": {
+																				"type": "number"
+																			},
+																			"fir_count": {
+																				"type": "number"
+																			},
+																			"frame_height": {
+																				"type": "number"
+																			},
+																			"frame_width": {
+																				"type": "number"
+																			},
+																			"frames_encoded": {
+																				"type": "number"
+																			},
+																			"frames_per_second": {
+																				"type": "number"
+																			},
+																			"jitter": {
+																				"type": "number"
+																			},
+																			"key_frames_encoded": {
+																				"type": "number"
+																			},
+																			"mid": {
+																				"type": "string"
+																			},
+																			"mos_quality": {
+																				"type": "number"
+																			},
+																			"packets_lost": {
+																				"type": "number"
+																			},
+																			"packets_sent": {
+																				"type": "number"
+																			},
+																			"pli_count": {
+																				"type": "number"
+																			},
+																			"producer_id": {
+																				"type": "string"
+																			},
+																			"quality_limitation_durations": {
+																				"properties": {
+																					"bandwidth": {
+																						"type": "number"
+																					},
+																					"cpu": {
+																						"type": "number"
+																					},
+																					"none": {
+																						"type": "number"
+																					},
+																					"other": {
+																						"type": "number"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"quality_limitation_reason": {
+																				"enum": [
+																					"cpu",
+																					"bandwidth",
+																					"none",
+																					"other"
+																				],
+																				"type": "string"
+																			},
+																			"quality_limitation_resolution_changes": {
+																				"type": "number"
+																			},
+																			"rtt": {
+																				"type": "number"
+																			},
+																			"ssrc": {
+																				"type": "number"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"screenshare_video_producer_cumulative": {
+																	"description": "Aggregated outbound (producer) video statistics for the session.",
+																	"properties": {
+																		"frame_per_second": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"frame_width": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"high_negative_feedback_fraction": {
+																			"type": "number"
+																		},
+																		"issues": {
+																			"properties": {
+																				"bandwidth_quality_limitation_fraction": {
+																					"type": "number"
+																				},
+																				"cpu_quality_limitation_fraction": {
+																					"type": "number"
+																				},
+																				"no_video_fraction": {
+																					"type": "number"
+																				},
+																				"poor_resolution_fraction": {
+																					"type": "number"
+																				},
+																				"quality_limitation_fraction": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"key_frames_encoded_fraction": {
+																			"type": "number"
+																		},
+																		"packet_loss": {
+																			"description": "Cumulative packet loss distribution.",
+																			"properties": {
+																				"10_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"25_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"50_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"5_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"quality_mos": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"rtt": {
+																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"properties": {
+																				"100ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"250ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"500ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"video_consumer": {
+																	"items": {
+																		"description": "Per-sample inbound (consumer) video statistics.",
+																		"properties": {
+																			"bytes_received": {
+																				"type": "number"
+																			},
+																			"consumer_id": {
+																				"type": "string"
+																			},
+																			"fir_count": {
+																				"type": "number"
+																			},
+																			"frame_height": {
+																				"type": "number"
+																			},
+																			"frame_width": {
+																				"type": "number"
+																			},
+																			"frames_decoded": {
+																				"type": "number"
+																			},
+																			"frames_dropped": {
+																				"type": "number"
+																			},
+																			"frames_per_second": {
+																				"type": "number"
+																			},
+																			"jitter": {
+																				"type": "number"
+																			},
+																			"jitter_buffer_delay": {
+																				"type": "number"
+																			},
+																			"jitter_buffer_emitted_count": {
+																				"type": "number"
+																			},
+																			"key_frames_decoded": {
+																				"type": "number"
+																			},
+																			"mid": {
+																				"type": "string"
+																			},
+																			"mos_quality": {
+																				"type": "number"
+																			},
+																			"packets_lost": {
+																				"type": "number"
+																			},
+																			"packets_received": {
+																				"type": "number"
+																			},
+																			"peer_id": {
+																				"type": "string"
+																			},
+																			"producer_id": {
+																				"type": "string"
+																			},
+																			"ssrc": {
+																				"type": "number"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"video_consumer_cumulative": {
+																	"description": "Aggregated inbound (consumer) video statistics for the session.",
+																	"properties": {
+																		"frame_per_second": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"frame_width": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"issues": {
+																			"properties": {
+																				"lag_fraction": {
+																					"type": "number"
+																				},
+																				"no_video_fraction": {
+																					"type": "number"
+																				},
+																				"poor_resolution_fraction": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"jitter_buffer_delay": {
+																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"properties": {
+																				"100ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"250ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"500ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"key_frames_decoded_fraction": {
+																			"type": "number"
+																		},
+																		"packet_loss": {
+																			"description": "Cumulative packet loss distribution.",
+																			"properties": {
+																				"10_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"25_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"50_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"5_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"quality_mos": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																},
+																"video_producer": {
+																	"items": {
+																		"description": "Per-sample outbound (producer) video statistics.",
+																		"properties": {
+																			"bytes_sent": {
+																				"type": "number"
+																			},
+																			"fir_count": {
+																				"type": "number"
+																			},
+																			"frame_height": {
+																				"type": "number"
+																			},
+																			"frame_width": {
+																				"type": "number"
+																			},
+																			"frames_encoded": {
+																				"type": "number"
+																			},
+																			"frames_per_second": {
+																				"type": "number"
+																			},
+																			"jitter": {
+																				"type": "number"
+																			},
+																			"key_frames_encoded": {
+																				"type": "number"
+																			},
+																			"mid": {
+																				"type": "string"
+																			},
+																			"mos_quality": {
+																				"type": "number"
+																			},
+																			"packets_lost": {
+																				"type": "number"
+																			},
+																			"packets_sent": {
+																				"type": "number"
+																			},
+																			"pli_count": {
+																				"type": "number"
+																			},
+																			"producer_id": {
+																				"type": "string"
+																			},
+																			"quality_limitation_durations": {
+																				"properties": {
+																					"bandwidth": {
+																						"type": "number"
+																					},
+																					"cpu": {
+																						"type": "number"
+																					},
+																					"none": {
+																						"type": "number"
+																					},
+																					"other": {
+																						"type": "number"
+																					}
+																				},
+																				"type": "object"
+																			},
+																			"quality_limitation_reason": {
+																				"enum": [
+																					"cpu",
+																					"bandwidth",
+																					"none",
+																					"other"
+																				],
+																				"type": "string"
+																			},
+																			"quality_limitation_resolution_changes": {
+																				"type": "number"
+																			},
+																			"rtt": {
+																				"type": "number"
+																			},
+																			"ssrc": {
+																				"type": "number"
+																			},
+																			"timestamp": {
+																				"type": "string"
+																			}
+																		},
+																		"type": "object"
+																	},
+																	"type": "array"
+																},
+																"video_producer_cumulative": {
+																	"description": "Aggregated outbound (producer) video statistics for the session.",
+																	"properties": {
+																		"frame_per_second": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"frame_width": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"high_negative_feedback_fraction": {
+																			"type": "number"
+																		},
+																		"issues": {
+																			"properties": {
+																				"bandwidth_quality_limitation_fraction": {
+																					"type": "number"
+																				},
+																				"cpu_quality_limitation_fraction": {
+																					"type": "number"
+																				},
+																				"no_video_fraction": {
+																					"type": "number"
+																				},
+																				"poor_resolution_fraction": {
+																					"type": "number"
+																				},
+																				"quality_limitation_fraction": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"key_frames_encoded_fraction": {
+																			"type": "number"
+																		},
+																		"packet_loss": {
+																			"description": "Cumulative packet loss distribution.",
+																			"properties": {
+																				"10_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"25_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"50_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"5_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"quality_mos": {
+																			"description": "Distribution summary with average and percentiles.",
+																			"properties": {
+																				"avg": {
+																					"type": "number"
+																				},
+																				"p50": {
+																					"type": "number"
+																				},
+																				"p75": {
+																					"type": "number"
+																				},
+																				"p90": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"rtt": {
+																			"description": "Cumulative latency distribution (milliseconds-based thresholds).",
+																			"properties": {
+																				"100ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"250ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"500ms_or_greater_event_fraction": {
+																					"type": "number"
+																				},
+																				"avg": {
+																					"type": "number"
+																				}
+																			},
+																			"type": "object"
+																		}
+																	},
+																	"type": "object"
+																}
+															},
 															"type": "object"
 														}
 													},

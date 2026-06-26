@@ -64,11 +64,12 @@
 				}
 			},
 			{
-				"description": "Filters results by bot kind.",
+				"deprecated": true,
+				"description": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
 				"in": "query",
 				"name": "kind",
 				"schema": {
-					"description": "Filters results by bot kind.",
+					"description": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
 					"enum": [
 						"AGENT",
 						"BOT"
@@ -125,6 +126,7 @@
 														"type": "string"
 													},
 													"kind": {
+														"deprecated": true,
 														"description": "The kind of the bot.",
 														"example": "AGENT",
 														"type": "string"
@@ -300,6 +302,7 @@
 													"type": "string"
 												},
 												"kind": {
+													"deprecated": true,
 													"description": "The kind of the bot.",
 													"example": "AGENT",
 													"type": "string"
@@ -606,11 +609,12 @@
 				}
 			},
 			{
-				"description": "Filters results by bot kind.",
+				"deprecated": true,
+				"description": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
 				"in": "query",
 				"name": "botKind",
 				"schema": {
-					"description": "Filters results by bot kind.",
+					"description": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
 					"items": {
 						"enum": [
 							"AGENT",
@@ -1108,11 +1112,12 @@
 				}
 			},
 			{
-				"description": "Filters results by bot kind.",
+				"deprecated": true,
+				"description": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
 				"in": "query",
 				"name": "botKind",
 				"schema": {
-					"description": "Filters results by bot kind.",
+					"description": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
 					"items": {
 						"enum": [
 							"AGENT",
@@ -1658,11 +1663,12 @@
 				}
 			},
 			{
-				"description": "Filters results by bot kind.",
+				"deprecated": true,
+				"description": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
 				"in": "query",
 				"name": "botKind",
 				"schema": {
-					"description": "Filters results by bot kind.",
+					"description": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
 					"items": {
 						"enum": [
 							"AGENT",
