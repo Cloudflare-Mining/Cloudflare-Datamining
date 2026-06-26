@@ -5,46 +5,26 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas&nbsp;</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>The Egress team was formed to own a very important aspect of Cloudflare's network-as-a-service: egress connectivity for our vast portfolio of products.</p>
-<p>As a member of the Egress team, you will be a key technical contributor to a cutting edge network software infrastructure used by a growing number of Cloudflare products to connect to any destination from Cloudflare's network. Among the products powered by this technology is WARP, our Zero Trust platform, and Cloudflare's egress proxy for the <a href="https://blog.cloudflare.com/icloud-private-relay/">iCloud Private Relay</a> product.</p>
-<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
-<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
-<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
-<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<p><strong>Role Responsibilities</strong></p>
+<h3><strong>Available Locations: Austin, TX&nbsp;</strong></h3>
+<h3><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
+<h3><strong>Is this role a fit for you?</strong></h3>
+<p>We are looking for engineers who build infrastructure software from scratch, not those who operate it.&nbsp;If your core expertise is configuring, man<span class="citation-1">aging, scaling, or writing applications on top of existing data platforms like </span><span class="citation-1">Kafka, Flink, Spark, Databricks, or Snowflake</span><span class="citation-1">, this role is not the right fit. We are seeking the engineers who can </span><span class="citation-1 citation-end-1">write the code that replaces t</span>hese tools.</p>
+<h3><strong>What you'll do</strong></h3>
+<p>As a Senior Systems Engineer focused on Cloudflare's core storage and streaming products, you will design and implement the foundational layers of our next-generation data services. We work backward from developer needs, reimagining solutions by leveraging our unique global network.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might be architecting a new globally distributed data consistency model, optimizing storage engine performance, or designing a novel API for a new data-centric product. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
+<h3>Requirements</h3>
 <ul>
-	<li>Make daily progress on assigned engineering tasks, such as designing systems, writing specs, writing and pushing code via git, writing release plans for complex changes, rolling out production releases and working with other teams to coordinate system actions</li>
-	<li>Participate in daily and ad-hoc team meetings to share progress and collaborate</li>
-	<li>Participate in the team’s on-call schedule to ensure uptime of our production systems</li>
-	<li>Investigating customer issues that are escalated to the Egress team for triage and resolution</li>
-	<li>Responding to questions from other teams in the Egress team’s internal, public chat room</li>
-	<li>Using AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving</li>
+	<li>Minimum 6+ years of experience designing, building, and deploying the internals of large-scale distributed systems or storage engines from scratch.</li>
+	<li>Direct experience writing core components of a storage or streaming system.</li>
+	<li>Proven track record of debugging, profiling, and fixing complex race conditions, split-brain scenarios, and network partition failures at the infrastructure layer.</li>
+	<li>Deep, expert-level proficiency in Rust or C++ applied to systems programming.</li>
 </ul>
-<p><strong>Role Requirements</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Programming experience in Go or Rust and a desire to improve your skills in both.</li>
-	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
-	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
-	<li>Experience in implementing secure and highly-available distributed systems.</li>
-	<li>Strong ability to debug issues in complex systems.</li>
-	<li>Strong collaboration and communication skills.</li>
-	<li>Experience/interest in HTTP networking and VPN technologies.</li>
-	<li>Experience/interest in network performance monitoring and tuning.</li>
-	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
+	<li data-path-to-node="19,0,0">Experience building time-series databases, log-structured merge-trees, or real-time stream processing engines from the ground up.</li>
+	<li data-path-to-node="19,1,0">Academic or professional contributions to distributed systems research (e.g., consensus, conflict-free replicated data types (CRDTs), or database theory).</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Knowledge of TCP/IP and Internet routing.</li>
-	<li>Professional systems-level programming experience in Rust.</li>
-	<li>Experience building tools and APIs.</li>
-	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
-	<li>Experience participating in an on-call rotation.</li>
-	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

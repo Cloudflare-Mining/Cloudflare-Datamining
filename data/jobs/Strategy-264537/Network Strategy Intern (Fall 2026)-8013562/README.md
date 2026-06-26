@@ -5,46 +5,35 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas&nbsp;</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>The Egress team was formed to own a very important aspect of Cloudflare's network-as-a-service: Egress connectivity for our vast portfolio of products.</p>
-<p>As a member of the Egress team, you will be a key technical contributor to a cutting edge network software infrastructure used by a growing number of Cloudflare products to connect to any destination from Cloudflare's network. Among the products powered by this technology is WARP, our Zero Trust platform, and Cloudflare's egress proxy for the <a href="https://blog.cloudflare.com/icloud-private-relay/">iCloud Private Relay</a> product.</p>
-<p>You will work closely with various Engineering teams to translate their requirements into new capabilities on the platform. Likewise you will partner with Network Engineering and SRE to ensure that the technology makes the best use of Cloudflare's world-class edge network.</p>
-<p>You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Rust, Go, Linux networking, ClickHouse, PostgreSQL, Grafana, Kubernetes, and more.</p>
-<p>Engineering teams at Cloudflare operate a Run What You Build model, including ours. We are responsible for the health of our system and participate in our team's on-call rotation as part of operational responsibilities.</p>
-<p>Because you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<p><strong>Role Responsibilities</strong></p>
+<p><strong>Available Locations:&nbsp;</strong>Austin, TX</p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is looking for an enthusiastic and analytically-minded intern to join our Network Strategy team. This role is designed to provide a comprehensive introduction to the fundamental principles of Network Strategy at Cloudflare, with a focus on developing the skills necessary for long-term growth within the team. The intern will support key initiatives by executing on special projects designed to advance and improve operational efficiency. They will also provide essential day-to-day operational support to our Interconnection Managers and Network Acquisition Managers.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Make daily progress on assigned engineering tasks, such as designing systems, writing specs, writing and pushing code via git, writing release plans for complex changes, rolling out production releases and working with other teams to coordinate system actions</li>
-	<li>Participate in daily and ad-hoc team meetings to share progress and collaborate</li>
-	<li>Participate in the team’s on-call schedule to ensure uptime of our production systems</li>
-	<li>Investigating customer issues that are escalated to the Egress team for triage and resolution</li>
-	<li>Responding to questions from other teams in the Egress team’s internal, public chat room</li>
-	<li>Using AI-powered tools and systems as part of your daily workflow to analyze and extend codebases, introspect production systems and datasets, and accelerate problem-solving</li>
+	<li><strong>Special Project Execution:</strong> Assist in the execution of special projects focused on advancing and improving the Network Strategy team's operational processes.</li>
+	<li><strong>Interconnection Operational Support:</strong> Provide direct operational support to Interconnection Managers, helping to manage and track key peering and transit relationships.</li>
+	<li><strong>Network Acquisition Assistance:</strong> Support Network Acquisition Managers with administrative and logistical tasks related to acquiring new network capacity and infrastructure.</li>
+	<li><strong>Strategic Data Analysis and Research:</strong> Conduct data analysis and research to inform strategic decisions related to network growth, performance, and cost efficiency.</li>
+	<li><strong>Documentation and Internal Reporting:</strong> Contribute to internal documentation and reporting, ensuring clarity and accuracy of information shared across the team.</li>
+	<li><strong>KPI Tracking and Progress Reporting:</strong> Track key performance indicators (KPIs) for ongoing projects and report progress to relevant stakeholders.</li>
 </ul>
-<p><strong>Role Requirements</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<h4><strong>Role Requirements (Must-Have Skills):</strong></h4>
 <ul>
-	<li>Programming experience in Go or Rust and a desire to improve your skills in both.</li>
-	<li>A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model.</li>
-	<li>Knowledge of HTTP, TLS, and CDN networks.</li>
-	<li>Experience in implementing secure and highly-available distributed systems.</li>
-	<li>Strong ability to debug issues in complex systems.</li>
-	<li>Strong collaboration and communication skills.</li>
-	<li>Experience/interest in HTTP networking and VPN technologies.</li>
-	<li>Experience/interest in network performance monitoring and tuning.</li>
-	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow.</li>
+	<li>Currently pursuing a Bachelor's or Master's degree in a quantitative, analytical, or strategic field (e.g., Business, Finance, Economics, Data Science, Engineering, or equivalent).</li>
+	<li>Demonstrated strong analytical and problem-solving skills, with a focus on data-driven decision-making.</li>
+	<li>Excellent written and verbal communication skills, capable of explaining complex ideas clearly and concisely.</li>
+	<li>Proficiency in data manipulation and analysis tools (e.g., Google Sheets/Excel, or basic SQL/Python is a plus).</li>
+	<li>Ability to work effectively both independently and collaboratively within a fast-paced, global team environment.</li>
+	<li>Proven capacity for taking initiative, owning tasks, and managing time effectively to meet deadlines.</li>
+	<li><strong>Ability to commit to a full-time 12-week fall internship.</strong></li>
+	<li><strong>In office 3-5 days a week in Austin, TX.</strong></li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li>Knowledge of TCP/IP and Internet routing.</li>
-	<li>Professional systems-level programming experience in Rust.</li>
-	<li>Experience building tools and APIs.</li>
-	<li>Experience with monitoring, alerting, and debugging large-scale distributed systems</li>
-	<li>Experience participating in an on-call rotation.</li>
-	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting.</li>
+	<li>A basic understanding of the Internet ecosystem, including concepts like IP networking, peering, transit, and data centers.</li>
+	<li>Prior experience or coursework related to telecommunications, network infrastructure, or technology strategy.</li>
+	<li>Familiarity with project management principles or tools</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
