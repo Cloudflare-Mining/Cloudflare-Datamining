@@ -91,6 +91,9 @@
 	"ai-auto-rag-br-crawler": {
 		"enabled": true
 	},
+	"ai-auto-rag-custom-domain": {
+		"enabled": false
+	},
 	"ai-auto-rag-disable-max-num-rules": {
 		"enabled": true
 	},
@@ -2179,6 +2182,9 @@
 			"baseline",
 			"experiment"
 		]
+	},
+	"prg-rate-limiting-kumo-upsell": {
+		"enabled": false
 	},
 	"prg-registrar-success-activation-2026": {
 		"enabled": false,
