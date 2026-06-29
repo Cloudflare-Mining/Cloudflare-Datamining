@@ -5,19 +5,22 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
-<p><strong>Overview:</strong>&nbsp;</p>
-<p>As our Global Physical Security Specialist, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint.&nbsp;</p>
-<p>We are looking for someone excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
-<p><strong>Key Responsibilities:</strong></p>
+<h3>Sr. Global Physical Security Specialist</h3>
+<p><strong>Available Locations: Bangalore, India</strong></p>
+<p><strong>Your Career</strong></p>
+<p>As our Global Physical Security Specialist and leader, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint and review and document intelligence supporting the physical security mission.&nbsp;</p>
+<p>We are looking for someone with law enforcement or former military experience who is excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
+<p><strong>What You’ll Do</strong></p>
 <p>Continue to work as a member of a unique global physical security team and program in the following areas:&nbsp;</p>
 <p><strong>Physical security systems:</strong></p>
 <ul>
 	<li>Ability to work within a global physical security program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.&nbsp;</li>
-	<li>Ability to assist and manage investigations working with Cloudflare’s People’s Team.&nbsp;</li>
+	<li>Ability to assist and manage investigations working with Cloudflare’s Global People and Place’s Teams.&nbsp;</li>
 	<li>Work alongside our SIRT Team&nbsp; as required for physical Security related incidents.&nbsp;</li>
 	<li>Deploy and remediate access control and CCTV equipment with vendor support</li>
 	<li>Coordinate and provide facility and personnel safety practices, guidance, assistance, and response as required.</li>
+	<li>Gather and disseminate actionable intelligence for senior management.</li>
+	<li>Ability to learn the deployment of AI technology to enhance the physical security mission.</li>
 </ul>
 <p><strong>Audit and certifications:</strong></p>
 <ul>
@@ -26,10 +29,11 @@
 	<li>Work alongside our infrastructure partners to enhance their standard operating procedures ensuring compliance with physical security standards and controls, including Cloudflare Data Centers and partners.</li>
 	<li>Work with the security compliance and risk management team on developing and implementing physical security controls as it relates to various compliance requirements including but not limited to FedRAMP, ISO 27001 and SOC 2; and support internal and external audits of physical security controls.</li>
 </ul>
-<p><strong>Required Skills and Qualifications:</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Ability to make decisions on acceptable physical security risk and drive risk mitigation.&nbsp;</li>
+	<li>Ability to build critical relationships and make decisions on acceptable physical security risk and drive risk mitigation.&nbsp;</li>
 	<li>Experience managing a local physical security program and managing event security practices, preferably with experience of physical security controls.</li>
+	<li>Previous law enforcement or military experience with a significant ability to leverage those current and former relationships.</li>
 	<li>Solid understanding of integrating and deploying access control and CCTV systems at scale, including networking and systems engineering.</li>
 	<li>Ability to coordinate with law enforcement and government agencies at every level</li>
 	<li>Understanding of networking security as it relates to physical security technology</li>

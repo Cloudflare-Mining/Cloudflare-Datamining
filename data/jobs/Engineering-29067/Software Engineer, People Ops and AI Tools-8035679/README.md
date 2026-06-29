@@ -5,67 +5,40 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p>Available Location: New York, San Francisco, Austin, or Lisbon</p>
-<p>Cloudflare One is one of the fastest-growing segments of our business. To maintain this velocity, we need a GTM Engineer who can bridge the gap between complex technical infrastructure and high-velocity sales execution. In this role, you'll design, build, and ship AI-powered workflows that scale our sales, marketing, and support functions as a competitive advantage.</p>
-<p>You apply judgement and taste to design systems that make reps’ lives easier. You know when to build in the tools they already use every day and when to build something custom. You think two to three steps ahead on how the thing you're building today fits into the broader systems architecture tomorrow. And you bring a point of view on our stack, on what we should be building, and on where AI can do something that low-code tooling simply can't.</p>
-<p><strong>Responsibilities</strong></p>
+<h3><strong>About the Role</strong></h3>
+<p>Cloudflare's People team supports 5,000+ employees globally. To scale, we are building an AI-driven operating layer on the Cloudflare Developer Platform to automate workflows, ensure data integrity, and streamline employee support.</p>
+<p>You will ship production systems for hiring, onboarding, and self-service, using AI to create leverage while designing rigorous guardrails for sensitive employee data.</p>
+<h3><strong>What you will build</strong></h3>
 <ul>
-	<li>Design and maintain the data foundation our Specialist GTM org runs on, spanning account and contact data quality, enrichment workflows, and data provider orchestration across our stack</li>
-	<li>Audit the stack and generate your own backlog. We have a lot of tools, some overlap, and real gaps. Walk in with a point of view, identify what's missing or broken, and prioritize accordingly, without waiting to be handed a roadmap</li>
-	<li>Ship rep productivity workflows fast: triage asks from the field, identify the low-hanging fruit, and build it, biasing for shipping small + fast and iterating vs designing the perfect solution</li>
-	<li>Know when to go custom: not everything belongs in a point-and-click tool. You're comfortable spinning up bespoke AI-powered solutions when the problem calls for it, and you make that call with judgment, not default</li>
-	<li>Think in systems, not solutions: every workflow you build has upstream and downstream implications. You anticipate them, design for them, and don't create technical debt that someone else has to unwind six months later</li>
-	<li>Integrate third-party APIs to sync events and information across disparate systems, ensuring data flows reliably between the tools your team depends on every day</li>
-	<li>Document what you build. If people can't find it, understand it, or trust it, it doesn't matter how well it works</li>
+	<li>AI-assisted intake for request classification, retrieval-augmented responses, and case routing.</li>
+	<li>Recruiting automation for Greenhouse job creation and management chain synchronization.</li>
+	<li>Self-service tools for policy guidance, approvals, and employee lifecycle changes.</li>
+	<li>Durable multi-step Workflows for onboarding, offboarding, and recurring audits.</li>
+	<li>AI copilots that summarize context and suggest next actions for human review.</li>
+	<li>Data reconciliation systems and exception queues for cross-system accuracy.</li>
+	<li>Observable audit pipelines for explainable decision-making.</li>
+	<li>Custom interview automation and internal technical assessment tooling.</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h3><strong>The Stack</strong></h3>
+<p>Leveraging Cloudflare Dev Platform primitives like Workers, Workflows, Access, Hyperdrive (Postgres), R2, and Workers AI / AI Gateway for durable, secure, and observable automation.</p>
+<h3><strong>What you will do</strong></h3>
 <ul>
-	<li>3+ years of experience in GTM Engineering, workflow automation, or a technical RevOps role, ideally at a high-growth, AI-native B2B company</li>
-	<li>Direct experience with Salesforce. You know the data model, you've built on it, and you're comfortable owning changes</li>
-	<li>Fluency with AI coding assistants - you're actively building with these tools, not just experimenting with them</li>
-	<li>A track record of owning end-to-end AI and automation workflows, not just contributing to or consuming them</li>
-	<li>A fundamental understanding of APIs and webhooks to integrate third-party systems</li>
-	<li>Strong judgment on the build decision: you know when low-code gets you 80% of the way there and when it becomes the bottleneck, and you act accordingly</li>
-	<li>Systems thinker: you naturally break problems into composable parts, building solutions with separation of concerns so they're reusable, extensible, and easy to maintain</li>
-	<li>High agency + bias for action: you're not paralyzed by ambiguity or imperfect tooling. You know how to experiment, build fast, and clean up as you go</li>
+	<li>Design and operate AI-assisted workflows using the full Cloudflare stack.</li>
+	<li>Integrate People systems via secure API, OAuth, and webhook patterns.</li>
+	<li>Collaborate with HR, IT, Legal, and Security to translate operational pain into technical solutions.</li>
+	<li>Implement robust authorization, audit logging, and error handling for high-trust data.</li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p>Compensation may be adjusted depending on work location.</p>
+<h3><strong>Who you are</strong></h3>
 <ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated salary of $161,000 - $287,000<br>For Bay Area-based hires: Estimated annual salary of $168,000 - $303,000</li>
-	<li>For Portugal based hires: Estimated annual salary is between €68,000 - €94,000.
-		<ul>
-			<li data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</li>
-		</ul>
-	</li>
+	<li>Strong engineering background (TypeScript, Python, or Go) building internal tools or platform services.</li>
+	<li>Practical experience with LLMs, RAG, tool calling, and prompt evaluation.</li>
+	<li>Expertise in system-to-system integrations, identity, and event-driven workflows.</li>
+	<li>Exceptional judgment regarding privacy, data minimization, and operational risk.</li>
 </ul>
-<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual&nbsp;<strong>salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan</strong>.</p>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3><strong>Bonus points</strong></h3>
 <ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li>Prior experience in internal platform engineering or compliance-heavy environments.</li>
+	<li>Proficiency with React, Drizzle, Zod, and Postgres.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
