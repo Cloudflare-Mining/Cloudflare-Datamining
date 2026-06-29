@@ -1363,6 +1363,9 @@
 	"event-hub-ui": {
 		"enabled": true
 	},
+	"expose-origin-ip": {
+		"enabled": false
+	},
 	"federated-profile-preferences": {
 		"enabled": false
 	},
@@ -2183,9 +2186,6 @@
 			"experiment"
 		]
 	},
-	"prg-rate-limiting-kumo-upsell": {
-		"enabled": false
-	},
 	"prg-registrar-success-activation-2026": {
 		"enabled": false,
 		"branches": [
@@ -2211,6 +2211,9 @@
 			"baseline",
 			"experiment"
 		]
+	},
+	"prg-security-overview": {
+		"enabled": false
 	},
 	"prg-security-rules-contextual-upsell": {
 		"enabled": false
@@ -2420,6 +2423,9 @@
 	},
 	"registrar-api-agreement": {
 		"enabled": true
+	},
+	"registrar-dev-app-dollar-promo": {
+		"enabled": false
 	},
 	"registrar-domain-privacy-modes": {
 		"enabled": false
