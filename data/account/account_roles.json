@@ -1,5 +1,215 @@
 [
 	{
+		"id": "416a8a5b5080a3558963f8fc6bbd6cce",
+		"name": "Zero Trust Gateway Read Only",
+		"description": "Can view all Zero Trust Gateway resources.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "d9bdeb11b29f38b8d8213a95d7db0482",
+		"name": "Zero Trust Account Lists Admin",
+		"description": "Can view and edit all Zero Trust Gateway and Access Lists.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "78e25a2b30e68449d50e093c3d54a8df",
+		"name": "Zero Trust DNS Locations Admin",
+		"description": "Can view and edit all Zero Trust Gateway DNS Locations.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "c478be1e04b16542be392c5ecbb68e28",
+		"name": "Zero Trust Gateway Policies Admin",
+		"description": "Can view and edit all Zero Trust Gateway Policies.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "604fb22c9d05e6e0fcf119868c440024",
+		"name": "Zero Trust Gateway DNS Policies Admin",
+		"description": "Can view and edit all Zero Trust Gateway DNS Policies.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "b132489b39eeff72d2fbe7d75d16228d",
+		"name": "Zero Trust Gateway Egress Policies Admin",
+		"description": "Can view and edit all Zero Trust Gateway Egress Policies.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "9eef21266e31dac7a0553123bde80383",
+		"name": "Zero Trust Gateway Firewall Policies Admin",
+		"description": "Can view and edit all Zero Trust Gateway Firewall Policies, including DNS, HTTP and Network Policies.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "619eb2e129aa3fafbc58c4b7a2ab5d45",
+		"name": "Zero Trust Gateway HTTP Policies Admin",
+		"description": "Can view and edit all Zero Trust Gateway HTTP Policies.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "fbc579bd0be8a61ca12fc15c609aae40",
+		"name": "Zero Trust Gateway Network Policies Admin",
+		"description": "Can view and edit all Zero Trust Gateway Network Policies.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "ba268eeccbf6a8c4ccc486f0d7d1eeb8",
+		"name": "Zero Trust Gateway Resolver Policies Admin",
+		"description": "Can view and edit all Zero Trust Gateway Resolver Policies.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "e52c0b24c58c40179e59548a8c7269fb",
+		"name": "Zero Trust Proxy Endpoints Admin",
+		"description": "Can view and edit all Zero Trust Gateway Proxy Endpoints.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "14f4def927c8cce7e116779e9931f521",
 		"name": "Account Abuse Protection (Account-Wide)",
 		"description": "Can view and edit Account Abuse Protection configurations for all domains on an account",
@@ -2442,592 +2652,6 @@
 				"edit": false
 			},
 			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "c61d4237ab1c08a3d11feb6bd5e91c5a",
-		"name": "Load Balancer",
-		"description": "Can edit Load Balancing resources such as Load Balancers, Monitors, Monitor Groups, Pools, and Health Checks.",
-		"permissions": {
-			"lb": {
-				"read": true,
-				"edit": true
-			},
-			"waf": {
-				"read": true,
-				"edit": false
-			},
-			"healthchecks": {
-				"read": true,
-				"edit": true
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "1963e6e3aca5ac9a7a91609a0040ab02",
-		"name": "Firewall",
-		"description": "Can edit WAF, IP Firewall, and Zone Lockdown settings.",
-		"permissions": {
-			"waf": {
-				"read": true,
-				"edit": true
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": true
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "069fe803647ed3609e93d041d5df6050",
-		"name": "DNS",
-		"description": "Can edit DNS records.",
-		"permissions": {
-			"dns_records": {
-				"read": true,
-				"edit": true
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "57280df9f1a5806e04f065b07bbdd17a",
-		"name": "Workers Platform Admin",
-		"description": "Can create, read, update and delete all resources in the Workers Platform.",
-		"permissions": {
-			"worker": {
-				"read": true,
-				"edit": true
-			},
-			"organization": {
-				"read": true,
-				"edit": true
-			},
-			"d1": {
-				"read": false,
-				"edit": true
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": true
-			},
-			"dns_records": {
-				"read": true,
-				"edit": true
-			},
-			"vectorize": {
-				"read": true,
-				"edit": true
-			},
-			"query_cache": {
-				"read": true,
-				"edit": true
-			},
-			"r2_bucket_item": {
-				"read": true,
-				"edit": true
-			},
-			"integration": {
-				"read": true,
-				"edit": false,
-				"install": true
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"r2_bucket": {
-				"read": true,
-				"edit": true
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "8b081b06f8ffef0522957fc6929cdcca",
-		"name": "Cloudflare Stream",
-		"description": "Can edit Cloudflare Stream media.",
-		"permissions": {
-			"stream": {
-				"read": true,
-				"edit": true,
-				"content_read": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "951e083054cc4f172986fc9be0aa17af",
-		"name": "Cloudflare Access",
-		"description": "Can edit Cloudflare Access.",
-		"permissions": {
-			"access": {
-				"read": true,
-				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
-			},
-			"organization": {
-				"read": true,
-				"edit": true
-			},
-			"teams_device": {
-				"read": true,
-				"edit": false
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"ssl": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "d1c17a97abf0aa371338074955877ba0",
-		"name": "Cache Purge",
-		"description": "Can purge the edge cache.",
-		"permissions": {
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"cache_purge": {
-				"read": false,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "298ce8e7a2ba08b9d18ce0a32bb458ee",
-		"name": "Billing",
-		"description": "Can edit the account’s billing profile and subscriptions.",
-		"permissions": {
-			"billing": {
-				"read": true,
-				"edit": true
-			},
-			"subscription": {
-				"read": true,
-				"edit": true
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "9dfa4d1b73034f70ad896bf1c26d78f3",
-		"name": "Audit Logs Viewer",
-		"description": "Can view Audit Logs",
-		"permissions": {
-			"access": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"auditlogs": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "6ddc5f80969d01105b5a0931e0079365",
-		"name": "Analytics",
-		"description": "Can read Analytics.",
-		"permissions": {
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "f2b20eaa1a5d4af42b53ac16238c99c7",
-		"name": "Administrator Read Only",
-		"description": "Can access the full account in read only mode",
-		"permissions": {
-			"magic": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"stream": {
-				"read": true,
-				"edit": false,
-				"content_read": true
-			},
-			"fraud-detection": {
-				"read": false,
-				"edit": false,
-				"pii": true
-			},
-			"image": {
-				"read": true,
-				"edit": false
-			},
-			"worker": {
-				"read": true,
-				"edit": false
-			},
-			"access": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
-			},
-			"waf": {
-				"read": true,
-				"edit": false
-			},
-			"dns_records": {
-				"read": true,
-				"edit": false
-			},
-			"cf1_integration": {
-				"read": true,
-				"edit": false
-			},
-			"teams_device": {
-				"read": true,
-				"edit": false
-			},
-			"ces_pra_report": {
-				"read": true,
-				"edit": false
-			},
-			"r2_bucket_warehouse_sql": {
-				"read": true,
-				"edit": false
-			},
-			"lb": {
-				"read": true,
-				"edit": false
-			},
-			"ces_policies": {
-				"read": true,
-				"edit": false
-			},
-			"blocks": {
-				"read": true,
-				"edit": false
-			},
-			"r2_bucket_warehouse": {
-				"read": true,
-				"edit": false
-			},
-			"resilience": {
-				"read": true,
-				"edit": false
-			},
-			"waitingroom": {
-				"read": true,
-				"edit": false
-			},
-			"cfone": {
-				"read": true,
-				"edit": false
-			},
-			"billing": {
-				"read": true,
-				"edit": false
-			},
-			"cds_compute_account": {
-				"read": true,
-				"edit": false
-			},
-			"cds": {
-				"read": true,
-				"edit": false
-			},
-			"ces_submissions": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"ces_integration": {
-				"read": true,
-				"edit": false
-			},
-			"ces_phishguard": {
-				"read": true,
-				"edit": false
-			},
-			"ces_settings": {
-				"read": true,
-				"edit": false
-			},
-			"ces_search": {
-				"read": true,
-				"edit": false,
-				"trace": true,
-				"raw": true,
-				"preview": true
-			},
-			"ces_analytics": {
-				"read": true,
-				"edit": false
-			},
-			"vectorize": {
-				"read": true,
-				"edit": false
-			},
-			"query_cache": {
-				"read": true,
-				"edit": false
-			},
-			"r2_bucket_item": {
-				"read": true,
-				"edit": false
-			},
-			"integration": {
-				"read": true,
-				"edit": false
-			},
-			"dex": {
-				"read": true,
-				"edit": false
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"zone_versioning": {
-				"read": true,
-				"edit": false
-			},
-			"ssl": {
-				"read": true,
-				"edit": false
-			},
-			"fbm": {
-				"read": true,
-				"edit": false
-			},
-			"logs": {
-				"read": true,
-				"edit": false
-			},
-			"http_applications": {
-				"read": true,
-				"edit": false
-			},
-			"api_gateway": {
-				"read": true,
-				"edit": false
-			},
-			"zaraz": {
-				"read": true,
-				"edit": false
-			},
-			"page_shield": {
-				"read": true,
-				"edit": false
-			},
-			"casb": {
-				"read": true,
-				"edit": false
-			},
-			"healthchecks": {
-				"read": true,
-				"edit": false
-			},
-			"web3": {
-				"read": true,
-				"edit": false
-			},
-			"r2_bucket": {
-				"read": true,
-				"edit": false
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"auditlogs": {
-				"read": true,
-				"edit": false
-			},
-			"member": {
 				"read": true,
 				"edit": false
 			},
