@@ -6,24 +6,31 @@
 	</div>
 </div>
 <h3><strong>Available Locations: Austin, TX | Hybrid</strong></h3>
-<h3><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3><strong>About the Team</strong></h3>
+<p>The Cloudflare Hyperdrive team builds the technology that makes regional databases feel like they are global. Hyperdrive is a core piece of the Cloudflare Developer Platform that accelerates database queries from Cloudflare Workers by pooling connections and caching data at the edge. By eliminating the massive latency overhead of TCP, TLS, and database-specific handshakes, Hyperdrive allows developers to use the databases they already know and love—like PostgreSQL and MySQL—without the "cold start" performance penalties typically associated with serverless environments.</p>
+<p>Hyperdrive is integrated directly into the Cloudflare global network and features:</p>
+<ul>
+	<li>Global Connection Pooling: Maintains "warm" connections to origin databases across the globe, reducing connection times by up to 90%.</li>
+	<li>Intelligent Query Caching: Automatically caches frequently run read queries as close to the user as possible.</li>
+	<li>Protocol-Aware Proxying: Features custom-built implementations of database wire protocols (PostgreSQL and MySQL) to parse and optimize traffic in real-time.</li>
+	<li>Seamless Integration: Works with existing ORMs and drivers, providing a simple connection string that "just works" for developers.</li>
+</ul>
+<p>The team is geographically distributed across North America.</p>
 <h3><strong>What you'll do</strong></h3>
-<p>This is a newly found team focused on building out our brand-new vector database offering, designed to let you build full-stack, AI-powered applications entirely on Cloudflare’s global network. In this role, you will work with a top-notch engineering team to expand Cloudflare's capabilities by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Rust, Go, C++, Typescript.</p>
 <h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>5+ years experience working with distributed systems or developing on cloud platforms.</li>
-	<li>Experience managing high volume software applications.</li>
-	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
-	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Rust, or C++.</li>
-	<li>Strong expertise in Machine Learning, including experience with data processing and retrieval algorithms.</li>
+	<li>You have 4+ years of professional experience with Rust, Go, or C++. You understand how to write code that respects CPU and memory constraints.</li>
+	<li>You are comfortable with the Linux networking stack. You know your way around TCP/IP, TLS, and WebSockets.</li>
+	<li>You don’t just use databases; you understand how they work. You’re familiar with connection lifecycles, transaction states, and wire protocols.</li>
+	<li>You enjoy the challenge of debugging complex, distributed systems and building for "five nines" reliability.</li>
 </ul>
 <h3><strong>Bonus Points</strong></h3>
 <ul>
-	<li>Familiarity with Vector Databases and associated Machine Learning Algorithms.</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems.</li>
-	<li>Experience debugging, optimizing and identifying failure modes in a large-scale Linux-based distributed system</li>
+	<li>Experience with PgBouncer, ProxySQL, or custom database middleware.</li>
+	<li>Familiarity with the Cloudflare Workers ecosystem and the unique stateful connection challenges of ephemeral computing.</li>
+	<li>You’ve contributed to database drivers, ORMs, or low-level networking libraries.</li>
+	<li>Experience using eBPF, perf, or other profiling tools to find and kill bottlenecks.</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
