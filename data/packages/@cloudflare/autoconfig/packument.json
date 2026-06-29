@@ -49,39 +49,39 @@
 				"@cloudflare/cli-shared-helpers": "0.1.10"
 			},
 			"devDependencies": {
-				"@netlify/build-info": "^10.5.1",
-				"@types/esprima": "^4.0.3",
-				"@types/node": "22.15.17",
-				"chalk": "5.3.0",
-				"empathic": "^2.0.0",
-				"esprima": "4.0.1",
-				"recast": "0.23.11",
-				"semiver": "^1.1.0",
-				"ts-dedent": "^2.2.0",
 				"tsup": "8.3.0",
-				"typescript": "5.8.3",
+				"chalk": "5.3.0",
+				"recast": "0.23.11",
 				"vitest": "4.1.0",
-				"@cloudflare/workers-tsconfig": "0.0.0",
-				"@cloudflare/codemod": "1.1.0"
+				"esprima": "4.0.1",
+				"semiver": "^1.1.0",
+				"empathic": "^2.0.0",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"@types/esprima": "^4.0.3",
+				"@cloudflare/codemod": "1.1.0",
+				"@netlify/build-info": "^10.5.1",
+				"@cloudflare/workers-tsconfig": "0.0.0"
 			},
 			"dist": {
-				"integrity": "sha512-db7HHIAxzh64d9U+ngFdHSo+geMYegl+FH+cIQKs8M4Qx7ov95fACPK5OgZ2Zua1szXePkha5z/CMGjgjiEBtg==",
 				"shasum": "9d3127ce3273861bef906d6155cbe025d53ea2dd",
 				"tarball": "https://registry.npmjs.org/@cloudflare/autoconfig/-/autoconfig-0.1.1.tgz",
 				"fileCount": 6,
-				"unpackedSize": 2373803,
+				"integrity": "sha512-db7HHIAxzh64d9U+ngFdHSo+geMYegl+FH+cIQKs8M4Qx7ov95fACPK5OgZ2Zua1szXePkha5z/CMGjgjiEBtg==",
+				"signatures": [
+					{
+						"sig": "MEQCICMYV1/cdnBlB5r68yAgSPE+i/5x+2dDTMiF7bPn2ojjAiAsmKXjSWTYp/fyauic1DoU5TLP9I+lUaIhtzboCtOLpA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
 				"attestations": {
 					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fautoconfig@0.1.1",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
 				},
-				"signatures": [
-					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCICMYV1/cdnBlB5r68yAgSPE+i/5x+2dDTMiF7bPn2ojjAiAsmKXjSWTYp/fyauic1DoU5TLP9I+lUaIhtzboCtOLpA=="
-					}
-				]
+				"unpackedSize": 2373803
 			}
 		}
 	}
