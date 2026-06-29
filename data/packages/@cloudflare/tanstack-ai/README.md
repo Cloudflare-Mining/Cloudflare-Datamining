@@ -2,6 +2,9 @@
 
 Use [TanStack AI](https://tanstack.com/ai) with Cloudflare Workers AI and AI Gateway. Supports chat, image generation, transcription, text-to-speech, and summarization with Workers AI models, plus routing through AI Gateway for OpenAI, Anthropic, Gemini, Grok, and OpenRouter.
 
+> 📚 In-depth guides — including **resumable streaming** support _(coming soon)_ —
+> live in [`docs/tanstack-ai`](../../docs/tanstack-ai/README.md).
+
 ## Features
 
 - **Workers AI**: Chat, image generation, transcription (Whisper + Deepgram), TTS, and summarization via `env.AI` binding or REST API
