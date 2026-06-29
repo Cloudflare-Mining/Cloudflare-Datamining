@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/flagship",
 	"dist-tags": {
-		"latest": "0.4.0"
+		"latest": "0.4.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -280,6 +280,90 @@
 				"lru-cache": "^11.5.1"
 			},
 			"devDependencies": {
+				"tsx": "^4.22.4",
+				"tsdown": "^0.22.3",
+				"vitest": "^4.1.9",
+				"typescript": "^5.9.3",
+				"@types/node": "^24.13.2",
+				"@openfeature/core": "^1.11.0",
+				"@vitest/coverage-v8": "^4.1.9",
+				"@openfeature/web-sdk": "^1.9.0",
+				"@openfeature/server-sdk": "^1.22.0",
+				"@cloudflare/workers-types": "^4.20260617.1"
+			},
+			"peerDependencies": {
+				"@openfeature/web-sdk": "^1.7.3",
+				"@openfeature/server-sdk": "^1.20.2"
+			},
+			"dist": {
+				"shasum": "309ff4ef96808467907f483eba19a720d02f04be",
+				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.4.0.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-U1JTxGEGfCFDK5+IFTyt8wNaPWMF7Bl5AvlyOnqHANkBvoGbebZ+147zd0N6yz8/7BW33fshlQatTTo3/yiPrw==",
+				"signatures": [
+					{
+						"sig": "MEYCIQCu5aRi9NJFubxyvZeK7UIHj8ukUcQrvRYrOY4nnySM7QIhAMyUp8pCoexdOciDEwqJ23ESHrFybY0z2Rh367RwiQiw",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fflagship@0.4.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 95291
+			}
+		},
+		"0.4.1": {
+			"name": "@cloudflare/flagship",
+			"version": "0.4.1",
+			"dependencies": {
+				"lru-cache": "^11.5.1"
+			},
+			"devDependencies": {
+				"tsx": "^4.22.4",
+				"tsdown": "^0.22.3",
+				"vitest": "^4.1.9",
+				"typescript": "^5.9.3",
+				"@types/node": "^24.13.2",
+				"@openfeature/core": "^1.11.0",
+				"@vitest/coverage-v8": "^4.1.9",
+				"@openfeature/web-sdk": "^1.9.0",
+				"@openfeature/server-sdk": "^1.22.0",
+				"@cloudflare/workers-types": "^4.20260617.1"
+			},
+			"peerDependencies": {
+				"@openfeature/web-sdk": "^1.7.3",
+				"@openfeature/server-sdk": "^1.20.2"
+			},
+			"dist": {
+				"shasum": "48c63005765f031dbd422f1249e67e1b9938cf9a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.4.1.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-8shom0sXTLQGEc1jusic1qgnEnHJb8mbhnv2q7ElZ1pa1+4cr5aHelMkSf6ibCDxPwlwacQMyK6Bhu5at3WH7Q==",
+				"signatures": [
+					{
+						"sig": "MEQCIBwI89/c91qG89j//rvjLoeUtQHrulLriyOD5R9ooNPoAiAhAHZUh56m9ciyyWFq0ioKHwqYqB/13DLaZC1ilIuypA==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fflagship@0.4.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 95291
+			}
+		},
+		"0.4.2": {
+			"name": "@cloudflare/flagship",
+			"version": "0.4.2",
+			"dependencies": {
+				"lru-cache": "^11.5.1"
+			},
+			"devDependencies": {
 				"@cloudflare/workers-types": "^4.20260617.1",
 				"@openfeature/core": "^1.11.0",
 				"@openfeature/server-sdk": "^1.22.0",
@@ -296,13 +380,13 @@
 				"@openfeature/web-sdk": "^1.7.3"
 			},
 			"dist": {
-				"integrity": "sha512-U1JTxGEGfCFDK5+IFTyt8wNaPWMF7Bl5AvlyOnqHANkBvoGbebZ+147zd0N6yz8/7BW33fshlQatTTo3/yiPrw==",
-				"shasum": "309ff4ef96808467907f483eba19a720d02f04be",
-				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.4.0.tgz",
+				"integrity": "sha512-pinC3ZR3g3kHDMD0xqU0rNJvNfpW/iAD/kAKN7az6YvNvmoMyAvjXR3U3/T2G4or/r4dl4zfojuM4b9KOIh65g==",
+				"shasum": "c361daab54d4650c5557db28f400a4c00763398b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/flagship/-/flagship-0.4.2.tgz",
 				"fileCount": 19,
 				"unpackedSize": 95291,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fflagship@0.4.0",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fflagship@0.4.2",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -310,7 +394,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCu5aRi9NJFubxyvZeK7UIHj8ukUcQrvRYrOY4nnySM7QIhAMyUp8pCoexdOciDEwqJ23ESHrFybY0z2Rh367RwiQiw"
+						"sig": "MEUCIFJV8VsVLRgJcr8QTxSbFSBkGd+Bgm8H5v0phwgdEWtiAiEAju13ZBWh7PVTKiPM1W1sPQlbWUM9e425IVcuitDr0tc="
 					}
 				]
 			}
