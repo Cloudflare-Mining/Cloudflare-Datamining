@@ -1809,6 +1809,24 @@
 		"category": "app_security"
 	},
 	{
+		"id": "a9846a16265d4c9aa9729043886269fd",
+		"name": "Fraud Feedback Read",
+		"description": "Grants read access to fraud detection feedback",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "app_security"
+	},
+	{
+		"id": "c5bac3bbefb34feca30204c8d082c444",
+		"name": "Fraud Feedback Write",
+		"description": "Grants write access to submit fraud detection feedback",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "app_security"
+	},
+	{
 		"id": "fac65912d42144aa86b7dd33281bf79e",
 		"name": "Health Checks Read",
 		"description": "Grants read access to Health Checks",
