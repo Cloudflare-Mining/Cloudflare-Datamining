@@ -1018,6 +1018,18 @@
 			},
 			{
 				"in": "query",
+				"name": "product_category",
+				"schema": {
+					"description": "Filters audit logs by one or more predefined product categories. Each product category expands into a curated set of resource_product values and is unioned with any explicit resource_product filter. Matched case-insensitively; unknown product categories return 400. Repeatable. Use the audit log product categories endpoint to discover the available values.",
+					"items": {
+						"example": "zerotrust",
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"in": "query",
 				"name": "zone_id",
 				"schema": {
 					"description": "Filters by the zone ID.",
@@ -2243,6 +2255,177 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/logs/audit/product_categories": {
+		"description": "Lists the available audit log product categories and the resource products each one expands to. Use these values with the product_category filter on the account audit logs endpoint.",
+		"operationId": "audit-logs-v2-list-account-product-categories",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "The unique id that identifies the account.",
+					"example": "a67e14daa5f8dceeb91fe5449ba496ef",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"result": {
+									"items": {
+										"description": "A predefined product category and the resource products it expands to.",
+										"properties": {
+											"label": {
+												"description": "A human-readable label for the product category.",
+												"example": "Zero Trust",
+												"type": "string"
+											},
+											"products": {
+												"description": "The resource products that the product category expands to.",
+												"items": {
+													"description": "A resource product within a product category.",
+													"properties": {
+														"label": {
+															"description": "A human-readable label for the product.",
+															"example": "Gateway",
+															"type": "string"
+														},
+														"value": {
+															"description": "The resource_product value that the product category expands to.",
+															"example": "gateway",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"type": "array"
+											},
+											"value": {
+												"description": "The product category identifier used with the product_category filter.",
+												"example": "zerotrust",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates whether the API call was successful",
+									"enum": [
+										true
+									],
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "List account audit log product categories successful response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"description": "A list of error messages.",
+									"items": {
+										"properties": {
+											"message": {
+												"description": "A text description of this message.",
+												"example": "No route for the URI",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"type": "object",
+										"uniqueItems": true
+									},
+									"type": "array"
+								},
+								"success": {
+									"description": "Indicates whether the API call was failed",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List account audit log product categories failed response"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List account audit log product categories (Version 2)",
+		"tags": [
+			"Audit Logs"
+		],
+		"x-api-token-group": [
+			"Account Settings Write",
+			"Account Settings Read"
+		],
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
 	"GET /organizations/{organization_id}/logs/audit": {
 		"description": "Gets a list of audit logs for an organization.",
 		"operationId": "audit-logs-v2-get-organization-audit-logs",
@@ -3096,7 +3279,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get organization audit logs (Version 2, Beta release)",
+		"summary": "Get organization audit logs (Version 2)",
 		"tags": [
 			"Audit Logs"
 		],
@@ -3589,7 +3772,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Get resource change history from an organization audit log entry (Version 2, Beta release)",
+		"summary": "Get resource change history from an organization audit log entry (Version 2)",
 		"tags": [
 			"Audit Logs"
 		],
