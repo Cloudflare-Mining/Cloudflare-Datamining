@@ -173,10 +173,6 @@
 														"description": "Title of the meeting this session belongs to",
 														"type": "string"
 													},
-													"meta": {
-														"description": "Any meta data about session.",
-														"type": "object"
-													},
 													"minutes_consumed": {
 														"description": "number of minutes consumed since the session started",
 														"type": "number"
@@ -360,10 +356,6 @@
 										"meeting_display_name": {
 											"description": "Title of the meeting this session belongs to",
 											"type": "string"
-										},
-										"meta": {
-											"description": "Any meta data about session.",
-											"type": "object"
 										},
 										"minutes_consumed": {
 											"description": "number of minutes consumed since the session started",
@@ -922,23 +914,6 @@
 					"description": "The app identifier tag.",
 					"example": "14a396e7-ca44-4937-bf1f-050a69118543",
 					"maxLength": 32,
-					"type": "string"
-				}
-			},
-			{
-				"allowEmptyValue": true,
-				"description": "Comma separated list of filters to apply. Note that there must be no spaces between the filters.",
-				"in": "query",
-				"name": "filters",
-				"schema": {
-					"enum": [
-						"device_info",
-						"ip_information",
-						"precall_network_information",
-						"events",
-						"quality_stats"
-					],
-					"example": "device_info,ip_information,events",
 					"type": "string"
 				}
 			},
@@ -1783,7 +1758,20 @@
 																		"description": "A timestamped event recorded during the participant's connection.",
 																		"properties": {
 																			"metadata": {
-																				"additionalProperties": true,
+																				"additionalProperties": {
+																					"nullable": true,
+																					"oneOf": [
+																						{
+																							"type": "string"
+																						},
+																						{
+																							"type": "number"
+																						},
+																						{
+																							"type": "boolean"
+																						}
+																					]
+																				},
 																				"description": "Event-specific metadata. Keys vary per event; values are primitive scalars (string, number, boolean, or null).",
 																				"type": "object"
 																			},
