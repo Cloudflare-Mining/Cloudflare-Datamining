@@ -542,6 +542,9 @@
 	"cache-response-rules": {
 		"enabled": true
 	},
+	"cache-rules-vary": {
+		"enabled": true
+	},
 	"cache-safe-vary": {
 		"enabled": false
 	},
@@ -567,6 +570,9 @@
 		"enabled": false
 	},
 	"cfone-blocked-content-service-outage-banner": {
+		"enabled": false
+	},
+	"cfone-bp-stakeout-v2": {
 		"enabled": false
 	},
 	"cfone-cloudy-threat-events-enabled": {
@@ -2841,9 +2847,6 @@
 		]
 	},
 	"tsf-3-self-help": {
-		"enabled": true
-	},
-	"tsf-3-show-chat-page": {
 		"enabled": true
 	},
 	"tsf-chat-queue-position": {
