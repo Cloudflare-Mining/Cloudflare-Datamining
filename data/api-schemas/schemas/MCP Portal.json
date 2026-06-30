@@ -358,6 +358,7 @@
 															"type": "string"
 														},
 														"is_shared_oauth_callback_enabled": {
+															"default": false,
 															"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
 															"type": "boolean"
 														},
@@ -402,6 +403,14 @@
 															"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
 															"example": false,
 															"type": "boolean"
+														},
+														"server_id": {
+															"description": "server id",
+															"example": "my-mcp-server",
+															"maxLength": 32,
+															"minLength": 1,
+															"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+															"type": "string"
 														},
 														"status": {
 															"default": "waiting",
@@ -489,11 +498,13 @@
 														"hostname",
 														"auth_type",
 														"tools",
-														"prompts"
+														"prompts",
+														"server_id"
 													],
 													"type": "object"
 												},
-												"type": "array"
+												"type": "array",
+												"x-stainless-collection-type": "set"
 											}
 										},
 										"required": [
@@ -750,6 +761,7 @@
 														"type": "string"
 													},
 													"is_shared_oauth_callback_enabled": {
+														"default": false,
 														"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
 														"type": "boolean"
 													},
@@ -794,6 +806,14 @@
 														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
 														"example": false,
 														"type": "boolean"
+													},
+													"server_id": {
+														"description": "server id",
+														"example": "my-mcp-server",
+														"maxLength": 32,
+														"minLength": 1,
+														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string"
 													},
 													"status": {
 														"default": "waiting",
@@ -881,11 +901,13 @@
 													"hostname",
 													"auth_type",
 													"tools",
-													"prompts"
+													"prompts",
+													"server_id"
 												],
 												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"x-stainless-collection-type": "set"
 										}
 									},
 									"required": [
@@ -1114,7 +1136,8 @@
 									"type": "object"
 								},
 								"maxItems": 40,
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"required": [
@@ -1263,6 +1286,7 @@
 														"type": "string"
 													},
 													"is_shared_oauth_callback_enabled": {
+														"default": false,
 														"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
 														"type": "boolean"
 													},
@@ -1307,6 +1331,14 @@
 														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
 														"example": false,
 														"type": "boolean"
+													},
+													"server_id": {
+														"description": "server id",
+														"example": "my-mcp-server",
+														"maxLength": 32,
+														"minLength": 1,
+														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string"
 													},
 													"status": {
 														"default": "waiting",
@@ -1394,11 +1426,13 @@
 													"hostname",
 													"auth_type",
 													"tools",
-													"prompts"
+													"prompts",
+													"server_id"
 												],
 												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"x-stainless-collection-type": "set"
 										}
 									},
 									"required": [
@@ -1639,7 +1673,8 @@
 									"type": "object"
 								},
 								"maxItems": 40,
-								"type": "array"
+								"type": "array",
+								"x-stainless-collection-type": "set"
 							}
 						},
 						"type": "object"
@@ -1783,6 +1818,7 @@
 														"type": "string"
 													},
 													"is_shared_oauth_callback_enabled": {
+														"default": false,
 														"description": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.",
 														"type": "boolean"
 													},
@@ -1827,6 +1863,14 @@
 														"description": "Route outbound traffic to this MCP server through Zero Trust Secure Web Gateway",
 														"example": false,
 														"type": "boolean"
+													},
+													"server_id": {
+														"description": "server id",
+														"example": "my-mcp-server",
+														"maxLength": 32,
+														"minLength": 1,
+														"pattern": "^[a-z0-9_]+(?:-[a-z0-9_]+)*$",
+														"type": "string"
 													},
 													"status": {
 														"default": "waiting",
@@ -1914,11 +1958,13 @@
 													"hostname",
 													"auth_type",
 													"tools",
-													"prompts"
+													"prompts",
+													"server_id"
 												],
 												"type": "object"
 											},
-											"type": "array"
+											"type": "array",
+											"x-stainless-collection-type": "set"
 										}
 									},
 									"required": [

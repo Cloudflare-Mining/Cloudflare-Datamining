@@ -944,8 +944,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:read",
-				"#internal_dns_records:read"
+				"#dns_records:read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -2070,8 +2069,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:edit",
-				"#internal_dns_records:edit"
+				"#dns_records:edit"
 			]
 		},
 		"x-cfPlanAvailability": {

@@ -212,7 +212,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.dns.view.delete"
+				"#dns.view:delete"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -919,7 +919,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.dns.view.list"
+				"#dns.view:list"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -1436,7 +1436,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.dns.view.read"
+				"#dns.view:read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -2006,7 +2006,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.dns.view.update"
+				"#dns.view:update"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -2568,7 +2568,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"com.cloudflare.api.account.dns.view.create"
+				"#dns.view:create"
 			]
 		},
 		"x-cfPlanAvailability": {
