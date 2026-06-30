@@ -6,11 +6,9 @@ var SvgOverflow2Solid = props => /*#__PURE__*/React.createElement("svg", _extend
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Overflow2Solid.tsx:5"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7.85 4.133a1.084 1.084 0 1 0 0-2.169 1.084 1.084 0 0 0 0 2.17Zm0 4.951a1.084 1.084 0 1 0 0-2.169 1.084 1.084 0 0 0 0 2.17Zm0 4.951a1.084 1.084 0 1 0 0-2.169 1.084 1.084 0 0 0 0 2.17Z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Overflow2Solid.tsx:12"
+  d: "M7.85 4.133a1.084 1.084 0 1 0 0-2.169 1.084 1.084 0 0 0 0 2.17Zm0 4.951a1.084 1.084 0 1 0 0-2.169 1.084 1.084 0 0 0 0 2.17Zm0 4.951a1.084 1.084 0 1 0 0-2.169 1.084 1.084 0 0 0 0 2.17Z"
 }));
 
 export default SvgOverflow2Solid;

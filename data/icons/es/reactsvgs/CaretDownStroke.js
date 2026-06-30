@@ -6,11 +6,9 @@ var SvgCaretDownStroke = props => /*#__PURE__*/React.createElement("svg", _exten
   viewBox: "0 0 64 64",
   xmlns: "http://www.w3.org/2000/svg",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretDownStroke.tsx:5"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M5.53963 20.4066L8.36763 17.5786L31.5536 40.7646L54.7396 17.5786L57.5676 20.4066L31.5536 46.4216L5.53963 20.4066Z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretDownStroke.tsx:12"
+  d: "M5.53963 20.4066L8.36763 17.5786L31.5536 40.7646L54.7396 17.5786L57.5676 20.4066L31.5536 46.4216L5.53963 20.4066Z"
 }));
 
 export default SvgCaretDownStroke;

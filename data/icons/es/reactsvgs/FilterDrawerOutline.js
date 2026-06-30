@@ -6,15 +6,12 @@ var SvgFilterDrawerOutline = props => /*#__PURE__*/React.createElement("svg", _e
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 17",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/FilterDrawerOutline.tsx:5"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M14.5 4.75h-13v1h13v-1Zm0 6.5h-13v1h13v-1Z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/FilterDrawerOutline.tsx:12"
+  d: "M14.5 4.75h-13v1h13v-1Zm0 6.5h-13v1h13v-1Z"
 }), /*#__PURE__*/React.createElement("path", {
   fillRule: "evenodd",
-  d: "M8.75 5.25a1.75 1.75 0 1 1 3.5 0 1.75 1.75 0 0 1-3.5 0ZM4 11.75a1.75 1.75 0 1 1 3.5 0 1.75 1.75 0 0 1-3.5 0Z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/FilterDrawerOutline.tsx:13"
+  d: "M8.75 5.25a1.75 1.75 0 1 1 3.5 0 1.75 1.75 0 0 1-3.5 0ZM4 11.75a1.75 1.75 0 1 1 3.5 0 1.75 1.75 0 0 1-3.5 0Z"
 }));
 
 export default SvgFilterDrawerOutline;

@@ -31,8 +31,7 @@ var Icon = _ref2 => {
     className: className,
     "aria-label": ariaLabel,
     role: ariaLabel ? 'img' : 'presentation',
-    "data-testid": testId,
-    "data-source-file": "@cloudflare/component-icon:src/Icon.tsx:34"
+    "data-testid": testId
   });
 };
 

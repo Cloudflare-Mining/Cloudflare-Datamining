@@ -6,14 +6,11 @@ var SvgPagesLogo = props => /*#__PURE__*/React.createElement("svg", _extends({},
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/PagesLogo.tsx:5"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7.125 2.5l-.65 1H3v9h2.9l-.175 1H2.5L2 13V3l.5-.5h4.625zm3.15 0H13.5l.5.5v10l-.5.5H8.875l.65-1H13v-9h-2.9l.175-1z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/PagesLogo.tsx:12"
+  d: "M7.125 2.5l-.65 1H3v9h2.9l-.175 1H2.5L2 13V3l.5-.5h4.625zm3.15 0H13.5l.5.5v10l-.5.5H8.875l.65-1H13v-9h-2.9l.175-1z"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M7.15 9.5h-2.9l-.425-.775 5.2-8 .9.375L8.85 6.5h2.9l.425.775-5.2 8-.9-.375L7.15 9.5zM3.725 4.575a.35.35 0 100-.7.35.35 0 000 .7zM4.65 4.575a.35.35 0 100-.7.35.35 0 000 .7zM5.575 4.575a.35.35 0 100-.7.35.35 0 000 .7z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/PagesLogo.tsx:13"
+  d: "M7.15 9.5h-2.9l-.425-.775 5.2-8 .9.375L8.85 6.5h2.9l.425.775-5.2 8-.9-.375L7.15 9.5zM3.725 4.575a.35.35 0 100-.7.35.35 0 000 .7zM4.65 4.575a.35.35 0 100-.7.35.35 0 000 .7zM5.575 4.575a.35.35 0 100-.7.35.35 0 000 .7z"
 }));
 
 export default SvgPagesLogo;

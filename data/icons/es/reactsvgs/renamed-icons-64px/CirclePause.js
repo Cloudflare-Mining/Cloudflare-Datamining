@@ -9,16 +9,13 @@ var SvgCirclePause = props => /*#__PURE__*/React.createElement("svg", _extends({
   fill: "none",
   viewBox: "0 0 64 64",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/renamed-icons-64px/CirclePause.tsx:5"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#000",
-  d: "M32 6a26 26 0 1026 26A26.029 26.029 0 0032 6zm0 48a22 22 0 1122-22 22.025 22.025 0 01-22 22z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/renamed-icons-64px/CirclePause.tsx:15"
+  d: "M32 6a26 26 0 1026 26A26.029 26.029 0 0032 6zm0 48a22 22 0 1122-22 22.025 22.025 0 01-22 22z"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#000",
-  d: "M28 20h-4v24h4V20zM40 20h-4v24h4V20z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/renamed-icons-64px/CirclePause.tsx:19"
+  d: "M28 20h-4v24h4V20zM40 20h-4v24h4V20z"
 }));
 
 export default SvgCirclePause;

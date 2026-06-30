@@ -6,11 +6,9 @@ var SvgRight = props => /*#__PURE__*/React.createElement("svg", _extends({}, pro
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Right.tsx:5"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M4.99 14.503l-.707-.707L10.08 8 4.283 2.203l.707-.707L11.494 8 4.99 14.503z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/Right.tsx:12"
+  d: "M4.99 14.503l-.707-.707L10.08 8 4.283 2.203l.707-.707L11.494 8 4.99 14.503z"
 }));
 
 export default SvgRight;

@@ -6,11 +6,9 @@ var SvgDeviceLaptop = props => /*#__PURE__*/React.createElement("svg", _extends(
   viewBox: "0 0 64 64",
   xmlns: "http://www.w3.org/2000/svg",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/DeviceLaptop.tsx:5"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M8 14L6 16V46.031H0L2 50.031H62L64 46.031H58V16L56 14H8ZM10 46V18H54V46H10Z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/DeviceLaptop.tsx:12"
+  d: "M8 14L6 16V46.031H0L2 50.031H62L64 46.031H58V16L56 14H8ZM10 46V18H54V46H10Z"
 }));
 
 export default SvgDeviceLaptop;

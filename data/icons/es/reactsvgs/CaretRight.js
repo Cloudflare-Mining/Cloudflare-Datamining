@@ -6,11 +6,9 @@ var SvgCaretRight = props => /*#__PURE__*/React.createElement("svg", _extends({}
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 16 16",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretRight.tsx:5"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
-  d: "M4.488 1.85l.854-.353 6.15 6.15v.707l-6.15 6.15-.854-.354V1.85z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/CaretRight.tsx:12"
+  d: "M4.488 1.85l.854-.353 6.15 6.15v.707l-6.15 6.15-.854-.354V1.85z"
 }));
 
 export default SvgCaretRight;

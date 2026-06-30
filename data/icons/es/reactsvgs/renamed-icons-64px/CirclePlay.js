@@ -9,16 +9,13 @@ var SvgCirclePlay = props => /*#__PURE__*/React.createElement("svg", _extends({}
   fill: "none",
   viewBox: "0 0 64 64",
   "aria-hidden": !props['aria-label'],
-  focusable: "false",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/renamed-icons-64px/CirclePlay.tsx:5"
+  focusable: "false"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#000",
-  d: "M26 19.07l-3 1.72v23.74l3 1.72 20-11.89v-3.44L26 19.07zM27 41V24.3l14.08 8.34L27 41z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/renamed-icons-64px/CirclePlay.tsx:15"
+  d: "M26 19.07l-3 1.72v23.74l3 1.72 20-11.89v-3.44L26 19.07zM27 41V24.3l14.08 8.34L27 41z"
 }), /*#__PURE__*/React.createElement("path", {
   fill: "#000",
-  d: "M32 6a26 26 0 100 52 26 26 0 000-52zm0 48a22 22 0 110-44 22 22 0 010 44z",
-  "data-source-file": "@cloudflare/component-icon:src/reactsvgs/renamed-icons-64px/CirclePlay.tsx:19"
+  d: "M32 6a26 26 0 100 52 26 26 0 000-52zm0 48a22 22 0 110-44 22 22 0 010 44z"
 }));
 
 export default SvgCirclePlay;

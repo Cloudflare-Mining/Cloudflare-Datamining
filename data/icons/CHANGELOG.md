@@ -1,5 +1,11 @@
 # Change Log
 
+## 13.15.3
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+
 ## 13.15.2
 
 ### Patch Changes
