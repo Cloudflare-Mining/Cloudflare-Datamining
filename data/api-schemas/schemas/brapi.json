@@ -4139,7 +4139,7 @@
 								"result": {
 									"properties": {
 										"accessibilityTree": {
-											"anyOf": [
+											"allOf": [
 												{
 													"description": "Accessibility tree node",
 													"properties": {
@@ -4160,7 +4160,7 @@
 															]
 														},
 														"children": {
-															"items": "[Circular ~.POST /accounts/{account_id}/browser-rendering/accessibilityTree.responses.200.content.application/json.schema.properties.result.properties.accessibilityTree.anyOf.0]",
+															"items": "[Circular ~.POST /accounts/{account_id}/browser-rendering/accessibilityTree.responses.200.content.application/json.schema.properties.result.properties.accessibilityTree.allOf.0]",
 															"type": "array"
 														},
 														"description": {
@@ -4256,8 +4256,7 @@
 													"type": "object"
 												},
 												{
-													"nullable": true,
-													"type": "object"
+													"nullable": true
 												}
 											]
 										}
