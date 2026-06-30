@@ -212,7 +212,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:edit"
+				"#dns_records:edit",
+				"#internal_dns_records:edit"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -6665,7 +6666,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:read"
+				"#dns_records:read",
+				"#internal_dns_records:read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -12707,7 +12709,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:read"
+				"#dns_records:read",
+				"#internal_dns_records:read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -12880,7 +12883,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:read"
+				"#dns_records:read",
+				"#internal_dns_records:read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -16428,7 +16432,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:read"
+				"com.cloudflare.api.account.zone.dns-settings.read",
+				"com.cloudflare.api.account.zone.internal.settings.read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -25226,7 +25231,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:edit"
+				"#dns_records:edit",
+				"#internal_dns_records:edit"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -34012,7 +34018,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:edit"
+				"#dns_records:edit",
+				"#internal_dns_records:edit"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -53956,7 +53963,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:batch"
+				"#dns_records:batch",
+				"#internal_dns_records:edit"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -54378,7 +54386,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:edit"
+				"#dns_records:edit",
+				"#internal_dns_records:edit"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -69847,7 +69856,8 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:edit"
+				"#dns_records:edit",
+				"#internal_dns_records:edit"
 			]
 		},
 		"x-cfPlanAvailability": {

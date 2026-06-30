@@ -424,7 +424,7 @@
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#dns_records:read"
+				"com.cloudflare.api.account.dns-settings.read"
 			]
 		},
 		"x-cfPlanAvailability": {
