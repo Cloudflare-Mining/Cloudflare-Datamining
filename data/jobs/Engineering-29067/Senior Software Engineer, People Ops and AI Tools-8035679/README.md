@@ -30,6 +30,7 @@
 </ul>
 <h3><strong>Who you are</strong></h3>
 <ul>
+	<li>3-5 years of software engineering experience in building full-stack systems.</li>
 	<li>Strong engineering background (TypeScript, Python, or Go) building internal tools or platform services.</li>
 	<li>Practical experience with LLMs, RAG, tool calling, and prompt evaluation.</li>
 	<li>Expertise in system-to-system integrations, identity, and event-driven workflows.</li>
