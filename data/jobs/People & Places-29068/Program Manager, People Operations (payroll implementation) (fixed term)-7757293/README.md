@@ -5,33 +5,36 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Job Title - Internal Audit Full Stack Engineer</strong></p>
-<p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
-<p><strong>About the Department</strong></p>
-<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost-effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
-<p><strong>About the role</strong></p>
-<p>Reporting to the Senior Director of Cybersecurity and Technology Audit, as a Full Stack Engineer in our growing Bengaluru Internal Audit Engineering team, you will build the applications, platforms, and user interfaces that power our automated assurance strategy. You will partner closely with our AI/Data Science engineers and Internal Auditors to develop production-ready internal platforms and automated workflows deployed across our global landscape.</p>
-<p><strong>What you’ll do</strong></p>
+<p><strong>Locations Available:</strong> Lisbon, Portugal or London, UK</p>
+<p><strong>Fixed-term contract:</strong> July 2027</p>
+<h2><strong>What you'll do</strong></h2>
+<p>Cloudflare is undergoing an exciting global payroll transformation. Our focus is getting the best people to work at Cloudflare and supporting them to do their best work. We are looking for an operationally-minded, collaborative, hands-on and organized People Operations Program Manager to join our team as a dedicated project lead.</p>
+<p>In this role, you will lead the People Operations workstream as part of the rollout and implementation of our new global payroll system (ADP). Operating with a high degree of independence, you will partner closely with two People Operations Specialists and act as the key strategic<strong> </strong>bridge between People Ops, Payroll, and our HRIS team. You will be responsible for ensuring that as we scale, our processes are consistent, our data is accurate, and our transition to daily operations is smooth and well-supported.</p>
+<p><em>(Please note: This is a senior individual contributor role with no direct administrative reports, focusing instead on project guidance and mentorship).</em></p>
+<p>&nbsp;</p>
+<h2><strong>Key Responsibilities</strong></h2>
 <ul>
-	<li>Build the Future of Assurance: Develop end-to-end (full stack) applications that automate control testing, and risk monitoring across Cloudflare’s global infrastructure.</li>
-	<li>Data-driven Audit Execution: Provide hands-on audit support by leveraging data science and advanced analytics to execute data-driven testing throughout the audit lifecycle.Customer Zero Engineering: Build and maintain internal tools and dashboards using Cloudflare’s stack (e.g., Workers, KV, D1, AI Gateway) to solve complex internal risk and compliance challenges.</li>
-	<li>AI-Driven Risk Detection: Integrate LLMs and machine learning pipelines to analyze vast datasets for anomalies, potential security misconfigurations, or compliance deviations.</li>
-	<li>Engineer for Scale: Move beyond manual scripting. Build high availability microservices that pull data from APIs, databases, and production logs to deliver near real-time risk insights.</li>
-	<li>Data Strategy: Partner with Data Engineers and data owners to ensure we have clean, actionable telemetry for internal audits and continuous auditing.</li>
-	<li>Own the Stack: Take full ownership of the lifecycle - from database schema design and API development to UI implementation and production deployment.</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Bachelor’s or master’s degree in computer science, Software Engineering, or equivalent experience.</li>
-	<li>5+ years of full stack software engineering experience with proven industry experience in a large-scale environment (high-throughput, distributed systems &amp; globally distributed teams).</li>
-	<li>A genuine interest in technology risk management, internal audit methodologies, or engineering compliance frameworks.&nbsp;</li>
-	<li>Strong experience in application development using backend languages like Python, Go, or Node.js and modern frontend frameworks like React or TypeScript.</li>
-	<li>Deep understanding of SQL/NoSQL databases, API design (REST/GraphQL), and distributed systems.</li>
-	<li>Hands-on experience with cloud-native architectures. Experience with Cloudflare Workers, AWS, or GCP is highly preferred.</li>
-	<li>Familiarity with data engineering pipelines (ETL/ELT) and leveraging LLMs/ML for automated data analysis.</li>
-	<li>Ability to explain complex technical risks to non-technical stakeholders and translate audit requirements into elegant code</li>
+	<li><strong>Project Guidance &amp; Leadership: </strong>Lead<strong> </strong>the end-to-end People Operations transition to ADP for 4–6 countries simultaneously, taking full accountability and ownership of the project from initial design through to a stable post-launch support, proactively spotting challenges and guiding the team toward solutions.</li>
+	<li><strong>Workday-to-ADP Integration:</strong> Act as the functional expert ensuring Workday remains the absolute single source of truth. You will collaborate with teams to ensure global pay components, allowances, and benefit data are accurately set up in Workday so they transfer smoothly to ADP via integration pipelines (such as PECI).</li>
+	<li><strong>Process Standardization:</strong> Move away from manual local processes. You will design and document a clear, standardized payroll playbook that our People Operations specialists can easily follow across all 16 countries.</li>
+	<li><strong>Change Management &amp; Knowledge Transfer: </strong>Review and finalise post-implementation Standard Operating Procedures (SOPs). You will lead the "shift" in how local teams work, ensuring they move away from manual spreadsheets to Workday workflows and leveraged AI automation tools. You will provide training, workshops, and dedicated support to ensure a seamless handoff from the project phase to BAU.</li>
+	<li><strong>Data Governance &amp; Testing: </strong>Oversee data formatting and validation to ensure information is accurate before it moves systems. You will lead detailed data audits between Workday and ADP to guarantee 100% data parity during parallel runs, Go-Live, and Hypercare phases<strong>. </strong>You will perform rigorous testing to ensure system tasks (the entire Hire-to-Retire lifecycle) trigger as expected and reflect real-world daily operations. You will actively perform integration testing with the HRIS team to confirm system tasks trigger as expected.</li>
+	<li><strong>Cross-Functional Collaboration:</strong> Partner proactively with wider People Team, Benefits, Legal, and IT teams to manage and gain further clarity on specific local legislation and flag systemic data discrepancies early during project cycles.</li>
+	<li><strong>Peer Mentorship:</strong> Provide daily technical guidance, project direction, and encouragement to the two Senior People Operations Specialists working alongside you on this rollout.</li>
 </ul>
 <p>&nbsp;</p>
+<p><strong>What We’re Looking For</strong></p>
+<ul>
+	<li><strong>Relevant Experience:</strong> Solid experience within People Operations or Payroll Operations, with a history of supporting system rollouts or complex operational changes.&nbsp;</li>
+	<li><strong>Autonomy &amp; Problem Solving: </strong>Comfort managing multiple timelines independently. You know how to keep a project moving and feel comfortable raising your hand when a timeline needs adjusting.</li>
+	<li><strong>Workday Literacy:</strong> Proficiency in Workday, specifically in running/validating reports and understanding how data transforms across integration pipelines (experience with PECI or similar middleware into ADP Celergo/GlobalView is highly preferred).&nbsp;</li>
+	<li><strong>Payroll Knowledge</strong>: Deep understanding of the HR-to-Payroll pipeline and the technical nuances of the Hire-to-Retire lifecycle across different geographies is required. A working knowledge and understanding of processing payrolls, end to end is highly desirable.</li>
+	<li><strong>Curiosity for Automation: </strong>A natural curiosity about how modern tools, including AI, can help reduce repetitive manual work and make daily tasks easier.</li>
+	<li><strong>Clear Communication:</strong> Excellent verbal and written communication skills, with the ability to lead workshops and translate technical system requirements for non-technical local experts.</li>
+</ul>
+<ul>
+	<li><strong>AI automation:</strong> Demonstrates active curiosity about AI tools and emerging technologies, with a willingness to learn and leverage them to enhance productivity, collaboration, reduce manual data entry, or improve decision-making.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

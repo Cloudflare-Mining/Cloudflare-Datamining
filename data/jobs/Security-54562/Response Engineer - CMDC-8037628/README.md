@@ -5,33 +5,44 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Job Title - Internal Audit Full Stack Engineer</strong></p>
-<p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
-<p><strong>About the Department</strong></p>
-<p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost-effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
-<p><strong>About the role</strong></p>
-<p>Reporting to the Senior Director of Cybersecurity and Technology Audit, as a Full Stack Engineer in our growing Bengaluru Internal Audit Engineering team, you will build the applications, platforms, and user interfaces that power our automated assurance strategy. You will partner closely with our AI/Data Science engineers and Internal Auditors to develop production-ready internal platforms and automated workflows deployed across our global landscape.</p>
-<p><strong>What you’ll do</strong></p>
+<h2><span style="font-size: 14pt;">Available Location - Bengaluru</span></h2>
+<h2><span style="font-size: 14pt;">About the Department</span></h2>
+<p>Cloudforce One is Cloudflare's threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs). Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp;Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world's largest global networks can provide. The team analyzes these unique data points at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
+<h2><span style="font-size: 14pt;">About INTERDICT</span></h2>
+<p>I.N.T.E.R.D.I.C.T. (Identify, Neutralize, Triage, Engage, Respond, Disrupt, Integrate, Contain, Threat Hunting) is Cloudforce One's unified operational security organization responsible for identifying, analyzing, and responding to threats targeting Cloudflare and its customers. INTERDICT encompasses three main sub-functions:</p>
 <ul>
-	<li>Build the Future of Assurance: Develop end-to-end (full stack) applications that automate control testing, and risk monitoring across Cloudflare’s global infrastructure.</li>
-	<li>Data-driven Audit Execution: Provide hands-on audit support by leveraging data science and advanced analytics to execute data-driven testing throughout the audit lifecycle.Customer Zero Engineering: Build and maintain internal tools and dashboards using Cloudflare’s stack (e.g., Workers, KV, D1, AI Gateway) to solve complex internal risk and compliance challenges.</li>
-	<li>AI-Driven Risk Detection: Integrate LLMs and machine learning pipelines to analyze vast datasets for anomalies, potential security misconfigurations, or compliance deviations.</li>
-	<li>Engineer for Scale: Move beyond manual scripting. Build high availability microservices that pull data from APIs, databases, and production logs to deliver near real-time risk insights.</li>
-	<li>Data Strategy: Partner with Data Engineers and data owners to ensure we have clean, actionable telemetry for internal audits and continuous auditing.</li>
-	<li>Own the Stack: Take full ownership of the lifecycle - from database schema design and API development to UI implementation and production deployment.</li>
+	<li>PhishGuard: Managed email threat detection and response service</li>
+	<li>Cloudflare Managed Defense (CMD): Network and application security monitoring for 'Under Attack' mitigation support.</li>
+	<li>Detection Engineering: ML model development and detection optimization</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>Together, INTERDICT provides comprehensive 24×7×365 protection across email, application, and network threat surfaces.</p>
+<p><strong><span style="font-size: 14pt;">Role Summary</span></strong></p>
+<p>Response Engineer&nbsp;within the Cloudflare Managed Defense Center (CMDC) provides front-line technical monitoring and threat mitigation for Cloudflare’s premium enterprise customers. In this role, you will proactively monitor internal alerting systems to identify, analyze, and mitigate real-time security events across OSI Layers 3, 4, and 7. Working alongside senior engineers and operational teams, you will execute established runbooks to protect complex customer infrastructure from sophisticated DDoS and application-layer attacks. We are looking for a collaborative, analytical professional who remains calm under pressure and is eager to develop their security expertise within a fast-paced environment.</p>
+<h3>Role Responsibilities</h3>
 <ul>
-	<li>Bachelor’s or master’s degree in computer science, Software Engineering, or equivalent experience.</li>
-	<li>5+ years of full stack software engineering experience with proven industry experience in a large-scale environment (high-throughput, distributed systems &amp; globally distributed teams).</li>
-	<li>A genuine interest in technology risk management, internal audit methodologies, or engineering compliance frameworks.&nbsp;</li>
-	<li>Strong experience in application development using backend languages like Python, Go, or Node.js and modern frontend frameworks like React or TypeScript.</li>
-	<li>Deep understanding of SQL/NoSQL databases, API design (REST/GraphQL), and distributed systems.</li>
-	<li>Hands-on experience with cloud-native architectures. Experience with Cloudflare Workers, AWS, or GCP is highly preferred.</li>
-	<li>Familiarity with data engineering pipelines (ETL/ELT) and leveraging LLMs/ML for automated data analysis.</li>
-	<li>Ability to explain complex technical risks to non-technical stakeholders and translate audit requirements into elegant code</li>
+	<li>Monitor and investigate proactive security alerts via internal telemetry systems to rapidly identify ongoing infrastructure and application-layer attacks.</li>
+	<li>Apply appropriate mitigation steps and filter malicious traffic using Cloudflare’s core security tools, including Magic Transit, Web Application Firewall (WAF), and Rate Limiting.</li>
+	<li>Review incoming alerts to determine urgency, scope, and validity, while accurately maintaining incident tracking tickets for necessary escalations.</li>
+	<li>Communicate technical updates clearly and professionally with enterprise customers via chat, email, and phone during active security incidents.</li>
+	<li>Adhere to strict customer SLAs for alert response times, event analysis, and ongoing operational communications.</li>
+	<li>Maintain and update customer-specific runbooks, threshold rules, and escalation matrices to ensure seamless incident execution.</li>
+	<li>Collaborate with internal Engineering and Product teams to provide feedback on tools and suggest improvements for alert rules.</li>
 </ul>
-<p>&nbsp;</p>
+<h3>Role Requirements (Must-Have Skills)</h3>
+<ul>
+	<li>A minimum of 2–5 years of relevant hands-on experience in a Security Operations Center (SOC), technical support engineering, or network operations environment.</li>
+	<li>Strong foundational understanding of networking principles and internet protocols, including TCP/IP, UDP, ICMP, DNS, and BGP.</li>
+	<li>Experience analyzing network traffic data for anomaly detection and executing basic mitigation protocols against L3/L4 or L7 attacks.</li>
+	<li>Professional proficiency using the command line (Bash shell) alongside general system administration literacy across Linux, Mac, or Windows environments.</li>
+	<li>Proven customer-facing technical support experience, with the communication skills required to assist stakeholders during high-pressure incidents.</li>
+</ul>
+<h3>Nice-to-Have Skills</h3>
+<ul>
+	<li>Hands-on experience with packet capture and network analysis tools such as tcpdump or Wireshark.</li>
+	<li>Foundational scripting skills (Python preferred) to assist in automating basic operational workflows.</li>
+	<li>Familiarity with querying datasets via APIs/GraphQL or monitoring performance metrics inside Prometheus and Grafana dashboards.</li>
+	<li>Relevant industry certifications, such as CompTIA Security+, CCNA, or foundational GIAC credentials (e.g., GCIA).</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
