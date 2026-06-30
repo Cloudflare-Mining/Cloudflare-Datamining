@@ -2565,6 +2565,24 @@
 		"category": "dns_and_zones"
 	},
 	{
+		"id": "a649bfc3532148768b854e294a544425",
+		"name": "Registrar Sandbox Domains Admin",
+		"description": "Grants admin access to Cloudflare Registrar Sandbox domains",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "dns_and_zones"
+	},
+	{
+		"id": "2e0d8adc461d4cf78651efa2dfbb237c",
+		"name": "Registrar Sandbox Domains Read",
+		"description": "Grants read access to Cloudflare Registrar Sandbox domains",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "dns_and_zones"
+	},
+	{
 		"id": "b9588b65fdc04d5f9170816e2fef96e2",
 		"name": "Resource Library Read",
 		"description": "Grants access to reading resource library applications",
