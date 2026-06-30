@@ -1,5 +1,14 @@
 # Change Log
 
+## 5.0.36
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-sortable@6.0.35
+  - @cloudflare/component-table@11.1.9
+
 ## 5.0.35
 
 ### Patch Changes

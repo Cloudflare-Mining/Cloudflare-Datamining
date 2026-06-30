@@ -1,5 +1,11 @@
 # @cloudflare/util-cl1-compat-router
 
+## 3.0.1
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+
 ## 3.0.0
 
 ### Major Changes

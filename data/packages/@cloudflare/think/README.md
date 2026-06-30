@@ -216,12 +216,6 @@ Think adds the skill catalog to the prompt and exposes `activate_skill` and
 import { Think, skills } from "@cloudflare/think";
 import bundledSkills from "agents:skills"; // resolves to ./skills next to this file
 
-type Env = {
-  AI: Ai;
-  LOADER: WorkerLoader;
-  SKILLS_BUCKET: R2Bucket;
-};
-
 export class MyAgent extends Think<Env> {
   getSkills() {
     return [

@@ -1,5 +1,19 @@
 # Change Log
 
+## 10.0.6
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-arrow-swivel@9.0.28
+  - @cloudflare/component-button@9.5.3
+  - @cloudflare/component-icon@13.15.3
+  - @cloudflare/elements@4.0.7
+  - @cloudflare/util-cl1-compat-router@3.0.1
+  - @cloudflare/util-route-handler@1.2.18
+  - @cloudflare/util-sparrow@6.0.3
+
 ## 10.0.5
 
 ### Patch Changes

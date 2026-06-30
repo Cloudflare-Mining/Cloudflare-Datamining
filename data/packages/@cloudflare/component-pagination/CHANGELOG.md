@@ -1,5 +1,16 @@
 # Change Log
 
+## 11.0.29
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-dynamic-content@4.0.6
+  - @cloudflare/component-loading@7.0.7
+  - @cloudflare/util-formatters@2.7.10
+  - @cloudflare/util-markdown@1.2.19
+
 ## 11.0.28
 
 ### Patch Changes

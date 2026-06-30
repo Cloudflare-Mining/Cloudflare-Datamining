@@ -1,5 +1,16 @@
 # Change Log
 
+## 11.0.1
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-label@6.0.7
+  - @cloudflare/component-link@10.0.6
+  - @cloudflare/elements@4.0.7
+  - @cloudflare/util-cl1-compat-router@3.0.1
+
 ## 11.0.0
 
 ### Major Changes

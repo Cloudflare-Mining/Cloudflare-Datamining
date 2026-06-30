@@ -1,5 +1,16 @@
 # Change Log
 
+## 11.0.7
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/chart-color-legend@6.0.7
+  - @cloudflare/component-box@5.1.3
+  - @cloudflare/component-text@5.1.3
+  - @cloudflare/component-tooltip@6.0.7
+
 ## 11.0.6
 
 ### Patch Changes

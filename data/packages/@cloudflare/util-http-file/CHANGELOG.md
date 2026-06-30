@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.2.65
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/util-http@2.0.19
+  - @cloudflare/util-sparrow@6.0.3
+
 ## 1.2.64
 
 ### Patch Changes

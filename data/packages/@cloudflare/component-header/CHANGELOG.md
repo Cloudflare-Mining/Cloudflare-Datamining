@@ -1,5 +1,15 @@
 # Change Log
 
+## 7.0.32
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-icon@13.15.3
+  - @cloudflare/elements@4.0.7
+  - @cloudflare/util-responsive@4.2.7
+
 ## 7.0.31
 
 ### Patch Changes

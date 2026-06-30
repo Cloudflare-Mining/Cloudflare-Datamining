@@ -1,5 +1,16 @@
 # Change Log
 
+## 7.3.8
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-calendar@8.0.27
+  - @cloudflare/component-form@6.0.29
+  - @cloudflare/component-listbox@3.0.28
+  - @cloudflare/elements@4.0.7
+
 ## 7.3.7
 
 ### Patch Changes

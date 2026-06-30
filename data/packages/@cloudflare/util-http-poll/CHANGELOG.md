@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.3.5
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/util-http@2.0.19
+  - @cloudflare/util-logger@1.0.35
+
 ## 1.3.4
 
 ### Patch Changes

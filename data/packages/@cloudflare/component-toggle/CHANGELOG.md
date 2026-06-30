@@ -1,5 +1,13 @@
 # Change Log
 
+## 11.0.28
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/elements@4.0.7
+
 ## 11.0.27
 
 ### Patch Changes

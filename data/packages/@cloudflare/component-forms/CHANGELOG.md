@@ -1,5 +1,26 @@
 # Change Log
 
+## 7.0.42
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-button@9.5.3
+  - @cloudflare/component-checkbox@6.0.7
+  - @cloudflare/component-grid@4.0.32
+  - @cloudflare/component-input@9.0.8
+  - @cloudflare/component-listbox@3.0.28
+  - @cloudflare/component-radio@6.0.6
+  - @cloudflare/component-search@9.0.29
+  - @cloudflare/component-select-2@8.0.29
+  - @cloudflare/component-textarea@5.0.6
+  - @cloudflare/component-time-period-picker@7.3.8
+  - @cloudflare/component-toast@6.0.6
+  - @cloudflare/elements@4.0.7
+  - @cloudflare/util-hooks@1.3.4
+  - @cloudflare/util-responsive@4.2.7
+
 ## 7.0.41
 
 ### Patch Changes

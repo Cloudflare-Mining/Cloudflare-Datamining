@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.2.32
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/util-en-garde@8.0.15
+
 ## 1.2.31
 
 ### Patch Changes

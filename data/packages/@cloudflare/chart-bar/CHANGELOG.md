@@ -1,5 +1,14 @@
 # Change Log
 
+## 6.0.8
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-text@5.1.3
+  - @cloudflare/elements@4.0.7
+
 ## 6.0.7
 
 ### Patch Changes

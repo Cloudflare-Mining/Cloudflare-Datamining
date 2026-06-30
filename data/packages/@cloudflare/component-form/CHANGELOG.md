@@ -1,5 +1,13 @@
 # Change Log
 
+## 6.0.29
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-listbox@3.0.28
+
 ## 6.0.28
 
 ### Patch Changes

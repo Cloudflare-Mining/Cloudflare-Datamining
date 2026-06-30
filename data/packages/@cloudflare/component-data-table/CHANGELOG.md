@@ -1,5 +1,18 @@
 # Change Log
 
+## 7.1.16
+
+### Patch Changes
+
+- fc455fa761: Require explicit opt-in before injecting source-file debug attributes into package build artifacts.
+- Updated dependencies [fc455fa761]
+  - @cloudflare/component-button@9.5.3
+  - @cloudflare/component-checkbox@6.0.7
+  - @cloudflare/component-link@10.0.6
+  - @cloudflare/component-loading@7.0.7
+  - @cloudflare/component-pagination@11.0.29
+  - @cloudflare/elements@4.0.7
+
 ## 7.1.15
 
 ### Patch Changes
