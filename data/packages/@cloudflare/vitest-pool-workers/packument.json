@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/vitest-pool-workers",
 	"dist-tags": {
-		"latest": "0.16.20"
+		"latest": "0.17.0"
 	},
 	"versions": {
 		"0.1.0": {
@@ -14637,6 +14637,65 @@
 					}
 				},
 				"unpackedSize": 692721
+			}
+		},
+		"0.17.0": {
+			"name": "@cloudflare/vitest-pool-workers",
+			"version": "0.17.0",
+			"dependencies": {
+				"cjs-module-lexer": "1.2.3",
+				"esbuild": "0.28.1",
+				"zod": "3.25.76",
+				"miniflare": "4.20260630.0",
+				"wrangler": "4.106.0"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^4.20260630.1",
+				"@types/jscodeshift": "^17.3.0",
+				"@types/node": "22.15.17",
+				"@types/semver": "^7.5.1",
+				"@vitest/runner": "4.1.0",
+				"@vitest/snapshot": "4.1.0",
+				"birpc": "0.2.14",
+				"capnp-es": "0.0.14",
+				"devalue": "^5.6.3",
+				"get-port": "^7.1.0",
+				"jscodeshift": "^17.3.0",
+				"semver": "^7.7.1",
+				"tree-kill": "1.2.2",
+				"ts-dedent": "^2.2.0",
+				"tsdown": "0.16.3",
+				"typescript": "5.8.3",
+				"undici": "7.28.0",
+				"vitest": "4.1.0",
+				"@cloudflare/mock-npm-registry": "0.0.0",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/workers-utils": "0.24.0",
+				"@cloudflare/workflows-shared": "0.11.2"
+			},
+			"peerDependencies": {
+				"@vitest/runner": "^4.1.0",
+				"@vitest/snapshot": "^4.1.0",
+				"vitest": "^4.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-fNNXG11SLN+wjjYq9HWxBVtkZwAjbGJeAEz2vU55bsAizJihUXd8FYa7RS2G5PRy4u7JQpK11Qgm9Ubfp2oQ1Q==",
+				"shasum": "7d1a67222611fa1f7effa981dd81dc157b99ad42",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.17.0.tgz",
+				"fileCount": 19,
+				"unpackedSize": 691432,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.17.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIGZBdaOhXxmIQlwwc8dUdC+VfImFsp2+usl/GSgUX42qAiEA7KyNJBsMRt2uKhsRmRaVS3mtMefSyWQjIcairCU3dXk="
+					}
+				]
 			}
 		}
 	}
