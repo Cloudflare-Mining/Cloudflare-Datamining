@@ -5,63 +5,50 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>Position Location: Washington DC&nbsp;</h3>
-<h3><strong>Citizenship:</strong> U.S. Citizenship Required (due to government security clearance requirements)</h3>
-<h3><strong>Overview</strong></h3>
-<p>We are seeking a highly motivated and experienced <strong>Program/Project Manager</strong> to join our Government Projects team. This team bridges the gap between Product, Engineering, and government mission stakeholders to bring innovative technology to life.</p>
-<p>In this role, you will lead the execution, delivery, and technical consulting of complex technology programs within government environments. If you have a strong background in networking, computer security, and high-impact stakeholder management, we want to hear from you.</p>
-<h3><strong>What You’ll Do</strong></h3>
-<p>You will be responsible for the end-to-end lifecycle of critical government technology initiatives, driving operational efficiency and ensuring mission success.</p>
-<h3><strong>Key Responsibilities:</strong></h3>
+<p><strong>Location: Austin </strong>(Hybrid)</p>
+<h2>About the Role&nbsp;</h2>
+<p>Cloudflare operates one of the world's largest networks, processing millions of requests per second across 300+ cities. Today, customers can localize where their traffic is processed, but their configuration data, logs, and cryptographic keys still live in centralized datacenters. Data Residency Architecture (DRA) closes that gap. It extends data residency from the data plane across every layer of how Cloudflare stores, processes, and protects customer data. Customers get the ability to keep their data where their laws say it should be. DRA isn't a separate network or an isolated fork. It's the same Cloudflare, with cryptographic and architectural controls ensuring customer data stays within the regions a customer chooses. The program spans multiple pillars, from regional storage and post-quantum cryptography to logging pipeline expansion and product onboarding, with multiple engineering teams working in parallel.</p>
+<p><strong>&nbsp;</strong></p>
+<p>You'll join a small, high-autonomy team within this larger program. Your primary focus is building the customer-facing and internal experience for DRA: how customers create regionalized accounts, how API requests route to regional control planes, how the dashboard adapts to per-account data residency, and how Cloudflare's internal teams provision and manage it all. The nature of a cross-cutting program means you won't stay in one lane. You'll integrate with teams building the regional storage orchestrator, the cryptographic key layer, and the data pipeline infrastructure. The scope is wide, the team is small, and the decisions you make will shape how this system works at scale.</p>
+<h2>What You'll Work On</h2>
 <ul>
-	<li><strong>Program Execution:</strong> Deliver complex, high-profile technology programs on time, within budget, and aligned with mission requirements. Manage portfolios of $50M+.</li>
-	<li><strong>Stakeholder Management:</strong> Serve as a trusted advisor to internal and external stakeholders (including SVPs and government leadership). Build consensus and drive cross-functional alignment.</li>
-	<li><strong>Strategic Planning:</strong> Develop program plans, business cases, milestones, and basis of estimates (BOEs) from inception through delivery.</li>
-	<li><strong>Continuous Improvement:</strong> Design KPI dashboards and reporting metrics to drive executive decision-making. Document lessons learned and create internal/external guides to scale best practices.</li>
-	<li><strong>Lifecycle Support:</strong> Support government partners from initial opportunity identification through deployment, transition, and long-term program evolution.</li>
+	<li><strong>Regional API Routing</strong> - Build per-account API hostname generation and routing so that customer requests terminate in their chosen country, integrating with Cloudflare's Data Localization Suite and edge API gateway.</li>
+	<li><strong>Dashboard Integration</strong> - Modify the Cloudflare dashboard so that API calls route through regional endpoints while surfacing clear regional indicators to the customer.</li>
+	<li><strong>Account Creation &amp; Provisioning</strong> - Build the account creation flow that captures country/region selection and integrates with the Control Plane Platform orchestrator to provision per-account regional storage and configuration.</li>
+	<li><strong>Internal Tooling</strong> - Build admin tooling (provisioning integrations, billing shims, operational dashboards) so that support, sales, and finance teams can manage DRA accounts without violating residency constraints.</li>
+	<li><strong>Cross-Team Integration </strong>- Work across the DRA program to integrate with regional storage, cryptographic key management, and logging infrastructure built by other teams.</li>
+	<li><strong>Migration &amp; Self-Service</strong> - Help design the path from manual provisioning (MVP) to dashboard self-service, and eventually tooling that migrates existing enterprise customers into DRA.&nbsp;</li>
 </ul>
-<h3><strong>Qualifications &amp; Experience</strong></h3>
-<h3><strong>Required Experience:</strong></h3>
+<p><strong>&nbsp;</strong></p>
+<h2>What We're Looking For&nbsp;</h2>
+<h3>Required:</h3>
 <ul>
-	<li><strong>15+ years</strong> in technology program management, IT operations, infrastructure delivery, or government mission support.</li>
-	<li>Proven track record of managing infrastructure modernization, platform automation, and operational efficiency in mission-critical environments.</li>
-	<li>Experience operating in highly regulated/classified environments with a strong understanding of government security frameworks and accreditation processes.</li>
-	<li>Demonstrated ability to build metrics, KPI dashboards, and reporting systems that drive executive decision-making.</li>
-	<li>Experience managing portfolios of $50M+ in government technology programs.</li>
+	<li>3+ years of professional software engineering experience building production systems at scale.</li>
+	<li>Proficiency in Go. Our backend services and core platform are written in Go.&nbsp;</li>
+	<li>Comfort or willingness to work in TypeScript. Our control plane uses Cloudflare Workers (TypeScript), and the dashboard is a TypeScript application.</li>
+	<li>Experience designing and building REST APIs. You understand routing, authentication, request lifecycle, and how frontends consume distributed backends.</li>
+	<li>Comfort with distributed systems tradeoffs — data locality, replication, consistency models, and the latency implications of geographically distributed infrastructure. You don't need to have designed a sharded database, but you should be able to reason about why it matters that a customer's data is in Frankfurt and not Portland.</li>
+	<li>Ability to work across team boundaries. DRA spans nearly every engineering organization at Cloudflare. You'll need to navigate ambiguity, communicate technical tradeoffs clearly, and drive alignment with engineers you don't share a standup with.&nbsp;</li>
 </ul>
-<h3><strong>Core Technical Competencies:</strong></h3>
-<p>Candidates must understand how government programs implement and utilize the following:</p>
+<p><strong>&nbsp;</strong></p>
+<h3>Nice to Have:</h3>
 <ul>
-	<li><strong>Networking:</strong> TCP/IP, DNS, IPv4/IPv6.</li>
-	<li><strong>Internet Security:</strong> DDoS mitigation, Firewalls, TLS, VPNs.</li>
-	<li><strong>Zero-Trust &amp; Cloud:</strong> ZTNA/SASE concepts, identity management, and major cloud providers (AWS, GCP, Azure).</li>
-	<li><strong>Infrastructure &amp; Ops:</strong> Basic administration of Windows, macOS, and Linux; exposure to infrastructure automation, scripting, or tooling.</li>
-	<li><strong>Cyber Awareness:</strong> Understanding of threat activity, adversary tradecraft, and cyber operations concepts.</li>
+	<li>Experience with data residency, sovereignty, or compliance engineering (GDPR, EU Data Act, EUCS, FedRAMP, or equivalent regulatory frameworks).</li>
+	<li>Familiarity with edge computing platforms such as Cloudflare Workers, Durable Objects, or similar serverless/edge-native runtimes.</li>
+	<li>Familiarity with PostgreSQL, ClickHouse, or SQLite in production environments.&nbsp;</li>
 </ul>
-<h3><strong>Professional Skills:</strong></h3>
+<p><strong>&nbsp;</strong></p>
+<h2>Why This Role</h2>
 <ul>
-	<li><strong>Communication:</strong> Exceptional verbal, written, and receptive listening skills; confident presenting complex topics to diverse audiences.</li>
-	<li><strong>Leadership:</strong> Self-directed problem solver with sound business judgment and a proven ability to influence without formal authority.</li>
-	<li><strong>Adaptability:</strong> Thrives in a high-paced, changing environment while juggling multiple competing priorities.</li>
+	<li>Greenfield at scale. You're building a new architectural capability from the ground up on one of the largest networks on the Internet&nbsp;</li>
+	<li>Small team, big scope. This is a small, high-autonomy engineering team operating within a major cross-functional program. You'll have outsized ownership and direct influence over technical decisions, not a ticket queue.</li>
+	<li>Cross-cutting impact. DRA touches the control plane, data plane, logging pipeline, cryptographic infrastructure, and customer experience. This role is not siloed into one service or one layer of the stack.</li>
+	<li>Regulatory relevance. Data sovereignty is one of the defining infrastructure challenges of the next decade. You'll build deep expertise in a problem space with growing demand across every major cloud provider and regulated industry.</li>
 </ul>
-<h3><strong>Nice to Have (Bonus Skills)</strong></h3>
-<ul>
-	<li><strong>Advanced Networking:</strong> BGP routing, GRE, SD-WAN, MPLS, or Global Traffic Management.</li>
-	<li><strong>Web &amp; App Technologies:</strong> HTTP reverse/forward proxies (WAF, CDN, Secure Web Gateway) and serverless application development.</li>
-	<li><strong>Security Frameworks:</strong> Data Loss Prevention (DLP) and familiarity with <strong>MITRE ATT&amp;CK</strong> or similar exploitation frameworks.</li>
-	<li><strong>Compliance:</strong> Knowledge of regulatory frameworks like <strong>FedRAMP</strong>, GDPR, PCI DSS, or SOC-2.</li>
-</ul>
-<p><strong>Technical Skills:</strong> Mobile platform administration (iOS/Android) or scripting experience (JavaScript, Python, Golang, BASH).</p>
-<h3><strong>Compensation</strong></h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $207,000 - $285,000</li>
-</ul>
-<h3><strong>Equity</strong></h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3><strong>Benefits</strong></h3>
+<p>&nbsp;</p>
+<p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3><strong>Health &amp; Welfare Benefits</strong></h3>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -72,14 +59,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3><strong>Financial Benefits</strong></h3>
+<p><strong>Financial Benefits</strong></p>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3><strong>Time Off</strong></h3>
+<p><strong>Time Off</strong></p>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -5,38 +5,69 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available location(s): Singapore</strong></h3>
-<h3><strong>About the Role and People Team</strong></h3>
-<p>At Cloudflare, we are helping build a better Internet, and our People Team is at the heart of that mission. We are looking for a highly organized, tech-savvy&nbsp;<strong>People Team Intern</strong>&nbsp;who is passionate about the intersection of Human Resources and Artificial Intelligence.</p>
-<p>You will be embedded in this global HR functions to drive project efficiency and help us pioneer the use of AI in the workplace:</p>
+<p><strong>Available Locations:</strong> Washington DC, Austin, NYC, San Francisco</p>
+<h4><strong>About the Dept&nbsp;</strong></h4>
+<p>Cloudflare’s engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products, help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</p>
+<p>Cloudflare is a fast growing company and engineering is an ever-evolving function with teams being formed and redefined often. You will interview for an engineering role in the Intent Management organization which is part of the overall Foundational Engineering team at Cloudflare, which builds and operates many of the fundamental systems powering Cloudflare’s products.<br><br></p>
+<h4>What you'll do</h4>
+<p>Too many of Cloudflare's most impactful incidents have had unsafe change as a root cause. The Intent Management exists to make safe change the easy button and this is the most senior IC role in that organization, reporting directly to the Senior Director. You will own the technical coherence of a platform that spans globally distributed key-value storage, progressive release and configuration delivery, and the testing and health-mediation systems that prove change is safe. You'll work at the seams that matter most by translating what Cloudflare's Edge and control-plane platforms need into the primitives our teams build. You'll move fluidly between writing production code, designing new systems, and reviewing the proposals of other senior engineers. You’ll also help us work out how best to integrate LLMs into our processes and systems.</p>
+<p>You will be working alongside engineers who have presented at DevOps Days, Config Management Camp 2024 &amp; 2025, Monitorama, OSMC, KubeCon and PromCon. &nbsp; Together you will deliver on the key Health Mediated Deployment projects that are being tracked through senior leadership of Cloudflare up to the founders.&nbsp;&nbsp;&nbsp;</p>
+<h3>&nbsp;</h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>People Operations:&nbsp;</strong>Manages the administrative and operational aspects of the employee lifecycle, ensuring smooth HR processes and employee support.</li>
+	<li>10+ years of software engineering experience with a demonstrated history of leading complex, organization-wide technical initiatives that delivered measurable improvements to system performance, reliability, security, developer productivity, or engineering culture.</li>
+	<li>Strong track record of technical leadership and influence without direct authority, including driving consensus on technical decisions across multiple teams, mentoring senior engineers, and establishing architectural patterns that are widely adopted across an organization.</li>
 </ul>
-<h3><strong>What You’ll Do</strong></h3>
 <ul>
-	<li><strong>Project Management &amp; Execution:</strong>&nbsp;Support end-to-end project lifecycles for People Team initiatives. You will keep timelines on track, manage stakeholders, and ensure no detail is overlooked.</li>
-	<li><strong>Process Optimization:</strong>&nbsp;Identify manual HR workflows and leverage AI solutions to automate and improve them. You will explore ways to use generative and agentic AI to streamline employee communications and internal documentation. You will also work on system automation projects and help with system testing.</li>
-	<li><strong>Data-Driven Insights:</strong>&nbsp;Analyze people data to identify trends in hiring, retention, and employee engagement. You’ll use these insights to make recommendations to leadership.</li>
-	<li><strong>Knowledge Management:</strong>&nbsp;Maintain and audit our internal documentation and knowledge base, ensuring that employees have access to the most accurate, up-to-date information.</li>
-	<li><strong>Internal AI Advocacy:</strong>&nbsp;Become a power user and internal champion for our proprietary tools helping the team leverage these platforms for smarter decision-making.</li>
+	<li>Experience designing, building and managing high volume, global scale software applications.</li>
+	<li>Expert in at least one modern strongly-typed programming language</li>
+	<li>Knowledge of API design standards, patterns and best practices</li>
+	<li>Experience working with top tier LLMs to plan, write, test, and deploy software</li>
 </ul>
-<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Currently pursuing a Bachelors degree (open to all majors) or relevant HR program.</li>
-	<li>Exceptional Organization: You are the person who has a spreadsheet for everything. You can juggle multiple projects without dropping the ball.</li>
-	<li>Detailed-Oriented Mindset: You catch the data integrity issues others miss and care deeply about the "small things" that impact employee experience.</li>
-	<li>AI Fluency: You are familiar with AI tools and how they can be applied to improve business processes and improve team efficiencies. Experience with LLMs or automation tools is a major plus.</li>
-	<li>Data Literacy: You are comfortable analyzing data and understand how to use it to tell a story or solve a problem.You are a master of spreadsheets and data visualization.</li>
-	<li>Adaptability: You thrive in a fast-paced environment and are comfortable pivoting between different teams and priorities.</li>
-	<li>Communication: Strong written and verbal skills, with the ability to explain complex processes simply.</li>
-	<li>Ability to commit to a minimum 12 week Fall internship between July to December 2026.</li>
-	<li style="font-weight: bold;"><strong>In office 3 days a week in the Singapore office.</strong></li>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
+	<li>Experience with scaling and simplifying high scale Configuration Management systems</li>
+	<li>Familiarity with Google’s <a href="https://www.usenix.org/publications/loginonline/prodspec-and-annealing-intent-based-actuation-google-production">Prodspec and Annealing </a>systems</li>
+	<li>Experience with Kubernetes</li>
+	<li>Experience with RocksDB or similar data stores</li>
+	<li>Experience with health checking and probe platforms at significant scale</li>
+	<li>Public evidence of technical leadership such as conference talks on distributed systems or security, widely-read technical blog posts, significant open source contributions, or published architectural patterns that have been adopted by the broader engineering community.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li>Experience managing internal Wikis (e.g., Confluence, Notion).</li>
-	<li>Familiarity with HR compliance, processes, program administration, and tools.</li>
-	<li>A background in Project Management (PMO) or Business Operations.</li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $230,000 - $288,000</span></li>
+	<li><span data-sheets-root="1">For Washington and New York City based hired: Estimated annual salary of $220,000 - $275,000</span></li>
+	<li><span data-sheets-root="1">For Austin based hired: Estimated annual salary of $200,000 - $250,000</span></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

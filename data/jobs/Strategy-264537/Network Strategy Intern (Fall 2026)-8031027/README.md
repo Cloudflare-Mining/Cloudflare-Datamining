@@ -5,35 +5,34 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Locations Available:</strong> Lisbon, Portugal or London, UK</p>
-<p><strong>Fixed-term contract:</strong> July 2027</p>
-<h2><strong>What you'll do</strong></h2>
-<p>Cloudflare is undergoing an exciting global payroll transformation. Our focus is getting the best people to work at Cloudflare and supporting them to do their best work. We are looking for an operationally-minded, collaborative, hands-on and organized People Operations Program Manager to join our team as a dedicated project lead.</p>
-<p>In this role, you will lead the People Operations workstream as part of the rollout and implementation of our new global payroll system (ADP). Operating with a high degree of independence, you will partner closely with two People Operations Specialists and act as the key strategic<strong> </strong>bridge between People Ops, Payroll, and our HRIS team. You will be responsible for ensuring that as we scale, our processes are consistent, our data is accurate, and our transition to daily operations is smooth and well-supported.</p>
-<p><em>(Please note: This is a senior individual contributor role with no direct administrative reports, focusing instead on project guidance and mentorship).</em></p>
-<p>&nbsp;</p>
-<h2><strong>Key Responsibilities</strong></h2>
+<p><strong>Available Locations:&nbsp;</strong>London, UK</p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is looking for an enthusiastic and analytically-minded intern to join our Network Strategy team. This role is designed to provide a comprehensive introduction to the fundamental principles of Network Strategy at Cloudflare, with a focus on developing the skills necessary for long-term growth within the team. The intern will support key initiatives by executing on special projects designed to advance and improve operational efficiency. They will also provide essential day-to-day operational support to our Interconnection Managers and Network Acquisition Managers.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li><strong>Project Guidance &amp; Leadership: </strong>Lead<strong> </strong>the end-to-end People Operations transition to ADP for 4–6 countries simultaneously, taking full accountability and ownership of the project from initial design through to a stable post-launch support, proactively spotting challenges and guiding the team toward solutions.</li>
-	<li><strong>Workday-to-ADP Integration:</strong> Act as the functional expert ensuring Workday remains the absolute single source of truth. You will collaborate with teams to ensure global pay components, allowances, and benefit data are accurately set up in Workday so they transfer smoothly to ADP via integration pipelines (such as PECI).</li>
-	<li><strong>Process Standardization:</strong> Move away from manual local processes. You will design and document a clear, standardized payroll playbook that our People Operations specialists can easily follow across all 16 countries.</li>
-	<li><strong>Change Management &amp; Knowledge Transfer: </strong>Review and finalise post-implementation Standard Operating Procedures (SOPs). You will lead the "shift" in how local teams work, ensuring they move away from manual spreadsheets to Workday workflows and leveraged AI automation tools. You will provide training, workshops, and dedicated support to ensure a seamless handoff from the project phase to BAU.</li>
-	<li><strong>Data Governance &amp; Testing: </strong>Oversee data formatting and validation to ensure information is accurate before it moves systems. You will lead detailed data audits between Workday and ADP to guarantee 100% data parity during parallel runs, Go-Live, and Hypercare phases<strong>. </strong>You will perform rigorous testing to ensure system tasks (the entire Hire-to-Retire lifecycle) trigger as expected and reflect real-world daily operations. You will actively perform integration testing with the HRIS team to confirm system tasks trigger as expected.</li>
-	<li><strong>Cross-Functional Collaboration:</strong> Partner proactively with wider People Team, Benefits, Legal, and IT teams to manage and gain further clarity on specific local legislation and flag systemic data discrepancies early during project cycles.</li>
-	<li><strong>Peer Mentorship:</strong> Provide daily technical guidance, project direction, and encouragement to the two Senior People Operations Specialists working alongside you on this rollout.</li>
+	<li><strong>Special Project Execution:</strong> Assist in the execution of special projects focused on advancing and improving the Network Strategy team's operational processes.</li>
+	<li><strong>Interconnection Operational Support:</strong> Provide direct operational support to Interconnection Managers, helping to manage and track key peering and transit relationships.</li>
+	<li><strong>Network Acquisition Assistance:</strong> Support Network Acquisition Managers with administrative and logistical tasks related to acquiring new network capacity and infrastructure.</li>
+	<li><strong>Strategic Data Analysis and Research:</strong> Conduct data analysis and research to inform strategic decisions related to network growth, performance, and cost efficiency.</li>
+	<li><strong>Documentation and Internal Reporting:</strong> Contribute to internal documentation and reporting, ensuring clarity and accuracy of information shared across the team.</li>
+	<li><strong>KPI Tracking and Progress Reporting:</strong> Track key performance indicators (KPIs) for ongoing projects and report progress to relevant stakeholders.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>What We’re Looking For</strong></p>
+<h4><strong>Role Requirements (Must-Have Skills):</strong></h4>
 <ul>
-	<li><strong>Relevant Experience:</strong> Solid experience within People Operations or Payroll Operations, with a history of supporting system rollouts or complex operational changes.&nbsp;</li>
-	<li><strong>Autonomy &amp; Problem Solving: </strong>Comfort managing multiple timelines independently. You know how to keep a project moving and feel comfortable raising your hand when a timeline needs adjusting.</li>
-	<li><strong>Workday Literacy:</strong> Proficiency in Workday, specifically in running/validating reports and understanding how data transforms across integration pipelines (experience with PECI or similar middleware into ADP Celergo/GlobalView is highly preferred).&nbsp;</li>
-	<li><strong>Payroll Knowledge</strong>: Deep understanding of the HR-to-Payroll pipeline and the technical nuances of the Hire-to-Retire lifecycle across different geographies is required. A working knowledge and understanding of processing payrolls, end to end is highly desirable.</li>
-	<li><strong>Curiosity for Automation: </strong>A natural curiosity about how modern tools, including AI, can help reduce repetitive manual work and make daily tasks easier.</li>
-	<li><strong>Clear Communication:</strong> Excellent verbal and written communication skills, with the ability to lead workshops and translate technical system requirements for non-technical local experts.</li>
+	<li>Currently pursuing a Bachelor's or Master's degree in a quantitative, analytical, or strategic field (e.g., Business, Finance, Economics, Data Science, Engineering, or equivalent).</li>
+	<li>Demonstrated strong analytical and problem-solving skills, with a focus on data-driven decision-making.</li>
+	<li>Excellent written and verbal communication skills, capable of explaining complex ideas clearly and concisely.</li>
+	<li>Proficiency in data manipulation and analysis tools (e.g., Google Sheets/Excel, or basic SQL/Python is a plus).</li>
+	<li>Ability to work effectively both independently and collaboratively within a fast-paced, global team environment.</li>
+	<li>Proven capacity for taking initiative, owning tasks, and managing time effectively to meet deadlines.</li>
+	<li><strong>Ability to commit to a full-time 12-week fall internship.</strong></li>
+	<li><strong>In office 3-5 days a week in London, UK.&nbsp;</strong></li>
 </ul>
+<p><strong>Nice-to-Have Skills</strong></p>
 <ul>
-	<li><strong>AI automation:</strong> Demonstrates active curiosity about AI tools and emerging technologies, with a willingness to learn and leverage them to enhance productivity, collaboration, reduce manual data entry, or improve decision-making.</li>
+	<li>A basic understanding of the Internet ecosystem, including concepts like IP networking, peering, transit, and data centers.</li>
+	<li>Prior experience or coursework related to telecommunications, network infrastructure, or technology strategy.</li>
+	<li>Familiarity with project management principles or tools</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
