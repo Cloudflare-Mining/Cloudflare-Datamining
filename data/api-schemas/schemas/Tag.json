@@ -559,27 +559,30 @@
 				}
 			},
 			{
-				"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
+				"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, actorCategoryConfidence, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, motiveConfidence, opsecLevel, originCountryISO, originCountryConfidence, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
 				"in": "query",
 				"name": "filters",
 				"schema": {
-					"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
+					"description": "Structured filters as a JSON array of {field, op, value} objects. Searchable fields: uuid, value, actorCategory, actorCategoryConfidence, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, motiveConfidence, opsecLevel, originCountryISO, originCountryConfidence, sophisticationLevel, priority, analyticPriority. Operators: equals, not, contains, startsWith, endsWith, gt, lt, gte, lte, like, in, find. Use 'in' for bulk OR within a single field, e.g. filters=[{\"field\":\"originCountryISO\",\"op\":\"in\",\"value\":[\"IR\",\"CN\"]}]. Multiple entries are AND-joined. Max 10 entries per request, max 100 values per 'in'. Per-field notes: `uuid` accepts only 'equals' and 'in' (other operators throw ValidationError) — matched against the canonical lowercase storage but callers may pass either case (the server lowercases before comparison); index-backed by the column's UNIQUE constraint and intended for batched UUID → tag resolution. `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries (a search for \"apt28\" will also match \"apt280\" if both appear in the same tag's alias list).",
 					"items": {
 						"properties": {
 							"field": {
-								"description": "Tag field to search on. Allowed: uuid, value, actorCategory, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, opsecLevel, originCountryISO, sophisticationLevel, priority, analyticPriority.",
+								"description": "Tag field to search on. Allowed: uuid, value, actorCategory, actorCategoryConfidence, aliasGroupNames, attributionConfidence, attributionConfidenceScore, attributionOrganization, categoryName, motive, motiveConfidence, opsecLevel, originCountryISO, originCountryConfidence, sophisticationLevel, priority, analyticPriority.",
 								"enum": [
 									"uuid",
 									"value",
 									"actorCategory",
+									"actorCategoryConfidence",
 									"aliasGroupNames",
 									"attributionConfidence",
 									"attributionConfidenceScore",
 									"attributionOrganization",
 									"categoryName",
 									"motive",
+									"motiveConfidence",
 									"opsecLevel",
 									"originCountryISO",
+									"originCountryConfidence",
 									"sophisticationLevel",
 									"priority",
 									"analyticPriority"
@@ -681,6 +684,13 @@
 											"actorCategory": {
 												"type": "string"
 											},
+											"actorCategoryConfidence": {
+												"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+												"example": 7,
+												"maximum": 10,
+												"minimum": 1,
+												"type": "integer"
+											},
 											"aliasGroupNames": {
 												"items": {
 													"type": "string"
@@ -760,6 +770,27 @@
 												},
 												"type": "array"
 											},
+											"externalReferences": {
+												"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+												"items": {
+													"properties": {
+														"description": {
+															"example": "Vendor threat report",
+															"nullable": true,
+															"type": "string"
+														},
+														"url": {
+															"example": "https://example.com/report",
+															"type": "string"
+														}
+													},
+													"required": [
+														"url"
+													],
+													"type": "object"
+												},
+												"type": "array"
+											},
 											"internalAliases": {
 												"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
 												"items": {
@@ -800,14 +831,39 @@
 											"motive": {
 												"type": "string"
 											},
+											"motiveConfidence": {
+												"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+												"example": 7,
+												"maximum": 10,
+												"minimum": 1,
+												"type": "integer"
+											},
 											"opsecLevel": {
 												"type": "string"
+											},
+											"originCountryConfidence": {
+												"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+												"example": 7,
+												"maximum": 10,
+												"minimum": 1,
+												"type": "integer"
 											},
 											"originCountryISO": {
 												"type": "string"
 											},
 											"originCountryISOAlpha3": {
 												"example": "IRN",
+												"type": "string"
+											},
+											"originCountryTlp": {
+												"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+												"enum": [
+													"red",
+													"amber",
+													"green",
+													"white"
+												],
+												"example": "amber",
 												"type": "string"
 											},
 											"priority": {
@@ -1315,6 +1371,13 @@
 								"example": "Nation State",
 								"type": "string"
 							},
+							"actorCategoryConfidence": {
+								"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"example": 7,
+								"maximum": 10,
+								"minimum": 1,
+								"type": "integer"
+							},
 							"aliasGroupNames": {
 								"items": {
 									"type": "string"
@@ -1392,6 +1455,27 @@
 								},
 								"type": "array"
 							},
+							"externalReferences": {
+								"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+								"items": {
+									"properties": {
+										"description": {
+											"example": "Vendor threat report",
+											"nullable": true,
+											"type": "string"
+										},
+										"url": {
+											"example": "https://example.com/report",
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
 							"internalAliases": {
 								"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
 								"items": {
@@ -1434,10 +1518,35 @@
 								"example": "Espionage",
 								"type": "string"
 							},
+							"motiveConfidence": {
+								"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"example": 7,
+								"maximum": 10,
+								"minimum": 1,
+								"type": "integer"
+							},
 							"opsecLevel": {
 								"type": "string"
 							},
+							"originCountryConfidence": {
+								"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"example": 7,
+								"maximum": 10,
+								"minimum": 1,
+								"type": "integer"
+							},
 							"originCountryISO": {
+								"type": "string"
+							},
+							"originCountryTlp": {
+								"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"enum": [
+									"red",
+									"amber",
+									"green",
+									"white"
+								],
+								"example": "amber",
 								"type": "string"
 							},
 							"priority": {
@@ -1467,6 +1576,13 @@
 								},
 								"actorCategory": {
 									"type": "string"
+								},
+								"actorCategoryConfidence": {
+									"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"example": 7,
+									"maximum": 10,
+									"minimum": 1,
+									"type": "integer"
 								},
 								"aliasGroupNames": {
 									"items": {
@@ -1547,6 +1663,27 @@
 									},
 									"type": "array"
 								},
+								"externalReferences": {
+									"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+									"items": {
+										"properties": {
+											"description": {
+												"example": "Vendor threat report",
+												"nullable": true,
+												"type": "string"
+											},
+											"url": {
+												"example": "https://example.com/report",
+												"type": "string"
+											}
+										},
+										"required": [
+											"url"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
 								"internalAliases": {
 									"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
 									"items": {
@@ -1587,14 +1724,39 @@
 								"motive": {
 									"type": "string"
 								},
+								"motiveConfidence": {
+									"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"example": 7,
+									"maximum": 10,
+									"minimum": 1,
+									"type": "integer"
+								},
 								"opsecLevel": {
 									"type": "string"
+								},
+								"originCountryConfidence": {
+									"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"example": 7,
+									"maximum": 10,
+									"minimum": 1,
+									"type": "integer"
 								},
 								"originCountryISO": {
 									"type": "string"
 								},
 								"originCountryISOAlpha3": {
 									"example": "IRN",
+									"type": "string"
+								},
+								"originCountryTlp": {
+									"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"enum": [
+										"red",
+										"amber",
+										"green",
+										"white"
+									],
+									"example": "amber",
 									"type": "string"
 								},
 								"priority": {
@@ -1740,6 +1902,13 @@
 								"example": "Nation State",
 								"type": "string"
 							},
+							"actorCategoryConfidence": {
+								"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+								"example": 7,
+								"maximum": 10,
+								"minimum": 1,
+								"type": "integer"
+							},
 							"aliasGroupNames": {
 								"items": {
 									"type": "string"
@@ -1817,6 +1986,27 @@
 								},
 								"type": "array"
 							},
+							"externalReferences": {
+								"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+								"items": {
+									"properties": {
+										"description": {
+											"example": "Vendor threat report",
+											"nullable": true,
+											"type": "string"
+										},
+										"url": {
+											"example": "https://example.com/report",
+											"type": "string"
+										}
+									},
+									"required": [
+										"url"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
 							"internalAliases": {
 								"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
 								"items": {
@@ -1859,10 +2049,35 @@
 								"example": "Espionage",
 								"type": "string"
 							},
+							"motiveConfidence": {
+								"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"example": 7,
+								"maximum": 10,
+								"minimum": 1,
+								"type": "integer"
+							},
 							"opsecLevel": {
 								"type": "string"
 							},
+							"originCountryConfidence": {
+								"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"example": 7,
+								"maximum": 10,
+								"minimum": 1,
+								"type": "integer"
+							},
 							"originCountryISO": {
+								"type": "string"
+							},
+							"originCountryTlp": {
+								"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+								"enum": [
+									"red",
+									"amber",
+									"green",
+									"white"
+								],
+								"example": "amber",
 								"type": "string"
 							},
 							"priority": {
@@ -1895,6 +2110,13 @@
 								},
 								"actorCategory": {
 									"type": "string"
+								},
+								"actorCategoryConfidence": {
+									"description": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.",
+									"example": 7,
+									"maximum": 10,
+									"minimum": 1,
+									"type": "integer"
 								},
 								"aliasGroupNames": {
 									"items": {
@@ -1975,6 +2197,27 @@
 									},
 									"type": "array"
 								},
+								"externalReferences": {
+									"description": "Structured external references ({ url, description }). Public: returned to all accounts.",
+									"items": {
+										"properties": {
+											"description": {
+												"example": "Vendor threat report",
+												"nullable": true,
+												"type": "string"
+											},
+											"url": {
+												"example": "https://example.com/report",
+												"type": "string"
+											}
+										},
+										"required": [
+											"url"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
 								"internalAliases": {
 									"description": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.",
 									"items": {
@@ -2015,14 +2258,39 @@
 								"motive": {
 									"type": "string"
 								},
+								"motiveConfidence": {
+									"description": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"example": 7,
+									"maximum": 10,
+									"minimum": 1,
+									"type": "integer"
+								},
 								"opsecLevel": {
 									"type": "string"
+								},
+								"originCountryConfidence": {
+									"description": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"example": 7,
+									"maximum": 10,
+									"minimum": 1,
+									"type": "integer"
 								},
 								"originCountryISO": {
 									"type": "string"
 								},
 								"originCountryISOAlpha3": {
 									"example": "IRN",
+									"type": "string"
+								},
+								"originCountryTlp": {
+									"description": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.",
+									"enum": [
+										"red",
+										"amber",
+										"green",
+										"white"
+									],
+									"example": "amber",
 									"type": "string"
 								},
 								"priority": {

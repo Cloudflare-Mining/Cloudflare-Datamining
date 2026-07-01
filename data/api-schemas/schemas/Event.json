@@ -592,6 +592,18 @@
 					],
 					"type": "string"
 				}
+			},
+			{
+				"in": "query",
+				"name": "source",
+				"schema": {
+					"description": "Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields — no 'tags').",
+					"enum": [
+						"do",
+						"r2catalog"
+					],
+					"type": "string"
+				}
 			}
 		],
 		"responses": {

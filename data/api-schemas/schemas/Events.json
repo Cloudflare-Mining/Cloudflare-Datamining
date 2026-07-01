@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/graph": {
-		"description": "Returns the single-level relationship neighborhood of a node (event, indicator, or tag) from R2 Data Catalog. Hydrates neighbor entities with summary data from Durable Objects. Supports filtering by relationship type and dataset scope.",
+		"description": "Expands the single-level relationship neighborhood of one or more seed nodes (event, indicator, or tag) from R2 Data Catalog. Seeds use compact id format (type:uuid), e.g. \"event:550e8400-...\". Multi-seed requests merge and deduplicate results server-side. Hydrates neighbor entities with summary data from Durable Objects. Supports filtering by relationship type and dataset scope.",
 		"operationId": "get_EventGraph",
 		"parameters": [
 			{
@@ -14,43 +14,11 @@
 				}
 			},
 			{
-				"description": "Node type: event, indicator, or tag",
+				"description": "Comma-separated compact seed ids (type:uuid). Example: seeds=event:550e8400-...,indicator:661fa920-... Provide 1–50 entries; omitting seeds returns 400.",
 				"in": "query",
-				"name": "nodeType",
-				"required": true,
+				"name": "seeds",
 				"schema": {
-					"description": "Node type: event, indicator, or tag",
-					"example": "event",
-					"type": "string"
-				}
-			},
-			{
-				"description": "UUID of the node to query",
-				"in": "query",
-				"name": "nodeId",
-				"required": true,
-				"schema": {
-					"description": "UUID of the node to query",
-					"example": "550e8400-e29b-41d4-a716-446655440000",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Dataset UUID hint for the root node (events/indicators only). Optional; derived from relationships if omitted.",
-				"in": "query",
-				"name": "datasetId",
-				"schema": {
-					"description": "Dataset UUID hint for the root node (events/indicators only). Optional; derived from relationships if omitted.",
-					"example": "550e8400-e29b-41d4-a716-446655440001",
-					"type": "string"
-				}
-			},
-			{
-				"in": "query",
-				"name": "relationshipTypes",
-				"schema": {
-					"description": "Comma-separated relationship types to filter (tagged_with, appears_in, related_to, caused_by, attributed_to)",
-					"example": "related_to,caused_by",
+					"description": "Comma-separated compact seed ids (type:uuid). Example: seeds=event:550e8400-...,indicator:661fa920-... Provide 1–50 entries; omitting seeds returns 400.",
 					"items": {
 						"type": "string"
 					},
@@ -58,43 +26,62 @@
 				}
 			},
 			{
-				"description": "Edge direction: out (node→neighbors), in (neighbors→node), both (default: both)",
+				"description": "Edge direction relative to each seed: out (seed→neighbors), in (neighbors→seed), both (default).",
 				"in": "query",
 				"name": "direction",
 				"schema": {
-					"description": "Edge direction: out (node→neighbors), in (neighbors→node), both (default: both)",
-					"example": "both",
+					"description": "Edge direction relative to each seed: out (seed→neighbors), in (neighbors→seed), both (default).",
 					"type": "string"
 				}
 			},
 			{
-				"in": "query",
-				"name": "datasetIds",
-				"schema": {
-					"description": "Comma-separated dataset UUIDs to restrict scope. Only neighbors in these datasets are returned.",
-					"example": "550e8400-e29b-41d4-a716-446655440001,550e8400-e29b-41d4-a716-446655440002",
-					"items": {
-						"type": "string"
-					},
-					"type": "array"
-				}
-			},
-			{
-				"description": "Max results to return (default: 100, max: 10000)",
+				"description": "Max neighbors per seed (default: 100, max: 1000). Values above 1000 return 400.",
 				"in": "query",
 				"name": "limit",
 				"schema": {
-					"description": "Max results to return (default: 100, max: 10000)",
-					"example": 100,
+					"description": "Max neighbors per seed (default: 100, max: 1000). Values above 1000 return 400.",
 					"type": "number"
 				}
 			},
 			{
-				"description": "Cursor from previous response for pagination (not yet implemented)",
+				"description": "Total accumulated node cap across all seeds (default: 500, max: 1000). Values above 1000 return 400.",
+				"in": "query",
+				"name": "max_nodes",
+				"schema": {
+					"description": "Total accumulated node cap across all seeds (default: 500, max: 1000). Values above 1000 return 400.",
+					"type": "number"
+				}
+			},
+			{
+				"description": "Comma-separated relationship types to filter by. Allowed: tagged_with, appears_in, related_to, caused_by, attributed_to.",
+				"in": "query",
+				"name": "relationshipTypes",
+				"schema": {
+					"description": "Comma-separated relationship types to filter by. Allowed: tagged_with, appears_in, related_to, caused_by, attributed_to.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Comma-separated dataset UUIDs to restrict neighbor scope. Intersected with ACL grants.",
+				"in": "query",
+				"name": "datasetIds",
+				"schema": {
+					"description": "Comma-separated dataset UUIDs to restrict neighbor scope. Intersected with ACL grants.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			{
+				"description": "Opaque pagination token. Only valid when seeds has exactly 1 entry; 400 otherwise.",
 				"in": "query",
 				"name": "cursor",
 				"schema": {
-					"description": "Cursor from previous response for pagination (not yet implemented)",
+					"description": "Opaque pagination token. Only valid when seeds has exactly 1 entry; 400 otherwise.",
 					"type": "string"
 				}
 			}
@@ -103,6 +90,179 @@
 			"200": {
 				"content": {
 					"application/json": {
+						"examples": {
+							"multi-seed": {
+								"summary": "Multi-seed batch expansion (merge + dedup)",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"edges": [
+											{
+												"id": "event:550e8400-e29b-41d4-a716-446655440000→indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04:appears_in",
+												"relationshipType": "appears_in",
+												"source": "event:550e8400-e29b-41d4-a716-446655440000",
+												"sourceId": "550e8400-e29b-41d4-a716-446655440000",
+												"sourceType": "event",
+												"target": "indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"targetId": "661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"targetType": "indicator"
+											}
+										],
+										"node": null,
+										"nodes": [
+											{
+												"attacker": "APT28",
+												"category": "intrusion",
+												"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
+												"date": "2026-06-01",
+												"event": "Attacker registered domain evil.example.com",
+												"id": "event:550e8400-e29b-41d4-a716-446655440000",
+												"role": "focal",
+												"type": "event",
+												"uuid": "550e8400-e29b-41d4-a716-446655440000"
+											},
+											{
+												"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
+												"id": "indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"indicatorType": "domain",
+												"role": "focal",
+												"type": "indicator",
+												"uuid": "661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"value": "evil.example.com"
+											},
+											{
+												"categoryId": "threat-actor",
+												"id": "tag:772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71",
+												"type": "tag",
+												"uuid": "772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71",
+												"value": "APT28"
+											}
+										]
+									},
+									"result_info": {
+										"count": 3,
+										"cursor": null,
+										"depth_reached": 1,
+										"edge_count": 1,
+										"has_more": false,
+										"query_time_ms": 890,
+										"seeds": [
+											"event:550e8400-e29b-41d4-a716-446655440000",
+											"indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04"
+										],
+										"total_count": 3,
+										"truncated": false
+									},
+									"success": true
+								}
+							},
+							"single-seed": {
+								"summary": "Single seed expansion",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"edges": [
+											{
+												"id": "event:550e8400-e29b-41d4-a716-446655440000→indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04:appears_in",
+												"relationshipType": "appears_in",
+												"source": "event:550e8400-e29b-41d4-a716-446655440000",
+												"sourceId": "550e8400-e29b-41d4-a716-446655440000",
+												"sourceType": "event",
+												"target": "indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"targetId": "661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"targetType": "indicator"
+											},
+											{
+												"id": "event:550e8400-e29b-41d4-a716-446655440000→tag:772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71:tagged_with",
+												"relationshipType": "tagged_with",
+												"source": "event:550e8400-e29b-41d4-a716-446655440000",
+												"sourceId": "550e8400-e29b-41d4-a716-446655440000",
+												"sourceType": "event",
+												"target": "tag:772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71",
+												"targetId": "772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71",
+												"targetType": "tag"
+											},
+											{
+												"id": "event:550e8400-e29b-41d4-a716-446655440000→event:883b0f14-5a6e-4d12-ae97-1c4e5d3f9a20:related_to",
+												"relationshipType": "related_to",
+												"source": "event:550e8400-e29b-41d4-a716-446655440000",
+												"sourceId": "550e8400-e29b-41d4-a716-446655440000",
+												"sourceType": "event",
+												"target": "event:883b0f14-5a6e-4d12-ae97-1c4e5d3f9a20",
+												"targetId": "883b0f14-5a6e-4d12-ae97-1c4e5d3f9a20",
+												"targetType": "event"
+											}
+										],
+										"node": {
+											"attacker": "APT28",
+											"category": "intrusion",
+											"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
+											"date": "2026-06-01",
+											"event": "Attacker registered domain evil.example.com for C2 infrastructure",
+											"id": "event:550e8400-e29b-41d4-a716-446655440000",
+											"role": "focal",
+											"type": "event",
+											"uuid": "550e8400-e29b-41d4-a716-446655440000"
+										},
+										"nodes": [
+											{
+												"attacker": "APT28",
+												"category": "intrusion",
+												"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
+												"date": "2026-06-01",
+												"event": "Attacker registered domain evil.example.com for C2 infrastructure",
+												"id": "event:550e8400-e29b-41d4-a716-446655440000",
+												"role": "focal",
+												"type": "event",
+												"uuid": "550e8400-e29b-41d4-a716-446655440000"
+											},
+											{
+												"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
+												"id": "indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"indicatorType": "domain",
+												"type": "indicator",
+												"uuid": "661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"value": "evil.example.com"
+											},
+											{
+												"categoryId": "threat-actor",
+												"id": "tag:772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71",
+												"type": "tag",
+												"uuid": "772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71",
+												"value": "APT28"
+											},
+											{
+												"attacker": "",
+												"category": "",
+												"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
+												"date": "",
+												"event": "",
+												"id": "event:883b0f14-5a6e-4d12-ae97-1c4e5d3f9a20",
+												"missing": true,
+												"type": "event",
+												"uuid": "883b0f14-5a6e-4d12-ae97-1c4e5d3f9a20"
+											}
+										]
+									},
+									"result_info": {
+										"count": 4,
+										"cursor": null,
+										"depth_reached": 1,
+										"edge_count": 3,
+										"has_more": false,
+										"query_time_ms": 142,
+										"seeds": [
+											"event:550e8400-e29b-41d4-a716-446655440000"
+										],
+										"total_count": 4,
+										"truncated": false
+									},
+									"success": true
+								}
+							}
+						},
 						"schema": {
 							"properties": {
 								"errors": {
@@ -124,13 +284,25 @@
 										"edges": {
 											"items": {
 												"properties": {
+													"id": {
+														"description": "Deterministic composite edge id (source→target:relationshipType)",
+														"type": "string"
+													},
 													"relationshipType": {
+														"type": "string"
+													},
+													"source": {
+														"description": "Compact id of the source node (type:uuid)",
 														"type": "string"
 													},
 													"sourceId": {
 														"type": "string"
 													},
 													"sourceType": {
+														"type": "string"
+													},
+													"target": {
+														"description": "Compact id of the target node (type:uuid)",
 														"type": "string"
 													},
 													"targetId": {
@@ -145,13 +317,18 @@
 													"sourceId",
 													"targetType",
 													"targetId",
-													"relationshipType"
+													"relationshipType",
+													"id",
+													"source",
+													"target"
 												],
 												"type": "object"
 											},
 											"type": "array"
 										},
 										"node": {
+											"additionalProperties": true,
+											"description": "Focal node object (legacy single-seed). Null when unavailable.",
 											"nullable": true,
 											"type": "object"
 										},
@@ -173,16 +350,44 @@
 								"result_info": {
 									"properties": {
 										"count": {
+											"description": "Number of nodes in result.nodes (seeds + neighbors)",
+											"type": "number"
+										},
+										"cursor": {
+											"description": "Opaque pagination cursor for the next page; null when exhausted or for multi-seed requests (single-seed only)",
+											"nullable": true,
+											"type": "string"
+										},
+										"depth_reached": {
+											"description": "Traversal depth reached (always 1 for single-level)",
 											"type": "number"
 										},
 										"edge_count": {
+											"description": "Number of edges in result.edges",
 											"type": "number"
+										},
+										"has_more": {
+											"description": "True when a cursor is available for the next page (single-seed only)",
+											"type": "boolean"
 										},
 										"query_time_ms": {
+											"description": "Total query time in milliseconds",
 											"type": "number"
 										},
+										"seeds": {
+											"description": "Composite ids of the seed node(s) (type:uuid). Always an array, even for one seed.",
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
 										"total_count": {
+											"description": "Total count of nodes (same as count for this endpoint)",
 											"type": "number"
+										},
+										"truncated": {
+											"description": "True when results were capped (per-seed limit or max_nodes)",
+											"type": "boolean"
 										}
 									},
 									"required": [
@@ -207,7 +412,7 @@
 						}
 					}
 				},
-				"description": "Returns graph neighborhood from R2 Data Catalog"
+				"description": "Returns merged graph neighborhood from R2 Data Catalog"
 			},
 			"400": {
 				"content": {
@@ -247,7 +452,83 @@
 				},
 				"description": "Bad Request."
 			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
 			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"example": "An error occurred.",
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			},
+			"503": {
 				"content": {
 					"application/json": {
 						"schema": {

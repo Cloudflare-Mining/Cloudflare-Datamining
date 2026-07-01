@@ -1,4 +1,64 @@
 {
+	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries/{query_id}": {
+		"description": "Delete a saved brand protection domain query from the account_queries table. This operation will remove the query from the durable object database. Returns 404 if the query ID doesn't exist.",
+		"operationId": "delete_DeleteDomainQuery",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "query_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Domain query deleted successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Delete domain query",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/templates/{template_id}": {
 		"description": "Delete a user-defined takedown letter template. System templates cannot be deleted.",
 		"operationId": "delete_LetterTemplateDelete",
@@ -504,19 +564,13 @@
 											"string_matches": {
 												"items": {
 													"properties": {
-														"max_edit_distance": {
-															"maximum": 1,
-															"minimum": 0,
-															"type": "number"
-														},
 														"pattern": {
 															"minLength": 1,
 															"type": "string"
 														}
 													},
 													"required": [
-														"pattern",
-														"max_edit_distance"
+														"pattern"
 													],
 													"type": "object"
 												},
@@ -1587,6 +1641,227 @@
 		"x-api-token-group": [
 			"Cloudforce One Write",
 			"Cloudforce One Read"
+		]
+	},
+	"PATCH /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries/{query_id}": {
+		"description": "Update a saved brand protection domain query with string match patterns",
+		"operationId": "patch_UpdateDomainQuery",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "query_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"max_time": {
+								"type": "string"
+							},
+							"min_time": {
+								"type": "string"
+							},
+							"scan": {
+								"type": "boolean"
+							},
+							"scan_matches": {
+								"type": "boolean"
+							},
+							"search_lookback": {
+								"default": true,
+								"description": "If true, search recent domain lookback entries for matches",
+								"type": "boolean"
+							},
+							"string_matches": {
+								"items": {
+									"properties": {
+										"pattern": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"required": [
+										"pattern"
+									],
+									"type": "object"
+								},
+								"minItems": 1,
+								"type": "array"
+							},
+							"tag": {
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"tag",
+							"string_matches"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"query_id": {
+									"type": "integer"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Domain query updated successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Update domain query",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
+		]
+	},
+	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries": {
+		"description": "Create a new saved brand protection query with string match patterns",
+		"operationId": "post_InsertDomainQuery",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"minLength": 1,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"max_time": {
+								"type": "string"
+							},
+							"min_time": {
+								"type": "string"
+							},
+							"scan": {
+								"type": "boolean"
+							},
+							"scan_matches": {
+								"type": "boolean"
+							},
+							"search_lookback": {
+								"default": true,
+								"description": "If true, search recent domain lookback entries for matches",
+								"type": "boolean"
+							},
+							"string_matches": {
+								"items": {
+									"properties": {
+										"pattern": {
+											"minLength": 1,
+											"type": "string"
+										}
+									},
+									"required": [
+										"pattern"
+									],
+									"type": "object"
+								},
+								"minItems": 1,
+								"type": "array"
+							},
+							"tag": {
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"tag",
+							"string_matches"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								},
+								"query_id": {
+									"type": "integer"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"message"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Query inserted successfully"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Insert query",
+		"tags": [
+			"Brand Protection"
+		],
+		"x-api-token-group": [
+			"Cloudforce One Write"
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/v2/brand-protection/letter/generate": {
