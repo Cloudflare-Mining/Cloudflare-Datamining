@@ -2061,7 +2061,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/images/v2": {
-		"description": "List up to 10000 images with up to 1000 results per page. Use the optional parameters below to get a specific range of images.\nPagination is supported via continuation_token.\n\n**Metadata Filtering (Optional):**\n\nYou can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax.\n\n**Supported Operators:**\n- `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match\n- `in` / `in:string` / `in:number` - Match any value in list (pipe-separated)\n\n**Metadata Filter Constraints:**\n- Maximum 5 metadata filters per request\n- Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`)\n- Maximum 10 elements for list operators (`in`)\n- Supports string, number, and boolean value types\n\n**Examples:**\n```\n# List all images\n/images/v2\n\n# Filter by metadata [eq]\n/images/v2?meta.status[eq:string]=active\n\n# Filter by metadata [in]\n/images/v2?meta.status[in]=pending|deleted|flagged\n\n# Filter by metadata [in:number]\n/images/v2?meta.ratings[in:number]=4|5\n\n# Filter by nested metadata\n/images/v2?meta.region.name[eq]=eu-west\n\n# Combine metadata filters with creator\n/images/v2?meta.status[eq]=active&creator=user123\n\n# Multiple metadata filters (AND logic)\n/images/v2?meta.status[eq]=active&meta.priority[eq:number]=5\n```\n",
+		"description": "List up to 10000 images with up to 1000 results per page. Use the optional parameters below to get a specific range of images.\nPagination is supported via continuation_token.\n\n**Metadata Filtering (Optional):**\n\nYou can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax.\n\n**Supported Operators:**\n- `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match\n- `gt` / `gt:number` - Greater than (number only)\n- `gte` / `gte:number` - Greater than or equal (number only)\n- `lt` / `lt:number` - Less than (number only)\n- `lte` / `lte:number` - Less than or equal (number only)\n- `in` / `in:string` / `in:number` - Match any value in list (pipe-separated)\n\n**Metadata Filter Constraints:**\n- Maximum 5 metadata filters per request\n- Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`)\n- Maximum 10 elements for list operators (`in`)\n- Supports string, number, and boolean value types\n- Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values\n\n**Filter Consistency:**\nFilters are combined with AND logic. The system does not validate whether filter combinations are logically consistent. For example, `meta.priority[eq:number]=5&meta.priority[lte:number]=3` will return zero results because no value can satisfy both conditions simultaneously. It is the caller's responsibility to ensure filter combinations make sense.\n\n**Examples:**\n```\n# List all images\n/images/v2\n\n# Filter by metadata [eq]\n/images/v2?meta.status[eq:string]=active\n\n# Filter by metadata [in]\n/images/v2?meta.status[in]=pending|deleted|flagged\n\n# Filter by metadata [in:number]\n/images/v2?meta.ratings[in:number]=4|5\n\n# Filter by metadata range [gte:number]\n/images/v2?meta.priority[gte:number]=1\n\n# Filter by bounded range\n/images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5\n\n# Filter by nested metadata\n/images/v2?meta.region.name[eq]=eu-west\n\n# Combine metadata filters with creator\n/images/v2?meta.status[eq]=active&creator=user123\n\n# Multiple metadata filters (AND logic)\n/images/v2?meta.status[eq]=active&meta.priority[eq:number]=5\n```\n",
 		"operationId": "cloudflare-images-list-images-v2",
 		"parameters": [
 			{
@@ -2124,7 +2124,7 @@
 				}
 			},
 			{
-				"description": "Optional metadata filter(s). Multiple filters can be combined with AND logic.\n\n**Operators:**\n- `eq`, `eq:string`, `eq:number`, `eq:boolean` - Exact match\n- `in`, `in:string`, `in:number` - Match any value in pipe-separated list\n\n**Examples:**\n- `meta.status[eq]=active`\n- `meta.priority[eq:number]=5`\n- `meta.enabled[eq:boolean]=true`\n- `meta.region[in]=us-east|us-west|eu-west`\n",
+				"description": "Optional metadata filter(s). Multiple filters can be combined with AND logic.\n\n**Operators:**\n- `eq`, `eq:string`, `eq:number`, `eq:boolean` - Exact match\n- `gt`, `gt:number` - Greater than (number only)\n- `gte`, `gte:number` - Greater than or equal (number only)\n- `lt`, `lt:number` - Less than (number only)\n- `lte`, `lte:number` - Less than or equal (number only)\n- `in`, `in:string`, `in:number` - Match any value in pipe-separated list\n\n**Examples:**\n- `meta.status[eq]=active`\n- `meta.priority[eq:number]=5`\n- `meta.enabled[eq:boolean]=true`\n- `meta.priority[gte:number]=1`\n- `meta.score[lt:number]=100`\n- `meta.region[in]=us-east|us-west|eu-west`\n\n**Note:** Filter consistency is not validated. Contradictory filters (e.g., `meta.priority[eq:number]=5&meta.priority[lte:number]=3`) will return zero results.\n",
 				"explode": true,
 				"in": "query",
 				"name": "meta.<field>[<operator>]",
@@ -4164,6 +4164,412 @@
 			}
 		],
 		"summary": "Upload an image",
+		"tags": [
+			"Cloudflare Images"
+		],
+		"x-api-token-group": [
+			"Images Write"
+		]
+	},
+	"POST /accounts/{account_id}/images/v1/direct_upload": {
+		"deprecated": true,
+		"description": "Direct uploads allow users to upload images without API keys. A common use\ncase are web apps, client-side applications, or mobile devices where users\nupload content directly to Cloudflare Images. This method creates a one-time\nupload URL. Use the V2 endpoint for additional features such as custom IDs and\nmetadata.\n",
+		"operationId": "cloudflare-images-create-authenticated-direct-upload-url-v-1",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"expiry": {
+								"description": "The date after which the upload will not be accepted. Minimum: Now + 2 minutes. Maximum: Now + 6 hours.",
+								"example": "2021-01-02T02:20:00Z",
+								"format": "date-time",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "Image unique identifier.",
+													"example": "e22e9e6b-c02b-42fd-c405-6c32af5fe600",
+													"readOnly": true,
+													"type": "string"
+												},
+												"uploadURL": {
+													"description": "The URL the unauthenticated upload can be performed to using a single HTTP POST (multipart/form-data) request.",
+													"example": "https://upload.imagedelivery.net/FxUufywByo0m2v3xhKSiU8/e22e9e6b-c02b-42fd-c405-6c32af5fe600",
+													"type": "string"
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create authenticated direct upload URL V1 response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "Image unique identifier.",
+															"example": "e22e9e6b-c02b-42fd-c405-6c32af5fe600",
+															"readOnly": true,
+															"type": "string"
+														},
+														"uploadURL": {
+															"description": "The URL the unauthenticated upload can be performed to using a single HTTP POST (multipart/form-data) request.",
+															"example": "https://upload.imagedelivery.net/FxUufywByo0m2v3xhKSiU8/e22e9e6b-c02b-42fd-c405-6c32af5fe600",
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create authenticated direct upload URL V1 response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create authenticated direct upload URL V1",
 		"tags": [
 			"Cloudflare Images"
 		],

@@ -1,0 +1,6374 @@
+{
+	"DELETE /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}": {
+		"description": "Delete an existing migration. Only completed, errored, or aborted migrations can be deleted.",
+		"operationId": "cloudflare-images-sourcingkit-delete-migration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "migration_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": {},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete sourcing kit migration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": {},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete sourcing kit migration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a sourcing kit migration",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Write"
+		]
+	},
+	"DELETE /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}": {
+		"description": "Delete an existing migration source. Sources with active migrations cannot be deleted.",
+		"operationId": "cloudflare-images-sourcingkit-delete-source",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "source_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": {},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete sourcing kit source response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": {},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete sourcing kit source response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete a sourcing kit source",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Write"
+		]
+	},
+	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations": {
+		"description": "List all migrations for the account.",
+		"operationId": "cloudflare-images-sourcingkit-list-migrations",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"description": "Number of items to skip before returning results.",
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 25,
+					"description": "Maximum number of items to return.",
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"migrations": {
+													"items": {
+														"properties": {
+															"conflictBehaviour": {
+																"default": "skip",
+																"description": "How to handle objects that already exist at the destination.",
+																"enum": [
+																	"skip",
+																	"overwrite"
+																],
+																"type": "string"
+															},
+															"createdAt": {
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"endedAt": {
+																"format": "date-time",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"excludedContentTypes": {
+																"description": "Content types to skip during migration.",
+																"items": {
+																	"description": "A MIME type that can be excluded from migration.",
+																	"enum": [
+																		"image/jpeg",
+																		"image/png",
+																		"image/webp",
+																		"image/gif",
+																		"image/avif",
+																		"image/heic",
+																		"image/svg+xml"
+																	],
+																	"type": "string"
+																},
+																"nullable": true,
+																"type": "array"
+															},
+															"id": {
+																"description": "Migration unique identifier.",
+																"format": "uuid",
+																"readOnly": true,
+																"type": "string"
+															},
+															"imagesPathPrefix": {
+																"description": "Alias for pathPrefix (deprecated).",
+																"nullable": true,
+																"type": "string"
+															},
+															"logStopped": {
+																"description": "Whether logging was stopped due to excessive log volume.",
+																"readOnly": true,
+																"type": "boolean"
+															},
+															"pathPrefix": {
+																"description": "Prefix to prepend to image custom IDs.",
+																"nullable": true,
+																"type": "string"
+															},
+															"rootDirectory": {
+																"description": "Only import objects under this prefix in the source bucket.",
+																"nullable": true,
+																"type": "string"
+															},
+															"sourceId": {
+																"description": "The source this migration imports from.",
+																"format": "uuid",
+																"nullable": true,
+																"type": "string"
+															},
+															"startedAt": {
+																"format": "date-time",
+																"nullable": true,
+																"readOnly": true,
+																"type": "string"
+															},
+															"status": {
+																"description": "Current status of the migration.",
+																"enum": [
+																	"pending",
+																	"processing",
+																	"success",
+																	"error",
+																	"aborted"
+																],
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List sourcing kit migrations response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"migrations": {
+															"items": {
+																"properties": {
+																	"conflictBehaviour": {
+																		"default": "skip",
+																		"description": "How to handle objects that already exist at the destination.",
+																		"enum": [
+																			"skip",
+																			"overwrite"
+																		],
+																		"type": "string"
+																	},
+																	"createdAt": {
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"endedAt": {
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"excludedContentTypes": {
+																		"description": "Content types to skip during migration.",
+																		"items": {
+																			"description": "A MIME type that can be excluded from migration.",
+																			"enum": [
+																				"image/jpeg",
+																				"image/png",
+																				"image/webp",
+																				"image/gif",
+																				"image/avif",
+																				"image/heic",
+																				"image/svg+xml"
+																			],
+																			"type": "string"
+																		},
+																		"nullable": true,
+																		"type": "array"
+																	},
+																	"id": {
+																		"description": "Migration unique identifier.",
+																		"format": "uuid",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"imagesPathPrefix": {
+																		"description": "Alias for pathPrefix (deprecated).",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"logStopped": {
+																		"description": "Whether logging was stopped due to excessive log volume.",
+																		"readOnly": true,
+																		"type": "boolean"
+																	},
+																	"pathPrefix": {
+																		"description": "Prefix to prepend to image custom IDs.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"rootDirectory": {
+																		"description": "Only import objects under this prefix in the source bucket.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"sourceId": {
+																		"description": "The source this migration imports from.",
+																		"format": "uuid",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"startedAt": {
+																		"format": "date-time",
+																		"nullable": true,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"status": {
+																		"description": "Current status of the migration.",
+																		"enum": [
+																			"pending",
+																			"processing",
+																			"success",
+																			"error",
+																			"aborted"
+																		],
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List sourcing kit migrations response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List sourcing kit migrations",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
+		]
+	},
+	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}": {
+		"description": "Fetch details for a single migration.",
+		"operationId": "cloudflare-images-sourcingkit-get-migration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "migration_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"conflictBehaviour": {
+													"default": "skip",
+													"description": "How to handle objects that already exist at the destination.",
+													"enum": [
+														"skip",
+														"overwrite"
+													],
+													"type": "string"
+												},
+												"createdAt": {
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"endedAt": {
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"excludedContentTypes": {
+													"description": "Content types to skip during migration.",
+													"items": {
+														"description": "A MIME type that can be excluded from migration.",
+														"enum": [
+															"image/jpeg",
+															"image/png",
+															"image/webp",
+															"image/gif",
+															"image/avif",
+															"image/heic",
+															"image/svg+xml"
+														],
+														"type": "string"
+													},
+													"nullable": true,
+													"type": "array"
+												},
+												"id": {
+													"description": "Migration unique identifier.",
+													"format": "uuid",
+													"readOnly": true,
+													"type": "string"
+												},
+												"imagesPathPrefix": {
+													"description": "Alias for pathPrefix (deprecated).",
+													"nullable": true,
+													"type": "string"
+												},
+												"logStopped": {
+													"description": "Whether logging was stopped due to excessive log volume.",
+													"readOnly": true,
+													"type": "boolean"
+												},
+												"pathPrefix": {
+													"description": "Prefix to prepend to image custom IDs.",
+													"nullable": true,
+													"type": "string"
+												},
+												"rootDirectory": {
+													"description": "Only import objects under this prefix in the source bucket.",
+													"nullable": true,
+													"type": "string"
+												},
+												"sourceId": {
+													"description": "The source this migration imports from.",
+													"format": "uuid",
+													"nullable": true,
+													"type": "string"
+												},
+												"startedAt": {
+													"format": "date-time",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string"
+												},
+												"status": {
+													"description": "Current status of the migration.",
+													"enum": [
+														"pending",
+														"processing",
+														"success",
+														"error",
+														"aborted"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get sourcing kit migration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"conflictBehaviour": {
+															"default": "skip",
+															"description": "How to handle objects that already exist at the destination.",
+															"enum": [
+																"skip",
+																"overwrite"
+															],
+															"type": "string"
+														},
+														"createdAt": {
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"endedAt": {
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"excludedContentTypes": {
+															"description": "Content types to skip during migration.",
+															"items": {
+																"description": "A MIME type that can be excluded from migration.",
+																"enum": [
+																	"image/jpeg",
+																	"image/png",
+																	"image/webp",
+																	"image/gif",
+																	"image/avif",
+																	"image/heic",
+																	"image/svg+xml"
+																],
+																"type": "string"
+															},
+															"nullable": true,
+															"type": "array"
+														},
+														"id": {
+															"description": "Migration unique identifier.",
+															"format": "uuid",
+															"readOnly": true,
+															"type": "string"
+														},
+														"imagesPathPrefix": {
+															"description": "Alias for pathPrefix (deprecated).",
+															"nullable": true,
+															"type": "string"
+														},
+														"logStopped": {
+															"description": "Whether logging was stopped due to excessive log volume.",
+															"readOnly": true,
+															"type": "boolean"
+														},
+														"pathPrefix": {
+															"description": "Prefix to prepend to image custom IDs.",
+															"nullable": true,
+															"type": "string"
+														},
+														"rootDirectory": {
+															"description": "Only import objects under this prefix in the source bucket.",
+															"nullable": true,
+															"type": "string"
+														},
+														"sourceId": {
+															"description": "The source this migration imports from.",
+															"format": "uuid",
+															"nullable": true,
+															"type": "string"
+														},
+														"startedAt": {
+															"format": "date-time",
+															"nullable": true,
+															"readOnly": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "Current status of the migration.",
+															"enum": [
+																"pending",
+																"processing",
+																"success",
+																"error",
+																"aborted"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get sourcing kit migration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get sourcing kit migration",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
+		]
+	},
+	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/lifecycle": {
+		"description": "Get the current progress of a migration including counts of scanned, imported,\nskipped, and errored objects.\n",
+		"operationId": "cloudflare-images-sourcingkit-get-migration-progress",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "migration_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"endedAt": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"importErrorsCount": {
+													"description": "Objects that failed to import.",
+													"type": "integer"
+												},
+												"importSuccessCount": {
+													"description": "Objects successfully imported.",
+													"type": "integer"
+												},
+												"isAccurate": {
+													"description": "Whether the counts are accurate or estimated.",
+													"type": "boolean"
+												},
+												"scannedCount": {
+													"description": "Total number of objects scanned in the source.",
+													"type": "integer"
+												},
+												"skippedConflictCount": {
+													"description": "Objects skipped due to existing images at destination.",
+													"type": "integer"
+												},
+												"skippedExcludedContentTypeCount": {
+													"description": "Objects skipped because their content type was excluded.",
+													"type": "integer"
+												},
+												"skippedInvalidMediaCount": {
+													"description": "Objects skipped because the media could not be decoded.",
+													"type": "integer"
+												},
+												"skippedInvalidNameCount": {
+													"description": "Objects skipped because their name is not valid.",
+													"type": "integer"
+												},
+												"skippedOversizeCount": {
+													"description": "Objects skipped because they exceed the size limit.",
+													"type": "integer"
+												},
+												"skippedStorageClassCount": {
+													"description": "Objects skipped due to unsupported storage class.",
+													"type": "integer"
+												},
+												"skippedUnsupportedContentTypeCount": {
+													"description": "Objects skipped because their content type is not supported.",
+													"type": "integer"
+												},
+												"startedAt": {
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"status": {
+													"description": "Current status of the migration.",
+													"enum": [
+														"pending",
+														"processing",
+														"success",
+														"error",
+														"aborted"
+													],
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Migration progress response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"endedAt": {
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														},
+														"importErrorsCount": {
+															"description": "Objects that failed to import.",
+															"type": "integer"
+														},
+														"importSuccessCount": {
+															"description": "Objects successfully imported.",
+															"type": "integer"
+														},
+														"isAccurate": {
+															"description": "Whether the counts are accurate or estimated.",
+															"type": "boolean"
+														},
+														"scannedCount": {
+															"description": "Total number of objects scanned in the source.",
+															"type": "integer"
+														},
+														"skippedConflictCount": {
+															"description": "Objects skipped due to existing images at destination.",
+															"type": "integer"
+														},
+														"skippedExcludedContentTypeCount": {
+															"description": "Objects skipped because their content type was excluded.",
+															"type": "integer"
+														},
+														"skippedInvalidMediaCount": {
+															"description": "Objects skipped because the media could not be decoded.",
+															"type": "integer"
+														},
+														"skippedInvalidNameCount": {
+															"description": "Objects skipped because their name is not valid.",
+															"type": "integer"
+														},
+														"skippedOversizeCount": {
+															"description": "Objects skipped because they exceed the size limit.",
+															"type": "integer"
+														},
+														"skippedStorageClassCount": {
+															"description": "Objects skipped due to unsupported storage class.",
+															"type": "integer"
+														},
+														"skippedUnsupportedContentTypeCount": {
+															"description": "Objects skipped because their content type is not supported.",
+															"type": "integer"
+														},
+														"startedAt": {
+															"format": "date-time",
+															"nullable": true,
+															"type": "string"
+														},
+														"status": {
+															"description": "Current status of the migration.",
+															"enum": [
+																"pending",
+																"processing",
+																"success",
+																"error",
+																"aborted"
+															],
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Migration progress response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get migration progress",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
+		]
+	},
+	"GET /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/logs": {
+		"description": "List log entries for a specific migration.",
+		"operationId": "cloudflare-images-sourcingkit-list-migration-logs",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "migration_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"description": "Number of items to skip before returning results.",
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 25,
+					"description": "Maximum number of items to return.",
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"logs": {
+													"items": {
+														"properties": {
+															"createdAt": {
+																"format": "date-time",
+																"nullable": true,
+																"type": "string"
+															},
+															"logType": {
+																"description": "The type of log entry.",
+																"enum": [
+																	"default",
+																	"importSkippedUnsupportedContentType",
+																	"importSkippedExcludedContentType",
+																	"importSkippedInvalidMedia",
+																	"importErrorRetryExhaustion",
+																	"importSkippedOversized",
+																	"migrationErrorFailedContinuation",
+																	"migrationStart",
+																	"migrationAbort",
+																	"migrationError",
+																	"migrationComplete",
+																	"importSkippedStorageClass"
+																],
+																"type": "string"
+															},
+															"msg": {
+																"description": "Log message detail.",
+																"nullable": true,
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List migration logs response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"logs": {
+															"items": {
+																"properties": {
+																	"createdAt": {
+																		"format": "date-time",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"logType": {
+																		"description": "The type of log entry.",
+																		"enum": [
+																			"default",
+																			"importSkippedUnsupportedContentType",
+																			"importSkippedExcludedContentType",
+																			"importSkippedInvalidMedia",
+																			"importErrorRetryExhaustion",
+																			"importSkippedOversized",
+																			"migrationErrorFailedContinuation",
+																			"migrationStart",
+																			"migrationAbort",
+																			"migrationError",
+																			"migrationComplete",
+																			"importSkippedStorageClass"
+																		],
+																		"type": "string"
+																	},
+																	"msg": {
+																		"description": "Log message detail.",
+																		"nullable": true,
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List migration logs response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List migration logs",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
+		]
+	},
+	"GET /accounts/{account_id}/images/v2/sourcingkit/sources": {
+		"description": "List all configured migration sources for the account.",
+		"operationId": "cloudflare-images-sourcingkit-list-sources",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "query",
+				"name": "offset",
+				"schema": {
+					"default": 0,
+					"description": "Number of items to skip before returning results.",
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 25,
+					"description": "Maximum number of items to return.",
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "name",
+				"schema": {
+					"description": "Filter sources by name (partial match).",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"sources": {
+													"items": {
+														"properties": {
+															"bucket": {
+																"description": "The name of the storage bucket.",
+																"example": "my-images-bucket",
+																"type": "string"
+															},
+															"createdAt": {
+																"description": "When the source was created.",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"id": {
+																"description": "Source unique identifier.",
+																"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+																"format": "uuid",
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "A human-readable name for the source.",
+																"example": "my-s3-bucket",
+																"type": "string"
+															},
+															"region": {
+																"description": "The region of the storage bucket (S3 sources only).",
+																"example": "us-east-1",
+																"nullable": true,
+																"type": "string"
+															},
+															"updatedAt": {
+																"description": "When the source was last updated.",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"vendor": {
+																"description": "The cloud storage vendor of the source bucket.",
+																"enum": [
+																	"s3",
+																	"r2"
+																],
+																"example": "s3",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "List sourcing kit sources response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"sources": {
+															"items": {
+																"properties": {
+																	"bucket": {
+																		"description": "The name of the storage bucket.",
+																		"example": "my-images-bucket",
+																		"type": "string"
+																	},
+																	"createdAt": {
+																		"description": "When the source was created.",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "Source unique identifier.",
+																		"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+																		"format": "uuid",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "A human-readable name for the source.",
+																		"example": "my-s3-bucket",
+																		"type": "string"
+																	},
+																	"region": {
+																		"description": "The region of the storage bucket (S3 sources only).",
+																		"example": "us-east-1",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"updatedAt": {
+																		"description": "When the source was last updated.",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"vendor": {
+																		"description": "The cloud storage vendor of the source bucket.",
+																		"enum": [
+																			"s3",
+																			"r2"
+																		],
+																		"example": "s3",
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															},
+															"type": "array"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List sourcing kit sources response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List sourcing kit sources",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
+		]
+	},
+	"GET /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}": {
+		"description": "Fetch details for a single migration source.",
+		"operationId": "cloudflare-images-sourcingkit-get-source",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "source_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"bucket": {
+													"description": "The name of the storage bucket.",
+													"example": "my-images-bucket",
+													"type": "string"
+												},
+												"createdAt": {
+													"description": "When the source was created.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Source unique identifier.",
+													"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+													"format": "uuid",
+													"readOnly": true,
+													"type": "string"
+												},
+												"name": {
+													"description": "A human-readable name for the source.",
+													"example": "my-s3-bucket",
+													"type": "string"
+												},
+												"region": {
+													"description": "The region of the storage bucket (S3 sources only).",
+													"example": "us-east-1",
+													"nullable": true,
+													"type": "string"
+												},
+												"updatedAt": {
+													"description": "When the source was last updated.",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string"
+												},
+												"vendor": {
+													"description": "The cloud storage vendor of the source bucket.",
+													"enum": [
+														"s3",
+														"r2"
+													],
+													"example": "s3",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Get sourcing kit source response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"bucket": {
+															"description": "The name of the storage bucket.",
+															"example": "my-images-bucket",
+															"type": "string"
+														},
+														"createdAt": {
+															"description": "When the source was created.",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"id": {
+															"description": "Source unique identifier.",
+															"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+															"format": "uuid",
+															"readOnly": true,
+															"type": "string"
+														},
+														"name": {
+															"description": "A human-readable name for the source.",
+															"example": "my-s3-bucket",
+															"type": "string"
+														},
+														"region": {
+															"description": "The region of the storage bucket (S3 sources only).",
+															"example": "us-east-1",
+															"nullable": true,
+															"type": "string"
+														},
+														"updatedAt": {
+															"description": "When the source was last updated.",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"vendor": {
+															"description": "The cloud storage vendor of the source bucket.",
+															"enum": [
+																"s3",
+																"r2"
+															],
+															"example": "s3",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Get sourcing kit source response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get sourcing kit source",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
+		]
+	},
+	"GET /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}/connectivity": {
+		"description": "Check the current connectivity status of an existing migration source.",
+		"operationId": "cloudflare-images-sourcingkit-get-source-connectivity",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "source_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"code": {
+													"description": "Machine-readable error code if connectivity failed.",
+													"nullable": true,
+													"type": "string"
+												},
+												"connectivityStatus": {
+													"description": "Whether the connectivity check succeeded.",
+													"enum": [
+														"ok",
+														"error"
+													],
+													"type": "string"
+												},
+												"reason": {
+													"description": "Human-readable error description if connectivity failed.",
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Source connectivity status response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"code": {
+															"description": "Machine-readable error code if connectivity failed.",
+															"nullable": true,
+															"type": "string"
+														},
+														"connectivityStatus": {
+															"description": "Whether the connectivity check succeeded.",
+															"enum": [
+																"ok",
+																"error"
+															],
+															"type": "string"
+														},
+														"reason": {
+															"description": "Human-readable error description if connectivity failed.",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Source connectivity status response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get source connectivity status",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Read",
+			"Images Write"
+		]
+	},
+	"PATCH /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/lifecycle/abort": {
+		"description": "Abort a running migration. Objects already imported will not be removed.",
+		"operationId": "cloudflare-images-sourcingkit-abort-migration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "migration_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"type": "string"
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Abort migration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Abort migration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Abort a migration",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Write"
+		]
+	},
+	"PATCH /accounts/{account_id}/images/v2/sourcingkit/migrations/{migration_id}/lifecycle/start": {
+		"description": "Start a pending migration. The migration will begin importing objects from the configured source.",
+		"operationId": "cloudflare-images-sourcingkit-start-migration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "migration_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"type": "string"
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Start migration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer",
+														"x-auditable": true
+													},
+													"message": {
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Start migration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Start a migration",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Write"
+		]
+	},
+	"PATCH /accounts/{account_id}/images/v2/sourcingkit/sources/{source_id}": {
+		"description": "Update the name of an existing migration source.",
+		"operationId": "cloudflare-images-sourcingkit-update-source",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "source_id",
+				"required": true,
+				"schema": {
+					"description": "Sourcing kit resource identifier.",
+					"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+					"format": "uuid",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"name": {
+								"description": "Updated name for the source.",
+								"example": "my-renamed-bucket",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							}
+						},
+						"required": [
+							"name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "The identifier of the updated source.",
+													"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Update sourcing kit source response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "The identifier of the updated source.",
+															"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update sourcing kit source response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update a sourcing kit source",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Write"
+		]
+	},
+	"POST /accounts/{account_id}/images/v2/sourcingkit/migrations": {
+		"description": "Create a new migration from an existing source. The migration will import\nobjects from the source bucket into Cloudflare Images.\n",
+		"operationId": "cloudflare-images-sourcingkit-create-migration",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"conflictBehaviour": {
+								"default": "skip",
+								"description": "How to handle objects that already exist at the destination.",
+								"enum": [
+									"skip",
+									"overwrite"
+								],
+								"type": "string"
+							},
+							"excludedContentTypes": {
+								"description": "Content types to skip during migration.",
+								"items": {
+									"description": "A MIME type that can be excluded from migration.",
+									"enum": [
+										"image/jpeg",
+										"image/png",
+										"image/webp",
+										"image/gif",
+										"image/avif",
+										"image/heic",
+										"image/svg+xml"
+									],
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"pathPrefix": {
+								"description": "Prefix to prepend to image custom IDs.",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"rootDirectory": {
+								"description": "Only import objects under this prefix in the source bucket.",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"sourceId": {
+								"description": "The identifier of the source to migrate from.",
+								"format": "uuid",
+								"type": "string"
+							}
+						},
+						"required": [
+							"sourceId"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "The identifier of the created migration.",
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create sourcing kit migration response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "The identifier of the created migration.",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create sourcing kit migration response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a sourcing kit migration",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Write"
+		]
+	},
+	"POST /accounts/{account_id}/images/v2/sourcingkit/sources": {
+		"description": "Create a new migration source by providing storage credentials. The service\nwill verify connectivity to the bucket before accepting the source.\n",
+		"operationId": "cloudflare-images-sourcingkit-create-source",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"account": {
+								"description": "Account identifier for the bucket (required for R2 vendor).",
+								"type": "string"
+							},
+							"bucket": {
+								"description": "The name of the storage bucket.",
+								"example": "my-images-bucket",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"name": {
+								"description": "A human-readable name for the source.",
+								"example": "my-s3-bucket",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"secret": {
+								"description": "Storage credentials for accessing the bucket. Shape depends on vendor.",
+								"type": "object",
+								"writeOnly": true
+							},
+							"vendor": {
+								"description": "The cloud storage vendor of the source bucket.",
+								"enum": [
+									"s3",
+									"r2"
+								],
+								"example": "s3",
+								"type": "string"
+							}
+						},
+						"required": [
+							"name",
+							"bucket",
+							"vendor",
+							"secret"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"id": {
+													"description": "The identifier of the created source.",
+													"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+													"format": "uuid",
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Create sourcing kit source response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"id": {
+															"description": "The identifier of the created source.",
+															"example": "5ca167e6-4e40-4ced-a209-ca1b9dd6a265",
+															"format": "uuid",
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create sourcing kit source response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create a sourcing kit source",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Write"
+		]
+	},
+	"POST /accounts/{account_id}/images/v2/sourcingkit/sources/connectivity-precheck": {
+		"description": "Verify connectivity to a storage bucket before creating a source. Returns\nconnectivity status without persisting any state.\n",
+		"operationId": "cloudflare-images-sourcingkit-precheck-source-connectivity",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Account identifier tag.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"account": {
+								"description": "Account identifier for the bucket (required for R2 vendor).",
+								"type": "string"
+							},
+							"bucket": {
+								"description": "The name of the storage bucket.",
+								"maxLength": 128,
+								"minLength": 1,
+								"type": "string"
+							},
+							"region": {
+								"description": "The region hint for the bucket (S3 only).",
+								"nullable": true,
+								"type": "string"
+							},
+							"secret": {
+								"description": "Storage credentials for accessing the bucket.",
+								"type": "object",
+								"writeOnly": true
+							},
+							"vendor": {
+								"description": "The cloud storage vendor of the source bucket.",
+								"enum": [
+									"s3",
+									"r2"
+								],
+								"example": "s3",
+								"type": "string"
+							}
+						},
+						"required": [
+							"bucket",
+							"vendor",
+							"secret"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"items": {},
+															"type": "array"
+														},
+														{
+															"type": "string"
+														}
+													]
+												},
+												"success": {
+													"description": "Whether the API call was successful",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object"
+														},
+														{
+															"type": "string"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"code": {
+													"description": "Machine-readable error code if connectivity failed.",
+													"nullable": true,
+													"type": "string"
+												},
+												"connectivityStatus": {
+													"description": "Whether the connectivity check succeeded.",
+													"enum": [
+														"ok",
+														"error"
+													],
+													"type": "string"
+												},
+												"reason": {
+													"description": "Human-readable error description if connectivity failed.",
+													"nullable": true,
+													"type": "string"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Connectivity precheck response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"properties": {
+														"errors": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"messages": {
+															"example": [],
+															"items": {
+																"properties": {
+																	"code": {
+																		"minimum": 1000,
+																		"type": "integer",
+																		"x-auditable": true
+																	},
+																	"message": {
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"code",
+																	"message"
+																],
+																"type": "object",
+																"uniqueItems": true
+															},
+															"type": "array"
+														},
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"items": {},
+																	"type": "array"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														},
+														"success": {
+															"description": "Whether the API call was successful",
+															"enum": [
+																true
+															],
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"type": "object"
+												},
+												{
+													"properties": {
+														"result": {
+															"anyOf": [
+																{
+																	"type": "object"
+																},
+																{
+																	"type": "string"
+																}
+															]
+														}
+													}
+												}
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"code": {
+															"description": "Machine-readable error code if connectivity failed.",
+															"nullable": true,
+															"type": "string"
+														},
+														"connectivityStatus": {
+															"description": "Whether the connectivity check succeeded.",
+															"enum": [
+																"ok",
+																"error"
+															],
+															"type": "string"
+														},
+														"reason": {
+															"description": "Human-readable error description if connectivity failed.",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"type": "object"
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer",
+																"x-auditable": true
+															},
+															"message": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Connectivity precheck response failure"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Precheck source connectivity",
+		"tags": [
+			"Cloudflare Images Sourcing Kit"
+		],
+		"x-api-token-group": [
+			"Images Write"
+		]
+	}
+}
