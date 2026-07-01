@@ -196,6 +196,9 @@
 	"aig-unified-catalog-detail-view": {
 		"enabled": true
 	},
+	"aig-wobs-logs": {
+		"enabled": false
+	},
 	"alerts-center": {
 		"enabled": false
 	},
@@ -564,7 +567,7 @@
 		"enabled": false
 	},
 	"cf-tunnel-logs": {
-		"enabled": false
+		"enabled": true
 	},
 	"cfone-abuse-reports-service-outage-banner": {
 		"enabled": false
@@ -1349,6 +1352,9 @@
 		"enabled": false
 	},
 	"email-routing-suppressions": {
+		"enabled": false
+	},
+	"email-sending-preview": {
 		"enabled": false
 	},
 	"email-sending-smtp-ui": {
@@ -2853,9 +2859,6 @@
 		"enabled": true
 	},
 	"tsf-chat-queue-position": {
-		"enabled": true
-	},
-	"tsf-chat-widget-portal-restriction": {
 		"enabled": true
 	},
 	"tsf-deflection-help-on-expand": {
