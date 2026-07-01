@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/creating-serendipity-with-python">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/29vLbTdBxrfDiCvoKbUBYs/ead034b077c9f8cb76c32f078b60c0bc/creating-serendipity-with-python.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>We've been experimenting with breaking up employees into random groups (of size 4) and setting up video hangouts between them. We're doing this to replace the serendipitous meetings that sometimes occur around coffee machines, in lunch lines or while waiting for the printer. And also, we just want people to get to know each other.</p>
 	<p>Which lead to me writing some code. The core of which is <i>divide n elements into groups of at least size g minimizing the size of each group</i>. So, suppose an office has 15 employees in it then it would be divided into three groups of sizes 5, 5, 5; if an office had 16 employees it would be 4, 4, 4, 4; if it had 17 employees it would be 4, 4, 4, 5 and so on.</p>
 	<p>I initially wrote the following code (in Python):</p>

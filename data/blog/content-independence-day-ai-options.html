@@ -1,0 +1,276 @@
+<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Owe9fGYhGjNZ0ub1RMjwA/592d137ed29bb83239b752351a1b11b0/BLOG-3337_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>One year ago, we declared the first <a href="https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation"><u>Content Independence Day</u></a>, and we gave website owners the means to take back control of their content. The deal between crawlers and website owners that had held up for 30 years — we crawl you, and you get referrals — was no longer true. AI was taking everything and sending back nothing, presenting an existential threat to website owners. And so we launched a one-click "Block AI Bots" option, along with a <a href="https://blog.cloudflare.com/introducing-pay-per-crawl"><u>Pay-Per-Crawl marketplace</u></a>.</p>
+	<p>A lot has changed in a year. Last July, conversations around “AI bots” centered around blocking AI training without compensation, pointing to the win–lose deal where content was used for model training with no value driven back to the website owner. But a desire for more nuance has emerged: Content owners still want to be able to protect their content, and they should be compensated for the original content that they work hard to create, curate, and share. We also know that locking down content isn’t a one-size-fits-all solution; website owners want more options than resorting to “block all automation, every time.”</p>
+	<p>If you run a small site, the problem isn’t <i>just</i> that someone could train models on your content — it's that nobody can find you in the first place. So you have to make a Faustian bargain: either show up in search and let AI train on you, or risk losing discoverability. This unfairly advantages incumbent search providers if they use the same bots for both search and training; and this unfair advantage incentivizes new players to be evasive as they try to close the competitive gap.</p>
+	<div class="flex anchor relative">
+		<h3 id="now-ai-can-be-anything">Now, AI can be anything</h3>
+		<a href="https://blog.cloudflare.com/#now-ai-can-be-anything" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Today, AI can be in anything. Google search has changed from being sorted by AI to being a <a href="https://blog.google/products-and-platforms/products/search/search-io-2026" target="_blank" rel="noopener noreferrer"><u>full answer engine</u></a> that answers your question directly on the results page. And Google is not unique in this position — this is the direction in which “search” is moving.</p>
+	<p>We could debate the cutoff for what qualifies as “AI” today, just to find that the standard changes tomorrow. So, instead of defining a bot primarily as “AI” or not, our updated approach to classification will ask deeper questions about bot or agent behavior: What are they doing on my site? What are they storing? And how will they reshare my content?</p>
+	<div class="flex anchor relative">
+		<h3 id="a-pragmatic-taxonomy">A pragmatic taxonomy</h3>
+		<a href="https://blog.cloudflare.com/#a-pragmatic-taxonomy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To address these questions, we need a more nuanced view — a pragmatic taxonomy that aligns with the AI use cases our customers care about. So we are opening the discussion beyond AI training alone and focusing on three AI use cases that we want all customers to be able to manage:</p>
+	<ul>
+		<li>
+			<p><b>Search:</b> any behavior that collects or indexes your content, so it can answer questions about it later. The key is that Search is proactively building a database of your site to later respond to queries with. Site owners should expect to get referral traffic or other equitable compensation as a result.</p>
+		</li>
+		<li>
+			<p><b>Agent: </b>automated<b> </b>behavior that is acting, usually in real time, on a person's behalf, to get something done right now. This includes chat fetch bots (e.g., ChatGPT-User) and browser-use agents (e.g., Gemini or Claude driving Chrome). The key is that it visits your web application in order to complete a job, and often there's a human waiting on the other end.</p>
+		</li>
+		<li>
+			<p><b>Training</b>: a crawler taking your content to train or fine-tune a model. The key is that your data is permanently absorbed into the underlying architecture of the AI to improve its capabilities.</p>
+		</li>
+	</ul>
+	<p>Many popular crawlers on the web fall into one of the classifications above; some fall into multiple. We classify plenty of other behaviors beyond the three above — including ads verification, feed fetching, and agentic transactions (more on this below). But we believe it should be simple for all website owners to manage access for these three AI-centered use cases. We believe that bot operators should separate their crawlers because that creates more transparency for website owners: allowing them to better understand why a given crawler is visiting them, as well as to better manage the access they extend to that crawler. If a company runs automation that builds <b>Search</b> indexes, acts as an <b>Agent</b>, and collects data to <b>Train</b> their models, then we strongly encourage that company to separate the automation into three separate crawlers.</p>
+	<p>We want a classification system that is scalable and representative of the world of automated traffic as it evolves. Tracking a bot’s purposes is nothing new, but our new taxonomy involves a few updates that better represent the state of bot traffic today. Most notably, we want to recognize that bots that have multiple purposes should be tracked with all purposes, not just one of them.</p>
+	<div class="flex anchor relative">
+		<h3 id="new-options-to-manage-ai-traffic">New options to manage AI traffic</h3>
+		<a href="https://blog.cloudflare.com/#new-options-to-manage-ai-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>We want to provide more options for managing different kinds of AI traffic, to </b><b><i>all</i></b><b> website owners on the Cloudflare network.</b></p>
+	<p>The managed preset to “Block AI bots” that we’ve announced in the past included single-purpose bots that crawled data for model training, as shown below:&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XlnMWyLXLpLgWLP7hgRGP/d01b9b60c513a7904558fdc674fb74b3/BLOG-3337_2.png" alt="BLOG-3337 2" class="kg-image" width="852" height="612" loading="lazy">
+	</figure>
+	<p><sup><i>Screenshot of the existing setting to manage AI bot traffic on July 1, 2025.</i></sup></p>
+	<p>But not all AI use is the same, and we want our customers to have the controls they need. So, we’re launching the ability to <b>manage AI traffic based on </b><b><i>three</i></b><b> major use cases: Search, Agent, and Training</b> crawlers. With these new options, our customers can more finely tune how they manage AI bot traffic — including customers on our Free tier.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ffejfK0AQNX7vPro0cwhK/7cc9eafa05975001fa2f614a725aeb7f/BLOG-3337_3.png" alt="BLOG-3337 3" class="kg-image" width="1999" height="1209" loading="lazy">
+	</figure>
+	<p><sup><i>Screenshot of the new options to manage AI bot traffic on July 1, 2026.</i></sup></p>
+	<div class="flex anchor relative">
+		<h3 id="setting-new-defaults">Setting new defaults</h3>
+		<a href="https://blog.cloudflare.com/#setting-new-defaults" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><b>On September 15, 2026, we’ll be setting new defaults</b> <b>for each of these three classifications.</b> For all new domains onboarding to Cloudflare, the categories of <b>Training</b> and <b>Agent</b> will be blocked by default <b>on the pages that display ads, </b>while <b>Search</b> will remain allowed by default.&nbsp;</p>
+	<p>An ad is a signal that a website owner meant for a person to land there and see it — something monetizable that fuels the business. So, on those pages, we treat human attention as the end goal, and keep away the bots that may prevent this attention (i.e., Training and Agent bots). On the other hand, Search is the behavior that most naturally funnels back visitors, and we believe it’s in the interest of most site owners to allow this.</p>
+	<p>Another change that will apply on September 15 is that multi-purpose crawlers (specifically those that combine Search with Training) will be allowed/blocked according to <i>all</i> of their behaviors, in line with our call for transparency for website owners. Since the defaults will be enforced by the most restrictive applicable rules, multi-purpose crawlers such as Googlebot, Applebot, and BingBot will be blocked by customers who have selected to block Training (either through the new options to <a href="https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots" target="_blank" rel="noopener noreferrer"><u>manage AI traffic</u></a>, or through the legacy Block AI bots service).</p>
+	<p>Of course, customer choice is paramount: if a website owner wants to opt out of these new default configurations, they can <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>easily mark this in their Security settings</u></a> any time leading up to September 15, which will confirm that they want <i>no changes</i> on Training crawlers that also crawl for Search purposes. We’ll also continue to notify customers of the upcoming change to defaults as we approach September 15 to ensure that customers who want to choose settings different from the defaults have the opportunity to do so.</p>
+	<div class="flex anchor relative">
+		<h3 id="botbase-a-new-visibility-plane-for-enterprise-customers">BotBase: a new visibility plane for Enterprise customers</h3>
+		<a href="https://blog.cloudflare.com/#botbase-a-new-visibility-plane-for-enterprise-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We’re also excited to launch a major visibility update as a new feature of Enterprise Bot Management. As Cloudflare’s directory of tracked bots has grown, so has the desire to manage these bots in sensible groupings and to understand more detail about a particular bot.&nbsp;</p>
+	<p>Introducing <a href="https://developers.cloudflare.com/bots/botbase" target="_blank" rel="noopener noreferrer"><b><u>BotBase</u></b></a>. BotBase is our new database tracking all known bots, including Verified bots and agents. This database provides a comprehensive, searchable view of our entire directory of bots, directly on the Cloudflare dashboard. We’re tackling <i>visibility first</i>, but, later this year, we’ll expand BotBase to provide a direct control center for known automated content on your website.</p>
+	<p>With this new view, Enterprise Bot Management customers can see the full catalogue of all Verified bots/agents and where they are classified in this updated taxonomy — a view we’ve never shown dynamically on the Cloudflare dashboard before. Customers who want to precisely target a specific bot can also easily filter for all traffic from this bot, plus copy the detection ID to use in Security rules. All of this is now live within a dedicated page, which can be accessed through the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings%2Fbot-traffic%2Fbot-base" target="_blank" rel="noopener noreferrer"><u>Bot Management configuration card</u></a>.&nbsp;</p>
+	<p>As we built BotBase, we wanted to account for all of the pieces of information that would allow us to build scalable, powerful insights from bot to bot. One of these pieces is a cornerstone for our updated taxonomy, which is <b>based on what a bot may do on your site — its behavior.</b> We separate these classifications as shared below, and each bot is classified with one or more of these behaviors.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Bot classification</b></p>
+				</td>
+				<td>
+					<p><b>Behaviors and uses</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b><i>Search</i></b></p>
+				</td>
+				<td>
+					<p><b><i>Crawling to scan your site to help it appear in search engine results</i></b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b><i>Agent</i></b></p>
+				</td>
+				<td>
+					<p><b><i>User-directed agents visiting a page on behalf of a human</i></b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b><i>Training</i></b></p>
+				</td>
+				<td>
+					<p><b><i>Crawling to train or fine-tune models</i></b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Transact</p>
+				</td>
+				<td>
+					<p>Checkout actions on behalf of users</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Data Collection</p>
+				</td>
+				<td>
+					<p>Includes price scraping, competitive intelligence gathering, and third-party analytics</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Security Testing</p>
+				</td>
+				<td>
+					<p>Includes vulnerability scanning and penetration testing</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SEO</p>
+				</td>
+				<td>
+					<p>SEO crawling, site auditing, accessibility checks</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Ads Verification</p>
+				</td>
+				<td>
+					<p>Ad placement verification, ad fraud detection</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Social / Link Preview</p>
+				</td>
+				<td>
+					<p>Link previews for social platforms and messaging apps</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Feed Fetching</p>
+				</td>
+				<td>
+					<p>Includes RSS readers, podcast aggregators, and news feed bots</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Monitoring &amp; Operations</p>
+				</td>
+				<td>
+					<p>Includes uptime monitoring, webhooks, and health checks</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p><sup><i>Bold italicized rows indicate the new configurable options that are available to all customers.</i></sup></p>
+	<div class="flex anchor relative">
+		<h3 id="how-does-a-crawler-use-my-content">How does a crawler use my content?</h3>
+		<a href="https://blog.cloudflare.com/#how-does-a-crawler-use-my-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Another piece of information we’ve heard is important to our customers is a bot’s<b> content use — what a bot may keep and reshare after it has crawled your content.</b> To address this, we are building capabilities for Bot Management customers to select and block based on the “content use.” This setting can be set to one of three levels, from least to most permissive:</p>
+	<ul>
+		<li>
+			<p><code>immediate</code> — interact, but store and reuse nothing</p>
+		</li>
+		<li>
+			<p><code>reference</code> (default) — index, excerpt, and link back</p>
+		</li>
+		<li>
+			<p><code>full</code> — summarize and reproduce</p>
+		</li>
+	</ul>
+	<p>These values can be combined with bot classifications to express nuanced rules, such as “allow all bots that are used for <b>Search</b>, <b>SEO</b>, and <b>Ads Verification</b>, but only up to the <code>reference</code> use level.” This allows website owners to make decisions in sensible groupings rather than manage individual bot-by-bot rules<b>.</b></p>
+	<p>To further support this, starting today, we're testing a new signal, <code>use</code>, that extends <a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>Content Signals</u></a> and lives in your robots.txt. This extends the three fields of the first version of Content Signals with a fourth, optional field that expresses the same preference as above:</p>
+	<ul>
+		<li>
+			<p><code>use=immediate</code></p>
+		</li>
+		<li>
+			<p><code>use=reference</code></p>
+		</li>
+		<li>
+			<p><code>use=full</code></p>
+		</li>
+	</ul>
+	<p>As with all other items listed in the robots.txt file, the values of content use signal a website owner’s <i>preference</i>, rather than issuing blocks directly. We’re now adding support for this extension: all customers who have already enabled managed robots.txt — which prepends the preference to robots.txt that crawling for search is okay, but that crawling for training is not — will now have the additional preference of <code>use=reference</code> added to their robots.txt.</p>
+	<pre class="language-javascript"><code class="language-javascript"># Cloudflare Managed content with original Content Signals
+
+User-agent: *
+Content-Signal: search=yes,ai-train=no
+Allow: /</code></pre>
+	<p><sup><i>The contents of Cloudflare managed robots.txt with the original Content Signals values. </i></sup></p>
+	<pre class="language-Typescript"><code class="language-Typescript"># Cloudflare Managed content with the new content-use signal
+
+User-agent: *
+Content-Signal: search=yes,ai-train=no,use=reference
+Allow: /</code></pre>
+	<p><sup><i>The contents of Cloudflare managed robots.txt with the added parameter.</i></sup></p>
+	<p>We’re also starting to track content uses for every bot in BotBase, and when we discover a bot abusing these signals, it will lose the “Verified” status, resulting in it no longer being allowed. Today, bots that reproduce in full cannot have the Verified status.</p>
+	<div class="flex anchor relative">
+		<h3 id="what-does-it-mean-for-a-bot-to-be-verified">What does it mean for a bot to be Verified?</h3>
+		<a href="https://blog.cloudflare.com/#what-does-it-mean-for-a-bot-to-be-verified" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Speaking of “Verified,” the definition of <a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots" target="_blank" rel="noopener noreferrer"><u>Verified</u></a> is being updated to reflect the upcoming changes to default allow and block baselines. Previously, <i>all</i> Verified bots were allowed by default, which was reflected in our basic <a href="https://developers.cloudflare.com/bots/get-started/bot-fight-mode" target="_blank" rel="noopener noreferrer"><u>Bot Fight Mode</u></a> offering to block unwanted automatic traffic and in our rule templates for Enterprise Bot Management customers.&nbsp;</p>
+	<p>Starting today, we’re adjusting this to add nuance: non-verified bots are still default blocked, but we are no longer viewing Verified as “default allowed.” Now, the Verified label makes a bot allowable with its relevant category, meaning the <i>allowed category</i> (e.g., allowing Search) will determine what is allowed to access a website.</p>
+	<p>To balance this change, we’re opening up the process of becoming a Verified bot, and making it more transparent, too. To "Verify" a bot, a bot operator needs to show two things: that you represent yourself honestly, <i>and</i> you don't abuse the access that honesty earns. And to make this easier on bot operators, we’re currently building management tools for bot operators to better ensure they are accurately represented by Cloudflare’s classification system (to be announced in the near future).&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QMZhQvcXGxpLnazN2qwgW/d00f7e8176e8471fa94725379737259b/BLOG-3337_4.png" alt="BLOG-3337 4" class="kg-image" width="1999" height="1080" loading="lazy">
+	</figure>
+	<p><sup><i>A preview screenshot of the upcoming platform built directly for bot operators who are part of or want to be a part of BotBase, the next generation of the Cloudflare Bots Directory.</i></sup></p>
+	<div class="flex anchor relative">
+		<h3 id="experimenting-with-transitive-trust">Experimenting with transitive trust</h3>
+		<a href="https://blog.cloudflare.com/#experimenting-with-transitive-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One more piece: The bot (or agent) at your door increasingly isn't run by the company that built it. A platform like Cloudflare’s Developer Platform runs automations for thousands of different operators at once, ranging from enterprises to a developer you've never heard of. You might trust Stripe, but you don't necessarily trust everyone who wired Stripe's tools into a weekend project.</p>
+	<p>We call the case of (site owner → bot owning company → end user) a matter of <b>transitive trust</b>, and we're proposing to utilize the existing Forwarded header as defined in <a href="https://www.rfc-editor.org/info/rfc7239" target="_blank" rel="noopener noreferrer"><u>RFC 7239</u></a> that rides along with the request and allows “proxy components to disclose information lost in the proxying process.”&nbsp;</p>
+	<p>This is similar to what <code>X-Forwarded-For</code> does for IP addresses, or <code>X-Forwarded-Host</code> does to preserve the original Host header. So when a website owner says, "Allow this operator," that preference will hold, whether the operator comes to you directly or through three layers of intermediaries that are trusted. More details can be found in <a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>our documentation</u></a>, with a brief example to show the format below.</p>
+	<p><code>Forwarded: for="openai"</code></p>
+	<p>Adding the extension with content-use discussed above, the header addition would look something like the below, specifying how the operator says they will use the content they access:</p>
+	<p><code>Forwarded: for="openai";use="reference"</code></p>
+	<p>This also lines up the incentive model we want to foster. Losing trusted status across the more than 20% of web domains that sit behind Cloudflare is a deterrent with teeth. Trust becomes something you can carry with you, and something you can lose.</p>
+	<p>However, as <a href="https://blog.cloudflare.com/past-bots-and-humans"><u>bot traffic blends with human traffic</u></a>, it’s possible that this system of transitive trust doesn’t carry beyond the users who can afford to be identifiable. The measures we are proposing today help to convey trust, but they won’t fit the entire web for all time. Small sources of traffic <a href="https://blog.cloudflare.com/internet-privacy"><u>need privacy</u></a>, and companies that want to preserve their own privacy commitments should be able to explore fair building blocks for the future of an agentic Internet, such as <a href="https://blog.cloudflare.com/private-rate-limiting"><u>private rate limiting</u></a>.</p>
+	<div class="flex anchor relative">
+		<h3 id="set-your-terms-today">Set your terms today</h3>
+		<a href="https://blog.cloudflare.com/#set-your-terms-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>These are small changes that move in the same direction: site owners get more control over who uses their content, and how. We believe the new defaults we discussed today and will soon implement are ones that encourage transparency and are more reflective of where the world is going.</p>
+	<p>Of course, the ebbs and flows of the web will continue shifting under us, and we'll keep adjusting with it. But the direction won't change, because it's the one Cloudflare started with: a web ecosystem built around trust. Where the people who make things can decide how they're used — and one where being honest about what you do earns you more access, not less.</p>
+	<p>These new options to manage AI traffic are live now, and can be configured by all existing customers in their <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>zone Settings</u></a>. Not on Cloudflare yet? <a href="https://www.cloudflare.com/lp/pg-one-platform" target="_blank" rel="noopener noreferrer"><u>Start for free</u></a> to set the traffic controls that you want today.</p>
+	<p>Happy Content Independence Day.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rbGT0BkPYbCvRni7qscHD/b6c935d685738b14a16493b73fb0e650/BLOG-3337_5.png" alt="BLOG-3337 5" class="kg-image" width="1999" height="500" loading="lazy">
+	</figure>
+	<p></p>
+</div>

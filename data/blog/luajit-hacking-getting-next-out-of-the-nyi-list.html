@@ -1,5 +1,5 @@
 <div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lsPZB2aeMhpiwz5S4zHmi/25aebe148ed2c2151857ec7dd3345ac7/luajit-hacking-getting-next-out-of-the-nyi-list.jpg" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>At Cloudflare we’re heavy users of LuaJIT and in the past have sponsored many improvements to its performance.</p>
 	<p>LuaJIT is a powerful piece of software, maybe the highest performing JIT in the industry. But it’s not always easy to get the most out of it, and sometimes a small change in one part of your code can negatively impact other, already optimized, parts.</p>
 	<p>One of the first pieces of advice anyone receives when writing Lua code to run quickly using LuaJIT is “avoid the NYIs”: the language or library features that can’t be compiled because they’re NYI (not yet implemented). And that means they run in the interpreter.</p>

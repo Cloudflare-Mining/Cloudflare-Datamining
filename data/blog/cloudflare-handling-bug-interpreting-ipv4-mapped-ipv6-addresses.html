@@ -1,5 +1,5 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ghL0P7hZIsp8uGDoYyIl1/6ea3c3aea46a59b4d5a8582c3863d615/cloudflare-handling-bug-interpreting-ipv4-mapped-ipv6-addresses.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>In November 2022, our <a href="https://www.cloudflare.com/disclosure" target="_blank" rel="noopener noreferrer">bug bounty program</a> received a critical and very interesting report. The report stated that certain types of DNS records could be used to bypass some of our network policies and connect to ports on the loopback address (e.g. 127.0.0.1) of our servers. This post will explain how we dealt with the report, how we fixed the bug, and the outcome of our internal investigation to see if the vulnerability had been previously exploited.</p>
 	<p><a href="https://datatracker.ietf.org/doc/html/rfc4291#section-2-5-5" target="_blank" rel="noopener noreferrer">RFC 4291</a> defines ways to embed an IPv4 address into IPv6 addresses. One of the methods defined in the RFC is to use IPv4-mapped IPv6 addresses, that have the following format:</p>
 	<pre class="language-bash"><code class="language-bash">   |                80 bits               | 16 |      32 bits        |

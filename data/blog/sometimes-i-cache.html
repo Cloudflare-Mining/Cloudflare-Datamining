@@ -1,5 +1,5 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5JRBcwN5l6vgSUG2l3sdz/25eb0496b0b2baa30ea890dd7c1dc078/image__1_.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>HTTP caching is conceptually simple: if the response to a request is in the cache, serve it, and if not, pull it from your origin, put it in the cache, and return it. When the response is old, you repeat the process. This is called cache revalidation. If you are worried about too many requests going to your origin at once, you protect it with a <a href="https://developers.cloudflare.com/cache/concepts/revalidation" target="_blank" rel="noopener noreferrer"><u>cache lock</u></a>: a small program, possibly distinct from your cache, that indicates if a request is already going to your origin. This is called request collapsing.</p>
 	<p>In this blog post, we dive into how cache revalidation works, and present a new approach based on probability. For every request going to the origin, we simulate a die roll. If it’s 6, the request can go to the origin. Otherwise, it stays stale to protect our origin from being overloaded. To see how this is built and optimised, read on.</p>
 	<div class="flex anchor relative">

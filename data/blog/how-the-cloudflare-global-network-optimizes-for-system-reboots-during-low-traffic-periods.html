@@ -1,5 +1,5 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Cqq50Gm9vpw1vDk7Xtd5a/7a119a0ee41ab871be15b24d97d2c18e/how-the-cloudflare-global-network-optimizes-for-system-reboots-during-low-traffic-periods.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>To facilitate the huge scale of Cloudflare’s customer base, we maintain data centers which span more than 300 cities in over 100 countries, including approximately 30 locations in Mainland China.</p>
 	<p>The Cloudflare global network is built to be continuously updated in a zero downtime manner, but some changes may need a server reboot to safely take effect. To enable this, we have mechanisms for the whole fleet to automatically reboot with changes gated on a unique identifier for the reboot cycle. Each data center has a <b>maintenance window</b>, which is a time period - usually a couple of hours - during which reboots are permitted.</p>

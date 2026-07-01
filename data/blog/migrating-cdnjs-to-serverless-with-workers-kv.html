@@ -1,6 +1,6 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/migrating-cdnjs-to-serverless-with-workers-kv">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/migrating-cdnjs-to-serverless-with-workers-kv">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KT7mX75POQq6wvpmqAbAy/b2489955f86a39fec4ea0a27ad6f7a7b/migrating-cdnjs-to-serverless-with-workers-kv.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>Cloudflare powers <a href="https://cdnjs.com" target="_blank" rel="noopener noreferrer">cdnjs</a>, an open-source project that accelerates websites by delivering popular JavaScript libraries and resources via <a href="https://www.cloudflare.com/cdn" target="_blank" rel="noopener noreferrer">Cloudflare’s network</a>. Since <a href="https://blog.cloudflare.com/an-update-on-cdnjs">our major update in December</a>, we focused on remodelling cdnjs for scalability and resilience. Today, we are excited to announce how Cloudflare delivers cdnjs—a migration to a serverless infrastructure using <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> and its distributed key-value store <a href="https://developers.cloudflare.com/workers/reference/storage" target="_blank" rel="noopener noreferrer">Workers KV</a>!</p>
 	<div class="flex anchor relative">
 		<h3 id="what-is-cdnjs">What is cdnjs?</h3>

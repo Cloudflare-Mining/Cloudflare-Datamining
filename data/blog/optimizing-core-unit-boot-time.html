@@ -1,0 +1,180 @@
+<div class="mb2 gray5">7 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/optimizing-core-unit-boot-time">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/optimizing-core-unit-boot-time">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1n94QcCCOGvQqPtXolDQPT/8b336838a0cba9e7e485221fbf9d4c0c/BLOG-3108_1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare's core is the centralized data centers that run our control plane, billing, and analytics — distinct from the globally distributed edge that handles user traffic. Core servers are bare metal, and when issues happen during reboot, the consequences can cascade fast.&nbsp; </p>
+	<p>Their boot sequence is orchestrated by <a href="https://en.wikipedia.org/wiki/UEFI" target="_blank" rel="noopener noreferrer"><u>UEFI</u></a>, the modern firmware standard that initializes hardware and hands off control to the operating system. Small quirks in that handoff can have outsized consequences.</p>
+	<p>After a routine firmware update, some of our core servers were taking <i>four hours</i> to come back online, rather than just minutes as they did before. What should have been a one-day fleet-wide rollout was stretching into multi-day slogs. New nodes faced the full timeout gauntlet on their very first boot. Maintenance windows ballooned. Engineering teams had to babysit upgrades that should have run unattended.&nbsp;</p>
+	<p>The behavior we saw was brought to light when we were bringing nodes online that had been powered off for an extended period. These nodes’ firmware was out of date and required multiple updates to resolve. Combine this with recent updates to the boot protocols used by servers in some of our locations, and boot times on the affected nodes became unacceptable.</p>
+	<p>This is the story of how we tracked the cause to a firmware quirk and an over-eager linear search through every available network boot interface, and how we cut total boot and upgrade time from hours back down to minutes. Along the way, we'll share what we learned about UEFI internals, vendor-specific quirks, and the automation strategies that ultimately solved the problem.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-network-boot-interface">The network boot interface</h3>
+		<a href="https://blog.cloudflare.com/#the-network-boot-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A network boot interface allows a server to boot its operating system over the network instead of from local storage. This is critical for centralized, automated, and scalable control over how machines start up,&nbsp; especially across a globally distributed fleet serving different workloads. Since our servers are located in different environments and serve different purposes, they have different requirements for a specific network boot interface. The two primary interfaces are the <a href="https://en.wikipedia.org/wiki/Preboot_Execution_Environment" target="_blank" rel="noopener noreferrer"><u>Preboot Execution Environment (PXE)</u></a> and Unified Extensible Firmware Interface (<a href="https://en.wikipedia.org/wiki/UEFI" target="_blank" rel="noopener noreferrer"><u>UEFI</u></a>) HTTPS boot.&nbsp;</p>
+	<p>As part of our reboot process, our servers usually go through PXE for various automation reasons. At Cloudflare, we use <a href="https://ipxe.org" target="_blank" rel="noopener noreferrer"><u>the open-source iPXE</u></a>, an open-source network boot firmware that supports modern protocols like HTTP and HTTPS. This allows computers to boot operating systems directly from web servers, the cloud, or enterprise storage networks with significantly faster speeds and greater reliability.</p>
+	<p>For organizations, iPXE turns the boot process into a programmable workflow. It offers advanced scripting capabilities that allow IT teams to automate complex deployments, such as provisioning servers based on specific hardware configurations or managing secure, diskless workstations.&nbsp;</p>
+	<p>Some of our hardware supports HTTPS-based UEFI network boot, which enables the computer's motherboard firmware to natively download operating system files securely.</p>
+	<div class="flex anchor relative">
+		<h3 id="the-linear-search">The linear search</h3>
+		<a href="https://blog.cloudflare.com/#the-linear-search" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our tale begins with that fateful firmware update. Following the update, the first reports came through our internal channels: servers weren't coming back online. Monitoring dashboards showed machines stuck in a pre-OS state for far longer than expected. Our initial suspicion was a firmware regression: perhaps the update itself had introduced a bug that was hanging the boot process.</p>
+	<p>To rule that out, we pulled up the serial console on an affected machine and watched a boot cycle in real time. The firmware Power On Self Test (POST) completed normally and hardware initialization looked healthy. But then, instead of quickly reaching the network boot stage and pulling down an OS image, the server sat waiting. And waiting.&nbsp;</p>
+	<p>The console output told the story: the system was attempting an IPv4 HTTPS network boot, timing out after several minutes, then trying IPv4 iPXE, timing out again, then repeating both — all before finally reaching the IPv6 HTTPS boot interface that would actually succeed.</p>
+	<p>Every failed network boot attempt burned roughly five minutes waiting for a timeout response. With four attempts stacking up before the correct interface was reached, a single boot cycle wasted around twenty minutes. For a routine reboot, that's painful. For firmware upgrade automation, which requires multiple sequential reboots, one per component, those twenty-minute penalties compounded into nearly four hours of idle waiting per server.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6x6QmYn2eTSTq2sncxLGKy/4b7dcbe2ed23feec5382f59ec6e271fc/image__8_.png" alt="BLOG-3108 2" class="kg-image" width="1414" height="2010" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h2 id="no-searching-games-declare-my-boot-interface">No searching games: Declare my boot interface</h2>
+		<a href="https://blog.cloudflare.com/#no-searching-games-declare-my-boot-interface" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>After tracing the boot sequence and isolating the timeout pattern, the root cause became clear: the servers were blindly searching through every available network boot interface, one by one, waiting for each to fail before moving on. The fix was to eliminate the guesswork entirely — declare the correct boot interface upfront so the system never wastes time on interfaces that will never respond. </p>
+	<p>But putting this into practice was far from straightforward. As we explain next, we hit several obstacles: the order of our boot automation workflow, a setting we were blocked from changing, and differing string formats from our different network interface card vendors.</p>
+	<div class="flex anchor relative">
+		<h3 id="our-boot-automation-workflow">Our boot automation workflow</h3>
+		<a href="https://blog.cloudflare.com/#our-boot-automation-workflow" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our boot automation flow is in three broad stages: firmware initialization, pre-boot, and kernel startup. After power on, the UEFI firmware does some hardware and peripheral initialization followed by the PXE pre-boot environment. The pre-boot sets up the network card and executes a small program called bootloader, which kickstarts the kernel. It’s in this PXE stage that various network interfaces are probed for the right one. On first boot, firmware upgrades are included in our boot automation workflow.&nbsp;</p>
+	<p>And because each firmware upgrade requires a reboot (and its attendant network boot attempt sequence), that’s how we got to the situation where the total boot time took close to four hours.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XEkzNs5WJ5UXkJ1x14NXu/c537b305c9e041b472ffc26f2de7de84/BLOG-3108_3.png" alt="BLOG-3108 3" class="kg-image" width="994" height="1999" loading="lazy">
+	</figure>
+	<p>By restructuring the automation sequence to declare the network boot interface order early on in the pre-boot PXE stage for each hardware/use-case, we were able to cut the total time by about an hour, since the boot process no longer needed to spend 20 minutes probing for each firmware upgrade.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aKbpHVBioqskgN3yWErNa/0ea2f3959b122476e77eeeee0b56d0b8/BLOG-3108_4.png" alt="BLOG-3108 4" class="kg-image" width="1094" height="1999" loading="lazy">
+	</figure>
+	<p>Attempting to declare the network boot interface order introduced two specific constraints:</p>
+	<ol>
+		<li>
+			<p>Legacy Support: Boot ordering is not supported on older UEFI versions</p>
+		</li>
+		<li>
+			<p>Persistence: Configuration settings are often reset following a UEFI firmware upgrade</p>
+		</li>
+	</ol>
+	<p>To address these edge cases, we implemented a state validation step. The firmware automation now validates the configuration post-change: if it detects that settings have been modified, it re-applies the config and triggers a reboot.</p>
+	<p>Although the first boot may take slightly longer, this change drastically reduces the time required for all future start-ups from about 20 minutes to less than a minute per subsequent boot.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="setting-the-boot-order-disabled-by-the-vendor">Setting the boot order disabled by the vendor</h3>
+		<a href="https://blog.cloudflare.com/#setting-the-boot-order-disabled-by-the-vendor" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The internal data structure of the Network Boot settings is an EFI_IFR_REF3 data structure that was being lazy loaded, meaning the data is not instantiated until it is explicitly accessed via a GUI callback:</p>
+	<pre class="language-C++"><code class="language-C++">typedef struct _EFI_IFR_REF3 {
+  EFI_IFR_OP_HEADER          Header;
+  EFI_IFR_QUESTION_HEADER    Question;
+  EFI_QUESTION_ID            QuestionId;
+  EFI_GUID                   FormSetId;
+} EFI_IFR_REF3;
+</code></pre>
+	<p>While this is standard industry practice to accelerate <a href="https://en.wikipedia.org/wiki/BIOS" target="_blank" rel="noopener noreferrer"><u>BIOS</u></a> boot times, it rendered the “Network Boot Interface” invisible to our programmatic scans. Because the structure hadn't been "loaded" yet, our automation couldn't discover the priorities.</p>
+	<p>We worked with our vendors to enable specific tokens within the fixed "Boot Order Module." This forces the discovery of the Network Boot Interface during the boot sequence without requiring manual GUI interaction.</p>
+	<p>The UEFI from our equipment manufacturers had an immutable setting, <code><b>Force Priority Httpv4 Httpv6 Pxev4 Pxev6</b></code>, that was preventing us from changing the boot order.</p>
+	<p>This required a new BIOS version from our vendor and a debug session when setting the boot order.</p>
+	<div class="flex anchor relative">
+		<h3 id="different-strings-from-different-network-interface-card-vendors">Different strings from different network interface card vendors</h3>
+		<a href="https://blog.cloudflare.com/#different-strings-from-different-network-interface-card-vendors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Depending on the network interface card (NIC) vendor, the strings would be different, causing a mismatch when configuring the boot order through iPXE.</p>
+	<p>Examples:</p>
+	<p><code>UEFI: HTTPS IPv4 Ethernet Network Adapter XXX-XXX-Y for OCP 3.0 P1
+			UEFI: HTTPS IPv4 Network Adapter - 50:00:E6:8F:4F:32 P1</code></p>
+	<p>In order to work around this issue, we had to implement an additional feature to the CfHIIConfig_App tool, allowing it to set the config without having the full string:</p>
+	<p><code>.*HTTP.*IPv4.*P1</code></p>
+	<p>The config would then be matched against the accepted config strings and would select the correct boot order. We are currently working with our UEFI vendors to standardize the network interface strings to only make use of the relevant information (e.g. protocol, transfer type, port number, and physical slot index) and drop the product details like the MAC address. The product details, if needed, can be read from the embedded vital product detail information of the network interface card. That way we eliminate both configuration drift and the use of wildcards.</p>
+	<div class="flex anchor relative">
+		<h4 id="inability-to-check-the-config-via-ipxe">Inability to check the config via iPXE&nbsp;</h4>
+		<a href="https://blog.cloudflare.com/#inability-to-check-the-config-via-ipxe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Since iPXE reads this variable as HEX, it was reading the string output as hex. To check if the network boot setting was modified and to reduce boot time (so we don’t have to print the variables before setting them), we implemented a boolean flag, <code>uefi-same-hex</code>, to indicate whether a configuration changed.</p>
+	<p>This enabled us to run a single <code style="color: green;">set</code> command instead of first running <code style="color: green;">show</code> to compare, and then <code style="color: green;">set</code> if the configuration was not in the desired state.</p>
+
+	<pre class="language-Shell"><code class="language-Shell"># construct path to read the update variable
+set buffer-var-guid 91468514-75bc-4bb5-8f33-91efff9e9b1f
+set var-upd-path efivar/CfHIIVarUpd-${buffer-var-guid}
+
+#Run the config change command
+imgexec &lt;signed CF UEFI configuration App&gt; set ${uefi-setting}=${uefi-value}
+
+#Compare the update variable with the expected value if it has changed.
+#If it has changed, set the local variable to reboot the system
+iseq ${uefi-same-hex} ${${var-upd-path}} || set has-changed ${uefi-diff-hex}
+</code></pre>
+
+	<div class="flex anchor relative">
+		<h3 id="the-result-a-more-dynamic-system">The result: a more dynamic system</h3>
+		<a href="https://blog.cloudflare.com/#the-result-a-more-dynamic-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>By eliminating the guesswork from our network boot sequence, we turned a four-hour ordeal back into a 3-minute process. The result is a system where changes are dynamic and no manual BIOS interactions are needed. A single BIOS firmware image serves all SKUs, configuration updates deploy at scale through our existing release pipeline, and the entire workflow operates from iPXE. </p>
+	<table>
+		<tbody>
+			<tr>
+				<th>
+					<p><b>Metric</b></p>
+				</th>
+				<th>
+					<p><b>Before ordering change</b></p>
+				</th>
+				<th>
+					<p><b>After ordering change</b></p>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Firmware Upgrade Automation</b></p>
+				</td>
+				<td>
+					<p>Nearly 4 hours</p>
+				</td>
+				<td>
+					<p>3 minutes</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><b>Subsequent Single Boot</b></p>
+				</td>
+				<td>
+					<p>About 20 minutes</p>
+				</td>
+				<td>
+					<p>Less than a minute</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>None of this would have been possible without digging deep into UEFI internals, collaborating closely with our OEM vendors to unlock capabilities like programmatic boot order control, and leveraging open-source tools like iPXE to build scalable automation.</p>
+	<p>With each passing day, Cloudflare's OpenBMC team continues to learn about, experiment with, and optimize the boot process across our core fleet. If you are managing bare-metal infrastructure and struggling with slow server boot times, we hope this post has given you a practical framework for identifying and eliminating unnecessary delays in your own network boot sequence. For those interested in learning more about iPXE and network boot automation, check it out <a href="https://ipxe.org" target="_blank" rel="noopener noreferrer"><u>here</u></a>!</p>
+</div>

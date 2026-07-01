@@ -1,5 +1,5 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3umxj7gwKbeYTbABVLOLYT/e2504da118b56c5ce0f6ecbc20d73492/upcoming-lets-encrypt-certificate-chain-change-and-impact-for-cloudflare-customers.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>Let’s Encrypt, a publicly trusted certificate authority (CA) that Cloudflare uses to issue TLS certificates, has been relying on two distinct certificate chains. One is cross-signed with IdenTrust, a globally trusted CA that has been around since 2000, and the other is Let’s Encrypt’s own root CA, ISRG Root X1. Since Let’s Encrypt launched, ISRG Root X1 has been steadily gaining its own device compatibility.</p>
 	<p>On September 30, 2024, Let’s Encrypt’s certificate chain cross-signed with IdenTrust will <a href="https://letsencrypt.org/2023/07/10/cross-sign-expiration.html" target="_blank" rel="noopener noreferrer">expire</a>. To proactively prepare for this change, on May 15, 2024, Cloudflare will stop issuing certificates from the cross-signed chain and will instead use Let’s Encrypt’s ISRG Root X1 chain for all future Let’s Encrypt certificates.</p>

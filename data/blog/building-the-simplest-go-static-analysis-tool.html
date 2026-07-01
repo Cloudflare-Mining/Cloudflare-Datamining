@@ -1,5 +1,5 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https:undefined" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p><a href="https://docs.google.com/document/d/1Bz5-UB7g2uPBdOx-rw5t9MxJwkfpx90cqG9AFL0JAYo/edit" target="_blank" rel="noopener noreferrer">Go native vendoring</a> (a.k.a. GO15VENDOREXPERIMENT) allows you to freeze dependencies by putting them in a <code>vendor</code> folder in your project. The compiler will then look there before searching the GOPATH.</p>
 	<p>The only annoyance compared to using a per-project GOPATH, which is what we used to do, is that you might forget to vendor a package that you have in your GOPATH. The program will build for you, but it won't for anyone else. Back to the <a href="https://www.urbandictionary.com/define.php?term=wfm" target="_blank" rel="noopener noreferrer">WFM</a> times!</p>
 	<p>I decided I wanted something, a tool, to check that all my (non-stdlib) dependencies were vendored.</p>

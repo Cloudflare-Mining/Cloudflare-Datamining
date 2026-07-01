@@ -1,5 +1,5 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33gSgvPllx4ibpXHBDvENW/0fd0d5b5e7f2c7cc6ab79cf7f71b55fa/image1.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>On January 8, 2026, a routine update to 1.1.1.1 aimed at reducing memory usage accidentally triggered a wave of DNS resolution failures for users across the Internet. The root cause wasn't an attack or an outage, but a subtle shift in the order of records within our DNS responses. </p>
 	<p>While most modern software treats the order of records in DNS responses as irrelevant, we discovered that some implementations expect CNAME records to appear before everything else. When that order changed, resolution started failing. This post explores the code change that caused the shift, why it broke specific DNS clients, and the 40-year-old protocol ambiguity that makes the "correct" order of a DNS response difficult to define.</p>
 	<div class="flex anchor relative">

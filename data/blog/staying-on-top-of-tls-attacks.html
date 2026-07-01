@@ -1,5 +1,5 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1COc2Gk7od84cBjNfwG5Df/2b9c9ba9e6b5081ab07a438fbc8f3750/staying-on-top-of-tls-attacks.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>CloudFlare makes extensive use of TLS connections throughout our service which makes staying on top of the latest news about security problems with TLS a priority. We use TLS both externally and internally and different uses of TLS have different constraints.</p>
 	<p>Broadly there are three ways we use TLS: to handle HTTPS connections from web browsers visiting web sites that use CloudFlare, to make HTTPS connections from our network of datacenters to our customers' web servers, and internally within our network.</p>
 	<p>This week, news of a new type of attack against the RC4 cipher used for some TLS connections has made us reevaluate (once again) all our use of TLS and specifically which ciphersuites we are using.</p>

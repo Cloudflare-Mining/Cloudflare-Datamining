@@ -1,5 +1,5 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cMFwGMw9rUQ9gASHO8lzx/628c204e32c9d3762f0f2035cda53e5f/the-curious-case-of-slow-downloads.jpg" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>Some time ago we discovered that certain very slow downloads were getting abruptly terminated and began investigating whether that was a client (i.e. web browser) or server (i.e. us) problem.</p>
 	<p>Some users were unable to download a binary file a few megabytes in length. The story was simple—the download connection was abruptly terminated even though the file was in the process of being downloaded. After a brief investigation we confirmed the problem: somewhere in our stack there was a bug.</p>
 	<p>Describing the problem was simple, reproducing the problem was easy with a single <code>curl</code> command, but fixing it took surprising amount of effort.</p>

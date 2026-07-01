@@ -1,5 +1,5 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/79iaQL2jb34HPkDNgOKlXj/bb0fff15527b009b3dfd6056b84c1efc/on-the-dangers-of-intels-frequency-scaling.jpg" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>While I was writing the post <a href="https://blog.cloudflare.com/arm-takes-wing">comparing the new Qualcomm server chip, Centriq, to our current stock of Intel Skylake-based Xeons</a>, I noticed a disturbing phenomena.</p>
 	<p>When benchmarking OpenSSL 1.1.1dev, I discovered that the performance of the cipher <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305</a> does not scale very well. On a single thread, it performed at the speed of approximately 2.89GB/s, whereas on 24 cores, and 48 threads it performed at just over 35 GB/s.</p>
 	<figure class="kg-card kg-image-card ">

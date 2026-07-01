@@ -1,5 +1,5 @@
 <div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/507iK0gADvrSqjlYRoVuvQ/a499609894e22b725d1f3ad483bd073e/optimizing-tcp-for-high-throughput-and-low-latency.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>Here at Cloudflare we're constantly working on improving our service. Our engineers are looking at hundreds of parameters of our traffic, making sure that we get better all the time.</p>
 	<p>One of the core numbers we keep a close eye on is HTTP request latency, which is important for many of our products. We regard latency spikes as bugs to be fixed. One example is the 2017 story of <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing">"Why does one NGINX worker take all the load?"</a>, where we optimized our TCP Accept queues to improve overall latency of TCP sockets waiting for accept().</p>

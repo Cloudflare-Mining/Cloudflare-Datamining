@@ -1,5 +1,5 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ME74WmN0LL35y8Ic7DShc/33423919a893126ad9de5147bd00a2ee/revenge-listening-sockets.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>Back in November we wrote <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">a blog post about one latency spike</a>. Today I'd like to share a continuation of that story. As it turns out, the misconfigured <code>rmem</code> setting wasn't the only source of added latency.</p>
 	<p>It looked like Mr. Wolf hadn't finished his job.</p>
 	<p>After adjusting the previously discussed <code>rmem</code> sysctl we continued monitoring our systems' latency. Among other things we measured <code>ping</code> times to our edge servers. While the worst case improved and we didn't see 1000ms+ pings anymore, the line still wasn't flat. Here's a graph of ping latency between an idling internal machine and a production server. The test was done within the datacenter, the packets never went to the public internet. The Y axis of the chart shows <code>ping</code> times in milliseconds, the X axis is the time of the measurement. Measurements were taken every second for over 6 hours:</p>

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bgoZkEpokb0OeWKamCPSZ/4da61a39ea681bb961864b6c8357981e/how-the-nsa-may-have-put-a-backdoor-in-rsas-cryptography-a-technical-primer.jpg" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>There has been a lot of news lately about <a href="http://arstechnica.com/security/2013/09/we-dont-enable-backdoors-in-our-crypto-products-rsa-tells-customers" target="_blank" rel="noopener noreferrer">nefarious-sounding backdoors</a> being inserted into cryptographic standards and toolkits. One algorithm, a pseudo-random bit generator, Dual_EC_DRBG, was ratified by the National Institute of Standards and Technology (NIST) in 2007 and is attracting a lot of attention for having a potential backdoor. This is the algorithm into which the NSA allegedly inserted a backdoor and then paid RSA to use.</p>
 	<p>So how is that possible? This is a technical primer that explains what a backdoor is, how easy it can be to create your own, and the dangerouconsequences of using a random number generator that was designed to have a backdoor. This is necessarily a long technical discussion, but hopefully by the end it should be clear why Dual_EC_DRBG has such a bad reputation.</p>
 	<div class="flex anchor relative">

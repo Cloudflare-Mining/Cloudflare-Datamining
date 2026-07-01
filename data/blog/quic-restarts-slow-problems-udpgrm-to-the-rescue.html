@@ -1,5 +1,5 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aAFftV8cTqulBnhQIkCVy/514a74be42fced1ea447c06ae2bc8276/image1.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>At Cloudflare, we do everything we can to avoid interruption to our services. We frequently deploy new versions of the code that delivers the services, so we need to be able to restart the server processes to upgrade them without missing a beat. In particular, performing graceful restarts (also known as "zero downtime") for UDP servers has proven to be surprisingly difficult.</p>
 	<p>We've <a href="https://blog.cloudflare.com/graceful-upgrades-in-go"><u>previously</u></a> <a href="https://blog.cloudflare.com/oxy-the-journey-of-graceful-restarts"><u>written</u></a> about graceful restarts in the context of TCP, which is much easier to handle. We didn't have a strong reason to deal with UDP until recently — when protocols like HTTP3/QUIC became critical. This blog post introduces <b><i>udpgrm</i></b>, a lightweight daemon that helps us to upgrade UDP servers without dropping a single packet.</p>
 	<p><a href="https://github.com/cloudflare/udpgrm/blob/main/README.md" target="_blank" rel="noopener noreferrer"><u>Here's the </u><i><u>udpgrm</u></i><u> GitHub repo</u></a>.</p>

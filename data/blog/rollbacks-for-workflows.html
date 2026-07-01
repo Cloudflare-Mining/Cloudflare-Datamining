@@ -1,0 +1,336 @@
+<div class="mb2 gray5">9 min read</div>
+<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/rollbacks-for-workflows">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/rollbacks-for-workflows">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6HPEKK5VhL31s4G3AHSo4T/a97f5954b6d2ae476a32f550c163f181/image3.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Cloudflare Workflows allows you to build durable, multi-step applications with built-in retries and state persistence across long-running processes. When a <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflow</u></a> executes, each step can call external systems, retry failures, and persist state across restarts. But if one step fails, it may leave earlier work from completed steps in an inconsistent or partial state.</p>
+	<p>Today we’re shipping saga rollbacks for Workflows, allowing you to declare rollback logic within the step itself, in case of failure.</p>
+	<p>For example, consider a workflow for transferring funds between accounts at two different banks:</p>
+	<ol>
+		<li>
+			<p>Debit from account at Bank A</p>
+		</li>
+		<li>
+			<p>Credit to account at Bank B</p>
+		</li>
+		<li>
+			<p>Send email confirmation to both account owners</p>
+		</li>
+	</ol>
+	<p>What happens if Step 2, the credit to account at Bank B, fails? Once the debit succeeds at Bank A, the transaction is committed and the money has left its system. As the orchestrator of the transaction, you cannot simply “undo” the operation in Bank A's system. Instead, the money must be credited back to the account at Bank A through a new operation that semantically reverses the first one.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1j8xfDeKb3FCgE2Ktxf4fq/723e2b9e34189747d3c8eb65f906fb41/BLOG-3317_image6.png" alt="BLOG-3317 image6" class="kg-image" width="1376" height="1310" loading="lazy">
+	</figure>
+	<p>
+		This pairing of an operation and its compensation logic is called the <a href="https://www.youtube.com/watch?v=xDuwrtwYHu8" target="_blank" rel="noopener noreferrer"><u>saga pattern</u></a>.</p>
+	<p>Before today, developers had to implement their own compensation logic to track what succeeded, what failed, and what actions should be taken upon failure, outside of the steps’ direct definitions. Now, you can define compensation logic for each <code>step.do()</code> as an argument within the steps themselves, maintaining your workflow’s durability for the rollback as well.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">// track what completed so we know what to undo
+let debitA;
+let creditB;
+try {
+  debitA = await step.do("debit-bank-a", () =&gt; bankA.debit(from, amount));
+  creditB = await step.do("credit-bank-b", () =&gt; bankB.credit(to, amount));
+  await step.do("notify", () =&gt; notifyBoth(from, to, amount));
+} catch (error) {
+  // unwind in reverse. each undo is its own durable step,
+  // must be idempotent, and must keep going if one fails.
+  if (creditB) {
+    try {
+      await step.do("reverse-credit-b", () =&gt; bankB.debit(to, amount, creditB.id));
+    } catch (e) {
+      await alertOnCall("reverse-credit-b failed", e);
+    }
+  }
+  if (debitA) {
+    try {
+      await step.do("refund-debit-a", () =&gt; bankA.credit(from, amount, debitA.id));
+    } catch (e) {
+      await alertOnCall("refund-debit-a failed", e);
+    }
+  }
+  throw error;
+}</code></pre>
+	<p><i><sup>Without rollbacks</sup></i></p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">// each step ships with its own undo. add a step,
+// add its rollback right here. no growing catch
+// block, no manual ordering, no replay logic.
+await step.do("debit-bank-a", () =&gt; bankA.debit(from, amount), {
+  rollback: async ({ output }) =&gt; bankA.credit(from, amount, output.id),
+});
+await step.do("credit-bank-b", () =&gt; bankB.credit(to, amount), {
+  rollback: async ({ output }) =&gt; bankB.debit(to, amount, output.id),
+});
+await step.do("notify", () =&gt; notifyBoth(from, to, amount));</code></pre>
+	<p><i><sup>With rollbacks</sup></i></p>
+	<div class="flex anchor relative">
+		<h2 id="try-it-out">Try it out</h2>
+		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To use rollbacks, just pass an options object containing a <code>rollback</code> function as the last argument to <code>step.do()</code>.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const debit = await step.do(
+  "debit-account-a",
+  async () =&gt; {
+    return await bankA.debit({
+      accountId: fromAccountId,
+      amount,
+      idempotencyKey: `${transferId}:debit-account-a`,
+    });
+  },
+  {
+    rollback: async () =&gt; {
+      await bankA.credit({
+        accountId: fromAccountId,
+        amount,
+        idempotencyKey: `${transferId}:rollback-debit-account-a`,
+      });
+    },
+  }
+);
+
+// The idempotency keys make both the forward operations and rollback operations safe to retry without duplicating the transfer
+
+const credit = await step.do(
+  "credit-account-b",
+  async () =&gt; {
+    return await bankB.credit({
+      accountId: toAccountId,
+      amount,
+      idempotencyKey: `${transferId}:credit-account-b`,
+    });
+  },
+  {
+    rollback: async ({ output }) =&gt; {
+      if (output === undefined) {
+        return;
+      }
+
+      await bankB.debit({
+        accountId: toAccountId,
+        amount,
+        idempotencyKey: `${transferId}:rollback-credit-account-b`,
+      });
+    },
+  }
+);
+
+
+// If we fail here, we may want to revert all previous payments. Users should not have to wrap their code in complex try-catch logic just to revert two small payments (see below)
+
+await step.do("send-confirmation", async () =&gt; {
+  await sendTransferConfirmation({ ... });
+});</code></pre>
+	<p>Rollback functions should be idempotent, just like regular Workflow steps. If you refund a charge, use the payment provider's idempotency key. If you release inventory, make the release safe to call more than once.</p>
+	<p>If any step fails, the rollback handlers will execute in reverse <code>step-start</code> order. It sounds simple: run the undo steps when something fails. In practice, there are a few details that make the API and execution model important.</p>
+	<p>1. <b>The failed step may still need rollback. </b>A failed <code>step.do()</code> can still be rollback-eligible if it registered a rollback handler.</p>
+	<p>The rollback will not start if user code catches an error and the Workflow continues, but if a step error is caught and the Workflow later fails for another reason, rollback can still run for previously registered handlers, which execute in reverse <code>step-start</code> order.</p>
+	<p>Why? The step may have partially interacted with an external system before failing. For example, a payment provider may capture a charge, but the step may fail before returning the <code>chargeId</code> to Workflows. That is why rollback handlers receive <code>output</code>, but must handle <code>output === undefined</code>.</p>
+	<p>2. <b>Rollback only starts when the Workflow fails. </b>Adding a rollback handler does not mean every step error triggers rollback. If user code catches an error and continues, the Workflow continues. Rollback starts when the Workflow itself is about to fail terminally.</p>
+	<p>When rollback starts, Workflows finds eligible <code>step.do()</code> calls, runs their rollback handlers, then records the final Workflow failure.</p>
+	<p>3. <b>Ordering has to be predictable. </b>For sequential Workflows, rollback order feels obvious:</p>
+	<ol>
+		<li>
+			<p>Reserve inventory.</p>
+		</li>
+		<li>
+			<p>Charge card.</p>
+		</li>
+		<li>
+			<p>Create shipment.</p>
+		</li>
+		<li>
+			<p>If shipment fails, refund the card and release the inventory.</p>
+		</li>
+	</ol>
+	<p>Parallel steps make this more subtle. Completion order can differ from start order, so Workflows uses reverse step-start order instead of reverse completion order.</p>
+	<p>The practical rules are:</p>
+	<ol>
+		<li>
+			<p>Any started or completed steps with rollback handlers are eligible.</p>
+		</li>
+		<li>
+			<p>The failing <code>step.do()</code> is also eligible if it registered a rollback handler.</p>
+		</li>
+		<li>
+			<p>Handlers run in reverse step-start order, not completion order.</p>
+		</li>
+	</ol>
+	<div class="flex anchor relative">
+		<h2 id="how-we-designed-the-api">How we designed the API</h2>
+		<a href="https://blog.cloudflare.com/#how-we-designed-the-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Once we had the expected behavior in mind, we had to add this new pattern into the Workflows API. Rollbacks went through a few iterations before we landed on <code>rollback options</code>.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h3 id="why-not-a-fluent-or-builder-api">Why not a fluent or builder API?</h3>
+		<a href="https://blog.cloudflare.com/#why-not-a-fluent-or-builder-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>The first approach was a fluent form: <code>step.do(...).rollback(...)</code> It reads well. The forward action and the compensation sit next to each other, and the call site looks like ordinary JavaScript chaining.</p>
+	<p>The problem is that <code>step.do()</code> already has an important meaning: it starts a durable step and returns a Promise for the step output. In Workers, promise-like values are especially meaningful because Workers RPC supports <a href="https://blog.cloudflare.com/capnweb-javascript-rpc-library/#chained-calls-promise-pipelining"><u>promise pipelining</u></a>, a pattern inherited from systems like <a href="https://capnproto.org/rpc.html#time-travel-promise-pipelining" target="_blank" rel="noopener noreferrer"><u>Cap'n Proto</u></a>.</p>
+	<p>Promise pipelining lets code call a method on a future value before that value has fully returned to the caller. For example:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const session = api.authenticate(apiKey);
+const name = await session.whoami();</code></pre>
+	<p>Here, <code>session</code> is not the real session object yet. It is more like a handle to the session that will exist soon. When you call <code>session.whoami()</code>, Workers can send that call to the remote side early and say: “once authentication creates the session, call <code>whoami()</code> on it.”</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/cgBccGGKzjrx2gnnyAUvL/f0470a7a40ef05027e952d42abfa592c/BLOG-3317_image4.png" alt="BLOG-3317 image4" class="kg-image" width="1999" height="1332" loading="lazy">
+	</figure>
+	<p>That saves a round trip. The caller does not need to wait for <code>authenticate()</code> to fully finish before asking for <code>whoami()</code>.</p>
+	<p>We considered a fluent API:</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">step.do("charge-card", chargeCard).rollback(refundCharge);</code></pre>
+	<p>
+		To a reader, that can look like “call <code>.rollback()</code> on the result of <code>charge-card</code>.” &nbsp; But rollback is not part of the step’s output. It is part of the <code>step.do()</code> options, registered before the step starts, so Workflows knows how to compensate the step if a later step fails.</p>
+	<p>A fluent API also makes step timing harder to reason about. Today, <code>step.do()</code> starts the step when it is called, so developers can start a step, do other work, and await the first step later:</p>
+	<pre class="language-JavaScript"><code class="language-JavaScript">const first = step.do("first", () =&gt; serviceA.call());
+
+await step.do("second", () =&gt; serviceB.call());
+
+await first;</code></pre>
+	<p>With today’s execution model, <code>first</code> starts immediately, before <code>second</code>. A fluent API would complicate that. Workflows would need to wait and see whether <code>.rollback()</code> gets attached before it knows the full step definition. That could delay when the step is sent to the engine.</p>
+	<p>In the earlier example, <code>first</code> could start at <code>await first</code> instead of at <code>step.do("first", ...)</code>, after <code>second</code> has already completed.</p>
+	<p>That makes concurrent Workflows harder to reason about: step timing would depend on when the returned <code>Promise</code> is consumed, not just where <code>step.do()</code> is called.</p>
+	<p>We also considered a builder-style API:</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">const charge = await step
+	.saga("charge")
+	.do(() =&gt; chargeCard())
+	.rollback(() =&gt; refundCharge())
+	.run();</code></pre>
+	<p>A builder API avoids the <code>Promise</code> ambiguity. It also gives us an obvious place for future step-level options, and makes it clear that the forward action and rollback action belong to the same saga step.</p>
+	<p>But it adds ceremony. Every step needs a final <code>.run()</code>, forgetting <code>.run()</code> would be easy and hard to spot without tooling, and simple one-step cases start to look like configuration chains. It also introduces a new <code>step.saga()</code> builder, breaking from the existing <code>step.&lt;action&gt;</code> pattern. Most importantly, it makes <code>step.do()</code> feel like an older API rather than the primary Workflows primitive. The goal of rollback was to extend <code>step.do()</code>, not replace it.</p>
+	<div class="flex anchor relative">
+		<h3 id="rollback-as-step-metadata">Rollback as step metadata</h3>
+		<a href="https://blog.cloudflare.com/#rollback-as-step-metadata" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<pre class="language-TypeScript"><code class="language-TypeScript">step.do(..., { rollback })</code></pre>
+	<p>Ultimately, we chose the explicit form where rollback is metadata on the step.</p>
+	<p>This way, each rollback is defined within the forward step itself. Each handler receives the error that caused the rollback to start, the <a href="https://developers.cloudflare.com/workflows/build/step-context" target="_blank" rel="noopener noreferrer"><u>step context</u></a>, and the output, which is either the persisted value returned by the forward step (which can be undefined) or undefined if the step failed before persisting a value.</p>
+	<p>Rollbacks emit lifecycle events, so you can tell whether compensation started, which rollback handler failed, and whether rollback completed successfully.</p>
+	<p>Crucially, the original Workflow failure remains separate: rollback is what Workflows does after the failure, not the reason the Workflow failed.</p>
+	<p>Just as you can define custom retry and timeout behavior in the<a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowstepconfig" target="_blank" rel="noopener noreferrer"> <u>step configuration</u></a> via <code>WorkflowStepConfig</code>, you add rollback-specific values in <code>rollbackConfig</code>.</p>
+	<pre class="language-TypeScript"><code class="language-TypeScript">{
+  rollback: async ({ output }) =&gt; {
+    await bankA.credit({ accountId: fromAccountId, amount, transferId: `${transferId}-reversal` });
+  },
+  rollbackConfig: {
+    retries: { limit: 10, delay: '30 seconds', backoff: 'exponential' },
+    timeout: '2 minutes',
+  },
+}</code></pre>
+	<p>This matches the lifecycle-event mental model we wanted. A <code>step.do()</code> already describes a durable unit of work that Workflows records, retries, and later shows in logs. Rollback is another lifecycle behavior for that same unit of work. It should travel with the step definition, not live in a separate wrapper or builder.</p>
+	<ul>
+		<li>
+			<p>The step still starts when <code>step.do()</code> normally starts.</p>
+		</li>
+		<li>
+			<p>The returned promise still represents the step output.</p>
+		</li>
+		<li>
+			<p>Concurrent Workflow code keeps the same execution model.</p>
+		</li>
+		<li>
+			<p>Retry and timeout options for rollback live next to the rollback handler.</p>
+		</li>
+		<li>
+			<p>Existing <code>step.do()</code> calls keep working exactly as they do today.</p>
+		</li>
+	</ul>
+	<p>This shape is slightly more explicit than the fluent API, but that explicitness is useful. The operation and its compensation are still in one place, and the API does not introduce a new step builder or a new kind of promise. Developers who already understand <code>step.do()</code> only need to learn one additional <code>options</code> object.</p>
+	<p>This is less magical, but it is simpler to adopt, and clearer to understand.</p>
+	<div class="flex anchor relative">
+		<h2 id="how-it-works-under-the-hood">How it works under the hood</h2>
+		<a href="https://blog.cloudflare.com/#how-it-works-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Rollback feels like a small API addition, but it changes what Workflows needs to record about each step.</p>
+	<p>A regular <code>step.do()</code> already has a durable record. Workflows records that the step started, whether it completed, what it returned, and whether it should be skipped instead of repeated if the Workflow resumes later.</p>
+	<p>Rollbacks add one more thing to that record: whether the step registered compensation logic.</p>
+	<p>This means Workflows has two pieces of information to bring together if the Workflow fails.</p>
+	<p>The first is <b>durable step history</b>. The Workflow engine stores data to know what ran, what completed, what output was saved, and whether rollback was registered.</p>
+	<p>The second is the <b>rollback handler</b> itself, which is the function written to compensate for that step. Workflows does not save the text of that function as data. Instead, it keeps a callable reference to the handler while the Workflow is running.</p>
+	<p>In Workers RPC, this kind of callable reference is called a <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle" target="_blank" rel="noopener noreferrer"><b><u>stub</u></b></a>. A stub lets one part of the system call code that is running somewhere else. Stubs also have lifetimes such that they can be disposed when a call or execution context ends. If you need to keep a stub past that point, Workers RPC provides a <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#the-dup-method" target="_blank" rel="noopener noreferrer"><code><u>dup()</u></code></a> method, which creates another handle to the same target.</p>
+	<p>For rollback, that model is useful. The durable step history records what needs compensation. The rollback stub gives Workflows a way to invoke the compensation code. And because rollback handlers may need to outlive the immediate <code>step.do()</code> call that registered them, Workflows keeps its own callable reference to the handler for the rollback phase.</p>
+	<p>In the common case, when a Workflow enters rollback in the same engine lifetime, Workflows already has the rollback stubs it needs. It can use the durable step history to find eligible steps, then invoke the rollback stubs that were registered during forward execution.</p>
+	<p>This gets more subtle when Workflows has to <b>recover</b> after a restart.</p>
+	<p>If the engine is evicted, crashes, or restarts while rollback is needed, Workflows still has the durable step history, but it may no longer have the in-memory rollback stubs. To recover, Workflows uses <b>replay</b>: a recovery mode where it can re-run the Workflow code without re-executing completed forward step bodies.</p>
+	<p>When replay reaches a completed <code>step.do()</code>, Workflows reads the persisted result instead of running the step body again. For rollback recovery, Workflows only needs to rebuild handlers for steps that had rollback attached and are eligible for rollback. As those <code>step.do() </code>calls are encountered, their rollback options can register the callable stubs again</p>
+	<p>That lets Workflows recover the rollback handlers it needs without duplicating the original external side effects.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6F0SOtk10x2op5YxnKKnXM/54f7e763f4ada07e353e8bcac5549833/BLOG-3317_image5.png" alt="BLOG-3317 image5" class="kg-image" width="1738" height="1698" loading="lazy">
+	</figure>
+	<p>With those pieces in place, rollback can work whether the handler is still available in memory or has to be rebuilt during recovery.</p>
+	<p>When the workflow is about to fail, Workflows does not ask your application to reconstruct what happened. It already has the step history. It can look at the persisted record and answer the important questions:</p>
+	<ul>
+		<li>
+			<p>Which steps started?</p>
+		</li>
+		<li>
+			<p>Which steps finished?</p>
+		</li>
+		<li>
+			<p>Which failed step may still need cleanup?</p>
+		</li>
+		<li>
+			<p>Which steps registered rollback handlers?</p>
+		</li>
+		<li>
+			<p>What output should each rollback handler receive?</p>
+		</li>
+		<li>
+			<p>What order should compensation run in?</p>
+		</li>
+	</ul>
+	<p>Then Workflows invokes each rollback stub with a rollback context: the original error, the step context, and the step output, if one was persisted.</p>
+	<p>The ordering detail matters. In normal JavaScript, especially with <code>Promise.all()</code>, completion order is not always the same as start order. If step A starts first and step B starts second, step B might finish first. For rollback, Workflows uses the persisted start order as the stable source of truth, then unwinds it in reverse.</p>
+	<p>Rollback handlers also run through Workflows' normal step machinery. That means compensation gets the same operational properties you expect from Workflows: retries, timeouts, lifecycle events, logs, and a final recorded outcome. If a rollback handler keeps failing after its configured retries, Workflows records the rollback outcome as failed, stops running the remaining rollback handlers, and the Workflow instance ultimately ends in the <code>Errored</code> state.</p>
+	<p>This is the main difference between saga rollbacks and a <code>catch</code> block. A <code>catch</code> block only knows what is still in memory at its exact point in your JavaScript execution. Workflows rollback uses persisted step history to decide what already happened, invokes the stubs it already has in the common case, and safely rebuilds missing stubs during recovery when it needs to.</p>
+	<p>That is also why the API puts rollback on <code>step.do()</code> itself. Rollback is not a separate global error handler — it is metadata attached to the durable unit of work Workflows already understands.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Our first iteration of rollbacks includes:&nbsp;</p>
+	<ul>
+		<li>
+			<p>Explicit per-step rollback handlers for <code>step.do()</code></p>
+		</li>
+		<li>
+			<p>Sequential rollback execution</p>
+		</li>
+		<li>
+			<p>Retry and timeout configuration for compensation</p>
+		</li>
+	</ul>
+	<p>Next, we want to explore:</p>
+	<ul>
+		<li>
+			<p>Rollback support for <a href="https://developers.cloudflare.com/workflows/build/events-and-parameters/#wait-for-events" target="_blank" rel="noopener noreferrer"><code><u>waitForEvent</u></code></a></p>
+		</li>
+		<li>
+			<p>Support for parallel rollback execution</p>
+		</li>
+		<li>
+			<p>Rollback support for <a href="https://developers.cloudflare.com/workflows/python" target="_blank" rel="noopener noreferrer"><u>Python Workflows</u></a></p>
+		</li>
+	</ul>
+	<p>When a multi-step application fails halfway through, the hardest part is often not knowing <i>that</i> it failed. It is knowing <i>what</i> already happened, and what needs to happen next.</p>
+	<p>Saga rollbacks let you put that answer directly beside each step. If you are building multi-step applications with Workflows, try saga rollbacks and tell us what compensation patterns you want next. Get started with the <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows documentation</u></a> and share feedback in the <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Community</u></a>.</p>
+</div>

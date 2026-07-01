@@ -1,5 +1,5 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DuyJ94v0vkWC7AkFq9f1m/3371ada29695de66e53f6ed454790726/the-porcupine-attack-investigating-millions-of-junk-requests.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>We extensively monitor our network and use multiple systems that give us visibility including external monitoring and internal alerts when things go wrong. One of the most useful systems is <a href="http://grafana.org" target="_blank" rel="noopener noreferrer">Grafana</a> that allows us to quickly create arbitrary dashboards. And a heavy user of Grafana we are: at last count we had 645 different Grafana dashboards configured in our system!</p>
 	<pre class="language-bash"><code class="language-bash">grafana=&gt; select count(1) from dashboard;
  count

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56oazFRUtOqQHhX5Zto7J0/602aeb8374e59ff5e7001c8d114844ea/deep-inside-a-dns-amplification-ddos-attack.gif" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>A few weeks ago I wrote about <a href="https://blog.cloudflare.com/65gbps-ddos-no-problem">DNS Amplification Attacks</a>. These attacks are some of the largest, as measured by the number of Gigabits per second (Gbps), that we see directed toward our network. For the last three weeks, one persistent attacker has been sending at least 20Gbps twenty-four hours a day as an attack against one of our customers.</p>
 	<p>That size of an attack is enough to cripple even a large web host. For CloudFlare, the nature of our network means that the attack, which gets diluted across all of our <a href="https://www.cloudflare.com/network-map" target="_blank" rel="noopener noreferrer">global data centers</a>, doesn't cause us harm. Even from a cost perspective, the attack doesn't end up adding to our bandwidth bill because of the way in which we're charged for wholesale bandwidth.</p>

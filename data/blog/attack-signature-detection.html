@@ -1,5 +1,5 @@
 <div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FOVBZD6DatEtCM9ZqPoa0/562494e7b18eb6b9162eca7a1256dafb/image10.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>Traditional Web Application Firewalls typically require extensive, manual tuning of their rules before they can safely block malicious traffic. When a new application is deployed, security teams usually begin in a logging-only mode, sifting through logs to gradually assess which rules are safe for blocking mode. This process is designed to minimize false positives without affecting legitimate traffic. It’s manual, slow and error-prone.</p>
 	<p>Teams are forced into a trade-off: visibility in log mode, or protection in block mode. When a rule blocks a request, evaluation stops, and you lose visibility into how other signatures would have assessed it — valuable insight that could have helped you tune and strengthen your defenses.</p>
 	<p>Today, we’re solving this by introducing the next evolution of our managed rules: Attack Signature Detection.</p>
@@ -103,7 +103,7 @@
 			</tr>
 			<tr>
 				<td>
-					<p><code>cf.waf.signature.request.</code><code><b>ref</b></code></p>
+					<p><code>cf.waf.signature.request.</code><code><b>refs</b></code></p>
 				</td>
 				<td>
 					<p>Array. Aggregates the Ref IDs of the matching signatures, up to 10.</p>

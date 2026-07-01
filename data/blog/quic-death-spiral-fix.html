@@ -1,6 +1,6 @@
 <div class="mb2 gray5">10 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/quic-death-spiral-fix">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/quic-death-spiral-fix">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3D1TRoX7XlUYeKDKhhWBs/d0bb523bd2c7937c812c8388c182dfcc/image9.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>CUBIC, standardized in <a href="https://www.rfc-editor.org/rfc/rfc9438.html" target="_blank" rel="noopener noreferrer"><u>RFC 9438</u></a>, is the default congestion controller in Linux, and as a result governs how most TCP and QUIC connections on the public Internet probe for available bandwidth, back off when they detect loss, and recover afterward. At Cloudflare, our open-source implementation of QUIC,<a href="https://github.com/cloudflare/quiche" target="_blank" rel="noopener noreferrer"> <u>quiche</u></a>, uses CUBIC as its default congestion controller, meaning this code is in the critical path for a significant share of the traffic we serve.</p>
 	<p>In this post, we’ll tell the story of a bug in which CUBIC's congestion window (cwnd) gets permanently pinned at its minimum and never recovers from a congestion collapse event.</p>

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nNINh3XsTGMn2l5jdzrb7/86b37ec5cecc43359c2d4ecf47f32a4e/stopping-drupal-sa-core-2019-003.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>On the 20th February 2019, Drupal <a href="https://www.drupal.org/psa-2019-02-19" target="_blank" rel="noopener noreferrer">announced</a> that they had discovered a severe vulnerability and that they would be releasing a patch for it the next day. Drupal is a Content Management System used by many of our customers, which made it important that our WAF protect against the vulnerability as quickly as possible.</p>
 	<p>As soon as Drupal released their patch, we analysed it to establish what kind of payloads could be used against it and created rules to mitigate these. By analysing the patch we were able to put together WAF rules to protect cloudflare customers running Drupal.</p>
 	<p>We identified the type of vulnerability we were dealing within 15 minutes. From here, we were able to deploy rules to block the exploit well before any real attacks were seen.</p>

@@ -1,6 +1,6 @@
 <div class="mb2 gray5">11 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/r2-sql-deep-dive">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zUvz3Sn7UvEzLkGmOxgUP/2a0f0ed18d7ebe093ac98109be5c2879/image1.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>How do you run SQL queries over petabytes of data… without a server?</p>
 	<p>We have an answer for that: <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>, a serverless query engine that can sift through enormous datasets and return results in seconds.</p>
 	<p>This post details the architecture and techniques that make this possible. We'll walk through our Query Planner, which uses <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a> to prune terabytes of data before reading a single byte, and explain how we distribute the work across Cloudflare’s <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>global network</u></a>, <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a> and <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> for massively parallel execution.</p>

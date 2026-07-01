@@ -1,5 +1,5 @@
 <div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/53r59h2xYHZyKyNolCyVz0/b90f695570af5540cbd01b08d1d8b0b9/choosing-a-two-factor-authentication-system.jpg" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>We've been thinking about how to best implement two-factor authentication to better protect our customers' accounts for quite some time now. When, about 6 months ago, my account was <a href="https://blog.cloudflare.com/post-mortem-todays-attack-apparent-google-app">targeted by hackers</a> the importance of a good account security became clear. However, as my hacking case illustrates, two-factor authentication alone is not a complete answer.</p>
 	<p>At CloudFlare, we considered a number of different ways to implement two-factor authentication. We considered building it ourselves and using Twilio, or another similar service, to send authentication codes via SMS to our customers' mobile phones. The problem with that strategy is that it passes the supposedly secure authentication code through your mobile carrier's less-than-secure network. And, again, if there's a lesson to be learned from my own hacking case it's that mobile providers' security is not always the most robust.</p>

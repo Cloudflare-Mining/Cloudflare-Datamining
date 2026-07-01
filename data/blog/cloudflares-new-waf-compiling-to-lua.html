@@ -1,5 +1,5 @@
 <div class="mb2 gray5">5 min read</div><img class="mr2" src="https:undefined" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>We use nginx throughout our network for front-line web serving, proxying and traffic filtering. In some cases, we've augmented the core C code of nginx with our own modules, but recently we've made a <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">major move</a> to using Lua in conjunction with nginx.</p>
 	<p>One project that's now almost entirely written in Lua is the new CloudFlare WAF that we <a href="https://blog.cloudflare.com/heuristics-and-rules-why-we-built-a-new-old-waf">blogged about the other day</a>.</p>
 	<p>The Lua WAF uses the <a href="http://wiki.nginx.org/HttpLuaModule" target="_blank" rel="noopener noreferrer">nginx Lua module</a> to embed Lua code and execute that code as part of the normal nginx handling of phases. The entire execution of the [WAF](<a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/</a>) is actually handled by the following nginx configuration:</p>

@@ -1,6 +1,6 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/managed-oauth-for-access">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/managed-oauth-for-access">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BOZcg3hHEjTy2YzQxKkih/94c62468f30da1924c5fee21bb9cfebf/BLOG-3146_1.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>We have thousands of internal apps at Cloudflare. Some are things we’ve built ourselves, others are self-hosted instances of software built by others. They range from business-critical apps nearly every person uses, to side projects and prototypes.</p>
 	<p>All of these apps are protected by <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/policies" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>. But when we started using and building agents —&nbsp;particularly for uses beyond writing code — we hit a wall. People could access apps behind Access, but their agents couldn’t.</p>
 	<p>Access sits in front of internal apps. You define a policy, and then Access will send unauthenticated users to a login page to choose how to authenticate.&nbsp;</p>

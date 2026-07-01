@@ -1,6 +1,6 @@
 <div class="mb2 gray5">7 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/tiered-cache-smart-topology">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/tiered-cache-smart-topology">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1eKABhpE6HPZaiw6XLTvMy/0254aed58121af970cf6d8798466c101/tiered-cache-smart-topology.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>A few years ago, we released <a href="https://blog.cloudflare.com/argo">Argo</a> to help make the Internet faster and more efficient. Argo observes network conditions and finds the optimal route across the Internet for origin server requests, avoiding congestion along the way.</p>
 	<p>Tiered Cache is an Argo feature that reduces the number of data centers responsible for requesting assets from the origin. With Tiered Cache active, a request in South Africa won’t go directly to an origin in North America, but, instead, look in a large, nearby data center to see if the data requested is cached there first. The number and location of the data centers used by Tiered Cache is controlled by a piece of configuration called the topology. By default, we use a generic topology for every customer that strikes a balance between cache hit ratios and latency that is suitable for most users.</p>

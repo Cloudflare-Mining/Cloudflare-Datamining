@@ -1,6 +1,6 @@
 <div class="mb2 gray5">3 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-worker-services">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/introducing-worker-services">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26bWRFg6lJegSjtm9POfYP/9f353d1618219c53c0d75a25138ce3ef/introducing-worker-services.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>First, there was the Worker script. It was simple, yet elegant. With just a few lines of code, you could rewrite an HTTP request, append a header, or make a quick fix to your website.</p>
 	<p>Though, what if you wanted to build an entire application on Workers? You’d need a lot more tools in your developer toolbox. That’s why we’ve introduced extensions to Workers platform like <a href="https://blog.cloudflare.com/workers-kv-is-ga">KV</a>, our distributed key-value store; <a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>, — a strongly consistent, object-oriented database; and soon <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a>, the <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">no-egress object storage</a>. While these tools allow you to build a more robust application, there’s still a gap when it comes to building a system architecture, composed of <i>many</i> applications or services.</p>

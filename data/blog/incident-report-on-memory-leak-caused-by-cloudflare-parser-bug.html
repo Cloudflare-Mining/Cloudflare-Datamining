@@ -1,5 +1,5 @@
 <div class="mb2 gray5">11 min read</div><img class="mr2" src="https:undefined" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>Last Friday, <a href="https://twitter.com/taviso" target="_blank" rel="noopener noreferrer">Tavis Ormandy</a> from Google’s <a href="https://googleprojectzero.blogspot.co.uk" target="_blank" rel="noopener noreferrer">Project Zero</a> <a href="https://twitter.com/taviso/status/832744397800214528" target="_blank" rel="noopener noreferrer">contacted</a> Cloudflare to report a security problem with our edge servers. He was seeing corrupted web pages being returned by some HTTP requests run through Cloudflare.</p>
 	<p>It turned out that in some unusual circumstances, which I’ll detail below, our edge servers were running past the end of a buffer and returning memory that contained private information such as HTTP cookies, authentication tokens, HTTP POST bodies, and other sensitive data. And some of that data had been cached by search engines.</p>
 	<p>For the avoidance of doubt, Cloudflare customer SSL private keys were not leaked. Cloudflare has always terminated SSL connections through an isolated instance of NGINX that was not affected by this bug.</p>

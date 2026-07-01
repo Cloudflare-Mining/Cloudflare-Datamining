@@ -1,6 +1,6 @@
 <div class="mb2 gray5">2 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/ssh-command-logging">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/ssh-command-logging">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/589rdneATojH2IAfIS4u9P/dc67c5c521e9b23e891244ffabf1bd85/ssh-command-logging.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank" rel="noopener noreferrer">SSH (Secure Shell Protocol)</a> is an important protocol for managing remote machines. It provides a way for infrastructure teams to remotely and securely manage their fleet of machines. SSH was a step-up in security from other protocols like telnet. It ensures encrypted traffic and enforces per user controls over access to a particular machine. However, it can still introduce a significant security risk. SSH, especially root access, is destructive in the wrong hands (think <code>rm -r *</code>) and can be difficult to track. Logging and securing user actions via SSH typically requires custom development or restrictive software deployments. We’re excited to announce SSH command logging as part of Cloudflare Zero Trust.</p>
 	<div class="flex anchor relative">

@@ -1,5 +1,5 @@
 <div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5OFIoNwSfuVrVI5RbqVOwu/97f354d394959acd5e013d11e5489cfd/a-story-about-af-xdp-network-namespaces-and-a-cookie.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>A crash in a development version of <a href="https://blog.cloudflare.com/announcing-flowtrackd">flowtrackd</a> (the daemon that powers our <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/tcp-protection" target="_blank" rel="noopener noreferrer">Advanced TCP Protection</a>) highlighted the fact that <a href="https://www.mankier.com/3/libxdp" target="_blank" rel="noopener noreferrer">libxdp</a> (and specifically the <a href="https://www.kernel.org/doc/html/latest/networking/af_xdp.html" target="_blank" rel="noopener noreferrer">AF_XDP</a> part) was not Linux <a href="https://man7.org/linux/man-pages/man7/network_namespaces.7.html" target="_blank" rel="noopener noreferrer">network namespace</a> aware.</p>
 	<p>This blogpost describes the debugging journey to find the bug, as well as a fix.</p>

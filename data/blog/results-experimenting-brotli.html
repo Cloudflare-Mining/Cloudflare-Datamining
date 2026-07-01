@@ -1,5 +1,5 @@
 <div class="mb2 gray5">15 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Cgla0FeEFLRapgCNcHgtK/78a721818b140e01e9eb69d695203ebe/BLOG-2569_1.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>Compression is one of the most important tools CloudFlare has to accelerate website performance. Compressed content takes less time to transfer, and consequently reduces load times. On expensive mobile data plans, compression even saves money for consumers. However, compression is not free—it comes at a price. It is one of the most compute expensive operations our servers perform, and the better the compression rate we want, the more effort we have to spend.</p>
 	<p>The most popular compression format on the web is gzip. We put a great deal of effort into improving the performance of the gzip compression, so we can perform compression on the fly with fewer CPU cycles. Recently a potential replacement for gzip, called Brotli, was announced by Google. Being early adopters for many technologies, we at CloudFlare want to see for ourselves if it is as good as claimed.</p>
 	<p>This post takes a look at a bit of history behind gzip and Brotli, followed by a performance comparison.</p>

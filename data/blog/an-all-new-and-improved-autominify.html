@@ -1,5 +1,5 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jew1534GaaFuNYXV4jomB/0856ba59e8b0859e23e4841e0f3e02c6/an-all-new-and-improved-autominify.jpg" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p></p>
 	<p>We turned on AutoMinify as a beta feature a while ago, but we weren't particularly happy with it. Originally, we did it the same way everyone else does: we'd request the resource from the origin, serve it unminified on the first load, cache it, and then, if it was CSS or Javascript, run a process that minified it and replaced the cached version on the server. Seems sensible enough, but it's a bad approach.</p>
 	<p>To begin, this minification strategy doesn't work well for highly dynamic content, forcing website owners to have to go back and expire the cache whenever anything changed. For CSS and Javascript that can work, but it's a disaster for dynamic HTML. The second issue is less obvious: most minification resources don't work at our scale. We tried every minification library available, and a few non-public ones that were developed in-house by friends at some of the Internet giants, and none of them worked as efficiently as we wanted when we're minify many millions of files across twelve (and soon many more) data centers.</p>

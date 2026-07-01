@@ -1,5 +1,5 @@
 <div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5tdlwnVq6WLw1sQlM7ZaOr/686c8bb12f440cfd4c0619726c70a992/image4.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>In September 2025, a thread popped up in our internal engineering chat room asking, "Which part of our stack would be responsible for sending <code>ErrCode=ENHANCE_YOUR_CALM</code> to an HTTP/2 client?" Two internal microservices were experiencing a critical error preventing their communication and the team needed a timely answer.</p>
 	<p>In this blog post, we describe the background to well-known HTTP/2 attacks that trigger Cloudflare defences, which close connections. We then document an easy-to-make mistake using Go's standard library that can cause clients to send PING flood attacks and how you can avoid it.</p>
 	<figure class="kg-card kg-image-card">

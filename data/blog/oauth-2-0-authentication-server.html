@@ -1,5 +1,5 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Y2cbwlsOkF1fkvNHmspE/a45e645210f8354dcf0d481341381cf9/oauth-2-0-authentication-server.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2" target="_blank" rel="noopener noreferrer">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
 	<p>Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
 	<p>For those unfamiliar with OAuth, I highly recommend reading a more in depth <a href="https://aaronparecki.com/oauth-2-simplified" target="_blank" rel="noopener noreferrer">article</a>.</p>

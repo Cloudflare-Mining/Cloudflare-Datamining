@@ -1,6 +1,6 @@
 <div class="mb2 gray5">8 min read</div>
 <div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/high-performance-llms">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/high-performance-llms">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/high-performance-llms">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/high-performance-llms">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/H6HzVR3djJacCrzX8b8EE/aea7e8130edf09565333b6a550c010db/BLOG-3266_1.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>An agent needs to be powered by a large language model. A few weeks ago, we announced that Workers AI is officially entering the arena for hosting large open-source models like Moonshot’s Kimi K2.5. Since then, we’ve made Kimi K2.5 3x faster and have more model additions in-flight. These models have been the backbone of a lot of the agentic products, harnesses, and tools that we have been launching this week.&nbsp;</p>
 	<p>Hosting AI models is an interesting challenge: it requires a delicate balance between software and very, very expensive hardware. At Cloudflare, we’re good at squeezing every bit of efficiency out of our hardware through clever software engineering. This is a deep dive on how we’re laying the foundation to run extra-large language models.</p>
 	<div class="flex anchor relative">

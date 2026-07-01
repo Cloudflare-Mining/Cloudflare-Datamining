@@ -1,5 +1,5 @@
 <div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2w4DuXUjjArvPqsbGpc9ro/89e39cf948a134409bc7a69934cabf90/improving-picohttpparser-further-with-avx2.jpg" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p><i>Vlad Krasnov recently joined CloudFlare to work on low level optimization of CloudFlare's servers. This is the first of a number of blog posts that will include code he's optimized and open sourced.</i></p>
 	<p>In a recent post, <a href="http://blog.kazuhooku.com/2014/12/improving-parser-performance-using-sse.html" target="_blank" rel="noopener noreferrer">Kazuho's Weblog</a> describes an improvement to <a href="https://github.com/h2o/picohttpparser" target="_blank" rel="noopener noreferrer">PicoHTTPParser</a>. This improvement utilizes the SSE4.2 instruction <a href="http://www.felixcloutier.com/x86/PCMPESTRI.html" target="_blank" rel="noopener noreferrer">PCMPESTRI</a> in order to find the delimiters in a HTTP request/response and parse them accordingly. This update, compared to the previous version of the code, is impressive.</p>
 	<figure class="kg-card kg-image-card ">

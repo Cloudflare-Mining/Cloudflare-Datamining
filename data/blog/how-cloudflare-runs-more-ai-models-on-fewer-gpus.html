@@ -1,5 +1,5 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2RpretWriqNKCyLuiMZeLp/37bb67184039c2958f3f56e97b06fe12/0.png" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>As the demand for AI products grows, developers are creating and tuning a wider variety of models. While adding new models to our <a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer"><u>growing catalog</u></a> on Workers AI, we noticed that not all of them are used equally – leaving infrequently used models occupying valuable GPU space. Efficiency is a core value at Cloudflare, and with GPUs being the scarce commodity they are, we realized that we needed to build something to fully maximize our GPU usage.</p>
 	<p>Omni is an internal platform we’ve built for running and managing AI models on Cloudflare’s edge nodes. It does so by spawning and managing multiple models on a single machine and GPU using lightweight isolation. Omni makes it easy and efficient to run many small and/or low-volume models, combining multiple capabilities by:&nbsp;&nbsp;</p>
 	<ul>

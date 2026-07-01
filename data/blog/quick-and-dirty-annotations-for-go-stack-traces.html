@@ -1,5 +1,5 @@
 <div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6v8eVN6UI2Be9Pd9X6dUms/b230b031d3baa391da1b829eb488369f/quick-and-dirty-annotations-for-go-stack-traces.jpg" alt="">
-<div class="post-content lh-copy gray1">
+<div class="post-content post-body-content lh-copy gray1">
 	<p>CloudFlare’s DNS server, <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing.</p>
 	<figure class="kg-card kg-image-card ">
 

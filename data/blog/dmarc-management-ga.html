@@ -1,0 +1,231 @@
+<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21kY8sOalAKFMFwjyzCard/9f59d1c68b939c8937dffb46abf08078/image6.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>When we first launched <a href="https://blog.cloudflare.com/dmarc-management"><u>DMARC Management</u></a>, it was driven by a simple belief: every domain on the Internet deserves strong email authentication, and cost should never be the reason it doesn't happen. As part of our mission to help build a better Internet, we made DMARC Management available for free to every Cloudflare customer. We wanted to give everyone the tools to understand and improve their DMARC posture without needing to hire an email security consultant or parse XML report files by hand.</p>
+	<p>Today, we are taking that commitment further. Cloudflare DMARC Management is now generally available, with a redesigned experience built to help you reach full DMARC enforcement as easily as possible.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GpMX09ltKkw9PcTW53xNF/9e862b59311cfdd08bb9b74fbb69bc42/BLOG-3332_image7.png" alt="BLOG-3332 image7" class="kg-image" width="1999" height="1371" loading="lazy">
+	</figure>
+	<p><sup><i>The DMARC Management dashboard offers a unified view of your email authentication posture.</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="what-email-authentication-actually-does-for-you">What email authentication actually does for you</h2>
+		<a href="https://blog.cloudflare.com/#what-email-authentication-actually-does-for-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Every time someone receives an email "from" your domain, their email provider asks a simple question: did the real owner of this domain actually send this? Without a way to answer that question, anyone can send an email pretending to be you and your recipients will have no way to tell the difference.</p>
+	<p>Email authentication is the set of DNS records that answers that question. There are four protocols that protect your domain:</p>
+	<ul>
+		<li>
+			<p><b>SPF </b>(Sender Policy Framework) tells receiving mail servers which IP addresses and services are allowed to send email on behalf of your domain.</p>
+		</li>
+		<li>
+			<p><b>DKIM</b> (DomainKeys Identified Mail) attaches a cryptographic signature to every email you send, so receiving servers can verify the message hasn't been tampered with in transit.</p>
+		</li>
+		<li>
+			<p><b>DMARC</b> (Domain-based Message Authentication, Reporting, and Conformance) ties SPF and DKIM together and tells receiving servers what to do when an email fails authentication: let it through, quarantine it, or reject it outright. It also sends you reports on who is sending email as your domain.</p>
+		</li>
+		<li>
+			<p><b>BIMI </b>(Brand Indicators for Message Identification) lets you display your brand logo next to your emails in supported inboxes, but only if your DMARC policy is strong enough.</p>
+		</li>
+	</ul>
+	<p>When all four are configured correctly, spoofed emails get blocked before they reach anyone's inbox and your legitimate emails are far more likely to be delivered. When they're missing or misconfigured, you're exposed to brand impersonation and deliverability penalties from the large email mailbox providers.</p>
+	<div class="flex anchor relative">
+		<h2 id="dmarc-is-no-longer-optional">DMARC is no longer optional</h2>
+		<a href="https://blog.cloudflare.com/#dmarc-is-no-longer-optional" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>DMARC has always been important. But over the past two years, the stakes have gotten significantly higher. Google, Microsoft, and Yahoo have all announced or implemented stricter email authentication enforcement. Domains that do not have proper <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record" target="_blank" rel="noopener noreferrer"><u>DMARC</u></a>, <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record" target="_blank" rel="noopener noreferrer"><u>SPF</u></a>, and <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record" target="_blank" rel="noopener noreferrer"><u>DKIM</u></a> records configured (or worse, have them configured incorrectly) are increasingly seeing their legitimate emails land in spam folders or get rejected outright. What was once a best practice is now a requirement. Poor email hygiene directly translates to poor deliverability, and for many businesses, that means lost revenue and missed communications.</p>
+	<p>The message from the industry is clear: if you send email from your domain, you need these records configured correctly. The grace period is over.</p>
+	<div class="flex anchor relative">
+		<h2 id="the-problem-dmarc-is-confusing-and-mistakes-are-costly">The problem: DMARC is confusing, and mistakes are costly</h2>
+		<a href="https://blog.cloudflare.com/#the-problem-dmarc-is-confusing-and-mistakes-are-costly" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Here is the challenge. The journey from p=none (monitor only, no emails are blocked) to p=quarantine (suspicious emails are sent to spam) to p=reject (unauthenticated emails are blocked outright) is filled with uncertainty. Enable enforcement too early, and you risk breaking legitimate email flows from third-party services you forgot were sending on your behalf. Move too slowly, and you leave your domain exposed to spoofing, and now, to deliverability penalties from the very providers your customers use.</p>
+	<p>Most organizations know they need DMARC enforcement. But actually getting there requires understanding aggregate XML reports, identifying every legitimate sending source across your infrastructure, and building enough confidence that tightening your policy will not break anything.</p>
+	<p>We built Cloudflare DMARC Management so that any customer can navigate this journey on their own. No need for professional services engagement. No spreadsheet analysis of aggregate reports. No guessing which IP address belongs to which vendor. The goal is to make the path to full DMARC enforcement as self-service as possible, giving you the visibility and confidence to tighten your policy without breaking anything.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MgXzeTIgQxqJ8coErsj7l/1a265f29547c18a8a3bd5a4c1003b3df/BLOG-3332_image5.png" alt="BLOG-3332 image5" class="kg-image" width="1999" height="1403" loading="lazy">
+	</figure>
+	<p><sup><i>DMARC reports show sending source alignment across your domain.</i></sup></p>
+	<div class="flex anchor relative">
+		<h2 id="what-we-shipped">What we shipped</h2>
+		<a href="https://blog.cloudflare.com/#what-we-shipped" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+
+	<div class="flex anchor relative">
+		<h3 id="deeper-report-visibility-with-source-investigation">Deeper report visibility with source investigation</h3>
+		<a href="https://blog.cloudflare.com/#deeper-report-visibility-with-source-investigation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We redesigned the reporting experience to make it easier to understand what is happening with your email traffic. You can now see at a glance which sending sources are passing or failing DMARC, SPF, and DKIM alignment and drill deeper than ever before.</p>
+	<p>Every report now surfaces the source IP address alongside the sending service, giving you the granularity to distinguish between legitimate infrastructure and unauthorized senders. You can now open any IP address directly in our Investigate tab, which surfaces all the threat intelligence Cloudflare has on that address — reputation data, geolocation, autonomous system number (ASN) details, and any known associations with malicious activity.</p>
+	<p>This turns your DMARC reports from a passive data feed into an active investigation tool.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TMDQMQ63fr6yRhqmRa55T/25717a64afb8ac5393056035d9a86047/BLOG-3332_image4.png" alt="BLOG-3332 image4" class="kg-image" width="1999" height="1313" loading="lazy">
+	</figure>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5j1jXZbpwv1X0Ss0somi2A/4f2dd91ba360f7384e34a613892cfec7/BLOG-3332_image1.png" alt="BLOG-3332 image1" class="kg-image" width="1999" height="1407" loading="lazy">
+	</figure>
+	<p><sup><i>Drilling into a sending source reveals IP-level detail and Cloudflare threat intelligence in the Investigate tab.</i></sup></p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>What you see</b></p>
+				</td>
+				<td>
+					<p><b>What it tells you</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Source IP address</p>
+				</td>
+				<td>
+					<p>The specific infrastructure sending email on behalf of your domain</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Sending service name</p>
+				</td>
+				<td>
+					<p>The organization or provider behind the IP</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>DMARC / SPF / DKIM alignment</p>
+				</td>
+				<td>
+					<p>Whether each authentication check passed or failed for that source</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>Investigate tab</p>
+				</td>
+				<td>
+					<p>Cloudflare threat intelligence: reputation, geolocation, ASN, and known threat associations</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="email-authentication-record-status">Email authentication record status</h3>
+		<a href="https://blog.cloudflare.com/#email-authentication-record-status" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>One of the most common questions customers ask is: "Are my records set up correctly?"</p>
+	<p>Until now, answering that question required manually inspecting DNS TXT records and understanding what each tag and value means across multiple specifications. With this release, you can see the status of every email authentication record you need: DMARC, DKIM, SPF, and BIMI, in a single view.</p>
+	<p>Each record type gets a clear pass, warning, or fail status based on automated analysis. You can drill into any record to see specific findings about what we detected and recommendations for how to fix it. If your DKIM key is malformed, we flag it. If you are missing a <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-bimi-record" target="_blank" rel="noopener noreferrer"><u>BIMI</u></a> record and your DMARC policy is strong enough to support one, we let you know that too.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7yp4DWXZS7hd7mDLU6WUVZ/60f625951254c436f07fd0161dbec9f9/BLOG-3332_image2.png" alt="BLOG-3332 image2" class="kg-image" width="1999" height="524" loading="lazy">
+	</figure>
+	<p><sup><i>Record analysis cards show pass, warning, or fail status for each email authentication record, with actionable recommendations.</i></sup></p>
+	<p>The recommendations are written in plain language, not RFC jargon. The goal is to make it obvious what action to take next, regardless of your email security expertise.</p>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<p><b>Record</b></p>
+				</td>
+				<td>
+					<p><b>What we check</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>SPF</p>
+				</td>
+				<td>
+					<p>Multiple records, lookup limits, permissive +all, missing mechanisms</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>DKIM</p>
+				</td>
+				<td>
+					<p>Key formatting, missing or malformed public keys</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>DMARC</p>
+				</td>
+				<td>
+					<p>Policy strength, monitoring vs. enforcement, reporting configuration</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>BIMI</p>
+				</td>
+				<td>
+					<p>Logo URL format, Verified Mark Certificate (VMC)&nbsp; presence</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="flex anchor relative">
+		<h3 id="spf-lookup-audit">
+			SPF lookup audit</h3>
+		<a href="https://blog.cloudflare.com/#spf-lookup-audit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>This one addresses a problem that silently breaks email for more organizations than you would expect. The SPF specification (<a href="https://datatracker.ietf.org/doc/html/rfc7208" target="_blank" rel="noopener noreferrer"><u>RFC 7208</u></a>) imposes a hard limit of 10 DNS lookups per SPF evaluation. Every <code><b>include:, a, mx, redirect, and exists</b></code> mechanism in your SPF record counts toward that limit, and so do the nested lookups inside each <code><b>include:</b></code>. Exceed 10 and receiving mail servers return a permerror, which means your SPF check fails entirely.</p>
+	<p>Most people have no idea they are over the limit until their email starts getting rejected.</p>
+	<p>DMARC Management now lets you audit your SPF record and see exactly how many lookups it incurs. You can drill into every mechanism in the record, see which <b>include:</b>chains are the most expensive, and identify where to consolidate or flatten your record to get back under the limit.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5j1jXZbpwv1X0Ss0somi2A/4f2dd91ba360f7384e34a613892cfec7/BLOG-3332_image1.png" alt="BLOG-3332 image1" class="kg-image" width="1999" height="1407" loading="lazy">
+	</figure>
+	<p><sup><i>The SPF lookup audit traces every DNS lookup in your SPF record, showing exactly where you are against the 10-lookup limit.</i></sup></p>
+	<div class="flex anchor relative">
+		<h3 id="getting-started">Getting started</h3>
+		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To use DMARC Management, you need to have your domain's DNS on Cloudflare. Then you can turn on DMARC Management under the Email tab for that domain in the Cloudflare dashboard.</p>
+	<p>1. Navigate to your domain in the Cloudflare dashboard.</p>
+	<p>2. Go to Email &gt; DMARC Management.</p>
+	<p>3. Follow the setup wizard to start receiving DMARC reports.</p>
+	<p>4. Review your record analysis and recommendations.</p>
+	<p>5.&nbsp; Work toward p=quarantine (suspicious emails go to spam) or p=reject (unauthenticated emails are blocked entirely) at your own pace.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What's next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>We are going to continue building on top of DMARC Management, and our goal is to keep it accessible. We have several things planned that we are excited to ship: deeper forensic reporting, smarter recommendations, and tighter integration with the rest of the Cloudflare platform.</p>
+	<p>If you are not yet using Cloudflare for your DNS, you can <a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>get started here</u></a>. Once your domain is on Cloudflare, DMARC Management is available immediately with no additional configuration or cost required.</p>
+	<p>Your domain is either protected or it isn't. Head to Email &gt; DMARC Management in your Cloudflare dashboard to get started.</p>
+</div>
