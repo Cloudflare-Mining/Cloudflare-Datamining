@@ -6047,6 +6047,18 @@
 																"description": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
 																"type": "string"
 															},
+															"natd_result": {
+																"description": "Public socket address returned by the NAT detector",
+																"type": "string"
+															},
+															"natd_state": {
+																"description": "Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)",
+																"type": "number"
+															},
+															"natd_target": {
+																"description": "Target socket address probed by the NAT detector, using the detector source port",
+																"type": "string"
+															},
 															"probed_mtu": {
 																"description": "MTU as measured between the two ends of the tunnel",
 																"type": "number"
@@ -7599,6 +7611,18 @@
 																		},
 																		"interface_name": {
 																			"description": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
+																			"type": "string"
+																		},
+																		"natd_result": {
+																			"description": "Public socket address returned by the NAT detector",
+																			"type": "string"
+																		},
+																		"natd_state": {
+																			"description": "Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)",
+																			"type": "number"
+																		},
+																		"natd_target": {
+																			"description": "Target socket address probed by the NAT detector, using the detector source port",
 																			"type": "string"
 																		},
 																		"probed_mtu": {
