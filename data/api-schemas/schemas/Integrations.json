@@ -1,8 +1,18 @@
 {
-	"DELETE /integrations/{id}": {
+	"DELETE /accounts/{account_id}/one/integrations/{id}": {
 		"description": "Delete an integration by soft-deleting it.",
 		"operationId": "delete_integration_v2",
 		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
 			{
 				"description": "Integration ID.",
 				"in": "path",
@@ -36,10 +46,20 @@
 		],
 		"x-stability": "beta"
 	},
-	"GET /integrations": {
+	"GET /accounts/{account_id}/one/integrations": {
 		"description": "Returns a paginated list of integrations for the account.",
 		"operationId": "list_integrations_v2",
 		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
 			{
 				"description": "Filter by application/vendor (e.g., GOOGLE_WORKSPACE, MICROSOFT_INTERNAL).",
 				"in": "query",
@@ -190,10 +210,20 @@
 		],
 		"x-stability": "beta"
 	},
-	"GET /integrations/{id}": {
+	"GET /accounts/{account_id}/one/integrations/{id}": {
 		"description": "Returns full integration details including use cases and permissions.",
 		"operationId": "get_integration_v2",
 		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
 			{
 				"description": "Integration ID.",
 				"in": "path",
@@ -460,10 +490,20 @@
 		],
 		"x-stability": "beta"
 	},
-	"PATCH /integrations/{id}": {
+	"PATCH /accounts/{account_id}/one/integrations/{id}": {
 		"description": "Updates an integration's name, permissions, DLP profiles, use cases, or credentials.",
 		"operationId": "update_integration_v2",
 		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
 			{
 				"description": "Integration ID.",
 				"in": "path",
@@ -941,9 +981,21 @@
 		],
 		"x-stability": "beta"
 	},
-	"POST /integrations": {
+	"POST /accounts/{account_id}/one/integrations": {
 		"description": "Creates a new integration for the specified application.",
 		"operationId": "create_integration_v2",
+		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			}
+		],
 		"requestBody": {
 			"content": {
 				"": {
@@ -1464,10 +1516,20 @@
 		],
 		"x-stability": "beta"
 	},
-	"POST /integrations/{id}/pause": {
+	"POST /accounts/{account_id}/one/integrations/{id}/pause": {
 		"description": "Pauses an integration, stopping all crawlers.",
 		"operationId": "pause_integration_v2",
 		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
 			{
 				"description": "Integration ID.",
 				"in": "path",
@@ -1734,10 +1796,20 @@
 		],
 		"x-stability": "beta"
 	},
-	"POST /integrations/{id}/resume": {
+	"POST /accounts/{account_id}/one/integrations/{id}/resume": {
 		"description": "Resumes a paused integration, restarting crawlers.",
 		"operationId": "resume_integration_v2",
 		"parameters": [
+			{
+				"description": "Cloudflare account identifier.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"type": "string"
+				}
+			},
 			{
 				"description": "Integration ID.",
 				"in": "path",

@@ -104,7 +104,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -160,7 +160,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -216,7 +216,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -438,7 +438,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -571,7 +571,7 @@
 											"description": "Full relay details (no tokens).",
 											"properties": {
 												"config": {
-													"description": "origin_fallback and lingering_subscribe are mutually exclusive.\n",
+													"description": "upstreams and lingering_subscribe are mutually exclusive.\n",
 													"properties": {
 														"lingering_subscribe": {
 															"properties": {
@@ -589,20 +589,21 @@
 															},
 															"type": "object"
 														},
-														"origin_fallback": {
+														"upstreams": {
+															"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
 															"properties": {
 																"enabled": {
 																	"default": false,
 																	"type": "boolean"
 																},
-																"origins": {
+																"upstreams": {
 																	"default": [],
-																	"description": "Ordered list of upstream origin relays. Each entry is an object\n(not a bare string) so per-origin configuration can be added in\nthe future without another breaking change.\n",
+																	"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
 																	"items": {
-																		"description": "A single upstream origin relay.",
+																		"description": "A single upstream MOQT server publisher.",
 																		"properties": {
 																			"url": {
-																				"description": "Upstream origin relay URL.",
+																				"description": "Upstream MOQT server publisher URL.",
 																				"type": "string"
 																			}
 																		},
@@ -673,7 +674,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -729,7 +730,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -785,7 +786,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -838,7 +839,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/moq/relays": {
-		"description": "Provisions a new MoQ relay instance. Auto-creates a publish+subscribe\ntoken and a subscribe-only token. Token values are included in the\nresponse (shown once). Config is set to defaults (lingering subscribe\nenabled, 30s ceiling, origin fallback off). Use PUT to modify.\n",
+		"description": "Provisions a new MoQ relay instance. Auto-creates a publish+subscribe\ntoken and a subscribe-only token. Token values are included in the\nresponse (shown once). Config is set to defaults (lingering subscribe\nenabled, 30s ceiling, upstreams off). Use PUT to modify.\n",
 		"operationId": "moq-relays-create",
 		"parameters": [
 			{
@@ -927,7 +928,7 @@
 											"description": "Relay with auto-generated tokens (shown once).",
 											"properties": {
 												"config": {
-													"description": "origin_fallback and lingering_subscribe are mutually exclusive.\n",
+													"description": "upstreams and lingering_subscribe are mutually exclusive.\n",
 													"properties": {
 														"lingering_subscribe": {
 															"properties": {
@@ -945,20 +946,21 @@
 															},
 															"type": "object"
 														},
-														"origin_fallback": {
+														"upstreams": {
+															"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
 															"properties": {
 																"enabled": {
 																	"default": false,
 																	"type": "boolean"
 																},
-																"origins": {
+																"upstreams": {
 																	"default": [],
-																	"description": "Ordered list of upstream origin relays. Each entry is an object\n(not a bare string) so per-origin configuration can be added in\nthe future without another breaking change.\n",
+																	"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
 																	"items": {
-																		"description": "A single upstream origin relay.",
+																		"description": "A single upstream MOQT server publisher.",
 																		"properties": {
 																			"url": {
-																				"description": "Upstream origin relay URL.",
+																				"description": "Upstream MOQT server publisher URL.",
 																				"type": "string"
 																			}
 																		},
@@ -1037,7 +1039,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1093,7 +1095,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1149,7 +1151,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1205,7 +1207,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1403,7 +1405,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1459,7 +1461,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1515,7 +1517,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1568,7 +1570,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/moq/relays/{relay_id}": {
-		"description": "Updates a relay's name and/or configuration. Partial updates:\nomitted fields are preserved. Config sub-objects replace as\nwhole objects when present. origin_fallback and lingering_subscribe\nare mutually exclusive.\n",
+		"description": "Updates a relay's name and/or configuration. Partial updates:\nomitted fields are preserved. Config sub-objects replace as\nwhole objects when present. upstreams and lingering_subscribe\nare mutually exclusive.\n",
 		"operationId": "moq-relays-update",
 		"parameters": [
 			{
@@ -1600,7 +1602,7 @@
 					"schema": {
 						"properties": {
 							"config": {
-								"description": "origin_fallback and lingering_subscribe are mutually exclusive.\n",
+								"description": "upstreams and lingering_subscribe are mutually exclusive.\n",
 								"properties": {
 									"lingering_subscribe": {
 										"properties": {
@@ -1618,20 +1620,21 @@
 										},
 										"type": "object"
 									},
-									"origin_fallback": {
+									"upstreams": {
+										"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
 										"properties": {
 											"enabled": {
 												"default": false,
 												"type": "boolean"
 											},
-											"origins": {
+											"upstreams": {
 												"default": [],
-												"description": "Ordered list of upstream origin relays. Each entry is an object\n(not a bare string) so per-origin configuration can be added in\nthe future without another breaking change.\n",
+												"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
 												"items": {
-													"description": "A single upstream origin relay.",
+													"description": "A single upstream MOQT server publisher.",
 													"properties": {
 														"url": {
-															"description": "Upstream origin relay URL.",
+															"description": "Upstream MOQT server publisher URL.",
 															"type": "string"
 														}
 													},
@@ -1709,7 +1712,7 @@
 											"description": "Full relay details (no tokens).",
 											"properties": {
 												"config": {
-													"description": "origin_fallback and lingering_subscribe are mutually exclusive.\n",
+													"description": "upstreams and lingering_subscribe are mutually exclusive.\n",
 													"properties": {
 														"lingering_subscribe": {
 															"properties": {
@@ -1727,20 +1730,21 @@
 															},
 															"type": "object"
 														},
-														"origin_fallback": {
+														"upstreams": {
+															"description": "Upstreams are external MOQT server publishers that a relay falls back\nto when it has no local publisher for a requested namespace/track.\n",
 															"properties": {
 																"enabled": {
 																	"default": false,
 																	"type": "boolean"
 																},
-																"origins": {
+																"upstreams": {
 																	"default": [],
-																	"description": "Ordered list of upstream origin relays. Each entry is an object\n(not a bare string) so per-origin configuration can be added in\nthe future without another breaking change.\n",
+																	"description": "Ordered list of upstream MOQT server publishers. Each entry is an\nobject (not a bare string) so per-upstream configuration can be\nadded in the future without another breaking change.\n",
 																	"items": {
-																		"description": "A single upstream origin relay.",
+																		"description": "A single upstream MOQT server publisher.",
 																		"properties": {
 																			"url": {
-																				"description": "Upstream origin relay URL.",
+																				"description": "Upstream MOQT server publisher URL.",
 																				"type": "string"
 																			}
 																		},
@@ -1811,7 +1815,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1850,7 +1854,7 @@
 						}
 					}
 				},
-				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21009 (origin_fallback and lingering_subscribe are mutually exclusive), 21011 (name must not be empty)."
+				"description": "Bad request. Possible errors: 21003 (relay ID should be 32 hex characters), 21004 (failed to decode body, invalid JSON), 21009 (upstreams and lingering_subscribe are mutually exclusive), 21011 (name must not be empty)."
 			},
 			"404": {
 				"content": {
@@ -1867,7 +1871,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
@@ -1923,7 +1927,7 @@
 									"items": {
 										"properties": {
 											"code": {
-												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: origin_fallback and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
+												"description": "Error codes:\n- 21001: Request body too large (HTTP 413)\n- 21002: Request body too small / missing name (HTTP 400)\n- 21003: Relay ID should be 32 hex characters (HTTP 400)\n- 21004: Failed to decode body — invalid JSON (HTTP 400)\n- 21005: Failed to read body (HTTP 400)\n- 21006: Unexpected server error (HTTP 500)\n- 21007: Relay not found (HTTP 404)\n- 21008: Relay limit exceeded for this account (HTTP 409)\n- 21009: upstreams and lingering_subscribe are mutually exclusive (HTTP 400)\n- 21010: Invalid token type — must be \"publish_subscribe\" or \"subscribe\" (HTTP 400)\n- 21011: Invalid relay name — name must not be empty (HTTP 400)\n",
 												"type": "integer"
 											},
 											"message": {
