@@ -931,6 +931,9 @@
 	"deseng-oidc-error-redirect": {
 		"enabled": false
 	},
+	"deseng-plans-page": {
+		"enabled": true
+	},
 	"deseng-r2-metrics": {
 		"enabled": true
 	},
@@ -1337,7 +1340,7 @@
 		"enabled": true
 	},
 	"email-onboarding-wizard": {
-		"enabled": false
+		"enabled": true
 	},
 	"email-routing-email-worker-maze-study": {
 		"enabled": false
@@ -2854,6 +2857,23 @@
 	},
 	"tsf-chat-widget-portal-restriction": {
 		"enabled": true
+	},
+	"tsf-deflection-help-on-expand": {
+		"enabled": false
+	},
+	"tsf-deflection-help-opens-ai": {
+		"enabled": false
+	},
+	"tsf-deflection-remove-help": {
+		"enabled": false
+	},
+	"tsf-description-min-words": {
+		"enabled": false,
+		"branches": [
+			"2x",
+			"3x",
+			"4x"
+		]
 	},
 	"tsf-form-ask-ai": {
 		"enabled": true
