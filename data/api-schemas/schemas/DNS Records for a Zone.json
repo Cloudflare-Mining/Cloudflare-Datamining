@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/dns_records/{dns_record_id}": {
+		"description": "Permanently removes a DNS record from the zone.",
 		"operationId": "dns-records-for-a-zone-delete-dns-record",
 		"parameters": [
 			{
@@ -6676,6 +6677,7 @@
 		}
 	},
 	"GET /zones/{zone_id}/dns_records/{dns_record_id}": {
+		"description": "Retrieves details for a specific DNS record in the zone.",
 		"operationId": "dns-records-for-a-zone-dns-record-details",
 		"parameters": [
 			{

@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/custom_ns/{custom_ns_id}": {
+		"description": "Removes a custom nameserver from the account.",
 		"operationId": "account-level-custom-nameservers-delete-account-custom-nameserver",
 		"parameters": [
 			{
@@ -1056,6 +1057,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/custom_ns": {
+		"description": "Adds a custom nameserver to the account for use as a vanity nameserver on zones.",
 		"operationId": "account-level-custom-nameservers-add-account-custom-nameserver",
 		"parameters": [
 			{
