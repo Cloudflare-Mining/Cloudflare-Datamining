@@ -19591,30 +19591,30 @@
 			"name": "@cloudflare/style-container",
 			"version": "8.0.6",
 			"dependencies": {
-				"@cloudflare/types": "^6.21.15",
 				"fela": "^11.6.1",
-				"fela-tools": "^11.6.1",
 				"lodash": "^4.17.21",
+				"fela-tools": "^11.6.1",
 				"prop-types": "^15.6.0",
-				"react-display-name": "^0.2.3",
-				"react-fela": "^11.6.1"
+				"react-fela": "^11.6.1",
+				"@cloudflare/types": "^6.21.15",
+				"react-display-name": "^0.2.3"
 			},
 			"peerDependencies": {
-				"@cloudflare/style-const": "^6.0.0",
-				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0",
+				"@cloudflare/style-const": "^6.0.0"
 			},
 			"dist": {
 				"shasum": "b38d01141937f04f3b9ee1f5309a8ecbee3311a1",
-				"integrity": "sha512-VFmskRkjmtrlgz72QdSVKMkWlaip0k4FGyTa88dmfOPayYg4iAD25DFc5z+mYNy4aHm1814oN6R6sRsXjYogCQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/style-container/-/style-container-8.0.6.tgz",
 				"fileCount": 32,
-				"unpackedSize": 231838,
+				"integrity": "sha512-VFmskRkjmtrlgz72QdSVKMkWlaip0k4FGyTa88dmfOPayYg4iAD25DFc5z+mYNy4aHm1814oN6R6sRsXjYogCQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEYCIQCQV2qe3IKdh+9PrLRXCPFT8oe0i9LN5cGu5sM4ZVzXQwIhAMKUJNGmJDzmbXvB69AK7q4Hz8m/RNDj5rOHrvcAQr2z"
+						"sig": "MEYCIQCQV2qe3IKdh+9PrLRXCPFT8oe0i9LN5cGu5sM4ZVzXQwIhAMKUJNGmJDzmbXvB69AK7q4Hz8m/RNDj5rOHrvcAQr2z",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 231838
 			},
 			"stratus": {
 				"srcDirectory": "./src",

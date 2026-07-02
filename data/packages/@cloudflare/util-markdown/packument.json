@@ -838,21 +838,21 @@
 			"name": "@cloudflare/util-markdown",
 			"version": "1.2.19",
 			"dependencies": {
-				"lodash.memoize": "^4.0.3",
-				"marked": "^1.2.0"
+				"marked": "^1.2.0",
+				"lodash.memoize": "^4.0.3"
 			},
 			"dist": {
 				"shasum": "bd61c9fe2b49d95ce8a8973c7dce394f8c66b252",
-				"integrity": "sha512-oPvLla8GQVYK965Jy7tdtKwhv3pzt6cU+T/H+xOKWIFvKfnjrmU8BUqGLlPkSZeKau8nzXjbWGDw76Osr7/e7Q==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/util-markdown/-/util-markdown-1.2.19.tgz",
 				"fileCount": 7,
-				"unpackedSize": 10729,
+				"integrity": "sha512-oPvLla8GQVYK965Jy7tdtKwhv3pzt6cU+T/H+xOKWIFvKfnjrmU8BUqGLlPkSZeKau8nzXjbWGDw76Osr7/e7Q==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIGu7Y9DsFpjlFWy48Se/cSf6nHrN0tgaWw0b97fJt44uAiEA/GWj1QXvZOWN1viUXn4dJwFORuzOU43XoOywPB/LaUA="
+						"sig": "MEUCIGu7Y9DsFpjlFWy48Se/cSf6nHrN0tgaWw0b97fJt44uAiEA/GWj1QXvZOWN1viUXn4dJwFORuzOU43XoOywPB/LaUA=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 10729
 			},
 			"stratus": {
 				"srcDirectory": "./src",

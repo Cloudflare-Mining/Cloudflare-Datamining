@@ -3600,24 +3600,24 @@
 			"name": "@cloudflare/util-http-file",
 			"version": "1.2.65",
 			"dependencies": {
-				"@cloudflare/util-http": "^2.0.19",
-				"@cloudflare/util-sparrow": "^6.0.3",
-				"dom-to-image": "^2.6.0",
 				"flat": "5.0.2",
-				"papaparse": "^5.3.1"
+				"papaparse": "^5.3.1",
+				"dom-to-image": "^2.6.0",
+				"@cloudflare/util-http": "^2.0.19",
+				"@cloudflare/util-sparrow": "^6.0.3"
 			},
 			"dist": {
 				"shasum": "537bdbe41c04110f1d46055337cab450ceaad32f",
-				"integrity": "sha512-lOwqjGGpHFkhfuwV1ZwzYfQa0tkGNbmmuhu4QGA5PWKUgZTzhDY9XYepK1hZZrmcCNZrlI4yFoR1fEavtiPNGQ==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/util-http-file/-/util-http-file-1.2.65.tgz",
 				"fileCount": 11,
-				"unpackedSize": 59079,
+				"integrity": "sha512-lOwqjGGpHFkhfuwV1ZwzYfQa0tkGNbmmuhu4QGA5PWKUgZTzhDY9XYepK1hZZrmcCNZrlI4yFoR1fEavtiPNGQ==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEQCIFRDYifWkTtFP4EFSAbbeXfhDgeCqHRlcJTU9spi5xqZAiBNZJoFueMvGnwemijKcTf5sE6wCvq5z93Oek9dpRLsTw=="
+						"sig": "MEQCIFRDYifWkTtFP4EFSAbbeXfhDgeCqHRlcJTU9spi5xqZAiBNZJoFueMvGnwemijKcTf5sE6wCvq5z93Oek9dpRLsTw==",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 59079
 			},
 			"stratus": {
 				"srcDirectory": "./src",

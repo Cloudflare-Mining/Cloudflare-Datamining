@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/autoconfig",
 	"dist-tags": {
-		"latest": "0.1.1"
+		"latest": "0.1.2"
 	},
 	"versions": {
 		"0.0.0": {
@@ -82,6 +82,49 @@
 					}
 				},
 				"unpackedSize": 2373803
+			}
+		},
+		"0.1.2": {
+			"name": "@cloudflare/autoconfig",
+			"version": "0.1.2",
+			"dependencies": {
+				"@cloudflare/cli-shared-helpers": "0.1.11",
+				"@cloudflare/workers-utils": "0.25.0"
+			},
+			"devDependencies": {
+				"@netlify/build-info": "^10.5.1",
+				"@types/esprima": "^4.0.3",
+				"@types/node": "22.15.17",
+				"chalk": "5.3.0",
+				"empathic": "^2.0.0",
+				"esprima": "4.0.1",
+				"recast": "0.23.11",
+				"semiver": "^1.1.0",
+				"ts-dedent": "^2.2.0",
+				"tsup": "8.3.0",
+				"typescript": "5.8.3",
+				"vitest": "4.1.0",
+				"@cloudflare/codemod": "1.1.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-dw71LOeBPi5JJJ9CE3sShMECgQ5OoWb5baZXzPAPhPQ66+FCTAAGOMWNvlj0itxxqveRh+KUO4fLUbE3f5GBkQ==",
+				"shasum": "5112136e942adf4e73fc7edb1f42354a8ba708e9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/autoconfig/-/autoconfig-0.1.2.tgz",
+				"fileCount": 6,
+				"unpackedSize": 2373803,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fautoconfig@0.1.2",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEUCIQDBjB/QsRcQe6t8/ZdTTx4Cyywf5VB2EoS/sVt11IfZlwIgEC+2qm+YihKG83BN9qpLRbSYQUQl0aN0yrFSrRQBPuI="
+					}
+				]
 			}
 		}
 	}

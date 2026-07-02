@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/workers-auth",
 	"dist-tags": {
-		"latest": "0.3.2"
+		"latest": "0.4.0"
 	},
 	"versions": {
 		"0.1.0": {
@@ -254,6 +254,49 @@
 					}
 				},
 				"unpackedSize": 81819
+			}
+		},
+		"0.4.0": {
+			"name": "@cloudflare/workers-auth",
+			"version": "0.4.0",
+			"dependencies": {
+				"undici": "7.28.0",
+				"@cloudflare/workers-utils": "0.25.0"
+			},
+			"devDependencies": {
+				"@types/node": "22.15.17",
+				"@vitest/ui": "4.1.0",
+				"concurrently": "^8.2.2",
+				"msw": "2.12.4",
+				"smol-toml": "1.5.2",
+				"ts-dedent": "^2.2.0",
+				"tsup": "8.3.0",
+				"typescript": "5.8.3",
+				"vitest": "4.1.0",
+				"@cloudflare/workers-tsconfig": "0.0.0"
+			},
+			"peerDependencies": {
+				"msw": "2.12.4",
+				"vitest": "^4.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-JTc46U4CxkTg1Y9FYj/k9FFvm6GGP4x++b1yG6FfxVVTIhMhDzpSFvi5ytl6DVdyl/9HJM8KZs52CH40qMvsZw==",
+				"shasum": "247a11d212f316cfb63828885a87a0c4a51dacb3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-auth/-/workers-auth-0.4.0.tgz",
+				"fileCount": 8,
+				"unpackedSize": 208751,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fworkers-auth@0.4.0",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEYCIQDhmxgm21qnbSsuHO9WVVsDfLtQn6PzUTQm5h/xs+t6PgIhAMR7fV5WrUdcvZj+wNl2PcYSLaN4KLec3AgeFRyJKQMC"
+					}
+				]
 			}
 		}
 	}

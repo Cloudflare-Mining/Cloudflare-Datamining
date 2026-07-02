@@ -946,27 +946,27 @@
 			"name": "@cloudflare/util-api",
 			"version": "1.2.32",
 			"dependencies": {
-				"@cloudflare/util-en-garde": "^8.0.15",
+				"jsonwebtoken": "^8.5.1",
 				"@types/jsonwebtoken": "^7.2.7",
-				"jsonwebtoken": "^8.5.1"
+				"@cloudflare/util-en-garde": "^8.0.15"
 			},
 			"peerDependencies": {
-				"apollo-cache-inmemory": "^1.0.0",
 				"apollo-client": "^2.0.0",
-				"apollo-link-http": "^1.0.0"
+				"apollo-link-http": "^1.0.0",
+				"apollo-cache-inmemory": "^1.0.0"
 			},
 			"dist": {
 				"shasum": "b45add368c995cfb6a35af769b207617bc650f38",
-				"integrity": "sha512-1MNxhyjYh1Q3t0ZcOaFsGQcdc79bSJ/2ObDgTea5Q5OdFvwpbSSH59TjDxKfQrL26wRyRE3i2pz12hmJ1FKgYA==",
 				"tarball": "https://registry.npmjs.org/@cloudflare/util-api/-/util-api-1.2.32.tgz",
 				"fileCount": 9,
-				"unpackedSize": 36797,
+				"integrity": "sha512-1MNxhyjYh1Q3t0ZcOaFsGQcdc79bSJ/2ObDgTea5Q5OdFvwpbSSH59TjDxKfQrL26wRyRE3i2pz12hmJ1FKgYA==",
 				"signatures": [
 					{
-						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIEsALfcfPhGP8VHuNZCaHwoEYoEohHWuzU8d5dlh3AUoAiEAwpwo+CvH79NHiNauk66wDCrHBH550y5d+I8SjbnlE1I="
+						"sig": "MEUCIEsALfcfPhGP8VHuNZCaHwoEYoEohHWuzU8d5dlh3AUoAiEAwpwo+CvH79NHiNauk66wDCrHBH550y5d+I8SjbnlE1I=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
 					}
-				]
+				],
+				"unpackedSize": 36797
 			},
 			"stratus": {
 				"srcDirectory": "./src",
