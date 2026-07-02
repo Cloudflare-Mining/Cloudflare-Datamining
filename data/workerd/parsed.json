@@ -3895,8 +3895,7 @@
 				{
 					"name": "allowIrrevocableStubStorage",
 					"annotations": {
-						"compatEnableFlag": "allow_irrevocable_stub_storage",
-						"experimental": true
+						"compatEnableFlag": "allow_irrevocable_stub_storage"
 					},
 					"type": "Bool"
 				},
@@ -4145,6 +4144,24 @@
 					"annotations": {
 						"compatEnableFlag": "auto_grpc_convert",
 						"neededByFl": true,
+						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "pythonWorkers20260610",
+					"annotations": {
+						"compatEnableFlag": "python_workers_20260610",
+						"compatDisableFlag": "no_python_workers_20260610",
+						"pythonSnapshotRelease": true,
+						"experimental": true
+					},
+					"type": "Bool"
+				},
+				{
+					"name": "enableNodeJsInspectorLocalDev",
+					"annotations": {
+						"compatEnableFlag": "enable_nodejs_inspector_local_dev",
 						"experimental": true
 					},
 					"type": "Bool"
@@ -4943,6 +4960,11 @@
 					"name": "restored",
 					"annotations": {},
 					"type": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.restored"
+				},
+				{
+					"name": "persistence",
+					"annotations": {},
+					"type": "workerd/src/workerd/server/channel-token.capnp:ChannelToken.persistence"
 				}
 			]
 		},
