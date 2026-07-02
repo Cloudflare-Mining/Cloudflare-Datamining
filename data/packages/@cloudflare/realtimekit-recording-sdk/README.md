@@ -1,86 +1,78 @@
-<!-- PROJECT LOGO -->
-<p align="center">
-  <a href="https://realtime.cloudflare.com">
-    <img src="https://docs.realtime.cloudflare.com/logo/cf.svg" alt="Logo" width="120" />
-  </a>
+# Cloudflare RealtimeKit Recording SDK
 
-  <h3 align="center">RealtimeKit Recording SDK by Cloudflare</h3>
+A powerful SDK for building custom recording UIs for Cloudflare RealtimeKit meetings.
 
-  <p align="center">
-    Cloudflare RealtimeKit recording SDK to make custom UIs for recordings.
-    <br />
-    <a href="https://docs.realtime.cloudflare.com/guides/capabilities/recording/create-record-app-using-sdks"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    ·
-    <a href="https://dyte.io/contact">Report Bug</a>
-    ·
-    <a href="https://dyte.io/contact">Request Feature</a>
-  </p>
-</p>
+## Overview
 
-<!-- TABLE OF CONTENTS -->
+The Cloudflare RealtimeKit Recording SDK provides the business logic and tools needed to create custom recording interfaces for real-time communications. Built with TypeScript, it offers a flexible and type-safe way to integrate recording capabilities into your applications.
 
-## Table of Contents
+## Installation
 
-- [About the Project](#about-the-project)
-  - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Examples](#examples)
-- [Contributing](#contributing)
-- [License](#license)
+Install using npm:
 
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-The `@cloudflare/realtimekit-recording-sdk` powers the business logic for custom recording UIs.
-
-### Built With
-
-This SDK is built using TypeScript.
-
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-Follow the steps below to install `@cloudflare/realtimekit-recording-sdk` in your project.
-
-### Prerequisites
-
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://yarnpkg.com/getting-started/install)
-
-### Installation
-
-Install using NPM
-
-```sh
+```bash
 npm install @cloudflare/realtimekit-recording-sdk
 ```
 
-OR
+Or using yarn:
 
-Install using yarn
-
-```sh
+```bash
 yarn add @cloudflare/realtimekit-recording-sdk
 ```
 
-<!-- USAGE -->
-
 ## Usage
 
-To get a detailed description of how to use this library, check out the _[official documentation](https://docs.realtime.cloudflare.com/guides/capabilities/recording/create-record-app-using-sdks)_.
+```typescript
+import { RecordingSDK } from '@cloudflare/realtimekit-recording-sdk';
 
-## Examples
+// Initialize the recording SDK
+const recording = new RecordingSDK({
+  // Your configuration here
+});
 
-You can find a sample implementation of the recording SDK in the [react-samples](https://github.com/dyte-io/recording-sdk-app-samples) directory.
+// Start recording
+await recording.start();
 
-<!--- LICENSE -->
+// Stop recording
+await recording.stop();
+```
+
+For detailed usage instructions and API documentation, visit the [official documentation](https://developers.cloudflare.com/realtime/realtimekit/).
+
+## Development
+
+### Prerequisites
+
+- Node.js (>= 16)
+- npm or yarn
+
+### Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build the project
+npm run build
+
+# Run tests
+npm run test
+
+# Run linting
+npm run lint
+```
+
+### Contributing
+
+Contributions are welcome! Please read our [DEVELOPMENT.md](./DEVELOPMENT.md) guide for details on our development workflow and how to submit changes.
 
 ## License
 
-All rights reserved. © Cloudflare Inc.
+Distributed under the Apache-2.0 License. See [LICENSE](./LICENSE) for more information.
+
+## Support
+
+For questions and support, visit the [Cloudflare Community](https://community.cloudflare.com) or check out our [documentation](https://developers.cloudflare.com/realtime/realtimekit/).
