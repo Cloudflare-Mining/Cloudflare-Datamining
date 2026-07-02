@@ -325,48 +325,174 @@
 								"type": "array"
 							},
 							"bcc": {
-								"description": "BCC recipient(s). A single email string or an array of email strings.",
-								"oneOf": [
+								"allOf": [
 									{
-										"description": "An email address as a plain string.",
-										"example": "user@example.com",
-										"pattern": "^[\\x20-\\x7E]+$",
-										"type": "string"
-									},
-									{
-										"description": "A list of email address strings.",
+										"description": "Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either.",
 										"example": [
 											"recipient-a@example.com",
-											"recipient-b@example.com"
+											{
+												"address": "recipient-b@example.com",
+												"name": "Recipient B"
+											}
 										],
-										"items": {
-											"pattern": "^[\\x20-\\x7E]+$",
-											"type": "string"
-										},
-										"type": "array"
+										"oneOf": [
+											{
+												"description": "An email address as a plain string.",
+												"example": "user@example.com",
+												"pattern": "^[\\x20-\\x7E]+$",
+												"type": "string"
+											},
+											{
+												"example": {
+													"address": "user@example.com",
+													"name": "John Doe"
+												},
+												"properties": {
+													"address": {
+														"description": "Email address (e.g., 'user@example.com').",
+														"example": "user@example.com",
+														"pattern": "^[\\x20-\\x7E]+$",
+														"type": "string"
+													},
+													"name": {
+														"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+														"example": "John Doe",
+														"nullable": true,
+														"type": "string"
+													}
+												},
+												"required": [
+													"address"
+												],
+												"type": "object"
+											},
+											{
+												"items": {
+													"oneOf": [
+														{
+															"description": "An email address as a plain string.",
+															"example": "user@example.com",
+															"pattern": "^[\\x20-\\x7E]+$",
+															"type": "string"
+														},
+														{
+															"example": {
+																"address": "user@example.com",
+																"name": "John Doe"
+															},
+															"properties": {
+																"address": {
+																	"description": "Email address (e.g., 'user@example.com').",
+																	"example": "user@example.com",
+																	"pattern": "^[\\x20-\\x7E]+$",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+																	"example": "John Doe",
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"address"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"type": "array"
+											}
+										]
+									},
+									{
+										"description": "BCC recipient(s). A single email string, a named address object, or an array of either."
 									}
 								]
 							},
 							"cc": {
-								"description": "CC recipient(s). A single email string or an array of email strings.",
-								"oneOf": [
+								"allOf": [
 									{
-										"description": "An email address as a plain string.",
-										"example": "user@example.com",
-										"pattern": "^[\\x20-\\x7E]+$",
-										"type": "string"
-									},
-									{
-										"description": "A list of email address strings.",
+										"description": "Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either.",
 										"example": [
 											"recipient-a@example.com",
-											"recipient-b@example.com"
+											{
+												"address": "recipient-b@example.com",
+												"name": "Recipient B"
+											}
 										],
-										"items": {
-											"pattern": "^[\\x20-\\x7E]+$",
-											"type": "string"
-										},
-										"type": "array"
+										"oneOf": [
+											{
+												"description": "An email address as a plain string.",
+												"example": "user@example.com",
+												"pattern": "^[\\x20-\\x7E]+$",
+												"type": "string"
+											},
+											{
+												"example": {
+													"address": "user@example.com",
+													"name": "John Doe"
+												},
+												"properties": {
+													"address": {
+														"description": "Email address (e.g., 'user@example.com').",
+														"example": "user@example.com",
+														"pattern": "^[\\x20-\\x7E]+$",
+														"type": "string"
+													},
+													"name": {
+														"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+														"example": "John Doe",
+														"nullable": true,
+														"type": "string"
+													}
+												},
+												"required": [
+													"address"
+												],
+												"type": "object"
+											},
+											{
+												"items": {
+													"oneOf": [
+														{
+															"description": "An email address as a plain string.",
+															"example": "user@example.com",
+															"pattern": "^[\\x20-\\x7E]+$",
+															"type": "string"
+														},
+														{
+															"example": {
+																"address": "user@example.com",
+																"name": "John Doe"
+															},
+															"properties": {
+																"address": {
+																	"description": "Email address (e.g., 'user@example.com').",
+																	"example": "user@example.com",
+																	"pattern": "^[\\x20-\\x7E]+$",
+																	"type": "string"
+																},
+																"name": {
+																	"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+																	"example": "John Doe",
+																	"nullable": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"address"
+															],
+															"type": "object"
+														}
+													]
+												},
+												"type": "array"
+											}
+										]
+									},
+									{
+										"description": "CC recipient(s). A single email string, a named address object, or an array of either."
 									}
 								]
 							},
@@ -392,14 +518,14 @@
 												"type": "string"
 											},
 											"name": {
-												"description": "Display name for the email address (e.g., 'John Doe').",
+												"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
 												"example": "John Doe",
+												"nullable": true,
 												"type": "string"
 											}
 										},
 										"required": [
-											"address",
-											"name"
+											"address"
 										],
 										"type": "object"
 									}
@@ -442,14 +568,14 @@
 												"type": "string"
 											},
 											"name": {
-												"description": "Display name for the email address (e.g., 'John Doe').",
+												"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
 												"example": "John Doe",
+												"nullable": true,
 												"type": "string"
 											}
 										},
 										"required": [
-											"address",
-											"name"
+											"address"
 										],
 										"type": "object"
 									}
@@ -466,7 +592,14 @@
 								"type": "string"
 							},
 							"to": {
-								"description": "Recipient(s). Optional if cc or bcc is provided. A single email string or an array of email strings.",
+								"description": "Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either.",
+								"example": [
+									"recipient-a@example.com",
+									{
+										"address": "recipient-b@example.com",
+										"name": "Recipient B"
+									}
+								],
 								"oneOf": [
 									{
 										"description": "An email address as a plain string.",
@@ -475,14 +608,63 @@
 										"type": "string"
 									},
 									{
-										"description": "A list of email address strings.",
-										"example": [
-											"recipient-a@example.com",
-											"recipient-b@example.com"
+										"example": {
+											"address": "user@example.com",
+											"name": "John Doe"
+										},
+										"properties": {
+											"address": {
+												"description": "Email address (e.g., 'user@example.com').",
+												"example": "user@example.com",
+												"pattern": "^[\\x20-\\x7E]+$",
+												"type": "string"
+											},
+											"name": {
+												"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+												"example": "John Doe",
+												"nullable": true,
+												"type": "string"
+											}
+										},
+										"required": [
+											"address"
 										],
+										"type": "object"
+									},
+									{
 										"items": {
-											"pattern": "^[\\x20-\\x7E]+$",
-											"type": "string"
+											"oneOf": [
+												{
+													"description": "An email address as a plain string.",
+													"example": "user@example.com",
+													"pattern": "^[\\x20-\\x7E]+$",
+													"type": "string"
+												},
+												{
+													"example": {
+														"address": "user@example.com",
+														"name": "John Doe"
+													},
+													"properties": {
+														"address": {
+															"description": "Email address (e.g., 'user@example.com').",
+															"example": "user@example.com",
+															"pattern": "^[\\x20-\\x7E]+$",
+															"type": "string"
+														},
+														"name": {
+															"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+															"example": "John Doe",
+															"nullable": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"address"
+													],
+													"type": "object"
+												}
+											]
 										},
 										"type": "array"
 									}
