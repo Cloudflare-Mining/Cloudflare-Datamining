@@ -250,7 +250,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
 		"description": "Removes a blocked sender pattern. After deletion, emails from this sender will no longer be automatically blocked based on this rule.",
@@ -503,7 +504,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
 		"description": "Removes email security protection from a domain. After deletion, emails for this domain will no longer be processed by Email Security. This action cannot be undone.",
@@ -756,7 +758,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
 		"description": "Removes an entry from the impersonation registry. After deletion, this identity will no longer be protected from impersonation.",
@@ -1010,7 +1013,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
 		"description": "Removes a sending domain restriction. After deletion, TLS will no longer be enforced for emails from this domain.",
@@ -1264,7 +1268,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
 		"description": "Removes a trusted domain pattern. After deletion, emails from this domain will be subject to normal recent domain and similarity checks.",
@@ -1517,7 +1522,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
 		"description": "Removes a URL rewrite ignore pattern. After deletion, URLs matching this pattern will be rewritten again.",
@@ -1771,7 +1777,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies": {
 		"description": "Returns a paginated list of email allow policies. These policies exempt matching emails from security detection, allowing them to bypass disposition actions. Supports filtering by pattern type and policy attributes.",
@@ -2067,7 +2074,8 @@
 														"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 														"example": false,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 													},
 													"is_regex": {
 														"example": false,
@@ -2079,14 +2087,16 @@
 														"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 														"example": true,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 													},
 													"is_spoof": {
 														"deprecated": true,
 														"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 														"example": false,
 														"type": "boolean",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 													},
 													"is_trusted_sender": {
 														"description": "Messages from this sender will bypass all detections and link following",
@@ -2105,7 +2115,8 @@
 														],
 														"deprecated": true,
 														"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-														"readOnly": true
+														"readOnly": true,
+														"x-stainless-deprecation-message": "Use `modified_at` instead."
 													},
 													"modified_at": {
 														"allOf": [
@@ -2292,7 +2303,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
 		"description": "Retrieves details for a specific allow policy including its pattern, dispositions that are exempted, and whether it applies to all detections.",
@@ -2441,7 +2453,8 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 												},
 												"is_regex": {
 													"example": false,
@@ -2453,14 +2466,16 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 												},
 												"is_spoof": {
 													"deprecated": true,
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
 													"description": "Messages from this sender will bypass all detections and link following",
@@ -2479,7 +2494,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -2664,7 +2680,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders": {
 		"description": "Returns a paginated list of blocked email sender patterns. These patterns prevent emails from matching senders from being delivered. Supports filtering by pattern type and searching across patterns.",
@@ -2929,7 +2946,8 @@
 														],
 														"deprecated": true,
 														"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-														"readOnly": true
+														"readOnly": true,
+														"x-stainless-deprecation-message": "Use `modified_at` instead."
 													},
 													"modified_at": {
 														"allOf": [
@@ -3105,7 +3123,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
 		"description": "Retrieves details for a specific blocked sender pattern including its pattern type, value, and metadata.",
@@ -3253,7 +3272,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -3427,7 +3447,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains": {
 		"description": "Returns a paginated list of email domains protected by Email Security. Includes domain configuration, delivery modes, and authorization status. Supports filtering by delivery mode and integration ID.",
@@ -3829,7 +3850,8 @@
 														],
 														"deprecated": true,
 														"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-														"readOnly": true
+														"readOnly": true,
+														"x-stainless-deprecation-message": "Use `modified_at` instead."
 													},
 													"lookback_hops": {
 														"type": "integer",
@@ -4038,7 +4060,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
 		"description": "Retrieves detailed information for a specific protected email domain including its delivery configuration, SPF/DMARC status, and authorization state.",
@@ -4288,7 +4311,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"lookback_hops": {
 													"type": "integer",
@@ -4495,7 +4519,286 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
+	},
+	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}/verification": {
+		"description": "Returns DNS TXT verification details for a domain created through the Terraform API.\nReturns `200 OK` with the TXT record name and value when the domain uses `dns_txt`\nverification. Returns `204 No Content` for pre-existing domains or domains verified\nby other means (Cloudflare zone ownership, CASB integration).\n",
+		"operationId": "email_security_get_domain_verification",
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"additionalProperties": false,
+											"properties": {
+												"last_checked_at": {
+													"description": "When the last DNS TXT check was attempted, if any.",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"pending",
+														"active",
+														"failed",
+														"timeout"
+													],
+													"type": "string"
+												},
+												"txt_record_name": {
+													"description": "Full DNS TXT record name (e.g. `_cf-email-sec-challenge.example.com`).",
+													"type": "string"
+												},
+												"txt_record_value": {
+													"description": "Token value to publish in the TXT record.",
+													"type": "string"
+												}
+											},
+											"required": [
+												"status",
+												"txt_record_name",
+												"txt_record_value",
+												"last_checked_at"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "DNS TXT verification details"
+			},
+			"204": {
+				"description": "Domain is verified by other means; no TXT record required."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get domain verification details",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write",
+			"Cloud Email Security: Read"
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry": {
 		"description": "Returns a paginated list of protected identities in the impersonation registry. These entries define identities and email addresses to protect from impersonation attacks. Can be manually added or automatically synced from directory integrations.",
@@ -4731,7 +5034,8 @@
 													"external_directory_node_id": {
 														"deprecated": true,
 														"nullable": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-deprecation-message": "This field is deprecated."
 													},
 													"id": {
 														"allOf": [
@@ -4762,7 +5066,8 @@
 														],
 														"deprecated": true,
 														"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-														"readOnly": true
+														"readOnly": true,
+														"x-stainless-deprecation-message": "Use `modified_at` instead."
 													},
 													"modified_at": {
 														"allOf": [
@@ -4934,7 +5239,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
 		"description": "Retrieves details for a specific impersonation registry entry including the protected identity, email pattern, and synchronization source if directory-synced.",
@@ -5068,7 +5374,8 @@
 												"external_directory_node_id": {
 													"deprecated": true,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "This field is deprecated."
 												},
 												"id": {
 													"allOf": [
@@ -5099,7 +5406,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -5269,7 +5577,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/sending_domain_restrictions": {
 		"description": "Returns a paginated list of sending domain restrictions. These restrictions enforce TLS requirements for emails from specific domains. Mail without TLS from restricted domains will be dropped unless the subdomain is in the exclude list. Supports sorting and searching.",
@@ -5518,7 +5827,8 @@
 														],
 														"deprecated": true,
 														"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-														"readOnly": true
+														"readOnly": true,
+														"x-stainless-deprecation-message": "Use `modified_at` instead."
 													},
 													"modified_at": {
 														"allOf": [
@@ -5675,7 +5985,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
 		"description": "Retrieves details for a specific sending domain restriction including the domain requiring TLS and any excluded subdomains exempt from the TLS requirement.",
@@ -5836,7 +6147,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -5991,7 +6303,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains": {
 		"description": "Returns a paginated list of trusted domain patterns. Trusted domains prevent false positives for recently registered domains and lookalike domain detections. Patterns can use regular expressions for flexible matching.",
@@ -6262,7 +6575,8 @@
 														],
 														"deprecated": true,
 														"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-														"readOnly": true
+														"readOnly": true,
+														"x-stainless-deprecation-message": "Use `modified_at` instead."
 													},
 													"modified_at": {
 														"allOf": [
@@ -6426,7 +6740,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
 		"description": "Retrieves details for a specific trusted domain pattern including its pattern value, whether it uses regex matching, and which detection types it affects.",
@@ -6586,7 +6901,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -6748,7 +7064,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/url_ignore_patterns": {
 		"description": "Returns a paginated list of URL rewrite ignore patterns for the account. URLs matching these patterns will not be rewritten.",
@@ -6940,7 +7257,8 @@
 														"format": "date-time",
 														"readOnly": true,
 														"type": "string",
-														"x-auditable": true
+														"x-auditable": true,
+														"x-stainless-deprecation-message": "Use `modified_at` instead."
 													},
 													"modified_at": {
 														"format": "date-time",
@@ -7105,7 +7423,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
 		"description": "Returns a single URL rewrite ignore pattern by its identifier.",
@@ -7241,7 +7560,8 @@
 													"format": "date-time",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"format": "date-time",
@@ -7404,7 +7724,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
 		"description": "Updates an existing allow policy. Only provided fields will be modified. Changes take effect for new emails matching the pattern.",
@@ -7463,7 +7784,8 @@
 										"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 									},
 									"is_regex": {
 										"example": false,
@@ -7475,14 +7797,16 @@
 										"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 									},
 									"is_spoof": {
 										"deprecated": true,
 										"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 									},
 									"is_trusted_sender": {
 										"description": "Messages from this sender will bypass all detections and link following",
@@ -7501,7 +7825,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -7699,7 +8024,8 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 												},
 												"is_regex": {
 													"example": false,
@@ -7711,14 +8037,16 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 												},
 												"is_spoof": {
 													"deprecated": true,
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
 													"description": "Messages from this sender will bypass all detections and link following",
@@ -7737,7 +8065,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -7921,7 +8250,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
 		"description": "Updates an existing blocked sender pattern. Only provided fields will be modified. The pattern will continue blocking emails until deleted.",
@@ -7979,7 +8309,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -8165,7 +8496,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -8338,7 +8670,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
 		"description": "Updates configuration for a protected email domain. Only provided fields will be modified. Changes affect delivery mode, security settings, and regional processing.",
@@ -8691,7 +9024,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"lookback_hops": {
 													"type": "integer",
@@ -8897,7 +9231,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}": {
 		"description": "Updates an existing impersonation registry entry. Only provided fields will be modified. Directory-synced entries can't be updated.",
@@ -8941,7 +9276,8 @@
 									"external_directory_node_id": {
 										"deprecated": true,
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-stainless-deprecation-message": "This field is deprecated."
 									},
 									"id": {
 										"allOf": [
@@ -8972,7 +9308,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -9140,7 +9477,8 @@
 												"external_directory_node_id": {
 													"deprecated": true,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "This field is deprecated."
 												},
 												"id": {
 													"allOf": [
@@ -9171,7 +9509,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -9340,7 +9679,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}": {
 		"description": "Updates an existing sending domain restriction. Only provided fields will be modified. Changes affect which domains require TLS and which subdomains are excluded.",
@@ -9411,7 +9751,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -9591,7 +9932,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -9745,7 +10087,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}": {
 		"description": "Updates an existing trusted domain pattern. Only provided fields will be modified. Changes take effect for new emails matching the pattern.",
@@ -9815,7 +10158,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -10001,7 +10345,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -10162,7 +10507,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
 		"description": "Updates an existing URL rewrite ignore pattern. Only provided fields will be modified.",
@@ -10329,7 +10675,8 @@
 													"format": "date-time",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"format": "date-time",
@@ -10491,7 +10838,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies": {
 		"description": "Creates a new allow policy that exempts matching emails from security detections. Use with caution as this bypasses email security scanning. Policies can match on sender patterns and apply to specific detections or all detections.",
@@ -10550,7 +10898,8 @@
 										"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 									},
 									"is_regex": {
 										"example": false,
@@ -10562,14 +10911,16 @@
 										"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 										"example": true,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 									},
 									"is_spoof": {
 										"deprecated": true,
 										"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 										"example": false,
 										"type": "boolean",
-										"x-auditable": true
+										"x-auditable": true,
+										"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 									},
 									"is_trusted_sender": {
 										"description": "Messages from this sender will bypass all detections and link following",
@@ -10588,7 +10939,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -10794,7 +11146,8 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 												},
 												"is_regex": {
 													"example": false,
@@ -10806,14 +11159,16 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 												},
 												"is_spoof": {
 													"deprecated": true,
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
 													"description": "Messages from this sender will bypass all detections and link following",
@@ -10832,7 +11187,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -11016,7 +11372,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies/batch": {
 		"description": "Execute multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
@@ -11099,7 +11456,8 @@
 															"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 															"example": false,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 														},
 														"is_regex": {
 															"example": false,
@@ -11111,14 +11469,16 @@
 															"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 															"example": true,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 														},
 														"is_spoof": {
 															"deprecated": true,
 															"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 															"example": false,
 															"type": "boolean",
-															"x-auditable": true
+															"x-auditable": true,
+															"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 														},
 														"is_trusted_sender": {
 															"description": "Messages from this sender will bypass all detections and link following",
@@ -11137,7 +11497,8 @@
 															],
 															"deprecated": true,
 															"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-															"readOnly": true
+															"readOnly": true,
+															"x-stainless-deprecation-message": "Use `modified_at` instead."
 														},
 														"modified_at": {
 															"allOf": [
@@ -11263,7 +11624,8 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 												},
 												"is_regex": {
 													"example": false,
@@ -11275,14 +11637,16 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 												},
 												"is_spoof": {
 													"deprecated": true,
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
 													"description": "Messages from this sender will bypass all detections and link following",
@@ -11301,7 +11665,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -11414,7 +11779,8 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 												},
 												"is_regex": {
 													"example": false,
@@ -11426,14 +11792,16 @@
 													"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 													"example": true,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 												},
 												"is_spoof": {
 													"deprecated": true,
 													"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 													"example": false,
 													"type": "boolean",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 												},
 												"is_trusted_sender": {
 													"description": "Messages from this sender will bypass all detections and link following",
@@ -11452,7 +11820,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -11700,7 +12069,8 @@
 																"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 																"example": false,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 															},
 															"is_regex": {
 																"example": false,
@@ -11712,14 +12082,16 @@
 																"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 															},
 															"is_spoof": {
 																"deprecated": true,
 																"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 																"example": false,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 															},
 															"is_trusted_sender": {
 																"description": "Messages from this sender will bypass all detections and link following",
@@ -11738,7 +12110,8 @@
 																],
 																"deprecated": true,
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-																"readOnly": true
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"allOf": [
@@ -11836,7 +12209,8 @@
 																"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 																"example": false,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 															},
 															"is_regex": {
 																"example": false,
@@ -11848,14 +12222,16 @@
 																"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 															},
 															"is_spoof": {
 																"deprecated": true,
 																"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 																"example": false,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 															},
 															"is_trusted_sender": {
 																"description": "Messages from this sender will bypass all detections and link following",
@@ -11874,7 +12250,8 @@
 																],
 																"deprecated": true,
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-																"readOnly": true
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"allOf": [
@@ -11972,7 +12349,8 @@
 																"description": "Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026.",
 																"example": false,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `is_exempt_recipient` instead."
 															},
 															"is_regex": {
 																"example": false,
@@ -11984,14 +12362,16 @@
 																"description": "Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026.",
 																"example": true,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `is_trusted_sender` instead."
 															},
 															"is_spoof": {
 																"deprecated": true,
 																"description": "Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026.",
 																"example": false,
 																"type": "boolean",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `is_acceptable_sender` instead."
 															},
 															"is_trusted_sender": {
 																"description": "Messages from this sender will bypass all detections and link following",
@@ -12010,7 +12390,8 @@
 																],
 																"deprecated": true,
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-																"readOnly": true
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"allOf": [
@@ -12199,7 +12580,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders": {
 		"description": "Creates a new blocked sender pattern. Emails matching this pattern will be blocked from delivery. Patterns can be email addresses, domains, or IP addresses, and support regular expressions.",
@@ -12257,7 +12639,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -12447,7 +12830,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -12620,7 +13004,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders/batch": {
 		"description": "Execute multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
@@ -12702,7 +13087,8 @@
 															],
 															"deprecated": true,
 															"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-															"readOnly": true
+															"readOnly": true,
+															"x-stainless-deprecation-message": "Use `modified_at` instead."
 														},
 														"modified_at": {
 															"allOf": [
@@ -12816,7 +13202,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -12913,7 +13300,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -13149,7 +13537,8 @@
 																],
 																"deprecated": true,
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-																"readOnly": true
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"allOf": [
@@ -13235,7 +13624,8 @@
 																],
 																"deprecated": true,
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-																"readOnly": true
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"allOf": [
@@ -13321,7 +13711,8 @@
 																],
 																"deprecated": true,
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-																"readOnly": true
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"allOf": [
@@ -13499,7 +13890,1347 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
+	},
+	"POST /accounts/{account_id}/email-security/settings/domains/batch": {
+		"description": "Execute multiple domain operations in a single request. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
+		"operationId": "email_security_batch_domains",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"deletes": {
+								"items": {
+									"properties": {
+										"id": {
+											"description": "Domain identifier",
+											"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+											"format": "uuid",
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								},
+								"maxItems": 1000,
+								"type": "array"
+							},
+							"patches": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"properties": {
+												"allowed_delivery_modes": {
+													"items": {
+														"enum": [
+															"DIRECT",
+															"BCC",
+															"JOURNAL",
+															"API",
+															"RETRO_SCAN"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"domain": {
+													"type": "string",
+													"x-auditable": true
+												},
+												"drop_dispositions": {
+													"items": {
+														"enum": [
+															"MALICIOUS",
+															"MALICIOUS-BEC",
+															"SUSPICIOUS",
+															"SPOOF",
+															"SPAM",
+															"BULK",
+															"ENCRYPTED",
+															"EXTERNAL",
+															"UNKNOWN",
+															"NONE"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"folder": {
+													"enum": [
+														"AllItems",
+														"Inbox"
+													],
+													"type": "string"
+												},
+												"integration_id": {
+													"format": "uuid",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"ip_restrictions": {
+													"example": [
+														"192.0.2.0/24",
+														"2001:db8::/32"
+													],
+													"items": {
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": "array"
+												},
+												"lookback_hops": {
+													"maximum": 20,
+													"minimum": 1,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"regions": {
+													"items": {
+														"enum": [
+															"GLOBAL",
+															"AU",
+															"DE",
+															"IN",
+															"US"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"require_tls_inbound": {
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"require_tls_outbound": {
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"transport": {
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "Domain identifier",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"maxItems": 1000,
+								"type": "array"
+							},
+							"posts": {
+								"items": {
+									"additionalProperties": false,
+									"properties": {
+										"allowed_delivery_modes": {
+											"items": {
+												"enum": [
+													"DIRECT",
+													"BCC",
+													"JOURNAL",
+													"API",
+													"RETRO_SCAN"
+												],
+												"type": "string"
+											},
+											"maxItems": 10,
+											"minItems": 1,
+											"type": "array"
+										},
+										"domain": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"drop_dispositions": {
+											"items": {
+												"enum": [
+													"MALICIOUS",
+													"MALICIOUS-BEC",
+													"SUSPICIOUS",
+													"SPOOF",
+													"SPAM",
+													"BULK",
+													"ENCRYPTED",
+													"EXTERNAL",
+													"UNKNOWN",
+													"NONE"
+												],
+												"type": "string"
+											},
+											"maxItems": 10,
+											"type": "array"
+										},
+										"folder": {
+											"enum": [
+												"AllItems",
+												"Inbox"
+											],
+											"type": "string"
+										},
+										"integration_id": {
+											"format": "uuid",
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										},
+										"ip_restrictions": {
+											"example": [
+												"192.0.2.0/24",
+												"2001:db8::/32"
+											],
+											"items": {
+												"type": "string",
+												"x-auditable": true
+											},
+											"maxItems": 100,
+											"type": "array"
+										},
+										"lookback_hops": {
+											"maximum": 20,
+											"minimum": 1,
+											"nullable": true,
+											"type": "integer",
+											"x-auditable": true
+										},
+										"regions": {
+											"items": {
+												"enum": [
+													"GLOBAL",
+													"AU",
+													"DE",
+													"IN",
+													"US"
+												],
+												"type": "string"
+											},
+											"maxItems": 10,
+											"minItems": 1,
+											"type": "array"
+										},
+										"require_tls_inbound": {
+											"nullable": true,
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"require_tls_outbound": {
+											"nullable": true,
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"transport": {
+											"nullable": true,
+											"type": "string",
+											"x-auditable": true
+										}
+									},
+									"required": [
+										"domain",
+										"allowed_delivery_modes",
+										"ip_restrictions",
+										"drop_dispositions",
+										"regions"
+									],
+									"type": "object"
+								},
+								"maxItems": 1000,
+								"type": "array"
+							},
+							"puts": {
+								"items": {
+									"allOf": [
+										{
+											"additionalProperties": false,
+											"description": "Request body for replacing a domain via the Terraform batch PUT operation.\nThe `domain` field is intentionally absent — the domain name is immutable\nafter creation and is ignored by the server even if sent.\n",
+											"properties": {
+												"allowed_delivery_modes": {
+													"items": {
+														"enum": [
+															"DIRECT",
+															"BCC",
+															"JOURNAL",
+															"API",
+															"RETRO_SCAN"
+														],
+														"type": "string"
+													},
+													"maxItems": 10,
+													"minItems": 1,
+													"type": "array"
+												},
+												"drop_dispositions": {
+													"items": {
+														"enum": [
+															"MALICIOUS",
+															"MALICIOUS-BEC",
+															"SUSPICIOUS",
+															"SPOOF",
+															"SPAM",
+															"BULK",
+															"ENCRYPTED",
+															"EXTERNAL",
+															"UNKNOWN",
+															"NONE"
+														],
+														"type": "string"
+													},
+													"maxItems": 10,
+													"type": "array"
+												},
+												"folder": {
+													"enum": [
+														"AllItems",
+														"Inbox"
+													],
+													"type": "string"
+												},
+												"integration_id": {
+													"format": "uuid",
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"ip_restrictions": {
+													"example": [
+														"192.0.2.0/24",
+														"2001:db8::/32"
+													],
+													"items": {
+														"type": "string",
+														"x-auditable": true
+													},
+													"maxItems": 100,
+													"type": "array"
+												},
+												"lookback_hops": {
+													"maximum": 20,
+													"minimum": 1,
+													"type": "integer",
+													"x-auditable": true
+												},
+												"regions": {
+													"items": {
+														"enum": [
+															"GLOBAL",
+															"AU",
+															"DE",
+															"IN",
+															"US"
+														],
+														"type": "string"
+													},
+													"maxItems": 10,
+													"minItems": 1,
+													"type": "array"
+												},
+												"require_tls_inbound": {
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"require_tls_outbound": {
+													"nullable": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"transport": {
+													"nullable": true,
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"allowed_delivery_modes",
+												"lookback_hops",
+												"ip_restrictions",
+												"drop_dispositions",
+												"regions"
+											],
+											"type": "object"
+										},
+										{
+											"properties": {
+												"id": {
+													"description": "Domain identifier",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									]
+								},
+								"maxItems": 1000,
+								"type": "array"
+							}
+						},
+						"required": [
+							"deletes",
+							"patches",
+							"puts",
+							"posts"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"deletes": {
+													"items": {
+														"properties": {
+															"id": {
+																"description": "Domain identifier",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"patches": {
+													"items": {
+														"properties": {
+															"allowed_delivery_modes": {
+																"items": {
+																	"enum": [
+																		"DIRECT",
+																		"BCC",
+																		"JOURNAL",
+																		"API",
+																		"RETRO_SCAN"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"authorization": {
+																"properties": {
+																	"authorized": {
+																		"type": "boolean"
+																	},
+																	"status_message": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"timestamp": {
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"authorized",
+																	"timestamp"
+																],
+																"type": "object"
+															},
+															"created_at": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"dmarc_status": {
+																"enum": [
+																	"none",
+																	"good",
+																	"invalid"
+																],
+																"type": "string"
+															},
+															"domain": {
+																"example": "example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"drop_dispositions": {
+																"items": {
+																	"enum": [
+																		"MALICIOUS",
+																		"MALICIOUS-BEC",
+																		"SUSPICIOUS",
+																		"SPOOF",
+																		"SPAM",
+																		"BULK",
+																		"ENCRYPTED",
+																		"EXTERNAL",
+																		"UNKNOWN",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"emails_processed": {
+																"properties": {
+																	"timestamp": {
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"total_emails_processed": {
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"total_emails_processed_previous": {
+																		"minimum": 0,
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"total_emails_processed",
+																	"total_emails_processed_previous",
+																	"timestamp"
+																],
+																"type": "object"
+															},
+															"folder": {
+																"enum": [
+																	"AllItems",
+																	"Inbox"
+																],
+																"type": "string"
+															},
+															"id": {
+																"description": "Domain identifier",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"type": "string",
+																"x-auditable": true
+															},
+															"inbox_provider": {
+																"enum": [
+																	"Microsoft",
+																	"Google",
+																	null
+																],
+																"nullable": true,
+																"type": "string"
+															},
+															"integration_id": {
+																"format": "uuid",
+																"nullable": true,
+																"type": "string"
+															},
+															"ip_restrictions": {
+																"example": [
+																	"192.0.2.0/24",
+																	"2001:db8::/32"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"last_modified": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"deprecated": true,
+																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
+															},
+															"lookback_hops": {
+																"type": "integer",
+																"x-auditable": true
+															},
+															"modified_at": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"o365_tenant_id": {
+																"nullable": true,
+																"type": "string"
+															},
+															"regions": {
+																"items": {
+																	"enum": [
+																		"GLOBAL",
+																		"AU",
+																		"DE",
+																		"IN",
+																		"US"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"require_tls_inbound": {
+																"nullable": true,
+																"type": "boolean"
+															},
+															"require_tls_outbound": {
+																"nullable": true,
+																"type": "boolean"
+															},
+															"spf_status": {
+																"enum": [
+																	"none",
+																	"good",
+																	"neutral",
+																	"open",
+																	"invalid"
+																],
+																"type": "string"
+															},
+															"status": {
+																"enum": [
+																	"pending",
+																	"active",
+																	"failed",
+																	"timeout"
+																],
+																"type": "string"
+															},
+															"transport": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"posts": {
+													"items": {
+														"properties": {
+															"allowed_delivery_modes": {
+																"items": {
+																	"enum": [
+																		"DIRECT",
+																		"BCC",
+																		"JOURNAL",
+																		"API",
+																		"RETRO_SCAN"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"authorization": {
+																"properties": {
+																	"authorized": {
+																		"type": "boolean"
+																	},
+																	"status_message": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"timestamp": {
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"authorized",
+																	"timestamp"
+																],
+																"type": "object"
+															},
+															"created_at": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"dmarc_status": {
+																"enum": [
+																	"none",
+																	"good",
+																	"invalid"
+																],
+																"type": "string"
+															},
+															"domain": {
+																"example": "example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"drop_dispositions": {
+																"items": {
+																	"enum": [
+																		"MALICIOUS",
+																		"MALICIOUS-BEC",
+																		"SUSPICIOUS",
+																		"SPOOF",
+																		"SPAM",
+																		"BULK",
+																		"ENCRYPTED",
+																		"EXTERNAL",
+																		"UNKNOWN",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"emails_processed": {
+																"properties": {
+																	"timestamp": {
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"total_emails_processed": {
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"total_emails_processed_previous": {
+																		"minimum": 0,
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"total_emails_processed",
+																	"total_emails_processed_previous",
+																	"timestamp"
+																],
+																"type": "object"
+															},
+															"folder": {
+																"enum": [
+																	"AllItems",
+																	"Inbox"
+																],
+																"type": "string"
+															},
+															"id": {
+																"description": "Domain identifier",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"type": "string",
+																"x-auditable": true
+															},
+															"inbox_provider": {
+																"enum": [
+																	"Microsoft",
+																	"Google",
+																	null
+																],
+																"nullable": true,
+																"type": "string"
+															},
+															"integration_id": {
+																"format": "uuid",
+																"nullable": true,
+																"type": "string"
+															},
+															"ip_restrictions": {
+																"example": [
+																	"192.0.2.0/24",
+																	"2001:db8::/32"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"last_modified": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"deprecated": true,
+																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
+															},
+															"lookback_hops": {
+																"type": "integer",
+																"x-auditable": true
+															},
+															"modified_at": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"o365_tenant_id": {
+																"nullable": true,
+																"type": "string"
+															},
+															"regions": {
+																"items": {
+																	"enum": [
+																		"GLOBAL",
+																		"AU",
+																		"DE",
+																		"IN",
+																		"US"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"require_tls_inbound": {
+																"nullable": true,
+																"type": "boolean"
+															},
+															"require_tls_outbound": {
+																"nullable": true,
+																"type": "boolean"
+															},
+															"spf_status": {
+																"enum": [
+																	"none",
+																	"good",
+																	"neutral",
+																	"open",
+																	"invalid"
+																],
+																"type": "string"
+															},
+															"status": {
+																"enum": [
+																	"pending",
+																	"active",
+																	"failed",
+																	"timeout"
+																],
+																"type": "string"
+															},
+															"transport": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"puts": {
+													"items": {
+														"properties": {
+															"allowed_delivery_modes": {
+																"items": {
+																	"enum": [
+																		"DIRECT",
+																		"BCC",
+																		"JOURNAL",
+																		"API",
+																		"RETRO_SCAN"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"authorization": {
+																"properties": {
+																	"authorized": {
+																		"type": "boolean"
+																	},
+																	"status_message": {
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"timestamp": {
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"authorized",
+																	"timestamp"
+																],
+																"type": "object"
+															},
+															"created_at": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"dmarc_status": {
+																"enum": [
+																	"none",
+																	"good",
+																	"invalid"
+																],
+																"type": "string"
+															},
+															"domain": {
+																"example": "example.com",
+																"type": "string",
+																"x-auditable": true
+															},
+															"drop_dispositions": {
+																"items": {
+																	"enum": [
+																		"MALICIOUS",
+																		"MALICIOUS-BEC",
+																		"SUSPICIOUS",
+																		"SPOOF",
+																		"SPAM",
+																		"BULK",
+																		"ENCRYPTED",
+																		"EXTERNAL",
+																		"UNKNOWN",
+																		"NONE"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"emails_processed": {
+																"properties": {
+																	"timestamp": {
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"total_emails_processed": {
+																		"minimum": 0,
+																		"type": "integer"
+																	},
+																	"total_emails_processed_previous": {
+																		"minimum": 0,
+																		"type": "integer"
+																	}
+																},
+																"required": [
+																	"total_emails_processed",
+																	"total_emails_processed_previous",
+																	"timestamp"
+																],
+																"type": "object"
+															},
+															"folder": {
+																"enum": [
+																	"AllItems",
+																	"Inbox"
+																],
+																"type": "string"
+															},
+															"id": {
+																"description": "Domain identifier",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+																"format": "uuid",
+																"type": "string",
+																"x-auditable": true
+															},
+															"inbox_provider": {
+																"enum": [
+																	"Microsoft",
+																	"Google",
+																	null
+																],
+																"nullable": true,
+																"type": "string"
+															},
+															"integration_id": {
+																"format": "uuid",
+																"nullable": true,
+																"type": "string"
+															},
+															"ip_restrictions": {
+																"example": [
+																	"192.0.2.0/24",
+																	"2001:db8::/32"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"last_modified": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"deprecated": true,
+																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
+															},
+															"lookback_hops": {
+																"type": "integer",
+																"x-auditable": true
+															},
+															"modified_at": {
+																"allOf": [
+																	{
+																		"example": "2014-01-01T05:20:00.12345Z",
+																		"format": "date-time",
+																		"type": "string",
+																		"x-auditable": true
+																	}
+																],
+																"readOnly": true
+															},
+															"o365_tenant_id": {
+																"nullable": true,
+																"type": "string"
+															},
+															"regions": {
+																"items": {
+																	"enum": [
+																		"GLOBAL",
+																		"AU",
+																		"DE",
+																		"IN",
+																		"US"
+																	],
+																	"type": "string"
+																},
+																"type": "array"
+															},
+															"require_tls_inbound": {
+																"nullable": true,
+																"type": "boolean"
+															},
+															"require_tls_outbound": {
+																"nullable": true,
+																"type": "boolean"
+															},
+															"spf_status": {
+																"enum": [
+																	"none",
+																	"good",
+																	"neutral",
+																	"open",
+																	"invalid"
+																],
+																"type": "string"
+															},
+															"status": {
+																"enum": [
+																	"pending",
+																	"active",
+																	"failed",
+																	"timeout"
+																],
+																"type": "string"
+															},
+															"transport": {
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"deletes",
+												"patches",
+												"puts",
+												"posts"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Batch operation results"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Batch domain operations",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/impersonation_registry": {
 		"description": "Creates a new entry in the impersonation registry to protect against impersonation. Emails attempting to impersonate this identity will be flagged. Supports regex patterns for flexible email matching.",
@@ -13543,7 +15274,8 @@
 									"external_directory_node_id": {
 										"deprecated": true,
 										"nullable": true,
-										"type": "string"
+										"type": "string",
+										"x-stainless-deprecation-message": "This field is deprecated."
 									},
 									"id": {
 										"allOf": [
@@ -13574,7 +15306,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -13746,7 +15479,8 @@
 												"external_directory_node_id": {
 													"deprecated": true,
 													"nullable": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "This field is deprecated."
 												},
 												"id": {
 													"allOf": [
@@ -13777,7 +15511,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -13946,7 +15681,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions": {
 		"description": "Creates a new sending domain restriction to enforce TLS requirements for a domain. Emails without TLS from this domain will be dropped unless the subdomain is in the exclude list.",
@@ -14017,7 +15753,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -14200,7 +15937,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -14354,7 +16092,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/sending_domain_restrictions/batch": {
 		"description": "Executes multiple delete operations on sending domain restrictions atomically. All operations succeed or fail together as a transaction. Currently only supports batch deletion. Removes TLS enforcement requirements for the specified domains.",
@@ -14654,7 +16393,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains": {
 		"description": "Creates a new trusted domain pattern. Use for partner domains or approved senders that should bypass recent domain registration and similarity checks. Configure whether it prevents recent domain or spoof dispositions.",
@@ -14724,7 +16464,8 @@
 										],
 										"deprecated": true,
 										"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-										"readOnly": true
+										"readOnly": true,
+										"x-stainless-deprecation-message": "Use `modified_at` instead."
 									},
 									"modified_at": {
 										"allOf": [
@@ -14915,7 +16656,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -15076,7 +16818,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains/batch": {
 		"description": "Execute multiple operations atomically. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
@@ -15170,7 +16913,8 @@
 															],
 															"deprecated": true,
 															"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-															"readOnly": true
+															"readOnly": true,
+															"x-stainless-deprecation-message": "Use `modified_at` instead."
 														},
 														"modified_at": {
 															"allOf": [
@@ -15284,7 +17028,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -15382,7 +17127,8 @@
 													],
 													"deprecated": true,
 													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-													"readOnly": true
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"allOf": [
@@ -15618,7 +17364,8 @@
 																],
 																"deprecated": true,
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-																"readOnly": true
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"allOf": [
@@ -15704,7 +17451,8 @@
 																],
 																"deprecated": true,
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-																"readOnly": true
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"allOf": [
@@ -15790,7 +17538,8 @@
 																],
 																"deprecated": true,
 																"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
-																"readOnly": true
+																"readOnly": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"allOf": [
@@ -15956,7 +17705,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/url_ignore_patterns": {
 		"description": "Creates a new URL rewrite ignore pattern. URLs matching this pattern will not be rewritten.",
@@ -16125,7 +17875,8 @@
 													"format": "date-time",
 													"readOnly": true,
 													"type": "string",
-													"x-auditable": true
+													"x-auditable": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"format": "date-time",
@@ -16287,7 +18038,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/url_ignore_patterns/batch": {
 		"description": "Send a Batch of URL Ignore Patterns API calls to be executed together.",
@@ -16614,7 +18366,8 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"format": "date-time",
@@ -16677,7 +18430,8 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"format": "date-time",
@@ -16740,7 +18494,8 @@
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string",
-																"x-auditable": true
+																"x-auditable": true,
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"format": "date-time",
@@ -16916,6 +18671,577 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
+	},
+	"PUT /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
+		"description": "Replaces all mutable fields of a protected email domain in a single atomic operation. Unlike PATCH, all non-computed fields are required.",
+		"operationId": "email_security_replace_domain",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"properties": {
+							"allowed_delivery_modes": {
+								"items": {
+									"enum": [
+										"DIRECT",
+										"BCC",
+										"JOURNAL",
+										"API",
+										"RETRO_SCAN"
+									],
+									"type": "string"
+								},
+								"maxItems": 10,
+								"minItems": 1,
+								"type": "array"
+							},
+							"drop_dispositions": {
+								"items": {
+									"enum": [
+										"MALICIOUS",
+										"MALICIOUS-BEC",
+										"SUSPICIOUS",
+										"SPOOF",
+										"SPAM",
+										"BULK",
+										"ENCRYPTED",
+										"EXTERNAL",
+										"UNKNOWN",
+										"NONE"
+									],
+									"type": "string"
+								},
+								"maxItems": 10,
+								"type": "array"
+							},
+							"folder": {
+								"enum": [
+									"AllItems",
+									"Inbox"
+								],
+								"type": "string"
+							},
+							"integration_id": {
+								"format": "uuid",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"ip_restrictions": {
+								"example": [
+									"192.0.2.0/24",
+									"2001:db8::/32"
+								],
+								"items": {
+									"type": "string",
+									"x-auditable": true
+								},
+								"maxItems": 100,
+								"type": "array"
+							},
+							"lookback_hops": {
+								"maximum": 20,
+								"minimum": 1,
+								"type": "integer",
+								"x-auditable": true
+							},
+							"regions": {
+								"items": {
+									"enum": [
+										"GLOBAL",
+										"AU",
+										"DE",
+										"IN",
+										"US"
+									],
+									"type": "string"
+								},
+								"maxItems": 10,
+								"minItems": 1,
+								"type": "array"
+							},
+							"require_tls_inbound": {
+								"nullable": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"require_tls_outbound": {
+								"nullable": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"transport": {
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"allowed_delivery_modes",
+							"lookback_hops",
+							"ip_restrictions",
+							"drop_dispositions",
+							"regions"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"allowed_delivery_modes": {
+													"items": {
+														"enum": [
+															"DIRECT",
+															"BCC",
+															"JOURNAL",
+															"API",
+															"RETRO_SCAN"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"authorization": {
+													"properties": {
+														"authorized": {
+															"type": "boolean"
+														},
+														"status_message": {
+															"nullable": true,
+															"type": "string"
+														},
+														"timestamp": {
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"authorized",
+														"timestamp"
+													],
+													"type": "object"
+												},
+												"created_at": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"dmarc_status": {
+													"enum": [
+														"none",
+														"good",
+														"invalid"
+													],
+													"type": "string"
+												},
+												"domain": {
+													"example": "example.com",
+													"type": "string",
+													"x-auditable": true
+												},
+												"drop_dispositions": {
+													"items": {
+														"enum": [
+															"MALICIOUS",
+															"MALICIOUS-BEC",
+															"SUSPICIOUS",
+															"SPOOF",
+															"SPAM",
+															"BULK",
+															"ENCRYPTED",
+															"EXTERNAL",
+															"UNKNOWN",
+															"NONE"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"emails_processed": {
+													"properties": {
+														"timestamp": {
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"total_emails_processed": {
+															"minimum": 0,
+															"type": "integer"
+														},
+														"total_emails_processed_previous": {
+															"minimum": 0,
+															"type": "integer"
+														}
+													},
+													"required": [
+														"total_emails_processed",
+														"total_emails_processed_previous",
+														"timestamp"
+													],
+													"type": "object"
+												},
+												"folder": {
+													"enum": [
+														"AllItems",
+														"Inbox"
+													],
+													"type": "string"
+												},
+												"id": {
+													"description": "Domain identifier",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												},
+												"inbox_provider": {
+													"enum": [
+														"Microsoft",
+														"Google",
+														null
+													],
+													"nullable": true,
+													"type": "string"
+												},
+												"integration_id": {
+													"format": "uuid",
+													"nullable": true,
+													"type": "string"
+												},
+												"ip_restrictions": {
+													"example": [
+														"192.0.2.0/24",
+														"2001:db8::/32"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"last_modified": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"deprecated": true,
+													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
+												},
+												"lookback_hops": {
+													"type": "integer",
+													"x-auditable": true
+												},
+												"modified_at": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"o365_tenant_id": {
+													"nullable": true,
+													"type": "string"
+												},
+												"regions": {
+													"items": {
+														"enum": [
+															"GLOBAL",
+															"AU",
+															"DE",
+															"IN",
+															"US"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"require_tls_inbound": {
+													"nullable": true,
+													"type": "boolean"
+												},
+												"require_tls_outbound": {
+													"nullable": true,
+													"type": "boolean"
+												},
+												"spf_status": {
+													"enum": [
+														"none",
+														"good",
+														"neutral",
+														"open",
+														"invalid"
+													],
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"pending",
+														"active",
+														"failed",
+														"timeout"
+													],
+													"type": "string"
+												},
+												"transport": {
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Replaced domain"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Replace an email domain",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-stability": "beta"
 	}
 }

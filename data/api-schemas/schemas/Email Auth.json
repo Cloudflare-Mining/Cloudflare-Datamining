@@ -125,7 +125,8 @@
 																"description": "Deprecated, use created_at",
 																"example": "2024-01-15T10:30:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-stainless-deprecation-message": "Use `created_at` instead."
 															},
 															"created_at": {
 																"description": "Creation timestamp",
@@ -154,7 +155,8 @@
 																"description": "Deprecated, use modified_at",
 																"example": "2024-01-15T11:45:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"description": "Last modification timestamp",
@@ -187,7 +189,8 @@
 													"description": "Deprecated, use created_at",
 													"example": "2024-01-15T10:30:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "Use `created_at` instead."
 												},
 												"created_at": {
 													"description": "Creation timestamp",
@@ -205,7 +208,8 @@
 													"description": "Deprecated, use modified_at",
 													"example": "2024-01-15T11:45:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"description": "Last modification timestamp",
@@ -488,7 +492,8 @@
 													"deprecated": true,
 													"description": "Use `zone_id` instead",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "Use `zone_id` instead."
 												},
 												"zone_id": {
 													"description": "Zone identifier",
@@ -1171,7 +1176,8 @@
 																"description": "Deprecated, use created_at",
 																"example": "2024-01-15T10:30:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-stainless-deprecation-message": "Use `created_at` instead."
 															},
 															"created_at": {
 																"description": "Creation timestamp",
@@ -1200,7 +1206,8 @@
 																"description": "Deprecated, use modified_at",
 																"example": "2024-01-15T11:45:00.12345Z",
 																"format": "date-time",
-																"type": "string"
+																"type": "string",
+																"x-stainless-deprecation-message": "Use `modified_at` instead."
 															},
 															"modified_at": {
 																"description": "Last modification timestamp",
@@ -1233,7 +1240,8 @@
 													"description": "Deprecated, use created_at",
 													"example": "2024-01-15T10:30:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "Use `created_at` instead."
 												},
 												"created_at": {
 													"description": "Creation timestamp",
@@ -1251,7 +1259,8 @@
 													"description": "Deprecated, use modified_at",
 													"example": "2024-01-15T11:45:00.12345Z",
 													"format": "date-time",
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
 												},
 												"modified_at": {
 													"description": "Last modification timestamp",
@@ -1534,7 +1543,8 @@
 													"deprecated": true,
 													"description": "Use `zone_id` instead",
 													"example": "023e105f4ecef8ad9ca31a8372d0c353",
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "Use `zone_id` instead."
 												},
 												"zone_id": {
 													"description": "Zone identifier",

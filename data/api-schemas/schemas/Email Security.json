@@ -247,7 +247,8 @@
 		"summary": "Delete a bulk action job",
 		"tags": [
 			"Email Security"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate": {
 		"description": "Returns information for each email that matches the search parameter(s).",
@@ -420,7 +421,9 @@
 					"minimum": 1,
 					"nullable": true,
 					"type": "integer"
-				}
+				},
+				"x-stainless-deprecation-message": "Use cursor pagination instead.",
+				"x-sunset": "2026-11-01"
 			}
 		],
 		"responses": {
@@ -531,7 +534,8 @@
 																	"deprecated": true,
 																	"description": "Deprecated, use `completed_at` instead. End of life: November 1, 2026.",
 																	"readOnly": true,
-																	"type": "string"
+																	"type": "string",
+																	"x-stainless-deprecation-message": "Use `completed_at` instead."
 																},
 																"operation": {
 																	"description": "Type of action performed",
@@ -571,7 +575,8 @@
 															],
 															"type": "object"
 														},
-														"type": "array"
+														"type": "array",
+														"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 													},
 													"alert_id": {
 														"nullable": true,
@@ -709,7 +714,8 @@
 															"type": "object"
 														},
 														"nullable": true,
-														"type": "array"
+														"type": "array",
+														"x-stainless-deprecation-message": "Use the `findings` field from GET /investigate/{investigate_id}/detections instead."
 													},
 													"from": {
 														"nullable": true,
@@ -874,7 +880,8 @@
 														"deprecated": true,
 														"description": "Deprecated, use `scanned_at` instead. End of life: November 1, 2026.",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-deprecation-message": "Use `scanned_at` instead."
 													},
 													"validation": {
 														"properties": {
@@ -951,7 +958,8 @@
 													"deprecated": true,
 													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												},
 												"per_page": {
 													"description": "Number of items per page",
@@ -967,7 +975,8 @@
 													"deprecated": true,
 													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												}
 											},
 											"required": [
@@ -1101,7 +1110,8 @@
 													"deprecated": true,
 													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												},
 												"per_page": {
 													"description": "Number of items per page",
@@ -1117,7 +1127,8 @@
 													"deprecated": true,
 													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												}
 											},
 											"required": [
@@ -1278,7 +1289,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}": {
 		"description": "Retrieves comprehensive details for a specific email message including headers, recipients, sender information, and current quarantine status. Use the investigate_id from search results to fetch detailed information.",
@@ -1390,7 +1402,8 @@
 																"deprecated": true,
 																"description": "Deprecated, use `completed_at` instead. End of life: November 1, 2026.",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-stainless-deprecation-message": "Use `completed_at` instead."
 															},
 															"operation": {
 																"description": "Type of action performed",
@@ -1430,7 +1443,8 @@
 														],
 														"type": "object"
 													},
-													"type": "array"
+													"type": "array",
+													"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 												},
 												"alert_id": {
 													"nullable": true,
@@ -1568,7 +1582,8 @@
 														"type": "object"
 													},
 													"nullable": true,
-													"type": "array"
+													"type": "array",
+													"x-stainless-deprecation-message": "Use the `findings` field from GET /investigate/{investigate_id}/detections instead."
 												},
 												"from": {
 													"nullable": true,
@@ -1733,7 +1748,8 @@
 													"deprecated": true,
 													"description": "Deprecated, use `scanned_at` instead. End of life: November 1, 2026.",
 													"readOnly": true,
-													"type": "string"
+													"type": "string",
+													"x-stainless-deprecation-message": "Use `scanned_at` instead."
 												},
 												"validation": {
 													"properties": {
@@ -1934,7 +1950,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/action_log": {
 		"description": "Returns the list of post-delivery actions (moves, quarantine releases, previews, etc.) that have been applied to a specific email message.",
@@ -2246,7 +2263,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/detections": {
 		"description": "Returns detection details such as threat categories and sender information for non-benign messages.",
@@ -2767,7 +2785,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/preview": {
 		"description": "Returns a preview of the message body as a base64 encoded PNG image for non-benign messages.",
@@ -3016,7 +3035,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/raw": {
 		"description": "Returns the raw eml of any non-benign message.",
@@ -3265,7 +3285,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/trace": {
 		"description": "Retrieves delivery and processing trace information for an email message. Shows the delivery path, retraction history, and move operations performed on the message. Useful for debugging delivery issues.",
@@ -3384,7 +3405,8 @@
 																		"deprecated": true,
 																		"description": "Deprecated, use `logged_at` instead. End of life: November 1, 2026.",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-deprecation-message": "Use `logged_at` instead."
 																	}
 																},
 																"type": "object"
@@ -3421,7 +3443,8 @@
 																		"deprecated": true,
 																		"description": "Deprecated, use `logged_at` instead. End of life: November 1, 2026.",
 																		"readOnly": true,
-																		"type": "string"
+																		"type": "string",
+																		"x-stainless-deprecation-message": "Use `logged_at` instead."
 																	}
 																},
 																"type": "object"
@@ -3585,7 +3608,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk": {
 		"operationId": "email_security_get_bulk_jobs",
@@ -3834,7 +3858,8 @@
 																"default": false,
 																"deprecated": true,
 																"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
-																"type": "boolean"
+																"type": "boolean",
+																"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 															},
 															"alert_id": {
 																"nullable": true,
@@ -3989,7 +4014,8 @@
 													"deprecated": true,
 													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												},
 												"per_page": {
 													"description": "Number of items per page",
@@ -4005,7 +4031,8 @@
 													"deprecated": true,
 													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												}
 											},
 											"required": [
@@ -4158,7 +4185,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}": {
 		"operationId": "email_security_get_bulk_job",
@@ -4359,7 +4387,8 @@
 															"default": false,
 															"deprecated": true,
 															"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 														},
 														"alert_id": {
 															"nullable": true,
@@ -4638,7 +4667,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages": {
 		"operationId": "email_security_get_bulk_job_messages",
@@ -4931,7 +4961,8 @@
 													"deprecated": true,
 													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												},
 												"per_page": {
 													"description": "Number of items per page",
@@ -4947,7 +4978,8 @@
 													"deprecated": true,
 													"description": "Deprecated: Always returns 0. End of life: November 1, 2026.",
 													"minimum": 0,
-													"type": "integer"
+													"type": "integer",
+													"x-stainless-deprecation-message": "This field always returns 0 and is deprecated."
 												}
 											},
 											"required": [
@@ -5100,7 +5132,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/phishguard/reports": {
 		"description": "Retrieves PhishGuard security alert reports for a specified date range. Reports include detected threats, dispositions, and contextual information. Use for security monitoring and threat analysis.",
@@ -5135,7 +5168,9 @@
 				"schema": {
 					"format": "date",
 					"type": "string"
-				}
+				},
+				"x-stainless-deprecation-message": "Use `start` instead.",
+				"x-sunset": "2026-11-01"
 			},
 			{
 				"deprecated": true,
@@ -5146,7 +5181,9 @@
 				"schema": {
 					"format": "date",
 					"type": "string"
-				}
+				},
+				"x-stainless-deprecation-message": "Use `end` instead.",
+				"x-sunset": "2026-11-01"
 			}
 		],
 		"responses": {
@@ -5292,7 +5329,8 @@
 																"description": "Deprecated, use `occurred_at` instead",
 																"format": "date-time",
 																"readOnly": true,
-																"type": "string"
+																"type": "string",
+																"x-stainless-deprecation-message": "Use `occurred_at` instead."
 															}
 														},
 														"required": [
@@ -5333,7 +5371,8 @@
 														"description": "Deprecated, use `created_at` instead",
 														"format": "date-time",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-deprecation-message": "Use `created_at` instead."
 													},
 													"updated_at": {
 														"format": "date-time",
@@ -5496,7 +5535,8 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/submissions": {
 		"description": "Returns information for submissions made to reclassify emails. Shows the status, outcome, and disposition changes for reclassification requests made by users or the security team. Useful for tracking false positive/negative reports.",
@@ -5876,7 +5916,8 @@
 														"deprecated": true,
 														"description": "Deprecated, use `requested_at` instead",
 														"readOnly": true,
-														"type": "string"
+														"type": "string",
+														"x-stainless-deprecation-message": "Use `requested_at` instead."
 													},
 													"status": {
 														"nullable": true,
@@ -6044,7 +6085,8 @@
 		"tags": [
 			"Email Security"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": null,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{investigate_id}/move": {
 		"description": "Moves a single message to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration.",
@@ -6192,7 +6234,8 @@
 														"deprecated": true,
 														"description": "Deprecated, use `completed_at` instead. End of life: November 1, 2026.",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-stainless-deprecation-message": "Use `completed_at` instead."
 													},
 													"destination": {
 														"description": "Destination folder for the message",
@@ -6202,7 +6245,8 @@
 													"item_count": {
 														"deprecated": true,
 														"description": "Number of items moved. End of life: November 1, 2026.",
-														"type": "integer"
+														"type": "integer",
+														"x-stainless-deprecation-message": "This field is deprecated."
 													},
 													"message_id": {
 														"description": "Message identifier",
@@ -6377,7 +6421,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify": {
 		"description": "Submits a request to reclassify an email's disposition. Use for reporting false positives or false negatives. Optionally provide the raw EML content for reanalysis. The reclassification is processed asynchronously.",
@@ -6650,7 +6695,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/bulk": {
 		"operationId": "email_security_create_bulk_job",
@@ -6701,7 +6747,8 @@
 										"default": false,
 										"deprecated": true,
 										"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
-										"type": "boolean"
+										"type": "boolean",
+										"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 									},
 									"alert_id": {
 										"nullable": true,
@@ -7007,7 +7054,8 @@
 															"default": false,
 															"deprecated": true,
 															"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 														},
 														"alert_id": {
 															"nullable": true,
@@ -7285,7 +7333,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel": {
 		"description": "Marks the job as cancelled and stops any pending message processing. The job record remains visible in list and detail endpoints.",
@@ -7487,7 +7536,8 @@
 															"default": false,
 															"deprecated": true,
 															"description": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026.",
-															"type": "boolean"
+															"type": "boolean",
+															"x-stainless-deprecation-message": "Use GET /investigate/{investigate_id}/action_log instead."
 														},
 														"alert_id": {
 															"nullable": true,
@@ -7765,7 +7815,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/move": {
 		"description": "Moves multiple messages to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration.",
@@ -7819,7 +7870,8 @@
 									"type": "string"
 								},
 								"type": "array",
-								"x-auditable": true
+								"x-auditable": true,
+								"x-stainless-deprecation-message": "Use `ids` instead."
 							}
 						},
 						"required": [
@@ -7934,7 +7986,8 @@
 														"deprecated": true,
 														"description": "Deprecated, use `completed_at` instead. End of life: November 1, 2026.",
 														"format": "date-time",
-														"type": "string"
+														"type": "string",
+														"x-stainless-deprecation-message": "Use `completed_at` instead."
 													},
 													"destination": {
 														"description": "Destination folder for the message",
@@ -7944,7 +7997,8 @@
 													"item_count": {
 														"deprecated": true,
 														"description": "Number of items moved. End of life: November 1, 2026.",
-														"type": "integer"
+														"type": "integer",
+														"x-stainless-deprecation-message": "This field is deprecated."
 													},
 													"message_id": {
 														"description": "Message identifier",
@@ -8119,7 +8173,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/preview": {
 		"description": "Generates a preview image for a message that was not flagged as a detection. Useful for investigating benign messages. Returns a base64-encoded PNG screenshot of the email body.",
@@ -8387,7 +8442,8 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/release": {
 		"description": "Releases one or more quarantined messages, delivering them to the intended recipients. Use when a message was incorrectly quarantined. Returns delivery status for each recipient.",
@@ -8534,7 +8590,8 @@
 															}
 														],
 														"deprecated": true,
-														"description": "Deprecated, use `id` instead. End of life: November 1, 2026."
+														"description": "Deprecated, use `id` instead. End of life: November 1, 2026.",
+														"x-stainless-deprecation-message": "Use `id` instead."
 													},
 													"undelivered": {
 														"items": {
@@ -8692,6 +8749,7 @@
 		],
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
-		]
+		],
+		"x-stability": "beta"
 	}
 }

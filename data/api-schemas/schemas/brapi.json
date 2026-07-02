@@ -1060,6 +1060,18 @@
 					"format": "uuid",
 					"type": "string"
 				}
+			},
+			{
+				"description": "How long the live view URLs remain valid, in milliseconds (max 60 minutes)",
+				"in": "query",
+				"name": "liveViewUrlExpiresInMs",
+				"schema": {
+					"default": 300000,
+					"description": "How long the live view URLs remain valid, in milliseconds (max 60 minutes)",
+					"maximum": 3600000,
+					"minimum": 60000,
+					"type": "number"
+				}
 			}
 		],
 		"responses": {
@@ -1647,6 +1659,18 @@
 					"description": "Browser session ID.",
 					"format": "uuid",
 					"type": "string"
+				}
+			},
+			{
+				"description": "How long the live view URLs remain valid, in milliseconds (max 60 minutes)",
+				"in": "query",
+				"name": "liveViewUrlExpiresInMs",
+				"schema": {
+					"default": 300000,
+					"description": "How long the live view URLs remain valid, in milliseconds (max 60 minutes)",
+					"maximum": 3600000,
+					"minimum": 60000,
+					"type": "number"
 				}
 			}
 		],
@@ -7364,6 +7388,18 @@
 					"default": false,
 					"description": "Include browser targets in response.",
 					"type": "boolean"
+				}
+			},
+			{
+				"description": "How long the live view URL remains valid, in milliseconds (max 60 minutes). Only used when targets is true.",
+				"in": "query",
+				"name": "liveViewUrlExpiresInMs",
+				"schema": {
+					"default": 300000,
+					"description": "How long the live view URL remains valid, in milliseconds (max 60 minutes). Only used when targets is true.",
+					"maximum": 3600000,
+					"minimum": 60000,
+					"type": "number"
 				}
 			},
 			{
@@ -19058,6 +19094,18 @@
 				"schema": {
 					"format": "uri",
 					"type": "string"
+				}
+			},
+			{
+				"description": "How long the live view URL remains valid, in milliseconds (max 60 minutes)",
+				"in": "query",
+				"name": "liveViewUrlExpiresInMs",
+				"schema": {
+					"default": 300000,
+					"description": "How long the live view URL remains valid, in milliseconds (max 60 minutes)",
+					"maximum": 3600000,
+					"minimum": 60000,
+					"type": "number"
 				}
 			}
 		],
