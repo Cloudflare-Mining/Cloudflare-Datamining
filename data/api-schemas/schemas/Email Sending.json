@@ -1,6 +1,6 @@
 {
 	"GET /accounts/{account_id}/email/sending/limits": {
-		"description": "Returns the current daily sending quota for the account. Null when the quota is not yet available.",
+		"description": "Returns the current daily sending quota for the account and, when a quota is resolved, the account's current usage against it. Quota is null when not yet available; usage is null when there is no resolved quota or usage is temporarily unavailable.",
 		"operationId": "email-sending-get-sending-limits",
 		"parameters": [
 			{
@@ -129,6 +129,24 @@
 														"value": {
 															"description": "The quota limit.",
 															"example": 1000,
+															"type": "integer"
+														}
+													},
+													"readOnly": true,
+													"type": "object"
+												},
+												"usage": {
+													"description": "The account's current daily sending usage. Null when there is no resolved quota or usage is temporarily unavailable.",
+													"nullable": true,
+													"properties": {
+														"over_quota": {
+															"description": "Whether the account has exceeded its daily sending quota.",
+															"example": false,
+															"type": "boolean"
+														},
+														"sent": {
+															"description": "Emails sent against the daily quota in the current window.",
+															"example": 42,
 															"type": "integer"
 														}
 													},

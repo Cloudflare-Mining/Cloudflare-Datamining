@@ -236,6 +236,17 @@
 															"type": "number",
 															"x-auditable": true
 														},
+														"source": {
+															"default": "api",
+															"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+															"enum": [
+																"api",
+																"wrangler"
+															],
+															"example": "api",
+															"type": "string",
+															"x-auditable": true
+														},
 														"tag": {
 															"deprecated": true,
 															"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
@@ -576,6 +587,17 @@
 																"description": "Priority of the routing rule.",
 																"minimum": 0,
 																"type": "number",
+																"x-auditable": true
+															},
+															"source": {
+																"default": "api",
+																"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+																"enum": [
+																	"api",
+																	"wrangler"
+																],
+																"example": "api",
+																"type": "string",
 																"x-auditable": true
 															},
 															"tag": {
@@ -955,6 +977,17 @@
 																"type": "number",
 																"x-auditable": true
 															},
+															"source": {
+																"default": "api",
+																"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+																"enum": [
+																	"api",
+																	"wrangler"
+																],
+																"example": "api",
+																"type": "string",
+																"x-auditable": true
+															},
 															"tag": {
 																"deprecated": true,
 																"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
@@ -1260,6 +1293,17 @@
 															"type": "number",
 															"x-auditable": true
 														},
+														"source": {
+															"default": "api",
+															"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+															"enum": [
+																"api",
+																"wrangler"
+															],
+															"example": "api",
+															"type": "string",
+															"x-auditable": true
+														},
 														"tag": {
 															"deprecated": true,
 															"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
@@ -1507,6 +1551,17 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"source": {
+													"default": "api",
+													"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+													"enum": [
+														"api",
+														"wrangler"
+													],
+													"example": "api",
+													"type": "string",
+													"x-auditable": true
+												},
 												"tag": {
 													"deprecated": true,
 													"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
@@ -1546,6 +1601,721 @@
 				"com.cloudflare.api.account.zone.email.routing.rule.read"
 			]
 		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": true,
+			"pro": true
+		}
+	},
+	"POST /accounts/{account_id}/email/routing/rules/plan": {
+		"description": "Computes the Email Routing rule changes that would be needed to reconcile a Wrangler-managed desired ruleset. This endpoint is read-only and does not create, update, or delete rules.",
+		"operationId": "email-routing-routing-rules-plan-account-routing-rules",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"catch_all_rules": [
+								{
+									"rule": {
+										"actions": [
+											{
+												"type": "worker",
+												"value": [
+													"my-worker"
+												]
+											}
+										],
+										"matchers": [
+											{
+												"type": "all"
+											}
+										]
+									},
+									"target": "*@example.com"
+								}
+							],
+							"owner_worker_tag": "a7e6fb77503c41d8a7f3113c6918f10c",
+							"rules": [
+								{
+									"actions": [
+										{
+											"type": "worker",
+											"value": [
+												"my-worker"
+											]
+										}
+									],
+									"matchers": [
+										{
+											"field": "to",
+											"type": "literal",
+											"value": "support@example.com"
+										}
+									]
+								},
+								{
+									"actions": [
+										{
+											"type": "worker",
+											"value": [
+												"my-worker"
+											]
+										}
+									],
+									"matchers": [
+										{
+											"field": "to",
+											"type": "literal",
+											"value": "info@example.com"
+										}
+									]
+								},
+								{
+									"actions": [
+										{
+											"type": "worker",
+											"value": [
+												"my-worker"
+											]
+										}
+									],
+									"matchers": [
+										{
+											"field": "to",
+											"type": "literal",
+											"value": "billing@example.com"
+										}
+									]
+								}
+							]
+						},
+						"properties": {
+							"catch_all_rules": {
+								"description": "Desired catch-all Email Routing rules managed by the deploying Worker.",
+								"items": {
+									"properties": {
+										"rule": {
+											"properties": {
+												"actions": {
+													"description": "List actions for the catch-all routing rule.",
+													"items": {
+														"description": "Action for the catch-all routing rule.",
+														"properties": {
+															"type": {
+																"description": "Type of action for catch-all rule.",
+																"enum": [
+																	"drop",
+																	"forward",
+																	"worker"
+																],
+																"example": "forward",
+																"type": "string",
+																"x-auditable": true
+															},
+															"value": {
+																"items": {
+																	"description": "Input value for action.",
+																	"example": "destinationaddress@example.net",
+																	"maxLength": 90,
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													"maxItems": 1,
+													"minItems": 1,
+													"type": "array"
+												},
+												"enabled": {
+													"default": true,
+													"description": "Routing rule status.",
+													"enum": [
+														true,
+														false
+													],
+													"example": true,
+													"type": "boolean",
+													"x-auditable": true
+												},
+												"matchers": {
+													"description": "List of matchers for the catch-all routing rule.",
+													"items": {
+														"description": "Matcher for catch-all routing rule.",
+														"properties": {
+															"type": {
+																"description": "Type of matcher. Default is 'all'.",
+																"enum": [
+																	"all"
+																],
+																"example": "all",
+																"type": "string",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"type"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"actions",
+												"matchers"
+											],
+											"type": "object"
+										},
+										"target": {
+											"description": "Catch-all target to plan for, using the `*@domain` shape.",
+											"example": "*@example.com",
+											"type": "string"
+										}
+									},
+									"required": [
+										"target",
+										"rule"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"owner_worker_tag": {
+								"description": "Public tag (script_tag) of the Worker that owns this rule. Required when\n`source` is `wrangler`.\n",
+								"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+								"maxLength": 32,
+								"type": "string",
+								"writeOnly": true,
+								"x-auditable": true
+							},
+							"rules": {
+								"description": "Desired normal Email Routing rules managed by the deploying Worker.",
+								"items": {
+									"properties": {
+										"actions": {
+											"description": "List actions patterns.",
+											"items": {
+												"description": "Actions pattern.",
+												"properties": {
+													"type": {
+														"description": "Type of supported action.",
+														"enum": [
+															"drop",
+															"forward",
+															"worker"
+														],
+														"example": "forward",
+														"type": "string",
+														"x-auditable": true
+													},
+													"value": {
+														"items": {
+															"description": "Value for action.",
+															"example": "destinationaddress@example.net",
+															"maxLength": 90,
+															"type": "string",
+															"x-auditable": true
+														},
+														"type": "array"
+													}
+												},
+												"required": [
+													"type"
+												],
+												"type": "object"
+											},
+											"maxItems": 1,
+											"minItems": 1,
+											"type": "array"
+										},
+										"enabled": {
+											"default": true,
+											"description": "Routing rule status.",
+											"enum": [
+												true,
+												false
+											],
+											"example": true,
+											"type": "boolean",
+											"x-auditable": true
+										},
+										"matchers": {
+											"description": "Matching patterns to forward to your actions.",
+											"items": {
+												"description": "Matching pattern to forward your actions.",
+												"properties": {
+													"field": {
+														"description": "Field for type matcher.",
+														"enum": [
+															"to"
+														],
+														"example": "to",
+														"type": "string",
+														"x-auditable": true
+													},
+													"type": {
+														"description": "Type of matcher.",
+														"enum": [
+															"all",
+															"literal"
+														],
+														"example": "literal",
+														"type": "string",
+														"x-auditable": true
+													},
+													"value": {
+														"description": "Value for matcher.",
+														"example": "test@example.com",
+														"maxLength": 90,
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"type"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"actions",
+										"matchers"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"owner_worker_tag"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"example": {
+												"zones": [
+													{
+														"changes": [
+															{
+																"target": "support@example.com",
+																"type": "added"
+															},
+															{
+																"remote": {
+																	"actions": [
+																		{
+																			"type": "worker",
+																			"value": [
+																				"my-worker"
+																			]
+																		}
+																	],
+																	"enabled": false,
+																	"id": "f1e2d3c4b5a6978869708192a3b4c5d6",
+																	"matchers": [
+																		{
+																			"field": "to",
+																			"type": "literal",
+																			"value": "info@example.com"
+																		}
+																	],
+																	"source": "wrangler"
+																},
+																"target": "info@example.com",
+																"type": "updated"
+															},
+															{
+																"remote": {
+																	"actions": [
+																		{
+																			"type": "worker",
+																			"value": [
+																				"my-worker"
+																			]
+																		}
+																	],
+																	"enabled": true,
+																	"id": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+																	"matchers": [
+																		{
+																			"field": "to",
+																			"type": "literal",
+																			"value": "old@example.com"
+																		}
+																	],
+																	"source": "wrangler"
+																},
+																"target": "old@example.com",
+																"type": "deleted"
+															},
+															{
+																"remote": {
+																	"actions": [
+																		{
+																			"type": "forward",
+																			"value": [
+																				"billing-team@example.net"
+																			]
+																		}
+																	],
+																	"enabled": true,
+																	"id": "9f8e7d6c5b4a39281706f5e4d3c2b1a0",
+																	"matchers": [
+																		{
+																			"field": "to",
+																			"type": "literal",
+																			"value": "billing@example.com"
+																		}
+																	],
+																	"source": "api"
+																},
+																"target": "billing@example.com",
+																"type": "conflict"
+															},
+															{
+																"remote": {
+																	"actions": [
+																		{
+																			"type": "worker",
+																			"value": [
+																				"other-worker"
+																			]
+																		}
+																	],
+																	"enabled": true,
+																	"id": "3c4d5e6f70819203a4b5c6d7e8f90a1b",
+																	"matchers": [
+																		{
+																			"type": "all"
+																		}
+																	],
+																	"owner_worker_name": "other-worker",
+																	"source": "wrangler"
+																},
+																"target": "*@example.com",
+																"type": "conflict"
+															}
+														],
+														"zone_id": "023e105f4ecef8ad9ca31a8372d0c353",
+														"zone_name": "example.com"
+													}
+												]
+											},
+											"properties": {
+												"zones": {
+													"items": {
+														"properties": {
+															"changes": {
+																"items": {
+																	"properties": {
+																		"remote": {
+																			"properties": {
+																				"actions": {
+																					"description": "List actions patterns.",
+																					"items": {
+																						"description": "Actions pattern.",
+																						"properties": {
+																							"type": {
+																								"description": "Type of supported action.",
+																								"enum": [
+																									"drop",
+																									"forward",
+																									"worker"
+																								],
+																								"example": "forward",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"value": {
+																								"items": {
+																									"description": "Value for action.",
+																									"example": "destinationaddress@example.net",
+																									"maxLength": 90,
+																									"type": "string",
+																									"x-auditable": true
+																								},
+																								"type": "array"
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					"maxItems": 1,
+																					"minItems": 1,
+																					"type": "array"
+																				},
+																				"enabled": {
+																					"default": true,
+																					"description": "Routing rule status.",
+																					"enum": [
+																						true,
+																						false
+																					],
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				},
+																				"id": {
+																					"description": "Routing rule identifier.",
+																					"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+																					"maxLength": 32,
+																					"readOnly": true,
+																					"type": "string",
+																					"x-auditable": true
+																				},
+																				"matchers": {
+																					"description": "Matching patterns to forward to your actions.",
+																					"items": {
+																						"description": "Matching pattern to forward your actions.",
+																						"properties": {
+																							"field": {
+																								"description": "Field for type matcher.",
+																								"enum": [
+																									"to"
+																								],
+																								"example": "to",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"type": {
+																								"description": "Type of matcher.",
+																								"enum": [
+																									"all",
+																									"literal"
+																								],
+																								"example": "literal",
+																								"type": "string",
+																								"x-auditable": true
+																							},
+																							"value": {
+																								"description": "Value for matcher.",
+																								"example": "test@example.com",
+																								"maxLength": 90,
+																								"type": "string",
+																								"x-auditable": true
+																							}
+																						},
+																						"required": [
+																							"type"
+																						],
+																						"type": "object"
+																					},
+																					"type": "array"
+																				},
+																				"owner_worker_name": {
+																					"description": "Name of the Wrangler-owned Worker that owns the remote rule, when available for display.",
+																					"example": "email-processor",
+																					"type": "string"
+																				},
+																				"source": {
+																					"default": "api",
+																					"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+																					"enum": [
+																						"api",
+																						"wrangler"
+																					],
+																					"example": "api",
+																					"type": "string",
+																					"x-auditable": true
+																				}
+																			},
+																			"type": "object"
+																		},
+																		"target": {
+																			"description": "Canonical recipient address or catch-all target.",
+																			"example": "support@example.com",
+																			"type": "string"
+																		},
+																		"type": {
+																			"description": "Planned change type.",
+																			"enum": [
+																				"added",
+																				"updated",
+																				"deleted",
+																				"conflict"
+																			],
+																			"example": "added",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"zone_id": {
+																"description": "Identifier.",
+																"example": "023e105f4ecef8ad9ca31a8372d0c353",
+																"maxLength": 32,
+																"type": "string",
+																"x-auditable": true
+															},
+															"zone_name": {
+																"description": "Zone name.",
+																"example": "example.com",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"description": "Account routing rules plan response"
+			},
+			"400": {
+				"description": "Error 2062: Unknown Email Routing domain. A desired address or catch-all target does not resolve to an Email Routing-enabled domain in this account."
+			},
+			"403": {
+				"description": "Authentication error or missing account rule list permission."
+			},
+			"422": {
+				"description": "Invalid plan input, such as malformed matchers/actions, duplicate targets, or an owner_worker_tag that does not resolve to a known Worker script."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Plan account routing rule changes",
+		"tags": [
+			"Email Routing routing rules"
+		],
+		"x-api-token-group": null,
 		"x-cfPlanAvailability": {
 			"business": true,
 			"enterprise": true,
@@ -1668,11 +2438,30 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"owner_worker_tag": {
+								"description": "Public tag (script_tag) of the Worker that owns this rule. Required when\n`source` is `wrangler`.\n",
+								"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+								"maxLength": 32,
+								"type": "string",
+								"writeOnly": true,
+								"x-auditable": true
+							},
 							"priority": {
 								"default": 0,
 								"description": "Priority of the routing rule.",
 								"minimum": 0,
 								"type": "number",
+								"x-auditable": true
+							},
+							"source": {
+								"default": "api",
+								"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+								"enum": [
+									"api",
+									"wrangler"
+								],
+								"example": "api",
+								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -1891,6 +2680,17 @@
 															"description": "Priority of the routing rule.",
 															"minimum": 0,
 															"type": "number",
+															"x-auditable": true
+														},
+														"source": {
+															"default": "api",
+															"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+															"enum": [
+																"api",
+																"wrangler"
+															],
+															"example": "api",
+															"type": "string",
 															"x-auditable": true
 														},
 														"tag": {
@@ -2072,11 +2872,30 @@
 								"type": "string",
 								"x-auditable": true
 							},
+							"owner_worker_tag": {
+								"description": "Public tag (script_tag) of the Worker that owns this rule. Required when\n`source` is `wrangler`.\n",
+								"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+								"maxLength": 32,
+								"type": "string",
+								"writeOnly": true,
+								"x-auditable": true
+							},
 							"priority": {
 								"default": 0,
 								"description": "Priority of the routing rule.",
 								"minimum": 0,
 								"type": "number",
+								"x-auditable": true
+							},
+							"source": {
+								"default": "api",
+								"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+								"enum": [
+									"api",
+									"wrangler"
+								],
+								"example": "api",
+								"type": "string",
 								"x-auditable": true
 							}
 						},
@@ -2297,6 +3116,17 @@
 															"type": "number",
 															"x-auditable": true
 														},
+														"source": {
+															"default": "api",
+															"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+															"enum": [
+																"api",
+																"wrangler"
+															],
+															"example": "api",
+															"type": "string",
+															"x-auditable": true
+														},
 														"tag": {
 															"deprecated": true,
 															"description": "Routing rule tag. (Deprecated, replaced by routing rule identifier)",
@@ -2443,6 +3273,25 @@
 								"description": "Routing rule name.",
 								"example": "Send to user@example.net rule.",
 								"maxLength": 256,
+								"type": "string",
+								"x-auditable": true
+							},
+							"owner_worker_tag": {
+								"description": "Public tag (script_tag) of the Worker that owns this rule. Required when\n`source` is `wrangler`.\n",
+								"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+								"maxLength": 32,
+								"type": "string",
+								"writeOnly": true,
+								"x-auditable": true
+							},
+							"source": {
+								"default": "api",
+								"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+								"enum": [
+									"api",
+									"wrangler"
+								],
+								"example": "api",
 								"type": "string",
 								"x-auditable": true
 							}
@@ -2635,6 +3484,17 @@
 													"description": "Routing rule name.",
 													"example": "Send to user@example.net rule.",
 													"maxLength": 256,
+													"type": "string",
+													"x-auditable": true
+												},
+												"source": {
+													"default": "api",
+													"description": "Who manages the rule. `api` covers dashboard, generic API, and Terraform;\n`wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults\nto `api` when omitted on write.\n",
+													"enum": [
+														"api",
+														"wrangler"
+													],
+													"example": "api",
 													"type": "string",
 													"x-auditable": true
 												},

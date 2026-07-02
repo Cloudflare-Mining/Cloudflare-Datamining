@@ -975,6 +975,30 @@
 												"allOf": [
 													{
 														"properties": {
+															"cache_options": {
+																"additionalProperties": false,
+																"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																"properties": {
+																	"cross_version_cache": {
+																		"default": false,
+																		"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	},
+																	"enabled": {
+																		"default": false,
+																		"description": "Whether caching is enabled for this Worker.",
+																		"example": true,
+																		"type": "boolean",
+																		"x-auditable": true
+																	}
+																},
+																"required": [
+																	"enabled"
+																],
+																"type": "object"
+															},
 															"compatibility_date": {
 																"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																"example": "2021-01-01",
@@ -6533,6 +6557,30 @@
 														}
 													]
 												},
+												"cache_options": {
+													"additionalProperties": false,
+													"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+													"properties": {
+														"cross_version_cache": {
+															"default": false,
+															"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"enabled": {
+															"default": false,
+															"description": "Whether caching is enabled for this Worker.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
 												"compatibility_date": {
 													"allOf": [
 														{
@@ -6575,6 +6623,69 @@
 															"x-stainless-collection-type": "set"
 														}
 													]
+												},
+												"exports": {
+													"allOf": [
+														{
+															"additionalProperties": {
+																"description": "A single entry in the `exports` map, keyed by export name (a\n`WorkerEntrypoint` class name, a Durable Object class name, or\n`default` for the Worker's default export). Worker entrypoint\nentries set `type: worker` and may carry `cache` configuration\nfor that entrypoint. Durable Object entries set\n`type: durable-object` and carry additional provisioning fields.\n",
+																"properties": {
+																	"cache": {
+																		"allOf": [
+																			{
+																				"additionalProperties": false,
+																				"description": "CacheW configuration for a single `type: worker` entrypoint.\nWhen present it overrides the Worker's global\n`cache_options.enabled` for that entrypoint, so a Worker can turn\ncaching on globally and opt one entrypoint out, or the reverse.\n",
+																				"properties": {
+																					"enabled": {
+																						"description": "Whether caching is enabled for this entrypoint.",
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"enabled"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "Cache override for this entrypoint. It applies only to\n`type: worker` entries and overrides the Worker's global\n`cache_options.enabled` for that entrypoint.\n"
+																	},
+																	"type": {
+																		"description": "The kind of export.",
+																		"enum": [
+																			"worker",
+																			"durable-object"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															},
+															"description": "Declarative exports for the Worker, keyed by export name. Worker\nentrypoint entries carry cache configuration for that entrypoint.\nDurable Object entries are also configured here.\n",
+															"example": {
+																"Admin": {
+																	"cache": {
+																		"enabled": true
+																	},
+																	"type": "worker"
+																},
+																"default": {
+																	"cache": {
+																		"enabled": false
+																	},
+																	"type": "worker"
+																}
+															},
+															"maxProperties": 100,
+															"type": "object"
+														}
+													],
+													"description": "Declarative exports for the Worker. Worker entrypoint entries\n(`type: worker`) carry cache configuration for that entrypoint.\n",
+													"writeOnly": true
 												},
 												"limits": {
 													"description": "Limits to apply for this Worker.",
@@ -12164,6 +12275,30 @@
 											}
 										]
 									},
+									"cache_options": {
+										"additionalProperties": false,
+										"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+										"properties": {
+											"cross_version_cache": {
+												"default": false,
+												"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+												"example": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"enabled": {
+												"default": false,
+												"description": "Whether caching is enabled for this Worker.",
+												"example": true,
+												"type": "boolean",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									},
 									"compatibility_date": {
 										"allOf": [
 											{
@@ -12206,6 +12341,69 @@
 												"x-stainless-collection-type": "set"
 											}
 										]
+									},
+									"exports": {
+										"allOf": [
+											{
+												"additionalProperties": {
+													"description": "A single entry in the `exports` map, keyed by export name (a\n`WorkerEntrypoint` class name, a Durable Object class name, or\n`default` for the Worker's default export). Worker entrypoint\nentries set `type: worker` and may carry `cache` configuration\nfor that entrypoint. Durable Object entries set\n`type: durable-object` and carry additional provisioning fields.\n",
+													"properties": {
+														"cache": {
+															"allOf": [
+																{
+																	"additionalProperties": false,
+																	"description": "CacheW configuration for a single `type: worker` entrypoint.\nWhen present it overrides the Worker's global\n`cache_options.enabled` for that entrypoint, so a Worker can turn\ncaching on globally and opt one entrypoint out, or the reverse.\n",
+																	"properties": {
+																		"enabled": {
+																			"description": "Whether caching is enabled for this entrypoint.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"type": "object"
+																}
+															],
+															"description": "Cache override for this entrypoint. It applies only to\n`type: worker` entries and overrides the Worker's global\n`cache_options.enabled` for that entrypoint.\n"
+														},
+														"type": {
+															"description": "The kind of export.",
+															"enum": [
+																"worker",
+																"durable-object"
+															],
+															"type": "string"
+														}
+													},
+													"required": [
+														"type"
+													],
+													"type": "object"
+												},
+												"description": "Declarative exports for the Worker, keyed by export name. Worker\nentrypoint entries carry cache configuration for that entrypoint.\nDurable Object entries are also configured here.\n",
+												"example": {
+													"Admin": {
+														"cache": {
+															"enabled": true
+														},
+														"type": "worker"
+													},
+													"default": {
+														"cache": {
+															"enabled": false
+														},
+														"type": "worker"
+													}
+												},
+												"maxProperties": 100,
+												"type": "object"
+											}
+										],
+										"description": "Declarative exports for the Worker. Worker entrypoint entries\n(`type: worker`) carry cache configuration for that entrypoint.\n",
+										"writeOnly": true
 									},
 									"limits": {
 										"description": "Limits to apply for this Worker.",
@@ -15657,6 +15855,30 @@
 														}
 													]
 												},
+												"cache_options": {
+													"additionalProperties": false,
+													"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+													"properties": {
+														"cross_version_cache": {
+															"default": false,
+															"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"enabled": {
+															"default": false,
+															"description": "Whether caching is enabled for this Worker.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
 												"compatibility_date": {
 													"allOf": [
 														{
@@ -15699,6 +15921,69 @@
 															"x-stainless-collection-type": "set"
 														}
 													]
+												},
+												"exports": {
+													"allOf": [
+														{
+															"additionalProperties": {
+																"description": "A single entry in the `exports` map, keyed by export name (a\n`WorkerEntrypoint` class name, a Durable Object class name, or\n`default` for the Worker's default export). Worker entrypoint\nentries set `type: worker` and may carry `cache` configuration\nfor that entrypoint. Durable Object entries set\n`type: durable-object` and carry additional provisioning fields.\n",
+																"properties": {
+																	"cache": {
+																		"allOf": [
+																			{
+																				"additionalProperties": false,
+																				"description": "CacheW configuration for a single `type: worker` entrypoint.\nWhen present it overrides the Worker's global\n`cache_options.enabled` for that entrypoint, so a Worker can turn\ncaching on globally and opt one entrypoint out, or the reverse.\n",
+																				"properties": {
+																					"enabled": {
+																						"description": "Whether caching is enabled for this entrypoint.",
+																						"example": true,
+																						"type": "boolean",
+																						"x-auditable": true
+																					}
+																				},
+																				"required": [
+																					"enabled"
+																				],
+																				"type": "object"
+																			}
+																		],
+																		"description": "Cache override for this entrypoint. It applies only to\n`type: worker` entries and overrides the Worker's global\n`cache_options.enabled` for that entrypoint.\n"
+																	},
+																	"type": {
+																		"description": "The kind of export.",
+																		"enum": [
+																			"worker",
+																			"durable-object"
+																		],
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type"
+																],
+																"type": "object"
+															},
+															"description": "Declarative exports for the Worker, keyed by export name. Worker\nentrypoint entries carry cache configuration for that entrypoint.\nDurable Object entries are also configured here.\n",
+															"example": {
+																"Admin": {
+																	"cache": {
+																		"enabled": true
+																	},
+																	"type": "worker"
+																},
+																"default": {
+																	"cache": {
+																		"enabled": false
+																	},
+																	"type": "worker"
+																}
+															},
+															"maxProperties": 100,
+															"type": "object"
+														}
+													],
+													"description": "Declarative exports for the Worker. Worker entrypoint entries\n(`type: worker`) carry cache configuration for that entrypoint.\n",
+													"writeOnly": true
 												},
 												"limits": {
 													"description": "Limits to apply for this Worker.",
@@ -19154,6 +19439,30 @@
 												"example": "worker.js",
 												"type": "string"
 											},
+											"cache_options": {
+												"additionalProperties": false,
+												"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+												"properties": {
+													"cross_version_cache": {
+														"default": false,
+														"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													},
+													"enabled": {
+														"default": false,
+														"description": "Whether caching is enabled for this Worker.",
+														"example": true,
+														"type": "boolean",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"enabled"
+												],
+												"type": "object"
+											},
 											"compatibility_date": {
 												"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 												"example": "2021-01-01",
@@ -19174,6 +19483,69 @@
 												},
 												"type": "array",
 												"x-stainless-collection-type": "set"
+											},
+											"exports": {
+												"allOf": [
+													{
+														"additionalProperties": {
+															"description": "A single entry in the `exports` map, keyed by export name (a\n`WorkerEntrypoint` class name, a Durable Object class name, or\n`default` for the Worker's default export). Worker entrypoint\nentries set `type: worker` and may carry `cache` configuration\nfor that entrypoint. Durable Object entries set\n`type: durable-object` and carry additional provisioning fields.\n",
+															"properties": {
+																"cache": {
+																	"allOf": [
+																		{
+																			"additionalProperties": false,
+																			"description": "CacheW configuration for a single `type: worker` entrypoint.\nWhen present it overrides the Worker's global\n`cache_options.enabled` for that entrypoint, so a Worker can turn\ncaching on globally and opt one entrypoint out, or the reverse.\n",
+																			"properties": {
+																				"enabled": {
+																					"description": "Whether caching is enabled for this entrypoint.",
+																					"example": true,
+																					"type": "boolean",
+																					"x-auditable": true
+																				}
+																			},
+																			"required": [
+																				"enabled"
+																			],
+																			"type": "object"
+																		}
+																	],
+																	"description": "Cache override for this entrypoint. It applies only to\n`type: worker` entries and overrides the Worker's global\n`cache_options.enabled` for that entrypoint.\n"
+																},
+																"type": {
+																	"description": "The kind of export.",
+																	"enum": [
+																		"worker",
+																		"durable-object"
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"type"
+															],
+															"type": "object"
+														},
+														"description": "Declarative exports for the Worker, keyed by export name. Worker\nentrypoint entries carry cache configuration for that entrypoint.\nDurable Object entries are also configured here.\n",
+														"example": {
+															"Admin": {
+																"cache": {
+																	"enabled": true
+																},
+																"type": "worker"
+															},
+															"default": {
+																"cache": {
+																	"enabled": false
+																},
+																"type": "worker"
+															}
+														},
+														"maxProperties": 100,
+														"type": "object"
+													}
+												],
+												"description": "Declarative exports for the Worker. Worker entrypoint\nentries (`type: worker`) carry cache configuration for\nthat entrypoint.\n",
+												"writeOnly": true
 											},
 											"keep_assets": {
 												"description": "Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token. An explicit `assets` upload takes precedence over `keep_assets`.",
@@ -20014,6 +20386,30 @@
 													"allOf": [
 														{
 															"properties": {
+																"cache_options": {
+																	"additionalProperties": false,
+																	"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+																	"properties": {
+																		"cross_version_cache": {
+																			"default": false,
+																			"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		},
+																		"enabled": {
+																			"default": false,
+																			"description": "Whether caching is enabled for this Worker.",
+																			"example": true,
+																			"type": "boolean",
+																			"x-auditable": true
+																		}
+																	},
+																	"required": [
+																		"enabled"
+																	],
+																	"type": "object"
+																},
 																"compatibility_date": {
 																	"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 																	"example": "2021-01-01",
@@ -20985,6 +21381,30 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"cache_options": {
+													"additionalProperties": false,
+													"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+													"properties": {
+														"cross_version_cache": {
+															"default": false,
+															"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"enabled": {
+															"default": false,
+															"description": "Whether caching is enabled for this Worker.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
 												"compatibility_date": {
 													"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 													"example": "2021-01-01",

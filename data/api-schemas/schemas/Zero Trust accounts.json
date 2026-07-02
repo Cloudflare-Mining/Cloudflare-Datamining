@@ -1683,7 +1683,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"max_ttl_secs": {
-																	"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																	"description": "Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.",
 																	"example": 3600,
 																	"maximum": 36000,
 																	"minimum": 60,
@@ -2225,7 +2225,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"max_ttl_secs": {
-																			"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																			"description": "Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.",
 																			"example": 3600,
 																			"maximum": 36000,
 																			"minimum": 60,
@@ -4348,7 +4348,7 @@
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"max_ttl_secs": {
-										"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+										"description": "Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.",
 										"example": 3600,
 										"maximum": 36000,
 										"minimum": 60,
@@ -4863,7 +4863,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"max_ttl_secs": {
-																	"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																	"description": "Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.",
 																	"example": 3600,
 																	"maximum": 36000,
 																	"minimum": 60,
@@ -5405,7 +5405,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"max_ttl_secs": {
-																			"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																			"description": "Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.",
 																			"example": 3600,
 																			"maximum": 36000,
 																			"minimum": 60,
@@ -6825,7 +6825,7 @@
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"max_ttl_secs": {
-										"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+										"description": "Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.",
 										"example": 3600,
 										"maximum": 36000,
 										"minimum": 60,
@@ -7340,7 +7340,7 @@
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"max_ttl_secs": {
-																	"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																	"description": "Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.",
 																	"example": 3600,
 																	"maximum": 36000,
 																	"minimum": 60,
@@ -7882,7 +7882,7 @@
 																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"max_ttl_secs": {
-																			"description": "Set the account-level DNS TTL cap, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. DNS locations can inherit, override, or disable this cap.",
+																			"description": "Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.",
 																			"example": 3600,
 																			"maximum": 36000,
 																			"minimum": 60,

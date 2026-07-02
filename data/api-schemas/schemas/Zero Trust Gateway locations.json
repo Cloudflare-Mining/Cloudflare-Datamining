@@ -634,11 +634,11 @@
 														"default": {
 															"mode": "inherit"
 														},
-														"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+														"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 														"nullable": true,
 														"properties": {
 															"mode": {
-																"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 																"enum": [
 																	"inherit",
 																	"override",
@@ -649,7 +649,7 @@
 																"x-auditable": true
 															},
 															"ttl_secs": {
-																"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 																"example": 3600,
 																"maximum": 36000,
 																"minimum": 60,
@@ -1022,11 +1022,11 @@
 																"default": {
 																	"mode": "inherit"
 																},
-																"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+																"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 																"nullable": true,
 																"properties": {
 																	"mode": {
-																		"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																		"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 																		"enum": [
 																			"inherit",
 																			"override",
@@ -1037,7 +1037,7 @@
 																		"x-auditable": true
 																	},
 																	"ttl_secs": {
-																		"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																		"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 																		"example": 3600,
 																		"maximum": 36000,
 																		"minimum": 60,
@@ -1510,11 +1510,11 @@
 													"default": {
 														"mode": "inherit"
 													},
-													"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+													"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 													"nullable": true,
 													"properties": {
 														"mode": {
-															"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+															"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 															"enum": [
 																"inherit",
 																"override",
@@ -1525,7 +1525,7 @@
 															"x-auditable": true
 														},
 														"ttl_secs": {
-															"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+															"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 															"example": 3600,
 															"maximum": 36000,
 															"minimum": 60,
@@ -1865,11 +1865,11 @@
 															"default": {
 																"mode": "inherit"
 															},
-															"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+															"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 															"nullable": true,
 															"properties": {
 																"mode": {
-																	"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																	"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 																	"enum": [
 																		"inherit",
 																		"override",
@@ -1880,7 +1880,7 @@
 																	"x-auditable": true
 																},
 																"ttl_secs": {
-																	"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																	"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 																	"example": 3600,
 																	"maximum": 36000,
 																	"minimum": 60,
@@ -2221,11 +2221,11 @@
 								"default": {
 									"mode": "inherit"
 								},
-								"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+								"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 								"nullable": true,
 								"properties": {
 									"mode": {
-										"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+										"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 										"enum": [
 											"inherit",
 											"override",
@@ -2236,7 +2236,7 @@
 										"x-auditable": true
 									},
 									"ttl_secs": {
-										"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+										"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 										"example": 3600,
 										"maximum": 36000,
 										"minimum": 60,
@@ -2566,11 +2566,11 @@
 													"default": {
 														"mode": "inherit"
 													},
-													"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+													"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 													"nullable": true,
 													"properties": {
 														"mode": {
-															"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+															"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 															"enum": [
 																"inherit",
 																"override",
@@ -2581,7 +2581,7 @@
 															"x-auditable": true
 														},
 														"ttl_secs": {
-															"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+															"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 															"example": 3600,
 															"maximum": 36000,
 															"minimum": 60,
@@ -2921,11 +2921,11 @@
 															"default": {
 																"mode": "inherit"
 															},
-															"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+															"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 															"nullable": true,
 															"properties": {
 																"mode": {
-																	"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																	"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 																	"enum": [
 																		"inherit",
 																		"override",
@@ -2936,7 +2936,7 @@
 																	"x-auditable": true
 																},
 																"ttl_secs": {
-																	"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																	"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 																	"example": 3600,
 																	"maximum": 36000,
 																	"minimum": 60,
@@ -3286,11 +3286,11 @@
 								"default": {
 									"mode": "inherit"
 								},
-								"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+								"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 								"nullable": true,
 								"properties": {
 									"mode": {
-										"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+										"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 										"enum": [
 											"inherit",
 											"override",
@@ -3301,7 +3301,7 @@
 										"x-auditable": true
 									},
 									"ttl_secs": {
-										"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+										"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 										"example": 3600,
 										"maximum": 36000,
 										"minimum": 60,
@@ -3631,11 +3631,11 @@
 													"default": {
 														"mode": "inherit"
 													},
-													"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+													"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 													"nullable": true,
 													"properties": {
 														"mode": {
-															"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+															"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 															"enum": [
 																"inherit",
 																"override",
@@ -3646,7 +3646,7 @@
 															"x-auditable": true
 														},
 														"ttl_secs": {
-															"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+															"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 															"example": 3600,
 															"maximum": 36000,
 															"minimum": 60,
@@ -3986,11 +3986,11 @@
 															"default": {
 																"mode": "inherit"
 															},
-															"description": "Configure DNS response TTL behavior for this Gateway location. Gateway can rewrite DNS responses to cap returned record TTLs using the account setting or a location-specific value, or leave TTLs unchanged.",
+															"description": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.",
 															"nullable": true,
 															"properties": {
 																"mode": {
-																	"description": "Specify how this location handles DNS response TTLs by using the account setting, using a location-specific value, or leaving TTLs unchanged.",
+																	"description": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
 																	"enum": [
 																		"inherit",
 																		"override",
@@ -4001,7 +4001,7 @@
 																	"x-auditable": true
 																},
 																"ttl_secs": {
-																	"description": "Set the location-specific DNS TTL cap, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
+																	"description": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.",
 																	"example": 3600,
 																	"maximum": 36000,
 																	"minimum": 60,

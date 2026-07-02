@@ -1,0 +1,123 @@
+{
+	"GET /accounts/{account_id}/email/sending/feedback": {
+		"operationId": "get_publicFeedbackStatus",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "54442216",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "start_at",
+				"schema": {
+					"example": "2026-04-08T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "end_at",
+				"schema": {
+					"example": "2026-04-15T00:00:00Z",
+					"format": "date-time",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"count": {
+											"type": "number"
+										},
+										"end_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"start_at": {
+											"format": "date-time",
+											"type": "string"
+										}
+									},
+									"required": [
+										"count",
+										"start_at",
+										"end_at"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns feedback statistics."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"type": "object"
+								},
+								"success": {
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"result",
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get feedback emails statistics",
+		"tags": [
+			"Email Sending feedback"
+		]
+	}
+}

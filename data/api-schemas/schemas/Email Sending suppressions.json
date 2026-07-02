@@ -1,0 +1,942 @@
+{
+	"DELETE /accounts/{account_id}/email/sending/suppression/{suppression_id}": {
+		"operationId": "delete_publicDeleteSuppressionSending",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "54442216",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "suppression_id",
+				"required": true,
+				"schema": {
+					"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Deletes suppression."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Suppression not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete account email suppression",
+		"tags": [
+			"Email Sending suppressions"
+		]
+	},
+	"DELETE /zones/{zone_id}/email/sending/suppression/{suppression_id}": {
+		"operationId": "delete_publicDeleteSuppressionZoneSending",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"example": "88228822",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "suppression_id",
+				"required": true,
+				"schema": {
+					"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Deletes suppression."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Suppression not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete zone email suppression",
+		"tags": [
+			"Email Sending suppressions"
+		]
+	},
+	"GET /accounts/{account_id}/email/sending/suppression": {
+		"operationId": "get_publicListSuppressionSending",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "54442216",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"maximum": 1000,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "created_at",
+					"enum": [
+						"email",
+						"expires_at",
+						"created_at"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"page": {
+									"type": "integer"
+								},
+								"per_page": {
+									"example": 100,
+									"type": "integer"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"email": {
+												"example": "user@example.com",
+												"format": "email",
+												"type": "string"
+											},
+											"expires_at": {
+												"format": "date-time",
+												"nullable": true,
+												"type": "string"
+											},
+											"id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"reason": {
+												"example": "hard_bounce",
+												"type": "string"
+											},
+											"zones": {
+												"default": [],
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"id",
+											"email",
+											"reason",
+											"created_at",
+											"expires_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"total": {
+									"example": 1,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"page",
+								"per_page",
+								"total",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns suppressed emails."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List account email suppressions",
+		"tags": [
+			"Email Sending suppressions"
+		]
+	},
+	"GET /accounts/{account_id}/email/sending/suppression/{suppression_id}": {
+		"operationId": "get_publicGetSuppressionSending",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "54442216",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "suppression_id",
+				"required": true,
+				"schema": {
+					"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"email": {
+											"example": "user@example.com",
+											"format": "email",
+											"type": "string"
+										},
+										"expires_at": {
+											"format": "date-time",
+											"nullable": true,
+											"type": "string"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"reason": {
+											"example": "hard_bounce",
+											"type": "string"
+										},
+										"zones": {
+											"default": [],
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"id",
+										"email",
+										"reason",
+										"created_at",
+										"expires_at"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns suppression."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Suppression not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get account email suppression",
+		"tags": [
+			"Email Sending suppressions"
+		]
+	},
+	"GET /zones/{zone_id}/email/sending/suppression": {
+		"operationId": "get_publicListSuppressionZoneSending",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"example": "88228822",
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 100,
+					"maximum": 1000,
+					"minimum": 0,
+					"type": "integer"
+				}
+			},
+			{
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"default": "created_at",
+					"enum": [
+						"email",
+						"expires_at",
+						"created_at"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "desc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"page": {
+									"type": "integer"
+								},
+								"per_page": {
+									"example": 100,
+									"type": "integer"
+								},
+								"result": {
+									"items": {
+										"properties": {
+											"created_at": {
+												"format": "date-time",
+												"type": "string"
+											},
+											"email": {
+												"example": "user@example.com",
+												"format": "email",
+												"type": "string"
+											},
+											"expires_at": {
+												"format": "date-time",
+												"nullable": true,
+												"type": "string"
+											},
+											"id": {
+												"format": "uuid",
+												"type": "string"
+											},
+											"reason": {
+												"example": "hard_bounce",
+												"type": "string"
+											},
+											"zones": {
+												"default": [],
+												"items": {
+													"type": "string"
+												},
+												"type": "array"
+											}
+										},
+										"required": [
+											"id",
+											"email",
+											"reason",
+											"created_at",
+											"expires_at"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"total": {
+									"example": 1,
+									"type": "integer"
+								}
+							},
+							"required": [
+								"page",
+								"per_page",
+								"total",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns suppressed emails."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List zone email suppressions",
+		"tags": [
+			"Email Sending suppressions"
+		]
+	},
+	"GET /zones/{zone_id}/email/sending/suppression/{suppression_id}": {
+		"operationId": "get_publicGetSuppressionZoneSending",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"example": "88228822",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "suppression_id",
+				"required": true,
+				"schema": {
+					"example": "396a5436-d4b0-42a6-b3fc-48e8fa522321",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"created_at": {
+											"format": "date-time",
+											"type": "string"
+										},
+										"email": {
+											"example": "user@example.com",
+											"format": "email",
+											"type": "string"
+										},
+										"expires_at": {
+											"format": "date-time",
+											"nullable": true,
+											"type": "string"
+										},
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										},
+										"reason": {
+											"example": "hard_bounce",
+											"type": "string"
+										},
+										"zones": {
+											"default": [],
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"id",
+										"email",
+										"reason",
+										"created_at",
+										"expires_at"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns suppression."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"error": {
+									"type": "string"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"error"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Suppression not found."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get zone email suppression",
+		"tags": [
+			"Email Sending suppressions"
+		]
+	},
+	"POST /accounts/{account_id}/email/sending/suppression": {
+		"operationId": "post_publicNewSuppressionSending",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "54442216",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"email": {
+								"example": "user@example.com",
+								"format": "email",
+								"type": "string"
+							},
+							"expires_at": {
+								"format": "date-time",
+								"nullable": true,
+								"type": "string"
+							}
+						},
+						"required": [
+							"email"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns suppression."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create account email suppression",
+		"tags": [
+			"Email Sending suppressions"
+		]
+	},
+	"POST /zones/{zone_id}/email/sending/suppression": {
+		"operationId": "post_publicNewSuppressionZoneSending",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"example": "88228822",
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"properties": {
+							"email": {
+								"example": "user@example.com",
+								"format": "email",
+								"type": "string"
+							},
+							"expires_at": {
+								"format": "date-time",
+								"nullable": true,
+								"type": "string"
+							}
+						},
+						"required": [
+							"email"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"result": {
+									"properties": {
+										"id": {
+											"format": "uuid",
+											"type": "string"
+										}
+									},
+									"required": [
+										"id"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Returns suppression."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"success": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad request."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create zone email suppression",
+		"tags": [
+			"Email Sending suppressions"
+		]
+	}
+}

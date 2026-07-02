@@ -1836,6 +1836,30 @@
 														},
 														"type": "array"
 													},
+													"cache_options": {
+														"additionalProperties": false,
+														"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+														"properties": {
+															"cross_version_cache": {
+																"default": false,
+																"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															},
+															"enabled": {
+																"default": false,
+																"description": "Whether caching is enabled for this Worker.",
+																"example": true,
+																"type": "boolean",
+																"x-auditable": true
+															}
+														},
+														"required": [
+															"enabled"
+														],
+														"type": "object"
+													},
 													"compatibility_date": {
 														"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 														"example": "2021-01-01",
@@ -4157,6 +4181,30 @@
 													},
 													"type": "array"
 												},
+												"cache_options": {
+													"additionalProperties": false,
+													"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+													"properties": {
+														"cross_version_cache": {
+															"default": false,
+															"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"enabled": {
+															"default": false,
+															"description": "Whether caching is enabled for this Worker.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
+												},
 												"compatibility_date": {
 													"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 													"example": "2021-01-01",
@@ -6379,6 +6427,30 @@
 										},
 										"type": "array"
 									},
+									"cache_options": {
+										"additionalProperties": false,
+										"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+										"properties": {
+											"cross_version_cache": {
+												"default": false,
+												"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+												"example": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"enabled": {
+												"default": false,
+												"description": "Whether caching is enabled for this Worker.",
+												"example": true,
+												"type": "boolean",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
+									},
 									"compatibility_date": {
 										"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 										"example": "2021-01-01",
@@ -8425,6 +8497,30 @@
 											"type": "object"
 										},
 										"type": "array"
+									},
+									"cache_options": {
+										"additionalProperties": false,
+										"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+										"properties": {
+											"cross_version_cache": {
+												"default": false,
+												"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+												"example": true,
+												"type": "boolean",
+												"x-auditable": true
+											},
+											"enabled": {
+												"default": false,
+												"description": "Whether caching is enabled for this Worker.",
+												"example": true,
+												"type": "boolean",
+												"x-auditable": true
+											}
+										},
+										"required": [
+											"enabled"
+										],
+										"type": "object"
 									},
 									"compatibility_date": {
 										"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
@@ -10562,6 +10658,30 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"cache_options": {
+													"additionalProperties": false,
+													"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+													"properties": {
+														"cross_version_cache": {
+															"default": false,
+															"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"enabled": {
+															"default": false,
+															"description": "Whether caching is enabled for this Worker.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
 												},
 												"compatibility_date": {
 													"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
@@ -12778,6 +12898,30 @@
 								},
 								"type": "array"
 							},
+							"cache_options": {
+								"additionalProperties": false,
+								"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+								"properties": {
+									"cross_version_cache": {
+										"default": false,
+										"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									},
+									"enabled": {
+										"default": false,
+										"description": "Whether caching is enabled for this Worker.",
+										"example": true,
+										"type": "boolean",
+										"x-auditable": true
+									}
+								},
+								"required": [
+									"enabled"
+								],
+								"type": "object"
+							},
 							"compatibility_date": {
 								"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
 								"example": "2021-01-01",
@@ -14910,6 +15054,30 @@
 														"type": "object"
 													},
 													"type": "array"
+												},
+												"cache_options": {
+													"additionalProperties": false,
+													"description": "Global CacheW configuration for the Worker. When caching is on,\nthe platform provisions a `cloudflare.app` zone for the Worker.\nA `type: worker` entry in the `exports` map can override this\nvalue for a single entrypoint.\n",
+													"properties": {
+														"cross_version_cache": {
+															"default": false,
+															"description": "Whether cached responses are shared across Worker version\nuploads. This is independent of `enabled`. It can stay true\nwhile caching is off, so the preference survives turning\ncaching off and back on.\n",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														},
+														"enabled": {
+															"default": false,
+															"description": "Whether caching is enabled for this Worker.",
+															"example": true,
+															"type": "boolean",
+															"x-auditable": true
+														}
+													},
+													"required": [
+														"enabled"
+													],
+													"type": "object"
 												},
 												"compatibility_date": {
 													"description": "Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.",
