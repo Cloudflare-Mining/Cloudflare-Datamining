@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>Available Locations: Austin, Texas&nbsp;</strong></p>
-<p><strong>About the Role&nbsp;</strong></p>
+<h2><strong>Why This Role Exists</strong></h2>
 <p>Cloudflare built its reputation helping build a better Internet, defending millions of sites, giving away SSL and DDoS mitigation when the industry charged premium prices. In an acceleratingly dangerous world, the scope of that mission has changed. We are becoming something more: critical infrastructure. Banks run their payment rails on us. Governments run public services on us. Media companies depend on us during live events. Health systems depend on us to provide care. Reliability for these customers is no longer a feature of our product. It is a mission.</p>
 <p>Serving that customer base demands a different operating model. Traditional support organizations route tickets. Traditional engineering organizations ship features. Neither alone is enough when the stakes are this high. We are pivoting to something different: a customer-facing engineering organization, directly engaged with our customers at scale. This is work a central dev team cannot do from the inside of the network.</p>
 <p>The Customer Reliability Engineering function is the spine of that pivot. CRE is SRE applied outward, the same engineering discipline, applied to the reliability of the systems our customers run on Cloudflare. You are the engineer who owns the problems that matter most to the customers who matter most, and you contribute directly to our products and tooling, in partnership with Product Engineering, to hold that standard across the entire customer base.</p>
@@ -18,14 +18,14 @@
 <h2><strong>What You Might Work On</strong></h2>
 <p><strong>Rapid response:</strong></p>
 <ul>
-	<li>Own a Sev-1 incident where a large financial services customer sees asymmetric latency from a single POP. Trace it through BGP routing and origin configuration. Produce the fix upstream.</li>
-	<li>Diagnose a recurring WebSocket disconnect that a media customer has been fighting for weeks. Isolate it to a specific interaction between WAF and their origin load balancer. Drive the fix with Product Engineering.</li>
-	<li>Partner with a government customer's SRE team during an active DDoS event. Help them shape their Magic Transit and WAF configuration in real time.</li>
+	<li>Own a Sev-1 incident where a large financial services customer experiences increased latency that impacts their users in an important geography. Identify the source of the latency between eyeball to edge performance, edge performance and edge to origin performance. Use various tools and resources to separate routing issues from protocol or application layer performance issues at any point in the full request or traffic flow.&nbsp;</li>
+	<li>Deep dive into WebSocket disconnections for a media customer, requiring you to understand how the protocol is handled at our edge, how it's handled at the customer origin and determine the best configurations for that customer. Drive any improvement or product fix with product engineering.&nbsp;</li>
+	<li>Partner with the government customer's SRE team to understand a past DDoS attack and prepare for any suspected repeat. Separate an L3/4 attack flow from an L7 application layer attack, run through optimizations and recommend them to the customer to further enhance their security posture from good to great.&nbsp;</li>
 </ul>
 <p><strong>Proactive engineering:</strong></p>
 <ul>
 	<li>Build, with Product Engineering, a distributed tracing capability that correlates Cloudflare edge signals with customer origin metrics so a single query tells the story of a failing request end-to-end.</li>
-	<li>Ship a detector for a class of WAF false positives silently degrading several customers. Get it into production before the next renewal cycle.</li>
+	<li>Ship a detector for a class of WAF false positives silently degrading several customers.&nbsp;</li>
 	<li>Prototype an AI agent that takes a new customer case, pulls relevant logs and config, and proposes a root cause with linked evidence. Deploy it internally. Measure whether it makes engineers faster. Iterate.</li>
 </ul>
 <h2><strong>Responsibilities</strong></h2>
