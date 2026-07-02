@@ -5,46 +5,29 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
-<h4><strong>About the Department</strong></h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4><strong>About the Role</strong></h4>
-<p>Do you love solving complex technical problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking an experienced Network Security Engineer to join our team and support our largest and most technically sophisticated customers in resolving technical problems, threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare products from Magic Transit Infrastructure Protection, Argo Smart Routing, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum and Rate Limiting to help customers.</p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>Available Location: London, UK</strong></p>
+<p><strong>About the Department<br></strong>Cloudflare’s Global Professional Services organization is expanding its Professional Services&nbsp;consultancy in London to support customers adopting Cloudflare’s developer platform and application services. This team partners closely with customers and internal engineering teams to help organizations build, deploy, and optimize modern applications on Cloudflare.</p>
+<p><strong>About the Role<br></strong>You will support the Professional Services (PS) team by assisting with foundational project tasks and contributing to projects that enable customers to successfully build and deploy on Cloudflare by optimising the use of AI in Professional Services internal operations. This role provides exposure to Cloudflare’s Professional Services team while working alongside project managers, project coordinators, and consultants who deliver technical solutions to customers. Through this role, you will gain hands-on experience working with Professional Services team to deliver technical solutions for global customers, gain mentorship from experienced PMO members, and real-world experience contributing to projects that support customer adoption of Cloudflare technologies.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Communicate with customers via chat, email, and phone&nbsp;</li>
-	<li>Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</li>
-	<li>DDoS mitigation for OSI layers 3,4, &amp; 7: advise customers on how to filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blocklisting, allowlisting, and rate limiting</li>
-	<li>Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation when applicable</li>
-	<li>Work with Engineering and Product teams to improve products and tools</li>
+	<li>Design, develop, and deploy AI-driven prototypes (using LLMs, RAG architectures, or predictive modeling) to automate manual workflows within the Professional Services Project and Resourcing ecosystem. Build out models to help automate future forecasting and resource planning.</li>
+	<li>Partner with our engineering teams to identify, clean, and structure high-volume post-sales data for model training and fine-tuning to enable faster resourcing capabilities.</li>
+	<li>Refine and optimize system prompts and model parameters to ensure high-quality, hallucination-free outputs for internal advisory tools.</li>
+	<li>Act as the technical translator, taking high-level optimization ideas from GCS leadership and turning them into technical requirements and minimum viable products (MVPs).</li>
+	<li>Contribute to internal knowledge bases and documentation to improve team efficiency and consistency. Create collateral to enable the team.</li>
+	<li>Help document and control project workflows and deployment steps for internal teams and customers with the PMO and Resourcing functions.</li>
 </ul>
-<h4>Desirable Skills, Knowledge, and Experience</h4>
+<p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li>Fluent English speaker is a requirement</li>
-	<li>Minimum 3 years working within a Technical Support team solving various technical issues&nbsp;</li>
-	<li>Self-driven and capable of learning new technologies / systems / features with little guidance</li>
-	<li>Fundamental understanding how the Internet works (OSI Model)</li>
-	<li>Advanced understanding of internet protocols like TCP and UDP</li>
-	<li>Computer Networking fundamentals, experience with iptables and looking glass</li>
-	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
-	<li>Packet capture analysis</li>
-	<li>Experience in command line and tools, including curl, dig, traceroute, openssl, git</li>
-	<li>Experience troubleshooting DNS, SSL / TLS, HTTP</li>
-	<li>Experience in a web development and / or hosting environment such as installing and configuring web servers like Apache, Nginx, Caddy and IIS</li>
-	<li>Experience writing scripts in Bash, Python, JavaScript or other scripting language</li>
-	<li>Experience in working as part of a team in a customer-facing role</li>
+	<li>Currently pursuing a Bachelor’s or Master’s degree in Business, Project Management or a related technical field with an element of AI.</li>
+	<li>Available for a full-time, 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>Proficiency in verbal, written, and visual communication is essential for conveying project goals and sharing progress updates.&nbsp;</li>
+	<li>Working seamlessly with diverse teams (e.g., developers, designers, and managers) to foster a cooperative environment and resolve internal conflicts.</li>
+	<li>The ability to identify bottlenecks, analyse root causes, and propose practical solutions rather than waiting for direct instructions.</li>
+	<li>Projects rarely go exactly to plan; interns must pivot gracefully when scopes change or unforeseen challenges</li>
+	<li>Standing out by anticipating team needs and offering support before being asked.</li>
+	<li>Leveraging networking opportunities within the organisation to learn from experienced mentors.</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<ul>
-	<li>You are familiar with Cloudflare and are actively using our platform</li>
-	<li>You have worked with PostgreSQL, MySQL, MS SQL, and other database servers</li>
-	<li>You are fluent and can troubleshoot in other languages beyond English and Spanish</li>
-</ul>
-<h4><strong>Availability and Schedule Requirements</strong></h4>
-<ul>
-	<li>Flexibility to work varying work schedules including: 8:30 AM - 5:30 PM Pacific Time Zone, Tuesday through Saturday, Sunday through Thursday, holidays, weekends, more than 5 days in a row, or additional hours on occasion.</li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
