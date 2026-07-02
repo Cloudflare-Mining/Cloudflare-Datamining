@@ -92,7 +92,7 @@
 		"enabled": true
 	},
 	"ai-auto-rag-custom-domain": {
-		"enabled": false
+		"enabled": true
 	},
 	"ai-auto-rag-disable-max-num-rules": {
 		"enabled": true
@@ -1106,6 +1106,9 @@
 		"enabled": true
 	},
 	"dns-security-insights-enabled": {
+		"enabled": false
+	},
+	"dns-shadow-metadata": {
 		"enabled": false
 	},
 	"dns-table-bulk-actions": {
@@ -2696,6 +2699,9 @@
 		"enabled": true
 	},
 	"speed-test-trend": {
+		"enabled": true
+	},
+	"ssl-frh-internal-client-certificates": {
 		"enabled": true
 	},
 	"ssl-origins-migration": {
