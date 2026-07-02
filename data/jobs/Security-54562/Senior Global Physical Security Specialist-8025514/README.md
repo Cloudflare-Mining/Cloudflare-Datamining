@@ -8,19 +8,19 @@
 <h3>Sr. Global Physical Security Specialist</h3>
 <p><strong>Available Locations: Bangalore, India</strong></p>
 <p><strong>Your Career</strong></p>
-<p>As our Global Physical Security Specialist and leader, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint and review and document intelligence supporting the physical security mission.&nbsp;</p>
-<p>We are looking for someone with law enforcement or former military experience who is excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
+<p>As our Senior Global Physical Security Specialist and leader, reporting to our Sr. Director of Physical Security, you will help shape Cloudflare’s global physical security program across our office and data center footprint. In this role, you will own key security technologies, improve program visibility, and review and document intelligence that supports the physical security mission.</p>
+<p>We are looking for someone with law enforcement or former military experience who is excited about solving physical world challenges with next-generation technology on a global scale. You will lead the overall strategy &amp; implementation while&nbsp; partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
 <p><strong>What You’ll Do</strong></p>
 <p>Continue to work as a member of a unique global physical security team and program in the following areas:&nbsp;</p>
 <p><strong>Physical security systems:</strong></p>
 <ul>
 	<li>Ability to work within a global physical security program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.&nbsp;</li>
-	<li>Ability to assist and manage investigations working with Cloudflare’s Global People and Place’s Teams.&nbsp;</li>
+	<li>Support&nbsp; and manage investigations and incident response in partnership with Cloudflare’s Global People and Place’s Teams.&nbsp;</li>
 	<li>Work alongside our SIRT Team&nbsp; as required for physical Security related incidents.&nbsp;</li>
 	<li>Deploy and remediate access control and CCTV equipment with vendor support</li>
 	<li>Coordinate and provide facility and personnel safety practices, guidance, assistance, and response as required.</li>
-	<li>Gather and disseminate actionable intelligence for senior management.</li>
-	<li>Ability to learn the deployment of AI technology to enhance the physical security mission.</li>
+	<li>Collect, analyze, and brief actionable intelligence for senior management.</li>
+	<li>Learn and help apply AI technology in ways that strengthen the physical security mission.</li>
 </ul>
 <p><strong>Audit and certifications:</strong></p>
 <ul>
@@ -31,8 +31,8 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Ability to build critical relationships and make decisions on acceptable physical security risk and drive risk mitigation.&nbsp;</li>
-	<li>Experience managing a local physical security program and managing event security practices, preferably with experience of physical security controls.</li>
+	<li>Ability to build critical relationships and make&nbsp; sound decisions on acceptable physical security risk and drive risk mitigation plans forward..&nbsp;</li>
+	<li>Experience managing a local physical security program and managing event security practices, with a strong foundation in&nbsp; physical security controls.</li>
 	<li>Previous law enforcement or military experience with a significant ability to leverage those current and former relationships.</li>
 	<li>Solid understanding of integrating and deploying access control and CCTV systems at scale, including networking and systems engineering.</li>
 	<li>Ability to coordinate with law enforcement and government agencies at every level</li>
