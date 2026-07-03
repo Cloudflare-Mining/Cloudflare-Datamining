@@ -5,15 +5,15 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<h3>Available Locations</h3>
 <ul>
 	<li>Austin, US</li>
 </ul>
-<h2>About the Role</h2>
+<h3>About the Role</h3>
 <p>Ad Fraud is a pervasive threat on the Internet, and has been since programmatic advertising first started.&nbsp; However, the ways that Users and Consumers interact with the internet is changing, and the systems of the past to protect against fraud may no longer be optimal.</p>
 <p>At Cloudflare, we believe that it is time for the industry to rethink their approach to solving this problem.&nbsp; And with our visibility into 22.5% of the world’s websites supported with our best-in-class Application Security and Bot Management solutions, we have the visibility and technology to reinvent the way the industry solves this problem.</p>
 <p>In this role, you will own the product vision and roadmap for Cloudflare's next-gen IVT and Ad Fraud detection and data products for the advertising industry. You will help invent the future of how the industry looks at this space, and translate Cloudflare's massive network signals — bot scores, threat intelligence, traffic quality classifications — into data products that help advertisers, agencies, publishers, and verification vendors fight fraud and improve measurement accuracy. You will work at, and develop, the intersection of Cloudflare's security and performance platform and the ad tech ecosystem.</p>
-<h2>Responsibilities</h2>
+<h3>Responsibilities</h3>
 <h3>You will:</h3>
 <ul>
 	<li>Help build out the strategy, vision, and design for IVT and bot data products in the advertising space.</li>
@@ -30,7 +30,7 @@
 	<li>Exceptional communication, presentation, organizational, and analytical skills</li>
 	<li>Demonstrated ability to lead, drive consensus, and deliver in a matrix organization with multiple stakeholders</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
 	<li>Experience with MRC accreditation processes or TAG certification</li>
 	<li>Hands-on familiarity with ads.txt, sellers.json, SCO (Supply Chain Object), and IAB Tech Lab standards</li>
@@ -40,7 +40,7 @@
 	<li>Experience at a company that operated both a network/infrastructure platform and a data or advertising business</li>
 	<li>Pricing strategy and revenue forecasting experience for data products</li>
 </ul>
-<h2>Compensation</h2>
+<h3>Compensation</h3>
 <p>Compensation may be adjusted depending on work location.</p>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>

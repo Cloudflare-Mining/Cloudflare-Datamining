@@ -5,80 +5,48 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available location: Austin, Texas</strong></p>
+<p><strong><em>This role requires you to be able to come into our Austin office 3x a week. Fall internships will run from September - December</em></strong></p>
+<p><strong>About the Department</strong></p>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<p>&nbsp;</p>
+<p><strong>What You’ll do</strong></p>
+<p>Do you love solving complex technical problems and interacting with people? As a Technical Support Engineer Intern at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities</strong>&nbsp;</p>
 <ul>
-	<li>Atlanta, US</li>
-	<li>Austin, US</li>
-	<li>Denver, US</li>
-	<li>New York, US</li>
-	<li>Toronto, Canada</li>
-	<li>Washington DC, US</li>
-	<li>Seattle</li>
+	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
+	<li>Track support requests using our ticketing system</li>
+	<li>Participate in team meetings to discuss and share feedback</li>
+	<li>Help create and update technical documentation and run books&nbsp;</li>
+	<li>Provide feedback on our product and potential improvements based on customer interactions</li>
+	<li>Support the team in testing new releases and reporting bugs</li>
+	<li>Perform other duties/projects as assigned&nbsp;</li>
 </ul>
-<h2>About the Role</h2>
-<p>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. We are not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.</p>
-<h2>Responsibilities</h2>
+<p><strong>Skills and Requirements</strong></p>
 <ul>
-	<li>You’ll build and operate secure and resilient distributed systems for secrets and key management, running across our network that spans more than 310 cities in over 120 countries. Our focus is strengthening/re-architecting internal PKI and machine/workload identity. You’ll run and support the systems we build, both in an operational sense and by helping other internal developers use them. You’ll consult on the design and architecture of new systems and products to ensure they are built securely and use our services correctly.</li>
-	<li>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</li>
+	<li>Currently pursuing an undergraduate degree in a Computer Sciences or related field</li>
+	<li>Self-driven and capable of learning new technologies/systems/features with some guidance</li>
+	<li>Fundamental understanding of how the Internet works (OSI Model); Cloudflare has a variety of products that presently impact Layers 3, 4 &amp; 7</li>
+	<li>Experience using Linux&nbsp;</li>
+	<li>Experience in command line and tools, including curl, dig, traceroute, openssl and git</li>
+	<li>Experience writing scripts in Bash, Python, JavaScript, or other scripting languages</li>
+	<li>Awareness of what DNS, SSL/TLS and HTTP is and how these function</li>
+	<li>Awareness of or experience installing and configuring web servers like Apache, Nginx, and IIS</li>
+	<li>Must be able to work 40 hours a week</li>
+	<li>Must be able to commit to a 12 week program</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>8+ years of relevant professional experience</li>
-	<li>Software development and distributed systems design expertise</li>
-	<li>Strong security background with a focus on implementation, not policy/compliance</li>
+	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
 </ul>
-<h2>Bonus Points</h2>
+<p><strong>Super Bonus Points</strong></p>
 <ul>
-	<li>Bonus / nice-to-have skills</li>
-	<li>Track record of contributing to open source security or distributed systems projects</li>
-	<li>Cryptography background and ability to work with cryptosystems at the primitives level</li>
-	<li>Experience with HSMs, TPMs, or other platform TEEs (e.g. AMD SEV, Intel SGX, Apple Secure Enclave)</li>
-	<li>Familiarity with HashiCorp Vault or OpenBao, or similar</li>
-	<li>Linux/UNIX system administration proficiency</li>
-	<li>Familiarity with Go and/or Python + Salt specifically</li>
+	<li>You are fluent and can troubleshoot in Mandarin, Spanish, and Portuguese</li>
 </ul>
-<h2>Compensation</h2>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li data-path-to-node="4">For New York City, Washington D.C., and Seattle based hires: Estimated annual salary of 185,000 - 275,000 USD.</li>
-</ul>
-<p data-path-to-node="5">&nbsp;</p>
-<ul>
-	<li>
-		<p data-path-to-node="5">For Colorado based hires: Estimated annual salary of 168,000 - 250,000 USD.</p>
-	</li>
-	<li>
-		<p data-path-to-node="5">For Toronto, Canada based hires: Estimated annual salary of 150,000 ~ 240,000 CAD.</p>
-	</li>
-</ul>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p>&nbsp;</p>
+<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
