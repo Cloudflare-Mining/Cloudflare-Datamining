@@ -297,6 +297,14 @@
 			]
 		}
 	],
+	"Log Explorer": [
+		{
+			"display_name": "Scheduled Query Results",
+			"type": "log_explorer_scheduled_query_results_alert",
+			"description": "A scheduled query returned results matching your SQL filter.",
+			"filter_options": []
+		}
+	],
 	"Logpush": [
 		{
 			"display_name": "Failing Logpush Job Disabled",
@@ -307,19 +315,19 @@
 	],
 	"Magic Transit": [
 		{
-			"display_name": "Magic Network Monitoring: Auto Advertisement",
+			"display_name": "Network Flow: Auto Advertisement",
 			"type": "fbm_auto_advertisement",
 			"description": "Auto Advertisement of a set of predefined prefixes using Magic Transit, following a recent attack",
 			"filter_options": []
 		},
 		{
-			"display_name": "Magic Network Monitoring: DDoS Attack",
+			"display_name": "Network Flow: DDoS Attack",
 			"type": "fbm_dosd_attack",
-			"description": "Fine grained Magic Network Monitoring DDoS Attacks based on your sflow data",
+			"description": "Fine grained Network Flow DDoS Attacks based on your sflow data",
 			"filter_options": []
 		},
 		{
-			"display_name": "Magic Network Monitoring: Volumetric Attack",
+			"display_name": "Network Flow: Volumetric Attack",
 			"type": "fbm_volumetric_attack",
 			"description": "Volumetric DDoS attacks to your infrastructure based on flow data you export to Cloudflare",
 			"filter_options": []
