@@ -2294,6 +2294,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"billing": {
+				"read": true,
+				"edit": true
+			},
 			"domain": {
 				"read": true,
 				"edit": false
@@ -2409,10 +2413,6 @@
 				"edit": true
 			},
 			"cfone": {
-				"read": true,
-				"edit": true
-			},
-			"billing": {
 				"read": true,
 				"edit": true
 			},
