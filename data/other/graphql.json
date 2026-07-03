@@ -11235,8 +11235,14 @@
 		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
 		"dispatchNamespaceName": "The name of the script's dispatch namespace",
 		"environmentName": "The name of the script environment",
+		"isDispatcher": "Whether the request is from a Dispatch Worker. Non-zero if true",
+		"isPreview": "Whether this request is for a preview. 1 if preview, 0 if not.",
+		"previewSlug": "The name (slug) of the preview script",
 		"scriptName": "The name of the script",
-		"scriptTag": "The unique tag of the script"
+		"scriptTag": "The unique tag of the script",
+		"scriptVersion": "The version of the Worker",
+		"status": "Status of the worker request event",
+		"usageModel": "Usage model of the worker request"
 	},
 	"AccountWorkersCacheRequestsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -15376,7 +15382,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type types.Float64"
+		"__description": "Scalar type float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
