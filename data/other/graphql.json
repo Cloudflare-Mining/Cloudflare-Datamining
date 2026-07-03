@@ -1687,7 +1687,6 @@
 		"coloName": "Cloudflare colo code",
 		"country": "Source country code",
 		"datetime": "Day start timestamp (daily granularity)",
-		"destination": "Query name (destination domain)",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
 		"location": "Gateway location ID",
@@ -1726,7 +1725,6 @@
 		"coloName": "Cloudflare colo code",
 		"country": "Source country code",
 		"datetime": "Hour start timestamp (hourly granularity)",
-		"destination": "Query name (destination domain)",
 		"deviceId": "Device ID. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
 		"email": "User email address. Requires the #teams:pii (legacy) or com.cloudflare.team.gateway.pii.read (Bach) permission; otherwise returned as the literal \\\"REDACTED\\\"",
 		"location": "Gateway location ID",
@@ -10022,6 +10020,7 @@
 		"workersAnalyticsEngineAdaptiveGroups": "",
 		"workersAssetsRequestsAdaptiveGroups": "",
 		"workersBuildsBuildMinutesAdaptiveGroups": "",
+		"workersCacheRequestsAdaptiveGroups": "",
 		"workersInvocationsAdaptive": "",
 		"workersInvocationsByOwnerAndScriptGroups": "",
 		"workersInvocationsScheduled": "",
@@ -11206,6 +11205,52 @@
 	"AccountWorkersBuildsBuildMinutesAdaptiveGroupsSumConfidence": {
 		"__description": "",
 		"buildMinutes": "Confidence interval for the corresponding point estimate"
+	},
+	"AccountWorkersCacheRequestsAdaptiveGroups": {
+		"__description": "Beta. Cache-enabled Workers request events with adaptive sampling",
+		"avg": "The average value used for sample interval",
+		"confidence": "ALPHA - DO NOT USE",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountWorkersCacheRequestsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": ""
+	},
+	"AccountWorkersCacheRequestsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"level": "Confidence level that was requested",
+		"sum": "The sum of values for a metric per dimension, with confidence intervals"
+	},
+	"AccountWorkersCacheRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"cacheStatus": "Cache status for the cache-side Worker request event",
+		"coloCode": "IATA airport code for the Cloudflare datacenter where the request was handled.",
+		"date": "Request datetime, truncated to start of a day",
+		"datetime": "Request datetime",
+		"datetimeFifteenMinutes": "The date and time of the event truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time of the event truncated to five minutes",
+		"datetimeHour": "Request datetime, truncated to start of an hour",
+		"datetimeMinute": "Request datetime, truncated to start of a minute",
+		"datetimeSixHours": "Request datetime, truncated to start of six hour window",
+		"dispatchNamespaceName": "The name of the script's dispatch namespace",
+		"environmentName": "The name of the script environment",
+		"scriptName": "The name of the script",
+		"scriptTag": "The unique tag of the script"
+	},
+	"AccountWorkersCacheRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersCacheRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWorkersCacheRequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"requests": "Sum of cache-side requests"
+	},
+	"AccountWorkersCacheRequestsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"requests": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountWorkersInvocationsAdaptive": {
 		"__description": "Beta. Workers invocations with adaptive sampling",
@@ -15306,6 +15351,7 @@
 		"workersAnalyticsEngineAdaptiveGroups": "Beta. Custom Events with adaptive sampling",
 		"workersAssetsRequestsAdaptiveGroups": "Workers Assets requests with adaptive sampling",
 		"workersBuildsBuildMinutesAdaptiveGroups": "Workers Builds build minute overview data with adaptive sampling",
+		"workersCacheRequestsAdaptiveGroups": "Beta. Cache-enabled Workers request events with adaptive sampling",
 		"workersInvocationsAdaptive": "Beta. Workers invocations with adaptive sampling",
 		"workersInvocationsByOwnerAndScriptGroups": "Workers dynamic worker invocations. Used for exact distinct dynamic worker counts.",
 		"workersInvocationsScheduled": "Workers scheduled invocations",
@@ -15330,7 +15376,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type float64"
+		"__description": "Scalar type types.Float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
