@@ -2299,6 +2299,32 @@
 		"devices": "Unique devices",
 		"users": "Unique users"
 	},
+	"AccountCf1McpHost1dGroups": {
+		"__description": "CF1 MCP host analytics - 1 day rollup (up to 90d window, 365d back). Groups MCP URL activity by host and source country per day.",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"AccountCf1McpHost1dGroupsDimensions": {
+		"__description": "",
+		"country": "Source country code",
+		"datetime": "Day start timestamp (daily granularity)",
+		"httpHost": "HTTP hostname"
+	},
+	"AccountCf1McpHost1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCf1McpHost1dGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountCf1McpHost1dGroupsSum": {
+		"__description": "",
+		"mcpUrlCount": "Total MCP-path URL accesses across requests"
+	},
+	"AccountCf1McpHost1dGroupsUniq": {
+		"__description": "",
+		"mcpDistinctUsers": "Unique users with MCP activity"
+	},
 	"AccountCloudchamberMetricsAdaptiveGroups": {
 		"__description": "Metrics for Cloudchamber applications and deployments",
 		"avg": "The average value of a metric per dimension",
@@ -3682,8 +3708,6 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -3756,6 +3780,8 @@
 		"wafMlXssAttackScore": "<small>DEPRECATED (Field is replaced with <code>wafXssAttackScore</code>):</small> Beta. WAF ML score for an XSS attack",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"zoneTag": "Associated zone",
@@ -3791,8 +3817,6 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -3861,6 +3885,8 @@
 		"wafMlXssAttackScore": "<small>DEPRECATED (Field is replaced with <code>wafXssAttackScore</code>):</small> Beta. WAF ML score for an XSS attack",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"zoneTag": "Associated zone",
@@ -4897,8 +4923,6 @@
 		"__description": "Raw HTTP requests with adaptive sampling",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
@@ -4975,6 +4999,10 @@
 		"rayName": "The RayId of the request",
 		"requestSource": "",
 		"rulesMetadata": "Key-value metadata annotations attached to rules that matched this request",
+		"schemaValidationLearnedOutcome": "The outcome of running API Shield Managed Schema Validation for this request against the Cloudflare-learned schema (e.g. valid or violated; empty when managed schema validation did not run for the request)",
+		"schemaValidationLearnedViolations": "Schema Validation violations recorded for this request against the Cloudflare-learned schema. Each entry describes a single violation.",
+		"schemaValidationUploadedOutcome": "The outcome of running API Shield Schema Validation for this request against the customer-uploaded schema (e.g. valid or violated; empty when schema validation did not run for the request)",
+		"schemaValidationUploadedViolations": "Schema Validation violations recorded for this request against the customer-uploaded schema. Each entry describes a single violation.",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
@@ -4989,6 +5017,8 @@
 		"wafAttackScoreClass": "Beta. Overall request score class generated by the WAF detection module",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"webAssetsLabelsManaged": "Managed Web Asset Labels (Cloudflare-defined labels, e.g. cf-log-in, cf-llm)",
@@ -5036,8 +5066,6 @@
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
@@ -5113,6 +5141,8 @@
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
+		"schemaValidationLearnedOutcome": "The outcome of running API Shield Managed Schema Validation for this request against the Cloudflare-learned schema (e.g. valid or violated; empty when managed schema validation did not run for the request)",
+		"schemaValidationUploadedOutcome": "The outcome of running API Shield Schema Validation for this request against the customer-uploaded schema (e.g. valid or violated; empty when schema validation did not run for the request)",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
@@ -5127,6 +5157,8 @@
 		"wafAttackScoreClass": "Beta. Overall request score class generated by the WAF detection module",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"webAssetsLabelsManaged": "Managed Web Asset Labels (Cloudflare-defined labels, e.g. cf-log-in, cf-llm)",
@@ -5261,6 +5293,20 @@
 		"metadataValue": "Value of the metadata annotation on the matched rule",
 		"ruleId": "Hex-encoded UUID of the rule this metadata entry belongs to"
 	},
+	"AccountHttpRequestsAdaptiveSchemaValidationLearnedViolationsElem": {
+		"__description": "",
+		"errorClass": "The class/category of the schema validation violation error",
+		"errorDetail": "Finer grained detail describing the schema validation violation error",
+		"location": "Where in the request the violation was detected (e.g. path)",
+		"target": "The schema element or parameter targeted by the violated rule"
+	},
+	"AccountHttpRequestsAdaptiveSchemaValidationUploadedViolationsElem": {
+		"__description": "",
+		"errorClass": "The class/category of the schema validation violation error",
+		"errorDetail": "Finer grained detail describing the schema validation violation error",
+		"location": "Where in the request the violation was detected (e.g. path)",
+		"target": "The schema element or parameter targeted by the violated rule"
+	},
 	"AccountHttpRequestsOverviewAdaptiveGroups": {
 		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
@@ -5361,7 +5407,8 @@
 		"date": "Pool size snapshot timestamp, truncated to start of a day",
 		"datetime": "Pool size snapshot timestamp",
 		"datetimeHour": "Pool size snapshot timestamp, truncated to start of hour",
-		"datetimeMinute": "Pool size snapshot timestamp, truncated to start of minute"
+		"datetimeMinute": "Pool size snapshot timestamp, truncated to start of minute",
+		"poolShardId": "Opaque per-query identifier for a pool shard. Use only as a GROUP BY dimension; values are not stable across queries."
 	},
 	"AccountHyperdrivePoolSizesAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -7364,6 +7411,8 @@
 		"datetimeMinute": "Timestamp bucketed by minute",
 		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"interfaceName": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
+		"natdResult": "Public socket address returned by the NAT detector",
+		"natdTarget": "Target socket address probed by the NAT detector, using the detector source port",
 		"tunnelId": "Tunnel identifier"
 	},
 	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsFilter_InputObject": {
@@ -7371,7 +7420,8 @@
 	},
 	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsMax": {
 		"__description": "",
-		"healthValue": "Numeric value associated with tunnel state (0 = unknown, 1 = healthy, 2 = degraded, 3 = down)"
+		"healthValue": "Numeric value associated with tunnel state (0 = unknown, 1 = healthy, 2 = degraded, 3 = down)",
+		"natdState": "Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)"
 	},
 	"AccountMconnTelemetrySnapshotTunnelsAdaptiveGroupsOrderBy": {
 		"__description": ""
@@ -7399,6 +7449,8 @@
 		"datetimeMinute": "Timestamp bucketed by minute",
 		"datetimeSixHours": "Timestamp bucketed by 6 hours",
 		"interfaceName": "The tunnel interface name (i.e. xfrm1, xfrm3.99, etc.)",
+		"natdResult": "Public socket address returned by the NAT detector",
+		"natdTarget": "Target socket address probed by the NAT detector, using the detector source port",
 		"tunnelId": "Tunnel identifier"
 	},
 	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsFilter_InputObject": {
@@ -7406,7 +7458,8 @@
 	},
 	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsMax": {
 		"__description": "",
-		"healthValue": "Numeric value associated with tunnel state (0 = unknown, 1 = healthy, 2 = degraded, 3 = down)"
+		"healthValue": "Numeric value associated with tunnel state (0 = unknown, 1 = healthy, 2 = degraded, 3 = down)",
+		"natdState": "Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)"
 	},
 	"AccountMconnTelemetrySnapshotTunnelsStagingAdaptiveGroupsOrderBy": {
 		"__description": ""
@@ -8499,6 +8552,61 @@
 	},
 	"AccountPipelinesUserErrorsStagingAdaptiveOrderBy": {
 		"__description": ""
+	},
+	"AccountPrecursorEventsAdaptiveGroups": {
+		"__description": "Beta. Cloudflare Precursor aggregated validation events with adaptive sampling",
+		"avg": "",
+		"confidence": "ALPHA - DO NOT USE",
+		"count": "Number of Cloudflare Precursor validation events processed",
+		"dimensions": "List of dimensions to group by",
+		"sum": ""
+	},
+	"AccountPrecursorEventsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"AccountPrecursorEventsAdaptiveGroupsConfidence": {
+		"__description": "",
+		"count": "Number of Cloudflare Precursor validation events processed, with confidence intervals",
+		"level": "Confidence level that was requested",
+		"sum": ""
+	},
+	"AccountPrecursorEventsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"asn": "ASN tied to that Precursor validation event",
+		"browserMajor": "Major version of the browser tied to that Precursor validation event",
+		"browserName": "Browser name tied to that Precursor validation event",
+		"countryCode": "2 character country code tied to that Precursor validation event",
+		"date": "The date the Precursor validation event was emitted",
+		"datetime": "The date and time the Precursor validation event was emitted",
+		"datetimeDay": "The date and time the Precursor validation event was emitted truncated to the day",
+		"datetimeFifteenMinutes": "The date and time the Precursor validation event was emitted truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time the Precursor validation event was emitted truncated to a multiple of 5 minutes",
+		"datetimeHalfOfHour": "The date and time the Precursor validation event was emitted truncated to a multiple of 30 minutes",
+		"datetimeHour": "The date and time the Precursor validation event was emitted truncated to the hour",
+		"datetimeMinute": "The date and time the Precursor validation event was emitted truncated to the minute",
+		"eventType": "The type of the Cloudflare Precursor event",
+		"hostname": "Hostname tied to that Precursor validation event",
+		"ipv4": "IPv4 tied to that Precursor validation event",
+		"ipv6": "IPv6 tied to that Precursor validation event",
+		"osMajor": "Major version of the OS tied to that Precursor validation event",
+		"osName": "OS name tied to that Precursor validation event",
+		"userAgent": "User agent tied to that Precursor validation event",
+		"zoneId": "Zone ID tied to that Precursor validation event"
+	},
+	"AccountPrecursorEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPrecursorEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountPrecursorEventsAdaptiveGroupsSum": {
+		"__description": "",
+		"sessionsStarted": "Estimated number of Cloudflare Precursor sessions whose first validation was observed"
+	},
+	"AccountPrecursorEventsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"sessionsStarted": "Confidence interval for the corresponding point estimate"
 	},
 	"AccountPrivacyProxyAuthMetricsAdaptiveGroups": {
 		"__description": "Aggregated Privacy Proxy authentication metrics with adaptive sampling",
@@ -9764,6 +9872,7 @@
 		"cf1GatewayNetworkSession1dGroups": "",
 		"cf1GatewayNetworkSession1hGroups": "",
 		"cf1GatewayNetworkSessionRawGroups": "",
+		"cf1McpHost1dGroups": "",
 		"cloudchamberMetricsAdaptiveGroups": "",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "",
 		"cloudforceOneDetectionsAdaptiveGroups": "",
@@ -9867,6 +9976,7 @@
 		"pipelinesUserErrorsAdaptiveGroups": "",
 		"pipelinesUserErrorsStagingAdaptive": "",
 		"pipelinesUserErrorsStagingAdaptiveGroups": "",
+		"precursorEventsAdaptiveGroups": "",
 		"privacyProxyAuthMetricsAdaptiveGroups": "",
 		"privacyProxyEgressConnMetricsAdaptiveGroups": "",
 		"privacyProxyIngressConnMetricsAdaptiveGroups": "",
@@ -11712,8 +11822,6 @@
 		"accountTag": "Associated account",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botManagementDecision": "Judgement of the bot management system",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
@@ -11786,6 +11894,8 @@
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
+		"schemaValidationLearnedOutcome": "The outcome of running API Shield Managed Schema Validation for this request against the Cloudflare-learned schema (e.g. valid or violated; empty when managed schema validation did not run for the request)",
+		"schemaValidationUploadedOutcome": "The outcome of running API Shield Schema Validation for this request against the customer-uploaded schema (e.g. valid or violated; empty when schema validation did not run for the request)",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
@@ -11800,6 +11910,8 @@
 		"wafAttackScoreClass": "Beta. Overall request score class generated by the WAF detection module",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"webAssetsLabelsManaged": "Managed Web Asset Labels (Cloudflare-defined labels, e.g. cf-log-in, cf-llm)",
@@ -12603,8 +12715,6 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -12677,6 +12787,8 @@
 		"wafMlXssAttackScore": "<small>DEPRECATED (Field is replaced with <code>wafXssAttackScore</code>):</small> Beta. WAF ML score for an XSS attack",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"zoneVersion": "The version of a zone"
@@ -12702,8 +12814,6 @@
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -12738,6 +12848,8 @@
 		"wafMlXssAttackScore": "<small>DEPRECATED (Field is replaced with <code>wafXssAttackScore</code>):</small> Beta. WAF ML score for an XSS attack",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"zoneVersion": "The version of a zone"
@@ -12789,8 +12901,6 @@
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botScore": "The final score originated from bot management detections.",
@@ -12859,6 +12969,8 @@
 		"wafMlXssAttackScore": "<small>DEPRECATED (Field is replaced with <code>wafXssAttackScore</code>):</small> Beta. WAF ML score for an XSS attack",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"zoneVersion": "The version of a zone"
@@ -13351,8 +13463,6 @@
 		"__description": "Raw HTTP requests with adaptive sampling",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
@@ -13429,6 +13539,10 @@
 		"rayName": "The RayId of the request",
 		"requestSource": "",
 		"rulesMetadata": "Key-value metadata annotations attached to rules that matched this request",
+		"schemaValidationLearnedOutcome": "The outcome of running API Shield Managed Schema Validation for this request against the Cloudflare-learned schema (e.g. valid or violated; empty when managed schema validation did not run for the request)",
+		"schemaValidationLearnedViolations": "Schema Validation violations recorded for this request against the Cloudflare-learned schema. Each entry describes a single violation.",
+		"schemaValidationUploadedOutcome": "The outcome of running API Shield Schema Validation for this request against the customer-uploaded schema (e.g. valid or violated; empty when schema validation did not run for the request)",
+		"schemaValidationUploadedViolations": "Schema Validation violations recorded for this request against the customer-uploaded schema. Each entry describes a single violation.",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
@@ -13443,6 +13557,8 @@
 		"wafAttackScoreClass": "Beta. Overall request score class generated by the WAF detection module",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"webAssetsLabelsManaged": "Managed Web Asset Labels (Cloudflare-defined labels, e.g. cf-log-in, cf-llm)",
@@ -13489,8 +13605,6 @@
 		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway (Web Assets) endpoint matched at the edge",
 		"apiGatewayMatchedHost": "API Gateway (Web Assets) host matched at the edge",
-		"attackSignatureCategories": "1-D array of the categories associated with the rules ref in attackSignatureRefs",
-		"attackSignatureRefs": "cf.waf.attack_signature.refs Ruleset field truncated to maximum 10 elements.",
 		"botDetectionIds": "Array of detections ids that matched this request",
 		"botDetectionTags": "Array of detections tags that matched this request",
 		"botManagementDecision": "Judgement of the bot management system",
@@ -13566,6 +13680,8 @@
 		"payPerCrawlStatus": "Pay Per Crawl outcome, when applicable (e.g. request enabled for charging and not blocked by a WAF rule)",
 		"requestSource": "",
 		"sampleInterval": "ABR sample interval",
+		"schemaValidationLearnedOutcome": "The outcome of running API Shield Managed Schema Validation for this request against the Cloudflare-learned schema (e.g. valid or violated; empty when managed schema validation did not run for the request)",
+		"schemaValidationUploadedOutcome": "The outcome of running API Shield Schema Validation for this request against the customer-uploaded schema (e.g. valid or violated; empty when schema validation did not run for the request)",
 		"securityAction": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"securitySource": "The Cloudflare security product triggered by this request",
 		"sessionIdHash": "API Security Session ID hash",
@@ -13580,6 +13696,8 @@
 		"wafAttackScoreClass": "Beta. Overall request score class generated by the WAF detection module",
 		"wafPathTraversalAttackScore": "Beta. WAF score for a Path Traversal attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
+		"wafRequestSignatureCategories": "1-D array of the categories associated with the rules ref in wafRequestSignatureRefs",
+		"wafRequestSignatureRefs": "cf.waf.signature.request.refs Ruleset field truncated to maximum 10 elements.",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"webAssetsLabelsManaged": "Managed Web Asset Labels (Cloudflare-defined labels, e.g. cf-log-in, cf-llm)",
@@ -13713,6 +13831,20 @@
 		"metadataValue": "Value of the metadata annotation on the matched rule",
 		"ruleId": "Hex-encoded UUID of the rule this metadata entry belongs to"
 	},
+	"ZoneHttpRequestsAdaptiveSchemaValidationLearnedViolationsElem": {
+		"__description": "",
+		"errorClass": "The class/category of the schema validation violation error",
+		"errorDetail": "Finer grained detail describing the schema validation violation error",
+		"location": "Where in the request the violation was detected (e.g. path)",
+		"target": "The schema element or parameter targeted by the violated rule"
+	},
+	"ZoneHttpRequestsAdaptiveSchemaValidationUploadedViolationsElem": {
+		"__description": "",
+		"errorClass": "The class/category of the schema validation violation error",
+		"errorDetail": "Finer grained detail describing the schema validation violation error",
+		"location": "Where in the request the violation was detected (e.g. path)",
+		"target": "The schema element or parameter targeted by the violated rule"
+	},
 	"ZoneHttpRequestsOverviewAdaptiveGroups": {
 		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
@@ -13826,6 +13958,7 @@
 		"pools": "List of pools from which a pool will be selected based on steering policy",
 		"proxied": "Whether traffic is proxied through the Cloudflare network (orange-clouded)",
 		"region": "Load balancing region where request originated",
+		"rules": "Custom rules that were evaluated for this request",
 		"sampleInterval": "ABR sample interval",
 		"selectedOriginIndex": "Index of the selected origin from the list of all origins. If multiple origins were selected, this is the index of the first origin in that list",
 		"selectedPoolAvgRttMs": "Average RTT (milliseconds) to reach the origins within the selected pool",
@@ -13846,7 +13979,9 @@
 		"avg": "",
 		"confidence": "ALPHA - DO NOT USE",
 		"count": "The number of values for a metric per dimension",
-		"dimensions": "List of dimensions to group by"
+		"dimensions": "List of dimensions to group by",
+		"ratio": "",
+		"sum": ""
 	},
 	"ZoneLoadBalancingRequestsAdaptiveGroupsAvg": {
 		"__description": "",
@@ -13855,7 +13990,8 @@
 	"ZoneLoadBalancingRequestsAdaptiveGroupsConfidence": {
 		"__description": "",
 		"count": "The number of values for a metric per dimension, with confidence intervals",
-		"level": "Confidence level that was requested"
+		"level": "Confidence level that was requested",
+		"sum": ""
 	},
 	"ZoneLoadBalancingRequestsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -13873,6 +14009,8 @@
 		"numberOriginsSelected": "Number of origins that were selected and returned to the client",
 		"proxied": "Whether traffic is proxied through the Cloudflare network (orange-clouded)",
 		"region": "Load balancing region where request originated",
+		"ruleName": "Name of the custom rule",
+		"rulePriority": "Priority of the custom rule",
 		"sampleInterval": "ABR sample interval",
 		"selectedOriginIndex": "Index of the selected origin from the list of all origins. If multiple origins were selected, this is the index of the first origin in that list",
 		"selectedOriginName": "Name of the selected origin",
@@ -13892,6 +14030,19 @@
 	},
 	"ZoneLoadBalancingRequestsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"ZoneLoadBalancingRequestsAdaptiveGroupsRatio": {
+		"__description": "",
+		"ruleMatchPercentage": "Percentage of requests where this rule matched, ranging from 0 (never matched) to 100 (always matched). WARNING: This field MUST be queried with the ruleName dimension; querying without ruleName will produce incorrect results (aggregated percentage across all rules instead of per-rule match rates)."
+	},
+	"ZoneLoadBalancingRequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"ruleMatches": "Number of times this specific rule matched, weighted by sample interval. WARNING: This field MUST be queried with the ruleName dimension; querying without ruleName will produce incorrect results (sum across all rules instead of per-rule values).",
+		"totalRequestsWithRule": "The number of requests that evaluated this rule (including both matches and non-matches), weighted by sample interval. Must be used with ruleName dimension."
+	},
+	"ZoneLoadBalancingRequestsAdaptiveGroupsSumConfidence": {
+		"__description": "",
+		"totalRequestsWithRule": "Confidence interval for the corresponding point estimate"
 	},
 	"ZoneLoadBalancingRequestsAdaptiveOrderBy": {
 		"__description": ""
@@ -13914,6 +14065,12 @@
 		"healthy": "Pool health status",
 		"id": "A unique identifier for the pool",
 		"poolName": "Pool name"
+	},
+	"ZoneLoadBalancingRequestsAdaptiveRulesElem": {
+		"__description": "",
+		"matched": "Whether the rule matched (1) or not (0)",
+		"priority": "The configured priority value for this rule at the time of evaluation",
+		"ruleName": "Rule name"
 	},
 	"ZoneLogpushHealthAdaptiveGroups": {
 		"__description": "Beta. Logpush job health metrics",
@@ -14998,6 +15155,7 @@
 		"cf1GatewayNetworkSession1dGroups": "CF1 Gateway Network Session Log analytics - 1 day rollup (up to 90d window, 365d back)",
 		"cf1GatewayNetworkSession1hGroups": "CF1 Gateway Network Session Log analytics - 1 hour rollup (up to 31d window, 62d back)",
 		"cf1GatewayNetworkSessionRawGroups": "CF1 Gateway Network Session Log (L4 sessions with bandwidth) - raw data (max 3h query window, 4d lookback). Use cf1GatewayNetworkSession1hGroups for longer ranges, or cf1GatewayNetworkSession1dGroups for 10d+",
+		"cf1McpHost1dGroups": "CF1 MCP host analytics - 1 day rollup (up to 90d window, 365d back). Groups MCP URL activity by host and source country per day.",
 		"cloudchamberMetricsAdaptiveGroups": "Metrics for Cloudchamber applications and deployments",
 		"cloudflareTunnelsAnalyticsAdaptiveGroups": "Cloudflare tunnel Device Analytics",
 		"cloudforceOneDetectionsAdaptiveGroups": "Cloudforce One detection events for Workers for Platforms scripts with adaptive sampling. Each row represents a single detection rule hit.",
@@ -15101,6 +15259,7 @@
 		"pipelinesUserErrorsAdaptiveGroups": "User errors from Workers Pipelines",
 		"pipelinesUserErrorsStagingAdaptive": "Raw user errors from Workers Pipelines (staging)",
 		"pipelinesUserErrorsStagingAdaptiveGroups": "User errors from Workers Pipelines (staging)",
+		"precursorEventsAdaptiveGroups": "Beta. Cloudflare Precursor aggregated validation events with adaptive sampling",
 		"privacyProxyAuthMetricsAdaptiveGroups": "Aggregated Privacy Proxy authentication metrics with adaptive sampling",
 		"privacyProxyEgressConnMetricsAdaptiveGroups": "Aggregated Privacy Proxy egress (proxy-to-origin) connection metrics with adaptive sampling",
 		"privacyProxyIngressConnMetricsAdaptiveGroups": "Aggregated Privacy Proxy ingress (client-to-proxy) connection metrics with adaptive sampling",
