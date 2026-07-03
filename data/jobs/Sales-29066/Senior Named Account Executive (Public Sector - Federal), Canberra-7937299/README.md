@@ -5,15 +5,17 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location: Canberra</strong></p>
-<p><strong>About the Department</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Australia</li>
+</ul>
+<h2>About the Role</h2>
 <p>The Cloudflare APAC sales organisation operates as one integrated revenue system. Account Executives, Customer Engineers, Partner Account Managers, Business Development Representatives, Customer Experience Managers, Professional Services and Revenue Operations work as a continuous engine — winning, deploying, adopting, expanding, and scaling platform commitments across the full customer lifecycle.</p>
 <p>The system is supported by an AI-embedded operating model. The work itself, however, remains human. The role of every seller at Cloudflare is to bring critical thinking, judgment, and trust to customer relationships and outcomes.</p>
-<p><strong>About This Role</strong></p>
 <p>Our Public Sector team specifically helps government agencies solve complex technical challenges while protecting the essential services and infrastructure that Australian citizens rely on every day.</p>
 <p>As a Senior Account Manager for the Australian Federal Government, you will lead Cloudflare’s strategic engagement within the Canberra territory. You will be responsible for driving the adoption of the Cloudflare platform across Australia’s National Intelligence Community&nbsp; - including ASD, the Department of Defence, and Home Affairs - while influencing policy to position Cloudflare as a strategic pillar for national cybersecurity and government digital transformation.</p>
 <p>You are the kind of operator who uses AI as a force multiplier every day, cares more about customer outcomes than job boundaries, and demonstrates curiosity, judgment, and high agency.</p>
-<p><strong>Role Responsibilities</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Strategic Relationship Management: Build and nurture deep, long-term relationships across all layers of your allocated Government segment, leveraging your existing network to navigate complex agency structures.</li>
 	<li>Territory Leadership: Lead the engagement strategy for the Australian Federal Government, acting as a subject matter expert on government IT, Cloud SaaS, Zero Trust, and AI adoption.</li>
@@ -23,9 +25,9 @@
 	<li>Cross-Functional Collaboration: Stay engaged through onboarding, adoption, and the first renewal. Partner with Customer Engineers, Professional Services on a deployment plan with milestones tied to measurable outcomes.</li>
 	<li>Knowledge Leadership: Act as a source of expertise for the wider ANZ team, sharing market insights and mentoring peers to elevate the collective team's performance.</li>
 	<li>Proactively build and manage a robust sales pipeline by leveraging internal tools, AI-assisted research and pipeline sources (BDR, Channel, Marketing).</li>
-	<li>Maintain high standards in pipeline discipline, CRM hygiene and forecasting accuracy.&nbsp;</li>
+	<li>Maintain high standards in pipeline discipline, CRM hygiene and forecasting accuracy.</li>
 </ul>
-<p><strong>Required Experience</strong><strong><br></strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Bachelor's degree or equivalent work experience.</li>
 	<li>Based in Canberra, you have an established, respected presence within the local federal government ecosystem with extensive engagement in the National Intelligence Community.</li>
@@ -39,9 +41,6 @@
 	<li>Willingness to actively engage with AI tools and experiment.</li>
 	<li>Ability to travel as required.</li>
 </ul>
-<h3><br><br><br><br></h3>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

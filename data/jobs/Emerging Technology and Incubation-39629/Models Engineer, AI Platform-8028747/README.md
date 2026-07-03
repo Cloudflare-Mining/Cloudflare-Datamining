@@ -5,12 +5,14 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, TX&nbsp;</strong></h3>
-<h3><strong>About the Department</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the team</strong></h3>
 <p>As a Models Engineer at Cloudflare, you will be the technical heartbeat of our AI community, bridging the gap between cutting-edge models and the developers building on our platform. You'll work directly with model creators and research teams to bring new models to Cloudflare, while simultaneously educating and inspiring our global developer base. We're looking for someone who can navigate a technical partnership call in the morning and debug a developer's issue on Discord in the afternoon.</p>
-<h3><strong>Role Responsibilities</strong></h3>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Model Partnerships &amp; Integration:</strong> Identify and evaluate promising new models. Work directly with external model teams — research labs, open-source maintainers, and partner organizations — to bring their work to Cloudflare. Serve as the technical point of contact through integration and launch.</li>
 	<li><strong>Technical Content &amp; Education:</strong> Author tutorials, technical blog posts, and documentation that help developers understand and adopt our AI offerings. Make complex concepts accessible.</li>
@@ -19,8 +21,7 @@
 	<li><strong>Internal Product Advocacy:</strong> Synthesize feedback from developers and model partners into actionable insights for Product and Engineering teams. Influence roadmap, API design, and feature prioritization.</li>
 	<li><strong>Event Representation:</strong> Present at conferences, meetups, and online events through technical talks, workshops, and live demonstrations.</li>
 </ul>
-<h2>Role Requirements</h2>
-<h3>Must-Have</h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li><strong>Technical Depth:</strong> Strong experience with Python and ML frameworks (PyTorch, Hugging Face Transformers and Diffusers, Cog). Solid understanding of how models work and how to work with them.</li>
 	<li><strong>Content Creation:</strong> Portfolio of technical writing — blog posts, documentation, tutorials — that demonstrates clear explanation of complex topics.</li>
@@ -29,7 +30,7 @@
 	<li><strong>Partnership Experience:</strong> Track record of working with external teams — whether open-source maintainers, research groups, or partner engineering teams.</li>
 	<li><strong>Prototyping Ability:</strong> Can build end-to-end applications that integrate models and serve as examples for developers.</li>
 </ul>
-<h3>Nice-to-Have</h3>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Familiarity with Cloudflare Workers or serverless/edge architectures.</li>
 	<li>Full-stack experience (JavaScript/TypeScript) for building complete applications.</li>
@@ -37,7 +38,7 @@
 	<li>Background in ML research or contributions to model development.</li>
 	<li>Experience with image, video, or audio models.</li>
 </ul>
-<h2>Common Daily Activities</h2>
+<h3>Common Daily Activities</h3>
 <ul>
 	<li>Call with a model team to discuss integration requirements for an upcoming release.</li>
 	<li>Troubleshooting a developer's issue in Discord or triaging GitHub issues.</li>
@@ -46,7 +47,7 @@
 	<li>Building a demo application for an upcoming launch.</li>
 	<li>Reviewing community feedback and distilling it into product recommendations.</li>
 </ul>
-<h2>Application Materials</h2>
+<h3>Application Materials</h3>
 <ul>
 	<li>Resume/CV</li>
 	<li>Portfolio: GitHub, blog, or links to talks and technical writing</li>

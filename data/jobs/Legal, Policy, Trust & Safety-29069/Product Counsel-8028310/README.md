@@ -5,12 +5,16 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, Washington D.C.</strong></p>
-<p><strong>About this job</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>Washington DC, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare is seeking a lawyer with a passion for new technologies to join the Product Counsel team. The Product Counsel team serves as the frontline legal contact and helps solve some of the company’s thorniest issues. As a member of the team, you’ll wear many hats and lead cross-functional projects with meaningful impact. The ideal candidate brings deep enthusiasm for innovative technology and the ability to collaborate closely with product, engineering, and business teams throughout the software development and commercialization lifecycle.</p>
 <p>This role requires drafting and negotiating the technology transactions that fuel our products, such as our AI inference offerings. Through this work, you will help evaluate novel legal questions and craft practical solutions at the frontier of law and technology.</p>
 <p>As a member of the Product Counsel team, you will also support privacy-by-design reviews, document data flows for responsible AI counseling, and partner with the commercial legal team to address complex customer inquiries.</p>
-<p><strong>In this role, you will:</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Translate complex legal analysis into clear, actionable guidance for fast-moving product and engineering teams.</li>
 	<li>Proactively assess legal risks and advise product, engineering and business teams building services that reshape how information moves across the Internet—and the laws that govern it.</li>
@@ -23,7 +27,7 @@
 	<li>Build and refine processes that enable the Legal team to scale effectively as Cloudflare continues to expand.</li>
 	<li>Engage externally on behalf of Cloudflare in areas where you are a subject matter expert.</li>
 </ul>
-<p><strong>Job qualifications</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>JD degree with strong academic credentials and admitted to practice law in at least one U.S. jurisdiction.</li>
 	<li>3+ years of law firm and/or in-house experience, preferably with technology companies. Prior experience with Internet security and infrastructure companies is desired.</li>
@@ -33,17 +37,16 @@
 	<li>Ability to work cross-functionally, with lawyers and non-lawyers, to establish effective solutions efficiently and in an amenable manner.</li>
 	<li>Ability to organize, prioritize, and manage many tasks on complex projects. Experience with Jira or other project management solutions is desired.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
+<h2>Compensation</h2>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Washington D.C. based hires: Estimated annual salary of $150,000 - $$207,000</span></li>
+	<li>For Washington D.C. based hires: Estimated annual salary of $150,000 - $$207,000</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -54,14 +57,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

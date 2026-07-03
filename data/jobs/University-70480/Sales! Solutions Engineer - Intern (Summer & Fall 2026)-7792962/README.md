@@ -5,8 +5,11 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location(s): </strong><strong>Austin</strong></p>
-<p><strong>About the Team</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Our Solutions Engineers come from a wide range of backgrounds: engineering, software development, science, product management, business, finance, customer support &amp; project delivery. We're serious about building a diverse team. When hiring we look for diversity of background and experience combined with genuine curiosity for our technology.</p>
 <p>Solutions Engineers are the technical customer advocates within Cloudflare. To aid our customers, we work closely with every team at Cloudflare, from Sales and Product to Engineering and Customer Support. Our goal of customer success drives us through the entire organization to seek out and create scalable solutions for our customer’s needs.</p>
 <p><strong>Who are we looking for?</strong></p>
@@ -14,16 +17,15 @@
 <p>We are looking for <strong>curious and ambitious graduates</strong> who are eager to explore a career that combines technical acumen with the desire to help customers achieve their goals.</p>
 <p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to be hands-on. You appreciate the diversity of challenges in working with customers and look forward to helping them realize the full promise of Cloudflare.</p>
 <p><strong><em>All the resources and training required to be effective in this role will be provided.</em></strong></p>
-<p><strong>About the Internship Program</strong></p>
-<p><strong>What you’ll do:</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Immersion &amp; Training:</strong> Your journey begins with in-depth technical and functional skills training. You will dive deep into Cloudflare’s solutions, products, and underlying technologies to build a foundational "toolkit" for success.</li>
 	<li><strong>Mentorship &amp; Shadowing:</strong> You will be paired with experienced Solutions Engineers, shadowing live customer engagements and internal strategy sessions to see firsthand how we solve complex technical challenges.</li>
 	<li><strong>Hands-on Projects:</strong> Throughout the program, you will complete a series of learning assessments and practical projects, receiving direct guidance and feedback from your manager and peers. Projects could include assessing and improving internal/external collaboration processes and tools, and creative approaches to building compelling demo scenarios to showcase Cloudflare Technology.</li>
 	<li><strong>Regional Hub experience:</strong> You will become an integral part of our <strong>Austin </strong><strong>hub</strong>, experiencing local life through our office culture, joining team outings, social activities, and networking events that make our regional offices unique.</li>
+	<li>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Desirable Skills, Knowledge, and Experience</strong><strong>:</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Bachelor's or Master's degree in a technical, engineering, science, or other related analytical field.</li>
 	<li>Graduate by December 2026 or recently graduated summer 2026.</li>

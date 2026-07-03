@@ -5,13 +5,15 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX | Hybrid</strong></h3>
-<h3><strong>About the Department</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the Team</strong></h3>
 <p>ETI's Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, fast, and scalable.</p>
 <p>You'll be joining a highly motivated team that is building the next generation of Cloudflare’s distributed storage services.</p>
-<h3><strong>What You'll Do</strong></h3>
+<h2>Responsibilities</h2>
 <p>In this role, you will own the distributed database systems that run across Cloudflare's edge network and power services such as R2, Durable Objects, and Workers KV. We expect you to go a layer deeper than a database operator to fix the underlying problems. You will own your code from inception through production rollout. On any given day, you might:</p>
 <ul>
 	<li>Add new features and extensions to the database to meet the needs of R2, Durable Objects, and Workers KV</li>
@@ -19,9 +21,9 @@
 	<li>Tune performance and resource utilization across staged rollouts and production</li>
 	<li>Optimize data placement and replication for our edge topology, and partner with service teams on schema design and query performance</li>
 	<li>Build the observability and tooling that make the database supportable across its consumers</li>
+	<li>You can expect to interact with a variety of languages and technologies including Go, Rust, Saltstack, and Terraform.</li>
 </ul>
-<p>You can expect to interact with a variety of languages and technologies including Go, Rust, Saltstack, and Terraform.</p>
-<h3><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Source-code level experience contributing to a distributed database or distributed storage system. Examples include distributed SQL databases (CockroachDB, TiDB / TiKV, YugabyteDB, Spanner), Raft-based or Paxos-based storage systems (etcd, FoundationDB), wide-column stores (Cassandra, ScyllaDB), document databases (MongoDB), or comparable systems</li>
 	<li>Strong programming skills in Go, Rust, C++, or another systems language, with a willingness to be productive in Go for this role</li>
@@ -36,7 +38,6 @@
 	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
 	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

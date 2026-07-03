@@ -5,10 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Bengaluru, India</p>
-<p><strong>About the Role:</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
 <p>The Senior OIC and OPA Developer is the definitive technical expert responsible for developing, governing, and standardizing all data movement and orchestration involving the Oracle Fusion ERP Cloud environment. This role designs the most complex and critical integration patterns using Oracle Integration Cloud and Oracle Process Automation ensuring technical solutions adhere to Enterprise Architecture and security standards.</p>
-<p><strong>Key Responsibilities:</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Complex Integration Design: Architect and develop the most challenging, cross-functional, and real-time integration patterns for the Oracle Fusion program using Oracle Integration Cloud.</li>
 	<li>Architecture &amp; Governance: Act as the technical gatekeeper for all Oracle integration and process automation design, ensuring strict adherence to enterprise standards. Define the long-term technical roadmap for the OIC/OPA platform.</li>
@@ -16,15 +19,12 @@
 	<li>Security &amp; Performance: Define and validate the technical security protocols for all endpoints and interfaces (e.g., OAuth, API Gateway configuration), ensuring data transmission is compliant and performant.</li>
 	<li>Technical Mentorship: Serve as the top integration expert, providing technical leadership and direction to developers building integrations.</li>
 </ul>
-<p><strong>Required Qualifications:</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>10+ years of direct experience architecting, designing, and governing enterprise-level integrations for major ERP/SCM/GTM systems.</li>
 	<li>Expert-level, hands-on knowledge of Oracle Integration Cloud including strong familiarity with its various adapters, mapping, and orchestration capabilities.</li>
 	<li>Proven experience working directly with a central Enterprise Architecture organization to define and enforce integration standards.</li>
 	<li>Deep understanding of SOA, microservices, API management, and security protocols.</li>
-</ul>
-<p><strong>Preferred Qualifications:</strong></p>
-<ul>
 	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
 	<li>Hands-on experience with other integration tools like GoLang, Boomi, etc.</li>
 	<li>Experience setting up/using CI/CD tools like FlexDeploy</li>
@@ -33,7 +33,6 @@
 	<li>Relevant professional product/functional certifications (e.g., OIC/OPA, Database)</li>
 	<li>Working knowledge of AI Agent Studio for Oracle Fusion Cloud Applications.</li>
 </ul>
-<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772709497740000&amp;usg=AOvVaw0TxX4B5ll0XGIcYUaz-iZJ">cloudflare.com</a>&nbsp;email addresses.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

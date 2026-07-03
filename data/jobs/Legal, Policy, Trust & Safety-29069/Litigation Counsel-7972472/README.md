@@ -5,11 +5,15 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Washington, D.C. or London, UK</strong></p>
-<p><strong>About this job</strong></p>
-<p>As the world’s first connectivity cloud, Cloudflare helps connect and protect millions of customers globally. Everyone from individuals to the world’s largest enterprises use our unified platform of networking, security, and developer services to succeed everywhere in the world. This can sometimes make Cloudflare a target for litigation and regulation. We’re looking for a Litigation Counsel to join our team responsible for managing litigation matters around the world.&nbsp;</p>
-<p>The ideal candidate is comfortable confronting novel legal issues in a fast paced environment, while never losing sight of Cloudflare’s core principles. As Litigation Counsel, you’ll work with our internal legal team, external counsel, and stakeholders across the company to handle ongoing lawsuits, respond to litigation threats, and assist in broader legal strategy. You’ll help Cloudflare navigate a diverse set of legal issues around the globe including intellectual property, contracts and other business disputes, regulatory issues, and labor and employment matters. Cloudflare faces complex legal issues as a result of its role as an Internet infrastructure provider, including litigation and regulation relating to customer content on our network (i.e., “intermediary liability”). These cases require a strong interest in navigating challenging technical and legal issues in order to advance Cloudflare’s mission to help build a better Internet. The ideal candidate has the passion to keep pace with a fast moving docket, the curiosity to dive deep into evolving technology and Internet law, and the initiative to help scale our litigation function alongside a fast growing company.&nbsp;</p>
-<p><strong>In this role, you will:</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>London, UK</li>
+	<li>Washington DC, US</li>
+</ul>
+<h2>About the Role</h2>
+<p>As the world’s first connectivity cloud, Cloudflare helps connect and protect millions of customers globally. Everyone from individuals to the world’s largest enterprises use our unified platform of networking, security, and developer services to succeed everywhere in the world. This can sometimes make Cloudflare a target for litigation and regulation. We’re looking for a Litigation Counsel to join our team responsible for managing litigation matters around the world.</p>
+<p>The ideal candidate is comfortable confronting novel legal issues in a fast paced environment, while never losing sight of Cloudflare’s core principles. As Litigation Counsel, you’ll work with our internal legal team, external counsel, and stakeholders across the company to handle ongoing lawsuits, respond to litigation threats, and assist in broader legal strategy. You’ll help Cloudflare navigate a diverse set of legal issues around the globe including intellectual property, contracts and other business disputes, regulatory issues, and labor and employment matters. Cloudflare faces complex legal issues as a result of its role as an Internet infrastructure provider, including litigation and regulation relating to customer content on our network (i.e., “intermediary liability”). These cases require a strong interest in navigating challenging technical and legal issues in order to advance Cloudflare’s mission to help build a better Internet. The ideal candidate has the passion to keep pace with a fast moving docket, the curiosity to dive deep into evolving technology and Internet law, and the initiative to help scale our litigation function alongside a fast growing company.</p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Work with our existing litigation team to help formulate and implement litigation strategies;</li>
 	<li>Evaluate and respond to litigation threats and legal matters in various jurisdictions around the world;</li>
@@ -18,11 +22,11 @@
 	<li>Assist in responding to and working with government regulators and private organizations on issues relating to Cloudflare’s products and services;</li>
 	<li>Communicate with business leaders across the company about ongoing litigation and litigation threats, and provide training and resources to address future legal risks.</li>
 </ul>
-<p><strong>You have:</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Been admitted to practice law in the US or the UK;</li>
 	<li>4+ years PQE either in a law firm or in-house (preferably with technology companies);</li>
-	<li>Experience litigating cases in one or more jurisdictions;&nbsp;</li>
+	<li>Experience litigating cases in one or more jurisdictions;</li>
 	<li>Strong communication skills and cooperative team player;</li>
 	<li>Ability to lead with empathy and understanding while embracing diverse points of view;</li>
 	<li>Flexibility to adapt and thrive in a fast paced environment;</li>
@@ -30,13 +34,39 @@
 	<li>Ability to organize, prioritize, and manage many tasks on complex projects;</li>
 	<li>An ambitious mindset that enables you to successfully work independently and autonomously with limited guidance, but also to use good judgment and call out issues when needed.</li>
 </ul>
-<p><strong>Compensation</strong><br>Compensation may be adjusted depending on work location.</p>
-<p>● For Washington, D.C. based hires: Estimated annual salary of $150,000 - $207,000.</p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
-<p><strong>Health &amp; Welfare Benefits</strong><br>● Medical/Rx Insurance<br>● Dental Insurance<br>● Vision Insurance<br>● Flexible Spending Accounts<br>● Commuter Spending Accounts<br>● Fertility &amp; Family Forming Benefits<br>● On-demand mental health support and Employee Assistance Program<br>● Global Travel Medical Insurance</p>
-<p><strong>Financial Benefits</strong><br>● Short and Long Term Disability Insurance<br>● Life &amp; Accident Insurance<br>● 401(k) Retirement Savings Plan<br>● Employee Stock Participation Plan</p>
-<p><strong>Time Off</strong><br>● Flexible paid time off covering vacation and sick leave<br>● Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
+<h2>Compensation</h2>
+<p><strong>Compensation</strong></p>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Washington, D.C. based hires: Estimated annual salary of $150,000 - $207,000.</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

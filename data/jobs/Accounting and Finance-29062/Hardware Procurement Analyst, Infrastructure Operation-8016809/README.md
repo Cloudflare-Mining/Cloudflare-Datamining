@@ -5,12 +5,18 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About the Role</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>Houston, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>We are seeking a Hardware Procurement Analyst to support the end to end procurement lifecycle for infrastructure hardware across our global environment. This individual will partner closely with Capacity Planning, Infrastructure Engineering, Portfolio Management, Accounts Payable, Fixed Assets, Finance, Logistics, and Strategic Sourcing teams to ensure critical hardware is procured, tracked, received, and managed efficiently.</p>
 <p>This role combines operational excellence with continuous improvement. The ideal candidate thrives in a fast paced environment, enjoys solving complex business challenges, and is passionate about improving processes through automation, data analysis, and technology driven solutions.</p>
-<p><strong>What you'll do</strong></p>
-<h3><strong>Procurement Operations</strong></h3>
+<h2>Responsibilities</h2>
+<h3>Procurement Operations</h3>
 <ul>
 	<li>Manage the end to end lifecycle of hardware procurement requests from intake through receipt.</li>
 	<li>Create and maintain purchase requisitions and purchase orders in enterprise procurement systems.</li>
@@ -19,7 +25,7 @@
 	<li>Coordinate with suppliers to obtain quotations, order confirmations, shipment updates, and delivery timelines.</li>
 	<li>Ensure procurement activities align with company policies, controls, and approval requirements.</li>
 </ul>
-<h3><strong>Infrastructure and Asset Management</strong></h3>
+<h3>Infrastructure and Asset Management</h3>
 <ul>
 	<li>Partner with Capacity Planning teams to support forecasting and hardware demand planning activities.</li>
 	<li>Collaborate with Fixed Assets teams to ensure accurate capitalization and asset tracking.</li>
@@ -28,14 +34,14 @@
 	<li>Track advanced shipment notifications and coordinate receiving activities across multiple locations.</li>
 	<li>Ensure hardware receipts are accurately recorded within the ERP system to enable invoice processing and asset management.</li>
 </ul>
-<h3><strong>Supplier Management</strong></h3>
+<h3>Supplier Management</h3>
 <ul>
 	<li>Initiate supplier onboarding requests and partner with supplier management teams to ensure timely activation of new vendors.</li>
 	<li>Maintain supplier information and assist with vendor related issue resolution.</li>
 	<li>Support supplier performance reviews through reporting and operational metrics.</li>
 	<li>Partner with Accounts Payable to resolve invoice discrepancies and payment related inquiries.</li>
 </ul>
-<h3><strong>Process Improvement and Innovation</strong></h3>
+<h3>Process Improvement and Innovation</h3>
 <ul>
 	<li>Identify opportunities to simplify and improve procurement and infrastructure workflows.</li>
 	<li>Leverage data, reporting, and technology to reduce manual effort and improve operational efficiency.</li>
@@ -44,7 +50,7 @@
 	<li>Support implementation of new tools, systems, and digital solutions that enhance the procurement experience.</li>
 	<li>Document processes and create scalable operating procedures that support organizational growth.</li>
 </ul>
-<p><strong>What you'll bring</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Three to seven years of experience in procurement, supply chain, operations, infrastructure procurement, or hardware purchasing.</li>
 	<li>Experience creating and managing purchase orders within Oracle and Coupa platforms.</li>
@@ -55,9 +61,6 @@
 	<li>Excellent communication and stakeholder management skills.</li>
 	<li>Experience building reports, dashboards, or workflow automations.</li>
 	<li>Ability to manage multiple priorities while maintaining attention to detail.</li>
-</ul>
-<p><strong>Preferred Qualification's</strong></p>
-<ul>
 	<li>
 		<ul>
 			<li>Experience supporting data center infrastructure procurement.</li>
@@ -67,14 +70,16 @@
 		</ul>
 	</li>
 </ul>
-<h3 data-path-to-node="1"><strong data-path-to-node="1" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="2">Compensation may be adjusted depending on work location.</p>
-<p data-path-to-node="3">● For Denver based hires: Estimated annual salary of $84,000 - $116,000.</p>
-<p><strong>Equity</strong></p>
+<h2>Compensation</h2>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For Denver based hires: Estimated annual salary of $84,000 - $116,000.</li>
+</ul>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -85,14 +90,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -5,18 +5,21 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Incident Response Analyst - REACT</strong></h3>
-<h3><strong>Available Location - Bengaluru<br></strong><strong><br></strong><strong>About the Role</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare is a system spanning the globe, on a mission to make the internet safer and more powerful everyday. To help fulfill this mission, we are seeking a talented Incident Response Analyst to join us in growing our Cloudforce One REACT organization. In this role, you will be instrumental in building a proactive and threat intelligence-driven approach to protecting Cloudflare and its customers from sophisticated and evolving threat actors.</p>
 <p>As a REACT Consultant, you will respond to customer security incidents across on-premises, cloud, and hybrid environments. This position requires an innovative, self-starting, and detail-oriented problem solver with a passion for analyzing, tracking, and triaging malicious activity. You will engage with customers at all levels—including Executive, VP, Director, and engineering levels—serving an integral role alongside forensic analysts, threat researchers, detection engineers, and malware analysts to detect, isolate, and mitigate threats.</p>
-<h3><strong>Key Responsibilities</strong></h3>
-<h4><strong>1. Incident Response &amp; Active Edge Mitigation</strong></h4>
+<h2>Responsibilities</h2>
+<h3>1. Incident Response &amp; Active Edge Mitigation</h3>
 <ul>
 	<li><strong>Active Edge Mitigation:</strong> Execute immediate defensive maneuvers at the Cloudflare edge to protect customer availability. This includes deploying custom WAF rules, implementing L3/L4 DDoS shunning, and performing real-time traffic filtering to neutralize attacks before they reach the customer's origin.</li>
 	<li><strong>Support Full IR Lifecycle Management:</strong> Support and execute the end-to-end incident response process for clients (investigation, containment, remediation, and recovery). Review technical deliverables and coordinate sessions with customer stakeholders to ensure high-quality service and resolution.</li>
 	<li><strong>Incident Remediation:</strong> Build a strong understanding of targeted attacks to create and execute customized tactical and strategic remediation plans for compromised organizations.</li>
 </ul>
-<h3><strong>Desirable Skills, Knowledge, and Experience</strong></h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li><strong>Education:</strong> Bachelor's degree in Computer Science, Information Systems, Cybersecurity, a related technical field, or equivalent training/practical experience.</li>
 	<li><strong>Experience:</strong> 5+ years of overall experience in cybersecurity, including 2+ years of dedicated Incident Response <strong>OS &amp; Cloud Environments:</strong> In-depth understanding of Windows operating systems and general knowledge of Unix, Linux, and Mac environments. Familiarity with cloud environments (AWS, Azure, O365, Google Cloud, Cloudflare) and cloud IR methodologies.</li>
@@ -26,7 +29,7 @@
 	<li>Solid understanding of MITRE ATT&amp;CK and NIST Cyber Security Frameworks.</li>
 	<li><strong>Communications:</strong> English Fluency, Excellent verbal and written communication skills with a proven ability to establish relationships and clearly explain tasks, guidance, and complex technical findings to executive and technical clients.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Networking, Routing, and BGP Operations: Strong understanding of internet routing fundamentals, including BGP, Anycast, DNS, TCP/IP, GRE/IPsec tunneling, routing policies, prefix announcements, route propagation, RPKI, IRR, ASN ownership, and traffic engineering concepts.</li>
 	<li>Proficient in Python or Golang, capable of writing modular code or simple scripts that can be installed on a remote system.</li>
@@ -36,7 +39,6 @@
 	<li>Reverse engineering experience with APT malware with an understanding of common infection vectors, infrastructure enumeration, malware attribution, and current evasion tactics.</li>
 	<li>Familiarity with bash command-line executables to conduct static analysis and investigate Indicators of Compromise (IOCs).</li>
 </ul>
-<p><br><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

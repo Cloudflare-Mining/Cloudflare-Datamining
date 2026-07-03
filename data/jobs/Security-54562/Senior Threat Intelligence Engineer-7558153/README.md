@@ -5,30 +5,27 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin - TX</strong></p>
-<p><strong>About the Department</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Security at Cloudflare is a focused team committed to helping secure both Cloudflare and our customers. The Threat Detection Automation and Intelligence Team is responsible for identifying, understanding and detecting threats to Cloudflare.</p>
-<p><strong>About the Role</strong></p>
 <p>We are seeking an experienced <strong>Threat Intelligence Engineer</strong> with experience with machine learning data science to join our proactive security team. This role is a critical blend of two disciplines: leveraging <strong>Threat Intelligence (TI)</strong> to understand the adversary, and then applying advanced <strong>Machine Learning</strong> and engineering principles to rapidly and effectively defend our organization. The ideal candidate will transform raw threat data into actionable security measures and automated defenses, significantly reducing our mean time to detect (MTTD) and mean time to respond (MTTR) to sophisticated cyber threats.</p>
-<p><strong>&nbsp;</strong></p>
-<p><strong>Key ResponsibilitiesThreat Intelligence Engineering (TI)</strong></p>
+<h2>Responsibilities</h2>
 <ul>
-	<li><strong>Intelligence Collection &amp; Analysis:</strong> Proactively research, collect, and analyze threat intelligence from various sources (OSINT, commercial feeds, dark web, and internal security events) to understand the current and emerging threat landscape.<br><br></li>
-	<li><strong>Machine Learning and Data Science: </strong>Design, implement, and maintain detection use cases for the entire machine learning lifecycle (data ingestion, training, deployment, and inference).<br><br></li>
-	<li><strong>Threat Actor Profiling:</strong> Develop detailed profiles of relevant threat actors, their Tactics, Techniques, and Procedures (TTPs) using frameworks like <strong>MITRE ATT&amp;CK</strong> , and identify potential impacts to the organization.<br><br></li>
-	<li><strong>Actionable Intelligence Dissemination:</strong> Produce and disseminate timely, relevant, and actionable intelligence reports and briefings for both technical security teams and executive leadership.<br><br></li>
-	<li><strong>IOC/IOA Management:</strong> Engineer the ingestion, enrichment, correlation, and contextualization of Indicators of Compromise (IOCs) and Indicators of Attack (IOAs) into security platforms.<br><br></li>
+	<li><strong>Intelligence Collection &amp; Analysis:</strong> Proactively research, collect, and analyze threat intelligence from various sources (OSINT, commercial feeds, dark web, and internal security events) to understand the current and emerging threat landscape.</li>
+	<li><strong>Machine Learning and Data Science: </strong>Design, implement, and maintain detection use cases for the entire machine learning lifecycle (data ingestion, training, deployment, and inference).</li>
+	<li><strong>Threat Actor Profiling:</strong> Develop detailed profiles of relevant threat actors, their Tactics, Techniques, and Procedures (TTPs) using frameworks like <strong>MITRE ATT&amp;CK</strong> , and identify potential impacts to the organization.</li>
+	<li><strong>Actionable Intelligence Dissemination:</strong> Produce and disseminate timely, relevant, and actionable intelligence reports and briefings for both technical security teams and executive leadership.</li>
+	<li><strong>IOC/IOA Management:</strong> Engineer the ingestion, enrichment, correlation, and contextualization of Indicators of Compromise (IOCs) and Indicators of Attack (IOAs) into security platforms.</li>
+	<li><strong>Automated Defense Development:</strong> Design, develop, and implement robust automation workflows and playbooks (SOAR) to streamline security operations tasks, including incident triage, alert enrichment, vulnerability management, and threat response actions.</li>
+	<li><strong>Tool Integration &amp; Optimization:</strong> Integrate diverse security tools (e.g., SIEM, EDR, Cloud Security Posture Management, vulnerability scanners, Threat Intelligence Platforms) through APIs and scripting (primarily Python) to create seamless, automated feedback loops.</li>
+	<li><strong>Process Improvement:</strong> Identify manual, repetitive, and time-consuming security processes and engineer scalable automation solutions to increase team efficiency and operational maturity.</li>
+	<li><strong>Incident Response Support:</strong> Provide threat context&nbsp; to support the Incident Response team during active security incidents.</li>
+	<li><strong>Cross-Functional Partnership:</strong> Collaborate with Detection Engineers, Security Engineers, and Software Developers to embed security and intelligence-driven practices into the CI/CD pipeline and corporate infrastructure.</li>
 </ul>
-<ul>
-	<li><strong>Automated Defense Development:</strong> Design, develop, and implement robust automation workflows and playbooks (SOAR) to streamline security operations tasks, including incident triage, alert enrichment, vulnerability management, and threat response actions.<br><br></li>
-	<li><strong>Tool Integration &amp; Optimization:</strong> Integrate diverse security tools (e.g., SIEM, EDR, Cloud Security Posture Management, vulnerability scanners, Threat Intelligence Platforms) through APIs and scripting (primarily Python) to create seamless, automated feedback loops.<br><br></li>
-	<li><strong>Process Improvement:</strong> Identify manual, repetitive, and time-consuming security processes and engineer scalable automation solutions to increase team efficiency and operational maturity.<br><br></li>
-</ul>
-<ul>
-	<li><strong>Incident Response Support:</strong> Provide threat context&nbsp; to support the Incident Response team during active security incidents.<br><br></li>
-	<li><strong>Cross-Functional Partnership:</strong> Collaborate with Detection Engineers, Security Engineers, and Software Developers to embed security and intelligence-driven practices into the CI/CD pipeline and corporate infrastructure.<br><br></li>
-</ul>
-<p><strong>Preferred Skills</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Understanding of attacker Tools, Techniques and Procedures (TTPs)</li>
 	<li>Understanding of attack components</li>
@@ -44,20 +41,15 @@
 	<li>Ability to effectively communicate, both verbal and written, to stakeholders regarding relative risk, urgency, and feedback</li>
 	<li>Highly qualified candidates will have an understanding of nation state motivations and operational capabilities</li>
 	<li>Experience with Infrastructure-as-Code (IaC) tools like Terraform.</li>
-	<li>Familiarity with data analysis and visualization tools for threat intelligence&nbsp;</li>
+	<li>Familiarity with data analysis and visualization tools for threat intelligence</li>
 	<li>Experience with malware analysis and reverse engineering to extract actionable indicators.</li>
-</ul>
-<p><strong>&nbsp;</strong></p>
-<p><strong>Qualifications</strong></p>
-<ul>
-	<li><strong>Experience:</strong> 4+ years of hands-on experience in a Security Engineering, Cyber Threat Intelligence, or Security Automation role.<br><br></li>
-	<li><strong>Programming:</strong> Strong proficiency in at least one scripting/programming language for automation (e.g., <strong>Python</strong>).<br><br></li>
-	<li><strong>Security Concepts:</strong> Deep understanding of the cyber kill chain, threat actor TTPs, common attack vectors, networking protocols, and operating system internals.<br><br></li>
-	<li><strong>Automation Expertise:</strong> Proven experience designing and implementing SOAR playbooks and integrating security tools via APIs.<br><br></li>
-	<li><strong>Intelligence Tools:</strong> Experience working with commercial and open-source Threat Intelligence Platforms (TIPs) and threat feeds.<br><br></li>
+	<li><strong>Experience:</strong> 4+ years of hands-on experience in a Security Engineering, Cyber Threat Intelligence, or Security Automation role.</li>
+	<li><strong>Programming:</strong> Strong proficiency in at least one scripting/programming language for automation (e.g., <strong>Python</strong>).</li>
+	<li><strong>Security Concepts:</strong> Deep understanding of the cyber kill chain, threat actor TTPs, common attack vectors, networking protocols, and operating system internals.</li>
+	<li><strong>Automation Expertise:</strong> Proven experience designing and implementing SOAR playbooks and integrating security tools via APIs.</li>
+	<li><strong>Intelligence Tools:</strong> Experience working with commercial and open-source Threat Intelligence Platforms (TIPs) and threat feeds.</li>
 	<li><strong>Cloud Security:</strong> Familiarity with security services and automation in major cloud environments (AWS, Azure, or GCP).</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,11 +5,14 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Job Title: Sr. Procurement Functional Specialist</strong></p>
-<p><strong>About the Role:&nbsp;</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
 <p>Drive the strategy and execution of our global procurement technology ecosystem. Our architecture leverages Zip (Zip HQ) as the premier intake and orchestration layer, integrated natively with Oracle Fusion Cloud as our financial system of record.</p>
 <p>The ideal candidate is a Procurement technologist who understands the nuances of the entire Source-to-Pay (S2P) lifecycle. You will bridge the gap between user-centric intake and rigorous financial controls, ensuring that complex business requirements from Legal, Finance, and Global Sourcing are translated into seamless, automated workflows that maintain data integrity across both Zip and Oracle</p>
-<p><strong>Key Responsibilities</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>End-to-End Process Architecture:</strong> Design and optimize the global S2P process, ensuring a frictionless hand-off between upstream sourcing/intake (Zip) and downstream purchasing/payables (Oracle Fusion).</li>
 	<li><strong>Dual-Platform Configuration:</strong> Act as the functional lead for both Zip and Oracle Fusion Procurement. Build complex intake workflows in Zip while simultaneously configuring Requisitioning, Purchasing, and Supplier Portals in Oracle to match.</li>
@@ -19,7 +22,7 @@
 	<li><strong>Release Management:</strong> Manage the quarterly update cycles for both Zip and Oracle. Conduct impact assessments on new features to ensure no disruption to the integrated workflow.</li>
 	<li><strong>AI Procurement Agent Strategy &amp; Governance:</strong> Lead the adoption and functional governance of Oracle's embedded and custom AI agents (e.g., Procurement Policy Advisor), ensuring all AI-driven automation and outputs within the S2P process are compliant, auditable, and drive process efficiency across Zip and Oracle.</li>
 </ul>
-<p><strong>Required Qualifications</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Platform Proficiency: 8+ years of hands-on experience in Oracle Fusion Procurement (Self-Service Procurement, Purchasing, Supplier Model) and 1+ years of experience with Zip (Zip HQ).</li>
 	<li>Procurement Subject Matter Expertise: Deep understanding of the Source-to-Pay (S2P) lifecycle, including PR/PO lifecycle, 3-way matching, Encumbrance Accounting, and Contract Lifecycle Management (CLM).</li>
@@ -27,9 +30,6 @@
 	<li>Process Engineering: Ability to map complex, cross-functional business processes and identify opportunities for automation or bottleneck removal.</li>
 	<li>Systems Thinking: You don't just fix a field; you understand how changing a workflow in Zip impacts the General Ledger and AP downstream in Oracle.</li>
 	<li>Experience establishing technical standards and governing system changes in a live production environment.</li>
-</ul>
-<p><strong>Preferred Qualifications</strong></p>
-<ul>
 	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
 	<li>Hands-on experience with Oracle Fusion Global Trade Management system..</li>
 	<li>Third-party supporting software experience like Ironclad, Navan, etc..</li>
@@ -37,7 +37,6 @@
 	<li>Relevant professional product/functional certifications (e.g., Oracle Cloud certifications)</li>
 	<li>Working knowledge of AI Agent Studio for Oracle Fusion Cloud Applications.</li>
 </ul>
-<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,11 +5,17 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location:</strong> Austin, Atlanta, Denver, Seattle,&nbsp;Mexico City, Mexico</p>
-<p>&nbsp;</p>
-<p><strong>Role Summary</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>Atlanta</li>
+	<li>Denver</li>
+	<li>Seattle</li>
+	<li>Mexico City</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare operates one of the world's largest and most interconnected networks, spanning 335+ cities across every region of the globe. We are looking for a Senior Network Engineer to join our Edge Network &amp; Backbone team — someone who brings deep operational experience, an AI-first mindset, and the instinct to mentor and lift the engineers around them. In your first year, this role is deliberately hands-on: you'll be in the operational trenches, owning complex faults, driving capacity work, and setting the standard for how we run the network. Beyond that, you'll help shape how the team works — building AI-enabled tooling and agents that reduce toil, accelerate troubleshooting, and make the whole team more effective. This is a North American based role, but you'll be joining one global team: the sun never sets on Cloudflare, and our engineers hand off work across every time zone to keep the network running around the clock.</p>
-<p><strong>Role Responsibilities</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Own the technical operation, engineering, and architecture of Cloudflare's global network, including planning, installation, and day-to-day management of hardware and software across the edge and backbone.</li>
 	<li>Serve as a hands-on operational anchor for the team — diagnosing and resolving complex network faults, owning incident response end-to-end including on-call rotation, and contributing to post-incident reviews to drive continuous improvement.</li>
@@ -19,7 +25,7 @@
 	<li>Mentor and develop junior engineers on the team, setting technical standards, conducting structured troubleshooting sessions, and building a culture of operational excellence and continuous learning.</li>
 	<li>Collaborate with internal teams on cross-functional network projects, contributing to design documentation, SOPs, and knowledge base articles that outlast any individual contributor.</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Proven track record in large-scale network engineering and operations.</li>
 	<li>Proficiency in Python and/or TypeScript and/or Go sufficient to build, debug, and maintain agent code, not just to glue scripts together.</li>
@@ -32,7 +38,7 @@
 	<li>Ability to prioritise effectively and lead calmly when faced with high-pressure scenarios.</li>
 	<li>An effective communicator who can adapt their style to any audience — whether guiding a junior engineer through a fault or presenting a network architecture decision to senior leadership.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Shipped LLM-powered tooling into production use by a team other than your own, with measurable operational impact.</li>
 	<li>Professional-level network certification (JNCIP, CCNP, or equivalent or higher).</li>
@@ -40,7 +46,6 @@
 	<li>Linux system administration.</li>
 	<li>Experience writing network configuration and design documentation at an architectural level.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

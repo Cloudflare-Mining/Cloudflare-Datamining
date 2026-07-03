@@ -5,15 +5,18 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, TX</p>
-<p><strong>Fall Internship Dates:</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
+<p>The Cloudflare Legal team is at the forefront of some of the most complex and novel legal issues in technology today. You will be directly supporting our Commercial Legal (Procurement) team, which manages Cloudflare's global procurement operations, vendor relationships, and commercial contracting strategy. This team works collaboratively to negotiate enterprise agreements, ensure compliance with procurement policies, and enable business growth while managing legal and commercial risk. You will also have opportunities to support our Sales Legal team with customer contracts.</p>
+<h2>Responsibilities</h2>
+<h3>Fall Internship Dates:</h3>
 <ul>
 	<li>Sept 14 - Dec 4 (12 weeks, must be available full-time/40 hrs per week)</li>
 	<li>Sept 28 - Dec 18 (12 weeks, must be available full-time/40 hrs per week)</li>
 </ul>
-<h4>About Cloudflare's Legal Team</h4>
-<p>The Cloudflare Legal team is at the forefront of some of the most complex and novel legal issues in technology today. You will be directly supporting our Commercial Legal (Procurement) team, which manages Cloudflare's global procurement operations, vendor relationships, and commercial contracting strategy. This team works collaboratively to negotiate enterprise agreements, ensure compliance with procurement policies, and enable business growth while managing legal and commercial risk. You will also have opportunities to support our Sales Legal team with customer contracts.&nbsp;</p>
-<h4>What you'll do:&nbsp;</h4>
 <p>As a Commercial Legal Intern, you will dive headfirst into the intersection of law, business, and cutting-edge technology. With a specific emphasis on commercial contracting and procurement in the rapidly evolving tech sector, your day-to-day responsibilities will include:</p>
 <ul>
 	<li>Commercial Contract Review &amp; Analysis: Review and analyze vendor agreements, procurement contracts, SaaS agreements, and other commercial transactions, identifying key business and legal terms, risks, and opportunities for negotiation.</li>
@@ -21,7 +24,7 @@
 	<li>Vendor Risk Assessment: Support due diligence efforts for new and existing vendors, including reviewing vendor questionnaires, insurance certificates, compliance documentation, and conducting risk assessments for data processing, security, and business continuity.</li>
 	<li>Drafting &amp; Negotiation Support: Draft legal memos, redline summaries, contract playbook guidance, and negotiation position documents to support the Commercial Legal team in high-value technology and services procurements.</li>
 </ul>
-<h4>Examples of desirable skills, knowledge and experience</h4>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Education: Recently graduated from, or currently enrolled as a 3L in, an ABA-accredited law school, with a graduation date of 2026 or 2027.</li>
 	<li>Commercial Mindset: A strong demonstrated interest in commercial law, technology transactions, contract negotiation, and business operations.</li>
@@ -30,7 +33,7 @@
 	<li>Ability to commit to a minimum 12 week fall internship, starting in September.</li>
 	<li>In the office 3-5 days a week in the Austin office.</li>
 </ul>
-<h4>Bonus Points if you have:</h4>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Prior experience (internships, clinics, or pre-law career) in procurement, commercial transactions, vendor management, or in-house legal departments at a technology company.</li>
 	<li>Coursework or experience in contract law, commercial transactions, or technology/SaaS licensing.</li>

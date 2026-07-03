@@ -5,10 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location:</strong> Austin, TX&nbsp;</p>
-<p><strong>Role Summary</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare operates one of the world's largest and most interconnected networks, spanning 335+ cities across every region of the globe. As a Network Engineering Intern on the Edge Network &amp; Backbone team, you'll work under close mentorship from senior and principal network engineers on the real operational network that keeps that infrastructure running. From provisioning capacity to triaging faults, you'll be supported at every step by experienced engineers and AI-enabled tooling purpose-built for our network. This is a rare opportunity to enter the networking industry by gaining real experience with infrastructure that carries traffic for millions of websites and users — not a simulated lab environment.</p>
-<p><strong>Role Responsibilities</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Provision and configure network hardware and software as part of capacity expansion across Cloudflare's global edge network, following well-established playbooks under engineer guidance.</li>
 	<li>Monitor network health and investigate non-urgent faults using Cloudflare's AI-enabled troubleshooting tooling, escalating where needed and documenting findings to help the broader team resolve issues faster.</li>
@@ -17,7 +20,7 @@
 	<li>Participate in structured troubleshooting sessions with senior engineers, building diagnostic skills across BGP, routing, and hardware faults in a production environment.</li>
 	<li>Support network operations by contributing to shift handoffs, status updates, and incident tracking as part of the day-to-day ops rhythm.</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Currently enrolled in or recently completed a degree in Networking, Computer Science, or a related technical discipline.</li>
 	<li>Holds or is actively pursuing at least one industry networking certification (CCNA, JNCIA, or equivalent).</li>
@@ -26,7 +29,7 @@
 	<li>Demonstrated ability to learn new technologies quickly, including vendor operating systems and internal tooling, under the guidance of a mentor.</li>
 	<li>Strong written communication skills — you'll be writing documentation and ticket responses that engineers and customers will rely on.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Hands-on experience with network operating systems across multiple vendors, such as Juniper, Cisco, or Arista.</li>
 	<li>Understanding of anycast routing or how large-scale Internet networks distribute traffic.</li>
@@ -34,10 +37,13 @@
 	<li>Familiarity with optical transport technologies.</li>
 	<li>Experience working in a customer-facing technical support environment.</li>
 </ul>
-<p><strong>A note on this role</strong></p>
-<p>This internship is deliberately operational in scope. You won't be handed a greenfield project to present at the end of the summer. Instead, you'll be embedded in a lean, high-trust team and expected to contribute to real infrastructure from week one. The upside: by the end of six months, you'll have hands-on production experience that most networking graduates take years to obtain. We're looking for candidates who see that as a feature, not a bug.</p>
-<p><strong>I</strong><strong>nternship Duration:</strong> 6 Months</p>
-<p><strong data-path-to-node="3,0" data-index-in-node="30">Schedule:</strong> Full-time (3 days per week in office)&nbsp;</p>
+<h3>A note on this role</h3>
+<ul>
+	<li>This internship is deliberately operational in scope. You won't be handed a greenfield project to present at the end of the summer. Instead, you'll be embedded in a lean, high-trust team and expected to contribute to real infrastructure from week one. The upside: by the end of six months, you'll have hands-on production experience that most networking graduates take years to obtain. We're looking for candidates who see that as a feature, not a bug.</li>
+	<li><strong>I</strong><strong>nternship Duration:</strong> 6 Months</li>
+	<li><strong>Schedule:</strong> Full-time (3 days per week in office)</li>
+</ul>
+<h2>Compensation</h2>
 <p><strong>Compensation:</strong> 45/hr</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

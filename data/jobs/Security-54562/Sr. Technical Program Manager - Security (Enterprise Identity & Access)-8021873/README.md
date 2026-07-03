@@ -5,10 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Austin, TX</p>
-<p><strong>About the Department</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Security at Cloudflare is a diverse, focused team committed to helping secure both Cloudflare and our customers. The Security Technical Program Management team sits at the cross-section of engineering, security, and business. We define, align, and drive the strategic security programs that reduce risk and advance innovation across Cloudflare, while partnering to build the best solutions for our customers.</p>
-<p><strong>About the Role</strong></p>
+<h2>Responsibilities</h2>
 <p>We need to solve big security challenges at scale. As a Technical Program Manager focused on Enterprise Identity and Access Management (EIAM), you will help discover, define, and drive the execution of workforce access programs that ensure the right people have the right access to the right resources at the right time. You will work with the Security team and all of our stakeholders to:</p>
 <ul>
 	<li>Partner with the Enterprise Identity and Access Management team as their dedicated Technical Program Manager, driving programs across workforce IAM, and identity governance and administration (IGA)</li>
@@ -24,7 +27,7 @@
 	<li>Maintain a project management framework using milestones, communication plans, decision logs, issues, risks, etc.</li>
 	<li>Balance the focus on long term vision and roadmap versus addressing high risk tactical security issues</li>
 </ul>
-<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>8+ years of experience in technical program management and a desire for continuous improvement</li>
 	<li>Experience in cybersecurity or security program management in a technical, fast-moving environment</li>
@@ -35,15 +38,16 @@
 	<li>Hands-on experience or a strong competency in leveraging AI productivity tools and development platforms (e.g., Gemini Gems, OpenCode, etc) to automate routine program administration, with rigorous human-in-the-loop review of AI output</li>
 	<li>Comfortable managing tight deadlines, changing priorities, and ambiguity</li>
 	<li>Proven ability to forge and sustain effective partnerships internally and externally</li>
-	<li>Strong competency with Confluence and Jira and various development methodologies&nbsp;</li>
+	<li>Strong competency with Confluence and Jira and various development methodologies</li>
 	<li>Embraces technology including automation and AI augmentation</li>
 	<li>Experience working with multiple time zones and cross-functional teams</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h2>Compensation</h2>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -54,14 +58,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

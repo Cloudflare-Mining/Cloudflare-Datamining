@@ -5,11 +5,14 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Location - </strong>Bengaluru, India</p>
-<p><strong>Job Title -&nbsp;</strong>Stock Administration Analyst&nbsp;</p>
-<p><strong>Role Summary</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
+<p><strong>Job Title -&nbsp;</strong>Stock Administration Analyst</p>
 <p>At Cloudflare, we believe in rewarding our employees in meaningful and impactful ways. Our&nbsp;equity program is a key component of this philosophy, enabling team members to benefit from&nbsp;the company’s growth while ensuring global compliance and operational excellence.&nbsp;We are seeking a Stock Administration Analyst to join our global Stock Administration team. This role will be instrumental in managing Cloudflare’s equity programs, supporting employees with their equity compensation, and partnering cross-functionally to streamline and improve operational processes.</p>
-<p><strong>Role Responsibilities</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Manage and execute day-to-day operations related to Cloudflare’s global equity compensation programs, ensuring accuracy, timeliness, and compliance.</li>
 	<li>Lead and support special projects related to equity administration, including system improvements, process automation, and data integrity initiatives.</li>
@@ -18,12 +21,12 @@
 	<li>Collaborate cross-functionally with Payroll, Legal, Finance, HR, and external vendors (e.g., brokers, transfer agents) to support program execution and resolve issues.</li>
 	<li>Assist employees in understanding and maximizing their equity compensation through education, communications, and support.</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Bachelor’s degree or equivalent practical experience.</li>
 	<li>Minimum 5 years of experience in equity compensation administration for any U.S.-listed public company.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Hands-on experience with equity platforms such as E*TRADE Equity Edge Online(EEO).</li>
 	<li>Strong working knowledge of global equity compensation practices, taxation, and compliance.</li>
@@ -31,7 +34,6 @@
 	<li>Experience collaborating on cross-functional projects and improving operational processes.</li>
 	<li>Effective communicator with strong attention to detail and ability to work independently in a fast-paced environment.</li>
 </ul>
-<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

@@ -5,10 +5,15 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>About the Role</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare's People team supports 5,000+ employees globally. To scale, we are building an AI-driven operating layer on the Cloudflare Developer Platform to automate workflows, ensure data integrity, and streamline employee support.</p>
 <p>You will ship production systems for hiring, onboarding, and self-service, using AI to create leverage while designing rigorous guardrails for sensitive employee data.</p>
-<h3><strong>What you will build</strong></h3>
+<p>Leveraging Cloudflare Dev Platform primitives like Workers, Workflows, Access, Hyperdrive (Postgres), R2, and Workers AI / AI Gateway for durable, secure, and observable automation.</p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>AI-assisted intake for request classification, retrieval-augmented responses, and case routing.</li>
 	<li>Recruiting automation for Greenhouse job creation and management chain synchronization.</li>
@@ -18,25 +23,19 @@
 	<li>Data reconciliation systems and exception queues for cross-system accuracy.</li>
 	<li>Observable audit pipelines for explainable decision-making.</li>
 	<li>Custom interview automation and internal technical assessment tooling.</li>
-</ul>
-<h3><strong>The Stack</strong></h3>
-<p>Leveraging Cloudflare Dev Platform primitives like Workers, Workflows, Access, Hyperdrive (Postgres), R2, and Workers AI / AI Gateway for durable, secure, and observable automation.</p>
-<h3><strong>What you will do</strong></h3>
-<ul>
 	<li>Design and operate AI-assisted workflows using the full Cloudflare stack.</li>
 	<li>Integrate People systems via secure API, OAuth, and webhook patterns.</li>
 	<li>Collaborate with HR, IT, Legal, and Security to translate operational pain into technical solutions.</li>
 	<li>Implement robust authorization, audit logging, and error handling for high-trust data.</li>
 </ul>
-<h3><strong>Who you are</strong></h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>3-5 years of software engineering experience in building full-stack systems.</li>
 	<li>Strong engineering background (TypeScript, Python, or Go) building internal tools or platform services.</li>
 	<li>Practical experience with LLMs, RAG, tool calling, and prompt evaluation.</li>
 	<li>Expertise in system-to-system integrations, identity, and event-driven workflows.</li>
 	<li>Exceptional judgment regarding privacy, data minimization, and operational risk.</li>
 </ul>
-<h3><strong>Bonus points</strong></h3>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Prior experience in internal platform engineering or compliance-heavy environments.</li>
 	<li>Proficiency with React, Drizzle, Zod, and Postgres.</li>

@@ -5,25 +5,28 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="il">Bengaluru</span></strong></p>
-<p><strong>About The Team</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
 <p>Infrastructure Engineering is responsible for the world’s most reliable, observable, performant, and safe network ecosystem. Our customers rely on our products and systems to safely modify, troubleshoot, and release products without external impact.</p>
 <p>Our external customers rely on us to provide seamless and predictable incident, traffic, policy management, resulting in the fastest and safest network services in the world.</p>
 <p>We are accountable for the overall performance of internal and external facing services, guiding our product teams to optimal configurations and maximum efficiency. From the moment that a packet enters the Cloudflare ecosystem, we know exactly what its expected purpose and behavior is and we are capable of determining and exposing anomalous behavior.</p>
-<p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<p>The Cloudflare network makes it possible to solve challenges at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Develop Software: </strong>Design, write, and deliver software that improves Cloudflare's Edge platform</li>
 	<li><strong>Work on large scale systems: </strong>Scale and evolve systems through software and automation to improve reliability and velocity</li>
 	<li><strong>Maintain and manage distributed systems: </strong>Manage and be part of the on-call rotation that supports the largest distributed edge system in the world.</li>
-	<li><strong>Document, Propose and Implement: </strong>Collaborate with other engineers to design and implement scalable solutions that support our growing user base.&nbsp;</li>
+	<li><strong>Document, Propose and Implement: </strong>Collaborate with other engineers to design and implement scalable solutions that support our growing user base.</li>
 	<li><strong>Guide and mentor: </strong>Participate in the constant cycle of knowledge sharing and mentoring.</li>
 	<li><strong>Optimize and Automate: </strong>Research and introduce cutting-edge technologies. Develop and maintain sustainable tools that work on an extremely large scale.</li>
 	<li><strong>Open Source: </strong>Contribute to open-source</li>
+	<li>We are growing quickly and focused on building an extraordinary company. This is a systems reliability engineering role and is a superb opportunity to be part of a high performing team and help to support Cloudflare’s mission and help build a better internet.</li>
+	<li>You will build services and APIs to constantly improve availability, performance and uptime.</li>
 </ul>
-<p>We are growing quickly and focused on building an extraordinary company. This is a systems reliability engineering role and is a superb opportunity to be part of a high performing team and help to support Cloudflare’s mission and help build a better internet.</p>
-<p>You will build services and APIs to constantly improve availability, performance and uptime.</p>
-<h3><strong>You may be a good fit for our team if you have:</strong></h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Up to 8 years of experience managing distributed systems</li>
 	<li>Proficiency in distributed Linux/Unix environments</li>
@@ -39,7 +42,7 @@
 	<li>Exquisite written and verbal communication skills</li>
 	<li>Strong bias for action</li>
 </ul>
-<h3><strong>Bonus points if you have:</strong></h3>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Experience with continuous integration and delivery (CI/CD)</li>
 	<li>Experience working in a 24/7/365 service environment</li>

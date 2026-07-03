@@ -5,11 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Job Title: Senior Oracle Fusion and PaaS Developer</strong></p>
-<p><strong>Bengaluru, India&nbsp;</strong></p>
-<p><strong>About the Role:</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
 <p>The Senior Developer will serve as the <strong>top individual contributor and architectural authority</strong> responsible for the technical architecture and development of complex custom solutions, extensions, and reports within the <strong>Oracle Fusion Cloud ERP</strong> environment. This expert-level role is crucial for creating and maintaining high-performance, scalable solutions that support high-volume transactional processes, especially within Supply Chain Execution and Finance</p>
-<p><strong>Key Responsibilities</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Architectural Authority:</strong> Act as the <strong>lead technical architect</strong> and final reviewer for all technical design decisions impacting custom code, ensuring the technical blueprint adheres strictly to Oracle best practices and long-term upgradeability.</li>
 	<li><strong>Custom Development:</strong> Personally drive the design and development of the most complex and sensitive technical solutions (Extensions, Complex Interfaces, Customizations) using core Fusion development tools: <strong>BI Publisher, Groovy scripting, APEX, VBCS, ATP or PaaS extensions.</strong></li>
@@ -17,16 +19,13 @@
 	<li><strong>Integration Design:</strong> Lead performance tuning initiatives for critical ESS batch jobs and high-volume transactional interfaces partnering with OIC/OPA Developer.</li>
 	<li><strong>Technical Standards:</strong> Establish technical standards, coding best practices, and quality gates for all development work performed by the technical team.</li>
 </ul>
-<p><strong>Required Qualifications</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>10+ years of progressively responsible experience in ERP functional and technical roles.</li>
 	<li>6+ years of hands-on, deep implementation, and support experience with <strong>Oracle Fusion ERP</strong>.</li>
 	<li><strong>Mandatory:</strong> Proven history of designing, building, or architecting complex technical solutions within the Fusion framework using tools like <strong>AI Agent Studio, BI Publisher, Groovy scripting, APEX, VBCS, ATP or PaaS extensions.</strong></li>
 	<li>Deep understanding of integration technology, including proven experience designing robust interfaces using <strong>OIC</strong> for shop floor and warehouse systems.</li>
 	<li>Experience establishing technical standards and governing system changes in a live production environment.</li>
-</ul>
-<p><strong>Preferred Qualifications</strong></p>
-<ul>
 	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
 	<li>Hands-on experience with other Oracle PaaS tools.</li>
 	<li>Experience setting up/using CI/CD tools like FlexDeploy</li>

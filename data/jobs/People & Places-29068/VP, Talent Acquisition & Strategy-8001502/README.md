@@ -5,62 +5,61 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, New York, NY</strong></p>
-<p><strong>Department: People &amp; Culture</strong></p>
-<p><strong>Reports to: VP, Talent</strong></p>
-<h3><strong>The Mission</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>New York, US</li>
+</ul>
+<h2>About the Role</h2>
 <p><strong>This is an invitation to redefine workforce architecture for the AI era. </strong>Cloudflare is reimagining every internal process,&nbsp; from engineering to finance to sales, to run on an agentic AI backbone. We are building the global teams and talent ecosystems that will define what Cloudflare looks like for the next decade of the Internet. Getting top talent here is our number priority.</p>
 <p>As our Vice President of Talent Acquisition &amp; Strategy, you will be the chief architect of our human capital infrastructure and lead a global team of customer obsessed recruiters and operators. You will design a predictive, highly automated talent system—one that maps company growth to workforce requirements, isolates where human judgment is irreplaceable, and deploys AI agents to handle the repetitive mechanics. We are looking for a visionary leader and highly operational leader whose instinct isn’t to simply deploy a traditional recruiting playbook, but to model the organizational system, identify the core constraints, and ship elegant, scalable solutions.</p>
-<h3><strong>What you’re walking into</strong></h3>
 <p>Cloudflare’s internal AI agent usage has increased exponentially, with our teams running thousands of daily agent sessions to build, ship, and scale products. This is our default operating rhythm.</p>
 <p>Our talent acquisition strategy reflects this modern architecture. In the agentic AI era, you will lead the function that answers the ultimate organizational question: <em>how do we optimize for the roles that require uniquely human capabilities?</em></p>
 <p>You will focus our human hiring pipelines on where human capital matters most: deep creative judgment, complex systems problem-solving, and intense relationship depth. Every talent strategy you implement is a high-impact design choice for Cloudflare’s future organizational capacity.</p>
-<h3><strong>What you’ll own</strong></h3>
-<h4><strong>1. Customer Obsession &amp; Outcome-Driven Systems</strong></h4>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Thinking Backward from the Customer:</strong> Treat our candidates and hiring managers as your ultimate customers. You will design the entire talent acquisition architecture by thinking backward from their experience—ensuring unmatched speed, absolute transparency, and mutual respect for everyone’s time.</li>
 	<li><strong>Outcomes Over Process:</strong> Ruthlessly eliminate "process for process's sake." You believe that workflows exist to enable great hiring, not to create bureaucratic hurdles. You will empower your team to be agile, adaptive, and focused on delivering high-quality matches rather than checking compliance boxes.</li>
 </ul>
-<h4><strong>2. Talent System Architecture &amp; Strategic Planning</strong></h4>
+<h3>2. Talent System Architecture &amp; Strategic Planning</h3>
 <ul>
 	<li><strong>Enterprise Strategy:</strong> Partner with executive leadership to translate Cloudflare’s long-term product roadmaps and financial models into a predictive, multi-year global talent strategy.</li>
 	<li><strong>Pipeline Instrumentation:</strong> Build and monitor a highly data-driven talent funnel. Instrument key metrics—funnel health, passive-to-active conversion velocity, segment-specific time-to-fill, and quality-of-hire at the 6 and 12-month marks—to continuously tune the engine.</li>
 	<li><strong>AI-First Operations:</strong> Seamlessly deploy and scale AI agents across sourcing workflows, initial technical screening, scheduling logistics, and candidate communication loops to free up your team for deep relationship building.</li>
 </ul>
-<h4><strong>3. High-Credibility Partnerships</strong></h4>
+<h3>3. High-Credibility Partnerships</h3>
 <ul>
-	<li><strong>Peer-Level Alignment:</strong> Earn deep trust with our organizations through genuine technical fluency.&nbsp;</li>
+	<li><strong>Peer-Level Alignment:</strong> Earn deep trust with our organizations through genuine technical fluency.</li>
 	<li><strong>Market Intelligence:</strong> Bring proactive talent market insights to organizational design conversations, advising leaders on global talent pool elasticity, compensation trends, and site selection before hiring needs even arise.</li>
 </ul>
-<h4><strong>4. Global Operations &amp; Team Leadership</strong></h4>
+<h3>4. Global Operations &amp; Team Leadership</h3>
 <ul>
-	<li><strong>Inspirational Leadership:</strong> Lead, mentor, and elevate a global team of recruiters, technical sourcers, operational specialists, and passionate members of our team globally.&nbsp;</li>
+	<li><strong>Inspirational Leadership:</strong> Lead, mentor, and elevate a global team of recruiters, technical sourcers, operational specialists, and passionate members of our team globally.</li>
 	<li><strong>Global Compliance Velocity:</strong> Maintain uncompromised data privacy and regulatory compliance (GDPR, pay transparency, local employment laws) across the US, EMEA, and APAC.</li>
 </ul>
-<p><strong>5. Employer Brand as a Product</strong></p>
+<h3>5. Employer Brand as a Product</h3>
 <ul>
 	<li><strong>Authentic Narrative:</strong> Position Cloudflare’s employer brand as an authentic reflection of our&nbsp; culture, attracting builders and sellers who are passionate about shaping an AI-first Internet.</li>
 	<li><strong>Future Talent Pipelines:</strong> Run early-career, university, and diversity recruiting initiatives with the same structured, metrics-driven approach applied to our senior staff engineering hires.</li>
 </ul>
-<h4><strong>Highly Valued Signals</strong></h4>
+<h3>Highly Valued Signals</h3>
 <ul>
-	<li><strong>Ideal Non-Traditional Backgrounds: </strong>We highly value senior people leaders&nbsp; from Management Consulting, Investment Banking, Engineering, Sales or corporate strategy environments, other functions within people leadership, where problem-solving begins with systems-level modeling, rigorous data diagnostics, and structural thinking.&nbsp;</li>
+	<li><strong>Ideal Non-Traditional Backgrounds: </strong>We highly value senior people leaders&nbsp; from Management Consulting, Investment Banking, Engineering, Sales or corporate strategy environments, other functions within people leadership, where problem-solving begins with systems-level modeling, rigorous data diagnostics, and structural thinking.</li>
 	<li><strong>Infrastructure Tech Deep Roots:</strong> Prior leadership experience at a SaaS, cloud infrastructure, cybersecurity, consumer, company where keeping a world-class technical bar is foundational to the company's success.</li>
 	<li><strong>Organizational Agility:</strong> Experience successfully guiding talent operations through corporate reorganizations, high-growth scaling phases, or post-acquisition integrations with clear intent and structure.</li>
 	<li><strong>Compensation Architecture Fluency:</strong> Strong familiarity with market data platforms (Radford, Levels.fyi, Carta) and an understanding of equity design and localized compensation bands to help structure complex executive offers seamlessly.</li>
 	<li><strong>Global Scope:</strong> Direct experience scaling international tech hubs (specifically across EMEA and APJC), including a strong working knowledge of cross-border talent mobilization and regional employment practices.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
+<h2>Compensation</h2>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For New York City based hires: Estimated annual salary of $375,000 - $400,000</span></li>
+	<li>For New York City based hires: Estimated annual salary of $375,000 - $400,000</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -71,14 +70,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

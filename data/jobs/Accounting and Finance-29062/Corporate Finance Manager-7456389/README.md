@@ -5,12 +5,27 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, San Francisco, CA, Seattle, WA, Denver, CO</strong></p>
-<p><strong>About the Team</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>San Francisco, US</li>
+	<li>Seattle, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>The Corporate Finance team is responsible for enterprise-wide planning, budgeting, forecasting, and capital allocation. We are strategic business partners who work cross-functionally to shape Cloudflare’s growth, investment strategy, and operational efficiency. If you thrive in fast-paced environments, love solving complex problems, and want direct exposure to executive leadership, this is the role for you.</p>
-<p><strong>About the Role</strong></p>
 <p>We’re looking for a high-performing Finance Manager to join our Corporate Finance team. In this highly visible IC role, you’ll partner directly with Cloudflare’s senior leaders to drive decision-making across the company. You’ll build models and insights that guide strategy, optimize investment, and support our mission to help build a better Internet.</p>
-<p><strong>What You'll Do</strong></p>
+<p><strong>Why This Role?</strong></p>
+<ul>
+	<li>
+		<ul>
+			<li>Direct collaboration with Cloudflare’s executive team. Be at the table where key decisions are made.</li>
+			<li>High visibility and impact in a mission-driven company transforming the Internet.</li>
+			<li>Career growth opportunity on a high-performance finance team.</li>
+		</ul>
+	</li>
+</ul>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Partner with senior leaders to support enterprise-level strategic planning, budgeting, and capital allocation decisions.</li>
 	<li>Lead corporate forecasting, budgeting, and long-range planning processes, establishing the cadence for annual planning and executive business reviews.</li>
@@ -22,43 +37,55 @@
 	<li>Contribute to M&amp;A activities, board materials, and other strategic initiatives.</li>
 	<li>Champion scalable, repeatable finance processes (automate, simplify, and eliminate routine work wherever possible).</li>
 	<li>Support high-impact special projects and ad hoc analysis as needed.</li>
+	<li><em>This is an individual contributor role reporting to the Senior Director of Finance.</em></li>
 </ul>
-<p><em>This is an individual contributor role reporting to the Senior Director of Finance.</em></p>
-<p><strong>What We’re Looking For</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>7+ years of progressive experience in Finance or Investment Banking with prior experience in a corporate FP&amp;A function; high-growth, public company SaaS experience preferred.</li>
 	<li>Extensive experience leveraging AI tools (e.g., Windsurf/Devin, Cursor, OpenCode, etc.) to automate workflows, accelerate financial modeling, analyze large datasets, and generate business insights.</li>
 	<li>Finance-minded with strong attention to detail and a focus on scalable, repeatable process execution.</li>
 	<li>Intellectually curious with a problem-solving orientation and strong business acumen; able to apply rigorous logic and sound methods to solve complex problems. Not satisfied with easy or convenient answers.</li>
-	<li>Proven ability to build trust and align cross-functional stakeholders.&nbsp;</li>
-	<li>Strong verbal and written communication skills; able to distill complex business information into actionable takeaways for diverse audiences.&nbsp;</li>
+	<li>Proven ability to build trust and align cross-functional stakeholders.</li>
+	<li>Strong verbal and written communication skills; able to distill complex business information into actionable takeaways for diverse audiences.</li>
 	<li>Willingness to play “up and down the stack” diving into the details as well as managing executive-level communications.</li>
 	<li>Expert financial modeling skills with strong working knowledge of US GAAP; advanced proficiency in MS Excel and Google Sheets required.</li>
 	<li>High proficiency with financial systems; experience with Anaplan, NetSuite, RevPro, and Salesforce is a plus.</li>
 	<li>Bachelor’s degree in Finance, Accounting, Economics, or a quantitative field.</li>
 </ul>
-<p><strong>Why This Role?</strong></p>
-<ul>
-	<li>
-		<ul>
-			<li>Direct collaboration with Cloudflare’s executive team. Be at the table where key decisions are made.</li>
-			<li>High visibility and impact in a mission-driven company transforming the Internet.</li>
-			<li>Career growth opportunity on a high-performance finance team.</li>
-		</ul>
-	</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
+<h2>Compensation</h2>
 <p>Compensation may be adjusted depending on work location.</p>
-<p style="padding-left: 40px;">● For San Francisco based hires: Estimated annual salary of $154,000 - $211,000.</p>
-<p style="padding-left: 40px;">● For Seattle based hires: Estimated annual salary of $147,000 - $202,000.</p>
-<p style="padding-left: 40px;">● For Denver based hires: Estimated annual salary of $134,000 - $184,000.</p>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
-<p>Health &amp; Welfare Benefits<br>● Medical/Rx Insurance<br>● Dental Insurance<br>● Vision Insurance<br>● Flexible Spending Accounts<br>● Commuter Spending Accounts<br>● Fertility &amp; Family Forming Benefits<br>● On-demand mental health support and Employee Assistance Program<br>● Global Travel Medical Insurance</p>
-<p>Financial Benefits<br>● Short and Long Term Disability Insurance<br>● Life &amp; Accident Insurance<br>● 401(k) Retirement Savings Plan<br>● Employee Stock Participation Plan</p>
-<p>Time Off<br>● Flexible paid time off covering vacation and sick leave<br>● Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
-<p>&nbsp;</p>
+<ul>
+	<li>For San Francisco based hires: Estimated annual salary of $154,000 - $211,000.</li>
+	<li>For Seattle based hires: Estimated annual salary of $147,000 - $202,000.</li>
+	<li>For Denver based hires: Estimated annual salary of $134,000 - $184,000.</li>
+</ul>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p>Financial Benefits</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p>Time Off</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

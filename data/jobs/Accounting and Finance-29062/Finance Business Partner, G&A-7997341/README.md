@@ -5,11 +5,17 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX, San Francisco, CA, Denver, CO, Seattle, WA</strong></p>
-<p><strong>Role Summary</strong></p>
-<p>We are looking for an exceptional Finance Business Partner to join our FP&amp;A team and act as the primary financial partner to Cloudflare’s CFO, CAO, CIO, and other senior corporate leaders. In this role, which has been elevated to meet the demands of our next phase of global growth, you will completely own the financial strategy, capital allocation, and budgeting for approximately half of our G&amp;A footprint.&nbsp;</p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>San Francisco, US</li>
+	<li>Seattle, US</li>
+</ul>
+<h2>About the Role</h2>
+<p>We are looking for an exceptional Finance Business Partner to join our FP&amp;A team and act as the primary financial partner to Cloudflare’s CFO, CAO, CIO, and other senior corporate leaders. In this role, which has been elevated to meet the demands of our next phase of global growth, you will completely own the financial strategy, capital allocation, and budgeting for approximately half of our G&amp;A footprint.</p>
 <p>The ideal candidate is a high-performing strategic thinker who can effortlessly blend rigorous financial engineering with executive-level storytelling. We are seeking a professional with an extreme ownership mindset who thrives on high visibility and can drive operational structure in a fast-paced environment. If you are analytical, proactive, and eager to grow into a trusted advisor in a rapidly evolving technological landscape, this is your opportunity to make a real impact..</p>
-<p><strong>Role Responsibilities</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Partner directly with executive leadership</strong> (CFO, CAO, CIO) to translate complex operational decision-making and technological roadmaps into rigorous financial plans, budgets, and headcount allocation strategies.</li>
 	<li><strong>Design, automate, and implement</strong> repeatable forecasting processes leveraging AI to replace manual efforts and optimize efficiency as the business scales.</li>
@@ -20,8 +26,7 @@
 	<li><strong>Design and implement scalable, automated workflows</strong> and repeatable processes that support our rapid global growth.</li>
 	<li><strong>Contribute to long-range planning</strong> and annual operating plan development for G&amp;A functions, tracking industry trends to maintain market competitiveness.</li>
 </ul>
-<p><strong>Role Requirements (Must-Have Skills)</strong></p>
-<p><strong>Must-Have Skills</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li><strong>7-8+ years of progressive corporate finance experience</strong> in FP&amp;A, strategic finance, corporate development, or a closely related analytical field.</li>
 	<li><strong>Proven background working within public SaaS</strong> or multinational corporate environments, demonstrating a deep understanding of SaaS metrics and corporate infrastructure costs.</li>
@@ -30,23 +35,25 @@
 	<li><strong>Exceptional verbal and written communication skills</strong>, with a demonstrated ability to challenge senior leaders constructively and distill dense financial data into crisp executive narratives.</li>
 	<li><strong>A proven track record of absolute autonomy</strong>, showing the ability to successfully drive projects, write playbooks, and establish structure in ambiguous situations.</li>
 	<li><strong>Intellectually curious</strong> with a problem-solving orientation—ability to break down complex issues and build automated, data-driven solutions.</li>
-	<li><strong>Bachelor’s degree</strong> in Finance, Accounting, Economics, or a related quantitative field.&nbsp;</li>
+	<li><strong>Bachelor’s degree</strong> in Finance, Accounting, Economics, or a related quantitative field.</li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Hands-on proficiency navigating and building within enterprise platforms such as Anaplan, Oracle, and Workday.</li>
 	<li>An MBA, CPA, or CFA designation is a distinct plus.</li>
 </ul>
-<h3 data-path-to-node="1"><strong data-path-to-node="1" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="2">Compensation may be adjusted depending on work location.</p>
-<p data-path-to-node="3">● For San Francisco Bay Area based hires: Estimated annual salary of $154,000 - $211,000.</p>
-<p data-path-to-node="4">● For Washington based hires: Estimated annual salary of $147,000 - $202,000.</p>
-<p data-path-to-node="5">● For Colorado based hires: Estimated annual salary of $134,000 - $184,000.</p>
-<p><strong>Equity</strong></p>
+<h2>Compensation</h2>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For San Francisco Bay Area based hires: Estimated annual salary of $154,000 - $211,000.</li>
+	<li>For Washington based hires: Estimated annual salary of $147,000 - $202,000.</li>
+	<li>For Colorado based hires: Estimated annual salary of $134,000 - $184,000.</li>
+</ul>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -57,14 +64,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

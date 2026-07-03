@@ -5,30 +5,36 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, Atlanta, Denver, Seattle, Washington D.C. (Hybrid)</p>
-<p><strong>About the Role (or What you'll do)</strong></p>
-<p>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network engineers who are building software solutions to improve network resilience and reduce operational toil.<strong><br></strong></p>
-<p>This position will be responsible for the technical operation and engineering of the Cloudflare's core data center network, including the planning, installation and management of the hardware and software as well as the day-to-day operations of the network. The core network supports our critical internal needs such as databases, high volume logging, and internal application clusters. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</p>
-<p>You will build tools to automate operational tasks, streamline deployment processes and provide a platform for other engineering teams to build upon. You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale. Furthermore, you will be required to play a key role in system design and demonstrate the ability to bring an idea from design all the way to production.</p>
-<p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>Atlanta</li>
+	<li>Denver</li>
+	<li>Seattle</li>
+</ul>
+<h2>Responsibilities</h2>
+<ul>
+	<li>Cloudflare operates a large global network spanning hundreds of cities (data centers). You will join a team of talented network engineers who are building software solutions to improve network resilience and reduce operational toil.</li>
+	<li>This position will be responsible for the technical operation and engineering of the Cloudflare's core data center network, including the planning, installation and management of the hardware and software as well as the day-to-day operations of the network. The core network supports our critical internal needs such as databases, high volume logging, and internal application clusters. This is an opportunity to be part of the team that is building a high­-performance network that is accessible to any web property online.</li>
+	<li>You will build tools to automate operational tasks, streamline deployment processes and provide a platform for other engineering teams to build upon. You will nurture a passion for an “automate everything” approach that makes systems failure-resistant and ready-to-scale. Furthermore, you will be required to play a key role in system design and demonstrate the ability to bring an idea from design all the way to production.</li>
+</ul>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>3 years of relevant Network/Site Reliability Engineering experience</li>
 	<li>BA/BS in Computer Science or equivalent experience</li>
 	<li>Solid foundation on configuration management frameworks: Saltstack, Ansible, Chef</li>
 	<li>Experience with NX-OS, JUNOS, EOS, Cumulus, or Sonic Network Operating Systems</li>
-	<li>AI-native: being able to leverage LLM to:</li>
-	<ul>
-		<li>build agentic deployment and troubleshooting tools on top of the Cloudflare stack</li>
-		<li>automate configurations (SaltStack + Temporal)</li>
-		<li>parse complex log files, and streamline documentation</li>
-	</ul>
+	<li>AI-native: being able to leverage LLM to:<ul>
+			<li>build agentic deployment and troubleshooting tools on top of the Cloudflare stack</li>
+			<li>automate configurations (SaltStack + Temporal)</li>
+			<li>parse complex log files, and streamline documentation</li>
+		</ul>
+	</li>
 	<li>Solid Linux systems administration experience</li>
-	<li>Linux networking - iproute2, Traffic Control, Devlink, etc.&nbsp;</li>
+	<li>Linux networking - iproute2, Traffic Control, Devlink, etc.</li>
 	<li>Strong software development skills in Go and Python</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Bonus Points</strong></p>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Deep knowledge of BGP and other routing protocols</li>
 	<li>Workflow Management (AirFlow, Temporal)</li>
@@ -37,7 +43,7 @@
 	<li>Experience with network programming in C, C++ or rust</li>
 	<li>Experience with the Linux kernel and Linux software packaging</li>
 	<li>Strong tooling and automations development experience</li>
-	<li>Time series databases (Prometheus, Grafana, Thanos, Clickhouse)&nbsp;</li>
+	<li>Time series databases (Prometheus, Grafana, Thanos, Clickhouse)</li>
 	<li>Other Tools - Kubernetes, Docker, Prometheus, Consul</li>
 </ul>
 <div class="content-conclusion">

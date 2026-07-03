@@ -5,12 +5,14 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX - Hybrid</strong></p>
-<h4><strong>About the team</strong></h4>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack and build systems that truly run the business.</p>
-<h4><strong>About the role</strong></h4>
 <p>You will focus on building scalable, reliable AI/ML models, services and GenAI powered application backends, partnering closely with data and full-stack engineers to deliver new features and operate the pipelines and platforms behind our products. Our stack spans multiple languages and technologies, including Python, React, and TypeScript, and continues to evolve. Many of our applications also incorporate strong AI components, giving you opportunities to work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
-<p><strong>What you'll do</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Partner and align with business leaders, stakeholders, product managers and internal teams to understand the business and product challenges and goals and address them using predictive analytics in a globally distributed environment.</li>
 	<li>Understand data landscape i.e tooling, tech stack, source systems etc. and work closely with the data engineering team to improve the data collection and quality.</li>
@@ -21,8 +23,7 @@
 	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
 	<li>Active role in hiring, growing, and mentoring the data scientist team in Austin.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>M.S or Ph.D in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
 	<li>5+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)</li>
@@ -30,7 +31,7 @@
 	<li>2+ years experience with a fast-growing SaaS business based company is preferred.</li>
 	<li>Strong experience in scientific computing using Python.</li>
 	<li>Experience with Spark, SQL, Tableau, Google Analytics, BigQuery (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Experience working with and processing structured, unstructured, and semi-structured data.&nbsp;</li>
+	<li>Experience working with and processing structured, unstructured, and semi-structured data.</li>
 	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
 	<li>Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.</li>
 	<li>Proficiency in large language models and the frameworks (Langchain, Langgraph, etc.) necessary for implementing GenAI applications, such as AI Agents, chatbots and related use cases.</li>
@@ -38,7 +39,6 @@
 	<li>Capable of working closely with business, engineering, and product teams to ensure data initiatives are aligned with business needs.</li>
 	<li>Experience in hiring data scientists and establishing team best practices is preferred.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

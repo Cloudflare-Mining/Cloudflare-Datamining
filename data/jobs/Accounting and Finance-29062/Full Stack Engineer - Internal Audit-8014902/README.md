@@ -5,13 +5,14 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Job Title - Internal Audit Full Stack Engineer</strong></p>
-<p><strong>Available Locations: Bengaluru, India&nbsp;</strong></p>
-<p><strong>About the Department</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
 <p>The Internal Audit (IA) organization is responsible for delivering high-quality objective and independent assurance over the Company’s key business risks to the Audit Committee and Management in a cost-effective way and consistent with Professional Standards. Reflecting the Company’s core value of continuous improvement, the function is in the process of moving toward wider coverage of operational risks, exploring more efficient audit approaches and industry best practices where appropriate. Our mission is to drive meaningful change in the control environment and risk management capabilities by delivering impactful and solution-oriented engagement and partnership.</p>
-<p><strong>About the role</strong></p>
 <p>Reporting to the Senior Director of Cybersecurity and Technology Audit, as a Full Stack Engineer in our growing Bengaluru Internal Audit Engineering team, you will build the applications, platforms, and user interfaces that power our automated assurance strategy. You will partner closely with our AI/Data Science engineers and Internal Auditors to develop production-ready internal platforms and automated workflows deployed across our global landscape.</p>
-<p><strong>What you’ll do</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Build the Future of Assurance: Develop end-to-end (full stack) applications that automate control testing, and risk monitoring across Cloudflare’s global infrastructure.</li>
 	<li>Data-driven Audit Execution: Provide hands-on audit support by leveraging data science and advanced analytics to execute data-driven testing throughout the audit lifecycle.Customer Zero Engineering: Build and maintain internal tools and dashboards using Cloudflare’s stack (e.g., Workers, KV, D1, AI Gateway) to solve complex internal risk and compliance challenges.</li>
@@ -20,18 +21,18 @@
 	<li>Data Strategy: Partner with Data Engineers and data owners to ensure we have clean, actionable telemetry for internal audits and continuous auditing.</li>
 	<li>Own the Stack: Take full ownership of the lifecycle - from database schema design and API development to UI implementation and production deployment.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Bachelor’s or master’s degree in computer science, Software Engineering, or equivalent experience.</li>
 	<li>5+ years of full stack software engineering experience with proven industry experience in a large-scale environment (high-throughput, distributed systems &amp; globally distributed teams).</li>
-	<li>A genuine interest in technology risk management, internal audit methodologies, or engineering compliance frameworks.&nbsp;</li>
+	<li>A genuine interest in technology risk management, internal audit methodologies, or engineering compliance frameworks.</li>
 	<li>Strong experience in application development using backend languages like Python, Go, or Node.js and modern frontend frameworks like React or TypeScript.</li>
 	<li>Deep understanding of SQL/NoSQL databases, API design (REST/GraphQL), and distributed systems.</li>
 	<li>Hands-on experience with cloud-native architectures. Experience with Cloudflare Workers, AWS, or GCP is highly preferred.</li>
 	<li>Familiarity with data engineering pipelines (ETL/ELT) and leveraging LLMs/ML for automated data analysis.</li>
+	<li>Familiarity with technology risk management, internal audit methodologies, or engineering compliance frameworks is preferred.</li>
 	<li>Ability to explain complex technical risks to non-technical stakeholders and translate audit requirements into elegant code</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

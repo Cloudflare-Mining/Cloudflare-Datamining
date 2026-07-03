@@ -5,12 +5,14 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Location: Houston, TX<br></strong></h3>
-<hr>
-<h3><strong>About the Role</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Houston, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>We are seeking an exceptionally accomplished and visionary Senior Majors Account Executive to join our Enterprise/Field Sales team. In this expert-level role, you will be the driving force behind Cloudflare's most strategic customer engagements, leading the charge in securing and expanding critical platform sales within focused accounts. The ideal candidate possesses unparalleled sales leadership, a profound grasp of enterprise architecture across all four pillars (business, data, applications, technology), and the ability to articulate how Cloudflare seamlessly integrates into modern cloud operating models.</p>
 <p>As a Senior Majors Account Executive, you will demonstrate the highest level of sales proficiency, ensuring highly accurate forecasting, strategic pipeline management, and consistently exceeding attainment targets. You will be a recognized subject matter expert, providing in-depth education to customers and partners alike on Cloudflare’s extensive product ecosystem and its place within the broader security landscape. This role demands the ability to apply executive sponsorship programs, actively engaging with CIOs, CISOs, and CTOs, and leading virtual teams that include VPs and SVPs to navigate and close complex, transformative opportunities. You will shape our customers' digital transformation journeys, identifying opportunities within broader market trends and positioning Cloudflare as their indispensable strategic partner.</p>
-<h3><strong>What You'll Do</strong></h3>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Executive-Level Strategic Revenue Leadership: Own and execute the most critical territory and account plans, consistently exceeding multi-million dollar sales targets and annual quotas by architecting and closing large-scale platform sales within highly focused, strategic accounts.</li>
 	<li>Precision Forecasting &amp; Pipeline Mastery: Lead with unparalleled accuracy in forecasting and demonstrate complete mastery of proactive pipeline management. Provide visionary insights and strategic guidance that shapes the direction of the sales organization.</li>
@@ -24,7 +26,7 @@
 	<li>Company-Wide Innovation &amp; Problem Solving: Consistently and proactively address internal and external needs, driving urgency across the department and company to offer solutions that optimize efficiency. Constructively and humbly challenge the status quo to drive positive change and innovation company-wide, leveraging new insights for continuous iteration.</li>
 	<li>Inclusive Leadership &amp; Future-Proofing: Serve as an exemplary leader, consistently bringing in diverse perspectives to not only address today's needs but also anticipate and solve future problems, contributing significantly to the greater good of Cloudflare.</li>
 </ul>
-<h3><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>10+ years of expert-level experience selling complex, multi-million dollar technology solutions in a B2B enterprise model, with an irrefutable track record of consistently exceeding quota and closing transformative platform deals.</li>
 	<li>Unparalleled in-depth knowledge of Cloudflare's entire product suite and the broader security landscape, coupled with the ability to educate both customers and partners at an expert level.</li>
@@ -40,11 +42,6 @@
 	<li>Bachelor's degree required, with an MBA or advanced technical degree highly preferred.</li>
 	<li>Ability to travel extensively as required to engage with key customers, executive leadership, and internal teams.</li>
 </ul>
-<p>&nbsp;</p>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
-<div id="te-floating-button-container"></div>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

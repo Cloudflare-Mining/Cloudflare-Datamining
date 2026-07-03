@@ -5,12 +5,14 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><span style="font-weight: 400;">Available location: Singapore</span></p>
-<h3><strong>About Us</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Singapore</li>
+</ul>
+<h2>About the Role</h2>
 <p>At Cloudflare, we have a bold vision for the future: to help build a better Internet. Cloudflare secures this new era by building the trusted, neutral infrastructure that enables organizations to safely connect, protect, and accelerate their digital footprints. This work requires a relentless drive to solve complex challenges with real-world stakes. We are looking for builders and owners who operate with speed and urgency and execute with excellence. This is an opportunity to do career-defining work.</p>
-<h3><strong>About the Role</strong></h3>
 <p>Cloudflare is looking for a results-oriented and strategic Senior Director of Field Marketing, APAC who loves driving revenue and digging into new Go-To-Market challenges. In this role, you will lead a high-performing team of marketing professionals to develop a comprehensive marketing strategy and manage localized campaigns across the entire APAC theater—encompassing ANZ, ASEAN, Korea, GCR, and SAARC—to fuel our regional success and expansion. You are a seasoned growth marketer who thrives in a dynamic environment, moves quickly to build structure, and can serve as the primary regional partner to our global teams.</p>
-<h3><strong>What you'll do</strong></h3>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Drive APAC Marketing Strategy and Pipeline Generation:</strong> Define and own the comprehensive APAC demand marketing strategy, covering all segments from commercial to the region's largest enterprise accounts, and maximizing total pipeline by integrating deep Go-To-Market and sales development knowledge.</li>
 	<li><strong>Champion Agentic AI Transformation:</strong> Champion and operationalize an agentic, "Human + AI" mindset, focusing on system-level process design, custom apps, and workflow automation to build the fastest, most leading-edge marketing organization in the industry and <strong>10X team productivity</strong>.</li>
@@ -21,7 +23,7 @@
 	<li><strong>Transformative Team Leadership:</strong> Shape the future of our regional marketing footprint by scaling, mentoring, and empowering a high-performing, diverse team dedicated to execution excellence.</li>
 	<li><strong>Performance-Driven Budget Management:</strong> Drive fiscal excellence by overseeing the strategic distribution and forecasting of the APAC marketing budget, aligning resources directly with our highest-growth market opportunities.</li>
 </ul>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Demonstrated experience and success in B2B APAC marketing with extensive knowledge of the broader GTM team and multi-country dynamics.</li>
 	<li>Strong leadership qualities, with a proven track record of leading, scaling, and mentoring high-performing field marketing teams.</li>
@@ -30,7 +32,7 @@
 	<li>Highly self-motivated, organized, and possess excellent quantitative skills to make data-driven decisions and reports.</li>
 	<li>Excellent writing and presentation skills to effectively communicate with international executive stakeholders.</li>
 </ul>
-<h3><strong>Core Leadership Competencies</strong></h3>
+<h3>Core Leadership Competencies</h3>
 <ul>
 	<li><strong>Builds Effective Teams:</strong> Building strong-identity teams that apply their diverse skills and perspectives to achieve common goals.</li>
 	<li><strong>Strategic Mindset:</strong> Seeing ahead to future possibilities and translating them into breakthrough strategies.</li>

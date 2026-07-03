@@ -5,15 +5,20 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, TX | Seattle,WA</strong></h3>
-<h3><strong>About the Department</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>Seattle, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the Team</strong></h3>
 <p>ETI’s Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, performant, and scalable.</p>
 <p>You’ll be joining a highly motivated team that is building the next generation of distributed storage services.</p>
-<h3><strong>What You’ll Do</strong></h3>
-<p>In this role, you will help build and operate the next generation of globally distributed storage systems. You will own your code from inception to release, delivering solutions at all layers of the stack. On any given day, you might write a design document for a new provisioning system, model failure domain dependencies across edge locations, benchmark new storage hardware, build standardized observability and runbooks for distributed database clusters, or automate operational toil through purpose-built tooling and intelligent automation. You can expect to interact with a variety of languages and technologies including Rust, Go, Saltstack, and Terraform.</p>
-<h3><strong>Examples of desirable skills, knowledge, and experience</strong></h3>
+<h2>Responsibilities</h2>
+<ul>
+	<li>In this role, you will help build and operate the next generation of globally distributed storage systems. You will own your code from inception to release, delivering solutions at all layers of the stack. On any given day, you might write a design document for a new provisioning system, model failure domain dependencies across edge locations, benchmark new storage hardware, build standardized observability and runbooks for distributed database clusters, or automate operational toil through purpose-built tooling and intelligent automation. You can expect to interact with a variety of languages and technologies including Rust, Go, Saltstack, and Terraform.</li>
+</ul>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Strong programming skills with languages like Rust, Go, or Python</li>
 	<li>A solid understanding of distributed systems concepts such as consistency, consensus, data replication, fault tolerance, and partition tolerance</li>
@@ -25,16 +30,16 @@
 	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
 	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
 </ul>
-<h3><strong>Compensation</strong></h3>
+<h2>Compensation</h2>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
 </ul>
-<h3><strong>Equity</strong></h3>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3><strong>Benefits</strong></h3>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<h3><strong>Health &amp; Welfare Benefits</strong></h3>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -45,14 +50,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<h3><strong>Financial Benefits</strong></h3>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<h3><strong>Time Off</strong></h3>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -5,53 +5,55 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
-<ul>
-	<li>Austin, US</li>
-</ul>
-<h2>About the Role</h2>
+<h3><strong>Available Location: Singapore</strong></h3>
+<h3><strong>Why This Role Exists</strong></h3>
 <p>Cloudflare built its reputation helping build a better Internet, defending millions of sites, giving away SSL and DDoS mitigation when the industry charged premium prices. In an acceleratingly dangerous world, the scope of that mission has changed. We are becoming something more: critical infrastructure. Banks run their payment rails on us. Governments run public services on us. Media companies depend on us during live events. Health systems depend on us to provide care. Reliability for these customers is no longer a feature of our product. It is a mission.</p>
 <p>Serving that customer base demands a different operating model. Traditional support organizations route tickets. Traditional engineering organizations ship features. Neither alone is enough when the stakes are this high. We are pivoting to something different: a customer-facing engineering organization, directly engaged with our customers at scale. This is work a central dev team cannot do from the inside of the network.</p>
 <p>The Customer Reliability Engineering function is the spine of that pivot. CRE is SRE applied outward, the same engineering discipline, applied to the reliability of the systems our customers run on Cloudflare. You are the engineer who owns the problems that matter most to the customers who matter most, and you contribute directly to our products and tooling, in partnership with Product Engineering, to hold that standard across the entire customer base.</p>
+<h3><strong>The Role</strong></h3>
 <p>CRE is a rapid response team and a proactive engineering team. You fix things at the edge as they come up, and you help build the product capabilities that identify customer issues before they become a crisis. Both modes are equally core.</p>
 <p><strong>Rapid response.</strong> When a customer issue surfaces that is high-severity, cross-layer and complex, you are the engineer who answers. You reproduce the defect, isolate the root cause across Cloudflare's infrastructure and the customer's stack, drive the fix with Product Engineering, and confirm resolution. You hold on-call for high-severity incidents as part of a global shift rotation.</p>
 <p><strong>Proactive engineering.</strong> When no fire is burning, you work with Product Engineering and our platform teams to build the capabilities that make the next fire cheaper or unnecessary: telemetry pipelines that correlate signals across the customer base, detectors that fire before a human notices, diagnostic tooling that scales across hundreds of customers, automation that reduces toil for Customer Support. Every incident you carry generates engineering output that reduces the cost of recurrence. The work compounds.</p>
 <p>Cloudflare is building CRE as an AI-native function. You will work with and help build agents and tooling that pre-diagnose incidents, surface relevant logs and configuration, and propose fixes with cited evidence. Engineers who ship AI-assisted diagnostics are the ones defining this discipline.</p>
-<h2>Responsibilities</h2>
-<h3>Rapid response:</h3>
+<h3><strong>What You Might Work On</strong></h3>
+<p><strong>Rapid response:</strong></p>
 <ul>
 	<li>Own a Sev-1 incident where a large financial services customer sees asymmetric latency from a single POP. Trace it through BGP routing and origin configuration. Produce the fix upstream.</li>
 	<li>Diagnose a recurring WebSocket disconnect that a media customer has been fighting for weeks. Isolate it to a specific interaction between WAF and their origin load balancer. Drive the fix with Product Engineering.</li>
 	<li>Partner with a government customer's SRE team during an active DDoS event. Help them shape their Magic Transit and WAF configuration in real time.</li>
 </ul>
-<h3>Proactive engineering:</h3>
+<p><strong>Proactive engineering:</strong></p>
 <ul>
 	<li>Build, with Product Engineering, a distributed tracing capability that correlates Cloudflare edge signals with customer origin metrics so a single query tells the story of a failing request end-to-end.</li>
 	<li>Ship a detector for a class of WAF false positives silently degrading several customers. Get it into production before the next renewal cycle.</li>
 	<li>Prototype an AI agent that takes a new customer case, pulls relevant logs and config, and proposes a root cause with linked evidence. Deploy it internally. Measure whether it makes engineers faster. Iterate.</li>
-	<li><strong>Rapid incident response and root cause analysis.</strong> Own the most complex, high-severity customer issues end-to-end, from first signal through confirmed resolution. Lead deep-dive debugging across the full stack: edge, network, DNS, transport, APIs, application, customer-side configuration. Reproduce defects, validate fixes with Engineering, and confirm customer-side resolution. Produce postmortems other engineers rely on. Hold on-call for high-severity incidents as part of a global rotation that includes weekends.</li>
-	<li><strong>Proactive reliability engineering.</strong> Analyze support and telemetry signals across the customer base to find systemic risks before they become incidents. Contribute monitoring, detection, and diagnostic capability to the core product and the engineering systems that give Customer Support early visibility into customer-affecting issues. Define customer-facing reliability metrics (error rates, resolution times, repeat-contact rates) and drive measurable improvement. Write automation that reduces mean-time-to-detect and mean-time-to-resolve.</li>
-	<li><strong>Cross-functional partnership.</strong> Manage the technical escalation lifecycle with clear ownership and timely communication. Partner with Product Engineering to drive fixes, workarounds, and configuration changes that address underlying gaps. Represent the customer reliability perspective in engineering syncs, incident reviews, and post-mortem processes.</li>
-	<li><strong>Technical leadership and enablement.</strong> Raise the technical floor of Customer Support through pair-debugging, structured knowledge transfer, and shared tooling. Document diagnostic procedures and resolution patterns in runbooks, internal knowledge bases, and AI skills. Share insights from customer-facing incidents to improve product documentation and operational readiness.</li>
-	<li><strong>Product and platform depth.</strong> Maintain deep, current expertise across Cloudflare's product portfolio: edge networking, DNS, CDN, WAF, DDoS mitigation, Zero Trust, Workers, and our developer platform. Anticipate customer impact from new releases and architecture changes. Serve as a go-to subject-matter expert in one or more domains.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3><strong>Responsibilities</strong></h3>
+<p><strong>Rapid incident response and root cause analysis.</strong> Own the most complex, high-severity customer issues end-to-end, from first signal through confirmed resolution. Lead deep-dive debugging across the full stack: edge, network, DNS, transport, APIs, application, customer-side configuration. Reproduce defects, validate fixes with Engineering, and confirm customer-side resolution. Produce postmortems other engineers rely on. Hold on-call for high-severity incidents as part of a global rotation that includes weekends.</p>
+<p><strong>Proactive reliability engineering.</strong> Analyze support and telemetry signals across the customer base to find systemic risks before they become incidents. Contribute monitoring, detection, and diagnostic capability to the core product and the engineering systems that give Customer Support early visibility into customer-affecting issues. Define customer-facing reliability metrics (error rates, resolution times, repeat-contact rates) and drive measurable improvement. Write automation that reduces mean-time-to-detect and mean-time-to-resolve.</p>
+<p><strong>Cross-functional partnership.</strong> Manage the technical escalation lifecycle with clear ownership and timely communication. Partner with Product Engineering to drive fixes, workarounds, and configuration changes that address underlying gaps. Represent the customer reliability perspective in engineering syncs, incident reviews, and post-mortem processes.</p>
+<p><strong>Technical leadership and enablement.</strong> Raise the technical floor of Customer Support through pair-debugging, structured knowledge transfer, and shared tooling. Document diagnostic procedures and resolution patterns in runbooks, internal knowledge bases, and AI skills. Share insights from customer-facing incidents to improve product documentation and operational readiness.</p>
+<p><strong>Product and platform depth.</strong> Maintain deep, current expertise across Cloudflare's product portfolio: edge networking, DNS, CDN, WAF, DDoS mitigation, Zero Trust, Workers, and our developer platform. Anticipate customer impact from new releases and architecture changes. Serve as a go-to subject-matter expert in one or more domains.</p>
+<h3><strong>Requirements</strong></h3>
 <ul>
 	<li>Minimum 5 years of hands-on experience in site reliability engineering, escalation engineering, systems engineering, or a comparable deeply technical support / operations role, with at least 2 years in customer-facing environments.</li>
-	<li>Strong foundation in networking and security:<ul>
-			<li>TCP/IP fundamentals: OSI model, IPv4/IPv6 addressing, subnetting, routing, switching.</li>
-			<li>Core protocols: DNS, HTTP/S, TLS/SSL, SMTP, SNMP, NTP.</li>
-			<li>Routing protocols: BGP, OSPF, including path selection and route propagation.</li>
-			<li>Firewall concepts: stateful/stateless inspection, rule sets, NAT, ACLs.</li>
-			<li>VPN and encryption: IPSec, SSL/TLS tunnels, GRE.</li>
-			<li>Zero Trust architecture, network segmentation, modern security models.</li>
-		</ul>
-	</li>
+	<li>Strong foundation in networking and security:</li>
+	<ul>
+		<li>TCP/IP fundamentals: OSI model, IPv4/IPv6 addressing, subnetting, routing, switching.</li>
+		<li>Core protocols: DNS, HTTP/S, TLS/SSL, SMTP, SNMP, NTP.</li>
+		<li>Routing protocols: BGP, OSPF, including path selection and route propagation.</li>
+		<li>Firewall concepts: stateful/stateless inspection, rule sets, NAT, ACLs.</li>
+		<li>VPN and encryption: IPSec, SSL/TLS tunnels, GRE.</li>
+		<li>Zero Trust architecture, network segmentation, modern security models.</li>
+	</ul>
 	<li>Proficiency with observability and diagnostic tooling: packet capture and analysis (Wireshark, tcpdump), log aggregation (Kibana, Elasticsearch), metrics dashboards (Grafana), distributed tracing.</li>
 	<li>Strong scripting and automation skills (Bash, Python) with a track record of shipping tooling that improves reliability and reduces toil.</li>
 	<li>Experience with incident management, postmortem culture, and SLO/SLI-based reliability practices.</li>
 	<li>Excellent written and verbal communication. Able to convey complex technical information clearly to engineers, leadership, and customers.</li>
 	<li>Comfort owning ambiguous, cross-layer problems. Composure under pressure during high-severity incidents.</li>
+</ul>
+<h3><strong>Desired Skills &amp; Experience</strong></h3>
+<ul>
 	<li>SRE, DevOps, or platform engineering experience with direct customer-facing accountability.</li>
 	<li>Deep expertise at both L3/L4 (network infrastructure) and L7 (application protocols, DNS, HTTP, WebSocket).</li>
 	<li>Expert-level proficiency with Linux command-line tools: curl, dig, git, traceroute, mtr, strace, ss.</li>
@@ -62,7 +64,7 @@
 	<li>Experience applying AI/ML to production engineering or operational workflows.</li>
 	<li>Comfort engaging directly with enterprise customer engineering teams, including on calls during incidents.</li>
 </ul>
-<h2>Bonus Points</h2>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
 	<li>Active Cloudflare user who understands the platform as a practitioner.</li>
 	<li>Hands-on experience with Workers, Pages, R2, D1, or other developer platform services.</li>
@@ -70,34 +72,6 @@
 	<li>Web programming (HTML, JavaScript) and regular expressions.</li>
 	<li>Chaos engineering or formal reliability frameworks (e.g., Google SRE principles).</li>
 	<li>Managing or configuring non-HTTP services: email, DNS authoritative/recursive, FTP, SSH.</li>
-</ul>
-<h2>Compensation</h2>
-<h3>Equity</h3>
-<p>This role is eligible to participate in Cloudflare's equity plan.</p>
-<h3>Benefits (may vary by region)</h3>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future, and make life a little easier and fun. The below is a description of our benefits for employees in the United States; benefits may vary for employees based outside the U.S.</p>
-<h3>Health &amp; Welfare Benefits</h3>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<h3>Financial Benefits</h3>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<h3>Time Off</h3>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

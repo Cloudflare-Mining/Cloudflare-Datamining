@@ -5,12 +5,15 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Singapore or Sydney, Australia</strong></p>
-<p><strong>About the team</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Singapore</li>
+	<li>Sydney, Australia</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare's business pushes the boundaries of what the Internet can do, our customers expect no less, and we need a world-class commercial legal team to meet the needs of our business.&nbsp; Our team is composed of accomplished lawyers and staff who bring their unique expertise and backgrounds to a global team.&nbsp; Our work product may often be contracts but we understand that each contract defines the intangible and clarifies the possible.&nbsp; We believe that doing this with clarity creates strong and elegant agreements that can meet the needs of the business now and as Cloudflare continues to grow.</p>
-<p><strong>About the Role</strong></p>
-<p>In this role, you’ll be a key member of Cloudflare’s APAC commercial legal team.&nbsp; We are looking for a commercially savvy lawyer who can confidently navigate complex and high value transactions. You will collaborate and work cross-functionally with other internal groups, across the sales, deal desk, finance, privacy, product legal and security compliance teams and be a trusted advisor, accelerating deal velocity while protecting the company’s interests.&nbsp;This is a unique opportunity to thrive in a fast-paced environment where your legal expertise directly drives business growth. The position is based in Singapore or Sydney and frequent communication with our other offices will be required.&nbsp;</p>
-<p><strong>Requirements:</strong></p>
+<p>In this role, you’ll be a key member of Cloudflare’s APAC commercial legal team.&nbsp; We are looking for a commercially savvy lawyer who can confidently navigate complex and high value transactions. You will collaborate and work cross-functionally with other internal groups, across the sales, deal desk, finance, privacy, product legal and security compliance teams and be a trusted advisor, accelerating deal velocity while protecting the company’s interests.&nbsp;This is a unique opportunity to thrive in a fast-paced environment where your legal expertise directly drives business growth. The position is based in Singapore or Sydney and frequent communication with our other offices will be required.</p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>LL.B. or JD degree with strong academic credentials.</li>
 	<li>Admitted to practice law in Singapore, UK, US, Australia or Japan.</li>
@@ -18,17 +21,13 @@
 	<li>A demonstrated ability to learn new systems and tools, the better to adapt to AI tooling.</li>
 	<li>Substantive experience with drafting, reviewing, and negotiating a variety of complex commercial agreements, including SaaS agreements and consulting services statements of work.</li>
 	<li>Resourceful self-starter with an eye for detail, excellent problem-solving capabilities, judgment, negotiation, communication (written and verbal) and interpersonal skills.</li>
-	<li>Good strategic, business sense, and demonstrated negotiation skills with respect to legal issues.&nbsp;</li>
-</ul>
-<ul>
+	<li>Good strategic, business sense, and demonstrated negotiation skills with respect to legal issues.</li>
 	<li>Proven ability to manage high-volume workloads, multiple stakeholder demands and ever-shifting priorities all while instilling confidence.</li>
-</ul>
-<ul>
 	<li>Ability to identify and explain non-standard terms and associated risks to relevant business stakeholders and interpret contract requirements, obligations and risk exposure and advise on the same.</li>
 </ul>
-<p><strong>Bonus Points:&nbsp; </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>Bonus Points</h2>
 <ul>
-	<li>Solid understanding of local and international privacy and data protection laws.&nbsp;</li>
+	<li>Solid understanding of local and international privacy and data protection laws.</li>
 	<li>Experience using administrative management systems such Salesforce, DocuSign, Ironclad and/or JIRA.</li>
 </ul>
 <div class="content-conclusion">

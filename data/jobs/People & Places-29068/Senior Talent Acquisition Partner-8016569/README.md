@@ -5,10 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong>Austin, Texas</p>
-<p><strong>About the Role:</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>We are hiring for a&nbsp;<strong>Senior Talent Acquisition Business Partner&nbsp;</strong>to join our Americas (AMER) team. In this role, you will act as a true talent advisor and go-to-market specialist, driving the expansion of hiring across the region. You will operate autonomously, utilizing your deep market expertise, AI-driven strategies, and extensive network to hire top-tier talent for Cloudflare.</p>
-<p><strong>Core Responsibilities</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong>&nbsp;Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.</li>
 	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon an extensive network of industry contacts to build proactive pipeline strategies for a variety of roles.</li>
@@ -17,7 +20,7 @@
 	<li><strong>Data Utilization &amp; Analytics:</strong>&nbsp;Leverage foundational data layers and recruitment analytics to inform talent strategies, actively analyzing metrics such as time-to-hire and source efficiency to drive optimal operational decisions.</li>
 	<li><strong>Employer Branding &amp; Market Awareness:</strong> Lead and execute strategic employer branding initiatives tailored to the AMER market to elevate Cloudflare's profile as a top destination for talent.</li>
 </ul>
-<p><strong>Examples of Desirable Skills</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li><strong>Strategic Problem Solving:</strong>&nbsp;Ability to operate two "plays" ahead, anticipating potential bottlenecks before they materialize, and resolving complex organizational issues with high autonomy.</li>
 	<li><strong>Negotiation &amp; Closing Skills:</strong>&nbsp;Effective negotiation capabilities to secure top-tier candidates, driven by a deep understanding of Cloudflare's unique value proposition.</li>
@@ -26,11 +29,12 @@
 	<li><strong>Communication &amp; Feedback:</strong>&nbsp;Exceptional written and verbal communication skills with the ability to influence and advise senior stakeholders across the Americas region.</li>
 	<li><strong>Adaptability &amp; Self-Direction:</strong>&nbsp;Comfort thriving in ever-changing environments, taking complete responsibility for outcomes while seamlessly navigating an evolving technological and organizational landscape.</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h2>Compensation</h2>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -41,14 +45,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

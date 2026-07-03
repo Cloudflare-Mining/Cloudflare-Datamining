@@ -5,14 +5,16 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Location: Austin</strong></h3>
-<h3><strong>About the Department</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare’s engineering teams build and maintain the systems and products that power our global platform. A global platform which is within approximately 50 milliseconds of about 95% of the Internet connected population, serving on average, over 46 million HTTP requests per second.</p>
-<h3><strong>About the Team</strong></h3>
 <p>Cloudflare engineering delivers multiple products and features to production at a tremendous pace, and depends on real time load balancing and long term capacity planning to do so with high performance and efficiency. The MAPS team is responsible for highly granular and large-scale resource usage instrumentation and measurement of Cloudflare's edge platform.&nbsp; The team builds and runs data pipelines, as well as systems and libraries for measuring and collecting the data, and collaborates closely across the range of teams that build and run services on Cloudflare's global edge network to ensure consistent, complete, and correct attribution of all resource usage.</p>
 <p><strong>What are we looking for?</strong></p>
 <p>We are looking for highly motivated software engineers to join our MAPS team.&nbsp; You’ll have a strong programming background with a deep understanding and experience developing and maintaining&nbsp; distributed systems. You’ll need to be able to communicate effectively with engineers across the company to understand the behaviours of our systems and products in order to deliver tooling to meet their testing needs. You will also work closely with product managers to support our public facing synthetic testing and load testing products for enterprise customers.</p>
-<p><strong>Requirements</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Experience as a software engineer or similar role working on latency and efficiency sensitive server infrastructure.</li>
 	<li>Experience working with large-scale data pipelines and processing, including use of distributed column-oriented data storage and processing such as ClickHouse, BigQuery/Dremel, etc.</li>
@@ -23,13 +25,12 @@
 	<li>Ability to dive deep into technical specifics of systems and codebases, while always keeping the big picture in mind.</li>
 	<li>Experience with one or more of the following programming languages: Go, Rust, C</li>
 </ul>
-<p><strong>Bonuses</strong></p>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Strong understanding of Linux kernel internals, especially any of: networking, scheduling, resource isolation, virtualization</li>
 	<li>Experience troubleshooting and resolving performance issues in large-scale distributed systems.</li>
 	<li>Experience with large scale configuration/deployment management.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

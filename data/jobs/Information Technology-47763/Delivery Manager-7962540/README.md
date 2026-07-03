@@ -5,35 +5,38 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Job Title: Delivery Manager</strong><strong>&nbsp;</strong></p>
-<p>Job Summary</p>
-<p>Critical team leader role driving the<strong> Oracle Fusion Cloud ERP Transformation</strong><strong> </strong><strong>and Support</strong> from Offshore across both <strong>Finance</strong> (GL, ARP, AP, FA, LA, AGIS) and <strong>Supply Chain Management </strong>(INV, PIM,PO). Responsible for the functional integrity, strategic direction, and operational excellence of the Oracle Fusion platform. Leads cross-functional/developer teams, and serves as the final technical/design escalation point.</p>
-<p>Key Responsibilities</p>
+<h2>Available Locations</h2>
 <ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
+<p>Job Summary</p>
+<p>Critical team leader role driving the<strong> Oracle Fusion Cloud ERP Transformation</strong><strong>and Support</strong> from Offshore across both <strong>Finance</strong> (GL, ARP, AP, FA, LA, AGIS) and <strong>Supply Chain Management </strong>(INV, PIM,PO). Responsible for the functional integrity, strategic direction, and operational excellence of the Oracle Fusion platform. Leads cross-functional/developer teams, and serves as the final technical/design escalation point.</p>
+<h2>Responsibilities</h2>
+<ul>
+	<li>Key Responsibilities</li>
 	<li><strong>ERP Transformation: </strong>Own the functional design, configuration roadmap, and workstream deliverables for all Finance, Procurement and SCM modules</li>
 	<li><strong>Delivery Ownership:</strong> Oversee critical delivery of Oracle Fusion technical deliverables.</li>
 	<li><strong>Technical Strategy: </strong>Define and enforce technical/architecture standards, primarily utilizing Oracle Cloud ecosystem for all cross-application data exchange. Manage Oracle Cloud platform stability, security, and mandatory quarterly updates.</li>
 	<li><strong>Team &amp; Governance: </strong>Lead and manage Functional Consultants/Developer teams. Govern the Managed Service Provider and System Integrator partners. Ensure system configurations enforce financial and regulatory compliance (e.g., SOX).</li>
 </ul>
-<p>Required Qualifications</p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
+	<li>Required Qualifications</li>
 	<li>10+ years of IT experience, including 5+ years in a leadership role directing Oracle ERP teams.</li>
 	<li>Proven success implementing or managing Oracle Fusion Cloud ERP across both Financials and Supply Chain Management modules.</li>
 	<li>Expert-level experience defining and governing enterprise integration strategy with Oracle Cloud Infrastructure.</li>
 	<li>Demonstrated leadership in major ERP migration projects and maintenance of the applications in an on-going basis.</li>
 	<li>Exceptional executive communication and stakeholder management skills</li>
-</ul>
-<p>Preferred Qualifications</p>
-<ul>
+	<li>Preferred Qualifications</li>
 	<li>Experience leading or managing workstreams during a major ERP migration.</li>
 	<li>Direct experience with NetSuite, RevPro, or comparable legacy financial/revenue systems.</li>
 	<li>Familiarity with financial compliance frameworks, particularly SOX controls, related to core ERP processes.</li>
 	<li>Broad functional knowledge of Oracle EPM modules (e.g., EDMCS, FCCS, PBCS) and their integration with Fusion ERP.</li>
 	<li>Relevant professional certifications in Oracle Fusion Cloud technologies (e.g., Financials, SCM, OIC).</li>
-	<li>Exposure to the Data Center Infrastructure industry.&nbsp;</li>
+	<li>Exposure to the Data Center Infrastructure industry.</li>
 	<li>Working knowledge of various AI Agents within Oracle Fusion Cloud Applications.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

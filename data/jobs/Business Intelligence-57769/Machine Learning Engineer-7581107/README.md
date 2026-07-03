@@ -5,46 +5,43 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h4><strong>Location: Bengaluru India</strong></h4>
-<h4><strong>About the team</strong></h4>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
 <p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack and build systems that truly run the business.</p>
-<h4><strong>About the role</strong></h4>
 <p>We are looking for an experienced Machine Learning Engineer to join our Bengaluru team and help scale the next generation of our AI/ML models. In this role, you will build and operate the pipelines behind AI-driven applications, Agents, Chatbots that power teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing systems to implementation, deployment, and long-term ownership.</p>
 <p>You will focus on building scalable, reliable services and application backends, partnering closely with data and full-stack engineers to deliver new features and operate the pipelines and platforms behind our products. Our stack spans multiple languages and technologies, including Python, React, and TypeScript, and continues to evolve. Many of our applications also incorporate strong AI components, giving you opportunities to work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
-<p><strong>What you'll do</strong></p>
+<h2>Responsibilities</h2>
 <ul>
-	<li>Deploy, manage &amp; support ML Applications &amp; Services on Kubernetes<br><br></li>
-	<li>Understand MLOps landscape i.e tooling, tech stack, source systems etc. and work on introducing new tools and solutions for ML &amp; AI initiatives.<br><br></li>
-	<li>Partner and align with Data Scientists, Data Engineers and internal teams to deliver ML solutions in a globally distributed environment.<br><br></li>
-	<li>Lead development of efficiencies to boost model training to deployment lead times<br><br></li>
-	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.<br><br></li>
-	<li>Leverage Cloudflare products and services for AI &amp; ML initiatives and applications<br><br></li>
+	<li>Deploy, manage &amp; support ML Applications &amp; Services on Kubernetes</li>
+	<li>Understand MLOps landscape i.e tooling, tech stack, source systems etc. and work on introducing new tools and solutions for ML &amp; AI initiatives.</li>
+	<li>Partner and align with Data Scientists, Data Engineers and internal teams to deliver ML solutions in a globally distributed environment.</li>
+	<li>Lead development of efficiencies to boost model training to deployment lead times</li>
+	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
+	<li>Leverage Cloudflare products and services for AI &amp; ML initiatives and applications</li>
 	<li>Use software engineering best practices to publish model scores/insights/learnings at scale within the company.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>M.S or Ph.D in Computer Science, Statistics, Mathematics, or other quantitative fields.<br><br></li>
-	<li>5+ years of ML Engineering experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams) <br><br></li>
-	<li>Strong experience in scientific computing using Python with Scikit-Learn &amp; PyTorch or Tensorflow.<br><br></li>
-	<li>Strong experience working with Docker &amp; Kubernetes to build and deploy applications and systems.<br><br></li>
-	<li>Experience working with ML Platform tools (AirFlow, Argo Workflows, ArgoCD) preferred.<br><br></li>
-	<li>Experience working with Data Scientists to deploy Machine Learning applications systems for training, inference and observability.<br><br></li>
-	<li>Experience with Full-stack Web technologies and languages (FastAPI, Streamlit, JavaScript/TypeScript, Cloudflare Workers, etc.) preferred with the ability to quickly learn and contribute across a multi-language stack.<br><br></li>
-	<li>Experience with Terraform, Google Cloud Platform (or any other public cloud equivalent) etc.<br><br></li>
-	<li>Experience working with CI/CD systems, version control (Git, Bitbucket, etc.), testing (Pytest, etc.) and DevOps tools.<br><br></li>
-	<li>Experience with Databases such as BigQuery, Postgres, SQLite and ETL/ELT practices<br><br></li>
-	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.<br><br></li>
-	<li>
-		<div>Proficiency in large language models and the frameworks like Langchain, LangGraph, etc. necessary for implementing GenAI applications, such as chatbots and related use cases.</div>
-	</li>
-	<li>Strong communication and presentation skills catered to different audiences within the company.<br><br></li>
-	<li>Demonstrated ability to design scalable, reliable, and observable systems, with experience influencing architecture and improving platform foundations.<br><br></li>
-	<li>Strong problem-solving and communication skills, with a track record of working effectively with cross-functional partners and driving projects through ambiguous problem spaces.<br><br></li>
+	<li>M.S or Ph.D in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
+	<li>5+ years of ML Engineering experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams) </li>
+	<li>Strong experience in scientific computing using Python with Scikit-Learn &amp; PyTorch or Tensorflow.</li>
+	<li>Strong experience working with Docker &amp; Kubernetes to build and deploy applications and systems.</li>
+	<li>Experience working with ML Platform tools (AirFlow, Argo Workflows, ArgoCD) preferred.</li>
+	<li>Experience working with Data Scientists to deploy Machine Learning applications systems for training, inference and observability.</li>
+	<li>Experience with Full-stack Web technologies and languages (FastAPI, Streamlit, JavaScript/TypeScript, Cloudflare Workers, etc.) preferred with the ability to quickly learn and contribute across a multi-language stack.</li>
+	<li>Experience with Terraform, Google Cloud Platform (or any other public cloud equivalent) etc.</li>
+	<li>Experience working with CI/CD systems, version control (Git, Bitbucket, etc.), testing (Pytest, etc.) and DevOps tools.</li>
+	<li>Experience with Databases such as BigQuery, Postgres, SQLite and ETL/ELT practices</li>
+	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
+	<li>Proficiency in large language models and the frameworks like Langchain, LangGraph, etc. necessary for implementing GenAI applications, such as chatbots and related use cases.</li>
+	<li>Strong communication and presentation skills catered to different audiences within the company.</li>
+	<li>Demonstrated ability to design scalable, reliable, and observable systems, with experience influencing architecture and improving platform foundations.</li>
+	<li>Strong problem-solving and communication skills, with a track record of working effectively with cross-functional partners and driving projects through ambiguous problem spaces.</li>
 	<li>Experience mentoring engineers, leading by example in code and design, and contributing to a culture of technical excellence.</li>
 </ul>
-<p>&nbsp;</p>
-<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1773123766093000&amp;usg=AOvVaw2f_2PXwMJhKlBQmUgu_Za1">cloudflare.com</a>&nbsp;email addresses.</p>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

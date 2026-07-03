@@ -5,8 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: <span class="collapsed-field-text">Austin, TX, New York, NY, San Francisco, CA</span>&nbsp;</strong></p>
-<p><strong>What You’ll Do</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>New York, US</li>
+	<li>San Francisco, US</li>
+</ul>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Lead and Mentor:</strong> Manage a high-performing team of kernel and systems engineers, fostering a culture of "collaboration-first" and continuous knowledge sharing both internally and with the global open-source community.</li>
 	<li><strong>Own the OS Lifecycle:</strong> Oversee the end-to-end delivery of the Linux Kernel and core OS components. Your goal is a fully automated continuous delivery pipeline that moves from merge to 100% production in less than 30 days.</li>
@@ -16,7 +21,7 @@
 	<li><strong>Innovate Debugging:</strong> Tackle the "impossible" challenges of kernel-level debugging. You will lead the development of automated systems that collect critical telemetry when a system crashes, even when traditional debuggers cannot run.</li>
 	<li><strong>Measure Success:</strong> Use DORA metrics and team-specific capabilities - such as the "time to fix a kernel issue" and upstream commit volume - to track and improve team impact.</li>
 </ul>
-<p><strong>What You’ll Bring</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li><strong>Systems Leadership:</strong> 5+ years of experience managing engineering teams, ideally in low-level systems, kernel development, or large-scale infrastructure environments.</li>
 	<li><strong>Low-Level Expertise:</strong> A deep understanding of Linux Kernel internals, x86/ARM architecture, and OS design fundamentals. You should be comfortable discussing memory management, schedulers, and network stacks.</li>
@@ -26,13 +31,13 @@
 	<li><strong>Strategic Communication:</strong> The ability to translate complex kernel-level obstacles into actionable business insights for stakeholders across the company.</li>
 	<li><strong>Resilience:</strong> You aren't intimidated by the "impossible." Whether it's a non-reproducible race condition or an unwelcoming upstream thread, you lead your team through the challenge with a pragmatic, solution-oriented mindset.</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<h2>Compensation</h2>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For New York City and California (excluding Bay Area) based hires: Estimated annual salary of $170,000 - $275,000.</li>
 	<li>For Bay Area based hires: Estimated annual salary of $190,000 - $303,000</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

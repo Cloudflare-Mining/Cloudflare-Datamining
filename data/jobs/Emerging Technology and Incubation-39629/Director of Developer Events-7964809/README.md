@@ -5,12 +5,17 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX | New York, NY | San Francisco, CA</strong></p>
-<p><strong>About the role</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>New York, US</li>
+	<li>San Francisco, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare's Developer Platform (Workers, Pages, R2, D1, Durable Objects, AI, and more) is how the next generation of builders ships to the global Internet. Events are one of the most powerful levers we have to reach developers where they are — and to create the moments that turn curiosity into conviction.</p>
 <p>We're looking for a Director of Developer Events to own the end-to-end events strategy and execution for our Developer Platform. This person will be responsible for the full portfolio: flagship tentpole events, Cloudflare-owned developer experiences, sponsored and partnered events, executive dinners, pop-up activations, and field programs. You'll shape how Cloudflare shows up in real life.</p>
 <p>We’re looking for someone with taste — a point of view on what makes a developer event worth attending, a keen eye for design and experience details, and the creative ambition to build moments that developers actually remember and talk about. You'll partner closely with Developer Relations, Product, Sales, Marketing, and Communications to ensure our events strategy drives real developer acquisition, product adoption, and community growth.</p>
-<h4><strong>What you'll do</strong></h4>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Own the developer events strategy</strong> — Define and execute a unified events portfolio for the Developer Platform, spanning flagship moments, owned events, sponsored/third-party events, executive dinners, pop-up experiences, and field activations.</li>
 	<li><strong>Set the creative bar</strong> — Bring a strong point of view on experience design, branding, and storytelling. Every touchpoint — from booth design to keynote content to swag — should reflect Cloudflare's developer-first identity and stand out in a sea of forgettable conference booths.</li>
@@ -22,7 +27,7 @@
 	<li><strong>Build and lead a team</strong> — Manage and grow a lean team of event professionals. Set the culture, operating cadence, and quality standards for the events function.</li>
 	<li><strong>Innovate the format</strong> — The best developer events in 2026 don't look like the best developer events in 2019. Bring fresh thinking on formats: hackathons, build-alongs, AI agent showcases, intimate roundtables, hybrid/digital experiences, and activations that meet developers in non-traditional settings.</li>
 </ul>
-<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>15+ years of experience in events, experiential marketing, or developer marketing, with at least 5 years in a leadership role managing teams and budgets.</li>
 	<li>Deep experience with developer or technical audiences. You understand what resonates with engineers and builders — and what doesn't. You've run events where the attendees are skeptical of marketing by default, and you've earned their attention anyway.</li>
@@ -35,17 +40,17 @@
 	<li>Background in or strong exposure to product-led growth (PLG) motions</li>
 	<li>Experience producing hybrid or digital-first event formats</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<h2>Compensation</h2>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
-	<li><span data-sheets-root="1">For Bay Area based hires: Estimated annual salary of $198,000 - $273,000</span></li>
-	<li><span data-sheets-root="1">For NYC based hires: Estimated annual salary of $189,000 - $260,000</span></li>
+	<li>For Bay Area based hires: Estimated annual salary of $198,000 - $273,000</li>
+	<li>For NYC based hires: Estimated annual salary of $189,000 - $260,000</li>
 </ul>
-<p><strong>Equity</strong></p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -56,14 +61,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -5,13 +5,23 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Denver, San Francisco, Seattle, Atlanta, New York City</strong></p>
-<p><strong>What You Would Do Here:</strong></p>
-<p>Cloudflare is growing our People team. Our focus is finding the best people to work at Cloudflare and then allowing you to do your best work. As we continue to build out our Business Partner team, we are looking for a trusted business partner who is naturally curious about what we do and driven to help our people thrive. In this role, you will report to the Senior Director, GTM People Team Business Partner and support our strategic initiatives, partnering closely with Go-To-Market leaders.</p>
-<p>You will develop and implement proactive solutions for a broad scope of activities, ensuring alignment on initiatives and priorities, maintaining open and transparent lines of communication and keeping our teams thriving and well supported. You will serve as a strategic partner with strong client partnership based in business acumen. You will focus on organizational design, talent management, and driving initiatives and change leadership.</p>
-<p>We passionately believe in leadership at all levels, and our fast growth has created a special opportunity to really enable our team members to acquire new skills and grow on the job. You will help us get better at this by spending time with our people and developing and implementing programs that are responsive to our leaders' needs, role model our company capabilities and will scale as we continue to grow an enterprise business.</p>
-<p>Moving at our pace brings a lot of change, complexity, and ambiguity—and a little bit of chaos. Cloudflarian's thrive on that and are comfortable being uncomfortable. That means Cloudflare is not the right place for everyone. Keep up with an unrelenting pace (the week, not the quarter). Be resilient and resourceful in face of ambiguity and thrive on (rather than endure) change. Bring critical thought and opinion — and embrace differences and disagreement to get things done and move forward!</p>
-<p><strong>Who You Are:</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>New York, US</li>
+	<li>San Francisco, US</li>
+	<li>Seattle, US</li>
+</ul>
+<h2>Responsibilities</h2>
+<ul>
+	<li>Cloudflare is growing our People team. Our focus is finding the best people to work at Cloudflare and then allowing you to do your best work. As we continue to build out our Business Partner team, we are looking for a trusted business partner who is naturally curious about what we do and driven to help our people thrive. In this role, you will report to the Senior Director, GTM People Team Business Partner and support our strategic initiatives, partnering closely with Go-To-Market leaders.</li>
+	<li>You will develop and implement proactive solutions for a broad scope of activities, ensuring alignment on initiatives and priorities, maintaining open and transparent lines of communication and keeping our teams thriving and well supported. You will serve as a strategic partner with strong client partnership based in business acumen. You will focus on organizational design, talent management, and driving initiatives and change leadership.</li>
+	<li>We passionately believe in leadership at all levels, and our fast growth has created a special opportunity to really enable our team members to acquire new skills and grow on the job. You will help us get better at this by spending time with our people and developing and implementing programs that are responsive to our leaders' needs, role model our company capabilities and will scale as we continue to grow an enterprise business.</li>
+	<li>Moving at our pace brings a lot of change, complexity, and ambiguity—and a little bit of chaos. Cloudflarian's thrive on that and are comfortable being uncomfortable. That means Cloudflare is not the right place for everyone. Keep up with an unrelenting pace (the week, not the quarter). Be resilient and resourceful in face of ambiguity and thrive on (rather than endure) change. Bring critical thought and opinion — and embrace differences and disagreement to get things done and move forward!</li>
+</ul>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Motivated by cultivating company culture, building great businesses and helping people do their best work, you have served on a People/ HR team for minimum 12 years of experience, minimum 5 of which have been as a business partner.</li>
 	<li>You have a successful history of developing strong relationships and operating effectively through virtual support and in a distributed environment.</li>
@@ -28,18 +38,19 @@
 	<li>Uncompromising when it comes to your integrity, you speak truth, act with respect and lead with dignity.</li>
 	<li>Demonstrated success utilizing AI as a strategic force multiplier to enhance personal productivity and operational efficiency, while leveraging AI-driven insights to solve complex organizational challenges and support decision-making.</li>
 </ul>
-<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
-<p id="p-rc_c04f13ccf84ecacb-27" data-path-to-node="1"><span class="citation-31 citation-end-31">Compensation may be adjusted depending on work location.</span></p>
-<p data-path-to-node="2">● For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000.</p>
-<p data-path-to-node="3">● For New York City and Washington based hires: Estimated annual salary of $178,000 - $245,000.</p>
-<p id="p-rc_c04f13ccf84ecacb-28" data-path-to-node="4">● For Colorado based hires: Estimated annual salary of $162,000 - $223,<span class="citation-29 citation-30 citation-end-30">000.</span></p>
-<p data-path-to-node="4"><span class="citation-24 citation-25 citation-26 citation-27 citation-28 citation-end-28">This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan.</span><span class="citation-24 citation-25 citation-26 citation-27 citation-end-27"> The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the </span><span class="citation-24 citation-25 citation-end-25">Sales Compensation Plan.</span>&nbsp;</p>
-<p>&nbsp;</p>
-<p><strong>Equity</strong></p>
+<h2>Compensation</h2>
+<p>Compensation may be adjusted depending on work location.</p>
+<ul>
+	<li>For San Francisco Bay Area based hires: Estimated annual salary of $187,000 - $257,000.</li>
+	<li>For New York City and Washington based hires: Estimated annual salary of $178,000 - $245,000.</li>
+	<li>For Colorado based hires: Estimated annual salary of $162,000 - $223,000.</li>
+</ul>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -50,14 +61,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

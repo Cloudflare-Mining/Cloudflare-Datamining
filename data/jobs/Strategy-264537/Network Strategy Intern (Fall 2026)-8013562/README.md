@@ -5,10 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;</strong>Austin, TX</p>
-<p><strong>About the Role</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare is looking for an enthusiastic and analytically-minded intern to join our Network Strategy team. This role is designed to provide a comprehensive introduction to the fundamental principles of Network Strategy at Cloudflare, with a focus on developing the skills necessary for long-term growth within the team. The intern will support key initiatives by executing on special projects designed to advance and improve operational efficiency. They will also provide essential day-to-day operational support to our Interconnection Managers and Network Acquisition Managers.</p>
-<h4><strong>Responsibilities</strong></h4>
+<h2>Responsibilities</h2>
 <ul>
 	<li><strong>Special Project Execution:</strong> Assist in the execution of special projects focused on advancing and improving the Network Strategy team's operational processes.</li>
 	<li><strong>Interconnection Operational Support:</strong> Provide direct operational support to Interconnection Managers, helping to manage and track key peering and transit relationships.</li>
@@ -17,7 +20,7 @@
 	<li><strong>Documentation and Internal Reporting:</strong> Contribute to internal documentation and reporting, ensuring clarity and accuracy of information shared across the team.</li>
 	<li><strong>KPI Tracking and Progress Reporting:</strong> Track key performance indicators (KPIs) for ongoing projects and report progress to relevant stakeholders.</li>
 </ul>
-<h4><strong>Role Requirements (Must-Have Skills):</strong></h4>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Currently pursuing a Bachelor's or Master's degree in a quantitative, analytical, or strategic field (e.g., Business, Finance, Economics, Data Science, Engineering, or equivalent).</li>
 	<li>Demonstrated strong analytical and problem-solving skills, with a focus on data-driven decision-making.</li>
@@ -28,7 +31,7 @@
 	<li><strong>Ability to commit to a full-time 12-week fall internship.</strong></li>
 	<li><strong>In office 3-5 days a week in Austin, TX.</strong></li>
 </ul>
-<p><strong>Nice-to-Have Skills</strong></p>
+<h2>Bonus Points</h2>
 <ul>
 	<li>A basic understanding of the Internet ecosystem, including concepts like IP networking, peering, transit, and data centers.</li>
 	<li>Prior experience or coursework related to telecommunications, network infrastructure, or technology strategy.</li>

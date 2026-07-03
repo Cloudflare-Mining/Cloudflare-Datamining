@@ -5,10 +5,18 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p>Available Location: New York, San Francisco, Austin, or Lisbon</p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+	<li>New York, US</li>
+	<li>San Francisco, US</li>
+	<li>US</li>
+	<li>Lisbon</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare One is one of the fastest-growing segments of our business. To maintain this velocity, we need a GTM Engineer who can bridge the gap between complex technical infrastructure and high-velocity sales execution. In this role, you'll design, build, and ship AI-powered workflows that scale our sales, marketing, and support functions as a competitive advantage.</p>
 <p>You apply judgement and taste to design systems that make reps’ lives easier. You know when to build in the tools they already use every day and when to build something custom. You think two to three steps ahead on how the thing you're building today fits into the broader systems architecture tomorrow. And you bring a point of view on our stack, on what we should be building, and on where AI can do something that low-code tooling simply can't.</p>
-<p><strong>Responsibilities</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Design and maintain the data foundation our Specialist GTM org runs on, spanning account and contact data quality, enrichment workflows, and data provider orchestration across our stack</li>
 	<li>Audit the stack and generate your own backlog. We have a lot of tools, some overlap, and real gaps. Walk in with a point of view, identify what's missing or broken, and prioritize accordingly, without waiting to be handed a roadmap</li>
@@ -18,7 +26,7 @@
 	<li>Integrate third-party APIs to sync events and information across disparate systems, ensuring data flows reliably between the tools your team depends on every day</li>
 	<li>Document what you build. If people can't find it, understand it, or trust it, it doesn't matter how well it works</li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>3+ years of experience in GTM Engineering, workflow automation, or a technical RevOps role, ideally at a high-growth, AI-native B2B company</li>
 	<li>Direct experience with Salesforce. You know the data model, you've built on it, and you're comfortable owning changes</li>
@@ -29,22 +37,21 @@
 	<li>Systems thinker: you naturally break problems into composable parts, building solutions with separation of concerns so they're reusable, extensible, and easy to maintain</li>
 	<li>High agency + bias for action: you're not paralyzed by ambiguity or imperfect tooling. You know how to experiment, build fast, and clean up as you go</li>
 </ul>
-<p><strong>Compensation</strong></p>
+<h2>Compensation</h2>
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated salary of $161,000 - $287,000<br>For Bay Area-based hires: Estimated annual salary of $168,000 - $303,000</li>
-	<li>For Portugal based hires: Estimated annual salary is between €68,000 - €94,000.
-		<ul>
-			<li data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</li>
+	<li>For Portugal based hires: Estimated annual salary is between €68,000 - €94,000.<ul>
+			<li>The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</li>
 		</ul>
 	</li>
 </ul>
 <p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual&nbsp;<strong>salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan</strong>.</p>
-<p><strong>Equity</strong></p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -55,14 +62,14 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -5,25 +5,32 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: US Remote</strong></p>
-<p><strong>About the Team</strong></p>
-<p>We want to find the best people to join our team and then help you to do your best work. The Employee Relations Team is a new Center of Excellence within the People Team, with the mission to ensure our organization’s treatment of every employee is fair, respectful, and consistent with our Cloudflare Capabilities. To support that mission, this position’s responsibilities fall into proactive and reactive categories. Reactive responsibilities include handling complex investigations and partnering with business leaders on the performance management process. Proactive responsibilities include identifying and addressing trends to improve the overall employee experience at Cloudflare.&nbsp;</p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>New York, US</li>
+	<li>Seattle, US</li>
+	<li>Washington DC, US</li>
+</ul>
+<h2>About the Role</h2>
+<p>We want to find the best people to join our team and then help you to do your best work. The Employee Relations Team is a new Center of Excellence within the People Team, with the mission to ensure our organization’s treatment of every employee is fair, respectful, and consistent with our Cloudflare Capabilities. To support that mission, this position’s responsibilities fall into proactive and reactive categories. Reactive responsibilities include handling complex investigations and partnering with business leaders on the performance management process. Proactive responsibilities include identifying and addressing trends to improve the overall employee experience at Cloudflare.</p>
+<h2>Responsibilities</h2>
 <p>In this role, you will report to the Sr. Director, Employee Relations and support our Americas People Team Business Partners (PTBPs). You will be partnering with key stakeholders across Cloudflare in various ways, including those listed below:</p>
-<h4><strong>What You'll Do</strong></h4>
 <ul>
 	<li>Operate as a trusted advisor, consulting with PTBPs and senior business leaders on complex organizational issues and challenging assumptions to create solutions that solve business problems.</li>
 	<li>Conduct complex and thorough investigations into employee relations matters, providing fair and objective recommendations for resolution.</li>
 	<li>Adhere to service level agreements for timely response and follow up to issues, including appropriate use of the case management system, effective and thorough documentation and reporting, and all associated processes.</li>
 	<li>Build, analyze, and maintain ER metrics and present data to People Team partners on a quarterly basis.</li>
 	<li>Conduct in-depth root cause analysis of ER trends, presenting data-driven stories in business language to influence talent decisions and advise on the productivity impact of attrition.</li>
-	<li>Provide advice and guidance to managers in assigned business units to address employee performance issues, including the administration of the PIP or Package process.&nbsp;</li>
+	<li>Provide advice and guidance to managers in assigned business units to address employee performance issues, including the administration of the PIP or Package process.</li>
 	<li>Partner with the Learning and Development Team to develop training workshops/classes/toolkits for leaders.</li>
 	<li>Assist with the updating of Company policies and responding to inquiries and concerns.</li>
 	<li>Lead and coordinate major global ER projects, requiring significant analysis and the development of innovative solutions that have a broad impact on the ER model and company policy.</li>
 	<li>Partner cross-functionally with key stakeholders, including Legal Compliance, Payroll, Benefits, and other departments to resolve employee issues in a timely manner.</li>
 </ul>
-<p><strong>&nbsp;</strong></p>
-<p><strong>Who You Are:</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>You have served on a People/HR team for a minimum of 8 years, 6 of which have been in an Employee Relations capacity.</li>
 	<li>You are motivated by cultivating company culture, building great businesses and helping people do their best work.</li>
@@ -32,16 +39,39 @@
 	<li>You have a successful history of developing strong relationships and operating effectively through virtual support and in a distributed environment.</li>
 	<li>You approach challenges with a solution-focused mindset, viewing obstacles as opportunities for improvement and growth.</li>
 	<li>You have experience designing and leading change strategies for complex initiatives, partnering with stakeholders to co-create solutions and ensure buy-in.</li>
-	<li>You are strategic, have a keen business acumen, and a track record of partnering closely with business leaders. You can articulate how People Teams bring value to an organization.&nbsp;</li>
+	<li>You are strategic, have a keen business acumen, and a track record of partnering closely with business leaders. You can articulate how People Teams bring value to an organization.</li>
 	<li>You are a trusted partner who leads with empathy, building strong relationships through exceptional written and verbal communication. Your high emotional intelligence allows you to navigate sensitive situations with understanding and professionalism..</li>
 	<li>You devote time and attention to supporting our employees, fostering strong relationships and sustaining the trust placed in you.</li>
 	<li>You uphold the highest standards of integrity, communicating honestly, treating others with respect, and leading with dignity.</li>
 </ul>
-<p><strong>Equity</strong><br>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong><br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
-<p>Health &amp; Welfare Benefits<br>● Medical/Rx Insurance<br>● Dental Insurance<br>● Vision Insurance<br>● Flexible Spending Accounts<br>● Commuter Spending Accounts<br>● Fertility &amp; Family Forming Benefits<br>● On-demand mental health support and Employee Assistance Program<br>● Global Travel Medical Insurance</p>
-<p>Financial Benefits<br>● Short and Long Term Disability Insurance<br>● Life &amp; Accident Insurance<br>● 401(k) Retirement Savings Plan<br>● Employee Stock Participation Plan</p>
-<p>Time Off<br>● Flexible paid time off covering vacation and sick leave<br>● Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
+<h2>Compensation</h2>
+<p><strong>Equity</strong></p>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p><strong>Benefits</strong></p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
+<p>Health &amp; Welfare Benefits</p>
+<ul>
+	<li>Medical/Rx Insurance</li>
+	<li>Dental Insurance</li>
+	<li>Vision Insurance</li>
+	<li>Flexible Spending Accounts</li>
+	<li>Commuter Spending Accounts</li>
+	<li>Fertility &amp; Family Forming Benefits</li>
+	<li>On-demand mental health support and Employee Assistance Program</li>
+	<li>Global Travel Medical Insurance</li>
+</ul>
+<p>Financial Benefits</p>
+<ul>
+	<li>Short and Long Term Disability Insurance</li>
+	<li>Life &amp; Accident Insurance</li>
+	<li>401(k) Retirement Savings Plan</li>
+	<li>Employee Stock Participation Plan</li>
+</ul>
+<p>Time Off</p>
+<ul>
+	<li>Flexible paid time off covering vacation and sick leave</li>
+	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

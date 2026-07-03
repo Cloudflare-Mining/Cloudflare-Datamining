@@ -5,13 +5,16 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX</strong></p>
-<p><strong>About Cloudflare's Security Team</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
 <p>The Threat Detection and Security Incident Response teams are responsible for identifying, understanding, detecting, and responding to threats targeting Cloudflare.</p>
-<p><strong>About the Internship Program</strong></p>
 <p>The ideal Security intern is passionate about making the Internet a more secure place. You will work alongside experienced security team members to partner with them in planning, executing and overseeing initiatives that help improve Cloudflare’s security posture. We are looking for interns who are curious, proactive, and able to approach problems with a "security-first" mindset. This is a unique opportunity for candidates who want to learn how to defend systems at a scale that few other companies can offer.</p>
 <p>What would you do as a Cloudflare intern?</p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Execute a specialized security project over 12 weeks that directly improves Cloudflare’s defensive posture.</li>
 	<li>With a focus on threats and how they operate, work to build and improve systems that are the front lines of protecting Cloudflare from malicious attacks.</li>
@@ -22,9 +25,9 @@
 	<li>Present your security project to the entire company at the end of the internship.</li>
 	<li>Connect and learn from our executives and leadership team including our co-founders.</li>
 	<li>Write for our Cloudflare blog and be featured on Cloudflare.tv sessions.</li>
+	<li>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
-<p><strong>Example of desirable skills, knowledge and experience</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Understanding of attacker Tools, Techniques, and Procedures (TTPs)</li>
 	<li>Understanding of operating systems, SaaS applications, CI/CD, and common security tools.</li>
@@ -35,7 +38,10 @@
 	<li>Ability to commit to a minimum 12 week summer internship.</li>
 	<li>In office 3-5 days a week in the Austin office.</li>
 </ul>
-<p><strong>Bonus: Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></strong></p>
+<h2>Bonus Points</h2>
+<ul>
+	<li><strong>Bonus: Demonstrated passion for security &amp; software development, such as personal projects, open-source contributions, or experience with our developer platform using <a href="https://www.cloudflare.com/students/">Cloudflare for Students.</a></strong></li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

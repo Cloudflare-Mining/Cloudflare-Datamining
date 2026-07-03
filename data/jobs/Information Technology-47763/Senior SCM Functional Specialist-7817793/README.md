@@ -5,10 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: </strong><span class="il">Bengaluru</span></p>
-<p><strong>About the Role:</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
 <p>The Oracle SCM Functional Specialist will be a key expert in the full lifecycle implementation, configuration, and ongoing optimization of the Oracle Fusion Cloud ERP modules supporting the end-to-end SCM and S2P lifecycles. This role is central to the company’s migration from NetSuite, focusing on configuring and validating scalable solutions within Oracle Fusion.</p>
-<p><strong>Key Responsibilities:</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Implementation &amp; Configuration: Lead the functional design and configuration roadmap for Oracle Fusion SCM/Procurement modules, including Product Management, Procurement, Inventory Management, and Manufacturing.</li>
 	<li>Solution Design &amp; Validation: Own the design and configuration of complex processes (e.g., global S2P, inventory optimization, manufacturing execution) directly within Oracle Fusion, ensuring alignment with policy and architectural standards.</li>
@@ -16,23 +19,19 @@
 	<li>Process Optimization: Identify and champion the adoption of out-of-the-box Oracle Fusion capabilities to drive automation and efficiency improvements within supply chain processes.</li>
 	<li>Integration Support: Collaborate with technical teams on all cross-application integrations to ensure reliable and secure data exchange between Oracle Fusion SCM modules and internal/external systems/partners.</li>
 </ul>
-<p><strong>Required Qualifications:</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>10+ years of progressive experience in an IT or consulting role, specifically supporting ERP Supply Chain, Product Management and Procurement systems.</li>
 	<li>5+ years of hands-on, end-to-end implementation and configuration experience with Oracle Fusion.</li>
 	<li>Strong functional/process knowledge of core supply chain, product management and procurement business processes (Source-to-Pay, Inventory, Logistics).</li>
 	<li>Proven ability to author and execute detailed test scripts for UAT, and define robust system configuration.</li>
 	<li>Experience with Oracle Global Trade Management Cloud is a plus</li>
-</ul>
-<p><strong>Preferred Qualifications:</strong></p>
-<ul>
 	<li>Experience in an organization transitioning to Oracle Cloud Ecosystem.</li>
 	<li>Experience working with ODM/OEM/CM manufacturing settings.</li>
 	<li>Exposure to the Data Center Infrastructure industry</li>
 	<li>Relevant professional product/functional certifications (e.g., CPA, PMP, Oracle Cloud certifications)</li>
 	<li>Working knowledge of various AI Agents within Oracle Fusion Cloud Applications</li>
 </ul>
-<p>Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772709497740000&amp;usg=AOvVaw0TxX4B5ll0XGIcYUaz-iZJ">cloudflare.com</a>&nbsp;email addresses.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

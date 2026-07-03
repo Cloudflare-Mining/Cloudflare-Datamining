@@ -5,14 +5,16 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Locations: Austin, TX&nbsp;</strong></h3>
-<h3><strong>About the Department</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h3><strong>About the Team</strong></h3>
 <p>R2 is Cloudflare's object storage platform, offering developers durable, reliable storage that integrates seamlessly with Cloudflare's global network and Developer Platform. The R2 Metadata team owns the metadata layer that underpins every R2 operation, every object put, get, list, and delete flows through the systems we build and operate.</p>
 <p>R2 is growing rapidly, and the metadata layer must evolve to keep pace. The team is responsible for designing and operating the metadata systems that track every object in R2, building and shipping developer-facing features, and ensuring the reliability and performance of these systems at global scale.</p>
 <p>You'll be joining a team that operates at the intersection of distributed databases, large scale storage infrastructure, and edge computing;&nbsp; building systems that need to be correct, fast, and reliable.</p>
-<h3><strong>What You’ll Do</strong></h3>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Design and implement features in a metadata system, backed by a distributed SQL DB,&nbsp; that serves every R2 API operation, ensuring correctness, performance, and compatibility with the S3 API surface.</li>
 	<li>Build and operate production services on Cloudflare Workers and Kubernetes that handle high throughput metadata operations with strong consistency and durability guarantees.</li>
@@ -22,7 +24,7 @@
 	<li>Use AI tools extensively to accelerate development, debugging, and operational tasks. We expect engineers to leverage AI as a core part of their workflow.</li>
 	<li>Collaborate across teams (storage infrastructure, networking, other platform teams) to coordinate capacity planning, API contracts, and cross cutting initiatives.</li>
 </ul>
-<h3><strong>Examples of desirable skills, knowledge, and experience</strong></h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Strong programming skills in TypeScript, Go, or similar languages.</li>
 	<li>Experience with distributed databases; schema design, query optimization, indexing strategies, and understanding consistency/performance tradeoffs at scale.</li>

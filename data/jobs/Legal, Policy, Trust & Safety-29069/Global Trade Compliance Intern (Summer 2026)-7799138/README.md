@@ -5,11 +5,14 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX&nbsp;</strong></p>
-<p><strong>About Cloudflare's Global Trade Compliance Team</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare’s Global Trade Compliance team supports the company’s global infrastructure by overseeing the import and export of hardware across multiple regions. Because Cloudflare’s hardware deployment model is unique, the team plays an important role in helping the business navigate cross-border requirements with strong global oversight, risk mitigation, and regulatory awareness.</p>
 <p>The team works across functions to support not only day-to-day execution, but also trade-related research, data analysis, process improvement, and compliance with applicable import and export rules. This internship offers exposure to the intersection of global operations, regulatory compliance, and strategic project work in a fast-moving environment.</p>
-<p><strong>What you’ll do</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Support assigned projects for the Global Trade Compliance team</li>
 	<li>Collect, organize, and analyze trade-related data for reports, trackers, and internal summaries</li>
@@ -19,7 +22,7 @@
 	<li>Support projects exploring how AI tools can improve workflow and process efficiency</li>
 	<li>Prepare clear written summaries, presentations, or project materials for internal use</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Current undergraduate student pursuing a degree in international business, business, supply chain, logistics, economics, global studies, data analytics, project management or a related field</li>
 	<li>Strong analytical, organizational, and written communication skills</li>

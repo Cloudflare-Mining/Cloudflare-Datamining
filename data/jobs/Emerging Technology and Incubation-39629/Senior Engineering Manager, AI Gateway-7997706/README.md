@@ -5,11 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, TX | Hybrid</strong></p>
-<p><strong>What You'll Do&nbsp;</strong></p>
-<p>As the Engineering Manager for AI Gateway, you will lead a small, high-velocity team building that layer. This is a deeply hands-on role. You will be in the code, in the design docs, in customer conversations, and in the trenches with your team. We're looking for a generative builder who can move from half-formed idea to working prototype quickly, and bring a team along with that energy. We are obsessively agent-pilled. We don't just build the product; we build the environment that builds the product: the agents, harnesses, skills, tools, and context that let a small team ship like a much larger one. We dogfood AI Gateway, Workers AI, and the broader Cloudflare agent stack relentlessly, and we expect you to as well.</p>
-<p><strong>In This Role, You Will</strong></p>
+<h2>Available Locations</h2>
 <ul>
+	<li>Austin, US</li>
+</ul>
+<h2>Responsibilities</h2>
+<ul>
+	<li>As the Engineering Manager for AI Gateway, you will lead a small, high-velocity team building that layer. This is a deeply hands-on role. You will be in the code, in the design docs, in customer conversations, and in the trenches with your team. We're looking for a generative builder who can move from half-formed idea to working prototype quickly, and bring a team along with that energy. We are obsessively agent-pilled. We don't just build the product; we build the environment that builds the product: the agents, harnesses, skills, tools, and context that let a small team ship like a much larger one. We dogfood AI Gateway, Workers AI, and the broader Cloudflare agent stack relentlessly, and we expect you to as well.</li>
 	<li>Set the technical and product direction for AI Gateway alongside engineers and PMs, then roll up your sleeves and help build it.</li>
 	<li>Build the software and the software that builds the software. Your team needs to build the context and toolchain that let agents help build, operate, monitor, and improve AI Gateway itself.</li>
 	<li>Inspire and energize a team shipping at the pace the AI ecosystem demands. Provider APIs change weekly, new models drop daily, and the gap between "good idea" and "in production" is measured in days, not quarters.</li>
@@ -17,7 +19,7 @@
 	<li>Recruit, mentor, and grow engineers. Build a small team that punches massively above its weight.</li>
 	<li>Partner closely with Workers AI, Agents, and the broader Developer Platform teams to deliver a unified inference layer that feels like one product</li>
 </ul>
-<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>A minimum of 8 years of relevant industry experience, including at least 4 years managing software engineering teams.</li>
 	<li>Proven track record leading teams that have shipped and operated complex, large-scale systems, preferably in AI infrastructure, developer platforms, cloud infrastructure, edge/proxy systems, or high-scale APIs.</li>
@@ -26,7 +28,7 @@
 	<li>Demonstrated ability to hire, coach, and develop senior engineers, and to build high-performing, inclusive teams that ship. You care about teams and team culture.</li>
 	<li>A hands-on approach to leadership: you consider yourself a builder, stay close to the code, know the numbers, know the customer, and know what to build next.</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Experience building AI/ML infrastructure, inference platforms, model gateways, or LLM-powered applications.</li>
 	<li>Experience building developer-facing APIs or SDKs at scale.</li>

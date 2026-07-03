@@ -5,14 +5,16 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><span style="font-size: 10pt;"><strong>Available Locations: <span class="il">Bengaluru</span></strong></span></p>
-<p><span style="font-size: 10pt;"><strong>About the Department</strong></span></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Bengaluru, India</li>
+</ul>
+<h2>About the Role</h2>
 <p>Cloudflare’s Engineering Team builds and runs the software that handles large amounts of requests on the Internet today. We also build and run the internal tools and platforms that run that software. Individual engineering teams are typically responsible for large areas with considerable impact, and able to execute autonomously within that space to deliver value to their customers - be they internal or external.</p>
-<p><span style="font-size: 10pt;"><strong>About the team and the role</strong></span></p>
 <p>The Engineering Platform and Productivity team has a charter to build a self-service, resilient, and scalable platform using a combination of Open Source projects, intellectual property, and internal infrastructure. The charter includes to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes services that are redundant for each product development team to build and that serve high volumes of requests every day.</p>
-<p>As an engineer in the Engineering Productivity and Platforms organization, you'll be building and managing tools to help engineers deploy and operate the services that make Cloudflare work. Our mission is to provide a reliable, yet flexible, platform to help product teams release new software efficiently and safely. The role includes both software engineering and DevOps operational responsibilities. The ideal candidate will care deeply about providing other engineers with an excellent development experience.&nbsp;</p>
+<p>As an engineer in the Engineering Productivity and Platforms organization, you'll be building and managing tools to help engineers deploy and operate the services that make Cloudflare work. Our mission is to provide a reliable, yet flexible, platform to help product teams release new software efficiently and safely. The role includes both software engineering and DevOps operational responsibilities. The ideal candidate will care deeply about providing other engineers with an excellent development experience.</p>
 <p>Additionally, this role has a focus on Agentic Engineering, and building tools for engineers internally to leverage modern AI agents, models, and agentic practices - including MCP servers, agentic IDEs, autonomous agents, evals, and make AI-native improvements to our internal SDLC and solving context engineering at scale.</p>
-<p><span style="font-size: 10pt;"><strong>What You’ll Do</strong></span></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Design and build developer productivity tooling including MCP servers and agents.</li>
 	<li>Drive initiatives that make our engineers happier and more productive.</li>
@@ -21,19 +23,19 @@
 	<li>Improve our GitOps systems and practices.</li>
 	<li>Work with app teams to understand their potential challenges and help them choose the best way to architect their systems.</li>
 </ul>
-<p><span style="font-size: 10pt;"><strong>Desirable skills, knowledge and experience.</strong></span></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Ability to work with codebases in Bash, TypeScript and Go.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Excellent debugging skills.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Source control experience including branching, merging and rebasing.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">The ability to break down complex problems into smaller pieces, provide options, talk through trade-offs and drive the effort to solve the problem.</span></li>
+	<li><strong>Desirable skills, knowledge and experience.</strong></li>
+	<li>Ability to work with codebases in Bash, TypeScript and Go.</li>
+	<li>Excellent debugging skills.</li>
+	<li>Source control experience including branching, merging and rebasing.</li>
+	<li>The ability to break down complex problems into smaller pieces, provide options, talk through trade-offs and drive the effort to solve the problem.</li>
 </ul>
-<h3><span style="font-size: 10pt;"><strong>Bonus Points</strong></span></h3>
+<h2>Bonus Points</h2>
 <ul>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Providing guidance and building platforms across multiple zones and regions as foundation for other teams to build distributed highly-available applications.</span></li>
-	<li style="font-size: 10pt;"><span style="font-size: 10pt;">Worked in a platform engineering team/ engineering productivity team in the past.</span></li>
+	<li>Providing guidance and building platforms across multiple zones and regions as foundation for other teams to build distributed highly-available applications.</li>
+	<li>Worked in a platform engineering team/ engineering productivity team in the past.</li>
 </ul>
-<p><span style="font-size: 10pt;">Fraud Alert:&nbsp;Do not fall victim to recruitment fraud. Cloudflare never charges application fees or requires candidates to purchase third-party certifications or training as a condition of employment. All official communication comes strictly from @<a href="http://cloudflare.com/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://cloudflare.com&amp;source=gmail&amp;ust=1772709497740000&amp;usg=AOvVaw0TxX4B5ll0XGIcYUaz-iZJ">cloudflare.com</a>&nbsp;email addresses.</span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

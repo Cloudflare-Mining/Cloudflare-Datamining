@@ -5,23 +5,20 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations:&nbsp;&nbsp;</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
+	<li>Seattle, US</li>
+	<li>Washington DC, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>Atlanta (US), Austin (US), Denver (US), Seattle (US), Toronto (Canada)</p>
-<p><strong>About the Role:</strong></p>
 <p>We are seeking a DCIM Program Leader to build, scale, and own our Data Center Infrastructure Management program.&nbsp; This leadership role is part of the Infrastructure Operations organization, which is responsible for building, scaling, and running one of the world's largest and most important cloud networks. Cloudflare’s global network spans more than 330 cities, and is a key strategic asset that supports all of our customers and products. As a leader on this team, you will play a crucial role in ensuring the performance, availability, and security of our infrastructure.</p>
-<p>&nbsp;</p>
 <p>The DCIM Program Leader role is the single point of ownership for the Nlyte platform across Cloudflare's global network of 330+ cities. You will architect our Workflow and Change Management policy, own the strategic vision, and help drive the deep integration necessary to establish Nlyte as the mandatory Single Source of Truth (SSOT), enabling the disciplined, high-velocity scale of our edge and core network.</p>
-<p>&nbsp;</p>
 <p>We operate in a fast-paced environment where you will be expected to drive both project delivery and operational excellence through continuous improvement, standardization, and optimization. This isn't just about day to day operations; it's about building a scalable, performant, secure, and resilient infrastructure that plays a critical role in us building a better Internet.</p>
-<p>&nbsp;</p>
-<p><strong>Who you are:</strong></p>
-<p>You are an experienced engineering leader and DCIM expert, with a passion for building high-performing teams and a track record of driving operational excellence. You will set strategy, establish priorities, and mentor a group of top technical talent. This role is for a hands-on leader who can rapidly learn, adapt, and apply learnings to enable fast and sustainable growth. You thrive in a hyper-growth environment and have an outstanding ability to get things done under pressure while leading with optimism and grit.</p>
-<p>&nbsp;</p>
-<p>You have a proven track record of scaling teams, driving change, and being a well-respected technical leader and people manager. You are not just a manager, but a mentor who can grow and empower your team to ensure an energized, motivating, and inclusive work environment.</p>
-<p>&nbsp;</p>
-<p>You are Principled; you are the guardian of data integrity, refusing to allow undocumented changes. You are Curious; you seek novel ways to automate workflow integration with proprietary Cloudflare systems to achieve zero-touch provisioning.</p>
-<p>&nbsp;</p>
-<p><strong>Key Responsibilities:</strong></p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Own the successful deployment of CAPEX investments, ensuring our infrastructure scales ahead of demand.</li>
 	<li>Collaborate strategically with cross-functional partners including Project Managers, Capacity Planning, Finance, and Security to deliver on ambitious group initiatives.</li>
@@ -31,38 +28,40 @@
 	<li>Foster a best-in-class operations team by bringing fresh perspectives, leadership acumen, and a focus on employee engagement.</li>
 	<li>Change Policy Architect: Design and enforce the global DCIM Workflow and Change Management policies (MAC process), ensuring strict ITIL/ITSM compliance across IT, Facilities, and Deployment teams worldwide.</li>
 	<li>Technical Integration Leader: Support the complex, bi-directional API/database integration between Nlyte and core enterprise systems (ERP, CMDB, etc) to automate asset management and trigger workflow requests.</li>
-	<li>Capacity Strategy: Partner with the DCIM Analyst and our Capacity Planning team to develop forward-looking capacity models, ensuring resource availability and optimization for new services like Workers AI and R2.&nbsp;</li>
-	<li>Governance &amp; Leadership: Establish and track key operational metrics (e.g., Workflow Compliance KPIs, Data Accuracy Rate), providing executive reporting on infrastructure risk.&nbsp;</li>
+	<li>Capacity Strategy: Partner with the DCIM Analyst and our Capacity Planning team to develop forward-looking capacity models, ensuring resource availability and optimization for new services like Workers AI and R2.</li>
+	<li>Governance &amp; Leadership: Establish and track key operational metrics (e.g., Workflow Compliance KPIs, Data Accuracy Rate), providing executive reporting on infrastructure risk.</li>
 	<li>Lead and mentor the DCI Administrator and Analyst and members across the Infrastructure Engineering organization.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Qualifications:</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>Education:</li>
-	<ul>
-		<li>Bachelor's degree in Information Technology, Computer Science, Business Administration, or a related field, or equivalent practical experience.&nbsp;&nbsp;</li>
-	</ul>
-	<li>Experience:</li>
-	<ul>
-		<li>7+ years in Infrastructure/Data Center Operations, including inventory control and asset lifecycle.</li>
-		<li>4+ years managing a major DCIM platform (Nlyte preferred).&nbsp;</li>
-		<li>Proven ability to lead complex, cross-functional programs and manage vendor relationships in a high-velocity environment.</li>
-		<li>Experience with leading change management in ERP and asset management transformation efforts.</li>
-	</ul>
-	<li>Technical Skills:</li>
-	<ul>
-		<li>Expert with ERP asset management and maintenance management functionalities.</li>
-		<li>Expert-level knowledge of ITIL v4, particularly Change and Configuration Management, with demonstrable experience enforcing standards at a global scale.&nbsp;</li>
-		<li>Strong understanding of Data Center infrastructure, including data center hardware (servers, storage, networking equipment) and their configurations.&nbsp;</li>
-		<li>Ability to analyze complex data and generate detailed reports.</li>
-	</ul>
-	<li>Soft Skills:</li>
-	<ul>
-		<li>Exceptional attention to detail and strong organizational skills.&nbsp;&nbsp;</li>
-		<li>Excellent problem-solving and root cause analysis capabilities.&nbsp;&nbsp;</li>
-		<li>Strong communication and interpersonal skills, with the ability to effectively collaborate with cross-functional teams and present recommendations to various stakeholders.&nbsp;&nbsp;</li>
-		<li>Customer service-oriented with a proactive and collaborative team approach.&nbsp;</li>
-	</ul>
+	<li>You are an experienced engineering leader and DCIM expert, with a passion for building high-performing teams and a track record of driving operational excellence. You will set strategy, establish priorities, and mentor a group of top technical talent. This role is for a hands-on leader who can rapidly learn, adapt, and apply learnings to enable fast and sustainable growth. You thrive in a hyper-growth environment and have an outstanding ability to get things done under pressure while leading with optimism and grit.</li>
+	<li>You have a proven track record of scaling teams, driving change, and being a well-respected technical leader and people manager. You are not just a manager, but a mentor who can grow and empower your team to ensure an energized, motivating, and inclusive work environment.</li>
+	<li>You are Principled; you are the guardian of data integrity, refusing to allow undocumented changes. You are Curious; you seek novel ways to automate workflow integration with proprietary Cloudflare systems to achieve zero-touch provisioning.</li>
+	<li>Education:<ul>
+			<li>Bachelor's degree in Information Technology, Computer Science, Business Administration, or a related field, or equivalent practical experience.</li>
+		</ul>
+	</li>
+	<li>Experience:<ul>
+			<li>7+ years in Infrastructure/Data Center Operations, including inventory control and asset lifecycle.</li>
+			<li>4+ years managing a major DCIM platform (Nlyte preferred).</li>
+			<li>Proven ability to lead complex, cross-functional programs and manage vendor relationships in a high-velocity environment.</li>
+			<li>Experience with leading change management in ERP and asset management transformation efforts.</li>
+		</ul>
+	</li>
+	<li>Technical Skills:<ul>
+			<li>Expert with ERP asset management and maintenance management functionalities.</li>
+			<li>Expert-level knowledge of ITIL v4, particularly Change and Configuration Management, with demonstrable experience enforcing standards at a global scale.</li>
+			<li>Strong understanding of Data Center infrastructure, including data center hardware (servers, storage, networking equipment) and their configurations.</li>
+			<li>Ability to analyze complex data and generate detailed reports.</li>
+		</ul>
+	</li>
+	<li>Soft Skills:<ul>
+			<li>Exceptional attention to detail and strong organizational skills.</li>
+			<li>Excellent problem-solving and root cause analysis capabilities.</li>
+			<li>Strong communication and interpersonal skills, with the ability to effectively collaborate with cross-functional teams and present recommendations to various stakeholders.</li>
+			<li>Customer service-oriented with a proactive and collaborative team approach.</li>
+		</ul>
+	</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

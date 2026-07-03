@@ -5,14 +5,17 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: NYC or San Francisco </strong>(Hybrid)</p>
-<p>&nbsp;</p>
-<p><strong>About the team</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>New York, US</li>
+	<li>San Francisco, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>AI Access is one of two central pillars of Cloudflare's Act 4 (the other is Agentic Commerce). As bot traffic rises and human traffic declines, publishers and service providers lose the ad and subscription revenue that funds the open web. Without a new model, the economic incentive to create original content may decline or even disappear.</p>
-<p>&nbsp;</p>
 <p>We help Cloudflare's customers embrace the Agentic Web by making their content and services available to AI agents on their terms — open to any bot, gated behind payment, or anywhere in between. Help us build a better internet by ushering in a new business model for it.</p>
-<p>&nbsp;</p>
-<p><strong>What you'll do</strong></p>
+<p>At Cloudflare, performance is about results and behaviors. We value curiosity, transparency, empathy, grit, and doing the principled thing. We're distributed by design — this role is based in London or Lisbon, with regular travel to partners and team offsites.</p>
+<p>Content creators should be compensated for the value they create — whether a human or an agent is consuming it. We're helping build the business model for the agentic web. What we ship directly shapes how the AI economy develops over the next two to three years. The trade-off: ambiguous, demanding, high expectations. If you want a legible PM role at a big company, this isn't it. If you want to own the product side of a thesis that matters, it is.</p>
+<h2>Responsibilities</h2>
 <ul>
 	<li>Drive the strategy and roadmap across a suite of products that help content creators protect, value, and earn compensation for their work, and adjacent AI Access products</li>
 	<li>Deliver product specifications, prototypes, product positioning, and high-impact launches</li>
@@ -20,30 +23,25 @@
 	<li>Work with Partnerships and BD to define the new business model for the open web</li>
 	<li>Represent the product externally with publishers, AI labs, and developers</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>What we're looking for</strong></p>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>5+ years as a PM in infrastructure, developer tools, or AI/ML.&nbsp;</li>
+	<li>5+ years as a PM in infrastructure, developer tools, or AI/ML.</li>
 	<li>Developer-facing experience required; data, crawling, or search is a strong plus</li>
 	<li>A strong communicator who is comfortable with ambiguity</li>
 	<li>Technically literate — you don't need to write Rust, but you should be able to push back on a tech lead on the merits of a particular direction</li>
 	<li>Alignment with Cloudflare's goals and values - learn more on our<a href="https://www.cloudflare.com/en-gb/careers/"> Careers page</a></li>
-	<li><em>*Nice to have*</em> Founder or early-stage operator background.&nbsp;</li>
-	<li><em>*Nice to have*</em> Content licensing, rights, or publishing industry experience.&nbsp;</li>
+	<li><em>*Nice to have*</em> Founder or early-stage operator background.</li>
+	<li><em>*Nice to have*</em> Content licensing, rights, or publishing industry experience.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>How we work</strong></p>
-<p>At Cloudflare, performance is about results and behaviors. We value curiosity, transparency, empathy, grit, and doing the principled thing. We're distributed by design — this role is based in London or Lisbon, with regular travel to partners and team offsites.</p>
-<p>&nbsp;</p>
-<p><strong>Why this role</strong></p>
-<p>Content creators should be compensated for the value they create — whether a human or an agent is consuming it. We're helping build the business model for the agentic web. What we ship directly shapes how the AI economy develops over the next two to three years. The trade-off: ambiguous, demanding, high expectations. If you want a legible PM role at a big company, this isn't it. If you want to own the product side of a thesis that matters, it is.<br><br></p>
-<p><strong>Compensation may be adjusted depending on work location.</strong><strong><br></strong></p>
-<p>- For New York City-based and California (excluding Bay Area): Estimated annual salary of $141,000 - $180,000.<br>- For Bay Area-based hires: Estimated annual salary of $147,000 - $189,000</p>
-<p><strong>Equity</strong></p>
+<h2>Compensation</h2>
+<p><strong>Compensation may be adjusted depending on work location.</strong></p>
+<p>- For New York City-based and California (excluding Bay Area): Estimated annual salary of $141,000 - $180,000.</p>
+<p>- For Bay Area-based hires: Estimated annual salary of $147,000 - $189,000</p>
+<h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
+<h3>Benefits</h3>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
+<h3>Health &amp; Welfare Benefits</h3>
 <ul>
 	<li>Medical/Rx Insurance</li>
 	<li>Dental Insurance</li>
@@ -54,19 +52,18 @@
 	<li>On-demand mental health support and Employee Assistance Program</li>
 	<li>Global Travel Medical Insurance</li>
 </ul>
-<p><strong>Financial Benefits</strong></p>
+<h3>Financial Benefits</h3>
 <ul>
 	<li>Short and Long Term Disability Insurance</li>
 	<li>Life &amp; Accident Insurance</li>
 	<li>401(k) Retirement Savings Plan</li>
 	<li>Employee Stock Participation Plan</li>
 </ul>
-<p><strong>Time Off</strong></p>
+<h3>Time Off</h3>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

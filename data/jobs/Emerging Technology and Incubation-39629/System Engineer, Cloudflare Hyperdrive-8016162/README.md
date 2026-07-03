@@ -5,34 +5,36 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3><strong>Available Locations: Austin, TX | Hybrid</strong></h3>
-<h3><strong>About the Team</strong></h3>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>The Cloudflare Hyperdrive team builds the technology that makes regional databases feel like they are global. Hyperdrive is a core piece of the Cloudflare Developer Platform that accelerates database queries from Cloudflare Workers by pooling connections and caching data at the edge. By eliminating the massive latency overhead of TCP, TLS, and database-specific handshakes, Hyperdrive allows developers to use the databases they already know and love—like PostgreSQL and MySQL—without the "cold start" performance penalties typically associated with serverless environments.</p>
+<h2>Responsibilities</h2>
 <p>Hyperdrive is integrated directly into the Cloudflare global network and features:</p>
 <ul>
 	<li>Global Connection Pooling: Maintains "warm" connections to origin databases across the globe, reducing connection times by up to 90%.</li>
 	<li>Intelligent Query Caching: Automatically caches frequently run read queries as close to the user as possible.</li>
 	<li>Protocol-Aware Proxying: Features custom-built implementations of database wire protocols (PostgreSQL and MySQL) to parse and optimize traffic in real-time.</li>
 	<li>Seamless Integration: Works with existing ORMs and drivers, providing a simple connection string that "just works" for developers.</li>
+	<li>The team is geographically distributed across North America.</li>
+	<li>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Rust, Go, C++, Typescript.</li>
 </ul>
-<p>The team is geographically distributed across North America.</p>
-<h3><strong>What you'll do</strong></h3>
-<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Rust, Go, C++, Typescript.</p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>You have 4+ years of professional experience with Rust, Go, or C++. You understand how to write code that respects CPU and memory constraints.</li>
 	<li>You are comfortable with the Linux networking stack. You know your way around TCP/IP, TLS, and WebSockets.</li>
 	<li>You don’t just use databases; you understand how they work. You’re familiar with connection lifecycles, transaction states, and wire protocols.</li>
 	<li>You enjoy the challenge of debugging complex, distributed systems and building for "five nines" reliability.</li>
 </ul>
-<h3><strong>Bonus Points</strong></h3>
+<h2>Bonus Points</h2>
 <ul>
 	<li>Experience with PgBouncer, ProxySQL, or custom database middleware.</li>
 	<li>Familiarity with the Cloudflare Workers ecosystem and the unique stateful connection challenges of ephemeral computing.</li>
 	<li>You’ve contributed to database drivers, ORMs, or low-level networking libraries.</li>
 	<li>Experience using eBPF, perf, or other profiling tools to find and kill bottlenecks.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

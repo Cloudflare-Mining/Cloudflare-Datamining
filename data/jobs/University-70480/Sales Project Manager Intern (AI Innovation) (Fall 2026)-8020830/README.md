@@ -5,20 +5,29 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location: </strong>Austin, Texas</p>
-<p><strong>About the Role</strong></p>
+<h2>Available Locations</h2>
+<ul>
+	<li>Austin, US</li>
+</ul>
+<h2>About the Role</h2>
 <p>As a Project Manager Intern specializing in Process &amp; AI Innovation within the Professional Services team, you will be pivotal in boosting our operational efficiency. This is a dynamic opportunity to apply project management principles and emerging AI technologies to streamline internal processes across the Revenue organization. You will gain practical experience supporting key initiatives and enhancing team operations through process optimization. A major goal will be leveraging AI tools and 'No-Code' platforms to identify, automate, and accelerate manual, repetitive tasks, enabling teams to discover and implement more efficient ways of working.</p>
-<p><strong>Responsibilities</strong></p>
-<p><strong>Project and Administrative Support:</strong> Provide administrative and project management support, including coordinating activities, tracking milestones, and assisting with team deliverables, documentation, and reporting (meeting notes, project reports, etc.).<br><strong>Operational Playbook and Wiki:</strong> Assist in mapping, analyzing, and documenting existing partner processes (AE, PAM, etc.) to create clear visual playbooks and internal wikis.<br><strong>AI Strategy and Automation: </strong>Support the research, classification, and prioritization of AI use cases for RevOps/Sales, including defining the AI operating model and helping to automate manual, repetitive tasks using 'No-Code' platforms and AI tools.<br><strong>Tech Stack Analysis &amp; Collaboration:</strong> Contribute to efforts to build a unified tech stack, assisting with 'build vs. buy' evaluations for new tools. You will also collaborate with IT and engineering to prototype and validate AI solutions.<br><strong>Recommendations:</strong> Help synthesize findings and data into clear, measurable recommendations that align with sales motions and business outcomes.</p>
-<p><strong>Skills &amp; Qualifications</strong></p>
+<h2>Responsibilities</h2>
+<ul>
+	<li><strong>Project and Administrative Support:</strong> Provide administrative and project management support, including coordinating activities, tracking milestones, and assisting with team deliverables, documentation, and reporting (meeting notes, project reports, etc.).</li>
+	<li><strong>Operational Playbook and Wiki:</strong> Assist in mapping, analyzing, and documenting existing partner processes (AE, PAM, etc.) to create clear visual playbooks and internal wikis.</li>
+	<li><strong>AI Strategy and Automation: </strong>Support the research, classification, and prioritization of AI use cases for RevOps/Sales, including defining the AI operating model and helping to automate manual, repetitive tasks using 'No-Code' platforms and AI tools.</li>
+	<li><strong>Tech Stack Analysis &amp; Collaboration:</strong> Contribute to efforts to build a unified tech stack, assisting with 'build vs. buy' evaluations for new tools. You will also collaborate with IT and engineering to prototype and validate AI solutions.</li>
+	<li><strong>Recommendations:</strong> Help synthesize findings and data into clear, measurable recommendations that align with sales motions and business outcomes.</li>
+</ul>
+<h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Currently pursuing a degree in Business, Project Management, Operations, Data Science, or a related field.</li>
 	<li>Available for a full-time 12-week internship, working from our Austin office 3-5 days a week during the fall (Sept-Dec).</li>
 	<li>Business Strategy or Tech-focused student with a strong interest in AI/Automation, process improvement, program management, and technology exploration.</li>
 	<li>Strong organizational, communication, and analytical skills with the ability to manage multiple tasks and translate ideas into structured documentation.</li>
 	<li>A natural problem-solver who enjoys mapping out a process (using tools like Lucidchart or Miro) and thinking about how to make it simpler and faster.</li>
+	<li>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</li>
 </ul>
-<p>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
