@@ -2,6 +2,7 @@
 	"AccountID": "string; Cloudflare account ID.",
 	"ApplicationID": "int; ID of the application the domain belongs to (for example, 1, 2). Set to 0 when no ApplicationID is matched.",
 	"ApplicationName": "string; Name of the application the domain belongs to (for example, 'Cloudflare Dashboard').",
+	"AppliedMaxTTL": "int; Maximum TTL cap applied to the response records, in seconds. Set to 0 when no cap was applied.",
 	"AuthoritativeNameServerIPs": "array[string]; The IPs of the authoritative nameservers that provided the answers, if any (for example ['203.0.113.1', '203.0.113.2']).",
 	"CNAMECategoryIDs": "array[int]; ID or IDs of category that the intermediate cname domains belongs to (for example, [7,12,28,122,129,163]).",
 	"CNAMECategoryNames": "array[string]; Name or names of category that the intermediate cname domains belongs to (for example, ['Photography', 'Weather']).",
@@ -78,5 +79,6 @@
 	"TenantID": "string; The tenant ID of the DNS request, if exists.",
 	"TimeZone": "string; Time zone used to calculate the current time, if a matched rule was scheduled with it.",
 	"TimeZoneInferredMethod": "string; Method used to pick the time zone for the schedule (from rule/ from user ip/ from local time).",
+	"UpstreamRecordTTLs": "array[int]; TTL of each record in the upstream response, in seconds. Maps one-to-one with the resource records (for example, [3600, 300]).",
 	"UserID": "string; User identity where the HTTP request originated from (for example, '00000000-0000-0000-0000-000000000000')."
 }

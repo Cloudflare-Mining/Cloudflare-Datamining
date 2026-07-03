@@ -40,5 +40,6 @@
 	"RayID": "string; The RayID of the request.",
 	"Ref": "string; The user-defined identifier for the rule triggered by this request. Use refs to label your rules individually alongside the Cloudflare-provided RuleID. You can set refs via the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) for some security products.",
 	"RuleID": "string; The Cloudflare security product-specific RuleID triggered by this request.",
-	"Source": "string; The Cloudflare security product triggered by this request. Possible sources are unknown | asn | country | ip | iprange | securitylevel | zonelockdown | waf | firewallrules | uablock | ratelimit | bic | hot | l7ddos | validation | botfight | apishield | botmanagement | dlp | firewallmanaged | firewallcustom | apishieldschemavalidation | apishieldtokenvalidation | apishieldsequencemitigation."
+	"Source": "string; The Cloudflare security product triggered by this request. Possible sources are unknown | asn | country | ip | iprange | securitylevel | zonelockdown | waf | firewallrules | uablock | ratelimit | bic | hot | l7ddos | validation | botfight | apishield | botmanagement | dlp | firewallmanaged | firewallcustom | apishieldschemavalidation | apishieldtokenvalidation | apishieldsequencemitigation.",
+	"ZoneName": "string; The human-readable name of the zone (for example, 'cloudflare.com')."
 }

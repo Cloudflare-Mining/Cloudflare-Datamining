@@ -4,6 +4,7 @@
 	"AISecurityTokenCount": "int; The number of tokens in the request, as counted by AI Security.",
 	"AISecurityUnsafeTopicCategories": "array[string]; List of unsafe topic categories detected in the request by AI Security.",
 	"CacheCacheStatus": "string; Cache status. Possible values are unknown | miss | expired | updating | stale | hit | ignored | bypass | revalidated | dynamic | stream_hit | deferred \"dynamic\" means that a request is not eligible for cache. This can mean, for example that it was blocked by the firewall. Refer to [Cloudflare cache responses](https://developers.cloudflare.com/cache/concepts/cache-responses/) for more details.",
+	"CacheLockWaitedMs": "int; Maximum time spent waiting on a cache lock across all cache tiers, in milliseconds.",
 	"CacheReserveUsed": "bool; Cache Reserve was used to serve this request.",
 	"CacheResponseBytes": "int; Number of bytes returned by the cache.",
 	"CacheResponseStatus": "int; HTTP status code returned by the cache to the edge. All requests (including non-cacheable ones) go through the cache. Refer also to CacheCacheStatus field.",
