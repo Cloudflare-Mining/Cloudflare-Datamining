@@ -99,7 +99,10 @@ Full documentation lives at the Starlight docs site (under `docs/` in this repo)
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](./CONTRIBUTING.md). The agent-facing context is in [`AGENTS.md`](./AGENTS.md) and [`ARCHITECTURE.md`](./ARCHITECTURE.md).
+Contributions are welcome, but PolyStella is maintained by a small
+team and review is not guaranteed. See
+[`CONTRIBUTING.md`](./CONTRIBUTING.md). The agent-facing context is in
+[`AGENTS.md`](./AGENTS.md) and [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 
 ## License
 
