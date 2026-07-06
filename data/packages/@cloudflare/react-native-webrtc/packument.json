@@ -2,7 +2,7 @@
 	"name": "@cloudflare/react-native-webrtc",
 	"dist-tags": {
 		"latest": "125.0.5",
-		"staging": "137.0.1-staging.3"
+		"staging": "137.0.1-staging.4"
 	},
 	"versions": {
 		"0.0.0": {
@@ -598,8 +598,8 @@
 			"name": "@cloudflare/react-native-webrtc",
 			"version": "137.0.1-staging.3",
 			"dependencies": {
-				"base64-js": "1.5.1",
 				"debug": "4.3.4",
+				"base64-js": "1.5.1",
 				"event-target-shim": "6.0.2",
 				"expo-build-properties": "0.11.0"
 			},
@@ -607,15 +607,42 @@
 				"react-native": ">=0.60.0"
 			},
 			"dist": {
-				"integrity": "sha512-Igi+tdSPPn1BDXFNK4d7ej+3QfOPhLK4ujEw/NOEkcOxNmZWvIXr6vMNmxu/njxAAUkcgrvkpac1SZLGFb6WNw==",
 				"shasum": "e7fbc39ee554c6c6b62078c5cafaa430a8e3ed92",
 				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-137.0.1-staging.3.tgz",
 				"fileCount": 282,
-				"unpackedSize": 1058172,
+				"integrity": "sha512-Igi+tdSPPn1BDXFNK4d7ej+3QfOPhLK4ujEw/NOEkcOxNmZWvIXr6vMNmxu/njxAAUkcgrvkpac1SZLGFb6WNw==",
+				"signatures": [
+					{
+						"sig": "MEUCIDRbQE05PaAYdGwDNvgx95vN6mlkzJAmSCeygg74eBsDAiEAz4nNWdsfLnBv4kb2YBw35hP+DAXUoIdPcG67/L5HYg0=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"unpackedSize": 1058172
+			}
+		},
+		"137.0.1-staging.4": {
+			"name": "@cloudflare/react-native-webrtc",
+			"version": "137.0.1-staging.4",
+			"dependencies": {
+				"base64-js": "1.5.1",
+				"debug": "4.3.4",
+				"event-target-shim": "6.0.2",
+				"expo-build-properties": "0.11.0"
+			},
+			"peerDependencies": {
+				"react": ">=19.0.0",
+				"react-native": ">=0.84.0"
+			},
+			"dist": {
+				"integrity": "sha512-mXjSms0zk4KSlOo0/99sQb4XGYofI5dHgZJC3bbBJnOtpRWom6hcm2VojctHQHAxZkSj/tFYkq8ssTdQOCNkiA==",
+				"shasum": "89767ae1b141102a98501fa520f4e8fe35fed444",
+				"tarball": "https://registry.npmjs.org/@cloudflare/react-native-webrtc/-/react-native-webrtc-137.0.1-staging.4.tgz",
+				"fileCount": 320,
+				"unpackedSize": 821020,
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIDRbQE05PaAYdGwDNvgx95vN6mlkzJAmSCeygg74eBsDAiEAz4nNWdsfLnBv4kb2YBw35hP+DAXUoIdPcG67/L5HYg0="
+						"sig": "MEYCIQCqloOR/HKMm248dRVdqzpOqPh7Xmf1GFXggdZhG9ERLAIhAOmc9oDuwrpHAsjRXgkKavSZIPq7WPXU4hAokeTZgnm4"
 					}
 				]
 			}
