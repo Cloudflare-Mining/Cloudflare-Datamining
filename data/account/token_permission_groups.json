@@ -774,6 +774,15 @@
 		"category": "ai_and_machine_learning"
 	},
 	{
+		"id": "f48d3d7bd62949f68395ce02f1545f0d",
+		"name": "AI Search Metadata Read",
+		"description": "Grants read access to AI Search configuration and metadata without access to search results or indexed content.",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "ai_and_machine_learning"
+	},
+	{
 		"id": "01aab63d6e064d7a8160339985d2db19",
 		"name": "AI Search Read",
 		"description": "Grants access to reading data from AI Search",
