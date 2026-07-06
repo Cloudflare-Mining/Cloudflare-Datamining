@@ -7,7 +7,6 @@
 </div>
 <h2>Available Locations</h2>
 <ul>
-	<li>US</li>
 	<li>New York</li>
 </ul>
 <h2>About the Role</h2>
