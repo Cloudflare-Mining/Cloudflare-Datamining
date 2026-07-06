@@ -6,7 +6,7 @@
 	</div>
 </div>
 <h1><span style="font-size: 12pt;">Response Engineer - PhishGuard&nbsp;</span></h1>
-<p><span style="font-size: 12pt;">Location: Bengaluru</span></p>
+<p><span style="font-size: 12pt;">Available Location: Bengaluru</span></p>
 <h2><span style="font-size: 12pt;">About the Department</span></h2>
 <p><span style="font-size: 12pt;">Cloudforce One is Cloudflare's threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs). Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.</span></p>
 <p><span style="font-size: 12pt;">Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world's largest global networks can provide. The team analyzes these unique data points at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</span></p>

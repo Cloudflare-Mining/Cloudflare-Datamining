@@ -5,34 +5,32 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Location: London, UK</strong></p>
+<p><strong>About the Department<br></strong>The Global Customer Services (GCS) team is the heartbeat of Cloudflare’s post-sales ecosystem. While our Customer Support engineers handle the "break-fix," GCE (Customer Engineering and Professional Services) owns the customer journey. Our mission is to empower customers globally through proactive guidance and expert services to accelerate their time to value and business outcomes. We are responsible for driving product adoption, architecting complex deployments, and ensuring our customers obtain maximum value from the Cloudflare platform.&nbsp;</p>
+<p><strong>About the Role<br></strong>The AI Builder Intern will support the Global Customer Services team by assisting with foundational developer platform tasks and contributing to projects that enable customers to successfully build and deploy on Cloudflare. This role provides hands-on exposure to Cloudflare’s developer ecosystem while working alongside consultants and engineers who deliver technical solutions to customers. Through this role, you will gain hands-on experience working with Cloudflare’s developer platform and edge services, exposure to how Professional Services and Customer Success teams deliver technical solutions for global customers, mentorship from experienced consultants and engineers, and real-world experience contributing to projects that support customer adoption of Cloudflare technologies.</p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li>Austin, US</li>
+	<li>Design, develop, and deploy AI-driven prototypes (using LLMs, RAG architectures, or predictive modeling) to automate manual workflows within the GCS ecosystem. Build out models to help automate future forecasting and resource planning.</li>
+	<li>Work with APIs to integrate AI capabilities into our existing tech stack to provide real-time solutions.</li>
+	<li>Partner with our engineering to identify, clean, and structure high-volume post-sales data for model training and fine-tuning.</li>
+	<li>Refine and optimize system prompts and model parameters to ensure high-quality, hallucination-free outputs for internal advisory tools.</li>
+	<li>Act as the technical translator, taking high-level optimization ideas from GCS leadership and turning them into technical requirements and minimum viable products (MVPs).</li>
+	<li>Contribute to internal knowledge bases and documentation to improve team efficiency and consistency. Create collateral to enable the team.</li>
+	<li>Partner with GCS to join select customer-facing sessions, capturing "voice of the customer" insights to ensure our AI roadmap directly addresses the challenges our customers face.</li>
 </ul>
-<h2>About the Role</h2>
-<p>Our Solutions Engineers come from a wide range of backgrounds: engineering, software development, science, product management, business, finance, customer support &amp; project delivery. We're serious about building a diverse team. When hiring we look for diversity of background and experience combined with genuine curiosity for our technology.</p>
-<p>Solutions Engineers are the technical customer advocates within Cloudflare. To aid our customers, we work closely with every team at Cloudflare, from Sales and Product to Engineering and Customer Support. Our goal of customer success drives us through the entire organization to seek out and create scalable solutions for our customer’s needs.</p>
-<p><strong>Who are we looking for?</strong></p>
-<p>The range of products and solutions offered by Cloudflare is broad so that we are able to meet our lofty goal of helping to build a better Internet. A broad knowledge of Internet performance, networking, and security technology is required. The curiosity to maintain and develop new knowledge is essential to keeping up with the high rate of product innovation at Cloudflare.</p>
-<p>We are looking for <strong>curious and ambitious graduates</strong> who are eager to explore a career that combines technical acumen with the desire to help customers achieve their goals.</p>
-<p>Ultimately, you are passionate about technology and have the ability to explain complex technical concepts in easy-to-understand terms. You are naturally curious, and an avid builder who is not afraid to be hands-on. You appreciate the diversity of challenges in working with customers and look forward to helping them realize the full promise of Cloudflare.</p>
-<p><strong><em>All the resources and training required to be effective in this role will be provided.</em></strong></p>
-<h2>Responsibilities</h2>
+<p><strong>Skills &amp; Qualifications</strong></p>
 <ul>
-	<li><strong>Immersion &amp; Training:</strong> Your journey begins with in-depth technical and functional skills training. You will dive deep into Cloudflare’s solutions, products, and underlying technologies to build a foundational "toolkit" for success.</li>
-	<li><strong>Mentorship &amp; Shadowing:</strong> You will be paired with experienced Solutions Engineers, shadowing live customer engagements and internal strategy sessions to see firsthand how we solve complex technical challenges.</li>
-	<li><strong>Hands-on Projects:</strong> Throughout the program, you will complete a series of learning assessments and practical projects, receiving direct guidance and feedback from your manager and peers. Projects could include assessing and improving internal/external collaboration processes and tools, and creative approaches to building compelling demo scenarios to showcase Cloudflare Technology.</li>
-	<li><strong>Regional Hub experience:</strong> You will become an integral part of our <strong>Austin </strong><strong>hub</strong>, experiencing local life through our office culture, joining team outings, social activities, and networking events that make our regional offices unique.</li>
-	<li>You can check out our <a href="https://blog.cloudflare.com/tag/internship-experience/">internship blogs</a> to learn more about our program and hear directly from our past interns.</li>
-</ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
-<ul>
-	<li>Bachelor's or Master's degree in a technical, engineering, science, or other related analytical field.</li>
-	<li>Graduate by December 2026 or recently graduated summer 2026.</li>
-	<li>A good understanding of how the Internet works (DNS, HTTP, TLS, etc.). Knowledge of software development or application building is a major plus.</li>
-	<li>Strong intellectual curiosity, a determination to learn, and excellent communication skills with the ability to present technical ideas clearly.</li>
-	<li>Ability to commit to 6 month internship from July - December 2026.</li>
-	<li>Required In office 3-5 days a week in Austin, TX</li>
+	<li>Available for a full-time, 12-week internship, working from our London office 3-5 days a week during the fall (Sept-Dec).</li>
+	<li>Currently pursuing a Bachelor’s or Master’s degree in Computer Science, Software Engineering, Business or a related technical field.</li>
+	<li>Basic experience with programming or scripting (e.g., JavaScript, Python, or similar).</li>
+	<li>Experience building AI Agents and / or other applications leveraging AI.</li>
+	<li>Experience connecting disparate systems via REST APIs.</li>
+	<li>Familiarity with web development concepts, APIs, RAG, Git or developer platforms.</li>
+	<li>Strong problem-solving and analytical skills.</li>
+	<li>Ability to learn quickly in a fast-paced technical environment.</li>
+	<li>Strong communication and collaboration skills to explain complex technical AI concepts to non-technical stakeholders.</li>
+	<li><strong>Bonus points:</strong> Experience in a customer facing role.</li>
+	<li><strong>Bonus points:</strong> Experience deploying applications leveraging Cloudflare Workers AI.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

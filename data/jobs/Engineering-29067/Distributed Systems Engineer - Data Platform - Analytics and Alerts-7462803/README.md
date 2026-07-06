@@ -51,6 +51,11 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Linux container technologies, such as </span><strong>Docker and Kubernetes</strong><span style="font-weight: 400;">, is a plus.</span></li>
 </ul>
 <p><span style="font-weight: 400;">If you're passionate about building scalable and performant data platforms using cutting-edge technologies and want to work with a world-class team of engineers, then we want to hear from you! Join us in our mission to help build a better internet for everyone!</span></p>
+<p>Equity<br>This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p>Benefits<br>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S. &nbsp;</p>
+<p>Health &amp; Welfare Benefits<br>● Medical/Rx Insurance<br>● Dental Insurance<br>● Vision Insurance<br>● Flexible Spending Accounts<br>● Commuter Spending Accounts<br>● Fertility &amp; Family Forming Benefits<br>● On-demand mental health support and Employee Assistance Program<br>● Global Travel Medical Insurance</p>
+<p>Financial Benefits<br>● Short and Long Term Disability Insurance<br>● Life &amp; Accident Insurance<br>● 401(k) Retirement Savings Plan<br>● Employee Stock Participation Plan</p>
+<p>Time Off<br>● Flexible paid time off covering vacation and sick leave<br>● Leave programs, including parental, pregnancy health, medical, and bereavement leave</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

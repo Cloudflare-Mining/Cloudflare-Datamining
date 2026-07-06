@@ -5,39 +5,36 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<h2><span style="font-size: 12pt;">Available Locations -&nbsp;Bengaluru, India</span></h2>
+<h2><span style="font-size: 12pt;">About the Role</span></h2>
+<p><span style="font-size: 12pt;">Cloudflare is a system spanning the globe, on a mission to make the internet safer and more powerful everyday. To help fulfill this mission, we are seeking a talented Incident Response Analyst to join us in growing our Cloudforce One REACT organization. In this role, you will be instrumental in building a proactive and threat intelligence-driven approach to protecting Cloudflare and its customers from sophisticated and evolving threat actors.</span></p>
+<p><span style="font-size: 12pt;">As a REACT Consultant, you will respond to customer security incidents across on-premises, cloud, and hybrid environments. This position requires an innovative, self-starting, and detail-oriented problem solver with a passion for analyzing, tracking, and triaging malicious activity. You will engage with customers at all levels—including Executive, VP, Director, and engineering levels—serving an integral role alongside forensic analysts, threat researchers, detection engineers, and malware analysts to detect, isolate, and mitigate threats.</span></p>
+<h2><span style="font-size: 12pt;">Responsibilities</span></h2>
+<h3><span style="font-size: 12pt;">1. Incident Response &amp; Active Edge Mitigation</span></h3>
 <ul>
-	<li>Bengaluru, India</li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Active Edge Mitigation:</strong> Execute immediate defensive maneuvers at the Cloudflare edge to protect customer availability. This includes deploying custom WAF rules, implementing L3/L4 DDoS shunning, and performing real-time traffic filtering to neutralize attacks before they reach the customer's origin.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Support Full IR Lifecycle Management:</strong> Support and execute the end-to-end incident response process for clients (investigation, containment, remediation, and recovery). Review technical deliverables and coordinate sessions with customer stakeholders to ensure high-quality service and resolution.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Incident Remediation:</strong> Build a strong understanding of targeted attacks to create and execute customized tactical and strategic remediation plans for compromised organizations.</span></li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudflare is a system spanning the globe, on a mission to make the internet safer and more powerful everyday. To help fulfill this mission, we are seeking a talented Incident Response Analyst to join us in growing our Cloudforce One REACT organization. In this role, you will be instrumental in building a proactive and threat intelligence-driven approach to protecting Cloudflare and its customers from sophisticated and evolving threat actors.</p>
-<p>As a REACT Consultant, you will respond to customer security incidents across on-premises, cloud, and hybrid environments. This position requires an innovative, self-starting, and detail-oriented problem solver with a passion for analyzing, tracking, and triaging malicious activity. You will engage with customers at all levels—including Executive, VP, Director, and engineering levels—serving an integral role alongside forensic analysts, threat researchers, detection engineers, and malware analysts to detect, isolate, and mitigate threats.</p>
-<h2>Responsibilities</h2>
-<h3>1. Incident Response &amp; Active Edge Mitigation</h3>
+<h2><span style="font-size: 12pt;">Desirable Skills, Knowledge, and Experience</span></h2>
 <ul>
-	<li><strong>Active Edge Mitigation:</strong> Execute immediate defensive maneuvers at the Cloudflare edge to protect customer availability. This includes deploying custom WAF rules, implementing L3/L4 DDoS shunning, and performing real-time traffic filtering to neutralize attacks before they reach the customer's origin.</li>
-	<li><strong>Support Full IR Lifecycle Management:</strong> Support and execute the end-to-end incident response process for clients (investigation, containment, remediation, and recovery). Review technical deliverables and coordinate sessions with customer stakeholders to ensure high-quality service and resolution.</li>
-	<li><strong>Incident Remediation:</strong> Build a strong understanding of targeted attacks to create and execute customized tactical and strategic remediation plans for compromised organizations.</li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Education:</strong> Bachelor's degree in Computer Science, Information Systems, Cybersecurity, a related technical field, or equivalent training/practical experience.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Experience:</strong> 5+ years of overall experience in cybersecurity, including 2+ years of dedicated Incident Response <strong>OS &amp; Cloud Environments:</strong> In-depth understanding of Windows operating systems and general knowledge of Unix, Linux, and Mac environments. Familiarity with cloud environments (AWS, Azure, O365, Google Cloud, Cloudflare) and cloud IR methodologies.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Network and Web Attack Knowledge: Strong understanding of common L3/L4/L7 attack patterns, including SYN floods, UDP floods, DNS amplification, HTTP floods, credential stuffing, scraping, API abuse, account enumeration, and checkout abuse.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Experience with JA3/JA4 fingerprinting, bot detection, behavioral traffic analysis, or API abuse investigations.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Experience supporting customers during live DDoS, bot, or application-layer attack events.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Solid understanding of MITRE ATT&amp;CK and NIST Cyber Security Frameworks.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;"><strong>Communications:</strong> English Fluency, Excellent verbal and written communication skills with a proven ability to establish relationships and clearly explain tasks, guidance, and complex technical findings to executive and technical clients.</span></li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h2><span style="font-size: 12pt;">Bonus Points</span></h2>
 <ul>
-	<li><strong>Education:</strong> Bachelor's degree in Computer Science, Information Systems, Cybersecurity, a related technical field, or equivalent training/practical experience.</li>
-	<li><strong>Experience:</strong> 5+ years of overall experience in cybersecurity, including 2+ years of dedicated Incident Response <strong>OS &amp; Cloud Environments:</strong> In-depth understanding of Windows operating systems and general knowledge of Unix, Linux, and Mac environments. Familiarity with cloud environments (AWS, Azure, O365, Google Cloud, Cloudflare) and cloud IR methodologies.</li>
-	<li>Network and Web Attack Knowledge: Strong understanding of common L3/L4/L7 attack patterns, including SYN floods, UDP floods, DNS amplification, HTTP floods, credential stuffing, scraping, API abuse, account enumeration, and checkout abuse.</li>
-	<li>Experience with JA3/JA4 fingerprinting, bot detection, behavioral traffic analysis, or API abuse investigations.</li>
-	<li>Experience supporting customers during live DDoS, bot, or application-layer attack events.</li>
-	<li>Solid understanding of MITRE ATT&amp;CK and NIST Cyber Security Frameworks.</li>
-	<li><strong>Communications:</strong> English Fluency, Excellent verbal and written communication skills with a proven ability to establish relationships and clearly explain tasks, guidance, and complex technical findings to executive and technical clients.</li>
-</ul>
-<h2>Bonus Points</h2>
-<ul>
-	<li>Networking, Routing, and BGP Operations: Strong understanding of internet routing fundamentals, including BGP, Anycast, DNS, TCP/IP, GRE/IPsec tunneling, routing policies, prefix announcements, route propagation, RPKI, IRR, ASN ownership, and traffic engineering concepts.</li>
-	<li>Proficient in Python or Golang, capable of writing modular code or simple scripts that can be installed on a remote system.</li>
-	<li>Proficient with Yara and writing rules to detect similar malware samples.</li>
-	<li>Understanding of source code, hex, binary, regular expressions, data correlation, and analysis (such as network flow and system logs).</li>
-	<li>Practical malware analysis experience with static, dynamic, and automated techniques, including the ability to reverse engineer various file formats and analyze complex samples.</li>
-	<li>Reverse engineering experience with APT malware with an understanding of common infection vectors, infrastructure enumeration, malware attribution, and current evasion tactics.</li>
-	<li>Familiarity with bash command-line executables to conduct static analysis and investigate Indicators of Compromise (IOCs).</li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Networking, Routing, and BGP Operations: Strong understanding of internet routing fundamentals, including BGP, Anycast, DNS, TCP/IP, GRE/IPsec tunneling, routing policies, prefix announcements, route propagation, RPKI, IRR, ASN ownership, and traffic engineering concepts.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Proficient in Python or Golang, capable of writing modular code or simple scripts that can be installed on a remote system.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Proficient with Yara and writing rules to detect similar malware samples.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Understanding of source code, hex, binary, regular expressions, data correlation, and analysis (such as network flow and system logs).</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Practical malware analysis experience with static, dynamic, and automated techniques, including the ability to reverse engineer various file formats and analyze complex samples.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Reverse engineering experience with APT malware with an understanding of common infection vectors, infrastructure enumeration, malware attribution, and current evasion tactics.</span></li>
+	<li style="font-size: 12pt;"><span style="font-size: 12pt;">Familiarity with bash command-line executables to conduct static analysis and investigate Indicators of Compromise (IOCs).</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

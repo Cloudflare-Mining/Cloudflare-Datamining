@@ -13,7 +13,8 @@
 	<li>New York, US</li>
 	<li>Toronto, Canada</li>
 	<li>Washington DC, US</li>
-	<li>Seattle</li>
+	<li>Seattle, WA</li>
+	<li>Remote candidates within North America will also be considered.</li>
 </ul>
 <h2>About the Role</h2>
 <p>The Security Platform team is an infrastructure/developer tools group tasked with building and operating powerful, resilient, and secure infrastructure and systems that enable other engineering teams to deliver products to our customers efficiently and securely. We are responsible for secrets management, internal certificate authorities/PKI, machine and workload identity, and more. We are not a policy, audit, or compliance team, but rather an infrastructure engineering/software development one.</p>
@@ -42,9 +43,6 @@
 <p>Compensation may be adjusted depending on work location.</p>
 <ul>
 	<li data-path-to-node="4">For New York City, Washington D.C., and Seattle based hires: Estimated annual salary of 185,000 - 275,000 USD.</li>
-</ul>
-<p data-path-to-node="5">&nbsp;</p>
-<ul>
 	<li>
 		<p data-path-to-node="5">For Colorado based hires: Estimated annual salary of 168,000 - 250,000 USD.</p>
 	</li>

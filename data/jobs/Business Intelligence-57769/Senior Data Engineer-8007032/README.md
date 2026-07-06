@@ -5,62 +5,59 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong><span style="font-size: 10pt;">Available Locations -&nbsp;Bengaluru, India</span></strong></p>
+<p><strong><span style="font-size: 10pt;">About the Role</span></strong></p>
+<p><span style="font-size: 10pt;"><sup>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack, build specialized data solutions for predictive modeling and machine learning applications, and construct systems that truly run the business.</sup></span></p>
+<p><span style="font-size: 10pt;"><sup>We are looking for an experienced Data Engineer to join our Bengaluru team and help scale the development of our internal data products. In this role, you will build data-driven applications that empower teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing features to implementation and long-term ownership.&nbsp;You will work on building scalable, reliable systems that solve critical business problems, partnering closely with full-stack engineers to develop new features and operate the data pipelines and services behind our applications. Our stack spans multiple languages and technologies, including Go, Scala, and ClickHouse, and continues to evolve. Many of our products also incorporate strong AI components, giving you opportunities to build sophisticated, AI-ready data layers and work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</sup></span></p>
+<p><strong><span style="font-size: 10pt;">Responsibilities</span></strong></p>
 <ul>
-	<li>Bengaluru, India</li>
-</ul>
-<h2>About the Role</h2>
-<p><sup>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack, build specialized data solutions for predictive modeling and machine learning applications, and construct systems that truly run the business.</sup></p>
-<p><sup>We are looking for an experienced Data Engineer to join our Bengaluru team and help scale the development of our internal data products. In this role, you will build data-driven applications that empower teams across the company, including go-to-market, engineering, and product. Because the products we build are initiated and owned by the team, you will be involved end-to-end — from shaping requirements and designing features to implementation and long-term ownership.&nbsp;You will work on building scalable, reliable systems that solve critical business problems, partnering closely with full-stack engineers to develop new features and operate the data pipelines and services behind our applications. Our stack spans multiple languages and technologies, including Go, Scala, and ClickHouse, and continues to evolve. Many of our products also incorporate strong AI components, giving you opportunities to build sophisticated, AI-ready data layers and work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</sup></p>
-<h2>Responsibilities</h2>
-<ul>
-	<li>
-		<p><sup>Design and implement core components of our data pipelines and services in Go and Scala, with a focus on scalability, performance, and long-term maintainability.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Design and implement core components of our data pipelines and services in Go and Scala, with a focus on scalability, performance, and long-term maintainability.</sup></span></p>
 	</li>
-	<li>
-		<p><sup>Partner closely with engineers, analysts, and product stakeholders to design solutions for strategic initiatives, business-critical data products, and agentic AI architectures.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Partner closely with engineers, analysts, and product stakeholders to design solutions for strategic initiatives, business-critical data products, and agentic AI architectures.</sup></span></p>
 	</li>
-	<li>
-		<p><sup>Contribute to the evolution of our data platform architecture, improving scalability, reliability, observability, and data correctness across the stack.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Contribute to the evolution of our data platform architecture, improving scalability, reliability, observability, and data correctness across the stack.</sup></span></p>
 	</li>
-	<li>
-		<p><sup>Build and curate high-quality, well-modeled, and richly contextual datasets that power internal products, predictive analytics, and LLM-enabled features at company scale.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Build and curate high-quality, well-modeled, and richly contextual datasets that power internal products, predictive analytics, and LLM-enabled features at company scale.</sup></span></p>
 	</li>
-	<li>
-		<p><sup>Develop a deep understanding of the company’s data ecosystem — including source systems, tooling, and data flows — and collaborate closely with the data engineering teams in Austin, Lisbon, and London to improve data ingestion, quality, and governance.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Develop a deep understanding of the company’s data ecosystem — including source systems, tooling, and data flows — and collaborate closely with the data engineering teams in Austin, Lisbon, and London to improve data ingestion, quality, and governance.</sup></span></p>
 	</li>
-	<li>
-		<p><sup>Lead by example through design reviews, knowledge sharing, and mentorship, helping raise the technical bar, data engineering practices, and AI implementation standards across the organization.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Lead by example through design reviews, knowledge sharing, and mentorship, helping raise the technical bar, data engineering practices, and AI implementation standards across the organization.</sup></span></p>
 	</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p><strong><span style="font-size: 10pt;">Desirable Skills, Knowledge, and Experience</span></strong></p>
 <ul>
-	<li>
-		<p><sup>B.S. or M.S. in Computer Science, Engineering, Statistics, Mathematics, or a related quantitative field, or equivalent practical experience.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>B.S. or M.S. in Computer Science, Engineering, Statistics, Mathematics, or a related quantitative field, or equivalent practical experience.</sup></span></p>
 	</li>
-	<li>
-		<p><sup>5+ years of professional experience in data engineering, software engineering, or related roles, building and operating production data systems.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>5+ years of professional experience in data engineering, software engineering, or related roles, building and operating production data systems.</sup></span></p>
 	</li>
-	<li>
-		<p><sup>Strong programming expertise in Go, Python, or JVM-based languages, with experience writing high-quality, production-grade services and pipelines.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Strong programming expertise in Go, Python, or JVM-based languages, with experience writing high-quality, production-grade services and pipelines.</sup></span></p>
 	</li>
-	<li>
-		<p><sup>Deep knowledge of SQL and hands-on experience designing data models and working with relational, analytical, or vector databases (e.g., PostgreSQL, MySQL, ClickHouse).</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Deep knowledge of SQL and hands-on experience designing data models and working with relational, analytical, or vector databases (e.g., PostgreSQL, MySQL, ClickHouse).</sup></span></p>
 	</li>
-	<li>
-		<p><sup>Experience building scalable, reliable, and observable data pipelines, with an understanding of performance, data quality, and operational best practices.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Experience building scalable, reliable, and observable data pipelines, with an understanding of performance, data quality, and operational best practices.</sup></span></p>
 	</li>
-	<li>
-		<p><sup>Proven problem-solving and communication skills, with a track record of driving projects in ambiguous environments and partnering effectively with cross-functional teams.</sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup>Proven problem-solving and communication skills, with a track record of driving projects in ambiguous environments and partnering effectively with cross-functional teams.</sup></span></p>
 	</li>
 </ul>
-<h2>Bonus Points</h2>
+<p><strong><span style="font-size: 10pt;">Bonus Points</span></strong></p>
 <ul>
-	<li>
-		<p><sup><em>Familiarity with container based deployments such as Docker &amp; Kubernetes.</em></sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup><em>Familiarity with container based deployments such as Docker &amp; Kubernetes.</em></sup></span></p>
 	</li>
-	<li>
-		<p><sup><em>Familiarity with Google Cloud Platform, foundational Large Language Model (LLM) orchestration frameworks, or something similar.</em></sup></p>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;"><sup><em>Familiarity with Google Cloud Platform, foundational Large Language Model (LLM) orchestration frameworks, or something similar.</em></sup></span></p>
 	</li>
 </ul>
 <div class="content-conclusion">

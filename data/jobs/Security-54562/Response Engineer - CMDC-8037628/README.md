@@ -36,7 +36,7 @@
 	<li>Professional proficiency using the command line (Bash shell) alongside general system administration literacy across Linux, Mac, or Windows environments.</li>
 	<li>Proven customer-facing technical support experience, with the communication skills required to assist stakeholders during high-pressure incidents.</li>
 </ul>
-<h3>Nice-to-Have Skills</h3>
+<h3>Bonus Points:-</h3>
 <ul>
 	<li>Hands-on experience with packet capture and network analysis tools such as tcpdump or Wireshark.</li>
 	<li>Foundational scripting skills (Python preferred) to assist in automating basic operational workflows.</li>

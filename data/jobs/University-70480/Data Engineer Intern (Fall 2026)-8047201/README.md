@@ -5,57 +5,30 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations -&nbsp;Bengaluru, India</strong></p>
-<p><strong>About the Role</strong></p>
-<p><strong>Job Title -&nbsp;</strong>Stock Administration Analyst</p>
-<p>At Cloudflare, we believe in rewarding our employees in meaningful and impactful ways. Our&nbsp;equity program is a key component of this philosophy, enabling team members to benefit from&nbsp;the company’s growth while ensuring global compliance and operational excellence.&nbsp;We are seeking a Stock Administration Analyst to join our global Stock Administration team. This role will be instrumental in managing Cloudflare’s equity programs, supporting employees with their equity compensation, and partnering cross-functionally to streamline and improve operational processes.</p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>Available Location: Austin, Texas, US</strong></p>
+<p><strong>About the team<br></strong>The Data Intelligence &amp; Analytics team at Cloudflare is responsible for building a centralized analytics platform and cloud data lake that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.<strong><br><br>About the role<br></strong>This internship is targeting students with experience and interest in Data Engineering.&nbsp;The Data Engineer Intern delivers full-stack data solutions across the entire data processing pipeline. This role relies on systems engineering principles to design and implement solutions that span the data lifecycle - collect, ingest, process, store, persist, access, and deliver data at scale and at speed. It includes knowledge of local, distributed, and cloud-based technologies, data virtualization, and all security and authentication mechanisms required to protect the data.&nbsp;<strong><br></strong></p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>
-		<p>Manage and execute day-to-day operations related to Cloudflare’s global equity compensation programs, ensuring accuracy, timeliness, and compliance.</p>
-	</li>
-	<li>
-		<p>Lead and support special projects related to equity administration, including system improvements, process automation, and data integrity initiatives.</p>
-	</li>
-	<li>
-		<p>Administer and maintain equity-related systems and tools (e.g., E*TRADE Equity Edge Online), including data imports/exports, reconciliations, and audit support.</p>
-	</li>
-	<li>
-		<p>Perform data analysis using internal equity data to generate insights, support reporting, and recommend process enhancements.</p>
-	</li>
-	<li>
-		<p>Collaborate cross-functionally with Payroll, Legal, Finance, HR, and external vendors (e.g., brokers, transfer agents) to support program execution and resolve issues.</p>
-	</li>
-	<li>
-		<p>Assist employees in understanding and maximizing their equity compensation through education, communications, and support.</p>
-	</li>
+	<li>Work through all stages of a data solution lifecycle – analyze / profile data, create conceptual, logical and physical data model designs, architect and design ETL, reporting and analytics</li>
+	<li class="li1">Knowledge of modern enterprise data architectures, design patterns, and data tool sets and the ability to apply them</li>
+	<li class="li1">Identify key metrics and build exec-facing dashboards to track progress of the business and its highest priority initiatives</li>
+	<li class="li1">Identify key business levers, establish cause &amp; effect, perform analysis, and communicate key findings to various stakeholders to facilitate data driven decision-making</li>
+	<li class="li1">Work closely across the business teams like Finance, Sales, Marketing, Legal, Customer Support, Product, Engineering</li>
 </ul>
-<p><strong>Desirable Skills, Knowledge, and Experience</strong></p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>
-		<p>Bachelor’s degree or equivalent practical experience.</p>
-	</li>
-	<li>
-		<p>Minimum 5 years of experience in equity compensation administration for any U.S.-listed public company.</p>
-	</li>
+	<li>Currently enrolled in M.S in Computer Science, Engineering or related STEM field&nbsp;</li>
+	<li>Available for a full-time, 12-week internship, working from our Austin office 3-5 days a week during the fall (Sept-Dec)</li>
+	<li class="li1">Experience working with Go, Python, SQL, Java, or equivalent programming languages</li>
+	<li class="li1">Experience working with distributed systems (Spark etc.)</li>
+	<li class="li1">Hands-on experience in data pipelines/ frameworks development</li>
+	<li class="li1">Ability and interest to learn new skills and technologies quickly</li>
+	<li class="li1">Excellent communication and problem-solving skills</li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>
-		<p>Hands-on experience with equity platforms such as E*TRADE Equity Edge Online(EEO).</p>
-	</li>
-	<li>
-		<p>Strong working knowledge of global equity compensation practices, taxation, and compliance.</p>
-	</li>
-	<li>
-		<p>Excellent Excel and analytical skills; ability to work with large datasets and draw insights.</p>
-	</li>
-	<li>
-		<p>Experience collaborating on cross-functional projects and improving operational processes.</p>
-	</li>
-	<li>
-		<p>Effective communicator with strong attention to detail and ability to work independently in a fast-paced environment.</p>
-	</li>
+	<li>Familiarity with container based deployments such as Docker and Kubernetes</li>
+	<li>Experience with JavaScript, Typescript, and React</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,48 +5,97 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong><span style="font-size: 10pt;">Available Locations -&nbsp;Bengaluru, India</span></strong></p>
+<p><strong><span style="font-size: 10pt;">About the Role</span></strong></p>
+<p><span style="font-size: 10pt;">As our Global Physical Security Specialist and leader, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint and review and document intelligence supporting the physical security mission.</span></p>
+<p><span style="font-size: 10pt;">We are looking for someone with law enforcement or former military experience who is excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</span></p>
+<p><strong><span style="font-size: 10pt;">Responsibilities</span></strong></p>
+<p><span style="font-size: 10pt;">Continue to work as a member of a unique global physical security team and program in the following areas:</span></p>
+<p><span style="font-size: 10pt;">Physical security systems:</span></p>
 <ul>
-	<li>Bengaluru, India</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Ability to work within a global physical security program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Ability to assist and manage investigations working with Cloudflare’s Global People and Place’s Teams.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Work alongside our SIRT Team&nbsp; as required for physical Security related incidents.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Deploy and remediate access control and CCTV equipment with vendor support</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Coordinate and provide facility and personnel safety practices, guidance, assistance, and response as required.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Gather and disseminate actionable intelligence for senior management.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Ability to learn the deployment of AI technology to enhance the physical security mission.</span></p>
+	</li>
 </ul>
-<h2>About the Role</h2>
-<h3>Your Career</h3>
-<p>As our Global Physical Security Specialist and leader, reporting to our Sr. Director of Physical Security you will take ownership of our physical security technologies across our office and data center footprint and review and document intelligence supporting the physical security mission.</p>
-<p>We are looking for someone with law enforcement or former military experience who is excited about solving physical world challenges with next-generation technology on a global scale. You will be leading the overall strategy &amp; implementation as well as partnering with other teams to unify physical and digital access into one cohesive security solution for Cloudflare’s global network powering our products.</p>
-<h2>Responsibilities</h2>
-<p>Continue to work as a member of a unique global physical security team and program in the following areas:</p>
-<h3>Physical security systems:</h3>
+<p><strong><span style="font-size: 10pt;">Desirable Skills, Knowledge, and Experience</span></strong></p>
 <ul>
-	<li>Ability to work within a global physical security program focused on developing and deploying innovative physical security technology &amp; operations across our global network of data centers. This will require traveling to a variety of locations, building relationships with our partners and working in an agile environment.</li>
-	<li>Ability to assist and manage investigations working with Cloudflare’s Global People and Place’s Teams.</li>
-	<li>Work alongside our SIRT Team&nbsp; as required for physical Security related incidents.</li>
-	<li>Deploy and remediate access control and CCTV equipment with vendor support</li>
-	<li>Coordinate and provide facility and personnel safety practices, guidance, assistance, and response as required.</li>
-	<li>Gather and disseminate actionable intelligence for senior management.</li>
-	<li>Ability to learn the deployment of AI technology to enhance the physical security mission.</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Establish, implement, and automate our physical security standards, policies, and processes globally.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Support implementation of operational metrics, project tracking, and status/ blockers reporting as needed.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Work alongside our infrastructure partners to enhance their standard operating procedures ensuring compliance with physical security standards and controls, including Cloudflare Data Centers and partners.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Work with the security compliance and risk management team on developing and implementing physical security controls as it relates to various compliance requirements including but not limited to FedRAMP, ISO 27001 and SOC 2; and support internal and external audits of physical security controls.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Ability to build critical relationships and make decisions on acceptable physical security risk and drive risk mitigation.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Experience managing a local physical security program and managing event security practices, preferably with experience of physical security controls.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Previous law enforcement or military experience with a significant ability to leverage those current and former relationships.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Solid understanding of integrating and deploying access control and CCTV systems at scale, including networking and systems engineering.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Ability to coordinate with law enforcement and government agencies at every level</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Understanding of networking security as it relates to physical security technology</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Understanding of access control as it relates to granting logical access to systems</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Previous experience working in Verkada Command and deploying Verkada cameras and access sensors</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Ability to effectively prioritize and manage a large number of projects simultaneously</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Equally adept at strategy formulation and tactical execution</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Demonstrated success in earning trust across a broad variety of stakeholders and making principled decisions</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Ability to influence and motivate people across a broad variety of job functions</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Experience communicating physical security risk plans to the executive leadership</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Experience performing site walk thoughts of data centers, corporate offices, and executive residences, including identification and measurement of risks and threats.</span></p>
+	</li>
+	<li style="font-size: 10pt;">
+		<p><span style="font-size: 10pt;">Experience in or desire to work with multiple time zones and ability to travel to all Cloudflare locations as required; roughly 35% travel required</span></p>
+	</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
-<ul>
-	<li>Establish, implement, and automate our physical security standards, policies, and processes globally.</li>
-	<li>Support implementation of operational metrics, project tracking, and status/ blockers reporting as needed.</li>
-	<li>Work alongside our infrastructure partners to enhance their standard operating procedures ensuring compliance with physical security standards and controls, including Cloudflare Data Centers and partners.</li>
-	<li>Work with the security compliance and risk management team on developing and implementing physical security controls as it relates to various compliance requirements including but not limited to FedRAMP, ISO 27001 and SOC 2; and support internal and external audits of physical security controls.</li>
-	<li>Ability to build critical relationships and make decisions on acceptable physical security risk and drive risk mitigation.</li>
-	<li>Experience managing a local physical security program and managing event security practices, preferably with experience of physical security controls.</li>
-	<li>Previous law enforcement or military experience with a significant ability to leverage those current and former relationships.</li>
-	<li>Solid understanding of integrating and deploying access control and CCTV systems at scale, including networking and systems engineering.</li>
-	<li>Ability to coordinate with law enforcement and government agencies at every level</li>
-	<li>Understanding of networking security as it relates to physical security technology</li>
-	<li>Understanding of access control as it relates to granting logical access to systems</li>
-	<li>Previous experience working in Verkada Command and deploying Verkada cameras and access sensors</li>
-	<li>Ability to effectively prioritize and manage a large number of projects simultaneously</li>
-	<li>Equally adept at strategy formulation and tactical execution</li>
-	<li>Demonstrated success in earning trust across a broad variety of stakeholders and making principled decisions</li>
-	<li>Ability to influence and motivate people across a broad variety of job functions</li>
-	<li>Experience communicating physical security risk plans to the executive leadership</li>
-	<li>Experience performing site walk thoughts of data centers, corporate offices, and executive residences, including identification and measurement of risks and threats.</li>
-	<li>Experience in or desire to work with multiple time zones and ability to travel to all Cloudflare locations as required; roughly 35% travel required</li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
