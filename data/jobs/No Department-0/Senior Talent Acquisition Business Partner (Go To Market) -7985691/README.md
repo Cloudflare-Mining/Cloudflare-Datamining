@@ -5,13 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<h4>Available Locations</h4>
 <ul>
 	<li>Tokyo, Japan</li>
 </ul>
-<h2>About the Role</h2>
+<h4>About the Role</h4>
 <p>We are hiring for a Senior Talent Acquisition Business Partner to join our Japan Go To Market hiring efforts. In this role, you will act as a true talent advisor and go-to-market specialist, driving the expansion of our sales and GTM teams. You will operate autonomously, utilizing your deep market expertise, AI-driven strategies, and extensive network to hire top-tier talent for Cloudflare.</p>
-<h2>Responsibilities</h2>
+<h4>Responsibilities</h4>
 <ul>
 	<li><strong>End-to-End Recruitment &amp; Talent Strategy:</strong> Build and execute comprehensive talent strategies to help hiring leaders build high-performing teams, functioning similarly to how a salesperson puts together a go-to-market plan.</li>
 	<li><strong>Proactive Pipeline &amp; Passive Candidate Outreach:</strong> Draw upon your extensive network of industry contacts and candidates to build pipeline strategies for a variety of GTM roles with a heavy focus on Account Executives and Customer Engineers.</li>
@@ -20,7 +20,7 @@
 	<li><strong>Data Utilization &amp; Analytics:</strong> Use data analytics to inform recruitment strategies, actively analyzing metrics such as time-to-hire and source efficiency to drive decisions and optimize processes.</li>
 	<li><strong>Employer Branding &amp; Market Awareness:</strong> Lead and execute strategic employer branding initiatives tailored to the Japan market to elevate Cloudflare's profile as a top destination for GTM talent.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
 <ul>
 	<li><strong>Extensive GTM Recruiting Experience:</strong> You are a respected Senior Recruiter with a proven track record of success, and well-versed in your craft.</li>
 	<li><strong>Strategic Problem Solving:</strong> You operate two "plays" ahead and can anticipate potential bottlenecks or challenges before they have a chance to materialize. You regularly resolve complex issues with little support from managers and make sound decisions that drive positive business outcomes</li>

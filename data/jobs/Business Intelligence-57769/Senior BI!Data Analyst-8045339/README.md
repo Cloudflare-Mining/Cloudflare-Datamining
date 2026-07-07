@@ -5,32 +5,30 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h3>Available Locations |&nbsp;Austin, US OR&nbsp;Seattle, US</h3>
-<h3>About the Role</h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>ETI’s Storage Infrastructure team is responsible for the core storage layer that underpins many of ETI's stateful services. Our scope ranges from managing the physical hardware to operating the distributed databases and storage systems built upon it. We run this infrastructure globally across Cloudflare's network, which presents unique and complex engineering puzzles. We navigate efficiently expanding storage capacity, optimizing rebuild operations, and coordinating operations across failure domains to uphold durability. While other service teams focus on product development, our mission is to ensure the underlying storage is reliable, performant, and scalable.</p>
-<p>You’ll be joining a highly motivated team that is building the next generation of distributed storage services.</p>
-<h3>Responsibilities</h3>
+<p><strong>Locations - </strong>Austin or Remote US</p>
+<hr>
+<p><strong>About the department</strong></p>
+<p>Cloudflare is looking to build and grow our data analytics/business intelligence team that will be responsible for building a large-scale enterprise modern data lake and EDW that combines massive petabyte scale traffic logs with data from various business systems supporting product, marketing, customer support, sales, finance etc. and enabling easier consumption of that data using tools to drive standard reporting, adhoc/exploratory analytics and advanced insights using data science models.</p>
+<p><strong>About the role</strong></p>
+<p>As part of this initiative, we are looking for a strong data analyst to come join Cloudflare and help us drive analytic insights and best practices at scale from the ground up. Success in this role comes from marrying a strong data background with acute product and business acumen to deliver highly strategic and compelling insights that accelerate our business growth and influence our product decisions within Cloudflare.&nbsp;</p>
+<p>What we look for: Data analysis, Business Analysis, Storytelling, Strong Business &amp; Product Acumen, Cross-functional Collaboration, Creative Problem Solving, Agile</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>In this role, you will help build and operate the next generation of globally distributed storage systems. You will own your code from inception to release, delivering solutions at all layers of the stack. On any given day, you might write a design document for a new provisioning system, model failure domain dependencies across edge locations, benchmark new storage hardware, build standardized observability and runbooks for distributed database clusters, or automate operational toil through purpose-built tooling and intelligent automation. You can expect to interact with a variety of languages and technologies including Rust, Go, Saltstack, and Terraform.</li>
+	<li>Fundamental understanding of the data landscape i.e tooling, tech stack, source systems etc. and work closely with the Data Engineering team to improve the data collection and quality.</li>
+	<li>Understand business/product strategy and high-level roadmap and align analysis efforts to enable them with data insights and help achieve their strategic goals.</li>
+	<li>Audience focused presentation and storytelling skills focused on key takeaways and recommendations in a crisp and concise manner.</li>
+	<li>Ability to define and spot macro and micro levels trends with statistical significance on a regular basis and understand key drivers driving those trends.</li>
 </ul>
-<h3>Desirable Skills, Knowledge, and Experience</h3>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Strong programming skills with languages like Rust, Go, or Python</li>
-	<li>A solid understanding of distributed systems concepts such as consistency, consensus, data replication, fault tolerance, and partition tolerance</li>
-	<li>Experience with distributed databases and storage systems</li>
-	<li>Experience with infrastructure configuration tooling and infrastructure as code</li>
-	<li>Familiarity with storage fundamentals: block devices, filesystems, SSD characteristics</li>
-	<li>Experience building and maintaining high-throughput, low-latency systems</li>
-	<li>Understanding of network fundamentals as they relate to distributed storage -- bandwidth constraints, latency tradeoffs, cross-datacenter replication</li>
-	<li>Strong written and verbal communication skills and ability to explain technical decisions clearly</li>
-	<li>Comfortable operating in fast-paced environments with tight deadlines and evolving priorities</li>
+	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
+	<li>5+ years of data analyst experience with 1+ years of proven industry experience in a large scale environment(PBs scale, globally distributed teams).</li>
+	<li>Proven results oriented analysis that helped support positive change in the business strategy.</li>
+	<li>4+ years experience with a fast-growing SaaS business based company is preferred.</li>
+	<li>Strong experience in Python, R, SQL, Tableau, Google Analytics, Hive and BigQuery (or any other Big data/Cloud equivalent) etc.</li>
+	<li>Capable of working closely with business including but not limited to, Engineering, Sales, Marketing, and Product teams to ensure data initiatives are aligned with business needs and is of high quality.</li>
 </ul>
-<h3>Compensation</h3>
-<p>Compensation may be adjusted depending on work location.</p>
-<ul>
-	<li>For New York City, New Jersey, Washington, Washington DC, and California (excluding Bay Area) based hires: Estimated annual salary of $185,000 - $254,000</li>
-</ul>
+<h2>Compensation</h2>
 <h3>Equity</h3>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <h3>Benefits</h3>

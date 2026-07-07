@@ -5,17 +5,18 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
-<ul>
-	<li>Austin, US</li>
-</ul>
-<h2>About the Role</h2>
+<h3>Available Locations |&nbsp;Austin, US</h3>
+<h3>About the Role</h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<h2>Responsibilities</h2>
+<h3>Responsibilities</h3>
 <ul>
-	<li>In this role, you will collaborate with a team of Design Engineers and Systems Engineers. You will help design and develop frontend experiences that improve overall developer experience throughout our dashboard. You will own your code from inception to release and bring attention to detail to the work you complete for both coding patterns &amp; visual aesthetics. On any given day, you might be working in Figma collaborating on designs or inspiration, developing new components and user interactions, polishing existing pages, or improving developer experience in any number of ways you might imagine. You can expect to interact with a variety of languages and technologies. We primarily use Typescript and React.</li>
+	<li>In this role, you will collaborate with a team of Design Engineers and Systems Engineers.</li>
+	<li>You will help design and develop frontend experiences that improve overall developer experience throughout our dashboard.</li>
+	<li>You will own your code from inception to release and bring attention to detail to the work you complete for both coding patterns &amp; visual aesthetics.</li>
+	<li>On any given day, you might be working in Figma collaborating on designs or inspiration, developing new components and user interactions, polishing existing pages, or improving developer experience in any number of ways you might imagine.</li>
+	<li>You can expect to interact with a variety of languages and technologies. We primarily use Typescript and React.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
 	<li>5+ years of experience working with distributed systems.</li>
 	<li>Experience designing and building frontend applications.</li>

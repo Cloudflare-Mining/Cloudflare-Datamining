@@ -5,11 +5,11 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
-<ul>
-	<li>Austin, US</li>
-</ul>
-<h2>Responsibilities</h2>
+<h3>Available Locations |&nbsp;Austin, US</h3>
+<h3>About the Role</h3>
+<p>AI inference is becoming core infrastructure. Every serious application will need access to many models, across many providers, with reliability, observability, security, cost control, and routing built in from the start. AI Gateway is Cloudflare's bet that this layer should exist at the network edge: close to users, close to compute, and simple enough that a developer can adopt it with one API change.</p>
+<p>We are obsessively agent-pilled. We don't just build the product; we build the environment that builds the product: the agents, harnesses, skills, tools, and context that let a small team ship like a much larger one. We dogfood AI Gateway, Workers AI, and the broader Cloudflare agent stack relentlessly, and we expect you to as well.</p>
+<h3>Responsibilities</h3>
 <ul>
 	<li>As the Engineering Manager for AI Gateway, you will lead a small, high-velocity team building that layer. This is a deeply hands-on role. You will be in the code, in the design docs, in customer conversations, and in the trenches with your team. We're looking for a generative builder who can move from half-formed idea to working prototype quickly, and bring a team along with that energy. We are obsessively agent-pilled. We don't just build the product; we build the environment that builds the product: the agents, harnesses, skills, tools, and context that let a small team ship like a much larger one. We dogfood AI Gateway, Workers AI, and the broader Cloudflare agent stack relentlessly, and we expect you to as well.</li>
 	<li>Set the technical and product direction for AI Gateway alongside engineers and PMs, then roll up your sleeves and help build it.</li>
@@ -19,7 +19,7 @@
 	<li>Recruit, mentor, and grow engineers. Build a small team that punches massively above its weight.</li>
 	<li>Partner closely with Workers AI, Agents, and the broader Developer Platform teams to deliver a unified inference layer that feels like one product</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
 	<li>A minimum of 8 years of relevant industry experience, including at least 4 years managing software engineering teams.</li>
 	<li>Proven track record leading teams that have shipped and operated complex, large-scale systems, preferably in AI infrastructure, developer platforms, cloud infrastructure, edge/proxy systems, or high-scale APIs.</li>
@@ -28,7 +28,7 @@
 	<li>Demonstrated ability to hire, coach, and develop senior engineers, and to build high-performing, inclusive teams that ship. You care about teams and team culture.</li>
 	<li>A hands-on approach to leadership: you consider yourself a builder, stay close to the code, know the numbers, know the customer, and know what to build next.</li>
 </ul>
-<h2>Bonus Points</h2>
+<h3>Bonus Points</h3>
 <ul>
 	<li>Experience building AI/ML infrastructure, inference platforms, model gateways, or LLM-powered applications.</li>
 	<li>Experience building developer-facing APIs or SDKs at scale.</li>

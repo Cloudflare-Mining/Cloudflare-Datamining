@@ -5,13 +5,13 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<h4>Available Locations</h4>
 <ul>
 	<li>Singapore</li>
 </ul>
-<h2>About the Role</h2>
+<h4>About the Role</h4>
 <p>As our Director of Talent Acquisition, APAC &amp; Japan (APJC), you will translate our global talent vision into a high-performing regional reality. Your focus will be Go-To-Market (GTM) heavy but you will also maintain operational oversight for our regional R&amp;D and G&amp;A hiring footprint. You are a highly operational leader who knows how to localize a modern, AI-forward recruiting playbook, break down regional hiring constraints, and scale a fast-moving talent engine.</p>
-<h2>Responsibilities</h2>
+<h4>Responsibilities</h4>
 <ul>
 	<li><strong>Stakeholder Alignment:</strong> Earn deep trust with APJC leadership through genuine business fluency and talent partnership approach.</li>
 	<li><strong>Market Intelligence:</strong> Bring proactive APJC talent market insights to the table, advising regional leaders on talent pool elasticity, local compensation trends, and competitive landscapes</li>
@@ -22,7 +22,7 @@
 	<li><strong>Data-Driven:</strong> Monitor and optimize the APJC talent funnel across all segments. Track key regional metrics—funnel health, passive-to-active conversion velocity, segment-specific time-to-fill, and quality-of-hire—to continuously tune the regional engine.</li>
 	<li><strong>AI-First Execution:</strong> Successfully implement global AI-driven sourcing, screening, and scheduling tools within your regional team, freeing up your recruiters to focus on deep candidate relationship building and closing.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
 <ul>
 	<li><strong>Recruiting Leadership Experience:</strong> High business acumen with proven experience leading talent acquisition teams within a high-growth enterprise SaaS or web infrastructure environments.&nbsp; Previous agency experience is a plus.</li>
 	<li><strong>GTM Recruiting Expertise:</strong> A strong track record of successfully scaling revenue-generating teams (Sales, SEs, Channel, Marketing) across the region, with additional exposure to technical (R&amp;D) and corporate (G&amp;A) hiring.</li>
@@ -30,13 +30,13 @@
 	<li><strong>Analytical &amp; Structural Thinking:</strong> Data diagnostics are second nature to you. You have adopted AI to help drive efficiency and productivity for yourself and your team</li>
 	<li><strong>Location:</strong>&nbsp; This position is based in our Singapore location and offers a hybrid working arrangement (2 days in the office a week)</li>
 </ul>
-<h2>Compensation</h2>
+<h4>Compensation</h4>
 <p>Compensation may be adjusted depending on work location.</p>
-<h3>Equity</h3>
+<h4>Equity</h4>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits</h3>
+<h4>Benefits</h4>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!</p>
-<h3>Time Off</h3>
+<h4>Time Off</h4>
 <ul>
 	<li>Flexible paid time off covering vacation and sick leave</li>
 	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>

@@ -5,27 +5,24 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
-<ul>
-	<li>Austin, US</li>
-</ul>
-<h2>About the Role</h2>
+<h3>Available Locations |&nbsp;Austin, US</h3>
+<h3>About the Role</h3>
 <p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
 <h3>Is this role a fit for you?</h3>
 <p>We are looking for engineers who build infrastructure software from scratch, not those who operate it.&nbsp;If your core expertise is configuring, managing, scaling, or writing applications on top of existing data platforms like Kafka, Flink, Spark, Databricks, or Snowflake, this role is not the right fit. We are seeking the engineers who can write the code that replaces these tools.</p>
-<h2>Responsibilities</h2>
+<h3>Responsibilities</h3>
 <ul>
 	<li>As a Senior Systems Engineer focused on Cloudflare's core storage and streaming products, you will design and implement the foundational layers of our next-generation data services. We work backward from developer needs, reimagining solutions by leveraging our unique global network.</li>
 	<li>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might be architecting a new globally distributed data consistency model, optimizing storage engine performance, or designing a novel API for a new data-centric product. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3>Desirable Skills, Knowledge, and Experience</h3>
 <ul>
 	<li>Minimum 6+ years of experience designing, building, and deploying the internals of large-scale distributed systems or storage engines from scratch.</li>
 	<li>Direct experience writing core components of a storage or streaming system.</li>
 	<li>Proven track record of debugging, profiling, and fixing complex race conditions, split-brain scenarios, and network partition failures at the infrastructure layer.</li>
 	<li>Deep, expert-level proficiency in Rust or C++ applied to systems programming.</li>
 </ul>
-<h2>Bonus Points</h2>
+<h3>Bonus Points</h3>
 <ul>
 	<li>Experience building time-series databases, log-structured merge-trees, or real-time stream processing engines from the ground up.</li>
 	<li>Academic or professional contributions to distributed systems research (e.g., consensus, conflict-free replicated data types (CRDTs), or database theory).</li>
