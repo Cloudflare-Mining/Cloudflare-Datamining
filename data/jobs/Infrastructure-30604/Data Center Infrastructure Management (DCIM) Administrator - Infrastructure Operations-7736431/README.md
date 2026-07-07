@@ -5,19 +5,19 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<h4>Available Locations</h4>
 <ul>
 	<li>Atlanta, US</li>
 	<li>Denver, US</li>
 	<li>Toronto, Canada</li>
 	<li>Washington DC, US</li>
 </ul>
-<h2>About the Role</h2>
+<h4>About the Role</h4>
 <p>Atlanta (US), Austin (US), Denver (US), Seattle (US), Toronto (Canada)</p>
 <p>We are seeking a DCIM Administrator to build and run our Data Center Infrastructure Management program.&nbsp; This technical role is part of the Infrastructure Operations organization, which is responsible for building, scaling, and running one of the world's largest and most important cloud networks. Cloudflare’s global network spans more than 330 cities, and is a key strategic asset that supports all of our customers and products.</p>
 <p>You are the operational backbone and workflow gatekeeper for all physical changes across our global network. Your meticulous work ensures every Move, Add, and Change (MAC) is executed only through a validated Nlyte work order, driving the highest level of data accuracy essential for supporting our edge and core security and performance services.</p>
 <p>We operate in a fast-paced environment where you will be expected to drive both project delivery and operational excellence through continuous improvement, standardization, and optimization. This isn't just about day to day operations; it's about building a scalable, performant, secure, and resilient infrastructure that plays a critical role in us building a better Internet.</p>
-<h2>Responsibilities</h2>
+<h4>Responsibilities</h4>
 <ul>
 	<li>Assist with the successful deployment of CAPEX investments, ensuring our infrastructure scales ahead of demand.</li>
 	<li>Collaborate with cross-functional partners including Project Managers, Capacity Planning, Finance, and Security to deliver on ambitious group initiatives.</li>
@@ -30,22 +30,25 @@
 	<li>Model Library Management: Maintain the Nlyte Materials Catalog, ensuring all new hardware models have precise, validated resource profiles (power, cooling, rack elevations) to enable Analyst validation.</li>
 	<li>Field Training &amp; Support: Provide hands-on training and support for global technicians on using the Nlyte mobile app, scanning tools, and required workflow procedures.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
 <ul>
 	<li>You are a DCIM expert, highly organized and efficient operator. &nbsp; You have a track record of driving operational excellence through establishing and enforcing standard operating procedures and continuous improvement efforts. You are passionate about asset management and obsessed over data accuracy.&nbsp; This role is for hands-on asset and infrastructure administrators who can rapidly learn, adapt, and apply learnings to enable fast and sustainable growth. You thrive in a hyper-growth environment and have an outstanding ability to get things done under pressure while maintaining optimism and grit.</li>
 	<li>You are Transparent; you ensure every physical action is accurately logged and instantly visible to stakeholders globally.&nbsp; You are Principled; you have an uncompromising commitment to data integrity and refuse to bypass established workflows.</li>
-	<li>Education:<ul>
+	<li>Education:
+		<ul>
 			<li>Bachelor's degree in Information Technology, Logistics, Manufacturing, Business Administration, or a related field, or equivalent practical experience.</li>
 		</ul>
 	</li>
-	<li>Experience:<ul>
+	<li>Experience:
+		<ul>
 			<li>4+ years of hands-on experience in IT Asset Management or DCIM administration (Nlyte experience is a strong advantage).</li>
 			<li>Direct experience administering a workflow or change management system, with a focus on discipline and process enforcement in a multi-site environment.</li>
 			<li>Experience with change management in ERP and asset management transformation efforts.</li>
 			<li>Experience operating in a high-velocity environment involving geographic dispersed Data Centers across various time zones.</li>
 		</ul>
 	</li>
-	<li>Technical Competencies:<ul>
+	<li>Technical Competencies:
+		<ul>
 			<li>High proficiency in physical inventory control, including barcode/RFID systems.</li>
 			<li>Deep familiarity with data center infrastructure, including server hardware, network hardware, rack elevation/density, and power distribution</li>
 			<li>Knowledge of structured cabling, and cabling standards.</li>
@@ -53,7 +56,8 @@
 			<li>Expert in workflow Management (MAC Process): Proven experience managing a high-volume Move, Add, Change queue.</li>
 		</ul>
 	</li>
-	<li>Soft Skills:<ul>
+	<li>Soft Skills:
+		<ul>
 			<li>Exceptional attention to detail and strong organizational skills.</li>
 			<li>Excellent problem-solving and root cause analysis capabilities.</li>
 			<li>Meticulous Attention to Detail: A "Zero-Defect" mindset regarding data entry.</li>

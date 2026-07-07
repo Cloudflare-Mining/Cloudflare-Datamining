@@ -5,11 +5,8 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
-<ul>
-	<li>Austin, US</li>
-</ul>
-<h2>About the Role</h2>
+<h2><span style="font-size: 12pt;">Available Locations: </span><span style="font-size: 10pt;"><strong>Austin, US</strong></span></h2>
+<h2><span style="font-size: 12pt;">About the Role</span></h2>
 <p>The Data Intelligence &amp; Analytics organization builds the core data platform and internal products that power decision-making across the company. We design and operate large-scale data systems, own the company’s data lake, ingestion infrastructure, and platform tooling, and develop end-to-end applications that transform complex datasets into fast, reliable, business-critical products used daily by go-to-market, product, and engineering teams. Our work sits at the intersection of data platforms, distributed systems, and product development, giving engineers the opportunity to own meaningful problems across the stack and build systems that truly run the business.</p>
 <p>You will focus on building scalable, reliable AI/ML models, services and GenAI powered application backends, partnering closely with data and full-stack engineers to deliver new features and operate the pipelines and platforms behind our products. Our stack spans multiple languages and technologies, including Python, React, and TypeScript, and continues to evolve. Many of our applications also incorporate strong AI components, giving you opportunities to work with modern AI infrastructure and tools such as vector databases, MCP-based services, and Workers AI.</p>
 <h2>Responsibilities</h2>

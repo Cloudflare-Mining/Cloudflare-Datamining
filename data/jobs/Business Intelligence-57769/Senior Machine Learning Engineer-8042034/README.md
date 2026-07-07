@@ -13,17 +13,17 @@
 <p>You will own the end-to-end technical strategy, blueprint, and execution of scalable backend services and data pipelines that support AI-driven applications across go-to-market, engineering, and product teams. Because our products are initiated and owned entirely within the team, you will drive the vision from initial requirements and system design to global deployment, optimization, and long-term evolutionary ownership.</p>
 <h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Architect and evolve a highly scalable, multi-tenant AI/ML platform that seamlessly unifies traditional ML (classification, regression, forecasting) and Generative AI/LLM orchestration.<br><br></li>
-	<li>Design and implement robust production-grade AI Agents and Advanced Chatbots. Build reliable execution environments for Multi-Agent Systems, including state management, long-term memory architectures, and Model Context Protocol (MCP) server integrations.<br><br></li>
-	<li>Build high-throughput, low-latency application backends and orchestration layers. Partner closely with data, platform, and full-stack engineers to ensure seamless feature delivery and reliable production operations.<br><br></li>
-	<li>Act as a technical anchor for the Data Science team – enforcing rigorous engineering standards, leading design and security reviews, evaluating build-vs-buy decisions, and mapping business requirements to robust technical designs.<br><br></li>
+	<li>Architect and evolve a highly scalable, multi-tenant AI/ML platform that seamlessly unifies traditional ML (classification, regression, forecasting) and Generative AI/LLM orchestration.</li>
+	<li>Design and implement robust production-grade AI Agents and Advanced Chatbots. Build reliable execution environments for Multi-Agent Systems, including state management, long-term memory architectures, and Model Context Protocol (MCP) server integrations.</li>
+	<li>Build high-throughput, low-latency application backends and orchestration layers. Partner closely with data, platform, and full-stack engineers to ensure seamless feature delivery and reliable production operations.</li>
+	<li>Act as a technical anchor for the Data Science team – enforcing rigorous engineering standards, leading design and security reviews, evaluating build-vs-buy decisions, and mapping business requirements to robust technical designs.</li>
 	<li>Evaluate trade-offs and drive adoption of modern AI infrastructure tools, optimized embedding pipelines, vector databases, and serverless compute paradigms (such as Workers AI).\</li>
 </ul>
 <h4><strong>What We Are Looking For</strong></h4>
 <ul>
-	<li>Extensive experience as a Senior or Lead ML Engineer, with a proven track record of architecting and operating production-grade ML platforms, services&nbsp; and distributed backends.<br><br></li>
-	<li>Strong competency in Traditional ML lifecycles (feature stores, training pipelines, model monitoring) alongside deep experience in Generative AI patterns (RAG pipelines, context engineering, fine-tuning, guardrailing, and agentic AI systems).<br><br></li>
-	<li>Mastery of Python and robust experience with modern backend ecosystems. Familiarity with (or willingness to collaborate on) full-stack technologies like React and TypeScript is highly valued.<br><br></li>
+	<li>Extensive experience as a Senior or Lead ML Engineer, with a proven track record of architecting and operating production-grade ML platforms, services&nbsp; and distributed backends.</li>
+	<li>Strong competency in Traditional ML lifecycles (feature stores, training pipelines, model monitoring) alongside deep experience in Generative AI patterns (RAG pipelines, context engineering, fine-tuning, guardrailing, and agentic AI systems).</li>
+	<li>Mastery of Python and robust experience with modern backend ecosystems. Familiarity with (or willingness to collaborate on) full-stack technologies like React and TypeScript is highly valued.</li>
 	<li>A builder's mindset. You are comfortable navigating ambiguity, shaping your own technical roadmap, adapt as needed and taking extreme ownership of system reliability, costs, and model performance.</li>
 </ul>
 <h4><strong>Examples of desirable skills, knowledge and experience</strong></h4>

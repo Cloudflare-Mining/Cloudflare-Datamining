@@ -11,7 +11,6 @@
 	<li>Atlanta</li>
 	<li>Denver</li>
 	<li>Seattle</li>
-	<li>Mexico City</li>
 </ul>
 <h2>About the Role</h2>
 <p>Cloudflare operates one of the world's largest and most interconnected networks, spanning 335+ cities across every region of the globe. We are looking for a Senior Network Engineer to join our Edge Network &amp; Backbone team — someone who brings deep operational experience, an AI-first mindset, and the instinct to mentor and lift the engineers around them. In your first year, this role is deliberately hands-on: you'll be in the operational trenches, owning complex faults, driving capacity work, and setting the standard for how we run the network. Beyond that, you'll help shape how the team works — building AI-enabled tooling and agents that reduce toil, accelerate troubleshooting, and make the whole team more effective. This is a North American based role, but you'll be joining one global team: the sun never sets on Cloudflare, and our engineers hand off work across every time zone to keep the network running around the clock.</p>

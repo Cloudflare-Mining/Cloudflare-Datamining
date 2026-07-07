@@ -7,7 +7,7 @@
 </div>
 <h2>Available Locations</h2>
 <ul>
-	<li>Austin, US</li>
+	<li>Austin</li>
 	<li>Atlanta</li>
 	<li>Denver</li>
 	<li>Seattle</li>
@@ -24,7 +24,8 @@
 	<li>BA/BS in Computer Science or equivalent experience</li>
 	<li>Solid foundation on configuration management frameworks: Saltstack, Ansible, Chef</li>
 	<li>Experience with NX-OS, JUNOS, EOS, Cumulus, or Sonic Network Operating Systems</li>
-	<li>AI-native: being able to leverage LLM to:<ul>
+	<li>AI-native: being able to leverage LLM to:
+		<ul>
 			<li>build agentic deployment and troubleshooting tools on top of the Cloudflare stack</li>
 			<li>automate configurations (SaltStack + Temporal)</li>
 			<li>parse complex log files, and streamline documentation</li>
