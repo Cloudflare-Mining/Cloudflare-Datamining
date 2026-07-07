@@ -7,10 +7,10 @@
 </div>
 <h3><strong>Available Location: Paris, France<br></strong></h3>
 <hr>
-<h3><strong>About the Role</strong></h3>
+<h2><strong>About the Role</strong></h2>
 <p>We are seeking a highly accomplished and strategic Account Executive<strong> </strong>to join our Enterprise/Field Sales team. In this advanced role, you will be pivotal in driving significant growth by leading comprehensive sales cycles within a portfolio of assigned enterprise-level clients, and strategically acquiring new logos. The ideal candidate possesses a deep blend of advanced sales acumen and sophisticated technical understanding, enabling them to lead engagements at all levels, from the C-suite to technical leaders (e.g., Head of/VP of Networking or Security).</p>
 <p>As an Account Executive, you will consistently demonstrate advanced proficiency in all sales activities, ensuring highly accurate forecasting, proactive and strategic pipeline management, and consistently exceeding attainment targets. You will be a subject matter expert, speaking fluently about Cloudflare's products, features, benefits, and use cases across diverse customer segments. This role demands the ability to deeply understand complex customer IT Architectures, match them with relevant Cloudflare Reference Architectures, and orchestrate successful, large-scale platform sales. You will be a key driver of digital transformation for our customers, understanding their broader market trends and how Cloudflare uniquely enables their strategic initiatives.</p>
-<h3><strong>What You'll Do</strong></h3>
+<h2><strong>Responsibilities</strong></h2>
 <ul>
 	<li><strong>Strategic Revenue Generation:</strong> Architect and execute advanced territory and account plans to consistently exceed multi-million dollar sales targets and annual quotas, with a strong focus on new business acquisition and expansion within complex enterprise environments.</li>
 	<li><strong>Expert Pipeline &amp; Forecasting:</strong> Lead proactive and strategic pipeline management efforts, demonstrating a sophisticated understanding of sales cycles and customer buying processes. Deliver highly accurate forecasts, providing clear insights and strategic guidance to sales leadership.</li>
@@ -23,7 +23,7 @@
 	<li><strong>Trusted Advisor &amp; Coach:</strong> Build long-term, executive-level strategic relationships, ensuring deep customer adoption, retention, and expansion. Consistently provide clear, direct, and constructive feedback to team members, coaching them to improve communication, learn from mistakes, and enhance the quality of work. Share learnings proactively to build trust across the organization.</li>
 	<li><strong>Organizational Impact &amp; Leadership:</strong> Consistently focus on the long-term needs of the team and the business, understanding how decisions impact other teams and openly sharing these insights. Leverage company-wide learnings to improve department and team execution. Serve as a leader within Cloudflare, making significant contributions while elevating the work of others by bringing diverse perspectives and strategic long-term thinking.</li>
 </ul>
-<h3><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></h3>
+<h2><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></h2>
 <ul>
 	<li><strong>8+ years of advanced experience selling complex technology solutions in a B2B enterprise model</strong>, with a significant track record of consistently exceeding multi-million dollar quota targets.</li>
 	<li><strong>Deep expertise and fluency in Cloud Networking, Security, and Edge Computing technologies</strong>, with an exceptional ability to articulate features, benefits, and use cases across diverse customer segments (e.g., SMBs, enterprise, vertical markets).</li>
@@ -38,8 +38,14 @@
 	<li><strong>Proficiency in advanced sales and business intelligence platforms</strong> (e.g., Salesforce, Tableau, G-suite, MSFT suite, MEDDPICC framework application).</li>
 	<li><strong>Bachelor's degree required</strong>, with a technical background (e.g., engineering, computer science, MIS) highly preferred.</li>
 	<li><strong>Ability to travel</strong> as required to engage with key customers and internal teams.</li>
-	<li><strong>Language Skills:</strong></li>
+	<li><strong>Language Skills: </strong>French &amp; English</li>
 </ul>
+<h2>Compensation</h2>
+<p><strong>For France based hires:</strong> Estimated annual salary is between €169,000 - €232,000.</p>
+<p>This role is labelled CSP 3-1 and has a coefficient of 170, as per the SYNTEC Collective Bargaining Agreement.</p>
+<p>This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</p>
+<h3>Equity</h3>
+<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div id="te-floating-button-container"></div>
 <div id="te-floating-button-container"></div>
 <div class="content-conclusion">
