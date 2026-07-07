@@ -1,9 +1,21 @@
 # Changelog
 
+## 0.4.0
+
+### Minor Changes
+
+- [#14](https://github.com/cloudflare/polystella/pull/14) [`6122f6f`](https://github.com/cloudflare/polystella/commit/6122f6fe64927aa3aa5d8d6fdf0aa670dbda2fa7) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Default Markdown and MDX parsing to Satteri, with `markdown.parser: "remark"` available as a legacy compatibility escape hatch. The parser choice is now part of the Markdown/MDX extraction policy hash, so Satteri and Remark outputs use separate cache entries.
+
+  This release also updates the package and playground/docs fixtures for Astro 7, reconstructs missing Satteri MDX ESTree metadata needed by static-data extraction and MDX audits, rewrites relative MDX imports only in staged translated files, and refreshes the local staging-cache index version to avoid stale staged MDX output.
+
+### Patch Changes
+
+- [#15](https://github.com/cloudflare/polystella/pull/15) [`8120b2f`](https://github.com/cloudflare/polystella/commit/8120b2f354152b7577040f97f73542019e930439) Thanks [@diogoascarneiro](https://github.com/diogoascarneiro)! - Document the requirement to add a Changesets entry for package-affecting changes and record the docs migration to Nimbus.
+
 All notable changes to PolyStella are tracked here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
-versioning will follow [semver](https://semver.org/) once the package
-is on npm.
+published releases follow [semver](https://semver.org/) pre-1.0
+versioning.
 
 ## [Unreleased]
 
