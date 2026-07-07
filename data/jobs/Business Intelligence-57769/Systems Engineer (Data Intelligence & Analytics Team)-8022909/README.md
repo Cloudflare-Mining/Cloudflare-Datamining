@@ -5,30 +5,32 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Locations: Bangalore</strong></p>
+<p><strong>About the team</strong></p>
+<p>The Data Intelligence &amp; Analytics&nbsp; team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service data applications to fuel existing and new business critical initiatives.</p>
+<p><strong>About the role</strong></p>
+<p>We are looking for a Systems Engineer to join our Austin team to scale our development efforts on Platform Tooling initiatives. You will work on building data application tools and frameworks which empowers our Internal Teams. You&nbsp; will work closely with the Data Engineers on the team to add new features and maintain our data pipelines written in Go. You can expect to interact with various languages and technologies including, but not limited to Go, React, and Clickhouse.</p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li>Singapore</li>
-	<li>Sydney, Australia</li>
+	<li>Design and implement key features of our internal applications</li>
+	<li>Work closely with a cross functional team to design features and solutions that solve critical business problems</li>
+	<li>Contribute in improving an evolving platform architecture for scalability, observability and reliability</li>
+	<li>Continuously involved in knowledge sharing and mentorship</li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudflare's business pushes the boundaries of what the Internet can do, our customers expect no less, and we need a world-class commercial legal team to meet the needs of our business.&nbsp; Our team is composed of accomplished lawyers and staff who bring their unique expertise and backgrounds to a global team.&nbsp; Our work product may often be contracts but we understand that each contract defines the intangible and clarifies the possible.&nbsp; We believe that doing this with clarity creates strong and elegant agreements that can meet the needs of the business now and as Cloudflare continues to grow.</p>
-<p>In this role, you’ll be a key member of Cloudflare’s APAC commercial legal team.&nbsp; We are looking for a commercially savvy lawyer who can confidently navigate complex and high value transactions. You will collaborate and work cross-functionally with other internal groups, across the sales, deal desk, finance, privacy, product legal and security compliance teams and be a trusted advisor, accelerating deal velocity while protecting the company’s interests.&nbsp;This is a unique opportunity to thrive in a fast-paced environment where your legal expertise directly drives business growth. The position is based in Singapore or Sydney and frequent communication with our other offices will be required.</p>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>LL.B. or JD degree with strong academic credentials.</li>
-	<li>Admitted to practice law in Singapore, UK, US, Australia or Japan.</li>
-	<li>At least 4 years relevant experience including a mix of law firm and in-house experience for a technology company (either on secondment or after leaving the law firm) with at least 2 years of experience working for an internationally recognized law firm.</li>
-	<li>A demonstrated ability to learn new systems and tools, the better to adapt to AI tooling.</li>
-	<li>Substantive experience with drafting, reviewing, and negotiating a variety of complex commercial agreements, including SaaS agreements and consulting services statements of work.</li>
-	<li>Resourceful self-starter with an eye for detail, excellent problem-solving capabilities, judgment, negotiation, communication (written and verbal) and interpersonal skills.</li>
-	<li>Good strategic, business sense, and demonstrated negotiation skills with respect to legal issues.</li>
-	<li>Proven ability to manage high-volume workloads, multiple stakeholder demands and ever-shifting priorities all while instilling confidence.</li>
-	<li>Ability to identify and explain non-standard terms and associated risks to relevant business stakeholders and interpret contract requirements, obligations and risk exposure and advise on the same.</li>
+	<li>B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</li>
+	<li>Experience working with Go, Python, Java, or equivalent programming languages</li>
+	<li>Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</li>
+	<li>Experience with CI/CD, Gitlab CI</li>
+	<li>Excellent communication &amp; problem solving skills&nbsp;</li>
+	<li>Ability to collaborate with cross functional teams and work through ambiguous business requirements</li>
 </ul>
-<h2>Bonus Points</h2>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Solid understanding of local and international privacy and data protection laws.</li>
-	<li>Experience using administrative management systems such Salesforce, DocuSign, Ironclad and/or JIRA.</li>
+	<li>Familiarity with container based deployments such as Docker &amp; Kubernetes</li>
+	<li>Familiarity with Google Cloud Platform or something similar</li>
+	<li>Familiarity with Javascript, Typescript, and React</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
