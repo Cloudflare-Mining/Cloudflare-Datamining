@@ -1,0 +1,175 @@
+<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LOCTGkyM5ZFw05P2Os2Y8/a0d1dcceee291080f7de4a19c79d27c8/image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p>Many internal services at Cloudflare need to read and modify the same control-plane state from across our 330+ global data centers. They need guarantees that different readers <i>never </i>see inconsistent state, and that the system remains available for writes even when some data centers or links fail. </p>
+	<p>But Cloudflare’s network runs across the entire Internet, and the Internet is an unpredictable place. Servers and data centers go down. Queues fill up. Links and cables get cut. These conditions make it difficult to run a globally available data system that guarantees strong consistency (e.g., that all readers are guaranteed to read all prior writes) because hostile conditions hinder distributed system replicas’ ability to reliably synchronize data with one another.</p>
+	<p>One way to synchronize data safely despite adverse network conditions is via a <i>consensus algorithm, </i>which<i> </i>allows a set of machines to agree on the same sequence of values, such as key-value store put and <code>get</code> operations, as long as a majority remains alive and able to communicate.&nbsp;</p>
+	<p>Unfortunately, commonly deployed consensus algorithms like <a href="https://raft.github.io" target="_blank" rel="noopener noreferrer"><u>Raft</u></a> suffer in wide-area networks like Cloudflare’s because they rely on <i>leaders </i>and<i> timeouts</i>. The <i>leader</i> is the only replica allowed to make writes, and if it fails due to a crash or network degradation, the system becomes unavailable until some other replica <i>times out</i> and a new leader is elected. And these timeout values are hard to configure in networks with unpredictable latencies.</p>
+	<p>We have experienced multiple incidents caused by unavailable leaders in consensus-driven systems.</p>
+	<p>And so, for the past year, Cloudflare’s Research <a href="https://research.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>team</u></a> has been building a new distributed consensus service called <b>Meerkat</b> powered by a consensus algorithm called <a href="https://bford.info/pub/os/quepaxa/quepaxa.pdf" target="_blank" rel="noopener noreferrer"><u>QuePaxa</u></a>, published in 2023 by researchers at EPFL. QuePaxa differs from Raft in that all replicas can perform writes at all times, and progress is never halted due to a timeout, which makes it well suited for Cloudflare’s network. We layer <i>applications</i>, like a transactional key-value store and leasing system, atop Meerkat’s consensus log. To our knowledge, this will be the first industrial deployment of QuePaxa at global scale.</p>
+	<p>Meerkat is an experimental consensus service that is still in development. It’s being designed initially to manage small pieces of control plane state (e.g., leadership for replicated databases) and so it will be kept internal-only for the immediate future. This post introduces Meerkat and lays the groundwork for the Meerkat-related blog posts to come.&nbsp;</p>
+	<div class="flex anchor relative">
+		<h2 id="what-we-need-from-a-global-control-plane-data-system">What we need from a global control-plane data system</h2>
+		<a href="https://blog.cloudflare.com/#what-we-need-from-a-global-control-plane-data-system" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Many Cloudflare services read and write <i>control-plane data</i>, data that helps those services operate correctly, from multiple machines distributed all over the world. One example of control-plane data is <i>placement information</i>: where certain resources (like an AI model instance) are stored. Another example is <i>leadership information</i>: which machine is currently allowed to perform writes to a database.&nbsp;</p>
+	<p>Control-plane data must be both <i>strongly</i> <i>consistent</i> and<i> accessible despite particular kinds of faults.</i></p>
+	<p>In this section we precisely describe our consistency and fault tolerance requirements for a Cloudflare consensus service. We use a key-value store for a running example of an application running atop our consensus service, though other applications (e.g., distributed leases/locks) are possible.</p>
+	<div class="flex anchor relative">
+		<h3 id="strong-consistency">Strong consistency</h3>
+		<a href="https://blog.cloudflare.com/#strong-consistency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A distributed data system’s <a href="https://jepsen.io/consistency/models" target="_blank" rel="noopener noreferrer"><u>consistency</u></a> level describes what kinds of weird behavior the system is allowed to exhibit when it receives concurrent reads and writes. Consider a distributed key-value store that stores a single numeric value <code>x = 6</code> across multiple nodes. Also consider the following sequence of writes. These writes are submitted to different nodes on a best-effort basis, and could arrive in any order:&nbsp;</p>
+	<ol>
+		<li>
+			<p><code>x = x + 1</code></p>
+		</li>
+		<li>
+			<p><code>x = x / 2</code></p>
+		</li>
+	</ol>
+	<p>A system’s consistency level tells you what values of <code>x</code> a client might see when reading <code>x</code> after these writes. Consider the following sequence of operations and the possible execution orders under different consistency levels:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Ie5OrNyD2MJVN47XewDiD/52d0c61577c39f026ed49d5035a8d7cd/BLOG-3347_image4.png" alt="BLOG-3347 image4" class="kg-image" width="1144" height="940" loading="lazy">
+	</figure>
+	<p>In a weak consistency level, writes can be re-ordered. In a stronger consistency model, writes can’t be reordered, but reads can. In the strongest possible consistency level, the operations are ordered exactly as they occurred in real time. This property is called <i>linearizability</i>.</p>
+	<p>At Cloudflare, many services want linearizability. Unlike weaker forms of consistency, linearizability relieves programmers from thinking about all the weird behaviors the data systems might exhibit. Instead, they can reason about the distributed system like they reason about local memory on a single-threaded machine: all reads after a write will see that write. For additional reading material on the dangers of weak consistency, check out this <a href="https://brooker.co.za/blog/2025/11/18/consistency.html" target="_blank" rel="noopener noreferrer"><u>post</u></a> by Marc Brooker.</p>
+	<p>(If you’re wondering, Meerkat’s key-value store also provides serializability, which we’ll write about in a future post.)</p>
+	<div class="flex anchor relative">
+		<h3 id="fault-tolerance">Fault tolerance</h3>
+		<a href="https://blog.cloudflare.com/#fault-tolerance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>A system’s level of fault tolerance describes what kinds of faults the system can handle before catastrophes happen. Catastrophes are typically violations of properties the system aims to uphold, e.g., that two consecutive reads without an intervening write for the same key never see different values, or that the system remains available for writes. The faults include network failures or delays, machine crashes, and machine restarts. A system will typically explicitly handle some faults but not others (you can’t handle all faults, as the universe could always reach heat-death). For example, some key-value stores might guarantee to remain available for writes as long as two-thirds of the machines in the system can communicate and don’t crash, but make no promises if a machine is compromised and starts sending malicious messages.</p>
+	<p>Our desired fault tolerance properties are as follows:</p>
+	<p><b>First</b>, the data system should remain available for writes and reads from a client located in any of our data centers as long as the following are true:</p>
+	<ol>
+		<li>
+			<p>A majority of the machines in our system are alive and can communicate with one another. (Formally, we tolerate <code>f</code> faults in a system of <code>2f + 1</code> machines).</p>
+		</li>
+		<li>
+			<p>The client can contact <i>any</i> machine in the system that is connected to a majority of live machines.</p>
+		</li>
+	</ol>
+	<p>This means that a single failed machine, or network degradation on a single link, does not affect availability of the system<i>. </i>This property is not provided by Raft-based systems, as we’ll see later.</p>
+	<p><b>Second</b>, the data system remains <i>correct</i> as long as no actor in the system is actively malicious (and, of course, there are no bugs). We define <i>correctness</i> in terms of consensus <i>safety </i>later, but loosely speaking this means no two up-to-date machines will ever disagree about the world (e.g., one thinks that <code>key1=1</code> while another thinks that <code>key1=2</code>).</p>
+	<p>To summarize, the system must remain correct even if machines crash, machines restart, networks fail or degrade, data centers go down, and more (though we, like Raft-based systems, do not handle <a href="https://en.wikipedia.org/wiki/Byzantine_fault" target="_blank" rel="noopener noreferrer"><u>Byzantine faults</u></a>).</p>
+	<div class="flex anchor relative">
+		<h2 id="introducing-meerkat">Introducing Meerkat</h2>
+		<a href="https://blog.cloudflare.com/#introducing-meerkat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Meerkat is a consensus service <i>upon which </i>we can build applications that exhibit the above properties (strong consistency and fault tolerance) like a key-value (KV) store. To understand how Meerkat works, we first outline Meerkat’s general architecture, and then describe how Meerkat’s choice of consensus algorithm helps provide strong consistency and fault tolerance.</p>
+	<p>Developers of services using Meerkat request a <i>cluster</i> of Meerkat <i>replicas</i>. Each replica is connected to every other replica. Each replica participates in the consensus algorithm and can receive both reads and writes. The developer can specify which data centers are allowed to host their replicas, and Meerkat places them automatically.</p>
+	<p>To interact with their cluster, a developer’s client sends an application-specific request to any replica in the cluster. A single replica may host many kinds of applications, but the simplest one is a key-value store, so the simplest application-specific request type is a KV <code>get</code> or <code>put</code>. The replica responds to the request with an application-specific response (e.g., the records requested with the <code>get</code>). Note that KV reads (<code>get</code>s) are guaranteed to read up-to-date information.</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DHsJkxyuRlmVZUhg2WoPh/4e83ae8c01ce7758a2af8c90895475c8/BLOG-3347_image2.png" alt="BLOG-3347 image2" class="kg-image" width="1344" height="928" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="meerkats-log">Meerkat’s log</h3>
+		<a href="https://blog.cloudflare.com/#meerkats-log" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Under the hood, the replica translates application requests (e.g., <code>get</code> and <code>put</code>) into <i>log events</i>. That replica distributes each log event to all other replicas using a consensus algorithm such that all replicas maintain the exact same log of events (in reality, a replica may lag behind, but shall never record different entries). These events are arbitrary — Meerkat’s core doesn’t care what’s in them. Meerkat <i>applications</i> care about log event contents. Each Meerkat replica “hosts” many Meerkat applications (e.g., key-value store) that read the log events and construct state. (Note that each replica belongs to exactly one cluster.)</p>
+	<p>For instance, the KV Meerkat application constructs an in-memory key-value store from the log events. So when a client sends a write like <code>put k1 v1</code>, the receiving replica places that write into a log event and distributes it to all replicas. If someone else subsequently writes <code>put k1 v11</code> to a different replica, this event is also distributed to all replicas. Since all functioning replicas have the same log, those replicas can apply the operations in the log in sequence to construct the exact same state. Note that <code>get</code> requests also create distributed log events (for linearizability, as explained in the next section).</p>
+	<p>Here is an example of how a replica’s KV store is updated as it receives log events:</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jTmSTMFIi20yFDIQtVf4l/4b1871e87d46668ecaa401a306755f60/BLOG-3347_image3.png" alt="BLOG-3347 image3" class="kg-image" width="1676" height="984" loading="lazy">
+	</figure>
+	<div class="flex anchor relative">
+		<h3 id="how-meerkats-log-enables-strong-consistency">How Meerkat’s log enables strong consistency</h3>
+		<a href="https://blog.cloudflare.com/#how-meerkats-log-enables-strong-consistency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Meerkat guarantees that if one client executes <code>put k1 v1</code>, a second client subsequently executes <code>put k1 v11</code>, and a third client subsequently executes <code>get k1</code> (with a consistent read), they will always read <code>v11</code>. It guarantees this even if each request is submitted to a different replica, and those replicas are distributed randomly across the world. This is linearizability. To see how Meerkat guarantees this, we must examine Meerkat’s log in more detail.</p>
+	<p>The Meerkat log is a sequence of slots. A slot is a box that can contain an event or not. A slot that contains an event is called a <i>decided </i>slot. All slots in the log are decided except the last slot, which is currently being decided. One of Meerkat’s invariants is that if any two replicas decide on the value for a slot, those values are the same. In other words, no two replicas will ever disagree on the value of a decided slot (though one replica may think the last slot is empty while another does not). This property helps guarantee the desired properties we described in the previous section.</p>
+	<p>To decide on the value of the last (empty) slot in the log, Meerkat replicas run a distributed <i>consensus algorithm</i>. A consensus algorithm allows a set of machines communicating over a network to agree on a decided slot value. Our consensus algorithm works as long as a majority of replicas (more than half) are alive.</p>
+	<p>So if the log currently contains two entries, and a client submits <code>put k1 v11</code> to a replica, that replica triggers a consensus algorithm for slot 3. But another client might have submitted <code>put k1 v111</code> to a different replica for slot 3. The consensus algorithm ensures that only one such <i>proposal</i> for slot 3 wins out. Specifically, it ensures that at least a majority of replicas agree on the same proposal, <i>deciding </i>it for slot 3. The non-majority can <i>never</i> decide a different proposal, but might miss the fact that slot 3 has been decided at all.&nbsp;</p>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/n4FcN0VCaSpM0jU1ptJJ2/77161cc5c179f10ff64a956ee10ab3b1/BLOG-3347_image5.png" alt="BLOG-3347 image5" class="kg-image" width="1356" height="881" loading="lazy">
+	</figure>
+	<p>To see how this provides linearizability for our key-value store, consider a write followed by a read. One replica Z proposes <code>put k1 v11</code> and this proposal is decided at slot 3 by a majority of replicas, but NOT replica Y. Subsequently, a reader executes <code>get k1</code> on replica Y. Replica Y believes slot 3 is empty, so proposes <code>get k1</code> at slot 3. Critically, a majority of replicas will not agree to place that event at slot 3, because that slot has already been decided. They will force replica Y to decide (by receiving older decisions) <code>put k1 v11</code> in slot 3, and to propose <code>get k1</code> for slot 4, thus <i>linearizing </i>the read after the write in the log. (And if that replica can’t contact a majority, it will be unable to complete the read.)</p>
+	<div class="flex anchor relative">
+		<h3 id="how-meerkats-consensus-algorithm-provides-higher-availability-than-raft">How Meerkat’s consensus algorithm provides higher availability than Raft</h3>
+		<a href="https://blog.cloudflare.com/#how-meerkats-consensus-algorithm-provides-higher-availability-than-raft" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Deciding on log entries requires a distributed consensus algorithm. But which one? All valid consensus algorithms would provide the required consistency and correctness guarantees, but not all provide the same availability guarantees.&nbsp;</p>
+	<p>Specifically, many algorithms that rely on authoritative leaders do not provide our desired availability guarantees, because they can become unavailable when a single machine experiences issues. Consider <a href="https://raft.github.io" target="_blank" rel="noopener noreferrer"><u>Raft</u></a>, one of the most well-known and probably <i>the</i> most implemented consensus algorithm. Raft relies on an authoritative leader: the only replica in the cluster that can drive consensus. As a result, all writes get forwarded to the leader. This design choice helps make Raft “<a href="https://raft.github.io/raft.pdf" target="_blank" rel="noopener noreferrer"><u>understandable</u></a>” and, coupled with <a href="https://dl.acm.org/doi/epdf/10.1145/3786663" target="_blank" rel="noopener noreferrer"><u>leases</u></a>, can make leader-served reads automatically linearizable (since they’re guaranteed to be up-to-date). But it also adds a single point of (temporary) failure.</p>
+	<p>In general, there are two problems with authoritative leaders. First, if the leader goes down, the system becomes unavailable (all writes block) until a new leader is elected. This is unacceptable for Meerkat. Second, if the leader stays up but slows down, either because it is overloaded or there are network delays, then performance degrades. The leader is a bottleneck because there is no alternative way to perform writes.&nbsp;</p>
+	<p>The first problem is exacerbated in wide-area networks. Consider that when a leader goes down, most algorithms choose a new leader using <i>timeouts</i>: if a non-leader replica hasn’t heard from the leader in some amount of time, they propose themselves as the leader. At that point, the old leader has been deposed, and the system cannot accept writes until a new leader has been elected. The problem is that when the timeout is shorter than the network delay between the original leader and that replica, replicas will constantly be timing out and thus blocking writes. And when the timeout is too long, the system reacts slowly to a failed leader, during which writes are also blocked. Plus, if multiple replicas propose themselves as leader at the same time, their “campaigns” can interfere with each other, causing them to constantly re-propose themselves as leader — all the while blocking writes. We have seen these exact issues with Cloudflare’s systems that use Raft because our wide-area network delays can and do vary wildly, making tuning timeouts especially difficult.</p>
+	<p>We chose a different consensus algorithm for Meerkat, called <a href="https://bford.info/pub/os/quepaxa/quepaxa.pdf" target="_blank" rel="noopener noreferrer"><u>QuePaxa</u></a>, that aims to avoid the “tyranny of timeouts” imposed by protocols like Raft. QuePaxa is a subtle protocol, but here are the highlights. A client can contact <i>any </i>replica, and that replica can drive consensus for the latest slot. There is a leader, but it is not required — its only advantage is that it can drive consensus with fewer round trips (one) than other replicas (3+). Critically, clients are free to contact multiple replicas <i>concurrently </i>for the same proposal, to increase the chance of the proposal being successful. Concurrent proposals do not destructively interfere:&nbsp; replicas <i>work together</i> to decide one of the proposed values.</p>
+	<p>In short, QuePaxa has three advantages over Raft for our purposes:</p>
+	<ol>
+		<li>
+			<p>Because there is no required leader, the system <i>never</i> becomes unavailable or degraded due to a single replica (the leader) being down, unavailable, or degraded. Clients can perform writes as long as they can contact some healthy replica (anywhere in the world).&nbsp;</p>
+		</li>
+		<li>
+			<p>Because there is no leader, there are no leader elections that degrade the system. And concurrent proposals made by different replicas <i>constructively </i>interfere, unlike Raft’s leadership elections. This is ideal for Cloudflare’s network, in which latencies can vary wildly.</p>
+		</li>
+		<li>
+			<p>QuePaxa was designed for a less reliable network environment (“asynchrony”), and for networks in which an imaginary adversary can launch targeted attacks on replica connections. The authors found that it maintains much higher (~10x) throughput than Raft and Multi-Paxos during such conditions. These conditions more accurately resemble our own network than the conditions other algorithms assume.</p>
+		</li>
+	</ol>
+	<p>We will save the full description of QuePaxa for another post. Major shoutout to the authors of the QuePaxa paper from EPFL for being available for feedback and questions about their work.</p>
+	<div class="flex anchor relative">
+		<h2 id="assessing-meerkats-performance">Assessing Meerkat’s performance&nbsp;</h2>
+		<a href="https://blog.cloudflare.com/#assessing-meerkats-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Meerkat has limitations. It is <i>not</i> designed to create general-purpose data systems like databases.</p>
+	<p>All consensus algorithms come with a cost: lots of round-trips. QuePaxa in particular takes one to three round trips (usually, although it can take more) between the initial proposer and a majority of replicas to decide on a proposal and add an event to the log. The difference is with the leader. It takes one if the leader is proposing (+ an extra broadcast to notify replicas of the decision) and three if a non-leader is proposing (+ extra broadcast). If multiple replicas make proposals at the same time, it can take more. These communication costs point to the important performance limitation of consensus algorithms in general: proposal decision latency is proportional to the latency between some majority of replicas. So if your replicas are far from one another, latency will increase — there’s no getting around that.</p>
+	<p>At first glance, it seems Meerkat’s write <i>and</i> read latency will be quite poor. Especially if all writes and<i> </i>reads<i> </i>(for consistency) must go through the log, and thus require so many round trips.</p>
+	<p>But there are a few ways to squeeze better performance out of Meerkat:&nbsp;</p>
+	<ol>
+		<li>
+			<p>Because developers have control over where their replicas live, they can choose to move replicas closer together, reducing round-trip latency (only applicable for services that don’t need truly global distribution).</p>
+		</li>
+		<li>
+			<p>Writes can be batched. So if a replica receives 10 writes in a span of 10ms, it can place all of those in a single proposal, improving throughput<i>.</i></p>
+		</li>
+		<li>
+			<p>Not all reads must trigger a consensus round. If a developer is OK with reading <i>stale </i>(but never inconsistent) data, they can read from <i>any </i>replica’s local data.</p>
+		</li>
+		<li>
+			<p>Multiple operations can be bundled into a single consensus round. For instance, our key-value store supports compare-and-swap-style writes in which writes execute only if a value has not changed since it was read. (In fact, it supports general transactions.)</p>
+		</li>
+	</ol>
+	<p>Still, Meerkat’s fundamental latency limitations remain, especially when it is run at global scale, as it was designed to do. These limitations make it perfect, in the short term, for control plane information that is written infrequently but must remain consistent.</p>
+	<div class="flex anchor relative">
+		<h2 id="whats-next">What’s next</h2>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Meerkat is not deployed to production, but we have run multiple proofs-of-concept with up to 50 replicas distributed around the world, to great success. <b>Leaders in our proof-of-concept clusters constantly fail, and the cluster keeps operating with no increase in error-rate.</b></p>
+	<p>We have a lot more to say about Meerkat. Over the course of the next year we’ll be writing Meerkat posts that discuss how QuePaxa really works, how we’re formally verifying some of our Rust implementation, how bootstrapping and cluster management works, how we find optimal replica placement, how we use deterministic simulation testing to find bugs, and more. We’ll also be preparing a manuscript for peer-review!</p>
+	<p>Follow along on the Cloudflare Blog as Meerkat progresses, and check out more of our projects at <a href="https://research.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Research</u></a>.</p>
+</div>
