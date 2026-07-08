@@ -1,90 +1,56 @@
 import 'dotenv/config';
 import path from 'node:path';
 
+import * as cheerio from 'cheerio';
 import dateFormat from 'dateformat';
 import { XMLParser } from 'fast-xml-parser';
 import fs from 'fs-extra';
 import fetch from 'node-fetch';
 
+import {
+	getBMCookie,
+	getHttpsAgent,
+	tryAndPush,
+	userAgent,
+} from './utils.js';
 
-import { getBMCookie, getHttpsAgent, tryAndPush } from './utils.js';
 const agent = getHttpsAgent();
+const parser = new XMLParser();
+
+const origin = 'https://www.cloudflare.com';
 
 const dir = path.resolve('../data/marketing');
-await fs.ensureDir(dir);
-
 const pagesDir = path.resolve(dir, 'pages');
 await fs.ensureDir(pagesDir);
 
-const parser = new XMLParser();
-const paths = new Set([
-	'index',
-]);
-const morePaths = new Set([]);
+// The Astro rebuild ships an agent/LLM-friendly surface: a flat sitemap, a
+// markdown twin for every page (append `.md`), and a set of catalog files
+// linked from the homepage response headers. These replace the old Gatsby
+// `/page-data/{path}/page-data.json` blobs the previous miner scraped.
+const catalog = [
+	{ url: `${origin}/llms.txt`, file: 'llms.txt', json: false },
+	{ url: `${origin}/llms-full.txt`, file: 'llms-full.txt', json: false },
+	{ url: `${origin}/.well-known/agents.json`, file: 'agents.json', json: true },
+	{ url: `${origin}/.well-known/webmcp.json`, file: 'webmcp.json', json: true },
+	{ url: `${origin}/openapi.json`, file: 'openapi.json', json: true },
+];
 
 const shuffle = function(array) {
 	let currentIndex = array.length;
-	let	randomIndex;
-
-	// While there remain elements to shuffle.
+	let randomIndex;
 	while (currentIndex !== 0) {
-		// Pick a remaining element.
 		randomIndex = Math.floor(Math.random() * currentIndex);
 		currentIndex--;
-
-		// And swap it with the current element.
 		[array[currentIndex], array[randomIndex]] = [
 			array[randomIndex], array[currentIndex],
 		];
 	}
-
 	return array;
 };
-const removeTrailing = function(string) {
-	return string.replace(/\/$/, '');
-};
 
-const addPath = function(url) {
-	const fixed = removeTrailing(url);
-	paths.add(fixed);
-};
-const addMore = function(url) {
-	if (url.includes('#')) {
-		return;
-	}
-	const fixed = removeTrailing(url);
-	if (!paths.has(fixed) && !morePaths.has(fixed)) {
-		console.log('Found new path!', fixed);
-		morePaths.add(fixed);
-	}
-};
-
-const keysWithUrls = new Set(['url', 'learnMoreUrl']);
-const findMoreUrls = function(object) {
-	for (const key in object) {
-		if (typeof object[key] === 'string' && keysWithUrls.has(key)) {
-			const val = object[key];
-			if (val.startsWith('/')) {
-				addMore(val.slice(1));
-			} else if (val.startsWith('https://www.cloudflare.com')) {
-				const url = new URL(val);
-				addMore(url.pathname.slice(1));
-			}
-		}
-		if (typeof object[key] === 'object') {
-			findMoreUrls(object[key]);
-		}
-		if (Array.isArray(object[key])) {
-			for (const item of object[key]) {
-				if (typeof item === 'object') {
-					findMoreUrls(item);
-				}
-			}
-		}
-	}
-};
-
-const stabiliseString = function(string) {
+// Straight-quote punctuation so localisation-driven typographic swaps don't
+// churn the diff; the replacement char signals a broken fetch, so bail.
+const stabiliseText = function(string) {
 	if (string.includes('�')) {
 		throw new Error('Bad encoding');
 	}
@@ -93,131 +59,105 @@ const stabiliseString = function(string) {
 		.replaceAll('”', '"')
 		.replaceAll('“', '"');
 };
-const stabiliseData = function(object) {
-	if (typeof object === 'string') {
-		return object;
+
+const cookieHeader = function(bmCookie) {
+	return bmCookie ? `${bmCookie.name}=${bmCookie.value}` : undefined;
+};
+
+const get = function(url, bmCookie) {
+	return fetch(url, {
+		agent,
+		headers: {
+			'user-agent': userAgent,
+			'cookie': cookieHeader(bmCookie),
+		},
+	});
+};
+
+// Run tasks in small batches to stay polite while covering ~360 pages.
+const pool = async function(items, size, worker) {
+	const queue = [...items];
+	while (queue.length > 0) {
+		await Promise.all(queue.splice(0, size).map(item => worker(item)));
 	}
-	for (const key in object) {
-		if (typeof object[key] === 'string') {
-			object[key] = stabiliseString(object[key]);
-			if (key === 'publicURL') {
-				object[key] = object[key].replace(/^\/static\/\w+\/(.*)/, '[path]/$1');
-			}
-		}
-		if (typeof object[key] === 'object') {
-			stabiliseData(object[key]);
-		}
-		if (Array.isArray(object[key])) {
-			for (let item of object[key]) {
-				if (typeof item === 'object') {
-					stabiliseData(item);
-				} else if (typeof item === 'string') {
-					item = stabiliseString(item);
-				}
-			}
-			object[key] = object[key].sort((itemA, itemB) => {
-				if (itemA.orderDate) {
-					return itemB.orderDate.localeCompare(itemA.orderDate) || itemA.id.localeCompare(itemB.id);
-				}
-				if (typeof(itemA) === 'string') {
-					return 0;
-				}
-				return 0;
-			});
-		}
-	}
+};
+
+const locToPath = function(loc) {
+	const { pathname } = new URL(loc);
+	const trimmed = pathname.replace(/^\/+/, '').replace(/\/+$/, '');
+	return trimmed === '' ? 'index' : trimmed;
+};
+
+const mdUrlFor = function(urlPath) {
+	return urlPath === 'index' ? `${origin}/index.md` : `${origin}/${urlPath}.md`;
 };
 
 const processPage = async function(urlPath, bmCookie) {
-	const url = `https://marketing-data.james.pub/?path=${urlPath}`;
-	console.log('Fetching', url);
-	let cookie;
-	if (bmCookie) {
-		cookie = `${bmCookie.name}=${bmCookie.value}`;
-	}
-	const res = await fetch(url, {
-		agent,
-		headers: {
-			'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
-			cookie,
-		},
-	});
-	const filePath = path.resolve(pagesDir, `${urlPath}.json`);
+	const url = mdUrlFor(urlPath);
+	const filePath = path.resolve(pagesDir, `${urlPath}.md`);
+	const res = await get(url, bmCookie);
 	if (!res.ok) {
 		console.log('Failed', url, res.status);
-		try {
-			if (res.status === 404) {
-				// page removed
-				await fs.remove(filePath);
-			}
-		} catch {}
+		// A 404 means the page was removed; drop the stale copy.
+		if (res.status === 404) {
+			await fs.remove(filePath).catch(() => {});
+		}
 		return;
 	}
-	const json = await res.json();
-	await fs.ensureFile(filePath);
-
-	findMoreUrls(json.result);
+	const text = await res.text();
 	try {
-		stabiliseData(json.result);
+		await fs.outputFile(filePath, stabiliseText(text));
 	} catch (err) {
-		console.warn('Ignoring', url, err);
-		return;
+		console.warn('Ignoring', url, err.message);
 	}
-
-	// extract global info
-	if (urlPath === 'index') {
-		if (json?.result?.pageContext?.globalVariables) {
-			const globalVariables = json.result.pageContext.globalVariables;
-			const globalVariablesPath = path.resolve(dir, 'global-variables.json');
-			await fs.writeFile(globalVariablesPath, JSON.stringify(globalVariables, null, '\t'));
-		}
-		if (json?.result?.pageContext?.staticStrings) {
-			const staticStrings = json.result.pageContext.staticStrings;
-			const staticStringsPath = path.resolve(dir, 'static-strings.json');
-			await fs.writeFile(staticStringsPath, JSON.stringify(staticStrings, null, '\t'));
-		}
-		if (json?.result?.pageContext?.salesPhoneNumbers) {
-			const salesPhoneNumbers = json.result.pageContext.salesPhoneNumbers;
-			const salesPhoneNumbersPath = path.resolve(dir, 'sales-phone-numbers.json');
-			await fs.writeFile(salesPhoneNumbersPath, JSON.stringify(salesPhoneNumbers, null, '\t'));
-		}
-		if (json?.result?.data?.headerData) {
-			const headerData = json.result.data.headerData;
-			const headerDataPath = path.resolve(dir, 'header-data.json');
-			await fs.writeFile(headerDataPath, JSON.stringify(headerData, null, '\t'));
-		}
-		if (json?.result?.data?.footerData) {
-			const footerData = json.result.data.footerData;
-			const footerDataPath = path.resolve(dir, 'footer-data.json');
-			await fs.writeFile(footerDataPath, JSON.stringify(footerData, null, '\t'));
-		}
-	} else {
-		// delete duplicate info
-		if (json?.result?.pageContext?.globalVariables) {
-			delete json.result.pageContext.globalVariables;
-		}
-		if (json?.result?.pageContext?.staticStrings) {
-			delete json.result.pageContext.staticStrings;
-		}
-		if (json?.result?.pageContext?.salesPhoneNumbers) {
-			delete json.result.pageContext.salesPhoneNumbers;
-		}
-		if (json?.result?.data?.headerData) {
-			delete json.result.data.headerData;
-		}
-		if (json?.result?.data?.footerData) {
-			delete json.result.data.footerData;
-		}
-		if (json?.staticQueryHashes) {
-			delete json.staticQueryHashes;
-		}
-	}
-	await fs.writeFile(filePath, JSON.stringify(json, null, '\t'));
 };
 
-// first determine that we're requesting from the US
-// Cloudflare's marketing site seems to change content based on the country
-// So let's get the most possible stable diffs by ensuring this is coming from the US
+const processCatalog = async function(entry, bmCookie) {
+	const res = await get(entry.url, bmCookie);
+	if (!res.ok) {
+		console.log('Failed', entry.url, res.status);
+		return;
+	}
+	const filePath = path.resolve(dir, entry.file);
+	const text = await res.text();
+	if (entry.json) {
+		// Pretty-print so slug/product enum changes surface as readable diffs.
+		try {
+			await fs.outputFile(filePath, JSON.stringify(JSON.parse(text), null, '\t'));
+			return;
+		} catch {
+			console.warn('Could not parse JSON, saving raw', entry.url);
+		}
+	}
+	try {
+		await fs.outputFile(filePath, stabiliseText(text));
+	} catch (err) {
+		console.warn('Ignoring', entry.url, err.message);
+	}
+};
+
+// The header/footer content that used to live in Gatsby's `pageContext` now
+// rides along as serialised props on the homepage's Astro islands.
+const extractNavigation = async function(bmCookie) {
+	try {
+		const res = await get(origin, bmCookie);
+		if (!res.ok) {
+			return;
+		}
+		const dom = cheerio.load(await res.text());
+		const props = dom('astro-island[component-export="NavigationContainer"]').first().attr('props');
+		if (!props) {
+			console.warn('No NavigationContainer island found');
+			return;
+		}
+		const parsed = JSON.parse(props);
+		await fs.outputFile(path.resolve(dir, 'navigation.json'), JSON.stringify(parsed, null, '\t'));
+	} catch (err) {
+		console.warn('Failed to extract navigation', err.message);
+	}
+};
+
+// The marketing site localises content by country; pin diffs to the US view.
 async function run() {
 	const cfRes = await fetch('https://jross.me/cf.json');
 	const cf = await cfRes.json();
@@ -226,31 +166,42 @@ async function run() {
 		return;
 	}
 
-	const bmCookie = await getBMCookie();
-	// then fetch everything from the sitemap
-	const sitemap = await fetch('https://www.cloudflare.com/sitemap.xml').then(res => res.text());
+	const bmCookie = await getBMCookie().catch((err) => {
+		console.warn('Could not get bot management cookie, continuing without', err.message);
+	});
+
+	console.log('Fetching catalog files...');
+	await pool(catalog, 5, entry => processCatalog(entry, bmCookie));
+	await extractNavigation(bmCookie);
+
+	const paths = new Set(['index']);
+	const sitemap = await get(`${origin}/sitemap.xml`, bmCookie).then(res => res.text());
 	const sitemapXml = parser.parse(sitemap);
-	for (const url of sitemapXml.urlset.url) {
-		if (url.loc && url.loc.startsWith('https://www.cloudflare.com/')) {
-			const rawPath = url.loc.replace('https://www.cloudflare.com/', '');
-			addPath(rawPath);
+	for (const url of sitemapXml?.urlset?.url ?? []) {
+		if (url.loc && url.loc.startsWith(origin)) {
+			paths.add(locToPath(url.loc));
 		}
 	}
-	for (const urlPath of shuffle([...paths])) {
-		await processPage(urlPath, bmCookie);
-	}
 
-	for (const urlPath of shuffle([...morePaths])) {
-		console.log('Processing more', urlPath);
-		await processPage(urlPath, bmCookie);
-	}
+	// Supplement the sitemap with any markdown pages referenced from llms-full.txt.
+	try {
+		const llmsFull = await fs.readFile(path.resolve(dir, 'llms-full.txt'), 'utf8');
+		const linkRegex = new RegExp(`${origin}/([^)\\s]+?)\\.md`, 'g');
+		let match;
+		while ((match = linkRegex.exec(llmsFull)) !== null) {
+			paths.add(match[1] === 'index' ? 'index' : match[1]);
+		}
+	} catch {}
+
+	console.log(`Fetching ${paths.size} markdown pages...`);
+	await pool(shuffle([...paths]), 8, urlPath => processPage(urlPath, bmCookie));
 
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
 		[
 			'data/marketing/*',
 			'data/marketing/*.json',
-			'data/marketing/**/*.json',
+			'data/marketing/**/*.md',
 		],
 		`${prefix} - Marketing Site Data was updated! [skip ci]`,
 		'CFData -Marketing Site Data Update',
