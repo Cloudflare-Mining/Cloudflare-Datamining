@@ -73,8 +73,15 @@
 	<li>Chaos engineering or formal reliability frameworks (e.g., Google SRE principles).</li>
 	<li>Managing or configuring non-HTTP services: email, DNS authoritative/recursive, FTP, SSH.</li>
 </ul>
-<p>&nbsp;</p>
-<p><strong><br></strong><br><br></p>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between&nbsp;€ 50,000 - 68,000</p>
+<ul data-path-to-node="2">
+	<li>
+		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>
+	</li>
+</ul>
+<h3 data-path-to-node="3"><strong data-path-to-node="3" data-index-in-node="0">Equity</strong></h3>
+<p data-path-to-node="4">This role is eligible to participate in Cloudflare’s equity plan.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

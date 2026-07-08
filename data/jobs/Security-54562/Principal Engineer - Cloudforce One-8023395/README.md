@@ -13,6 +13,7 @@
 <p>Cloudflare is a system spanning the globe, on a mission to make the internet better, safer, and more powerful every day. We are looking for a Principal Engineer who is equal parts architect, threat analyst, and disruptor — someone who doesn't just build systems but fundamentally rethinks how we detect, analyze, and neutralize threats across one of the world's largest networks.</p>
 <p>This is not a role that lives in a single team or a single codebase. You will operate across the full breadth of Cloudflare Products, diving into whatever problem is most critical — whether that's redesigning a detection pipeline in Kubernetes, deploying a new mitigation capability at the edge via Workers, building agentic AI workflows that automate analyst tradecraft, or architecting a data system that processes trillions of signals per day. You will be the person teams turn to when the problem is ambiguous, the architecture is complex, and the adversary is sophisticated.</p>
 <p>Our ideal candidate has deep technical expertise in distributed systems architecture and an equally deep understanding of how threat actors operate — their tactics, techniques, procedures, and infrastructure. You think like an attacker and build like an engineer who has been burned by production incidents at 3 AM. You are energized by hard problems, impatient with the status quo, and have a track record of shipping solutions that others said couldn't be done.</p>
+<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
 <h4><strong>Responsibilities</strong></h4>
 <ul>
 	<li>Drive architectural direction and technical strategy across Cloudforce One engineering, spanning services that run in Kubernetes, on the edge (Workers, D1), and across Cloudflare's global network.</li>
@@ -52,31 +53,7 @@
 <p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
 <p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
-<p>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</p>
+<p>Cloudflare offers a complete package of benefits and programs to support you and your family, including medical, dental, and vision insurance, a 401(k) plan with company match, flexible paid time off, and fertility &amp; family-forming benefits.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

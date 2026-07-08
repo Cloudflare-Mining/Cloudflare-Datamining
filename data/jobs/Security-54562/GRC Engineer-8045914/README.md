@@ -5,51 +5,34 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Locations:&nbsp;</strong>Austin, TX</p>
+<p><strong>About the role</strong></p>
+<p>Security is at the heart of Cloudflare’s mission to help build a better Internet. Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world, spanning over 330 cities in more than 125 countries, and operating within 50 milliseconds of 95% of the Internet-connected population.</p>
+<p>The Security Governance, Risk and Compliance team (GRC) is a sub-team of Security. Our job is to make sure that Cloudflare has the right controls in place to secure our systems and customer data. We work cross-functionally with almost every team at Cloudflare to implement new controls, manage risk, and demonstrate our security posture to auditors and customers.</p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li>Austin, US</li>
+	<li><strong>Automation &amp; Engineering:</strong> Develop and implement automated solutions to improve GRC processes and operations, integrating with existing security, engineering, and AI tools. You will build modules and maintain our GRC platform and other similar initiatives.</li>
+	<li><strong>AI Governance:</strong> Architect and maintain a technical governance framework for the safe deployment of autonomous AI agents. This includes ensuring that agentic workflows operate within deterministic "action gates" and predefined risk thresholds.</li>
+	<li><strong>Audit &amp; Infrastructure:</strong> Support Cloudflare’s security assessments (e.g., SOC 2, ISO 27001, PCI DSS, FedRAMP). You will treat "Audit Readiness" as a product, ensuring our global edge network remains compliant through automated drift detection and self-healing configurations.</li>
+	<li><strong>Security Integration:</strong> Work cross-functionally with Legal, People, Engineering, and Finance teams to integrate security into the fabric of the company, moving away from "gatekeeping" toward a paved-road security model where compliance is the default state for every developer.</li>
 </ul>
-<h2>About the Role</h2>
-<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
-<p>As a Software Engineer on this team, you will own the entire software development lifecycle—from design and architecture to deployment and monitoring—for systems that serve both threat disruption and legal response efforts. You will be responsible for translating complex legal and security requirements into robust, scalable, and high-performance applications that have a direct impact on making the internet better, safer, and more powerful every day.</p>
-<h2>Responsibilities</h2>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>While the majority of our services are now written in Golang and TypeScript, you will also work with technologies such as Rust, Kafka, Redis, Kubernetes, Terraform, Temporal and PostgresSQL. We also pride ourselves in dogfooding our own products and services so you will be extensively working with Cloudflare’s developer platform as well. We are looking for great engineers regardless of experience with any of these specific technologies.</li>
-	<li>This role may require flexibility to be on-call outside of standard working hours to address technical issues as needed.</li>
-	<li>Design, build, run, and scale distributed tools and services that support both cyber threat disruption and platform abuse efforts.</li>
-	<li>Develop critical data pipelines and services to collect, analyze, and expose threat intelligence data for Cloudforce One analysts and Cloudflare customers, helping to identify Tactics, Techniques, and Procedures (TTPs) and Indicators of Compromise (IOCs).</li>
-	<li>Collaborate closely with Threat Intelligence, Trust &amp; Safety, Legal, and Product teams to understand goals and translate complex technical requirements into elegant, scalable solutions.</li>
-	<li>Improve system design and architecture to ensure stability, performance, and maintainability of both internal and customer-facing compliance and security services.</li>
-	<li>Analyze, communicate, and help prioritize complex technical concepts across teams.</li>
-	<li>Ongoing monitoring and maintenance of production services, including participation in on-call rotations.</li>
-	<li>Mentor and guide other developers in the team, helping to build collective technical expertise and promote best practices for writing well-tested, modular, and reusable code.</li>
+	<li><strong>Experience:</strong> Have 5+ years of experience in security, compliance, automation, or engineering functions in a fast-paced environment.</li>
+	<li><strong>The Builder Mindset:</strong> You are a builder and enjoy building technical solutions to complex and messy problems. You’d rather write a script to solve a problem forever than manually check a box twice.</li>
+	<li><strong>AI Mastery:</strong> Experience designing or implementing AI-powered automation and agentic workflows. You understand the unique risks of non-deterministic systems and how to govern them.</li>
+	<li><strong>Compliance-as-Code:</strong> Deep experience with Infrastructure as Code (Terraform, Pulumi) and Policy as Code (OPA/Rego) implementation. You know how to enforce security guardrails before code is ever deployed.</li>
+	<li><strong>Technical Stack:</strong> Proficient in Python, Go, or other scripting languages for automation, API interactions, and data parsing. You are comfortable working with REST APIs to glue disparate security tools together. Proven experience building modern web applications, including JavaScript/TypeScript and React, and collaborating effectively across frontend and backend boundaries.</li>
+	<li><strong>The Motto:</strong> Driven by curiosity, anchored by empathy, and defined by a relentless ability to get things done. You seek to understand the "why," support your peers, and ship high-quality outcomes.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h4><strong>Bonus Points:</strong></h4>
 <ul>
-	<li>Experience with AI-assisted development and agentic AI workflows</li>
-	<li>At least 5 years of experience building large-scale software applications, preferably distributed systems</li>
-	<li>At least 3 years of experience working with Threat Intelligence or in support of a Threat Intelligence platform</li>
-	<li>Experience designing and integrating RESTful APIs and/or gRPC services</li>
-	<li>Knowledge of SQL and common relational database systems such as PostgreSQL</li>
-	<li>Prior experience writing production ready code in Go and/or Typescript</li>
-	<li>Familiarity with Rust</li>
-	<li>Excellent debugging and optimization skills</li>
-	<li>Expertise in writing well tested code</li>
-	<li>Interest in opportunities to be a technical mentor for teammates</li>
+	<li><strong>Community &amp; Passion:</strong> Demonstrated passion for security and software development, such as personal projects, open-source contributions, or active participation in the security research community.</li>
+	<li><strong>Cloudflare Native:</strong> You’ve built something with our developer platform using our products (e.g., <strong>Cloudflare Workers, R2, D1, or Workers AI</strong>). You understand our ecosystem because you’ve used it.</li>
 </ul>
-<h2>Bonus Points</h2>
-<ul>
-	<li>Deep understanding of DNS, TLS/SSL and HTTP</li>
-	<li>Expertise in web security issues and industry standards for access control</li>
-	<li>Experience with Kafka</li>
-	<li>Experience building web applications using React</li>
-	<li>Experience with Kubernetes</li>
-	<li>Experience with Redis</li>
-</ul>
-<h2>Compensation</h2>
-<h3>Equity:</h3>
+<p><strong>Equity</strong></p>
 <p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<h3>Benefits:</h3>
+<p><strong>Benefits</strong></p>
 <p>Cloudflare offers a complete package of benefits and programs to support you and your family, including medical, dental, and vision insurance, a 401(k) plan with company match, flexible paid time off, and fertility &amp; family-forming benefits.</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

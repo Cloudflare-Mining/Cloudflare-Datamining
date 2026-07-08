@@ -5,15 +5,16 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available location: Austin, Texas</strong></p>
+<h3><strong>Available locations: </strong></h3>
+<p><strong>Austin, US</strong></p>
 <p><strong><em>This role requires you to be able to come into our Austin office 3x a week. Fall internships will run from September - December</em></strong></p>
-<p><strong>About the Department</strong></p>
+<h3><strong>About the Department</strong></h3>
 <p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
 <p>&nbsp;</p>
-<p><strong>What You’ll do</strong></p>
+<h3><strong>What You’ll do</strong></h3>
 <p>Do you love solving complex technical problems and interacting with people? As a Technical Support Engineer Intern at Cloudflare, you’ll work directly with customers and cross-functional teams to tackle a variety of technical challenges. You’ll gain hands-on experience with our products, learn the inner workings of Cloudflare’s offerings, and deepen your understanding of internet technologies. This role also provides opportunities to develop valuable technical and professional skills, as well as job shadowing experiences to explore different roles within the company. Join us to enhance your skill set while making a real impact!</p>
 <p>&nbsp;</p>
-<p><strong>Responsibilities</strong>&nbsp;</p>
+<h3><strong>Responsibilities</strong>&nbsp;</h3>
 <ul>
 	<li>Collaborate with senior engineers to analyze and troubleshoot customer issues</li>
 	<li>Track support requests using our ticketing system</li>
@@ -23,7 +24,7 @@
 	<li>Support the team in testing new releases and reporting bugs</li>
 	<li>Perform other duties/projects as assigned&nbsp;</li>
 </ul>
-<p><strong>Skills and Requirements</strong></p>
+<h3><strong>Desirable Skills, Knowledge and Experience</strong></h3>
 <ul>
 	<li>Currently pursuing an undergraduate degree in a Computer Sciences or related field</li>
 	<li>Self-driven and capable of learning new technologies/systems/features with some guidance</li>
@@ -36,13 +37,10 @@
 	<li>Must be able to work 40 hours a week</li>
 	<li>Must be able to commit to a 12 week program</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<h3><strong>Bonus Points</strong></h3>
 <ul>
 	<li>Experience troubleshooting network connectivity issues, BGP routing, and GRE tunnels</li>
 	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
-</ul>
-<p><strong>Super Bonus Points</strong></p>
-<ul>
 	<li>You are fluent and can troubleshoot in Mandarin, Spanish, and Portuguese</li>
 </ul>
 <p>&nbsp;</p>
