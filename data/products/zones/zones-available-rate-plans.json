@@ -131,6 +131,11 @@
 		"frequency": "monthly",
 		"components": [
 			{
+				"name": "max_ratelimit_rules_per_ruleset",
+				"default": 0,
+				"unit_price": 0
+			},
+			{
 				"name": "page_rules",
 				"default": 125,
 				"unit_price": 0
