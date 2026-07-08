@@ -1,0 +1,183 @@
+# Cloudflare
+
+> Cloudflare is a global cloud connectivity company operating in 335+ cities worldwide. It provides a unified platform spanning developer infrastructure (serverless compute, databases, AI inference, and storage), application security (WAF, DDoS mitigation, bot management, and API Shield), Zero Trust / SASE (Access, Gateway, Browser Isolation, DLP, and Email Security), and network services (CDN, DNS, load balancing, and Magic Transit). Cloudflare powers approximately 20% of Internet traffic and protects millions of websites, applications, APIs, and enterprise networks.
+
+This is the main Cloudflare website at cloudflare.com. For technical documentation, see developers.cloudflare.com.
+
+## About Cloudflare
+
+Cloudflare launched in 2010 and went public in 2019 (NYSE: NET). It operates one of the world's largest and most interconnected networks, spanning 335+ cities and 125+ countries, with interconnections to 13,000+ networks. The network operates within 50 ms of 95% of the Internet-connected world.
+
+Cloudflare serves three primary audiences:
+- **Developers** building applications on its global compute, storage, and AI platform
+- **Security teams** protecting web applications, APIs, networks, and users from attacks and data loss
+- **Enterprise IT** replacing legacy VPN and network appliances with its Zero Trust / SASE platform (Cloudflare One)
+
+Key facts:
+- 335+ cities, 125+ countries
+- 500 Tbps total network capacity
+- Interconnected with 13,000+ networks
+- More than 220 cities running GPUs for AI inference worldwide
+- <50 ms from 95% of Internet-connected users
+- Processes ~8.4 trillion DNS queries/day across 1.1.1.1 and authoritative DNS
+- ~20% of web traffic flows through Cloudflare
+- 42% of the Fortune 500 are paying Cloudflare customers
+- Blocks an average of 234 billion cyber threats per day (Q1 2026)
+- Serves over 102 million HTTP requests per second on average, 145 million at peak
+- Named a Leader in Forrester Wave™ for Web Application Firewalls (2025)
+- Largest DDoS attack ever mitigated: 31.4 Tbps (November 2025)
+- All pages on this site are available in markdown format by appending .md to the URL
+
+---
+
+## Developer Platform - Compute
+
+Workers run on V8 isolates for zero cold starts; Containers support heavier workloads. Both deploy globally across Cloudflare's network, not to specific regions. Durable Objects and supporting primitives complete the platform.
+
+- [Workers](https://www.cloudflare.com/products/workers.md): Serverless functions with zero cold starts - deploy JS, TS, Python, or Rust to 335+ cities globally
+- [Containers](https://www.cloudflare.com/products/containers.md): Run any language or Docker image globally; no Kubernetes, no regions, scales to zero
+- [Durable Objects](https://www.cloudflare.com/products/durable-objects.md): Stateful serverless with built-in WebSockets and embedded SQLite; ideal for real-time and multiplayer apps
+- [Sandboxes](https://www.cloudflare.com/products/sandboxes.md): Isolated secure environments for running untrusted or AI-generated code
+- [Workflows](https://www.cloudflare.com/products/workflows.md): Durable multi-step execution engine with automatic retries and state persistence
+- [Cloudflare Pages](https://www.cloudflare.com/products/pages.md): Build and deploy frontend sites globally
+- [Workers for Platforms](https://www.cloudflare.com/products/workers-for-platforms.md): Multi-tenant compute - let your customers run sandboxed code on your platform
+- [Workers Observability](https://www.cloudflare.com/products/workers-observability.md): First-party logs, traces, and metrics for Workers applications
+- [Browser Run](https://www.cloudflare.com/products/browser-rendering.md): Headless browser automation for screenshots, scraping, PDF generation, and AI agent web access
+- [Email Service](https://www.cloudflare.com/products/email-service.md): Send and receive email directly from Workers
+- [Artifacts](https://www.cloudflare.com/products/artifacts.md): Git-native versioned storage - create millions of repos, fork from GitHub, give every agent its own branch
+
+---
+
+## Developer Platform - Storage
+
+- [R2](https://www.cloudflare.com/products/r2.md): S3-compatible object storage with zero egress fees; ideal for training data, media, and backups
+- [D1](https://www.cloudflare.com/products/d1.md): Serverless SQLite database with global read replication, time-travel backups, and Prisma/Drizzle support
+- [KV](https://www.cloudflare.com/products/kv.md): Globally distributed key-value store with <5 ms hot read latency; ideal for config, feature flags, and auth tokens
+- [Queues](https://www.cloudflare.com/products/queues.md): Message queue for reliable async processing between Workers
+- [Hyperdrive](https://www.cloudflare.com/products/hyperdrive.md): Accelerates queries to existing PostgreSQL/MySQL databases from the edge by pooling and caching connections globally
+- [Data Platform](https://www.cloudflare.com/products/data-platform.md): Analytics-ready data warehouse on R2 using Apache Iceberg; ingest via Pipelines, query with R2 SQL, Snowflake, or DuckDB
+- [Cache Reserve](https://www.cloudflare.com/products/cache-reserve.md): Persistent CDN caching backed by R2 to reduce origin load for long-tail content
+
+---
+
+## Developer Platform - AI
+
+Cloudflare's AI platform lets developers run inference, build agents, store vectors, and observe model calls - all on the same global network.
+
+- [Workers AI](https://www.cloudflare.com/products/workers-ai.md): Run 100+ AI models (Llama 3, Gemma, Whisper, FLUX, BGE) serverlessly across 220+ cities; OpenAI-compatible API
+- [Agents](https://www.cloudflare.com/products/agents.md): SDK for building stateful AI agents with built-in memory, scheduling, WebSockets, and tool calling
+- [AI Gateway](https://www.cloudflare.com/products/ai-gateway.md): Observability, caching, rate limiting, and model fallback for any AI provider (OpenAI, Anthropic, etc.)
+- [Vectorize](https://www.cloudflare.com/products/vectorize.md): Globally replicated vector database for RAG; pairs natively with Workers AI
+- [AI Search](https://www.cloudflare.com/products/ai-search.md): Managed RAG with automatic indexing for AI-powered search and chat
+- [AI Security for Apps](https://www.cloudflare.com/products/ai-security-for-apps.md): Protect AI-powered applications and model endpoints from prompt injection and abuse
+
+---
+
+## Developer Platform - Media
+
+- [Images](https://www.cloudflare.com/products/images.md): Resize, optimize, and deliver images globally from a single upload
+- [Stream](https://www.cloudflare.com/products/stream.md): End-to-end video streaming - upload, encode, store, and deliver
+- [RealtimeKit](https://www.cloudflare.com/products/realtime.md): WebRTC-based live communications platform
+- [TURN / SFU](https://www.cloudflare.com/products/turn-sfu.md): Real-time media relay infrastructure (TURN server and Selective Forwarding Unit)
+
+---
+
+## Application Security
+
+Cloudflare's application security products protect websites, APIs, and applications from attacks. Named a Leader in the Forrester Wave™ for Web Application Firewalls (2025). All protections are deployed at Cloudflare's edge - no appliances, no latency penalty.
+
+- [WAF](https://www.cloudflare.com/products/waf.md): Web Application Firewall with OWASP Top 10 protection, zero-day CVE rules, and low false-positive managed rulesets
+- [DDoS Protection](https://www.cloudflare.com/products/ddos.md): Always-on, unmetered L3/L4/L7 DDoS mitigation; mitigates most attacks in under 3 seconds; largest attack mitigated was 31.4 Tbps
+- [Bot Management](https://www.cloudflare.com/products/bot-management.md): ML-based bot detection and mitigation; scores every request in <1 ms and blocks credential stuffing, scraping, and inventory hoarding
+- [Turnstile](https://www.cloudflare.com/products/turnstile.md): Privacy-preserving, user-friendly CAPTCHA replacement - free for all Cloudflare customers
+- [API Shield](https://www.cloudflare.com/products/api-shield.md): API security with schema validation, mTLS, and endpoint discovery; protects REST and GraphQL traffic
+- [Rate Limiting](https://www.cloudflare.com/products/rate-limiting.md): Granular per-path, per-IP, per-header request throttling; blocks brute force and API abuse at the edge
+- [Page Shield](https://www.cloudflare.com/products/page-shield.md): Client-side protection against Magecart-style supply chain attacks and malicious JavaScript
+- [SSL](https://www.cloudflare.com/products/ssl.md): Free, auto-renewed SSL/TLS certificates with support for custom certificates and Keyless SSL
+- [Advanced Certificate Manager](https://www.cloudflare.com/products/advanced-certificate-manager.md): Automated certificate lifecycle management for custom and wildcard certificates
+- [Keyless SSL](https://www.cloudflare.com/products/keyless-ssl.md): TLS termination at Cloudflare's edge without ever exposing your private key
+- [Spectrum](https://www.cloudflare.com/products/spectrum.md): DDoS protection and proxying for any TCP/UDP application (not just HTTP)
+- [Spectrum for Minecraft](https://www.cloudflare.com/products/spectrum-for-minecraft.md): DDoS protection specifically for Minecraft game servers
+- [Waiting Room](https://www.cloudflare.com/products/waiting-room.md): Virtual queue to protect origins during traffic spikes - users see a branded waiting page
+- [Zaraz](https://www.cloudflare.com/products/zaraz.md): Server-side third-party tag and script manager; loads analytics and marketing tools without client-side risk
+
+---
+
+## Zero Trust / SASE (Cloudflare One)
+
+Cloudflare One is Cloudflare's Zero Trust network access and SASE platform, replacing legacy VPN with identity-aware, device-aware security controls for users, applications, networks, and data. It unifies ZTNA, SWG, CASB, RBI, DLP, email security, and network firewall into a single control plane.
+
+- [Access](https://www.cloudflare.com/products/access.md): Zero Trust Network Access (ZTNA) - replace VPN with identity + device posture checks for every application
+- [Gateway](https://www.cloudflare.com/products/gateway.md): Secure Web Gateway (SWG) with DNS filtering, HTTP inspection, and policy-based internet access controls
+- [Browser Isolation](https://www.cloudflare.com/products/browser-isolation.md): Remote Browser Isolation (RBI) - execute web pages in Cloudflare's cloud, not on the user's device
+- [Data Loss Prevention](https://www.cloudflare.com/products/dlp.md): Inspect traffic for sensitive data patterns (PII, credentials, secrets) and block exfiltration
+- [CASB](https://www.cloudflare.com/sase/products/casb.md): Cloud Access Security Broker - API-driven scanning of SaaS apps for misconfigurations, unauthorized user activity, shadow IT, and data security issues
+- [Email Security](https://www.cloudflare.com/products/email-security.md): AI-driven inbound email protection against phishing, BEC, and malware; integrates with M365 and Google Workspace
+- [Magic Transit](https://www.cloudflare.com/products/magic-transit.md): Network-layer DDoS protection and traffic acceleration for enterprise IP prefixes via BGP anycast
+- [Magic WAN](https://www.cloudflare.com/products/wan.md): Replace MPLS and SD-WAN with Cloudflare's global network as the enterprise WAN backbone
+- [Network Firewall](https://www.cloudflare.com/products/network-firewall.md): Cloud-native stateful firewall for enterprise WAN traffic; replaces hardware firewall appliances
+- [Mesh](https://www.cloudflare.com/products/mesh.md): Private, encrypted networking between AI agents and services
+- [RDP](https://www.cloudflare.com/products/rdp.md): Secure browser-based Remote Desktop access without exposing RDP ports to the internet
+
+---
+
+## Network & Performance
+
+- [CDN](https://www.cloudflare.com/products/cdn.md): Global content delivery network caching static and dynamic content across 335+ cities; zero-configuration setup
+- [DNS](https://www.cloudflare.com/products/dns.md): World's fastest authoritative DNS, consistently ranked #1 by DNSPerf; free, fully API-managed, DNSSEC supported
+- [Load Balancing](https://www.cloudflare.com/products/load-balancing.md): Global load balancing with sub-second health checks and automatic failover across origins
+- [Argo Smart Routing](https://www.cloudflare.com/products/argo-smart-routing.md): Congestion-aware routing that reduces median latency by ~30% over standard BGP paths
+- [Network Interconnect](https://www.cloudflare.com/products/network-interconnect.md): Direct physical or partner-delivered private interconnections into Cloudflare's network
+- [Network Flow](https://www.cloudflare.com/products/network-flow.md): NetFlow/sFlow analytics for enterprise network traffic visibility
+- [Log Explorer](https://www.cloudflare.com/products/log-explorer.md): Query and explore Cloudflare logs directly in the dashboard for security forensics and observability
+- [Analytics](https://www.cloudflare.com/products/analytics.md): Web performance and security analytics across all Cloudflare products
+- [China Network](https://www.cloudflare.com/products/china-network.md): Cloudflare's data center presence inside mainland China via a licensed partner network
+- [Email Routing](https://www.cloudflare.com/products/email-routing.md): Route custom domain email addresses to any destination inbox - free
+- [Automatic Platform Optimization](https://www.cloudflare.com/products/automatic-platform-optimization.md): WordPress-specific performance optimization using edge caching and smart routing
+- [Website Optimization](https://www.cloudflare.com/products/website-optimization.md): Application delivery optimizations including minification, image compression, and HTTP/3
+- [Custom Domain Protection](https://www.cloudflare.com/products/custom-domain-protection.md): Registrar-level domain security to prevent hijacking and unauthorized transfers
+- [Web3](https://www.cloudflare.com/products/web3.md): IPFS and Ethereum gateway infrastructure for decentralized application delivery
+
+---
+
+## Solutions
+
+- [AI](https://www.cloudflare.com/solutions/ai.md): Build and deploy AI agents and applications - inference, RAG, agents, MCP servers, and AI security on one platform
+- [Security](https://www.cloudflare.com/solutions/security.md): Unified WAF, DDoS, bot management, Zero Trust, and API security - ship fearlessly on the open Internet
+- [Network](https://www.cloudflare.com/solutions/network.md): Global anycast network delivering <50 ms latency to 95% of users with Argo smart routing and built-in resilience
+- [Platforms](https://www.cloudflare.com/solutions/platforms.md): Build secure multi-tenant SaaS platforms - give customers isolated compute, storage, and custom domains
+- [Frontends](https://www.cloudflare.com/solutions/frontends.md): Deploy React, Vue, Next.js and other frontend frameworks globally with CI/CD and edge functions built in
+- [Workflows](https://www.cloudflare.com/solutions/workflows.md): Orchestrate multi-step, long-running processes with durable execution and automatic retries
+- [Financial Services](https://www.cloudflare.com/solutions/financial-services.md): Security, performance, and compliance for financial institutions
+- [Healthcare](https://www.cloudflare.com/solutions/healthcare.md): Protect patient data and ensure compliance for healthcare organizations
+- [Public Sector](https://www.cloudflare.com/solutions/public-sector.md): Secure and accelerate government and public sector applications
+- [Retail](https://www.cloudflare.com/solutions/retail.md): Protect and accelerate retail and e-commerce applications
+
+---
+
+## Pricing
+
+- [Plans](https://www.cloudflare.com/plans.md): Free, Pro, Business, and Enterprise tiers - most network and security features available on the free plan; developer platform priced per usage with no egress fees
+
+---
+
+## Other Pages
+
+- [Privacy Policy](https://www.cloudflare.com/policies/privacy.md): Privacy policy
+- [Terms of Service](https://www.cloudflare.com/policies/terms.md): Terms of service
+
+---
+
+## External Resources
+
+- [Developer Documentation](https://developers.cloudflare.com/): Full technical documentation for all products
+- [Cloudflare Dashboard](https://dash.cloudflare.com): Manage your Cloudflare account
+- [Cloudflare Status](https://www.cloudflarestatus.com): Real-time network and product status
+- [Community Discord](https://discord.cloudflare.com): Developer community support
+- [GitHub](https://github.com/cloudflare): Open source projects including workerd, wrangler, and workers-sdk
+- [Cloudflare Blog](https://blog.cloudflare.com): Product announcements, technical deep-dives, and Internet trend reports
+- [Cloudflare Radar](https://radar.cloudflare.com): Real-time Internet traffic insights and threat intelligence
+
+## Optional
+
+- [Full Context Version](https://www.cloudflare.com/llms-full.txt): Expanded version with all product content inline for larger context windows

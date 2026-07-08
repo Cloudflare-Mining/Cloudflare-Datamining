@@ -1,0 +1,2036 @@
+{
+	"variant": [
+		0,
+		"default"
+	],
+	"navigation": [
+		0,
+		{
+			"localePrefix": [
+				0,
+				""
+			],
+			"labels": [
+				0,
+				{
+					"products": [
+						0,
+						"Products"
+					],
+					"solutions": [
+						0,
+						"Solutions"
+					],
+					"solutionsHeading": [
+						0,
+						"Use Cases"
+					],
+					"resources": [
+						0,
+						"Resources"
+					]
+				}
+			],
+			"chrome": [
+				0,
+				{
+					"underAttack": [
+						0,
+						"Under attack?"
+					],
+					"login": [
+						0,
+						"Login"
+					],
+					"startBuilding": [
+						0,
+						"Start building"
+					],
+					"contactSales": [
+						0,
+						"Contact sales"
+					],
+					"seeUpcomingEvents": [
+						0,
+						"See Upcoming Events"
+					],
+					"resourcesEventLink": [
+						0,
+						{
+							"title": [
+								0,
+								"See Upcoming Events"
+							],
+							"href": [
+								0,
+								"/events/"
+							]
+						}
+					],
+					"chinLinks": [
+						1,
+						[
+							[
+								0,
+								{
+									"title": [
+										0,
+										"Enterprise"
+									],
+									"href": [
+										0,
+										"/enterprise/"
+									]
+								}
+							],
+							[
+								0,
+								{
+									"title": [
+										0,
+										"Global Network"
+									],
+									"href": [
+										0,
+										"/network/"
+									]
+								}
+							],
+							[
+								0,
+								{
+									"title": [
+										0,
+										"Domain Registration"
+									],
+									"href": [
+										0,
+										"https://domains.cloudflare.com/"
+									]
+								}
+							],
+							[
+								0,
+								{
+									"title": [
+										0,
+										"1.1.1.1"
+									],
+									"href": [
+										0,
+										"https://one.one.one.one/"
+									]
+								}
+							]
+						]
+					]
+				}
+			],
+			"staticLinks": [
+				1,
+				[
+					[
+						0,
+						{
+							"label": [
+								0,
+								"Pricing"
+							],
+							"href": [
+								0,
+								"/plans/"
+							]
+						}
+					]
+				]
+			],
+			"productGroups": [
+				1,
+				[
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Compute"
+							],
+							"variant": [
+								0,
+								"compute"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Browser Run"
+											],
+											"description": [
+												0,
+												"Automated browsers"
+											],
+											"href": [
+												0,
+												"/products/browser-rendering/"
+											],
+											"icon": [
+												0,
+												"productBrowserRenderings"
+											],
+											"category": [
+												0,
+												"compute"
+											],
+											"order": [
+												0,
+												0
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Containers"
+											],
+											"description": [
+												0,
+												"Any language, anywhere"
+											],
+											"href": [
+												0,
+												"/products/containers/"
+											],
+											"icon": [
+												0,
+												"productContainers"
+											],
+											"category": [
+												0,
+												"compute"
+											],
+											"order": [
+												0,
+												1
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Durable Objects"
+											],
+											"description": [
+												0,
+												"Stateful compute"
+											],
+											"href": [
+												0,
+												"/products/durable-objects/"
+											],
+											"icon": [
+												0,
+												"productDurableObjects"
+											],
+											"category": [
+												0,
+												"compute"
+											],
+											"order": [
+												0,
+												2
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Sandboxes"
+											],
+											"description": [
+												0,
+												"Secure code execution"
+											],
+											"href": [
+												0,
+												"/products/sandboxes/"
+											],
+											"icon": [
+												0,
+												"productSandboxes"
+											],
+											"category": [
+												0,
+												"compute"
+											],
+											"order": [
+												0,
+												3
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Workers"
+											],
+											"description": [
+												0,
+												"Global serverless functions"
+											],
+											"href": [
+												0,
+												"/products/workers/"
+											],
+											"icon": [
+												0,
+												"productWorkers"
+											],
+											"category": [
+												0,
+												"compute"
+											],
+											"order": [
+												0,
+												4
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Workers for Platforms"
+											],
+											"description": [
+												0,
+												"Programmable Platform Solutions"
+											],
+											"href": [
+												0,
+												"/products/workers-for-platforms/"
+											],
+											"icon": [
+												0,
+												"svg:eyJzbHVnIjoidW50aXRsZWQtbGF5ZXJzLXRocmVlMDEiLCJsYWJlbCI6IkxheWVyc1RocmVlMDEiLCJ2aWV3Qm94IjoiMCAwIDI0IDI0IiwiaW5uZXIiOiI8ZyBmaWxsPVwibm9uZVwiIHN0cm9rZT1cImN1cnJlbnRDb2xvclwiIHN0cm9rZS13aWR0aD1cIjJcIiBzdHJva2UtbGluZWNhcD1cInJvdW5kXCIgc3Ryb2tlLWxpbmVqb2luPVwicm91bmRcIj48cGF0aCBkPVwibTIgMTIgOS42NDIgNC44MjFjLjEzMS4wNjYuMTk3LjA5OS4yNjYuMTExLjA2LjAxMi4xMjMuMDEyLjE4NCAwIC4wNjktLjAxMi4xMzUtLjA0NS4yNjYtLjExTDIyIDEyTTIgMTdsOS42NDIgNC44MjFjLjEzMS4wNjYuMTk3LjA5OS4yNjYuMTExLjA2LjAxMi4xMjMuMDEyLjE4NCAwIC4wNjktLjAxMi4xMzUtLjA0NS4yNjYtLjExTDIyIDE3TTIgN2w5LjY0Mi00LjgyMWMuMTMxLS4wNjYuMTk3LS4wOTguMjY2LS4xMTFhLjUuNSAwIDAgMSAuMTg0IDBjLjA2OS4wMTMuMTM1LjA0NS4yNjYuMTFMMjIgN2wtOS42NDIgNC44MjFhMS4wMjggMS4wMjggMCAwIDEtLjI2Ni4xMTEuNTAxLjUwMSAwIDAgMS0uMTg0IDBjLS4wNjktLjAxMi0uMTM1LS4wNDUtLjI2Ni0uMTFMMiA3WlwiPjwvcGF0aD48L2c-In0"
+											],
+											"category": [
+												0,
+												"compute"
+											],
+											"order": [
+												0,
+												5
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Workflows"
+											],
+											"description": [
+												0,
+												"Process orchestration"
+											],
+											"href": [
+												0,
+												"/products/workflows/"
+											],
+											"icon": [
+												0,
+												"svg:eyJzbHVnIjoidW50aXRsZWQtY3J5cHRvY3VycmVuY3kwNCIsImxhYmVsIjoiQ3J5cHRvY3VycmVuY3kwNCIsInZpZXdCb3giOiIwIDAgMjQgMjQiLCJpbm5lciI6IjxnIGZpbGw9XCJub25lXCIgc3Ryb2tlPVwiY3VycmVudENvbG9yXCIgc3Ryb2tlLXdpZHRoPVwiMlwiIHN0cm9rZS1saW5lY2FwPVwicm91bmRcIiBzdHJva2UtbGluZWpvaW49XCJyb3VuZFwiPjxwYXRoIGQ9XCJtMiAyIDIgMm0xOC0yLTIgMm0yIDE4LTItMk0yIDIybDItMm0tMi00aDEuNU04IDJ2MS41TTIyIDhoLTEuNU0xNiAyMnYtMS41bTItNC41aDMuNU0xNiAydjRNMiA4aDRtMiAxNHYtNG0zLjQzNC0xMC40MzQtMy44NjggMy44NjhjLS4xOTguMTk4LS4yOTcuMjk3LS4zMzQuNDEyYS41LjUgMCAwIDAgMCAuMzA5Yy4wMzcuMTE0LjEzNi4yMTMuMzM0LjQxbDMuODY4IDMuODdjLjE5OC4xOTcuMjk3LjI5Ni40MTIuMzMzLjEuMDMzLjIwOC4wMzMuMzA5IDAgLjExNC0uMDM3LjIxMy0uMTM2LjQxLS4zMzRsMy44Ny0zLjg2OGMuMTk3LS4xOTguMjk2LS4yOTcuMzMzLS40MTJhLjQ5OS40OTkgMCAwIDAgMC0uMzA5Yy0uMDM3LS4xMTQtLjEzNi0uMjEzLS4zMzQtLjQxbC0zLjg2OC0zLjg3Yy0uMTk4LS4xOTctLjI5Ny0uMjk2LS40MTItLjMzM2EuNS41IDAgMCAwLS4zMDkgMGMtLjExNC4wMzctLjIxMy4xMzYtLjQxLjMzNFpcIj48L3BhdGg-PC9nPiJ9"
+											],
+											"category": [
+												0,
+												"compute"
+											],
+											"order": [
+												0,
+												6
+											]
+										}
+									]
+								]
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Storage"
+							],
+							"variant": [
+								0,
+								"storage"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Artifacts"
+											],
+											"description": [
+												0,
+												"Git-native versioned storage"
+											],
+											"href": [
+												0,
+												"/products/artifacts/"
+											],
+											"icon": [
+												0,
+												"productArtifacts"
+											],
+											"category": [
+												0,
+												"storage"
+											],
+											"order": [
+												0,
+												0
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"D1"
+											],
+											"description": [
+												0,
+												"Serverless SQL"
+											],
+											"href": [
+												0,
+												"/products/d1/"
+											],
+											"icon": [
+												0,
+												"productD1"
+											],
+											"category": [
+												0,
+												"storage"
+											],
+											"order": [
+												0,
+												1
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Data Platform"
+											],
+											"description": [
+												0,
+												"Ingest, Catalog & Query"
+											],
+											"href": [
+												0,
+												"/products/data-platform/"
+											],
+											"icon": [
+												0,
+												"lego"
+											],
+											"category": [
+												0,
+												"storage"
+											],
+											"order": [
+												0,
+												2
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Hyperdrive"
+											],
+											"description": [
+												0,
+												"Global databases"
+											],
+											"href": [
+												0,
+												"/products/hyperdrive/"
+											],
+											"icon": [
+												0,
+												"productHyperdrive"
+											],
+											"category": [
+												0,
+												"storage"
+											],
+											"order": [
+												0,
+												3
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Queues"
+											],
+											"description": [
+												0,
+												"Message processing"
+											],
+											"href": [
+												0,
+												"/products/queues/"
+											],
+											"icon": [
+												0,
+												"productQueues"
+											],
+											"category": [
+												0,
+												"storage"
+											],
+											"order": [
+												0,
+												4
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"R2"
+											],
+											"description": [
+												0,
+												"Egress-free storage"
+											],
+											"href": [
+												0,
+												"/products/r2/"
+											],
+											"icon": [
+												0,
+												"productR2"
+											],
+											"category": [
+												0,
+												"storage"
+											],
+											"order": [
+												0,
+												5
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"KV"
+											],
+											"description": [
+												0,
+												"Ultra-fast key-value storage"
+											],
+											"href": [
+												0,
+												"/products/kv/"
+											],
+											"icon": [
+												0,
+												"productKv"
+											],
+											"category": [
+												0,
+												"storage"
+											],
+											"order": [
+												0,
+												6
+											]
+										}
+									]
+								]
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"AI"
+							],
+							"variant": [
+								0,
+								"ai"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Agents"
+											],
+											"description": [
+												0,
+												"Build stateful AI agents"
+											],
+											"href": [
+												0,
+												"/products/agents/"
+											],
+											"icon": [
+												0,
+												"productAgents"
+											],
+											"category": [
+												0,
+												"ai"
+											],
+											"order": [
+												0,
+												0
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"AI Gateway"
+											],
+											"description": [
+												0,
+												"AI observability"
+											],
+											"href": [
+												0,
+												"/products/ai-gateway/"
+											],
+											"icon": [
+												0,
+												"productAiGateway"
+											],
+											"category": [
+												0,
+												"ai"
+											],
+											"order": [
+												0,
+												1
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"AI Search"
+											],
+											"description": [
+												0,
+												"Instant retrieval"
+											],
+											"href": [
+												0,
+												"/products/ai-search/"
+											],
+											"icon": [
+												0,
+												"productAutoRag"
+											],
+											"category": [
+												0,
+												"ai"
+											],
+											"order": [
+												0,
+												2
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Vectorize"
+											],
+											"description": [
+												0,
+												"Vector database"
+											],
+											"href": [
+												0,
+												"/products/vectorize/"
+											],
+											"icon": [
+												0,
+												"productVectorize"
+											],
+											"category": [
+												0,
+												"ai"
+											],
+											"order": [
+												0,
+												3
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Workers AI"
+											],
+											"description": [
+												0,
+												"Edge AI models"
+											],
+											"href": [
+												0,
+												"/products/workers-ai/"
+											],
+											"icon": [
+												0,
+												"productWorkersAI"
+											],
+											"category": [
+												0,
+												"ai"
+											],
+											"order": [
+												0,
+												4
+											]
+										}
+									]
+								]
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"SASE / Zero Trust"
+							],
+							"variant": [
+								0,
+								"sase"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"SASE"
+											],
+											"description": [
+												0,
+												"Cloudflare SASE platform"
+											],
+											"href": [
+												0,
+												"/sase/"
+											],
+											"icon": [
+												0,
+												"shieldPlus"
+											],
+											"category": [
+												0,
+												"sase"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Access"
+											],
+											"description": [
+												0,
+												"Zero trust access to private resources"
+											],
+											"href": [
+												0,
+												"/products/access/"
+											],
+											"icon": [
+												0,
+												"user"
+											],
+											"category": [
+												0,
+												"sase"
+											],
+											"order": [
+												0,
+												0
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"CASB"
+											],
+											"description": [
+												0,
+												"SaaS and cloud posture"
+											],
+											"href": [
+												0,
+												"/products/casb/"
+											],
+											"icon": [
+												0,
+												"svg:eyJzbHVnIjoidW50aXRsZWQtY2xvdWQtcmFpbmluZzA2IiwibGFiZWwiOiJDbG91ZFJhaW5pbmcwNiIsInZpZXdCb3giOiIwIDAgMjQgMjQiLCJpbm5lciI6IjxnIGZpbGw9XCJub25lXCIgc3Ryb2tlPVwiY3VycmVudENvbG9yXCIgc3Ryb2tlLXdpZHRoPVwiMlwiIHN0cm9rZS1saW5lY2FwPVwicm91bmRcIiBzdHJva2UtbGluZWpvaW49XCJyb3VuZFwiPjxwYXRoIGQ9XCJNMTMgMjFINm0xMy0zaC05bS0zIDBINW0xMyAzaC0ybS05LTZhNSA1IDAgMSAxIC4xLTkuOTk5IDUuNTAyIDUuNTAyIDAgMCAxIDEwLjE5NSAxLjAwNEE0LjUgNC41IDAgMSAxIDE3LjUgMTVINi45OTlaXCI-PC9wYXRoPjwvZz4ifQ"
+											],
+											"category": [
+												0,
+												"sase"
+											],
+											"order": [
+												0
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Data Loss Prevention"
+											],
+											"description": [
+												0,
+												"Protect sensitive data"
+											],
+											"href": [
+												0,
+												"/products/dlp/"
+											],
+											"icon": [
+												0,
+												"productDataLossPrevention"
+											],
+											"category": [
+												0,
+												"sase"
+											],
+											"order": [
+												0,
+												2
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Gateway"
+											],
+											"description": [
+												0,
+												"Web filtering"
+											],
+											"href": [
+												0,
+												"/products/gateway/"
+											],
+											"icon": [
+												0,
+												"productGateway"
+											],
+											"category": [
+												0,
+												"sase"
+											],
+											"order": [
+												0,
+												2
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Browser Isolation"
+											],
+											"description": [
+												0,
+												"Secure web browsing"
+											],
+											"href": [
+												0,
+												"/products/browser-isolation/"
+											],
+											"icon": [
+												0,
+												"browser"
+											],
+											"category": [
+												0,
+												"sase"
+											],
+											"order": [
+												0,
+												3
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"WAN"
+											],
+											"description": [
+												0,
+												"Cloud-delivered networking"
+											],
+											"href": [
+												0,
+												"/products/wan/"
+											],
+											"icon": [
+												0,
+												"productCloudflareWan"
+											],
+											"category": [
+												0,
+												"sase"
+											],
+											"order": [
+												0,
+												4
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Email Security"
+											],
+											"description": [
+												0,
+												"Phishing protection"
+											],
+											"href": [
+												0,
+												"/products/email-security/"
+											],
+											"icon": [
+												0,
+												"shieldPlus"
+											],
+											"category": [
+												0,
+												"sase"
+											],
+											"order": [
+												0,
+												5
+											]
+										}
+									]
+								]
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Security"
+							],
+							"variant": [
+								0,
+								"security"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"DDoS Protection"
+											],
+											"description": [
+												0,
+												"Mitigation Solutions"
+											],
+											"href": [
+												0,
+												"/products/ddos/"
+											],
+											"icon": [
+												0,
+												"productCloudflareNetworkFirewall"
+											],
+											"category": [
+												0,
+												"security"
+											],
+											"order": [
+												0,
+												0
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Rate Limiting"
+											],
+											"description": [
+												0,
+												"Abuse prevention"
+											],
+											"href": [
+												0,
+												"/products/rate-limiting/"
+											],
+											"icon": [
+												0,
+												"productRateLimiting"
+											],
+											"category": [
+												0,
+												"security"
+											],
+											"order": [
+												0,
+												1
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"SSL"
+											],
+											"description": [
+												0,
+												"Secure Your Site with SSL"
+											],
+											"href": [
+												0,
+												"/products/ssl/"
+											],
+											"icon": [
+												0,
+												"shieldPlus"
+											],
+											"category": [
+												0,
+												"security"
+											],
+											"order": [
+												0,
+												2
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Turnstile"
+											],
+											"description": [
+												0,
+												"A CAPTCHA Replacement Solution"
+											],
+											"href": [
+												0,
+												"/products/turnstile/"
+											],
+											"icon": [
+												0,
+												"productTurnstile"
+											],
+											"category": [
+												0,
+												"security"
+											],
+											"order": [
+												0,
+												3
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"WAF"
+											],
+											"description": [
+												0,
+												"Web Application Firewall"
+											],
+											"href": [
+												0,
+												"/products/waf/"
+											],
+											"icon": [
+												0,
+												"productWaf"
+											],
+											"category": [
+												0,
+												"security"
+											],
+											"order": [
+												0,
+												4
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Magic Transit"
+											],
+											"description": [
+												0,
+												"DDoS Protection for Networks"
+											],
+											"href": [
+												0,
+												"/products/magic-transit/"
+											],
+											"icon": [
+												0,
+												"svg:eyJzbHVnIjoidW50aXRsZWQtbWFnaWMtd2FuZDAxIiwibGFiZWwiOiJNYWdpY1dhbmQwMSIsInZpZXdCb3giOiIwIDAgMjQgMjQiLCJpbm5lciI6IjxnIGZpbGw9XCJub25lXCIgc3Ryb2tlPVwiY3VycmVudENvbG9yXCIgc3Ryb2tlLXdpZHRoPVwiMlwiIHN0cm9rZS1saW5lY2FwPVwicm91bmRcIiBzdHJva2UtbGluZWpvaW49XCJyb3VuZFwiPjxwYXRoIGQ9XCJtMTMgMTQtMy0zbTUuMDEtNy41VjJtMy45NCAzLjA2TDIwLjAxIDRtLTEuMDYgOSAxLjA2IDEuMDZtLTktOUw5Ljk1IDRtMTAuNTYgNWgxLjVNNi4xMzEgMjAuODY5bDkuMjM4LTkuMjM4Yy4zOTYtLjM5Ni41OTQtLjU5NC42NjgtLjgyMmExIDEgMCAwIDAgMC0uNjE4Yy0uMDc0LS4yMjgtLjI3Mi0uNDI2LS42NjgtLjgyMmwtLjczNy0uNzM4Yy0uMzk3LS4zOTYtLjU5NS0uNTk0LS44MjMtLjY2OGExIDEgMCAwIDAtLjYxOCAwYy0uMjI4LjA3NC0uNDI2LjI3Mi0uODIyLjY2OEwzLjEzIDE3Ljg3Yy0uMzk2LjM5Ni0uNTk0LjU5NC0uNjY4LjgyMmExIDEgMCAwIDAgMCAuNjE4Yy4wNzQuMjI4LjI3Mi40MjYuNjY4LjgyMmwuNzM4LjczOGMuMzk2LjM5Ni41OTQuNTk0LjgyMi42NjhhMSAxIDAgMCAwIC42MTggMGMuMjI4LS4wNzQuNDI2LS4yNzIuODIyLS42NjhaXCI-PC9wYXRoPjwvZz4ifQ"
+											],
+											"category": [
+												0,
+												"security"
+											],
+											"order": [
+												0,
+												5
+											]
+										}
+									]
+								]
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Network & Content Delivery"
+							],
+							"variant": [
+								0,
+								"network"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Bot Management"
+											],
+											"description": [
+												0,
+												"Block bad bots"
+											],
+											"href": [
+												0,
+												"/products/bot-management/"
+											],
+											"icon": [
+												0,
+												"productBotMitigation"
+											],
+											"category": [
+												0,
+												"network"
+											],
+											"order": [
+												0,
+												0
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"CDN"
+											],
+											"description": [
+												0,
+												"Faster delivery & caching"
+											],
+											"href": [
+												0,
+												"/products/cdn/"
+											],
+											"icon": [
+												0,
+												"productNetwork"
+											],
+											"category": [
+												0,
+												"network"
+											],
+											"order": [
+												0,
+												1
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"DNS"
+											],
+											"description": [
+												0,
+												"Fast DNS"
+											],
+											"href": [
+												0,
+												"/products/dns/"
+											],
+											"icon": [
+												0,
+												"productDNS"
+											],
+											"category": [
+												0,
+												"network"
+											],
+											"order": [
+												0,
+												2
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Load Balancing"
+											],
+											"description": [
+												0,
+												"Zero downtime"
+											],
+											"href": [
+												0,
+												"/products/load-balancing/"
+											],
+											"icon": [
+												0,
+												"productLoadBalancing"
+											],
+											"category": [
+												0,
+												"network"
+											],
+											"order": [
+												0,
+												3
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Page Shield"
+											],
+											"description": [
+												0,
+												"Client-Side Protection"
+											],
+											"href": [
+												0,
+												"/products/page-shield/"
+											],
+											"icon": [
+												0,
+												"shieldPlus"
+											],
+											"category": [
+												0,
+												"network"
+											],
+											"order": [
+												0,
+												4
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"TURN / SFU"
+											],
+											"description": [
+												0,
+												"Real-time infra"
+											],
+											"href": [
+												0,
+												"/products/turn-sfu/"
+											],
+											"icon": [
+												0,
+												"svg:eyJzbHVnIjoidW50aXRsZWQtY29kZS1jaXJjbGUwMiIsImxhYmVsIjoiQ29kZUNpcmNsZTAyIiwidmlld0JveCI6IjAgMCAyNCAyNCIsImlubmVyIjoiPGcgZmlsbD1cIm5vbmVcIiBzdHJva2U9XCJjdXJyZW50Q29sb3JcIiBzdHJva2Utd2lkdGg9XCIyXCIgc3Ryb2tlLWxpbmVjYXA9XCJyb3VuZFwiIHN0cm9rZS1saW5lam9pbj1cInJvdW5kXCI-PHBhdGggZD1cIm0xNCAxNyAzLTMtMy0zbS00LTQtMyAzIDMgM20xMi0xYzAgNS41MjMtNC40NzcgMTAtMTAgMTBTMiAxNy41MjMgMiAxMiA2LjQ3NyAyIDEyIDJzMTAgNC40NzcgMTAgMTBaXCI-PC9wYXRoPjwvZz4ifQ"
+											],
+											"category": [
+												0,
+												"network"
+											],
+											"order": [
+												0,
+												5
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Analytics"
+											],
+											"description": [
+												0,
+												"Web Performance & Security"
+											],
+											"href": [
+												0,
+												"/products/analytics/"
+											],
+											"icon": [
+												0,
+												"svg:eyJzbHVnIjoidW50aXRsZWQtYmFyLWxpbmUtY2hhcnQiLCJsYWJlbCI6IkJhckxpbmVDaGFydCIsInZpZXdCb3giOiIwIDAgMjQgMjQiLCJpbm5lciI6IjxnIGZpbGw9XCJub25lXCIgc3Ryb2tlPVwiY3VycmVudENvbG9yXCIgc3Ryb2tlLXdpZHRoPVwiMlwiIHN0cm9rZS1saW5lY2FwPVwicm91bmRcIiBzdHJva2UtbGluZWpvaW49XCJyb3VuZFwiPjxwYXRoIGQ9XCJNMjAgMjB2LTdtLTggN1YxME00IDIwdi00bTkuNDA3LTEwLjk3MyA1LjE2OCAxLjkzOU0xMC44IDUuNCA1LjIgOS42bTE1Ljg2LTMuMTZhMS41IDEuNSAwIDEgMS0yLjEyMSAyLjEyIDEuNSAxLjUgMCAwIDEgMi4xMjItMi4xMlptLTE2IDNhMS41IDEuNSAwIDEgMS0yLjEyIDIuMTIgMS41IDEuNSAwIDAgMSAyLjEyLTIuMTJabTgtNmExLjUgMS41IDAgMSAxLTIuMTIxIDIuMTIgMS41IDEuNSAwIDAgMSAyLjEyMi0yLjEyWlwiPjwvcGF0aD48L2c-In0"
+											],
+											"category": [
+												0,
+												"network"
+											],
+											"order": [
+												0,
+												6
+											]
+										}
+									]
+								]
+							]
+						}
+					]
+				]
+			],
+			"solutions": [
+				1,
+				[
+					[
+						0,
+						{
+							"title": [
+								0,
+								"AI"
+							],
+							"description": [
+								0,
+								"Build intelligent applications with AI at the edge"
+							],
+							"href": [
+								0,
+								"/solutions/ai/"
+							],
+							"icon": [
+								0,
+								"productCloudflareAgent"
+							],
+							"order": [
+								0,
+								0
+							],
+							"metaTitle": [
+								0,
+								"Cloudflare AI Cloud "
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Frontends"
+							],
+							"description": [
+								0,
+								"Deploy frontend applications globally in seconds"
+							],
+							"href": [
+								0,
+								"/solutions/frontends/"
+							],
+							"icon": [
+								0,
+								"svg:eyJzbHVnIjoidW50aXRsZWQtbGF5b3V0LWFsdDAxIiwibGFiZWwiOiJMYXlvdXRBbHQwMSIsInZpZXdCb3giOiIwIDAgMjQgMjQiLCJpbm5lciI6IjxnIGZpbGw9XCJub25lXCIgc3Ryb2tlPVwiY3VycmVudENvbG9yXCIgc3Ryb2tlLXdpZHRoPVwiMlwiIHN0cm9rZS1saW5lY2FwPVwicm91bmRcIiBzdHJva2UtbGluZWpvaW49XCJyb3VuZFwiPjxwYXRoIGQ9XCJNMyA5aDE4TTkgOXYxMk03LjggM2g4LjRjMS42OCAwIDIuNTIgMCAzLjE2Mi4zMjdhMyAzIDAgMCAxIDEuMzExIDEuMzExQzIxIDUuMjggMjEgNi4xMiAyMSA3Ljh2OC40YzAgMS42OCAwIDIuNTItLjMyNyAzLjE2MmEzIDMgMCAwIDEtMS4zMTEgMS4zMTFDMTguNzIgMjEgMTcuODggMjEgMTYuMiAyMUg3LjhjLTEuNjggMC0yLjUyIDAtMy4xNjItLjMyN2EzIDMgMCAwIDEtMS4zMTEtMS4zMTFDMyAxOC43MiAzIDE3Ljg4IDMgMTYuMlY3LjhjMC0xLjY4IDAtMi41Mi4zMjctMy4xNjJhMyAzIDAgMCAxIDEuMzExLTEuMzExQzUuMjggMyA2LjEyIDMgNy44IDNaXCI-PC9wYXRoPjwvZz4ifQ"
+							],
+							"order": [
+								0,
+								1
+							],
+							"metaTitle": [
+								0,
+								"Frontend Development Platform"
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Network"
+							],
+							"description": [
+								0,
+								"Global network services for performance and reliability"
+							],
+							"href": [
+								0,
+								"/solutions/network/"
+							],
+							"icon": [
+								0,
+								"earth"
+							],
+							"order": [
+								0,
+								2
+							],
+							"metaTitle": [
+								0,
+								"Global Network Infrastructure"
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Platforms"
+							],
+							"description": [
+								0,
+								"Build platforms on Cloudflare's infrastructure"
+							],
+							"href": [
+								0,
+								"/solutions/platforms/"
+							],
+							"icon": [
+								0,
+								"svg:eyJzbHVnIjoidW50aXRsZWQtY3ViZTAyIiwibGFiZWwiOiJDdWJlMDIiLCJ2aWV3Qm94IjoiMCAwIDI0IDI0IiwiaW5uZXIiOiI8ZyBmaWxsPVwibm9uZVwiIHN0cm9rZT1cImN1cnJlbnRDb2xvclwiIHN0cm9rZS13aWR0aD1cIjJcIiBzdHJva2UtbGluZWNhcD1cInJvdW5kXCIgc3Ryb2tlLWxpbmVqb2luPVwicm91bmRcIj48cGF0aCBkPVwiTTEyIDIuNVYxMm0wIDAgOC41LTQuNzIyTTEyIDEyIDMuNSA3LjI3OE0xMiAxMnY5LjVtOC41LTQuNzc4LTcuNzIzLTQuMjljLS4yODQtLjE1OC0uNDI1LS4yMzctLjU3NS0uMjY4YTEuMDAxIDEuMDAxIDAgMCAwLS40MDMgMGMtLjE1LjAzMS0uMjkyLjExLS41NzYuMjY4TDMuNSAxNi43MjJNMjEgMTYuMDZWNy45NDJjMC0uMzQzIDAtLjUxNC0uMDUtLjY2N2ExIDEgMCAwIDAtLjIxNS0uMzY0Yy0uMTA5LS4xMTktLjI1OC0uMjAyLS41NTgtLjM2OGwtNy40LTQuMTExYy0uMjg0LS4xNTgtLjQyNS0uMjM3LS41NzUtLjI2N2ExIDEgMCAwIDAtLjQwMyAwYy0uMTUuMDMtLjI5Mi4xMS0uNTc2LjI2N2wtNy40IDQuMTFjLS4zLjE2Ny0uNDUuMjUtLjU1OC4zNjlhMSAxIDAgMCAwLS4yMTUuMzY0QzMgNy40MjggMyA3LjU5OSAzIDcuOTQydjguMTE3YzAgLjM0MiAwIC41MTQuMDUuNjY2YTEgMSAwIDAgMCAuMjE1LjM2NGMuMTA5LjExOS4yNTguMjAyLjU1OC4zNjhsNy40IDQuMTExYy4yODQuMTU4LjQyNS4yMzcuNTc2LjI2OC4xMzMuMDI3LjI3LjAyNy40MDIgMCAuMTUtLjAzMS4yOTItLjExLjU3Ni0uMjY4bDcuNC00LjExYy4zLS4xNjcuNDUtLjI1LjU1OC0uMzY5YS45OTkuOTk5IDAgMCAwIC4yMTUtLjM2NGMuMDUtLjE1Mi4wNS0uMzI0LjA1LS42NjZaXCI-PC9wYXRoPjwvZz4ifQ"
+							],
+							"order": [
+								0,
+								3
+							],
+							"metaTitle": [
+								0,
+								"Multi-Tenant Platform Development"
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Security"
+							],
+							"description": [
+								0,
+								"Protect your applications from threats"
+							],
+							"href": [
+								0,
+								"/solutions/security/"
+							],
+							"icon": [
+								0,
+								"shieldPlus"
+							],
+							"order": [
+								0,
+								4
+							],
+							"metaTitle": [
+								0,
+								"Web Security Platform - WAF, DDoS Protection, Bot Management"
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Workflows"
+							],
+							"description": [
+								0,
+								"Orchestrate complex multi-step processes"
+							],
+							"href": [
+								0,
+								"/solutions/workflows/"
+							],
+							"icon": [
+								0,
+								"flash"
+							],
+							"order": [
+								0,
+								5
+							],
+							"metaTitle": [
+								0,
+								"Durable Workflows - Multi-Step Application Engine"
+							]
+						}
+					]
+				]
+			],
+			"footerSolutions": [
+				1,
+				[
+					[
+						0,
+						{
+							"title": [
+								0,
+								"AI"
+							],
+							"description": [
+								0,
+								"Build intelligent applications with AI at the edge"
+							],
+							"href": [
+								0,
+								"/solutions/ai/"
+							],
+							"icon": [
+								0,
+								"productCloudflareAgent"
+							],
+							"order": [
+								0,
+								0
+							],
+							"metaTitle": [
+								0,
+								"Cloudflare AI Cloud "
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Frontends"
+							],
+							"description": [
+								0,
+								"Deploy frontend applications globally in seconds"
+							],
+							"href": [
+								0,
+								"/solutions/frontends/"
+							],
+							"icon": [
+								0,
+								"svg:eyJzbHVnIjoidW50aXRsZWQtbGF5b3V0LWFsdDAxIiwibGFiZWwiOiJMYXlvdXRBbHQwMSIsInZpZXdCb3giOiIwIDAgMjQgMjQiLCJpbm5lciI6IjxnIGZpbGw9XCJub25lXCIgc3Ryb2tlPVwiY3VycmVudENvbG9yXCIgc3Ryb2tlLXdpZHRoPVwiMlwiIHN0cm9rZS1saW5lY2FwPVwicm91bmRcIiBzdHJva2UtbGluZWpvaW49XCJyb3VuZFwiPjxwYXRoIGQ9XCJNMyA5aDE4TTkgOXYxMk03LjggM2g4LjRjMS42OCAwIDIuNTIgMCAzLjE2Mi4zMjdhMyAzIDAgMCAxIDEuMzExIDEuMzExQzIxIDUuMjggMjEgNi4xMiAyMSA3Ljh2OC40YzAgMS42OCAwIDIuNTItLjMyNyAzLjE2MmEzIDMgMCAwIDEtMS4zMTEgMS4zMTFDMTguNzIgMjEgMTcuODggMjEgMTYuMiAyMUg3LjhjLTEuNjggMC0yLjUyIDAtMy4xNjItLjMyN2EzIDMgMCAwIDEtMS4zMTEtMS4zMTFDMyAxOC43MiAzIDE3Ljg4IDMgMTYuMlY3LjhjMC0xLjY4IDAtMi41Mi4zMjctMy4xNjJhMyAzIDAgMCAxIDEuMzExLTEuMzExQzUuMjggMyA2LjEyIDMgNy44IDNaXCI-PC9wYXRoPjwvZz4ifQ"
+							],
+							"order": [
+								0,
+								1
+							],
+							"metaTitle": [
+								0,
+								"Frontend Development Platform"
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Platforms"
+							],
+							"description": [
+								0,
+								"Build platforms on Cloudflare's infrastructure"
+							],
+							"href": [
+								0,
+								"/solutions/platforms/"
+							],
+							"icon": [
+								0,
+								"svg:eyJzbHVnIjoidW50aXRsZWQtY3ViZTAyIiwibGFiZWwiOiJDdWJlMDIiLCJ2aWV3Qm94IjoiMCAwIDI0IDI0IiwiaW5uZXIiOiI8ZyBmaWxsPVwibm9uZVwiIHN0cm9rZT1cImN1cnJlbnRDb2xvclwiIHN0cm9rZS13aWR0aD1cIjJcIiBzdHJva2UtbGluZWNhcD1cInJvdW5kXCIgc3Ryb2tlLWxpbmVqb2luPVwicm91bmRcIj48cGF0aCBkPVwiTTEyIDIuNVYxMm0wIDAgOC41LTQuNzIyTTEyIDEyIDMuNSA3LjI3OE0xMiAxMnY5LjVtOC41LTQuNzc4LTcuNzIzLTQuMjljLS4yODQtLjE1OC0uNDI1LS4yMzctLjU3NS0uMjY4YTEuMDAxIDEuMDAxIDAgMCAwLS40MDMgMGMtLjE1LjAzMS0uMjkyLjExLS41NzYuMjY4TDMuNSAxNi43MjJNMjEgMTYuMDZWNy45NDJjMC0uMzQzIDAtLjUxNC0uMDUtLjY2N2ExIDEgMCAwIDAtLjIxNS0uMzY0Yy0uMTA5LS4xMTktLjI1OC0uMjAyLS41NTgtLjM2OGwtNy40LTQuMTExYy0uMjg0LS4xNTgtLjQyNS0uMjM3LS41NzUtLjI2N2ExIDEgMCAwIDAtLjQwMyAwYy0uMTUuMDMtLjI5Mi4xMS0uNTc2LjI2N2wtNy40IDQuMTFjLS4zLjE2Ny0uNDUuMjUtLjU1OC4zNjlhMSAxIDAgMCAwLS4yMTUuMzY0QzMgNy40MjggMyA3LjU5OSAzIDcuOTQydjguMTE3YzAgLjM0MiAwIC41MTQuMDUuNjY2YTEgMSAwIDAgMCAuMjE1LjM2NGMuMTA5LjExOS4yNTguMjAyLjU1OC4zNjhsNy40IDQuMTExYy4yODQuMTU4LjQyNS4yMzcuNTc2LjI2OC4xMzMuMDI3LjI3LjAyNy40MDIgMCAuMTUtLjAzMS4yOTItLjExLjU3Ni0uMjY4bDcuNC00LjExYy4zLS4xNjcuNDUtLjI1LjU1OC0uMzY5YS45OTkuOTk5IDAgMCAwIC4yMTUtLjM2NGMuMDUtLjE1Mi4wNS0uMzI0LjA1LS42NjZaXCI-PC9wYXRoPjwvZz4ifQ"
+							],
+							"order": [
+								0,
+								3
+							],
+							"metaTitle": [
+								0,
+								"Multi-Tenant Platform Development"
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Security"
+							],
+							"description": [
+								0,
+								"Protect your applications from threats"
+							],
+							"href": [
+								0,
+								"/solutions/security/"
+							],
+							"icon": [
+								0,
+								"shieldPlus"
+							],
+							"order": [
+								0,
+								4
+							],
+							"metaTitle": [
+								0,
+								"Web Security Platform - WAF, DDoS Protection, Bot Management"
+							]
+						}
+					]
+				]
+			],
+			"resources": [
+				1,
+				[
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Blog"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Blog"
+											],
+											"description": [
+												0,
+												"News, product updates, and announcements"
+											],
+											"href": [
+												0,
+												"/blog/"
+											],
+											"icon": [
+												0,
+												"notificationMessage"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Community"
+											],
+											"description": [
+												0,
+												"Connect with other developers and experts"
+											],
+											"href": [
+												0,
+												"https://community.cloudflare.com/"
+											],
+											"icon": [
+												0,
+												"chat"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Cloudflare Radar"
+											],
+											"description": [
+												0,
+												"Internet traffic and security trends"
+											],
+											"href": [
+												0,
+												"https://radar.cloudflare.com/"
+											],
+											"icon": [
+												0,
+												"productRadar"
+											]
+										}
+									]
+								]
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Documentation"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Developer Docs"
+											],
+											"description": [
+												0,
+												"Guides, references, and tutorials"
+											],
+											"href": [
+												0,
+												"https://developers.cloudflare.com/"
+											],
+											"icon": [
+												0,
+												"bookOpen"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"API Reference"
+											],
+											"description": [
+												0,
+												"Cloudflare API documentation"
+											],
+											"href": [
+												0,
+												"https://developers.cloudflare.com/api/"
+											],
+											"icon": [
+												0,
+												"terminal"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Case Studies"
+											],
+											"description": [
+												0,
+												"Customer success stories and results"
+											],
+											"href": [
+												0,
+												"/case-studies/"
+											],
+											"icon": [
+												0,
+												"barChartUp"
+											]
+										}
+									]
+								]
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Learning"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Learning Center"
+											],
+											"description": [
+												0,
+												"Learn about web technology concepts"
+											],
+											"href": [
+												0,
+												"/learning/"
+											],
+											"icon": [
+												0,
+												"course"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Reference Architectures"
+											],
+											"description": [
+												0,
+												"Architecture patterns and best practices"
+											],
+											"href": [
+												0,
+												"/architecture/"
+											],
+											"icon": [
+												0,
+												"cubeTarget"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Press"
+											],
+											"description": [
+												0,
+												"Latest news, media resources, and coverage"
+											],
+											"href": [
+												0,
+												"/press/"
+											],
+											"icon": [
+												0,
+												"publisher"
+											]
+										}
+									]
+								]
+							]
+						}
+					],
+					[
+						0,
+						{
+							"title": [
+								0,
+								"Quick Links"
+							],
+							"variant": [
+								0,
+								"inline"
+							],
+							"links": [
+								1,
+								[
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Startups"
+											],
+											"href": [
+												0,
+												"/startups/"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Careers"
+											],
+											"href": [
+												0,
+												"/careers/"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Partners"
+											],
+											"href": [
+												0,
+												"/partners/"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Status"
+											],
+											"href": [
+												0,
+												"https://www.cloudflarestatus.com/"
+											]
+										}
+									],
+									[
+										0,
+										{
+											"title": [
+												0,
+												"Support"
+											],
+											"href": [
+												0,
+												"https://support.cloudflare.com/"
+											]
+										}
+									]
+								]
+							]
+						}
+					]
+				]
+			]
+		}
+	]
+}

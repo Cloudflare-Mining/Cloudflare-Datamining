@@ -1,0 +1,108 @@
+---
+title: C&amp;A and Cloudflare | Video
+description: C&amp;A leverages Cloudflare's developer platform to handle 10x traffic increases during sales and holiday events
+image: https://www.cloudflare.com/preview.png
+---
+
+# C&A 
+
+> #### "  Cloudflare aligns precisely with our ecommerce vision. With Cloudflare Workers, we eliminate the operational overhead of implementing and managing servers. That gives us more time to focus on the business. " 
+
+## **C&A goes serverless with Cloudflare to scale swiftly when online shopping soars**
+
+C&A is a leading European fashion retailer with more than 1,300 stores in 17 countries throughout Europe. The company welcomes millions of shoppers to its physical stores every day and is committed to creating a memorable shopping experience for each customer.
+
+In recent years, [online shopping](https://www.cloudflare.com/retail/) has made up a growing percentage of C&A's revenue as the company rapidly expands its online presence to attract and retain customers who prefer to shop from home or on the go.
+
+### **The challenge: Building an ecommerce platform for hybrid retail**
+
+As C&A mapped out its future, the IT team focused on how to best support a hybrid retail environment that delivers an optimal shopping experience, whether the customer shops in a store, online, or both. Achieving this goal requires always-on availability and [exceptional performance](https://www.cloudflare.com/retail/) of C&A's online shop. Any disruption in terms of availability or performance might frustrate customers and cause them to click their way to a competitor's site.
+
+The team also recognized that the infrastructure needed to be nimble to accommodate unpredictable digital crowds driven by Black Friday, irresistible marketing promotions, and social media influencers. During these times, traffic can increase up to 10 times in a very short time period. 
+
+"Rapidly scaling for peaks is absolutely essential to maintaining a quality customer experience," explains Michael Glauche, Cloud Infrastructure Architect. "Independent studies show that conversion rates double for every 100 milliseconds you save in response time. So we set a goal of having sub-100-millisecond response times for all pages in our online shop."
+
+According to Ulrike Otto, Head of Digital Experience, the ability to meet response time goals directly affects customer satisfaction.
+
+"Our top priority is to pursue customers by creating a frictionless shopping experience—in store and online," she notes. "For online sales, that means fast-loading personalized content pages and a platform that is always available. We needed a platform that delivers exceptional scalability and flexibility to accommodate peak traffic."
+
+IT leadership wanted to move beyond traditional thinking about servers and other IT infrastructure. Innovative thinking led to a serverless framework that would run operationally efficient ecommerce applications that are highly agile.
+
+### **The solution: Implement Cloudflare Workers for serverless ecommerce**
+
+C&A found a strategically aligned partner in Cloudflare. Cloudflare Workers is a serverless application platform for building and deploying JavaScript functions that run on Cloudflare's global network.
+
+The highly dynamic Cloudflare infrastructure delivers a competitive advantage. It allows C&A to experiment with innovative ways to attract new customers and drive sales without fear of disrupting service.
+
+With Cloudflare Workers, every developer has a digital playground for experimentation. Developers can work directly on the production ecommerce site instead of having to test new designs, applications, and features on a separate staging site first. Updating applications and code snippets in Cloudflare Workers is easy, so developers can iterate quickly without concerns that a small change might unexpectedly disrupt the business.
+
+"We can have multiple instances of the same online shop running in production," says Urbanek. "You can't do that easily with a standard on-premise setup or even cloud."
+
+Workers delivers exceptional performance thanks to Cloudflare's growing number of data centers, which run code milliseconds away from users—minimizing network delays and ensuring fast performance, no matter where customers are located in the world.
+
+C&A developers use Workers to spin up serverless functions that are integral to the ecommerce experience, dynamically consuming compute and deftly handling traffic spikes. "Backend systems simply deliver data to the customer experience platform, which puts everything together, compiles the pages, and then delivers them to online shoppers," says Carsten Fuchs, Business Architect at C&A.
+
+### **Serverless offers economical scaling**
+
+Not only does Workers deliver a seamless customer experience, but it also allows C&A to manage fluctuations in site traffic—up to a tenfold increase during peak periods—without breaking the bank. Compared to other serverless platforms, Workers is less expensive.
+
+"Our online demand is unpredictable and we need the most cost-effective way to deal with that," Glauche notes. "That's what Cloudflare Workers gives us."
+
+C&A developers appreciate the inherent scalability of the serverless framework. They can create and expand ecommerce applications without being shackled by constraints on compute or server capacity. Best of all, C&A no longer pays for compute or storage capacity that sits idle except during occasional shopping peaks.
+
+"The business no longer needs to keep us informed as to the kind of traffic they are expecting," says Urbanek. "They focus on selling as much as they can and we focus on keeping the platform stable and responsive."
+
+### **A secure network foundation for hybrid retail**
+
+C&A continues to expand the Cloudflare footprint in its ecommerce operations. The company relies on Cloudflare global network for ultrafast dynamic content delivery and sophisticated controls over how content is cached to improve the shopping experience and reduce bandwidth costs. 
+
+Cloudflare Web Application Firewall (WAF) protects against advanced zero-day vulnerability exploits and other application threats to [guard against account takeovers](https://www.cloudflare.com/sase/use-cases/account-takeover-prevention), prevent [data exfiltration](https://www.cloudflare.com/learning/security/what-is-data-exfiltration/), and [stop credential stuffing](https://www.cloudflare.com/the-net/credential-stuffing/).
+
+"When the Log4j issue became known, it was reassuring to receive information from Cloudflare that they already took first countermeasures," says Urbanek. "The best that can happen is that I learn about a problem people already started to mitigate." When the Log4j issue emerged, Cloudflare added new WAF rules that blocked it outright, ensuring protection for customers like C&A.
+
+Cloudflare DDoS protection services protect C&A websites by identifying and stopping DDoS attacks at the edge in less than three seconds. Built-in analytics gives the IT team visibility into emerging attack trends. Moreover, Cloudflare Bot Management blocks bad bots to prevent unwelcome traffic that might slow down response times.
+
+### **Setting the stage for growth**
+
+C&A has ambitious plans for growth: adding retail locations in new geographies, increasing online sales, and integrating digital operations with its brick-and-mortar storefronts through click-and-collect and direct shipping options. With Cloudflare, they have a partner who can help them meet the growing needs of their global customer base.
+
+By providing faster page loading, significantly faster content delivery, and exceptional security, Cloudflare helps C&A position itself to seamlessly scale while maintaining a competitive edge in an increasingly hybrid retail arena.
+
+"Our partnership with Cloudflare is more than just the provider and the customer," says Fuchs. "We are doing things together, and we plan to continue this way as our whole online shop will need Cloudflare in the future." 
+
+![C&A  logo](https://images.ctfassets.net/slt3lc6tev37/2SDBUxQsmiPzvLW4TiVlT8/d799547693df27847253e536b478925f/CA_logo_PNG4.png) 
+
+C&A leverages Cloudflare's developer platform to handle 10x traffic increases during sales and holiday events
+
+ Cloudflare Products 
+* [  Workers ](https://workers.cloudflare.com/)
+* [  Web Application Firewall (WAF) ](/application-services/products/waf/)
+* [  CDN ](/application-services/products/cdn/)
+
+ Products Used 
+
+CDN WAF Workers 
+
+ Details 
+
+ Industry 
+
+eCommerce 
+
+ Region 
+
+Europe, Middle East & Africa 
+
+# Build without boundaries
+
+ Join thousands of developers who've eliminated infrastructure complexity and deployed globally with Cloudflare. Start building for free — no credit card required. 
+
+[  Start building for free ](https://dash.cloudflare.com/sign-up) [  View docs ](https://developers.cloudflare.com/) 
+
+ No cold starts or region complexity  SASE and Zero Trust without the complexity  Deploy to 330+ cities instantly  Defend against the Internet's biggest DDoS attacks  Predictable pricing without surprises  Identity-aware Zero Trust access that retires your VPN  Battle-tested infrastructure powering millions  CDN, WAF, and DNS faster than the public Internet  No cold starts or region complexity  SASE and Zero Trust without the complexity  Deploy to 330+ cities instantly  Defend against the Internet's biggest DDoS attacks  Predictable pricing without surprises  Identity-aware Zero Trust access that retires your VPN  Battle-tested infrastructure powering millions  CDN, WAF, and DNS faster than the public Internet
+
+```json
+{"@context":"https://schema.org","@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com","logo":"https://www.cloudflare.com/logo.svg","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"]}
+{"@context":"https://schema.org","@type":"WebSite","name":"Cloudflare","url":"https://www.cloudflare.com","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://www.cloudflare.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"C&A and Cloudflare | Video","description":"C&A leverages Cloudflare's developer platform to handle 10x traffic increases during sales and holiday events","url":"https://www.cloudflare.com/case-studies/c-and-a/","inLanguage":"en"}
+```

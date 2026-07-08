@@ -1,0 +1,124 @@
+---
+title: Canva &amp; Cloudflare | Customer Story
+description: Canva connects employees, protects user assets, and builds industry-leading visual communication and content creation in Cloudflare's connectivity cloud.
+image: https://www.cloudflare.com/preview.png
+---
+
+# Canva
+
+> #### "  As we integrate new acquisitions into Canva, Cloudflare lets us apply modern security standards across environments that vary between cloud-native tech startups and organizations with legacy VPNs and on-premise infrastructure. Even if they start from very different places, Cloudflare ensures their infrastructure does not hold us back. " 
+
+## **Canva redefines visual communication for 260 million monthly users with Cloudflare**
+
+Founded in 2012, Canva is one of the world's most popular online visual communication platforms. The [Canva Visual Suite](https://www.canva.com/visual-suite/) offers free and paid service tiers to suit a broad spectrum of users and businesses. From students and independent designers to small-to-medium-sized businesses and global enterprises, Canva empowers anyone to collaborate across a rich variety of content types. Canva has leaned on Cloudflare to help solve key business challenges since 2016 as the company grew to establish itself as the visual communication platform of choice for over 260 million monthly users in more than 190 countries.
+
+### **Supporting security, performance, and innovation in a high-growth enterprise SaaS**
+
+Canva has always prioritized several important technical capabilities to power its rapid growth:
+
+* Incorporating microservices into their platform architecture to accelerate innovation
+* Ensuring the global speed and resiliency of the platform to deliver good experiences regardless of attacks and traffic surges
+* Protecting users' design assets against scraping by AI bots to preserve their trust
+* Adopting Zero Trust security principles to improve productivity, free up IT team time, and accelerate mergers and acquisitions
+
+"Only Cloudflare allowed us to start with a free tier, see value, and upgrade as needed. That resonated with us as it aligns with how Canva operates."
+
+The Cloudflare [connectivity cloud](https://www.cloudflare.com/connectivity-cloud/) helps Canva deliver all of these capabilities. It's a single, unified platform of security, connectivity, and developer services powered by a programmable global network. Canva uses the platform to build and secure applications and protect their global workforce, with less complexity and cost. 
+
+### **Empowering developers with Workers-driven programmable edge control**
+
+As Canva's app architecture matured to include microservices, the company needed more granular control over request handling. They chose the [Cloudflare Developer Platform](https://www.cloudflare.com/developer-platform/) — specifically [Workers](https://workers.cloudflare.com/) — which delivers high-performance serverless computing at the network edge to process logic closer to the user without adding friction to development workflows.
+
+"We run hundreds of microservices across dozens of teams using Cloudflare to clean up legacy traffic, and offload Layer 7 logic like redirects, security headers, and other filters to the global network instead of doing it in the backend," says Michael Yates, Canva's Senior Engineering Manager.
+
+This Workers-driven routing strategy helps Canva abstract complexity, enforce consistency, minimize the load on origin systems, making it safe for any authorized Canva developer to deploy to the Workers platform. The company has further streamlined service development and progressive deployment with Cloudflare's native Terraform integration and an infrastructure-as-code (IaC) approach to traffic configuration management.
+
+"Workers lets us blur the line between the edge and our internal network, promoting developer velocity, and giving our teams a programmable layer they can use without coordinating complex backend changes," says Yates. "That allows us to respond rapidly to incidents and adjust our presence on the Internet at scale."
+
+### **Building a foundation for growth with Cloudflare Application Security and Performance Solutions**
+
+Canva uses Cloudflare [Application Security and Performance Solutions](https://www.cloudflare.com/application-services/solutions/) to manage growing traffic and secure public-facing web applications. More specifically, Canva uses Cloudflare's [Content Delivery Network (CDN)](https://www.cloudflare.com/application-services/products/cdn/), [Web Application Firewall (WAF)](https://www.cloudflare.com/application-services/products/waf/), and [DDoS Protection & Mitigation](https://www.cloudflare.com/ddos/). Cloudflare helps Canva ensure robust application-layer security and a timely, responsive content delivery and user experience (less than 50ms latency) across Canva's growing global footprint.
+
+Canva also implemented [Cloudflare Bot Management](https://www.cloudflare.com/application-services/products/bot-management/) to protect users' visual assets. This lets Canva automatically apply threat detection methods like machine learning, behavioral analysis, and JA3/JA4 fingerprinting to prevent scraper bots from stealing images, videos, and audio recordings. 
+
+"Upset users and content partners would contact us and report that they had found their images on other sites, but we lacked the capacity to stop the problem internally," says Tyrrell. "Deploying Cloudflare Bot Management helped us get a handle on malicious scraping and asset appropriation — our bandwidth consumption dropped overnight without affecting legitimate traffic." 
+
+Always updating security, the company is progressively implementing Page Shield — Cloudflare's client-side protection solution — to monitor and mitigate malicious script activity in their users' browsers. 
+
+### **Securing a hybrid workforce and internal resources with the Cloudflare SASE platform**
+
+In addition to using Cloudflare to secure it's public applications, Canva adopted Zero Trust security principles to boost productivity and simplify security across a hybrid workforce of over 5,000 people. Cloudflare's [SSE and SASE](https://www.cloudflare.com/sase/products) services support this goal by securing access to corporate applications and environments with greater performance and IT team efficiency. 
+
+"We route all of our user traffic through Cloudflare," says Tyrrell. "From securing our public applications to enabling Zero Trust access across the organization and around the world, Cloudflare helps us to operate securely at scale."
+
+Employee experiences are one crucial element of this practice. Canva employees work in offices and remotely across Australia, New Zealand, the US, the UK, Europe, and throughout Asia. Designed to run everywhere on the global network, the Cloudflare SASE platform delivers strong performance across all regions. 
+
+"Cloudflare ensures we can provide secure, frictionless user access to resources without slowing people down," says Narraway. "With Cloudflare protecting our 90 most critical applications — everything from Salesforce to Snowflake — pairing this with strong MFA means we no longer have to worry about credential theft."
+
+This approach also helps Canva avoid risky VPN-based network security strategies. [Access](https://www.cloudflare.com/sase/products/access/), Cloudflare's ZTNA service, enables Canva to enforce context-aware security policies for every employee and third-party contractor. A clientless access approach fills in the gaps when issuing a dedicated Canva laptop isn't possible, e.g. with contractors. Cloudflare's [Remote Browser Isolation (RBI)](https://www.cloudflare.com/sase/products/browser-isolation/) service further prevents data loss and blocks malicious code and phishing attempts without slowing down user experiences, and its clientless deployment option accomplishes this straight from the browser. 
+
+"Rather than trusting someone just because they're on the network, we evaluate the user, their machine, and their context using Cloudflare to protect specific resources," adds Yates. 
+
+### **Accelerating M&A integration in the connectivity cloud**
+
+Over the years, Canva have accelerated their expansion and broadened their product portfolio, strategically acquiring companies like [Leonardo.AI](https://leonardo.ai/) and [Kaleido AI](https://www.kaleido.ai/) (visual AI tools), [Flourish](https://flourish.studio/) (data visualization and storytelling tools), and [Pexels](https://www.pexels.com/) and [Pixabay](http://pixabay.com/) (media libraries). Cloudflare's SASE platform and the connectivity cloud play a central role in helping the company secure and integrate new environments.
+
+"As we integrate new acquisitions into Canva, Cloudflare lets us apply modern security standards across environments that vary between cloud-native tech startups and organizations with legacy VPNs and on-premise infrastructure," says Narraway. "Even if they start from very different places, Cloudflare ensures their infrastructure does not hold us back." It is an approach that allows Canva to provide secure access for newly onboarded teams and systems without delaying integration timelines.
+
+"Cloudflare provides the components we need to establish a secure access baseline from day one, giving us time to improve the long-term architecture," says Narraway.
+
+Canva also uses Cloudflare's app connector, [Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/), to connect engineers securely to internal environments, allowing them to build, test, and iterate without creating firewall exceptions or exposing sensitive services to the public Internet.
+
+"Employing over 2,000 engineers at the top of their game, we need the freedom to experiment safely. Tunnel enables those edge cases where developers want to build and test locally," says Narraway. "With Cloudflare, we can establish secure guardrails so our people can connect securely, move fast, and hold off on production until they're ready. It aligns perfectly with how we operate."
+
+It is an arrangement that helps Canva maintain development velocity without losing control. It also supports secure innovation across the company's growing product suite and AI-driven acquisitions. 
+
+### **Preparing for future innovation with AI inference and agentic AI development on the Cloudflare edge**
+
+Looking ahead, Canva seeks to expand their use of the Cloudflare platform to support AI-powered features and agile workflows across its global product suite. From running AI inference at the edge with Leonardo.AI to evaluating Cloudflare's MCP server push and automation tools, Canva continues to explore emerging Cloudflare technology backed by Cloudflare support and the flexibility and reach of the connectivity cloud.
+
+"Cloudflare isn't just a vendor — they are a partner in how we solve problems, experiment safely, and move fast at scale," says Yates. "As Cloudflare continues to develop its products, we'll continue to examine each of them, and where it makes sense, we make them a part of the Canva platform."
+
+![Canva logo](https://images.ctfassets.net/slt3lc6tev37/4JYGVJ3E5jvHzfOCgLIDAT/a6de0a77f73c092ee4f4b074c741b07b/Canva-logo.png) 
+
+Canva connects employees, protects user assets, and builds industry-leading visual communication and content creation in Cloudflare's connectivity cloud.
+
+ Cloudflare Products 
+* [  Web Application Firewall (WAF) ](/application-services/products/waf/)
+* [  DDoS Mitigation ](/ddos/)
+* [  Bot Management ](/application-services/products/bot-management/)
+* [  Page Shield ](https://www.cloudflare.com/application-services/products/page-shield/)
+* [  Content Delivery Network (CDN) ](/application-services/products/cdn/)
+* [  Access ](/sase/products/access/)
+* [  Cloudflare Tunnel ](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/)
+* [  WARP ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/)
+* [  Remote Browser Isolation (RBI) ](https://www.cloudflare.com/sase/products/browser-isolation/)
+* [  Workers ](https://workers.cloudflare.com/)
+
+ Products Used 
+
+Access Workers Bot Management WAF DDoS Protection CDN 
+
+ Details 
+
+ Industry 
+
+High Technology 
+
+ Region 
+
+Asia-Pacific 
+
+# Build without boundaries
+
+ Join thousands of developers who've eliminated infrastructure complexity and deployed globally with Cloudflare. Start building for free — no credit card required. 
+
+[  Start building for free ](https://dash.cloudflare.com/sign-up) [  View docs ](https://developers.cloudflare.com/) 
+
+ No cold starts or region complexity  SASE and Zero Trust without the complexity  Deploy to 330+ cities instantly  Defend against the Internet's biggest DDoS attacks  Predictable pricing without surprises  Identity-aware Zero Trust access that retires your VPN  Battle-tested infrastructure powering millions  CDN, WAF, and DNS faster than the public Internet  No cold starts or region complexity  SASE and Zero Trust without the complexity  Deploy to 330+ cities instantly  Defend against the Internet's biggest DDoS attacks  Predictable pricing without surprises  Identity-aware Zero Trust access that retires your VPN  Battle-tested infrastructure powering millions  CDN, WAF, and DNS faster than the public Internet
+
+```json
+{"@context":"https://schema.org","@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com","logo":"https://www.cloudflare.com/logo.svg","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"]}
+{"@context":"https://schema.org","@type":"WebSite","name":"Cloudflare","url":"https://www.cloudflare.com","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://www.cloudflare.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"Canva & Cloudflare | Customer Story","description":"Canva connects employees, protects user assets, and builds industry-leading visual communication and content creation in Cloudflare's connectivity cloud.","url":"https://www.cloudflare.com/case-studies/canva/","inLanguage":"en"}
+```

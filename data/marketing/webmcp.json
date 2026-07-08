@@ -1,0 +1,26 @@
+{
+	"spec": "webmcp/0.1",
+	"name": "Cloudflare Web Tools",
+	"description": "Machine-discoverable website tools for AI agents that interact with Cloudflare product and pricing content.",
+	"tools": [
+		{
+			"name": "read_llms_txt",
+			"description": "Read curated machine-friendly site context.",
+			"url": "https://www.cloudflare.com/llms.txt",
+			"method": "GET"
+		},
+		{
+			"name": "read_markdown_page",
+			"description": "Fetch a markdown representation of a site page by path.",
+			"url": "https://www.cloudflare.com/{path}.md",
+			"method": "GET",
+			"parameters": [
+				{
+					"name": "path",
+					"type": "string",
+					"description": "Page path without leading slash, e.g. products/workers"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,126 @@
+{
+	"$schema": "https://agentprotocol.ai/schemas/agents.json",
+	"version": "1.0.0",
+	"siteInfo": {
+		"name": "Cloudflare",
+		"description": "Cloudflare is a serverless platform for deploying code globally with zero cold starts. This marketing site provides information about products, pricing, and solutions.",
+		"logoUrl": "https://www.cloudflare.com/logo.svg",
+		"primaryUrl": "https://www.cloudflare.com"
+	},
+	"aiContent": {
+		"llmsTxt": "https://www.cloudflare.com/llms.txt",
+		"llmsFullTxt": "https://www.cloudflare.com/llms-full.txt",
+		"markdownPages": {
+			"description": "All pages are available in markdown format by appending .md to the URL",
+			"examples": [
+				"https://www.cloudflare.com/index.md",
+				"https://www.cloudflare.com/plans.md",
+				"https://www.cloudflare.com/products/workers.md",
+				"https://www.cloudflare.com/solutions/ai.md"
+			]
+		}
+	},
+	"capabilities": [
+		{
+			"name": "GetLLMContext",
+			"description": "Returns curated content about Cloudflare for AI/LLM consumption",
+			"endpoint": "https://www.cloudflare.com/llms.txt",
+			"method": "GET",
+			"contentType": "text/markdown"
+		},
+		{
+			"name": "GetFullContext",
+			"description": "Returns expanded content with all pages inline for larger context windows",
+			"endpoint": "https://www.cloudflare.com/llms-full.txt",
+			"method": "GET",
+			"contentType": "text/markdown"
+		},
+		{
+			"name": "GetProductInfo",
+			"description": "Returns markdown information about a specific Cloudflare product",
+			"endpoint": "https://www.cloudflare.com/products/{slug}.md",
+			"method": "GET",
+			"contentType": "text/markdown",
+			"parameters": {
+				"slug": {
+					"type": "string",
+					"description": "Product slug (e.g., workers, r2, d1, workers-ai)",
+					"enum": [
+						"workers",
+						"containers",
+						"durable-objects",
+						"r2",
+						"hyperdrive",
+						"d1",
+						"kv",
+						"queues",
+						"workers-ai",
+						"ai-gateway",
+						"vectorize",
+						"ai-search",
+						"browser-rendering",
+						"workflows",
+						"images",
+						"stream",
+						"realtime",
+						"turn-sfu",
+						"dns",
+						"cdn",
+						"waf",
+						"load-balancing",
+						"rate-limiting",
+						"bot-mitigation"
+					]
+				}
+			}
+		},
+		{
+			"name": "GetSolutionInfo",
+			"description": "Returns markdown information about a specific solution category",
+			"endpoint": "https://www.cloudflare.com/solutions/{slug}.md",
+			"method": "GET",
+			"contentType": "text/markdown",
+			"parameters": {
+				"slug": {
+					"type": "string",
+					"description": "Solution slug",
+					"enum": [
+						"ai",
+						"frontends",
+						"network",
+						"platforms",
+						"security",
+						"workflows"
+					]
+				}
+			}
+		},
+		{
+			"name": "GetPricing",
+			"description": "Returns pricing information in markdown format",
+			"endpoint": "https://www.cloudflare.com/plans.md",
+			"method": "GET",
+			"contentType": "text/markdown"
+		}
+	],
+	"externalResources": {
+		"documentation": "https://developers.cloudflare.com",
+		"dashboard": "https://dash.cloudflare.com",
+		"discord": "https://discord.cloudflare.com",
+		"github": "https://github.com/cloudflare",
+		"status": "https://www.cloudflarestatus.com"
+	},
+	"policy": {
+		"termsOfServiceUrl": "https://www.cloudflare.com/website-terms",
+		"privacyPolicyUrl": "https://www.cloudflare.com/privacypolicy",
+		"contactEmail": "support@cloudflare.com"
+	},
+	"agents": [
+		{
+			"name": "Cloudflare Site Agent",
+			"description": "Machine-readable endpoint catalog for AI assistants consuming Cloudflare website content.",
+			"url": "https://www.cloudflare.com/.well-known/agent.json",
+			"protocol": "a2a"
+		}
+	]
+}

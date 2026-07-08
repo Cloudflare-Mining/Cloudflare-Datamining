@@ -1,0 +1,4503 @@
+# Cloudflare - Full Documentation
+
+> This is the expanded llms.txt for Cloudflare, containing full content from all pages for AI/LLM consumption with larger context windows.
+
+---
+
+## Home Page
+
+---
+title: "Cloudflare - Global Serverless Platform"
+description: "Deploy serverless code instantly across the globe with zero cold starts, infinite scalability, and integrated storage, AI, and network services."
+url: "https://www.cloudflare.com"
+---
+
+# Cloudflare
+
+> Deploy serverless code instantly across the globe with zero cold starts, infinite scalability, and integrated storage, AI, and network services.
+
+## What is Cloudflare Workers?
+
+Cloudflare Workers is a serverless platform that runs your code on Cloudflare's global network of 330+ data centers. Unlike traditional serverless platforms that use containers, Workers uses V8 isolates for instant startup times with no cold starts.
+
+## Key Features
+
+- **Zero Cold Starts**: Code starts executing immediately using V8 isolates
+- **Global by Default**: Deploy once, run in 330+ cities worldwide
+- **Multiple Languages**: JavaScript, TypeScript, Python, Rust, and WASM
+- **Integrated Platform**: Storage (R2, D1, KV), AI (Workers AI), and network services built-in
+- **Pay for What You Use**: CPU-time based billing, not wall-clock time
+
+## Products
+
+### Compute
+- [Workers](/products/workers.md): Global serverless functions
+- [Containers](/products/containers.md): Any language, anywhere
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+- [Browser Rendering](/products/browser-rendering.md): Automated browsers
+- [Workflows](/products/workflows.md): Process orchestration
+
+### Storage
+- [R2](/products/r2.md): Egress-free object storage
+- [Hyperdrive](/products/hyperdrive.md): Global database acceleration
+- [D1](/products/d1.md): Serverless SQL
+- [KV](/products/kv.md): Key-value storage
+- [Queues](/products/queues.md): Message processing
+
+### AI
+- [Workers AI](/products/workers-ai.md): Edge AI models
+- [AI Gateway](/products/ai-gateway.md): AI observability
+- [Vectorize](/products/vectorize.md): Vector database
+- [AI Search](/products/ai-search.md): Instant retrieval
+
+### Media
+- [Images](/products/images.md): Image optimization
+- [Stream](/products/stream.md): Video streaming
+- [RealtimeKit](/products/realtime.md): Live communications
+
+### Network
+- [DNS](/products/dns.md): Fast DNS
+- [CDN](/products/cdn.md): Content delivery
+- [WAF](/products/waf.md): Application protection
+- [Load Balancing](/products/load-balancing.md): Zero downtime
+- [Rate Limiting](/products/rate-limiting.md): Abuse prevention
+- [Bot Mitigation](/products/bot-mitigation.md): Block bots
+
+## Getting Started
+
+1. Sign up at [dash.cloudflare.com](https://dash.cloudflare.com/sign-up)
+2. Install the CLI: `npm install -g wrangler`
+3. Create a project: `wrangler init my-worker`
+4. Deploy: `wrangler deploy`
+
+## Resources
+
+- [Documentation](https://developers.cloudflare.com/workers/): Full technical docs
+- [Pricing](/plans.md): See what it costs
+- [Discord](https://discord.cloudflare.com): Community support
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com](https://www.cloudflare.com) for AI/LLM consumption.*
+
+
+---
+
+## Products
+
+---
+title: "Cloudflare Artifacts - Versioned Git-compatible storage for agents"
+description: "Versioned, Git-compatible storage built for the era of agents. Create millions of repositories, fork from GitHub, and give every agent its own branch."
+url: "https://www.cloudflare.com/products/artifacts"
+---
+
+# Artifacts
+
+> Give your agents, developers, and automations a home for code and data. Artifacts is Git-compatible storage built for scale: create tens of millions of repos, fork from any remote, and hand off a URL to any Git client.
+
+## Benefits
+
+### Git compatible
+
+Agents know git. Every repository can act as a git repo, allowing agents to interact with Artifacts the way they know best: using the git CLI.
+
+### Programmable
+
+Create repos, new branches, commit, diff and search. All programmatically, without waiting.
+
+### Tens of millions of repos
+
+Create a thousand, a million or ten million repos: one for every agent, for every upstream branch, or every user. No need to plan ahead.
+
+## Use Cases
+
+### Agent workspaces
+
+Give coding agents isolated, versioned environments. Fork from a shared baseline, let the agent commit its work, then diff against the original.
+
+### Config versioning
+
+Track configuration changes across deploys with full Git history, branching, and rollback. Every change is attributed and reversible.
+
+### Platform-managed repos
+
+Build Git-backed features for your users: notebooks, IaC, generated content. No Git infrastructure to run.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/artifacts/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
+- [D1](/products/d1.md): Serverless SQL
+- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
+- [Hyperdrive](/products/hyperdrive.md): Global databases
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/artifacts](https://www.cloudflare.com/products/artifacts) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Browser Rendering - Headless Browsers for AI Agents"
+description: "Headless, programmable web browsers built for AI Agents. Spin up browsers on-demand for screenshots, automation, and web scraping at scale."
+url: "https://www.cloudflare.com/products/browser-rendering"
+---
+
+# Browser Run
+
+> Give your application web browsing capabilities. Spin up a web browser in the cloud on-demand, and control it with your own code or AI-generated code. Take screenshots, extract text, run tests and automate any workflow — even ones with no API to rely on.
+
+## Key Features
+
+- Playwright & Puppeteer support
+- REST API endpoints
+- Screenshot generation
+- PDF generation
+- Markdown extraction
+- Global browser pool
+- Low cold-start time
+
+## Benefits
+
+### Scale to thousands of browsers
+
+Instant access to a global pool of browsers with low cold-start time — ideal for screenshotting, extracting structured data, or automation at scale.
+
+### Global by Default
+
+Runs on Cloudflare's global network, opening browser sessions close to users for better speed and availability.
+
+### Easy to Integrate
+
+REST APIs for common actions, and works with Playwright and Puppeteer, the best-in-class browser automation libraries
+
+## Use Cases
+
+### Create website thumbnails and social previews using the /screenshot REST API
+
+Generate visual previews for websites and social media sharing
+
+### Power AI agents that need browser-based automation where APIs don't exist
+
+Enable AI agents to interact with web pages and extract data
+
+### Generate PDFs from webpages and HTML content using the /pdf REST API
+
+Convert web content to PDF format for documents and reports
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/browser-rendering/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
+- [Containers](/products/containers.md): Any language, anywhere
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+- [Email Service](/products/email-service.md): Send and receive email
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/browser-rendering](https://www.cloudflare.com/products/browser-rendering) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Pages - Cloudflare"
+description: "Build & deploy frontend sites"
+url: "https://www.cloudflare.com/products/pages"
+---
+
+# Cloudflare Pages
+
+> Build & deploy frontend sites
+
+**Category:** compute
+
+## Overview
+
+Cloudflare Pages is part of Cloudflare's compute offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/pages/): Complete technical documentation for Cloudflare Pages
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Containers](/products/containers.md): Any language, anywhere
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+- [Email Service](/products/email-service.md): Send and receive email
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/pages](https://www.cloudflare.com/products/pages) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Containers - Global Container Platform"
+description: "Run containers globally with one command. No Kubernetes, no regions. Any programming language, anywhere across Cloudflare's global network with automatic placement."
+url: "https://www.cloudflare.com/products/containers"
+---
+
+# Containers
+
+> Run containers globally with one command. No Kubernetes, no regions. Run code written in any programming language, everywhere it's needed across Cloudflare's global network.
+
+## Key Features
+
+- Docker container support
+- Any language or framework
+- Automatic scaling to zero
+- Global deployment
+- Workers integration
+- GPU support (coming soon)
+- Persistent storage options
+
+## Benefits
+
+### Programmable
+
+Manage the full container lifecycle from code in your Worker. No YAML or configuration language to learn.
+
+### Global
+
+Cloudflare automatically places each instance in the optimal location across our global network.
+
+### Simple
+
+Deploy with one command, no devops experience required.
+
+## Use Cases
+
+### Run AI generated code securely
+
+Execute untrusted code in a fully isolated environment per session or per user. Give your AI agents the ability to generate and run code.
+
+### Run latency sensitive services close to end users
+
+Deploy compute-intensive workloads that need to run near users for optimal performance. Cloudflare automatically places each instance in the optimal location across our network.
+
+### Run compute intensive workflows and background jobs
+
+Process data, images, videos or any content that demands multiple CPU cores, extra memory, or a specialized runtime.
+
+### Provide sandboxed dev environments
+
+Spin up complete development environments on-demand for testing, CI/CD, or collaborative coding.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/containers/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+- [Email Service](/products/email-service.md): Send and receive email
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/containers](https://www.cloudflare.com/products/containers) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Durable Objects - Stateful Serverless Functions"
+description: "Build real-time & multiplayer apps without distributed systems complexity. Stateful serverless functions with WebSockets, embedded SQLite, and global coordination."
+url: "https://www.cloudflare.com/products/durable-objects"
+---
+
+# Durable Objects
+
+> Ship multiplayer systems, chat services, session stores and other coordination-heavy apps using Durable Objects.
+
+## Key Features
+
+- Single-instance strong consistency
+- Built-in WebSocket support
+- Transactional SQLite storage
+- Hibernation for cost efficiency
+- Alarms for scheduled wake-ups
+- Automatic geographic placement
+- Millions of objects per account
+
+## Benefits
+
+### Stateful serverless
+
+Durable Objects are stateful serverless functions: they run for as long as you need them, can compute in the background, and handle multiple requests concurrently.
+
+### WebSockets included
+
+Every Durable Object is also a WebSocket server and client. Broadcast and coordinate state in real-time with just a few lines of code.
+
+### Like a micro-VM
+
+Think of every Durable Object as a micro-VM: create thousands (or millions) of them to do work, and throw them away when you're done.
+
+### Embedded SQL database
+
+Every Durable Object has a built-in, embedded SQLite database. Serverless doesn't have to be stateless.
+
+### Schedule Work
+
+Every Durable Object can do work in the background, periodically poll an API, and programmatically execute code in the future with the Alarms API (it's built-in).
+
+### @cloudflare/actors
+
+The @cloudflare/actors library provides a set of powerful abstractions over Durable Objects: the container to Durable Object's micro-VM.
+
+## Use Cases
+
+### Build chat systems and messaging apps
+
+One object per chat room handles all messages, user presence, and room state with global consistency. No Redis clusters or message queues required. [Try it!](https://github.com/cloudflare/templates/tree/main/durable-chat-template)
+
+### Create collaborative editing experiences
+
+One object per document coordinates real-time edits from multiple users without distributed systems expertise. Think Figma or Google Docs architecture, simplified.
+
+### Power multiplayer games and interactive experiences
+
+One object per game session manages player state, game logic, and real-time updates close to users. Each game room scales independently without infrastructure overhead. [Try it!](https://github.com/cloudflare/templates/tree/main/multiplayer-globe-template)
+
+### Coordinate live dashboards and real-time analytics
+
+Objects aggregate and push real-time data updates to connected clients for monitoring and live events. Real-time data without the coordination nightmare.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/durable-objects/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
+- [Containers](/products/containers.md): Any language, anywhere
+- [Email Service](/products/email-service.md): Send and receive email
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/durable-objects](https://www.cloudflare.com/products/durable-objects) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Email Service - Cloudflare"
+description: "Send and receive email"
+url: "https://www.cloudflare.com/products/email-service"
+---
+
+# Email Service
+
+> Send and receive email
+
+**Category:** compute
+
+## Overview
+
+Email Service is part of Cloudflare's compute offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/email-routing/email-workers/): Complete technical documentation for Email Service
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
+- [Containers](/products/containers.md): Any language, anywhere
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/email-service](https://www.cloudflare.com/products/email-service) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Sandboxes - Secure Code Execution"
+description: "Secure code execution for AI agents, developer tooling, and anything you don't quite trust. Run untrusted code in isolated environments with a simple SDK."
+url: "https://www.cloudflare.com/products/sandboxes"
+---
+
+# Sandboxes
+
+> Run untrusted code in isolated environments. Give your AI agents, code interpreters, and developer tools a secure place to execute code, install packages, and interact with the filesystem.
+
+## Benefits
+
+### Fully isolated
+
+Each sandbox runs in its own secure container. Execute AI-generated or user-submitted code with zero risk to your infrastructure.
+
+### Fast spin-up
+
+Sandboxes start in milliseconds, not minutes. Execute code immediately without waiting for cold starts.
+
+### Bring your own images
+
+Use standard container images with your own dependencies, tools, and runtimes. Full flexibility without lock-in.
+
+## Use Cases
+
+### AI agent code execution
+
+Give your agents a secure environment to write and run code, install packages, and interact with the filesystem.
+
+### Interactive development environments
+
+Spin up complete dev environments on-demand for testing, CI/CD, or collaborative coding.
+
+### Code interpreters
+
+Run user-submitted Python or JavaScript with automatic output parsing for charts, tables, and rich content.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/sandbox/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
+- [Containers](/products/containers.md): Any language, anywhere
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/sandboxes](https://www.cloudflare.com/products/sandboxes) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Workers - Global Serverless Functions Platform"
+description: "Deploy serverless functions globally in seconds. No cold starts, 330+ cities, infinite concurrency, and pay only for CPU time. Support for JavaScript, TypeScript, Python, and Rust."
+url: "https://www.cloudflare.com/products/workers"
+---
+
+# Workers
+
+> Cloudflare Workers are fast, elastic, and serverless functions that scale automatically from zero to millions of requests.
+
+## Key Features
+
+- Zero cold starts with V8 isolates
+- Deploy to 330+ cities globally
+- JavaScript, TypeScript, Python, Rust, and WASM support
+- Native integration with R2, D1, KV, Queues, and Workers AI
+- CPU-time based billing (not wall-clock time)
+- Cron Triggers for scheduled tasks
+- Gradual rollouts and instant rollbacks
+
+## Benefits
+
+### Only pay for what you use
+
+Pay only for execution time ([CPU time](https://developers.cloudflare.com/workers/platform/limits/#cpu-time)), not idle time spent waiting on I/O.
+
+### Near your users, or your data
+
+Deploy once, run in Cloudflare's 330+ cities by default, or use [Smart Placement](https://developers.cloudflare.com/pages/functions/smart-placement/) to run near your data, to minimize end-to-end latency.
+
+### No cold starts
+
+Don't keep users waiting, or spend your time on prewarming rube-goldberg machines.
+
+### Infinite concurrency without the markup
+
+No need to pay for pre-provisioned concurrency. Just scale up based on demand on your big launch days, no matter how many concurrent users you get.
+
+### First-class local development
+
+Workers allows you to fully test your changes locally and allow you to get in the flow, ahead of pushing your changes with [workerd](https://github.com/cloudflare/workerd), our open-source runtime.
+
+### Write in code JS, TS, Python or Rust
+
+Choose from a template in your language to kickstart building an app.
+
+## Use Cases
+
+### Build scalable APIs
+
+Handle billions of requests with automatic scaling and global deployment. No load balancers, no capacity planning, no regional configuration.
+
+### Deploy complete web applications
+
+Ship React, Vue, or Next.js apps integrated backend logic, databases, and storage. Full-stack development without infrastructure management.
+
+### Run serverless functions at the edge
+
+Handle authentication, rate limiting, routing, caching logic near your users. Reduce latency and reduce load on your server by offloading processing to Workers.
+
+### Run business logic and background jobs
+
+Handle webhooks, process data, and run scheduled tasks with built-in Queues, Workflows, and Cron Triggers. Reliable automation without server babysitting.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/workers/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
+- [Containers](/products/containers.md): Any language, anywhere
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/workers](https://www.cloudflare.com/products/workers) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Workers for Platforms - Cloudflare"
+description: "Programmable Platform Solutions"
+url: "https://www.cloudflare.com/products/workers-for-platforms"
+---
+
+# Workers for Platforms
+
+> Programmable Platform Solutions
+
+**Category:** compute
+
+## Overview
+
+Workers for Platforms is part of Cloudflare's compute offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/): Complete technical documentation for Workers for Platforms
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
+- [Containers](/products/containers.md): Any language, anywhere
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/workers-for-platforms](https://www.cloudflare.com/products/workers-for-platforms) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Workers Observability - Cloudflare"
+description: "First-party observability for Workers"
+url: "https://www.cloudflare.com/products/workers-observability"
+---
+
+# Workers Observability
+
+> First-party observability for Workers
+
+**Category:** compute
+
+## Overview
+
+Workers Observability is part of Cloudflare's compute offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/workers/observability/): Complete technical documentation for Workers Observability
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
+- [Containers](/products/containers.md): Any language, anywhere
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/workers-observability](https://www.cloudflare.com/products/workers-observability) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Workflows - Durable Execution Engine"
+description: "Build durable workflows & multi-step applications. Execution engine built on Cloudflare Workers with automatic retry, state persistence, and long-running support."
+url: "https://www.cloudflare.com/products/workflows"
+---
+
+# Workflows
+
+> Workflows is an execution engine built on Cloudflare Workers — to build applications that can automatically retry, persist state and run for minutes, hours, days, or weeks. No need to worry about scaling, managing infrastructure, or handling durability: Workflows takes care of it for you.
+
+## Key Features
+
+- Automatic retries
+- State persistence
+- Step-based execution
+- Long-running support
+- Human-in-the-loop
+- Event-driven triggers
+- Pay per compute time
+
+## Benefits
+
+### Step-based
+
+Any logic wrapped in a step can be automatically retried and memoized for durability, without extra boilerplate or checkpoints.
+
+### State included
+
+Every instance persists to its own local state: no need to set up or manage a database or control plane.
+
+### Human-in-the-loop
+
+Wait on external events: webhooks, approvals, queue messages — and use them to determine the next steps in your Workflow.
+
+## Use Cases
+
+### Building AI agents
+
+Code review tasks, compact context, or processing data
+
+### Asynchronous tasks
+
+Lifecycle emails, billing jobs, and critical data processing tasks
+
+### Post-processing user-generated content
+
+Run inference, clean up or validate uploaded content
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/workflows/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Browser Run](/products/browser-rendering.md): Automated browsers
+- [Cloudflare Pages](/products/pages.md): Build & deploy frontend sites
+- [Containers](/products/containers.md): Any language, anywhere
+- [Durable Objects](/products/durable-objects.md): Stateful compute
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/workflows](https://www.cloudflare.com/products/workflows) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cache Reserve - Cloudflare"
+description: "Persistent caching for static content"
+url: "https://www.cloudflare.com/products/cache-reserve"
+---
+
+# Cache Reserve
+
+> Persistent caching for static content
+
+**Category:** storage
+
+## Overview
+
+Cache Reserve is part of Cloudflare's storage offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/): Complete technical documentation for Cache Reserve
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [D1](/products/d1.md): Serverless SQL
+- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
+- [Hyperdrive](/products/hyperdrive.md): Global databases
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/cache-reserve](https://www.cloudflare.com/products/cache-reserve) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare D1 - Serverless SQL Database"
+description: "The easiest way to add SQL to your application. Serverless SQLite database with global read replication, native Worker integration, and time travel backups."
+url: "https://www.cloudflare.com/products/d1"
+---
+
+# D1
+
+> D1 is built into the Cloudflare Workers Platform with out-of-the-box integration with Workers. Applications need to save data. SQLite offers a familiar, relational database with SQL querying.
+
+## Key Features
+
+- Serverless SQLite database
+- Global read replication
+- Native Workers integration
+- Time travel backups (30 days)
+- Prisma and Drizzle ORM support
+- Generated columns
+- Per-database or per-user scaling
+
+## Benefits
+
+### Familiar SQL at the Edge
+
+Build applications with the power and familiarity of a relational, SQL-based database that lives on the edge, close to your users. Leverage your existing SQL knowledge to query structured data with low latency, without having to learn a new query language.
+
+### Native Worker Integration
+
+Query your database with near-zero latency directly from your serverless functions, as D1 is built to be the stateful backend for the Cloudflare Workers ecosystem.
+
+### Scale for Vibe-Coding Platforms
+
+Create millions of D1 databases, per account or per user, and scale out your vibe-coding platform to support everyone. Pay only when databases are used.
+
+## Use Cases
+
+### Vibe-coding platforms
+
+Instantly provision an isolated database for each user's project on your platform, providing fast, sandboxed data storage for online IDEs, CMS platforms, or multi-tenant SaaS applications. Provide your users with a full-featured SQL database without managing complex infrastructure.
+
+### Familiar SQL at the Edge
+
+Build applications with the power and familiarity of a relational, SQL-based database that lives on the edge, close to your users. Leverage your existing SQL knowledge to query structured data with low latency, without having to learn a new query language.
+
+### User Profile & Configuration Storage
+
+Store user-specific application settings, profiles, and personalization data directly at the edge to deliver fast, customized experiences. Reduce read latency for frequently accessed data and improve your application's responsiveness globally.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/d1/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
+- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
+- [Hyperdrive](/products/hyperdrive.md): Global databases
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/d1](https://www.cloudflare.com/products/d1) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Data Platform - Ingest, Catalog & Query"
+description: "Build analytics-ready data warehouses and lakehouses on R2. Stream events via Pipelines, catalog tables with Apache Iceberg, and query with R2 SQL or any compatible engine—all without egress fees."
+url: "https://www.cloudflare.com/products/data-platform"
+---
+
+# Data Platform
+
+> Build analytics-ready data warehouses and lakehouses on R2. Stream events via Pipelines, catalog tables with Apache Iceberg, and query with R2 SQL or any compatible engine—all without egress fees.
+
+## Benefits
+
+### Zero egress fees
+
+Query your data from any cloud, data platform, or region without incurring transfer costs. R2 never charges for egress.
+
+### Always fast
+
+Automatic table maintenance, such as compaction and snapshot expiration, keeps your data performant without the need for scheduling manual maintenance tasks.
+
+### Serverless ingestion
+
+Stream and process events via HTTP endpoints or Workers bindings. No Apache Kafka, no Apache Flink, no infrastructure management.
+
+### SQL at the edge
+
+Query Iceberg tables directly with R2 SQL or the wrangler CLI. Distributed compute, automatic file pruning.
+
+### No infrastructure
+
+No servers to provision, no clusters to manage. Just define a schema, stream data, and query.
+
+### Open table format
+
+Apache Iceberg tables means your data is accessible by your favorite query engines—Apache Spark, Snowflake, Trino, DuckDB, and more—via R2 Data Catalog's standard Iceberg REST API.
+
+## Use Cases
+
+### Log analytics at scale
+
+Ingest server logs, application events, and telemetry data. Query with SQL to debug issues, track performance, and build operational dashboards.
+
+### Business intelligence pipelines
+
+Stream clickstream data, user events, and transactions. Connect your BI tools directly to Iceberg tables for real-time reporting.
+
+### ETL without the infrastructure
+
+Transform data with SQL at ingestion time. Filter, enrich, and validate before writing to storage—no separate ETL service required.
+
+### Multi-cloud analytics
+
+Store data once in R2, query from anywhere. Run Spark jobs in AWS, Snowflake queries from your data warehouse, or DuckDB locally—all hitting the same tables.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/r2/data-catalog/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
+- [D1](/products/d1.md): Serverless SQL
+- [Hyperdrive](/products/hyperdrive.md): Global databases
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/data-platform](https://www.cloudflare.com/products/data-platform) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Hyperdrive - Global Database Acceleration"
+description: "Make your database feel instant, everywhere. Connection pooling, query caching, and global routing for PostgreSQL and MySQL databases."
+url: "https://www.cloudflare.com/products/hyperdrive"
+---
+
+# Hyperdrive
+
+> Hyperdrive makes regional databases feel global. Connection pooling provides 3x faster queries from globally-distributed Workers, with optional caching for 100x speed and scale on repeated queries.
+
+## Key Features
+
+- PostgreSQL and MySQL support
+- Connection pooling
+- Query result caching
+- Works with any database driver
+- ORM compatible (Prisma, Drizzle, etc.)
+- No database modifications required
+- Regional connection pools
+
+## Benefits
+
+### Zero Migration
+
+Change the connection string, keep everything else
+
+### Compatible
+
+Works with PostgreSQL, MySQL, and popular ORMs
+
+### Fast
+
+Sub-5ms cached query results and global pooling
+
+## Use Cases
+
+### Build fast, global, full-stack
+
+Build full-stack Workers applications that feel fast everywhere by eliminating the distance penalty between global compute and regional data. No complex multi-region database setups required.
+
+### Scale read-heavy applications globally
+
+Handle millions of database queries without overwhelming your database. Connection pooling and query caching distribute load.
+
+### Cache database queries at the edge
+
+Store frequently-accessed data like user profiles, configuration settings, and routing tables at 330+ locations worldwide. Perfect for authentication, authorization, and edge decision-making.
+
+### Compatible with your existing stack
+
+Swap your connection string - and that's it. Build with your existing databases, drivers, ORMs and libraries. Scale your app globally, no major re-architecture required.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/hyperdrive/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
+- [D1](/products/d1.md): Serverless SQL
+- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/hyperdrive](https://www.cloudflare.com/products/hyperdrive) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Queues - Managed Message Queue Service"
+description: "A managed message queue service for reliable, asynchronous message delivery between Cloudflare Workers or to services built anywhere."
+url: "https://www.cloudflare.com/products/queues"
+---
+
+# Queues
+
+> Cloudflare Queues enables reliable, asynchronous message delivery between Cloudflare Workers — or to services built anywhere.
+
+## Key Features
+
+- Reliable message delivery
+- Batching and delays
+- Automatic retries
+- Dead-letter queues
+- Pull-based consumers
+- Event subscriptions
+- Built-in observability
+
+## Benefits
+
+### Asynchronous Message Processing
+
+Queues help developers offload work from the request path so users don't have to wait, enabling reliable and asynchronous message handling.
+
+### Built for Workers Platform
+
+Seamlessly integrated with Cloudflare Workers for easy setup and management within your existing workflow.
+
+### Event Subscriptions
+
+Get notified and take action programmatically through Workers by using Queues to subscribe to events from KV, Cloudflare Workers, R2, Workers AI, and Vectorize.
+
+## Use Cases
+
+### ETL Pipelines
+
+Reliably buffer large volumes of data for your ETL pipelines without overwhelming your databases or data warehouses. Ensure no data is lost during traffic spikes and process information at a manageable, consistent pace.
+
+### Asynchronous user-lifecycle tasks
+
+Offload time-consuming user-lifecycle tasks like sending welcome emails or processing profile pictures to a background worker. Keep your application's user interface fast and responsive by handling these jobs asynchronously.
+
+### Web crawlers
+
+Build distributed and resilient web crawlers by using Queues to manage the list of URLs to be fetched and processed. Easily scale your crawling infrastructure by adding more consumers and automatically retry failed jobs to ensure comprehensive data collection.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/queues/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
+- [D1](/products/d1.md): Serverless SQL
+- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/queues](https://www.cloudflare.com/products/queues) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare R2 - Egress-Free Object Storage"
+description: "Scalable, durable, affordable object storage with S3-compatible APIs. Near-infinite scale, zero egress fees, progressive migration, and R2 Data Catalog for analytics."
+url: "https://www.cloudflare.com/products/r2"
+---
+
+# R2
+
+> Build stateful applications that read and write data globally, integrate directly with Workers, and scale without infrastructure overhead or surprise storage costs.
+
+## Key Features
+
+- Zero egress fees
+- S3-compatible API
+- Native Workers integration
+- Iceberg-compatible Data Catalog
+- Progressive migration from existing S3 buckets
+- Automatic replication for durability
+- Public bucket support for static assets
+
+## Benefits
+
+### Near-infinite scale
+
+Access data from anywhere, create millions of buckets, and write as much data as you need to run your business.
+
+### Sleep better
+
+Don't wake up to a huge egress bill overnight: R2 doesn't charge for egress.
+
+### S3-compatible APIs
+
+R2 exposes S3 compatible APIs: use your existing tools without a rewrite.
+
+### Progressive migration
+
+R2 can sit in front of your legacy object storage provider and progressively copy objects as they are requested, taking the complexity of managing data migration.
+
+### R2 Data Catalog
+
+Use R2's Iceberg-compatible data catalog with your favorite SQL data warehouse to query logs and structured data formats you store in R2.
+
+### Part of Cloudflare Workers
+
+Access your R2 buckets directly from your Workers code without having to juggle API keys and SDKs with a native Workers API.
+
+## Use Cases
+
+### Store application data without egregious egress fees
+
+Download your data from R2 without worrying that your egress bill is scaling 1:1 with your growth. Store and access user content, AI training data, logs and columnar data without breaking the bank.
+
+### Store AI datasets and model artifacts
+
+Keep training data, model weights, and analytics datasets accessible from any cloud provider without transfer fees. Data portability enables better infrastructure choices.
+
+### Break free from cloud vendor lock-in
+
+Store your data neutrally and access it from any cloud provider for compute workloads. Choose the best tools without being trapped by transfer costs.
+
+### Migration without the risk
+
+Configure R2 to pull objects from your existing object storage provider as they are requested, allowing you to switch to R2 without having to manage large-scale data migration and benefit from zero-egress fees immediately.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/r2/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
+- [D1](/products/d1.md): Serverless SQL
+- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/r2](https://www.cloudflare.com/products/r2) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Agents - Build Stateful AI Agents"
+description: "Build proactive AI agents with built-in memory, scheduling, and real-time communication. Every agent gets its own SQLite database and can respond to emails, WebSockets, and scheduled events."
+url: "https://www.cloudflare.com/products/agents"
+---
+
+# Agents
+
+> The Agents SDK gives you the primitives to build proactive, stateful AI agents on Cloudflare. Built-in memory, scheduling, email handling, and real-time communication — agents that don't just respond, but take initiative.
+
+## Benefits
+
+### Built-in memory
+
+Every agent instance has its own SQLite database. Persist conversation history, user preferences, and state without managing infrastructure.
+
+### Proactive by design
+
+Agents can schedule tasks, respond to emails, handle webhooks, and send messages — not just wait for user input.
+
+### Multiplayer by default
+
+Built-in WebSocket support and state synchronization. Multiple users can interact with the same agent instance in real-time.
+
+## Use Cases
+
+### Proactive assistants
+
+Agents that send scheduled emails, monitor systems, and take action without waiting for user prompts.
+
+### Real-time collaboration
+
+Multiplayer chat, collaborative editing, or shared agent sessions where multiple users interact simultaneously.
+
+### Messaging and notifications
+
+Integrate with Slack, Discord, email, or any messaging platform. Agents can both receive and send messages proactively.
+
+### Workflow automation
+
+Orchestrate multi-step tasks like data processing pipelines and order fulfillment flows. Durable [Workflows](/products/workflows) handle retries and failures automatically.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/agents/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [AI Gateway](/products/ai-gateway.md): AI observability
+- [AI Search](/products/ai-search.md): Instant retrieval
+- [Vectorize](/products/vectorize.md): Vector database
+- [Web3](/products/web3.md): Web3 Infrastructure
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/agents](https://www.cloudflare.com/products/agents) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare AI Gateway - AI Application Control Plane"
+description: "An intelligent control plane for your AI applications. Connect to any model, dynamic routing, caching, observability, and unified billing for AI workloads."
+url: "https://www.cloudflare.com/products/ai-gateway"
+---
+
+# AI Gateway
+
+> Connect to any model, dynamically route requests, and manage usage, billing, and logs from one unified gateway.
+
+## Key Features
+
+- Multi-provider support
+- Response caching
+- Fallback routing
+- Rate limiting
+- Usage analytics
+- Token counting
+- Unified billing
+
+## Benefits
+
+### Reduce Costs & Latency
+
+Easily cache responses and reduces redundant API calls — leading to direct cost savings.
+
+### Improve Reliability with Dynamic Controls
+
+Configure how and when model providers APIs are called based on specific attributes or fallbacks
+
+### Add Observability
+
+Enables rich usage insights such as token counts, prompt performance, and pattern analysis.
+
+## Use Cases
+
+### Reducing latency and cost of AI apps by caching API responses
+
+Optimize your AI application performance and reduce costs by intelligently caching responses from AI providers.
+
+### Usage analytics — monitoring prompt performance, token counts, and behavior
+
+Gain deep insights into your AI usage patterns, token consumption, and prompt performance across all providers.
+
+### Building custom dashboards and alerting systems directly from AI Gateway logs
+
+Create comprehensive monitoring and alerting systems using AI Gateway's rich logging and metrics data.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/ai-gateway/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Agents](/products/agents.md): Build stateful AI agents
+- [AI Search](/products/ai-search.md): Instant retrieval
+- [Vectorize](/products/vectorize.md): Vector database
+- [Web3](/products/web3.md): Web3 Infrastructure
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/ai-gateway](https://www.cloudflare.com/products/ai-gateway) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare AI Search - Automatic RAG infrastructure and querying"
+description: "Connect your data and deliver natural language search in your applications. AI Search supports spins up a RAG architecture from a bucket or website. Supports open standards like NLWeb and customization inclduing metadata filtering."
+url: "https://www.cloudflare.com/products/ai-search"
+---
+
+# AI Search
+
+> Connect your data and deliver natural language search in your applications.
+
+## Key Features
+
+- Automatic RAG pipeline
+- Continuous re-indexing
+- NLWeb support
+- Metadata filtering
+- Edge-based inference
+- Multi-tenant support
+- Query rewriting
+
+## Benefits
+
+### Deploy RAG architecture in minutes
+
+AI Search gives you a production-ready RAG pipeline out of the box — just connect your data and go.
+
+### Always Up-to-Date
+
+AI Search continuously re-indexes your data so responses always reflect the latest information.
+
+### Built to Run at the Edge
+
+AI Search is built on top of the Workers Developer Platform, serving requests from the edge.
+
+## Use Cases
+
+### NLWeb and AI Search
+
+AI Search is ideal for creating a powerful search engine for your company's internal and external knowledge and documentation. With support for NLWeb, it can generate deep links to content, helping users navigate large data sources.
+
+### Product Chatbot
+
+You can use AI Search to build a chatbot that answers customer questions using your own product content. This ensures that the chatbot provides accurate and customized responses based on your official documentation and knowledge base. Since AI Search is built to run at the edge, it delivers fast, local AI responses, which improves the user experience by reducing latency.
+
+### Multi-Tenant or Personalized AI Assistants
+
+Use AI Search's metadata filtering to create secure, personalized AI assistants for many different users or teams from a single instance. This feature ensures that each user's queries are answered using only their specific, authorized data, guaranteeing a private and tailored experience for every group.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/ai-search/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Agents](/products/agents.md): Build stateful AI agents
+- [AI Gateway](/products/ai-gateway.md): AI observability
+- [Vectorize](/products/vectorize.md): Vector database
+- [Web3](/products/web3.md): Web3 Infrastructure
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/ai-search](https://www.cloudflare.com/products/ai-search) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Vectorize - Vector Database for RAG Applications"
+description: "Use vector databases to power RAG applications. Vector storage from within Cloudflare Workers platform with edge vector lookups and AI-powered search capabilities."
+url: "https://www.cloudflare.com/products/vectorize"
+---
+
+# Vectorize
+
+> Vectorize stores vector data for applications like Retrieval Augmented Generation and search products. Vector storage from within Cloudflare Workers platform. Enhance AI applications by injecting relevant context.
+
+## Key Features
+
+- Vector similarity search
+- Edge-based lookups
+- Workers AI integration
+- Metadata filtering
+- Multiple distance metrics
+- Batch operations
+- Real-time updates
+
+## Benefits
+
+### All-in-one Platform
+
+Database companies are usually point solutions but Cloudflare has an entire platform with compute, AI inference, and data storage.
+
+### Edge Vector Lookups
+
+Vector DB lookups are close to the user rather than going back to a centralized origin where the data lives, leading to faster database queries.
+
+### AI-Powered Search
+
+Enhance AI applications by injecting relevant context from vector embeddings stored at the edge.
+
+## Use Cases
+
+### RAG Applications
+
+Build topic-specific chatbots where the topical data lives in Vectorize.
+
+### Search Applications
+
+Power search apps with vector similarity search capabilities.
+
+### AI Context Injection
+
+Enhance AI applications by injecting relevant context from vector embeddings.
+
+### Edge AI Workflows
+
+Combine vector storage with Workers AI for complete edge-based AI solutions.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/vectorize/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Agents](/products/agents.md): Build stateful AI agents
+- [AI Gateway](/products/ai-gateway.md): AI observability
+- [AI Search](/products/ai-search.md): Instant retrieval
+- [Web3](/products/web3.md): Web3 Infrastructure
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/vectorize](https://www.cloudflare.com/products/vectorize) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Web3 - Cloudflare"
+description: "Web3 Infrastructure"
+url: "https://www.cloudflare.com/products/web3"
+---
+
+# Web3
+
+> Web3 Infrastructure
+
+**Category:** ai
+
+## Overview
+
+Web3 is part of Cloudflare's ai offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/web3/): Complete technical documentation for Web3
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Agents](/products/agents.md): Build stateful AI agents
+- [AI Gateway](/products/ai-gateway.md): AI observability
+- [AI Search](/products/ai-search.md): Instant retrieval
+- [Vectorize](/products/vectorize.md): Vector database
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/web3](https://www.cloudflare.com/products/web3) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Workers AI - Edge AI Inference Platform"
+description: "Run AI inference globally with one API call. 50+ models, serverless pricing, OpenAI-compatible API, and inference in 200+ cities worldwide."
+url: "https://www.cloudflare.com/products/workers-ai"
+---
+
+# Workers AI
+
+> Workers AI lets you run AI inference globally with one API call. No GPUs to manage, no capacity planning. Just intelligent machine learning models  running where they're needed, on Cloudflare's global network.
+
+## Key Features
+
+- 100+ AI models available
+- LLMs: Llama 3, Mistral, Gemma
+- Image: Stable Diffusion, FLUX
+- Audio: Whisper, TTS
+- Embeddings: BGE, multilingual models
+- LoRA fine-tuning support
+- Streaming responses
+
+## Benefits
+
+### Serverless pricing
+
+Pay-per-inference pricing with no idle costs. No guessing what.
+
+### Rich model catalog
+
+50+ models running close to users in 200+ cities
+
+### Widely compatible
+
+One API call, works with any OpenAI SDK or task type
+
+## Use Cases
+
+### Image generation
+
+Execute image generation, manipulation, and creative workflows without managing GPU infrastructure. Perfect for content platforms, social apps, and creative tools.
+
+### Speech-to-text, in real-time
+
+Transcribe, analyze, and generate audio content without specialized infrastructure. Built for voice agents, note-taking apps, and media processing.
+
+### Embeddings
+
+Create intelligent search, recommendations, and context-aware features using vector embeddings. Seamlessly integrates with Vectorize AI Search for complete AI workflows.
+
+### LLMs
+
+Perform a wide range of natural language tasks. Use large language models for text generation, classification, question answering, and other complex language-based operations through a simple API.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/workers-ai/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Agents](/products/agents.md): Build stateful AI agents
+- [AI Gateway](/products/ai-gateway.md): AI observability
+- [AI Search](/products/ai-search.md): Instant retrieval
+- [Vectorize](/products/vectorize.md): Vector database
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/workers-ai](https://www.cloudflare.com/products/workers-ai) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Advanced Certificate Manager - Cloudflare"
+description: "Certificate Lifecycle Management"
+url: "https://www.cloudflare.com/products/advanced-certificate-manager"
+---
+
+# Advanced Certificate Manager
+
+> Certificate Lifecycle Management
+
+**Category:** network
+
+## Overview
+
+Advanced Certificate Manager is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/): Complete technical documentation for Advanced Certificate Manager
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+- [Bot Management](/products/bot-management.md): Block bad bots
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/advanced-certificate-manager](https://www.cloudflare.com/products/advanced-certificate-manager) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Analytics - Cloudflare"
+description: "Web Performance & Security"
+url: "https://www.cloudflare.com/products/analytics"
+---
+
+# Analytics
+
+> Web Performance & Security
+
+**Category:** network
+
+## Overview
+
+Analytics is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/analytics/): Complete technical documentation for Analytics
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+- [Bot Management](/products/bot-management.md): Block bad bots
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/analytics](https://www.cloudflare.com/products/analytics) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "API Shield - Cloudflare"
+description: "API Security & Monitoring"
+url: "https://www.cloudflare.com/products/api-shield"
+---
+
+# API Shield
+
+> API Security & Monitoring
+
+**Category:** network
+
+## Overview
+
+API Shield is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/api-shield/): Complete technical documentation for API Shield
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+- [Bot Management](/products/bot-management.md): Block bad bots
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/api-shield](https://www.cloudflare.com/products/api-shield) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Argo Smart Routing - Cloudflare"
+description: "Accelerate Web Apps"
+url: "https://www.cloudflare.com/products/argo-smart-routing"
+---
+
+# Argo Smart Routing
+
+> Accelerate Web Apps
+
+**Category:** network
+
+## Overview
+
+Argo Smart Routing is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/argo-smart-routing/): Complete technical documentation for Argo Smart Routing
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Bot Management](/products/bot-management.md): Block bad bots
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/argo-smart-routing](https://www.cloudflare.com/products/argo-smart-routing) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Bot Management - Cloudflare"
+description: "Block bad bots"
+url: "https://www.cloudflare.com/products/bot-management"
+---
+
+# Bot Management
+
+> Block bad bots
+
+**Category:** network
+
+## Overview
+
+Bot Management is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/bots/): Complete technical documentation for Bot Management
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/bot-management](https://www.cloudflare.com/products/bot-management) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare CDN - Global Content Delivery Network"
+description: "Make your site faster and stop paying for bandwidth. CDN caches content in 330+ cities worldwide with zero-configuration setup and predictable pricing."
+url: "https://www.cloudflare.com/products/cdn"
+---
+
+# CDN
+
+> Cloudflare's CDN caches your static and dynamic content in data centers in over 330 cities worldwide, serving it directly from the edge to accelerate content delivery and absorb traffic from your origin servers.
+
+## Key Features
+
+- 330+ global locations
+- Zero-configuration setup
+- Instant cache purging
+- API-driven control
+- Predictable pricing
+- Static & dynamic caching
+- Core Web Vitals optimization
+
+## Benefits
+
+### Massive, Performant Network
+
+One of the largest and most interconnected in the world, meaning Cloudflare is physically closer to more users, resulting in lower latency.
+
+### Zero-Configuration Setup
+
+Unlike traditional CDNs that require changing URLs, Cloudflare works as a reverse proxy. Just by switching your DNS, your site is faster.
+
+### Predictable, Affordable Cost
+
+We exist to help kill egregious cloud egress fees. Bandwidth costs are bundled and competitively priced.
+
+## Use Cases
+
+### Static Asset Acceleration
+
+Accelerating the delivery of static assets like images, CSS, and JavaScript to improve site speed and Core Web Vitals.
+
+### API Response Caching
+
+Caching anonymous API GET responses.
+
+### Bandwidth Cost Reduction
+
+Slashing the bandwidth bill of those pushing massive amounts of data worldwide.
+
+### Dynamic Content Optimization
+
+Features like instant purging, API-driven control, and granular Cache Rules give developers powerful tools without the legacy complexity.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/reference-architecture/architectures/cdn/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/cdn](https://www.cloudflare.com/products/cdn) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "China Network - Cloudflare"
+description: "High-Performance Web Solutions in China"
+url: "https://www.cloudflare.com/products/china-network"
+---
+
+# China Network
+
+> High-Performance Web Solutions in China
+
+**Category:** network
+
+## Overview
+
+China Network is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/china-network/): Complete technical documentation for China Network
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/china-network](https://www.cloudflare.com/products/china-network) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Custom Domain Protection - Cloudflare"
+description: "Registrar Security"
+url: "https://www.cloudflare.com/products/custom-domain-protection"
+---
+
+# Custom Domain Protection
+
+> Registrar Security
+
+**Category:** network
+
+## Overview
+
+Custom Domain Protection is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/registrar/custom-domain-protection/): Complete technical documentation for Custom Domain Protection
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/custom-domain-protection](https://www.cloudflare.com/products/custom-domain-protection) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "DDoS for Web - Cloudflare"
+description: "Cloudflare provides powerful, always-on DDoS protection for websites and web applications, mitigating most attacks automatically in under three seconds."
+url: "https://www.cloudflare.com/products/ddos-for-web"
+---
+
+# DDoS for Web
+
+> Cloudflare provides powerful, always-on DDoS protection for websites and web applications, mitigating most attacks automatically in under three seconds.
+
+**Category:** network
+
+## Overview
+
+DDoS for Web is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/ddos-protection/): Complete technical documentation for DDoS for Web
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/ddos-for-web](https://www.cloudflare.com/products/ddos-for-web) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare DDoS Protection - Always-On Attack Mitigation"
+description: "Unmetered, always-on DDoS protection across L3, L4, and L7. Automatic detection and mitigation at the edge with no performance impact."
+url: "https://www.cloudflare.com/products/ddos"
+---
+
+# DDoS Protection
+
+> Cloudflare automatically detects and mitigates DDoS attacks across layers 3, 4, and 7 at the edge — absorbing even the largest volumetric attacks without impacting legitimate traffic.
+
+## Key Features
+
+- Always-on mitigation
+- Unmetered protection
+- L3/L4/L7 coverage
+- Sub-second detection
+- 330+ city network
+- No performance impact
+- Zero configuration
+
+## Benefits
+
+### Always-On Mitigation
+
+DDoS protection is enabled by default with no configuration needed. Attacks are detected and mitigated in seconds, not minutes, across our entire global network.
+
+### Unmetered and Unlimited
+
+No surge pricing, no bandwidth caps, no penalty for being attacked. Cloudflare absorbs attack traffic at no additional cost, regardless of size or duration.
+
+### Global Anycast Network
+
+Attack traffic is distributed and absorbed across our entire network spanning 330+ cities, so no single location is overwhelmed and performance stays consistent.
+
+## Use Cases
+
+### Volumetric Attack Mitigation
+
+Absorb massive floods of UDP, ICMP, and SYN traffic designed to saturate your bandwidth and overwhelm your infrastructure.
+
+### Application-Layer Protection
+
+Detect and block sophisticated L7 attacks like HTTP floods and slowloris that attempt to exhaust your server resources.
+
+### DNS Attack Defense
+
+Protect your DNS infrastructure from query floods and amplification attacks that aim to make your domains unreachable.
+
+### API Endpoint Protection
+
+Shield your APIs from targeted DDoS attacks designed to degrade performance or cause downtime for your most critical services.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/ddos-protection/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Rate Limiting](/products/rate-limiting.md): Abuse prevention
+- [SSL](/products/ssl.md): Secure Your Site with SSL
+- [Turnstile](/products/turnstile.md): A CAPTCHA Replacement Solution
+- [WAF](/products/waf.md): Web Application Firewall
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/ddos](https://www.cloudflare.com/products/ddos) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare DNS - World's Fastest DNS"
+description: "The world's fastest and most reliable DNS — for free. Authoritative DNS with massive global network, DDoS resiliency, and fully-featured API."
+url: "https://www.cloudflare.com/products/dns"
+---
+
+# DNS
+
+> Cloudflare's Authoritative DNS translates domain names into IP addresses — using a massive global network to deliver the fastest, most resilient query responses.
+
+## Key Features
+
+- Fastest authoritative DNS
+- Global anycast network
+- DDoS protection
+- Free API access
+- Fast propagation
+- Terraform support
+- DNSSEC support
+
+## Benefits
+
+### Raw Performance
+
+Consistently measured as one of the fastest authoritative DNS provider in the world. Our massive anycast network responds to queries from a data center physically close to the user, minimizing latency and providing a faster start to every application connection.
+
+### Unmatched DDoS Resiliency
+
+Our network is one of the largest in the world and is designed to mitigate the largest DDoS attacks. Developers using our DNS don't have to worry that an attack will take their application offline at the resolution level.
+
+### Free, Fully-Featured API
+
+Unlike competitors who may charge for API access or have limited functionality, our DNS is free and completely controllable via a rich, well-documented API. This enables true Infrastructure-as-Code for developers using tools like Terraform and Ansible.
+
+## Use Cases
+
+### Authoritative Records
+
+Serving as the fast, reliable, and secure "phonebook" for a company's primary website and API endpoints (managing their A, AAAA, and CNAME records).
+
+### Automated Validation
+
+Automating service validation by programmatically creating and deleting TXT records for things like SSL certificates, Google Search Console, or Microsoft 365.
+
+### Instant Propagation
+
+Dynamically routing millions of users with super fast propagation — to steer traffic to the least-loaded backend, without traditional load balancers.
+
+### Infrastructure as Code
+
+Managing DNS records programmatically with tools like Terraform and Ansible, enabling true Infrastructure-as-Code workflows for modern development teams.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/dns/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/dns](https://www.cloudflare.com/products/dns) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Email Routing - Cloudflare"
+description: "Manage custom email addresses with ease"
+url: "https://www.cloudflare.com/products/email-routing"
+---
+
+# Email Routing
+
+> Manage custom email addresses with ease
+
+**Category:** network
+
+## Overview
+
+Email Routing is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/email-routing/): Complete technical documentation for Email Routing
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/email-routing](https://www.cloudflare.com/products/email-routing) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Keyless SSL - Cloudflare"
+description: "Secure SSL Control"
+url: "https://www.cloudflare.com/products/keyless-ssl"
+---
+
+# Keyless SSL
+
+> Secure SSL Control
+
+**Category:** network
+
+## Overview
+
+Keyless SSL is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/ssl/keyless-ssl/): Complete technical documentation for Keyless SSL
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/keyless-ssl](https://www.cloudflare.com/products/keyless-ssl) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Load Balancing - Multi-Cloud Traffic Management"
+description: "Zero-downtime deployments and multi-cloud reliability. Intelligent traffic routing across servers, data centers, and cloud environments with near-instantaneous global failover."
+url: "https://www.cloudflare.com/products/load-balancing"
+---
+
+# Load Balancing
+
+> Cloudflare Load Balancing ensures you never lose revenue to downtime again. Our load balancing product directs traffic across your servers, data centers, and cloud environments based on server health and user-to-origin latency, with near-instantaneous global failover.
+
+## Key Features
+
+- Global health monitoring
+- Automatic failover
+- Geo-steering
+- Cloud agnostic
+- A/B testing support
+- Canary deployments
+- Latency-based routing
+
+## Benefits
+
+### Truly Cloud Agnostic
+
+Unlike cloud-native load balancers that favor their own ecosystem, Cloudflare Load Balancing is vendor-neutral. Developers can seamlessly balance traffic between AWS, GCP, Azure, and on-premise servers.
+
+### Faster Health Checks
+
+We monitor origin health from multiple points across our global network. Our checks can spot connectivity issues from the rest of the world and fail over faster and more reliably.
+
+### Integrated Stack
+
+Load Balancing works natively with the rest of Cloudflare's stack. Route traffic with Argo for performance, protect origins with the WAF, and gain insights from a single control plane.
+
+## Use Cases
+
+### Failover & Resilience
+
+Active/Passive failover between two data centers or cloud regions.
+
+### Geo-Steered Delivery
+
+Geo-Steering for data sovereignty and localization.
+
+### Testing & Deployments
+
+Live A/B-testing and canary-deploy platform.
+
+### Multi-Cloud Architecture
+
+Prevent vendor lock-in and enable true multi-cloud architectures with seamless traffic balancing.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/load-balancing/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/load-balancing](https://www.cloudflare.com/products/load-balancing) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Log Explorer - Cloudflare"
+description: "Observability and Forensics"
+url: "https://www.cloudflare.com/products/log-explorer"
+---
+
+# Log Explorer
+
+> Observability and Forensics
+
+**Category:** network
+
+## Overview
+
+Log Explorer is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/log-explorer/): Complete technical documentation for Log Explorer
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/log-explorer](https://www.cloudflare.com/products/log-explorer) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Network Flow - Cloudflare"
+description: "Network Traffic Visibility"
+url: "https://www.cloudflare.com/products/network-flow"
+---
+
+# Network Flow
+
+> Network Traffic Visibility
+
+**Category:** network
+
+## Overview
+
+Network Flow is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/network-flow/): Complete technical documentation for Network Flow
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/network-flow](https://www.cloudflare.com/products/network-flow) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Network Interconnect - Cloudflare"
+description: "Direct physical or partner-delivered interconnections"
+url: "https://www.cloudflare.com/products/network-interconnect"
+---
+
+# Network Interconnect
+
+> Direct physical or partner-delivered interconnections
+
+**Category:** network
+
+## Overview
+
+Network Interconnect is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/network-interconnect/): Complete technical documentation for Network Interconnect
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/network-interconnect](https://www.cloudflare.com/products/network-interconnect) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Page Shield - Cloudflare"
+description: "Client-Side Protection"
+url: "https://www.cloudflare.com/products/page-shield"
+---
+
+# Page Shield
+
+> Client-Side Protection
+
+**Category:** network
+
+## Overview
+
+Page Shield is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/page-shield/): Complete technical documentation for Page Shield
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/page-shield](https://www.cloudflare.com/products/page-shield) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Rate Limiting - API Abuse Prevention"
+description: "Protect your APIs from abuse and your origin from being overwhelmed. Edge-based rate limiting with flexible rules and cost-effective pricing."
+url: "https://www.cloudflare.com/products/rate-limiting"
+---
+
+# Rate Limiting
+
+> Cloudflare Rate Limiting allows you to define granular thresholds for requests to your application and automatically block or log clients that exceed those limits.
+
+## Key Features
+
+- Edge-based enforcement
+- Flexible rule engine
+- IP-based limiting
+- Header-based limiting
+- Session tracking
+- Accurate distributed counting
+- Cost-effective pricing
+
+## Benefits
+
+### Performance and Accuracy at Scale
+
+Our rate limiting happens at Cloudflare's edge, across 330+ cities. We can block excessive traffic before it ever touches your origin server, saving you bandwidth and compute resources.
+
+### Rich, Flexible Rules Engine
+
+Define limits based on a wide range of characteristics beyond just IP address, such as specific HTTP headers, query parameters, or even the result of a WAF check.
+
+### Cost-Effectiveness
+
+Simple, predictable pricing that is often far lower than a DIY solution, especially when factoring in your saved origin costs.
+
+## Use Cases
+
+### Login Endpoint Protection
+
+Protecting login endpoints from password-spraying and brute-force attacks.
+
+### API Cost Control
+
+Cost control for expensive API calls.
+
+### Session-Based API Defense
+
+Protecting APIs by tracking usage based on session identifiers found in HTTP headers or cookies, neutralizing distributed botnets.
+
+### Distributed Attack Mitigation
+
+Our distributed counting is highly accurate, preventing the race conditions that can occur with self-managed, multi-region solutions.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/waf/rate-limiting-rules/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [DDoS Protection](/products/ddos.md): Mitigation Solutions
+- [SSL](/products/ssl.md): Secure Your Site with SSL
+- [Turnstile](/products/turnstile.md): A CAPTCHA Replacement Solution
+- [WAF](/products/waf.md): Web Application Firewall
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/rate-limiting](https://www.cloudflare.com/products/rate-limiting) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "RDP - Cloudflare"
+description: "Remote Desktop Protection"
+url: "https://www.cloudflare.com/products/rdp"
+---
+
+# RDP
+
+> Remote Desktop Protection
+
+**Category:** network
+
+## Overview
+
+RDP is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/): Complete technical documentation for RDP
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/rdp](https://www.cloudflare.com/products/rdp) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Spectrum - Cloudflare"
+description: "DDoS protection for TCP & UDP applications"
+url: "https://www.cloudflare.com/products/spectrum"
+---
+
+# Spectrum
+
+> DDoS protection for TCP & UDP applications
+
+**Category:** network
+
+## Overview
+
+Spectrum is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/spectrum/): Complete technical documentation for Spectrum
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/spectrum](https://www.cloudflare.com/products/spectrum) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Spectrum for Minecraft - Cloudflare"
+description: "Minecraft Server Protection"
+url: "https://www.cloudflare.com/products/spectrum-for-minecraft"
+---
+
+# Spectrum for Minecraft
+
+> Minecraft Server Protection
+
+**Category:** network
+
+## Overview
+
+Spectrum for Minecraft is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/spectrum/): Complete technical documentation for Spectrum for Minecraft
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/spectrum-for-minecraft](https://www.cloudflare.com/products/spectrum-for-minecraft) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "SSL - Cloudflare"
+description: "Secure Your Site with SSL"
+url: "https://www.cloudflare.com/products/ssl"
+---
+
+# SSL
+
+> Secure Your Site with SSL
+
+**Category:** security
+
+## Overview
+
+SSL is part of Cloudflare's security offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/ssl/): Complete technical documentation for SSL
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [DDoS Protection](/products/ddos.md): Mitigation Solutions
+- [Rate Limiting](/products/rate-limiting.md): Abuse prevention
+- [Turnstile](/products/turnstile.md): A CAPTCHA Replacement Solution
+- [WAF](/products/waf.md): Web Application Firewall
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/ssl](https://www.cloudflare.com/products/ssl) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Turnstile - Cloudflare"
+description: "A CAPTCHA Replacement Solution"
+url: "https://www.cloudflare.com/products/turnstile"
+---
+
+# Turnstile
+
+> A CAPTCHA Replacement Solution
+
+**Category:** security
+
+## Overview
+
+Turnstile is part of Cloudflare's security offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/turnstile/): Complete technical documentation for Turnstile
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [DDoS Protection](/products/ddos.md): Mitigation Solutions
+- [Rate Limiting](/products/rate-limiting.md): Abuse prevention
+- [SSL](/products/ssl.md): Secure Your Site with SSL
+- [WAF](/products/waf.md): Web Application Firewall
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/turnstile](https://www.cloudflare.com/products/turnstile) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare WAF - Web Application Firewall"
+description: "Protect your applications without sacrificing performance. Edge-based WAF with zero-day protection, low false positives, and automatic security updates."
+url: "https://www.cloudflare.com/products/waf"
+---
+
+# WAF
+
+> Cloudflare WAF inspects HTTP/S requests at the edge, using managed and custom rules to identify and block malicious payloads before they can compromise your application.
+
+## Key Features
+
+- OWASP Top 10 protection
+- Zero-day vulnerability defense
+- Low false positive rate
+- API-managed rules
+- Content scanning
+- Custom rule support
+- Global edge enforcement
+
+## Benefits
+
+### Zero-Day Protection at Scale
+
+When a new vulnerability emerges (like Log4j), our security team writes and deploys a rule that protects our entire network in hours or minutes. Developers are often protected before they even have time to patch their own code.
+
+### Low False Positive Rate
+
+Our Managed Rulesets are run against massive volumes of diverse traffic, allowing us to fine-tune them to be highly effective without blocking legitimate users.
+
+### Performance and Ease of Use
+
+The WAF is deployed across our entire global network, so protection is enforced close to the user, adding virtually zero latency. Fully managed via API, fitting seamlessly into CI/CD workflows.
+
+## Use Cases
+
+### OWASP Top 10 Protection
+
+Blocking the OWASP Top 10 vulnerabilities, such as SQL injection (SQLi) and Cross-Site Scripting (XSS), targeting web applications and APIs.
+
+### Virtual Patching for CVEs
+
+When a CVE is announced for a library or framework a developer is using, use the WAF to block exploits targeting that specific CVE.
+
+### Inline Malware Gateway
+
+Pipe file-upload endpoints through WAF Content Scanning to act on the returned cf.waf.content_scan.* fields and quarantine or rewrite dangerous files on the fly.
+
+### Automated Security Updates
+
+Benefit from our network's scale and intelligence with auto-updating security rules that protect against emerging threats without manual intervention.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/waf/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [DDoS Protection](/products/ddos.md): Mitigation Solutions
+- [Rate Limiting](/products/rate-limiting.md): Abuse prevention
+- [SSL](/products/ssl.md): Secure Your Site with SSL
+- [Turnstile](/products/turnstile.md): A CAPTCHA Replacement Solution
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/waf](https://www.cloudflare.com/products/waf) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Waiting Room - Cloudflare"
+description: "Traffic Management"
+url: "https://www.cloudflare.com/products/waiting-room"
+---
+
+# Waiting Room
+
+> Traffic Management
+
+**Category:** network
+
+## Overview
+
+Waiting Room is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/waiting-room/): Complete technical documentation for Waiting Room
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/waiting-room](https://www.cloudflare.com/products/waiting-room) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Access - Cloudflare"
+description: "Safe access to private applications"
+url: "https://www.cloudflare.com/products/access"
+---
+
+# Access
+
+> Safe access to private applications
+
+**Category:** sase
+
+## Overview
+
+Access is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-one/): Complete technical documentation for Access
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [AI Security for Apps](/products/ai-security-for-apps.md): Protect your AI-powered applications with advanced security features
+- [Browser Isolation](/products/browser-isolation.md): Protect Users and Data with Cloudflare Browser Isolation
+- [Data Loss Prevention](/products/dlp.md): Protect sensitive data
+- [Email Security](/products/email-security.md): AI-driven Email Protection
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/access](https://www.cloudflare.com/products/access) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "AI Security for Apps - Cloudflare"
+description: "Protect your AI-powered applications with advanced security features"
+url: "https://www.cloudflare.com/products/ai-security-for-apps"
+---
+
+# AI Security for Apps
+
+> Protect your AI-powered applications with advanced security features
+
+**Category:** sase
+
+## Overview
+
+AI Security for Apps is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/): Complete technical documentation for AI Security for Apps
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Access](/products/access.md): Safe access to private applications
+- [Browser Isolation](/products/browser-isolation.md): Protect Users and Data with Cloudflare Browser Isolation
+- [Data Loss Prevention](/products/dlp.md): Protect sensitive data
+- [Email Security](/products/email-security.md): AI-driven Email Protection
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/ai-security-for-apps](https://www.cloudflare.com/products/ai-security-for-apps) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Browser Isolation - Cloudflare"
+description: "Protect Users and Data with Cloudflare Browser Isolation"
+url: "https://www.cloudflare.com/products/browser-isolation"
+---
+
+# Browser Isolation
+
+> Protect Users and Data with Cloudflare Browser Isolation
+
+**Category:** sase
+
+## Overview
+
+Browser Isolation is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/): Complete technical documentation for Browser Isolation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Access](/products/access.md): Safe access to private applications
+- [AI Security for Apps](/products/ai-security-for-apps.md): Protect your AI-powered applications with advanced security features
+- [Data Loss Prevention](/products/dlp.md): Protect sensitive data
+- [Email Security](/products/email-security.md): AI-driven Email Protection
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/browser-isolation](https://www.cloudflare.com/products/browser-isolation) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Data Loss Prevention - Cloudflare"
+description: "Protect sensitive data"
+url: "https://www.cloudflare.com/products/dlp"
+---
+
+# Data Loss Prevention
+
+> Protect sensitive data
+
+**Category:** sase
+
+## Overview
+
+Data Loss Prevention is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/): Complete technical documentation for Data Loss Prevention
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Access](/products/access.md): Safe access to private applications
+- [AI Security for Apps](/products/ai-security-for-apps.md): Protect your AI-powered applications with advanced security features
+- [Browser Isolation](/products/browser-isolation.md): Protect Users and Data with Cloudflare Browser Isolation
+- [Email Security](/products/email-security.md): AI-driven Email Protection
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/dlp](https://www.cloudflare.com/products/dlp) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Email Security - Cloudflare"
+description: "AI-driven Email Protection"
+url: "https://www.cloudflare.com/products/email-security"
+---
+
+# Email Security
+
+> AI-driven Email Protection
+
+**Category:** sase
+
+## Overview
+
+Email Security is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/email-security/): Complete technical documentation for Email Security
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Access](/products/access.md): Safe access to private applications
+- [AI Security for Apps](/products/ai-security-for-apps.md): Protect your AI-powered applications with advanced security features
+- [Browser Isolation](/products/browser-isolation.md): Protect Users and Data with Cloudflare Browser Isolation
+- [Data Loss Prevention](/products/dlp.md): Protect sensitive data
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/email-security](https://www.cloudflare.com/products/email-security) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Gateway - Cloudflare"
+description: "Secure Web Gateway"
+url: "https://www.cloudflare.com/products/gateway"
+---
+
+# Gateway
+
+> Secure Web Gateway
+
+**Category:** sase
+
+## Overview
+
+Gateway is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-one/policies/gateway/): Complete technical documentation for Gateway
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Access](/products/access.md): Safe access to private applications
+- [AI Security for Apps](/products/ai-security-for-apps.md): Protect your AI-powered applications with advanced security features
+- [Browser Isolation](/products/browser-isolation.md): Protect Users and Data with Cloudflare Browser Isolation
+- [Data Loss Prevention](/products/dlp.md): Protect sensitive data
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/gateway](https://www.cloudflare.com/products/gateway) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Magic Transit - Cloudflare"
+description: "DDoS Protection for Networks"
+url: "https://www.cloudflare.com/products/magic-transit"
+---
+
+# Magic Transit
+
+> DDoS Protection for Networks
+
+**Category:** sase
+
+## Overview
+
+Magic Transit is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/magic-transit/): Complete technical documentation for Magic Transit
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Access](/products/access.md): Safe access to private applications
+- [AI Security for Apps](/products/ai-security-for-apps.md): Protect your AI-powered applications with advanced security features
+- [Browser Isolation](/products/browser-isolation.md): Protect Users and Data with Cloudflare Browser Isolation
+- [Data Loss Prevention](/products/dlp.md): Protect sensitive data
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/magic-transit](https://www.cloudflare.com/products/magic-transit) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Mesh - Cloudflare"
+description: "Agents private network"
+url: "https://www.cloudflare.com/products/mesh"
+---
+
+# Mesh
+
+> Agents private network
+
+**Category:** network
+
+## Overview
+
+Mesh is part of Cloudflare's network offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/): Complete technical documentation for Mesh
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/mesh](https://www.cloudflare.com/products/mesh) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Network Firewall - Cloudflare"
+description: "Cloud-native network firewall for enterprise WAN"
+url: "https://www.cloudflare.com/products/network-firewall"
+---
+
+# Network Firewall
+
+> Cloud-native network firewall for enterprise WAN
+
+**Category:** sase
+
+## Overview
+
+Network Firewall is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-network-firewall/): Complete technical documentation for Network Firewall
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Access](/products/access.md): Safe access to private applications
+- [AI Security for Apps](/products/ai-security-for-apps.md): Protect your AI-powered applications with advanced security features
+- [Browser Isolation](/products/browser-isolation.md): Protect Users and Data with Cloudflare Browser Isolation
+- [Data Loss Prevention](/products/dlp.md): Protect sensitive data
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/network-firewall](https://www.cloudflare.com/products/network-firewall) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Secure Web Gateway - Cloudflare"
+description: "DNS filtering & Secure Browsing"
+url: "https://www.cloudflare.com/products/secure-web-gateway"
+---
+
+# Secure Web Gateway
+
+> DNS filtering & Secure Browsing
+
+**Category:** sase
+
+## Overview
+
+Secure Web Gateway is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-one/policies/gateway/): Complete technical documentation for Secure Web Gateway
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Access](/products/access.md): Safe access to private applications
+- [AI Security for Apps](/products/ai-security-for-apps.md): Protect your AI-powered applications with advanced security features
+- [Browser Isolation](/products/browser-isolation.md): Protect Users and Data with Cloudflare Browser Isolation
+- [Data Loss Prevention](/products/dlp.md): Protect sensitive data
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/secure-web-gateway](https://www.cloudflare.com/products/secure-web-gateway) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "WAN - Cloudflare"
+description: "Cloud-delivered enterprise networking"
+url: "https://www.cloudflare.com/products/wan"
+---
+
+# WAN
+
+> Cloud-delivered enterprise networking
+
+**Category:** sase
+
+## Overview
+
+WAN is part of Cloudflare's sase offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/cloudflare-wan/): Complete technical documentation for WAN
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Access](/products/access.md): Safe access to private applications
+- [AI Security for Apps](/products/ai-security-for-apps.md): Protect your AI-powered applications with advanced security features
+- [Browser Isolation](/products/browser-isolation.md): Protect Users and Data with Cloudflare Browser Isolation
+- [Data Loss Prevention](/products/dlp.md): Protect sensitive data
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/wan](https://www.cloudflare.com/products/wan) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Automatic Platform Optimization - Cloudflare"
+description: "Optimize WordPress Sites with Cloudflare"
+url: "https://www.cloudflare.com/products/automatic-platform-optimization"
+---
+
+# Automatic Platform Optimization
+
+> Optimize WordPress Sites with Cloudflare
+
+**Category:** other
+
+## Overview
+
+Automatic Platform Optimization is part of Cloudflare's other offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/automatic-platform-optimization/): Complete technical documentation for Automatic Platform Optimization
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Bot Mitigation](/products/bot-mitigation.md): 
+- [Website Optimization](/products/website-optimization.md): Enhance your website's performance and user experience with Cloudflare's application delivery services.
+- [Zaraz](/products/zaraz.md): Third-Party Tool Manager
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/automatic-platform-optimization](https://www.cloudflare.com/products/automatic-platform-optimization) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Bot Management - Stop Bad Bots"
+description: "Stop bad bots, not your customers. Machine learning and behavioral analysis across global network to detect and stop malicious bot traffic."
+url: "https://www.cloudflare.com/products/bot-mitigation"
+---
+
+# Bot Mitigation
+
+> Cloudflare Bot Management uses machine learning and behavioral analysis across our global network to automatically detect and stop malicious bot traffic before it hits your application.
+
+## Key Features
+
+- Machine learning detection
+- Behavioral analysis
+- Cloudflare Turnstile
+- Edge enforcement
+- Real-time mitigation
+- Credential stuffing protection
+- Inventory hoarding defense
+
+## Benefits
+
+### Smarter Detection through Network Scale
+
+Our ML models are trained on the traffic of a huge portion of the Internet. We see novel attacks first and deploy protection for everyone instantly, a data advantage no competitor can match.
+
+### Frictionless User Experience
+
+We offer Cloudflare Turnstile, a free, privacy-preserving, and user-friendly alternative to CAPTCHA that developers and users actually prefer.
+
+### Integrated Performance
+
+Built into the Cloudflare stack, not a separate product. Mitigation happens at the edge, nanoseconds from the user, ensuring we stop bots without adding latency for humans.
+
+## Use Cases
+
+### Credential & API Protection
+
+Protecting login endpoints from credential stuffing attacks and securing APIs from scraping, resource abuse, and automated probing.
+
+### E-commerce Bot Defense
+
+Protecting e-commerce sites from inventory hoarding bots.
+
+### Real-Time UX & Spend Optimization
+
+Turning bot detection into a real-time UX and marketing-spend optimizer.
+
+### Advanced ML Detection
+
+Leverage machine learning models trained on massive Internet traffic to detect novel attacks and deploy protection instantly.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/bots/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Automatic Platform Optimization](/products/automatic-platform-optimization.md): Optimize WordPress Sites with Cloudflare
+- [Website Optimization](/products/website-optimization.md): Enhance your website's performance and user experience with Cloudflare's application delivery services.
+- [Zaraz](/products/zaraz.md): Third-Party Tool Manager
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/bot-mitigation](https://www.cloudflare.com/products/bot-mitigation) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare KV - Global Key-Value Database"
+description: "Fast, globally distributed key-value database with infinite scale. <5ms hot read latencies, persistent storage, and ideal for read-heavy applications."
+url: "https://www.cloudflare.com/products/kv"
+---
+
+# KV
+
+> Workers KV is an eventually consistent, high-performance key-value data database built for Workers —  ideal for read-heavy, low-latency edge decision making.
+
+## Key Features
+
+- <5ms hot read latency
+- Eventual consistency
+- Unlimited storage
+- Simple key-value API
+- JSON value support
+- TTL expiration
+- Persistent storage
+
+## Benefits
+
+### Global Low-Latency Reads
+
+Serve configuration or content to users worldwide with <5ms hot read latencies — thanks to Cloudflare's edge network.
+
+### Infinite Scale, Simple API
+
+One API to store and retrieve key-value pairs — unlimited storage, high scalability, no infrastructure to manage.
+
+### More Than a Cache
+
+Unlike a volatile cache, KV stores data persistently in central regions with exceptional availability and durability.
+
+## Use Cases
+
+### Build Distributed Configuration
+
+Manage feature flags, A/B test variants, and redirect rules globally without managing deployments.
+
+### Serve Static Assets
+
+Serve small but critical files like scripts, icons, images, or JSON payloads directly from the edge.
+
+### Personalize your app
+
+Store user preferences or routing maps to customize experiences with near-zero latency.
+
+### Authorization
+
+Quickly look up API keys or authentication tokens to validate requests before they reach your origin.
+
+### Manage Dynamic Data
+
+Store and retrieve complex information as JSON documents, allowing your data structure to evolve easily without complex migrations.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/kv/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Artifacts](/products/artifacts.md): Git-native versioned storage
+- [Cache Reserve](/products/cache-reserve.md): Persistent caching for static content
+- [D1](/products/d1.md): Serverless SQL
+- [Data Platform](/products/data-platform.md): Ingest, Catalog & Query
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/kv](https://www.cloudflare.com/products/kv) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Website Optimization - Cloudflare"
+description: "Enhance your website's performance and user experience with Cloudflare's application delivery services."
+url: "https://www.cloudflare.com/products/website-optimization"
+---
+
+# Website Optimization
+
+> Enhance your website's performance and user experience with Cloudflare's application delivery services.
+
+**Category:** other
+
+## Overview
+
+Website Optimization is part of Cloudflare's other offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/automatic-platform-optimization/): Complete technical documentation for Website Optimization
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Automatic Platform Optimization](/products/automatic-platform-optimization.md): Optimize WordPress Sites with Cloudflare
+- [Bot Mitigation](/products/bot-mitigation.md): 
+- [Zaraz](/products/zaraz.md): Third-Party Tool Manager
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/website-optimization](https://www.cloudflare.com/products/website-optimization) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Zaraz - Cloudflare"
+description: "Third-Party Tool Manager"
+url: "https://www.cloudflare.com/products/zaraz"
+---
+
+# Zaraz
+
+> Third-Party Tool Manager
+
+**Category:** other
+
+## Overview
+
+Zaraz is part of Cloudflare's other offerings on the Workers platform.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/zaraz/): Complete technical documentation for Zaraz
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Automatic Platform Optimization](/products/automatic-platform-optimization.md): Optimize WordPress Sites with Cloudflare
+- [Bot Mitigation](/products/bot-mitigation.md): 
+- [Website Optimization](/products/website-optimization.md): Enhance your website's performance and user experience with Cloudflare's application delivery services.
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/zaraz](https://www.cloudflare.com/products/zaraz) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Images - Image Optimization & Delivery Platform"
+description: "Streamlined image infrastructure built for scale. Global low-latency delivery, resizing, AI-powered optimization and background removal, and integrated with Cloudflare services for complete image workflows."
+url: "https://www.cloudflare.com/products/images"
+---
+
+# Images
+
+> Cloudflare Images helps teams build scalable, reliable media pipelines to store, optimize, and deliver images. Use Images to save time, engineering effort, and infrastructure costs.
+
+## Key Features
+
+- Automatic format conversion
+- Responsive sizing
+- Global CDN delivery
+- Workers AI integration
+- On-demand transformations
+- WebP/AVIF support
+- Image variants
+
+## Benefits
+
+### Global Low-Latency Delivery
+
+Leverages Cloudflare's CDN to serve images fast, anywhere in the world with optimized formats and responsive sizing.
+
+### Integrated with Cloudflare Services
+
+Works seamlessly with Workers, Access, and other tools for full programmability and workflow control.
+
+### AI-Powered Optimization
+
+Automatically optimize images for different devices and formats, with AI-powered enhancements and transformations.
+
+## Use Cases
+
+### Deliver optimal formats
+
+Automatically serve the most optimal format for the requesting browser (WebP, AVIF, JPEG) with intelligent format selection.
+
+### AI image generation workflows
+
+Optimize AI-generated images before storage or delivery — especially when using Workers and Workers AI for seamless integration.
+
+### Multi-layered cache pipelines
+
+Build cache-first media pipelines that check cache and R2 before transforming images on the fly for maximum efficiency.
+
+### Responsive image delivery
+
+Generate responsive images with srcset attributes, URL rewrites, and query parameters for perfect display across all devices.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/images/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [RealtimeKit](/products/realtime.md): Live comms
+- [Stream](/products/stream.md): Video streaming
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/images](https://www.cloudflare.com/products/images) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare RealtimeKit - Voice, Video & Multimodal Apps"
+description: "Build voice, video and multi-modal apps without infrastructure headache. Complete toolkit for real-time audio and video communication with near-zero latency globally."
+url: "https://www.cloudflare.com/products/realtime"
+---
+
+# RealtimeKit
+
+> A complete toolkit to integrate real-time audio and video communication with near-zero latency globally. With multiple abstraction levels, you can meet your specific product and feature requirements without handling WebRTC complexities and low-level infrastructure plumbing.
+
+## Key Features
+
+- Platform-ready SDKs
+- WebRTC abstraction
+- Voice agents
+- Recording & transcription
+- Real-time observability
+- Global low-latency
+- Multi-platform support
+
+## Benefits
+
+### One toolkit for any platform
+
+Platform-ready SDKs that handle the hard parts of WebRTC like connection management, bandwidth adaptation, device handling.
+
+### Advanced media features built-in
+
+Easily integrate complex capabilities like recording, transcriptions, and real-time AI participants with simple, clean APIs.
+
+### Real-time observability
+
+Get real-time analytics on latency, packet loss, and other critical health metrics to help you identify and solve issues faster.
+
+## Use Cases
+
+### Audio/Video Apps
+
+Build seamless calling and meeting experiences for any device. Perfect for collaboration, telehealth, proctoring, social apps, gaming, and more.
+
+### Voice Agents
+
+With RealtimeKit Agents, build intelligent voice bots, interactive assistants, automated support systems that understand conversational turns and respond in real-time.
+
+### AI & Multimodal
+
+Feed live audio and video directly into AI agents, robotics, and multimodal systems, enabling them to see, hear, and interact with the world naturally.
+
+### Interactive live streaming
+
+Go beyond one-way broadcasts. Create dynamic live experiences with co-hosting, live shopping, watch parties, and massive audience participation at any scale.
+
+### Media processing
+
+Turn raw streams into actionable insights. Automate recording, transcription, translation, and summarization for use cases like security, surveillance, and content analysis.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/realtime/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Images](/products/images.md): Image optimization
+- [Stream](/products/stream.md): Video streaming
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/realtime](https://www.cloudflare.com/products/realtime) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare Stream - All-in-one Video Platform"
+description: "All-in-one managed media pipeline for live and on-demand video. Upload, encode, and deliver video globally with simple, predictable pricing."
+url: "https://www.cloudflare.com/products/stream"
+---
+
+# Stream
+
+> Stream makes storing, encoding, and distributing video effortless — eliminating the need for complex infrastructure, multiple vendors, or opaque pricing models.
+
+## Key Features
+
+- Unified video API
+- Automatic encoding
+- RTMP/SRT ingest
+- HLS/DASH output
+- Built-in player
+- Global delivery
+- Predictable pricing
+
+## Benefits
+
+### Unified Media Pipeline
+
+Upload, encode, package, and stream video from a single API — no stitching together services or vendors.
+
+### Simple, Predictable Pricing
+
+Avoid convoluted billing models with clear, cost-effective rates that scale with you.
+
+### Built on Cloudflare's Network
+
+Delivers video globally with lower bandwidth costs, faster access, and higher reliability.
+
+## Use Cases
+
+### E-learning and user-generated content
+
+Perfect for educational platforms, journalism, worship services, and sports broadcasting with reliable delivery and flexible player options.
+
+### AI-generated media workflows
+
+Integrate with Stream or Media Transformations + R2 for AI-generated video content with automatic optimization and global delivery.
+
+### Live streaming events
+
+Broadcast live events with RTMP/SRT ingest and HLS/DASH output, reaching audiences worldwide with minimal latency.
+
+### Multi-platform video distribution
+
+Transform videos for different platforms with resizing, cropping, and repackaging — adapt content for social media, mobile, and web.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/stream/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Images](/products/images.md): Image optimization
+- [RealtimeKit](/products/realtime.md): Live comms
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/stream](https://www.cloudflare.com/products/stream) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Cloudflare TURN/SFU - Managed WebRTC Infrastructure"
+description: "Add real-time WebRTC communication to any application. Managed TURN relay and SFU services across 330+ cities with serverless pricing and zero operational overhead."
+url: "https://www.cloudflare.com/products/turn-sfu"
+---
+
+# TURN / SFU
+
+> TURN/SFU is managed WebRTC infrastructure running on the world's fastest network. Direct access to TURN relay and SFU services across 330+ cities, with serverless pricing and zero operational overhead.
+
+## Key Features
+
+- Managed TURN relay
+- Managed SFU
+- Global Anycast network
+- Serverless pricing
+- 330+ locations
+- No vendor lock-in
+- WebRTC native
+
+## Benefits
+
+### Global Infrastructure, Managed Service
+
+Every metal in Cloudflare's network runs our SFU/TURN/STUN services, acting together as a single server for realtime data. Anycast allows any user to connect to the nearest point of presence.
+
+### Scalable, Serverless Pricing
+
+Cloudflare already has 300+ locations with upwards of 1,000 servers in some locations. Cloudflare Realtime scales easily on top of this architecture and can offer the lowest WebRTC usage costs.
+
+### No Lock-in
+
+You can use Cloudflare Realtime to solve scalability issues with your SFU. You can use in combination with peer-to-peer architecture. You can use Cloudflare Realtime standalone. To what extent you use Cloudflare Realtime is up to you.
+
+## Use Cases
+
+### Scalable Global Video Conferencing
+
+Add video or conferencing components that scale to many users using Cloudflare's realtime low-level primitives. Check out [Orange Meets](https://github.com/cloudflare/orange), the open-source video conferencing application for reference.
+
+### Interactive live-streaming for events
+
+Power large-scale interactive live streams that allow for real-time audience participation using our WebRTC services. Create engaging webinars, online classes, or live shopping events that can scale to thousands of users.
+
+### Interconnection with Voice AI Agents
+
+Pipe real-time audio streams directly to your AI models for live transcription, translation, or sentiment analysis. Leverage our low-latency infrastructure to build responsive voice assistants and intelligent customer support bots.
+
+### Custom Real-time Communication Solutions
+
+Teams building custom real-time communication solutions that need direct WebRTC control and reliable TURN/SFU infrastructure.
+
+## Resources
+
+- [Full Documentation](https://developers.cloudflare.com/realtime/): Complete technical documentation
+- [Get Started](https://dash.cloudflare.com/sign-up): Sign up and start building
+- [Pricing](/plans.md): See pricing details
+
+## Related Products
+
+- [Advanced Certificate Manager](/products/advanced-certificate-manager.md): Certificate Lifecycle Management
+- [Analytics](/products/analytics.md): Web Performance & Security
+- [API Shield](/products/api-shield.md): API Security & Monitoring
+- [Argo Smart Routing](/products/argo-smart-routing.md): Accelerate Web Apps
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/products/turn-sfu](https://www.cloudflare.com/products/turn-sfu) for AI/LLM consumption.*
+
+
+---
+
+## Solutions
+
+---
+title: "Cloudflare AI Cloud"
+description: "Build and deploy AI agents and applications on the AI Cloud powered by Cloudflare's network"
+url: "https://www.cloudflare.com/solutions/ai"
+---
+
+# Cloudflare AI
+
+> Build and deploy AI agents and applications on the AI Cloud
+
+Cloudflare provides the infrastructure to scale your AI applications at every step — store training data, run inference —  on the same network Cloudflare uses to power its own use of AI.
+
+## Benefits
+
+### Run Serverless inference on GPUs
+
+Ship models that respond in <100 ms worldwide. No clusters to manage.
+
+### Build Agents & MCP Servers
+
+Cloudflare Agents SDK + MCP let Workers coordinate tools, schedule tasks, and reason toward goals.
+
+### Store your training data
+
+Store your training data in R2 for egress-free multi-cloud access to GPUs.
+
+## Features
+
+### Workers AI model catalog
+
+Access Llama 3, Gemma 3, Whisper, TTS, and LoRA-fine-tuned variants across 190+ locations.
+
+### Agents SDK
+
+Build goal-driven agents that call models, APIs, and schedules from a single TypeScript API.
+
+### Remote MCP servers
+
+Secure, OAuth-scoped endpoints that expose tools and data to agents without self-hosting.
+
+### AI Search
+
+Complete RAG workflows with automatic indexing and fresh data. Ship AI search and chat with one instance in minutes.
+
+### Vectorize
+
+Globally-replicated vector database that pairs with Workers AI for RAG in a few lines of code.
+
+### R2 object storage
+
+Store terabytes of training data, checkpoints, and user uploads. Move to any cloud for $0 egress.
+
+### AI Gateway
+
+Built-in caching, rate-limiting, model fallback, and observability for every inference call.
+
+## Use Cases
+
+### OAuth integration included
+
+Implements the provider side of the OAuth 2.1 protocol, allowing you to easily add authorization to your MCP server.
+
+### MCP playground for testing
+
+Our [MCP playground](https://playground.ai.cloudflare.com/) allows you to connect to remote MCP servers, with the authentication check included
+
+### MCPAgent
+
+Built on DurableObjects to provide an out of the box transport layer, with memory management included
+
+### Built-in state management
+
+Agents include built-in state management — sync state with clients, trigger events on changes, and read or write to each Agent's SQL database automatically.
+
+### Multi-modal interfaces
+
+Connect via [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/) to stream updates in real time — from long-running reasoning tasks, [asynchronous workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/), or chat sessions built with the `useAgent` hook. Agents SDK also supports email, and voice modalities.
+
+### Multi-model with AI Gateway
+
+Agents are just code. Use any [AI model](https://developers.cloudflare.com/agents/api-reference/using-ai-models/), integrate browsers or APIs, fetch data from external sources, and add custom methods to extend functionality.
+
+### Secure Sandboxes
+
+Execute commands, manage files, run services, and expose them via public URLs - all within secure, sandboxed containers with our [Sandbox SDK](https://github.com/cloudflare/sandbox-sdk).
+
+## Get Started
+
+- [Sign up](https://dash.cloudflare.com/sign-up): Create a Cloudflare account
+- [Documentation](https://developers.cloudflare.com/): Read the full documentation
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/solutions/ai](https://www.cloudflare.com/solutions/ai) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Frontend Development Platform"
+description: "Deploy lightning‑fast websites and web applications on Cloudflare's global network. Support for Next.js, React, Vue, Astro, TanStack and all JavaScript frameworks with zero-config CI/CD."
+url: "https://www.cloudflare.com/solutions/frontends"
+---
+
+# Frontends
+
+> Deploy lightning‑fast websites and web apps on Cloudflare's global network.
+
+Bring any JavaScript framework or build tool to Cloudflare, connect to your git repository and deploy your project to a single Worker that serves both front-end and back-end and reaches users in less than 50 ms worldwide.
+
+## Benefits
+
+### Preview deployments for every branch
+
+Create a pull request, get a preview URL to view and share before deploying to production.
+
+### Support for all frameworks and rendering mode
+
+Server-side rendered (SSR), Incremental Static Regeneration (ISR), Static Site Generation (SSG), client-side rendered.
+
+### HTML, JS and CSS caching
+
+Every request for a static asset goes through Cloudflare's [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/) for the fastest possible performance.
+
+## Features
+
+### Every JavaScript framework
+
+Support for Next.js, Hono, React Router, TanStack, Remix, Astro, Nuxt, RedwoodJS and more.
+
+### Anycast Network (330+ cities)
+
+One IP worldwide: traffic auto-lands at the closest edge for consistent low latency.
+
+### Zero-config CI/CD
+
+Connect to GitHub or GitLab, and every pull request gets a unique preview URL.
+
+### Gradual deployments
+
+Deploy changes to only a specific percentage of traffic to mitigate risk of code changes
+
+### Instant rollbacks
+
+Rollback instantly when you need to
+
+### Front-end + back-end together
+
+Deploy HTML/CSS/JS + your backend API in one deploy as a simple, single project
+
+### Modern transport protocols
+
+HTTP/3 & QUIC are enabled by default — no config, no extra cost.
+
+### Preview deployments included
+
+Every pull request automatically gets a unique preview URL to view and share before deploying to production.
+
+### Framework detection for zero config
+
+Automatically detects your framework and configures the optimal build and deployment settings
+
+### Edge-first architecture
+
+Built on Workers to provide an out of the box edge computing layer, with global distribution included
+
+## Use Cases
+
+### Framework-agnostic
+
+Support for [Next.js](https://developers.cloudflare.com/pages/framework-guides/nextjs/), [React](https://developers.cloudflare.com/pages/framework-guides/react/), [Vue](https://developers.cloudflare.com/pages/framework-guides/vue/), [Svelte](https://developers.cloudflare.com/pages/framework-guides/svelte/), [Astro](https://developers.cloudflare.com/pages/framework-guides/astro/), and more — with automatic detection and configuration.
+
+### Full-stack ready
+
+Deploy both frontend and backend together — from [API routes](https://developers.cloudflare.com/pages/functions/api-routes/) to [serverless functions](https://developers.cloudflare.com/pages/functions/), all in one seamless deployment.
+
+### Edge-optimized
+
+Your code runs at the edge in 330+ cities worldwide — with [KV storage](https://developers.cloudflare.com/kv/), [D1 databases](https://developers.cloudflare.com/d1/), and [R2 object storage](https://developers.cloudflare.com/r2/) available globally.
+
+## Get Started
+
+- [Sign up](https://dash.cloudflare.com/sign-up): Create a Cloudflare account
+- [Documentation](https://developers.cloudflare.com/): Read the full documentation
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/solutions/frontends](https://www.cloudflare.com/solutions/frontends) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Global Network Infrastructure"
+description: "Build on the world's fastest cloud CDN network. 330+ cities, anycast routing, Argo smart routing, and low latency worldwide."
+url: "https://www.cloudflare.com/solutions/network"
+---
+
+# Network
+
+> Build on the world's fastest cloud network
+
+Ship applications that feel instantaneous everywhere. Cloudflare's anycast network puts compute, storage, and security within <50 ms of 95% of Internet users — no knobs to tune, no infrastructure to babysit.
+
+## Benefits
+
+### Low latency by default
+
+330+ cities with data-centers and smart routing cut round-trip times by up to 30%.
+
+### Global resilience
+
+Anycast and automatic failover keep apps online — even through regional outages or DDoS attacks.
+
+### Pay only for actual compute time
+
+Usage-based billing means no idle capacity costs or cross-zone egress fees.
+
+## Features
+
+### Anycast network (330+ cities)
+
+One IP worldwide: traffic auto-lands at the closest edge for consistent low latency.
+
+### Argo smart routing
+
+Dynamic, congestion-aware paths shave ~30% off median response time versus standard BGP routes.
+
+### Tiered & regional caching
+
+Hot content stays near users while you control data-sovereignty boundaries.
+
+### Modern transport protocols
+
+HTTP/3 & QUIC are enabled by default — no config, no extra cost.
+
+### Global load Balancing & failover
+
+Sub-second health checks with instant failover keep requests flowing during incidents.
+
+### Workers runtime
+
+Serverless functions start in <5 ms cold-start, run near the requester, and scale globally.
+
+### Latency & origin insights
+
+Built-in analytics surface per-country, per-colo, and per-route performance — no extra agent needed.
+
+## Use Cases
+
+### Realtime APIs and multiplayer games
+
+When lag needs to be eliminated
+
+### High-traffic e-commerce
+
+Online shopping and ticket sales where milliseconds = revenue
+
+### Startups
+
+Hyperscaler performance without an ops burden
+
+### Smart routing included
+
+Argo automatically finds the fastest path for each request, reducing latency by up to 30% with zero configuration.
+
+### Global load balancing for zero config
+
+Automatically distributes traffic across multiple origins with health checks and failover built-in
+
+### Edge-first architecture
+
+Built on Workers to provide an out of the box edge computing layer, with global distribution included
+
+### Edge-optimized
+
+Your code runs at the edge in 330+ cities worldwide — with [KV storage](https://developers.cloudflare.com/kv/), [D1 databases](https://developers.cloudflare.com/d1/), and [R2 object storage](https://developers.cloudflare.com/r2/) available globally.
+
+### Smart routing ready
+
+Deploy both frontend and backend together — from [API routes](https://developers.cloudflare.com/pages/functions/api-routes/) to [serverless functions](https://developers.cloudflare.com/pages/functions/), all with automatic optimization.
+
+### Resilient by design
+
+Built-in [DDoS protection](https://developers.cloudflare.com/ddos/), [WAF](https://developers.cloudflare.com/waf/), and [failover](https://developers.cloudflare.com/load-balancing/) keep your applications online during incidents.
+
+## Get Started
+
+- [Sign up](https://dash.cloudflare.com/sign-up): Create a Cloudflare account
+- [Documentation](https://developers.cloudflare.com/): Read the full documentation
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/solutions/network](https://www.cloudflare.com/solutions/network) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Multi-Tenant Platform Development - Workers for Platforms"
+description: "Build secure, multi-tenant platforms with Workers for Platforms, per-tenant isolation for untrusted code, and custom custom vanity domains."
+url: "https://www.cloudflare.com/solutions/platforms"
+---
+
+# Platforms
+
+> Make your SaaS instantly extensible—no extra infra, no extra risk.
+
+Cloudflare turns any software product into a secure, multi-tenant platform. Let customers run their own code, store data, and expose APIs—directly on Cloudflare's global edge—while you stay out of the infrastructure business.
+
+## Benefits
+
+### Run untrusted code, safely
+
+Each customer's logic lives in its own sandboxed Worker—isolated, metered, and shielded from your core.
+
+### The full per-tenant platform
+
+Create per-tenant, or project Workers, D1 databases, KV namespaces, R2 buckets, and vanity domains. Everything you need in one place.
+
+### Zero infrastructure overhead
+
+No clusters to reserve, no cold starts to dread. Pay only for the CPU cycles your customers actually use.
+
+## Features
+
+### Workers for Platforms
+
+A safe, isolated compute runtime where each customer runs code as part of your app.
+
+### Fine-grained ingress/egress controls
+
+Dispatch traffic to customer Workers, set per-tenant limits, and meter every request for billing.
+
+### Actor-model Durable Objects
+
+Stateful primitives for carts, chat rooms, or per-store config—co-located with users for <50 ms access.
+
+### First-class data bindings
+
+Expose D1 SQL, KV, R2, or Vectorize to extensions without leaking API keys.
+
+### Scale-to-zero, pay-for-CPU
+
+Idle code costs $0; hot paths spin up in milliseconds. Bills average ~70% less than duration-based models.
+
+### Custom domains & white-label TLS
+
+Your customers' brand, your performance—certs and routing handled automatically.
+
+### Turnkey monetization
+
+Track usage per tenant and plug into any billing system to charge for runtime, storage, or premium tiers.
+
+## Use Cases
+
+### SaaS platforms launching plugin ecosystems or integration marketplaces
+
+Enable third-party developers to extend your platform safely
+
+### Website & commerce builders embedding per-site business logic
+
+Let customers customize their sites with custom code
+
+### Agencies & dev shops shipping client-specific extensions without new servers
+
+Deploy custom solutions for each client on shared infrastructure
+
+### AI "vibe-coding" agents that run close to your data and users
+
+Deploy AI agents that operate on your platform context and data
+
+### Sandboxed execution included
+
+Each customer runs in their own isolated Worker environment with automatic resource limits and security boundaries.
+
+### Platform-first architecture
+
+Built on Workers for Platforms to provide an out of the box multi-tenant layer, with global distribution included
+
+### Multi-tenant ready
+
+Your platform runs at the edge in 330+ cities worldwide — with [D1 databases](https://developers.cloudflare.com/d1/), [KV storage](https://developers.cloudflare.com/kv/), and [R2 object storage](https://developers.cloudflare.com/r2/) available per-tenant.
+
+### Secure by design
+
+Deploy both platform and customer code together — from [API routes](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/) to [serverless functions](https://developers.cloudflare.com/pages/functions/), all with automatic isolation.
+
+### Monetization built-in
+
+Built-in usage tracking, billing integration, and rate limiting help you charge for platform usage.
+
+## Get Started
+
+- [Sign up](https://dash.cloudflare.com/sign-up): Create a Cloudflare account
+- [Documentation](https://developers.cloudflare.com/): Read the full documentation
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/solutions/platforms](https://www.cloudflare.com/solutions/platforms) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Web Security Platform - WAF, DDoS Protection, Bot Management"
+description: "Ship fearlessly on the open Internet. Enterprise-grade WAF, DDoS protection, bot management, API Shield, and Zero Trust security on Cloudflare's global network."
+url: "https://www.cloudflare.com/solutions/security"
+---
+
+# Security
+
+> Ship fearlessly on the open Internet
+
+Cloudflare's unified security platform blocks exploits, bots, and record-breaking DDoS attacks in seconds — backed by more than 340 Tbps of global capacity, giving you the comfort to focus on code-writing, not fire-fighting.
+
+## Benefits
+
+### Instant hardening
+
+Deploy enterprise-grade WAF, rate-limiting, mTLS, and Bot Management with a single DNS change — no agents, no appliances.
+
+### Planet-scale defense
+
+7.3 Tbps attacks mitigated in under a minute. Autonomous systems block ~8 hyper-volumetric attacks per day.
+
+### Single control plane
+
+One API and dashboard covers edge rules, logs, and analytics, and integrates with CI/CD for policy-as-code.
+
+## Features
+
+### Managed WAF rules
+
+Cloudflare named Leader in Forrester Wave™ 2025; WAF rules updated continuously to stop emerging vulnerabilities before your patch cycle.
+
+### Adaptive DDoS mitigation
+
+Anycast absorbs and auto-routes traffic; mitigations trigger in less than 3s with no manual tuning.
+
+### Bot management
+
+With ML heuristics. Detects automation in <1 ms, scores each request, and offers challenge-less Turnstile for good users.
+
+### API shield
+
+Schema validation + mTLS. Protects REST/GraphQL traffic and enforces client identity — no SDK required.
+
+### Rate limiting
+
+Granular per-path policies block floods without hurting legit users.
+
+### Automatic TLS & HTTP/3
+
+Free, auto-renewed certificates and modern transport — security your users don't have to think about.
+
+### Security analytics & logpush
+
+Real-time dashboards plus raw logs to R2/S3/SIEM for forensics and compliance proof.
+
+### Page shield & content security
+
+Detect Magecart-style client-side tampering before customers' card data leaks.
+
+### Zero Trust access
+
+Protect internal apps and developer tools with identity-based access, device posture checks, and single sign-on — no VPN required.
+
+## Use Cases
+
+### Fintech, e-commerce, SaaS platforms
+
+Where fraud & bots erode margins
+
+### Gaming, media streaming, ticket drops
+
+Primetargets for L7 DDoS spikes
+
+### AI products
+
+To safeguard model endpoints and customer data
+
+### Crypto exchanges & financial markets
+
+Targets for fraud, latency attacks, and regulatory scrutiny
+
+### Zero-config security included
+
+Get automatic DDoS protection, SSL/TLS termination, and basic WAF rules with every Cloudflare plan — no configuration required.
+
+### Advanced protection on-demand
+
+Enable Bot Management, API Shield, and advanced WAF rules when you need them, with granular control over every policy.
+
+### Enterprise-grade from day one
+
+Scale from startup to enterprise without changing your security architecture — same platform, same APIs, same reliability.
+
+### Multi-layer protection
+
+Defend against [DDoS attacks](https://developers.cloudflare.com/ddos-protection/), [bot traffic](https://developers.cloudflare.com/bots/), and [application vulnerabilities](https://developers.cloudflare.com/waf/) with integrated security controls.
+
+### Compliance ready
+
+Meet SOC 2, PCI DSS, HIPAA, and GDPR requirements with [audit logs](https://developers.cloudflare.com/logs/), data residency controls, and [privacy features](https://developers.cloudflare.com/privacy-gateway/).
+
+### Developer-first security
+
+Integrate security into your CI/CD pipeline with [Terraform](https://developers.cloudflare.com/terraform/), [API-first configuration](https://developers.cloudflare.com/api/), and [policy-as-code](https://developers.cloudflare.com/ruleset-engine/).
+
+## Get Started
+
+- [Sign up](https://dash.cloudflare.com/sign-up): Create a Cloudflare account
+- [Documentation](https://developers.cloudflare.com/): Read the full documentation
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/solutions/security](https://www.cloudflare.com/solutions/security) for AI/LLM consumption.*
+
+
+---
+
+---
+title: "Durable Workflows - Multi-Step Application Engine"
+description: "Build durable multi-step applications. Step-based execution, automatic retries, state management, and human-in-the-loop workflows on Cloudflare Workers, Workflows and Durable Objects."
+url: "https://www.cloudflare.com/solutions/workflows"
+---
+
+# Workflows
+
+> Build durable multi-step applications.
+
+Workflows is an execution engine built on Cloudflare Workers — to build applications that can automatically retry, persist state and run for minutes, hours, days, or weeks. Workflows introduces a programming model that makes it easier to build reliable, long-running tasks, observe progression, and programmatically trigger events-based instances based across your services.
+
+## Benefits
+
+### Step-based
+
+Any logic wrapped in a step can be automatically retried and memoized for durability.
+
+### State included
+
+Every instance persists to its own local state: no need to set up or manage a database or control plane.
+
+### Human-in-the-loop
+
+Wait on external events: webhooks, approvals, queue messages — you name it.
+
+## Features
+
+### Step-based execution
+
+Any logic wrapped in a step can be automatically retried and memoized for durability.
+
+### Built-in state management
+
+Every instance persists to its own local state: no need to set up or manage a database or control plane.
+
+### Human-in-the-loop
+
+Wait on external events: webhooks, approvals, queue messages — you name it.
+
+### Automatic retries
+
+Built-in retry logic with exponential backoff and configurable retry policies for resilient execution.
+
+### Observability included
+
+Built-in logging, metrics, and tracing to monitor workflow execution and debug issues.
+
+### Event-driven triggers
+
+Programmatically trigger workflow instances based on events across your services.
+
+### Scale-to-zero pricing
+
+Pay only for the CPU cycles your workflows actually use — idle workflows cost nothing.
+
+## Use Cases
+
+### Building AI agents
+
+Code review tasks, compact context, or processing data
+
+### Asynchronous tasks
+
+Lifecycle emails, billing jobs, and critical data processing tasks
+
+### Post-processing user-generated content
+
+Run inference, clean up or validate uploaded content
+
+### Step-based execution included
+
+Any logic wrapped in a step can be automatically retried and memoized for durability with zero configuration.
+
+### State management for zero config
+
+Automatically persist workflow state without setting up databases or control planes
+
+### Event-driven architecture
+
+Built on Workers to provide an out of the box event-driven layer, with global distribution included
+
+### Durable by design
+
+Your workflows run at the edge in 330+ cities worldwide — with [D1 databases](https://developers.cloudflare.com/d1/), [KV storage](https://developers.cloudflare.com/kv/), and [R2 object storage](https://developers.cloudflare.com/r2/) available for state management.
+
+### Event-driven ready
+
+Deploy both workflows and triggers together — from [webhooks](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/#configure-your-github-webhooks) to [queue messages](https://developers.cloudflare.com/queues/), all with automatic retry and state management.
+
+### Observable by default
+
+Built-in [logging](https://developers.cloudflare.com/workers/observability/logs/), [metrics](https://developers.cloudflare.com/workflows/observability/metrics-analytics/#metrics), and tracing help you monitor and debug workflow execution.
+
+## Get Started
+
+- [Sign up](https://dash.cloudflare.com/sign-up): Create a Cloudflare account
+- [Documentation](https://developers.cloudflare.com/): Read the full documentation
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/solutions/workflows](https://www.cloudflare.com/solutions/workflows) for AI/LLM consumption.*
+
+
+---
+
+## Pricing
+
+---
+title: "Pricing - Cloudflare Developer Platform"
+description: "Cloudflare Developer Platform pricing - simple, transparent, usage-based pricing with generous free tiers"
+url: "https://www.cloudflare.com/plans"
+---
+
+# Cloudflare Developer Platform Pricing
+
+> Simple, transparent pricing that scales with your usage. Start free, pay as you grow.
+
+Cloudflare offers generous free tiers for most services, with usage-based pricing that scales with your needs. No egress fees, no hidden costs.
+
+## Compute
+
+### [Workers](https://developers.cloudflare.com/workers/)
+
+Serverless functions that run everywhere, instantly
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Requests | 100k / day | $0.30 / million requests |
+| CPU Time | 10 ms / request | $0.02 / million CPU ms |
+
+### [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/)
+
+Deploy Workers on behalf of your customers
+
+| Component | Price |
+|-----------|-------|
+| Requests | $0.30 / million requests |
+| CPU Time | $0.02 / million CPU ms |
+| Scripts Deployed | $0.02 / script |
+
+### [Durable Objects](https://developers.cloudflare.com/durable-objects/)
+
+Stateful compute for real-time coordination
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Requests | 100,000 requests / day | $0.15 / million requests |
+| Duration | 13,000 GB-s / day | $12.50 / million GB-s |
+| SQL Rows Read | — | $0.001 / million rows |
+| SQL Rows Written | — | $1.00 / million rows |
+| SQL Stored Data | 5 GB | $0.20 / GB-month |
+| Read Request Units (KV Storage Backend) | — | $0.20 / million rows |
+| Write Request Units (KV Storage Backend) | — | $1.00 / million rows |
+| Delete Request Units (KV Storage Backend) | — | $1.00 / million rows |
+| Stored Data (KV Storage Backend) | 1 GB | $0.20 / GB-month |
+
+### [Browser Rendering](https://developers.cloudflare.com/browser-rendering/)
+
+Spin up headless, programmable web browsers
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Browser Hours | 10 min / day | $0.09 / hour |
+| Concurrent Browsers | 3 browsers | $2.00 / browser |
+
+### [Workflows](https://developers.cloudflare.com/workflows/)
+
+Orchestrate complex multi-step processes
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Requests | 100k / day | $0.30 / million requests |
+| CPU Time | 10 ms / invocation | $0.02 / million CPU ms |
+| Storage | 1 GB | $0.20 / GB-month |
+
+## Storage & Data
+
+### [R2](https://developers.cloudflare.com/r2/)
+
+Object storage without egress fees
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Standard Storage | 10 GB-month | $0.015 / GB-month |
+| Standard Class A operations | 1 million | $4.50 / million requests |
+| Standard Class B operations | 10 million | $0.36 / million requests |
+| Infrequent Access Storage | — | $0.01 / GB-month |
+| Infrequent Access Class A operations | — | $9.00 / million requests |
+| Infrequent Access Class B operations | — | $0.90 / million requests |
+| Infrequent Access Data Retrieval | — | $0.01 / GB |
+
+### [Workers KV](https://developers.cloudflare.com/kv/)
+
+Lightning-fast key-value storage
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Stored Data | 1 GB | $0.50 / GB-month |
+| Read Requests | 100,000 / day | $0.50 / million requests |
+| Write, Delete, List requests | 1,000 / day | $5.00 / million requests |
+
+### [D1](https://developers.cloudflare.com/d1/)
+
+Serverless SQL that scales horizontally
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Storage | 5 GB (total) | $0.75 / GB-month |
+| Rows Read | 5 million / day | $0.001 / million rows |
+| Rows Written | 100,000 / day | $1.00 / million rows |
+
+### [Artifacts](https://developers.cloudflare.com/artifacts/)
+
+Versioned, Git-compatible storage for agents
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Operations (1,000 operations) | Coming Soon | $0.15 / 1,000 operations, first 10,000 / month included |
+| Storage (GB-month) | Coming Soon | $0.50 / GB-month, first 1 GB / month included |
+
+### [Queues](https://developers.cloudflare.com/queues/)
+
+Reliable message processing
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Standard Operations | 10,000 operations/day included | $0.40 / million operations |
+
+### [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
+
+Make any database global instantly
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Queries |  100,000 / day | Free |
+
+### [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)
+
+Time-series analytics at scale
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Data Points Written | 100,000 / day | $0.25 / million data points |
+| Read Queries | 10,000 / day | $1.00 / million read queries |
+
+### [Pipelines](https://developers.cloudflare.com/pipelines/)
+
+Transform and route data streams
+
+| Component | Price |
+|-----------|-------|
+| Ingestion | TBD (free during beta) |
+| Delivery to R2 | TBD (free during beta) |
+
+## Media
+
+### [TURN / SFU](https://developers.cloudflare.com/realtime/)
+
+WebRTC infrastructure for real-time communication
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Data Egress | 1,000 GB / month | $0.05 / GB |
+
+### [RealtimeKit](https://developers.cloudflare.com/realtime/realtimekit/)
+
+Serverless WebRTC conferencing
+
+| Component | Price |
+|-----------|-------|
+| Audio/Video Participant | $0.002 / minute |
+| Audio-Only Participant | $0.0005 / minute |
+| Export (recording, RTMP or HLS streaming) | $0.010 / minute |
+| Export (recording, RTMP or HLS streaming, audio only) | $0.003 / minute |
+| Export (Raw RTP) into R2 | $0.0005 / minute |
+| Transcription (Real-time) | Standard model pricing via Workers AI |
+
+### [Images](https://developers.cloudflare.com/images/)
+
+Transform and optimize at scale
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Unique Transformations | 5,000 / month | $0.50 / thousand |
+| Images Stored | — | $5.00 / hundred thousand |
+| Images Delivered | — | $1.00 / hundred thousand |
+
+### [Stream](https://developers.cloudflare.com/stream/)
+
+Video hosting and live streaming
+
+| Component | Price |
+|-----------|-------|
+| Minutes Stored | $5.00 / thousand minutes |
+| Minutes Delivered | $1.00 / thousand minutes |
+
+## AI
+
+### [Vectorize](https://developers.cloudflare.com/vectorize/)
+
+Vector database for semantic search
+
+| Component | Price |
+|-----------|-------|
+| Vector Dimensions Queried | $0.01 / million |
+| Vector Dimensions Stored | $0.05 / hundred million |
+
+### [Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+50+ models running at the edge
+
+| Component | Price |
+|-----------|-------|
+| Neurons | $0.011 / thousand neurons |
+
+## Observability
+
+### [Workers Logs](https://developers.cloudflare.com/workers/observability/)
+
+Monitor Workers performance
+
+| Component | Free Tier | Price |
+|-----------|-----------|-------|
+| Events | 200k / day | $0.60 / million events |
+
+### [Workers Logpush](https://developers.cloudflare.com/workers/observability/logpush/)
+
+Push Workers logs to external destinations
+
+| Component | Price |
+|-----------|-------|
+| Requests | $0.05 / million requests |
+
+## Other Services
+
+### [Workers Builds](https://developers.cloudflare.com/workers/)
+
+Build Workers at scale
+
+| Component | Price |
+|-----------|-------|
+| Build Minutes | $0.005 / minute |
+
+### [Zaraz](https://developers.cloudflare.com/zaraz/)
+
+Third-party tool manager
+
+| Component | Price |
+|-----------|-------|
+| Events | $5.00 / million events |
+
+## Free Tier Summary
+
+Many Cloudflare services include generous free tiers:
+
+| Service | Free Tier Highlights |
+|---------|---------------------|
+| Workers | Requests: 100k / day, CPU Time: 10 ms / request |
+| Durable Objects | Requests: 100,000 requests / day, Duration: 13,000 GB-s / day, SQL Stored Data: 5 GB, Stored Data (KV Storage Backend): 1 GB |
+| Browser Rendering | Browser Hours: 10 min / day, Concurrent Browsers: 3 browsers |
+| Workflows | Requests: 100k / day, CPU Time: 10 ms / invocation, Storage: 1 GB |
+| R2 | Standard Storage: 10 GB-month, Standard Class A operations: 1 million, Standard Class B operations: 10 million |
+| Workers KV | Stored Data: 1 GB, Read Requests: 100,000 / day, Write, Delete, List requests: 1,000 / day |
+| D1 | Storage: 5 GB (total), Rows Read: 5 million / day, Rows Written: 100,000 / day |
+| Artifacts | Operations (1,000 operations): Coming Soon, Storage (GB-month): Coming Soon |
+| Queues | Standard Operations: 10,000 operations/day included |
+| Hyperdrive | Queries:  100,000 / day |
+| Workers Analytics Engine | Data Points Written: 100,000 / day, Read Queries: 10,000 / day |
+| TURN / SFU | Data Egress: 1,000 GB / month |
+| Images | Unique Transformations: 5,000 / month |
+| Workers Logs | Events: 200k / day |
+
+## Get Started
+
+- [Sign up](https://dash.cloudflare.com/sign-up): Create a Cloudflare account and start with the free tier
+- [Documentation](https://developers.cloudflare.com/): Read the full documentation
+- [Pricing Calculator](https://dash.cloudflare.com/): Estimate costs in the dashboard
+
+## Enterprise
+
+For enterprise needs:
+- Custom pricing and volume discounts
+- Dedicated support with SLA guarantees
+- Advanced analytics and compliance features
+- Contact [sales](https://www.cloudflare.com/plans/enterprise/contact/) for details
+
+---
+
+*This is a markdown version of [https://www.cloudflare.com/plans](https://www.cloudflare.com/plans) for AI/LLM consumption.*

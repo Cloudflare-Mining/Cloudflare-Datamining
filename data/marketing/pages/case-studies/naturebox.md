@@ -1,0 +1,64 @@
+---
+title: NatureBox 
+description: NatureBox reduces load times and protects sensitive payment information with Cloudflare.
+image: https://www.cloudflare.com/preview.png
+---
+
+# NatureBox 
+
+> #### "  We use all of the Cloudflare web application firewall-specific functionality in order just to make sure that our customers' data has an extra level of security outside of what we build into the application. " 
+
+NatureBox reduces load times and protects sensitive payment information with Cloudflare.
+
+[NatureBox](https://naturebox.com/) is a leading packaged food provider selling a variety of great tasting, guilt-free snacks you can't find anywhere else. In this video, Shawn Zeller, principal architect at NatureBox, explains how they use Cloudflare to reduce latency for their site and ensure sensitive customer data is secure.
+
+**Transcript:**
+
+_"I'm Shawn Zeller, principle architect at NatureBox. We make good food delicious by taking simple, good-for-you ingredients, and package them into products that we think our customers will really enjoy. You can find our products on our website and also at major retailers like Safeway and Target._
+
+_Having a quick website is very integral to us being able to sell a product online. People, you know, if you're clicking on a Facebook ad and you end up on the website, you expect that to load quickly on your phone, you expect to be able to purchase quickly. If we're not able to get the customer's attention almost immediately, they're gonna go off, browse another Facebook article, they're gonna do something else, and so we need to deliver a very fast experience in order to actually turn that into a purchase._
+
+_A big portion of us trying to maintain a fast website is being able to cache as much as humanly possible. So we use Cloudflare as an example, to cache all of our non-customer specific data, so including our entirety of our product catalog, inventory, etc. so that we can deliver those responses to the customer as fast as possible. When we started with Cloudflare one of our main API requests for our catalog data was taking on average 20 seconds. That tremendously impacted our customer response times. After using Cloudflare, we were able to move that down to be a completely edge cached response that took on the order of 35 milliseconds. That was a 17x reduction in actual response time, and improved overall latency and overall response times of all of our requests._
+
+_So one of the main issues for an eCommerce website is trying to maintain things like PCI compliance, which is very important for how we're dealing with our own customers' financial data whether that's credit card data, etc. You know, we use all of the Cloudflare web application firewall-specific functionality in order just to make sure that our customers' data has an extra level of security outside of what we build into the application._
+
+_I mean from our end the best thing about being able to use Cloudflare is that we can use just one solution for all of those things. We use Cloudflare for DNS, we use it for CDN, and we use it for web application security._
+
+_So being able to use one solution for all of those just makes it a way less overhead for us in terms of managing it, documenting how we're using it, and trying to teach new people as they come on board the team how to use that application._
+
+_If we didn't have Cloudflare we'd probably be having to do this directly in the application level. Or we would have to purchase some number of other applications, other network hardware, that we'd have to all configure, have to deal with on a daily basis._
+
+_If you had to compare Cloudflare to a Naturebox Snack, what would it be? Cloudflare to a snack...it would be the White Cheddar and Caramel Popcorn. Because you get a couple different flavors and it also tastes good."_
+
+![NatureBox  logo](https://images.ctfassets.net/slt3lc6tev37/7a9JJdzgOsAGsA2cCmgmsS/8fd5eeb0a92196b19ca9c6922fd432aa/naturebox.svg) 
+
+NatureBox reduces load times and protects sensitive payment information with Cloudflare.
+
+ Cloudflare Products 
+* [  Content Delivery Network (CDN) ](/application-services/products/cdn/)
+* [  DNS ](/application-services/products/dns/)
+* [  Application Services ](/application-services/)
+
+ Details 
+
+ Industry 
+
+eCommerce 
+
+ Region 
+
+North America 
+
+# Build without boundaries
+
+ Join thousands of developers who've eliminated infrastructure complexity and deployed globally with Cloudflare. Start building for free — no credit card required. 
+
+[  Start building for free ](https://dash.cloudflare.com/sign-up) [  View docs ](https://developers.cloudflare.com/) 
+
+ No cold starts or region complexity  SASE and Zero Trust without the complexity  Deploy to 330+ cities instantly  Defend against the Internet's biggest DDoS attacks  Predictable pricing without surprises  Identity-aware Zero Trust access that retires your VPN  Battle-tested infrastructure powering millions  CDN, WAF, and DNS faster than the public Internet  No cold starts or region complexity  SASE and Zero Trust without the complexity  Deploy to 330+ cities instantly  Defend against the Internet's biggest DDoS attacks  Predictable pricing without surprises  Identity-aware Zero Trust access that retires your VPN  Battle-tested infrastructure powering millions  CDN, WAF, and DNS faster than the public Internet
+
+```json
+{"@context":"https://schema.org","@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com","logo":"https://www.cloudflare.com/logo.svg","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"]}
+{"@context":"https://schema.org","@type":"WebSite","name":"Cloudflare","url":"https://www.cloudflare.com","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://www.cloudflare.com/search?q={search_term_string}","query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"NatureBox ","description":"NatureBox reduces load times and protects sensitive payment information with Cloudflare.","url":"https://www.cloudflare.com/case-studies/naturebox/","inLanguage":"en"}
+```

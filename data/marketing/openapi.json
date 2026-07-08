@@ -1,0 +1,54 @@
+{
+	"openapi": "3.1.0",
+	"info": {
+		"title": "Cloudflare Public Site API",
+		"version": "1.0.0",
+		"description": "Discovery-oriented endpoints that expose machine-readable website context for AI agents."
+	},
+	"servers": [
+		{
+			"url": "https://www.cloudflare.com"
+		}
+	],
+	"paths": {
+		"/llms.txt": {
+			"get": {
+				"summary": "Get concise site context for AI assistants",
+				"responses": {
+					"200": {
+						"description": "Markdown content",
+						"content": {
+							"text/markdown": {}
+						}
+					}
+				}
+			}
+		},
+		"/llms-full.txt": {
+			"get": {
+				"summary": "Get expanded site context for larger context windows",
+				"responses": {
+					"200": {
+						"description": "Markdown content",
+						"content": {
+							"text/markdown": {}
+						}
+					}
+				}
+			}
+		},
+		"/.well-known/agents.json": {
+			"get": {
+				"summary": "Get agents catalog metadata",
+				"responses": {
+					"200": {
+						"description": "JSON response",
+						"content": {
+							"application/json": {}
+						}
+					}
+				}
+			}
+		}
+	}
+}
