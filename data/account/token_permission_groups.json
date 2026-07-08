@@ -738,6 +738,15 @@
 		"category": "ai_and_machine_learning"
 	},
 	{
+		"id": "9ac97d58e2634cfcbd4f2481e849f3dd",
+		"name": "AI Gateway Metadata Read",
+		"description": "Grants read access to AI Gateway configuration without access to provider config secrets",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"category": "ai_and_machine_learning"
+	},
+	{
 		"id": "4dc8917b4b40457d88d3035d5dadb054",
 		"name": "AI Gateway Read",
 		"description": "Grants access to reading AI Gateways",

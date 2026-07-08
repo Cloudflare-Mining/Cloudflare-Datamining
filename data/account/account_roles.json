@@ -1,5 +1,50 @@
 [
 	{
+		"id": "f9828bed02e3f6f9b44e50ff177a0f45",
+		"name": "AI Gateway Admin",
+		"description": "Can perform all CRUD actions on AI Gateways and deploy Secrets used by AI Gateway provider configs",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "633c3ed8d9c90c79c7b3d3e87c0ade29",
+		"name": "AI Gateway Read Only",
+		"description": "Can list and read AI Gateways. Cannot run inference, modify, or delete.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "6c6d31495ec2ccf7b8ff0f68d2ba6558",
+		"name": "AI Gateway Run",
+		"description": "Can list, read, and run AI Gateway inference. Cannot create, modify, or delete gateways.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "82029c610b2fa8995932b255a5df4c26",
 		"name": "Bot Management (Account-Wide) Read",
 		"description": "Can view Bot Management Configuration for all domains on an account",
@@ -2110,72 +2155,6 @@
 				"edit": true
 			},
 			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "fc67f46f32917cf9f0bdc082198cd747",
-		"name": "Zaraz Admin",
-		"description": "Can edit and publish Zaraz configuration.",
-		"permissions": {
-			"zaraz": {
-				"read": true,
-				"edit": true,
-				"publish": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "69abc03715c77ae49be5e407f03d0650",
-		"name": "Zaraz Readonly",
-		"description": "Can read Zaraz configuration.",
-		"permissions": {
-			"zaraz": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "94bedef1a0bdd311891188867727e42d",
-		"name": "Cloudflare Images",
-		"description": "Can edit Cloudflare Images assets",
-		"permissions": {
-			"image": {
-				"read": true,
-				"edit": true
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
 				"read": true,
 				"edit": false
 			},
