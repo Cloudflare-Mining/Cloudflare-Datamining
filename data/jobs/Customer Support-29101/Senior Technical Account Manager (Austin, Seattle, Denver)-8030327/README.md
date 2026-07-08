@@ -9,12 +9,12 @@
 <h4><strong>About the Department</strong></h4>
 <p>The Technical Account Team plays a crucial role in ensuring a seamless experience for Cloudflare users, ranging from individual developers to Fortune 500 enterprises. By providing expert technical support and resolving complex issues across multiple channels, the team enhances customer satisfaction and drives product improvement.</p>
 <p>At Cloudflare, Technical Account Managers (TAMs) serve as trusted advisors, delivering high-touch technical guidance and advocacy for our top Enterprise customers. Acting as the eyes and ears of the company, TAMs capture valuable customer insights to influence service enhancements and future product development.</p>
-<h4><strong>What You'll Do</strong></h4>
+<h4><strong>About the Role</strong></h4>
 <p>As a Technical Account Manager, you will own the post-sales support experience for Cloudflare’s largest Enterprise customers, ensuring smooth operations and proactive technical guidance. As the primary technical point of contact, you will manage support interactions, troubleshoot issues, drive escalations, and advocate for customer needs.&nbsp;</p>
 <p>You will act as an architectural governance partner, continuously mapping customer environments against industry best practices and Cloudflare's Well-Architected framework. By proactively identifying security gaps, single points of failure, and performance bottlenecks, you will prevent incidents before they impact production.&nbsp;</p>
 <p>Working closely with Customer Success, Account Teams, Product, Engineering, and partnering with Customer Support, you will align technical solutions with customer roadmaps and business objectives. This role requires a mix of technical expertise, customer service excellence, and strategic problem-solving to ensure high customer satisfaction and retention.</p>
 <p>For TAMs specializing in Network Services, you will focus on optimizing customer Cloudflare configurations, ensuring the reliability and security of their network infrastructure.</p>
-<h4><strong>Key Responsibilities</strong></h4>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
 	<li>Serve as the primary technical support contact for assigned Enterprise customers.</li>
 	<li>Build and maintain strong cross-functional relationships with Product, Engineering, Account Executives, Customer Success, Professional Services, and Partners to support every phase of the customer journey.</li>
@@ -35,7 +35,7 @@
 	<li>Streamline the creation of technical documentation—including HLDs, LLDs, and post-incident reports—by leveraging AI workflows to ingest and summarize technical data, ensuring consistent, high-quality deliverables.</li>
 	<li>Deploy AI-assisted incident management tools to enhance communication precision, including real-time impact assessment, automated status updates, and rapid synthesis of complex technical event details.</li>
 </ul>
-<h4><strong>What We’re Looking For</strong></h4>
+<h4>Desirable Skills, Knowledge, and Experience</h4>
 <p>We are seeking a highly motivated customer-focused technical expert with the following skills and experience:</p>
 <h4><strong>Technical Expertise</strong></h4>
 <ul>
