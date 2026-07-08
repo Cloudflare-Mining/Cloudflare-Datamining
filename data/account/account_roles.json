@@ -1,5 +1,144 @@
 [
 	{
+		"id": "82029c610b2fa8995932b255a5df4c26",
+		"name": "Bot Management (Account-Wide) Read",
+		"description": "Can view Bot Management Configuration for all domains on an account",
+		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "66cd3a40849b75884ebeafcfe09139bf",
+		"name": "Botnet Feed Read",
+		"description": "Can view Botnet Feed.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "0579f4481c313bc1bc218a4210537b7e",
+		"name": "Botnet Feed Write",
+		"description": "Can manage Botnet Feed.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "9473168b0698e0d8068404ab4429c076",
+		"name": "DDoS Protection Read",
+		"description": "Can view DDoS Protection.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "6e1224754140275968d262698d758b9a",
+		"name": "DDoS Protection Write",
+		"description": "Can manage DDoS Protection.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "c88962caa6bfa861725bcf9329a85833",
+		"name": "Intel Read",
+		"description": "Can read Intel.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "87b74a5e0c00907f521ca1eaa4aba3e8",
+		"name": "Intel Write",
+		"description": "Can write Intel.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "ed7c2fea6458b3d51f80c544cc9b783a",
+		"name": "URL Scanner Read",
+		"description": "Can read URL Scanner.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "49bb2875775fb40c6becc1869dc3610b",
+		"name": "URL Scanner Write",
+		"description": "Can create and read URL Scanner.",
+		"permissions": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "416a8a5b5080a3558963f8fc6bbd6cce",
 		"name": "Zero Trust Gateway Read Only",
 		"description": "Can view all Zero Trust Gateway resources.",
@@ -2041,621 +2180,6 @@
 				"edit": false
 			},
 			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "10e95af809390ce236cbdcf03935e215",
-		"name": "Cloudflare Gateway",
-		"description": "Can edit Cloudflare Gateway and read Access.",
-		"permissions": {
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
-			},
-			"teams_device": {
-				"read": true,
-				"edit": false
-			},
-			"access": {
-				"read": true,
-				"edit": false
-			},
-			"ssl": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "b525e80fc64a4323a9ea666467d1865c",
-		"name": "Cloudflare Zero Trust Reporting",
-		"description": "Can access Cloudflare for Zero Trust reporting data.",
-		"permissions": {
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
-			},
-			"teams_device": {
-				"read": true,
-				"edit": false
-			},
-			"dex": {
-				"read": true,
-				"edit": false
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"access": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "156a872fa6df06e0e9b85d32afce6990",
-		"name": "Cloudflare Zero Trust Read Only",
-		"description": "Can access Cloudflare for Zero Trust read only mode.",
-		"permissions": {
-			"access": {
-				"read": true,
-				"edit": false
-			},
-			"teams": {
-				"read": true,
-				"edit": false,
-				"report": true
-			},
-			"cf1_integration": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"teams_device": {
-				"read": true,
-				"edit": false
-			},
-			"cds": {
-				"read": true,
-				"edit": false
-			},
-			"dex": {
-				"read": true,
-				"edit": false
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"casb": {
-				"read": true,
-				"edit": false
-			},
-			"ssl": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "ef13f042efdd58f592148c035f291bfa",
-		"name": "Cloudflare Zero Trust",
-		"description": "Can edit Cloudflare Zero Trust.",
-		"permissions": {
-			"access": {
-				"read": true,
-				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true
-			},
-			"ces_submissions": {
-				"read": true,
-				"edit": true
-			},
-			"cf1_integration": {
-				"read": true,
-				"edit": true,
-				"ces_enroll": true,
-				"casb_enroll": true
-			},
-			"organization": {
-				"read": true,
-				"edit": true
-			},
-			"teams_device": {
-				"read": true,
-				"edit": false
-			},
-			"ces_policies": {
-				"read": true,
-				"edit": true
-			},
-			"cds": {
-				"read": true,
-				"edit": true
-			},
-			"ces_integration": {
-				"read": true,
-				"edit": true
-			},
-			"ces_search": {
-				"read": true,
-				"edit": false,
-				"action": true,
-				"preview": true,
-				"raw": true,
-				"trace": true
-			},
-			"ces_phishguard": {
-				"read": true,
-				"edit": false
-			},
-			"ces_settings": {
-				"read": true,
-				"edit": true
-			},
-			"ces_analytics": {
-				"read": true,
-				"edit": false
-			},
-			"dex": {
-				"read": true,
-				"edit": true
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"casb": {
-				"read": true,
-				"edit": true
-			},
-			"ssl": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "f43d556e0699e47c9188ea1973a48e24",
-		"name": "Cloudflare Zero Trust PII",
-		"description": "Can access Cloudflare Zero Trust PII.",
-		"permissions": {
-			"teams": {
-				"read": false,
-				"edit": false,
-				"report": true,
-				"pii": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "33666b9c79b9a5273fc7344ff42f953d",
-		"name": "Super Administrator - All Privileges",
-		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
-		"permissions": {
-			"billing": {
-				"read": true,
-				"edit": true
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"magic": {
-				"read": true,
-				"edit": true
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": true
-			},
-			"stream": {
-				"read": true,
-				"edit": true,
-				"content_read": true
-			},
-			"fraud-detection": {
-				"read": false,
-				"edit": false,
-				"pii": true
-			},
-			"image": {
-				"read": true,
-				"edit": true
-			},
-			"worker": {
-				"read": true,
-				"edit": true
-			},
-			"organization": {
-				"read": true,
-				"edit": true
-			},
-			"access": {
-				"read": true,
-				"edit": true
-			},
-			"d1": {
-				"read": false,
-				"edit": true
-			},
-			"teams": {
-				"read": true,
-				"edit": true,
-				"report": true,
-				"pii": true
-			},
-			"ces_submissions": {
-				"read": true,
-				"edit": true
-			},
-			"waf": {
-				"read": true,
-				"edit": true
-			},
-			"dns_records": {
-				"read": true,
-				"edit": true
-			},
-			"cf1_integration": {
-				"read": true,
-				"edit": true,
-				"ces_enroll": true,
-				"casb_enroll": true
-			},
-			"teams_device": {
-				"read": true,
-				"edit": false
-			},
-			"ces_pra_report": {
-				"read": true,
-				"edit": true
-			},
-			"dash_sso": {
-				"read": true,
-				"edit": true
-			},
-			"r2_bucket_warehouse_sql": {
-				"read": true,
-				"edit": false
-			},
-			"lb": {
-				"read": true,
-				"edit": true
-			},
-			"ces_policies": {
-				"read": true,
-				"edit": true
-			},
-			"blocks": {
-				"read": true,
-				"edit": true
-			},
-			"r2_bucket_warehouse": {
-				"read": true,
-				"edit": true
-			},
-			"resilience": {
-				"read": true,
-				"edit": true
-			},
-			"waitingroom": {
-				"read": true,
-				"edit": true
-			},
-			"fbm": {
-				"read": true,
-				"edit": true
-			},
-			"logs": {
-				"read": true,
-				"edit": true
-			},
-			"cfone": {
-				"read": true,
-				"edit": true
-			},
-			"cds_compute_account": {
-				"read": true,
-				"edit": true
-			},
-			"cds": {
-				"read": true,
-				"edit": true
-			},
-			"subscription": {
-				"read": true,
-				"edit": true
-			},
-			"ces_integration": {
-				"read": true,
-				"edit": true
-			},
-			"ces_search": {
-				"read": true,
-				"edit": false,
-				"action": true,
-				"preview": true,
-				"raw": true,
-				"trace": true
-			},
-			"ces_phishguard": {
-				"read": true,
-				"edit": false
-			},
-			"ces_settings": {
-				"read": true,
-				"edit": true
-			},
-			"ces_analytics": {
-				"read": true,
-				"edit": false
-			},
-			"vectorize": {
-				"read": true,
-				"edit": true
-			},
-			"query_cache": {
-				"read": true,
-				"edit": true
-			},
-			"integration": {
-				"read": true,
-				"edit": true,
-				"install": true
-			},
-			"r2_bucket_item": {
-				"read": true,
-				"edit": true
-			},
-			"dex": {
-				"read": true,
-				"edit": true
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
-			"zone_versioning": {
-				"read": true,
-				"edit": true
-			},
-			"ssl": {
-				"read": true,
-				"edit": true
-			},
-			"zaraz": {
-				"read": true,
-				"edit": true,
-				"publish": true
-			},
-			"fbm_acc": {
-				"read": false,
-				"edit": true
-			},
-			"http_applications": {
-				"read": true,
-				"edit": true
-			},
-			"api_gateway": {
-				"read": true,
-				"edit": true
-			},
-			"casb": {
-				"read": true,
-				"edit": true
-			},
-			"healthchecks": {
-				"read": true,
-				"edit": true
-			},
-			"web3": {
-				"read": true,
-				"edit": true
-			},
-			"r2_bucket": {
-				"read": true,
-				"edit": true
-			},
-			"page_shield": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": true
-			},
-			"app": {
-				"read": false,
-				"edit": true
-			},
-			"cache_purge": {
-				"read": false,
-				"edit": true
-			},
-			"auditlogs": {
-				"read": true,
-				"edit": false
-			},
-			"member": {
-				"read": true,
-				"edit": true
-			},
-			"legal": {
-				"read": true,
-				"edit": true
-			}
-		}
-	},
-	{
-		"id": "75f36071fa06ebfac6da0c3f8ddbc4df",
-		"name": "SSL/TLS, Caching, Performance, Page Rules, and Customization",
-		"description": "Can edit most Cloudflare settings except for DNS and Firewall.",
-		"permissions": {
-			"waf": {
-				"read": true,
-				"edit": true
-			},
-			"ssl": {
-				"read": true,
-				"edit": true
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": true
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": true
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"cache_purge": {
-				"read": false,
-				"edit": true
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "340113a819900e1b4beebccc2ddb32e7",
-		"name": "Log Share Reader",
-		"description": "Can read Enterprise Log Share.",
-		"permissions": {
-			"logs": {
-				"read": true,
-				"edit": false
-			},
-			"waf": {
-				"read": true,
-				"edit": false
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "3a170f9cfd62f321d6d835dc44bfe6dc",
-		"name": "Log Share",
-		"description": "Can edit Log Share configuration.",
-		"permissions": {
-			"logs": {
-				"read": true,
-				"edit": true
-			},
-			"waf": {
-				"read": true,
-				"edit": true
-			},
-			"domain": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
-				"read": true,
-				"edit": false
-			},
-			"subscription": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			},
-			"legal": {
 				"read": true,
 				"edit": false
 			}
