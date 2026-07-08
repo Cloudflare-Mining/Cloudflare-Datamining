@@ -2,1149 +2,522 @@ import 'dotenv/config';
 import path from 'node:path';
 
 import { parse } from 'acorn';
-import { parse as parseLoose } from 'acorn-loose';
-import { full, fullAncestor } from 'acorn-walk';
-import { generate } from 'astring';
-import { dataUriToBuffer } from 'data-uri-to-buffer';
+import { full } from 'acorn-walk';
 import dateFormat from 'dateformat';
-import filenamify from 'filenamify';
 import fs from 'fs-extra';
-import hexColorRegex from 'hex-color-regex';
-import isValidCSSUnit from 'is-valid-css-unit';
-import cssProperties from 'known-css-properties';
 import fetch from 'node-fetch';
-import isValidFilename from 'valid-filename';
 
-import {
-	beautify,
-	getHttpsAgent,
-	removeSlashes,
-	tryAndPush,
-} from './utils.js';
+import { getHttpsAgent, tryAndPush } from './utils.js';
 
-const allVersions = await fs.readJson(path.resolve('../data/dashboard/versions.json'));
-
-const appScript = /((cf-)?app\.[\da-z]+\.js)/;
-const runtimeScript = /(runtime\.[\da-z]+\.js)/;
-const fragmentsScript = /(cf-fragments\.[\da-z]+\.js)/;
-// Match chunk mapping objects like {1007:"abc123",1008:"def456"}
-const chunks = /{(?:\d+:"[\da-f]+",?)+}/g;
-const dashVersion = /dashVersion: ?"([\da-f]+)",/;
-const likelyFiles = /\.(png|ico|svg)$/; // static assets that we want to extract properly
-const translationsSnippet = 'dash/intl/intl-translations/src/locale/en-US/';
-const navigationSnippet = 'components/SidebarNav/index.ts":';
-const subRoutesSnippet = 'util-routes/es/index.js';
-const actionSnippet = 'app/redux/makeActionCreator.ts';
+// The dashboard moved from webpack/rspack to Vite/Rolldown. Chunks are now ESM
+// (import/export) with no `self.webpackChunk` array and no numeric module-ID
+// map, so the old structural parsing no longer applies. We instead crawl the
+// ESM chunk graph and pull out what survives minification: the baked-in
+// `globalThis.build` info, the per-namespace translation objects, and the
+// generic string/property/identifier/regex/API/colo metadata.
 const staticDashURL = process.env.STATIC_DASH_URL;
-
 const agent = getHttpsAgent();
+const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36';
+const CONCURRENCY = 12;
 
-// TODO: tidy up this file
-
-async function writeJS(filename, data) {
-	const file = path.resolve(`../data/dashboard/${filename}`);
-	await fs.ensureDir(path.dirname(file));
-	await fs.writeFile(file, beautify(data));
-}
-
-async function findWantedChunks(chunks) {
-	const results = {
-		main: null,
-		translations: [],
-		chunks: [],
-	};
-	const getChunks = [];
-	let fetched = 0;
-	for (const chunk of chunks) {
-		getChunks.push(async function() {
-			const url = `${staticDashURL}cf-${chunk}.js`;
-			let res = await fetch(url, { agent });
-			fetched++;
-			async function checkResponse() {
-				if (!res.ok && res.status !== 404) {
-					console.error('Received non-200 response:', res.status);
-					// retry once
-					// eslint-disable-next-line require-atomic-updates
-					res = await fetch(url, { agent });
-					if (!res.ok && res.status !== 404) {
-						throw new Error(`Failed to fetch chunk ${chunk}: ${res.status} ${res.statusText}`);
-					}
-				}
-			}
-			// 404s are okay, but nothing else
-			await checkResponse();
-			if (res.headers?.get('content-type')?.includes('text/html')) {
-				console.error('Got HTML response for chunk', chunk);
-				// try without cf- prefix
-				// eslint-disable-next-line require-atomic-updates
-				res = await fetch(`${staticDashURL}${chunk}.js`, { agent });
-				await checkResponse();
+async function fetchText(url, tries = 3) {
+	let lastErr;
+	for (let attempt = 0; attempt < tries; attempt++) {
+		try {
+			const res = await fetch(url, { agent, headers: { 'User-Agent': userAgent } });
+			if (res.status === 404) {
+				return { status: 404, text: '' };
 			}
 			const text = await res.text();
-
-			// next do some very lazy parsing to match what we need
-			// TODO: switch this to AST parsing?
-
-			// get main chunk
-			const match = dashVersion.exec(text);
-			if (match !== null) {
-				results.dashboard = { hash: match[1], code: text, chunk };
+			if (res.ok) {
+				return { status: res.status, text, contentType: res.headers.get('content-type') || '' };
 			}
-
-			// get translations
-			if (text.includes(translationsSnippet)) {
-				results.translations.push({
-					code: text,
-					chunk,
-				});
-			}
-
-			// find navigation
-			if (text.includes(navigationSnippet)) {
-				results.navigation = {
-					code: text,
-					chunk,
-				};
-			}
-
-			// other generic chunks - detect webpack/rspack chunk patterns
-			// rspack uses same webpackChunk pattern as webpack
-			if (
-				text.startsWith('(self.webpackChunk=self.webpackChunk||[])')
-				|| text.startsWith('"use strict";(self.webpackChunk=self.webpackChunk||[])')
-				|| text.startsWith('(self.webpackChunk_cloudflare_app_dash=self.webpackChunk_cloudflare_app_dash||[])')
-				|| text.startsWith('"use strict";(self.webpackChunk_cloudflare_app_dash=self.webpackChunk_cloudflare_app_dash||[])')
-				|| text.includes('self.webpackChunk_cloudflare_app_dash')
-				|| text.includes('self.webpackChunk')
-			) {
-				results.chunks.push({
-					code: text,
-					chunk,
-				});
-			}
-			//await writeJS(chunk + '.js', text);
+			lastErr = new Error(`HTTP ${res.status} for ${url}`);
+		} catch (err) {
+			lastErr = err;
+		}
+		await new Promise((resolve) => {
+			setTimeout(resolve, 300 * (attempt + 1));
 		});
 	}
+	throw lastErr;
+}
+
+const isFallbackHtml = text => /^\s*<!doctype/i.test(text) || /^\s*<html[\s>]/i.test(text);
+
+// Crawl the ESM chunk graph from the index's entry scripts, following both
+// static (`from"./x.js"`) and dynamic (`import("./x.js")`) references. Returns
+// a Map of chunk filename -> code.
+async function crawlChunks() {
+	const { text: indexHtml } = await fetchText(staticDashURL);
+	const seeds = [...new Set([...indexHtml.matchAll(/\/assets\/([\w.-]+\.js)\b/g)].map(match => match[1]))];
+	if (seeds.length === 0) {
+		throw new Error('No /assets/*.js entry scripts found in index');
+	}
+	console.log(`Found ${seeds.length} entry scripts`);
+
+	const refRegex = /(?:\.\/|assets\/)([\w.-]+\.js)/g;
+	const chunks = new Map();
+	const seen = new Set(seeds);
+	const queue = [...seeds];
+	let fetched = 0;
+
+	const worker = async (name) => {
+		const { status, text } = await fetchText(`${staticDashURL}assets/${name}`);
+		fetched++;
+		if (status !== 200 || isFallbackHtml(text)) {
+			return;
+		}
+		chunks.set(name, text);
+		for (const match of text.matchAll(refRegex)) {
+			if (!seen.has(match[1])) {
+				seen.add(match[1]);
+				queue.push(match[1]);
+			}
+		}
+	};
+
 	const logProgress = setInterval(() => {
-		console.log(`Fetched ${fetched}/${chunks.length} chunks`);
-	}, 1000);
-	while (getChunks.length > 0) {
-		// 10 at a time
-		await Promise.all(getChunks.splice(0, 10).map(func => func()));
+		console.log(`Fetched ${fetched} chunks (${queue.length} queued)`);
+	}, 2000);
+	while (queue.length > 0) {
+		await Promise.all(queue.splice(0, CONCURRENCY).map(name => worker(name)));
 	}
 	clearInterval(logProgress);
-	console.log(`Fetched ${fetched}/${chunks.length} chunks`);
-	return results;
+	console.log(`Fetched ${chunks.size} chunks`);
+	return chunks;
 }
 
-async function getChunks() {
-	const response = await fetch(staticDashURL, { agent });
-	const text = await response.text();
-
-	// Find all potential entry point scripts from HTML
-	const scriptsToFetch = [];
-
-	// Find `app.js` bundle (cf-app.xxx.js or app.xxx.js)
-	const appMatch = appScript.exec(text);
-	if (appMatch && appMatch.length >= 2) {
-		scriptsToFetch.push({ name: 'app', file: appMatch[1] });
-	}
-
-	// Find runtime.js bundle (contains chunk mappings in rspack builds)
-	const runtimeMatch = runtimeScript.exec(text);
-	if (runtimeMatch && runtimeMatch.length >= 2) {
-		scriptsToFetch.push({ name: 'runtime', file: runtimeMatch[1] });
-	}
-
-	// Find fragments.js bundle
-	const fragmentsMatch = fragmentsScript.exec(text);
-	if (fragmentsMatch && fragmentsMatch.length >= 2) {
-		scriptsToFetch.push({ name: 'fragments', file: fragmentsMatch[1] });
-	}
-
-	// Also look for any other JS files that might contain chunks
-	const allScripts = text.matchAll(/src="\/([^"]+\.js)"/g);
-	for (const scriptMatch of allScripts) {
-		const file = scriptMatch[1];
-		if (!scriptsToFetch.some(script => script.file === file) && !file.includes('beacon') && !file.includes('onetrust')) {
-			scriptsToFetch.push({ name: file.replace('.js', ''), file });
-		}
-	}
-
-	if (scriptsToFetch.length === 0) {
-		console.error('No entry point scripts found in HTML');
+// --- static literal evaluation (strings/templates/numbers/null/objects) ------
+function staticEval(node) {
+	if (!node) {
 		return;
 	}
+	switch (node.type) {
+		case 'Literal': {
+			return node.value;
+		}
+		case 'TemplateLiteral': {
+			return node.expressions.length === 0
+				? node.quasis.map(quasi => quasi.value.cooked).join('')
+				: undefined;
+		}
+		case 'UnaryExpression': {
+			const arg = staticEval(node.argument);
+			return node.operator === '-' && typeof arg === 'number' ? -arg : undefined;
+		}
+		case 'ObjectExpression': {
+			const out = {};
+			for (const prop of node.properties) {
+				if (prop.type !== 'Property' || prop.computed) {
+					continue;
+				}
+				const key = prop.key.type === 'Identifier'
+					? prop.key.name
+					: (prop.key.type === 'Literal' ? String(prop.key.value) : null);
+				if (key === null) {
+					continue;
+				}
+				const value = staticEval(prop.value);
+				if (value !== undefined) {
+					out[key] = value;
+				}
+			}
+			return out;
+		}
+		default:
+	}
+}
 
-	console.log('Found entry scripts:', scriptsToFetch.map(script => script.file));
+const staticString = (node) => {
+	if (node?.type === 'Literal' && typeof node.value === 'string') {
+		return node.value;
+	}
+	if (node?.type === 'TemplateLiteral') {
+		return node.quasis.map(quasi => quasi.value.cooked ?? '').join('');
+	}
+	// tagged template (e.g. rich-text helper: r`...<0>here</0>`)
+	if (node?.type === 'TaggedTemplateExpression') {
+		return node.quasi.quasis.map(quasi => quasi.value.cooked ?? '').join('');
+	}
+	return null;
+};
 
-	// Fetch all entry scripts and look for chunk mappings in each
-	const allChunkHashes = new Set();
-	let bundlerVersion = null;
+// --- inline (source-locale) translations -------------------------------------
+// Newer namespaces ship no en-US catalog chunk; their English source lives in a
+// cf-<namespace>.translations.<hash>.js chunk as register(`ns`, { key: `text`,
+// group: { key: `text` } }). Flatten that nested object to dotted keys.
+function flattenTranslations(node, prefix, out) {
+	if (node?.type !== 'ObjectExpression') {
+		return 0;
+	}
+	let leaves = 0;
+	for (const prop of node.properties) {
+		if (prop.type !== 'Property' || prop.computed) {
+			continue;
+		}
+		const key = prop.key.type === 'Identifier'
+			? prop.key.name
+			: (prop.key.type === 'Literal' ? String(prop.key.value) : null);
+		if (key === null) {
+			continue;
+		}
+		const path = prefix ? `${prefix}.${key}` : key;
+		if (prop.value.type === 'ObjectExpression') {
+			leaves += flattenTranslations(prop.value, path, out);
+		} else {
+			const value = staticString(prop.value);
+			if (value !== null) {
+				out[path] = value;
+				leaves++;
+			}
+		}
+	}
+	return leaves;
+}
 
-	// Pattern to extract bundler version: bundler=rspack@1.5.8
-	const bundlerPattern = /bundler=([\w-]+@[\d.]+)/;
+const inlineNs = /^cf-(.+)\.translations\.[\w-]{6,12}\.js$/;
 
-	for (const script of scriptsToFetch) {
-		console.log(`Fetching ${staticDashURL}${script.file}`);
-		try {
-			const res = await fetch(`${staticDashURL}${script.file}`, { agent });
-			if (!res.ok) {
-				console.warn(`Failed to fetch ${script.file}: ${res.status}`);
+// Extract the flattened, namespace-prefixed English map from a .translations
+// chunk, or null if none found.
+function extractInlineTranslations(code, namespace) {
+	let ast;
+	try {
+		ast = parse(code, { ecmaVersion: 'latest', sourceType: 'module' });
+	} catch {
+		return null;
+	}
+	let best = null;
+	full(ast, (node) => {
+		if (node.type !== 'ObjectExpression') {
+			return;
+		}
+		const out = {};
+		const leaves = flattenTranslations(node, '', out);
+		if (leaves >= 5 && (!best || leaves > best.leaves)) {
+			best = { leaves, out };
+		}
+	});
+	if (!best) {
+		return null;
+	}
+	const prefixed = {};
+	for (const [key, value] of Object.entries(best.out)) {
+		prefixed[`${namespace}.${key}`] = value;
+	}
+	return prefixed;
+}
+
+// --- globalThis.build ---------------------------------------------------------
+function extractBuildInfo(code) {
+	if (!code.includes('dashVersion') || !code.includes('builtAt') || !code.includes('bundler')) {
+		return null;
+	}
+	let ast;
+	try {
+		ast = parse(code, { ecmaVersion: 'latest', sourceType: 'module' });
+	} catch {
+		return null;
+	}
+	let build = null;
+	full(ast, (node) => {
+		if (build || node.type !== 'AssignmentExpression') {
+			return;
+		}
+		const left = node.left;
+		if (
+			left.type === 'MemberExpression' && !left.computed &&
+			left.object.type === 'Identifier' &&
+			(left.object.name === 'globalThis' || left.object.name === 'window') &&
+			left.property.type === 'Identifier' && left.property.name === 'build' &&
+			node.right.type === 'ObjectExpression'
+		) {
+			build = staticEval(node.right);
+		}
+	});
+	return build;
+}
+
+// --- translations -------------------------------------------------------------
+// Translation chunks are named cf-<namespace>.<hash>.js and assign an object of
+// dotted string keys to template-literal values. The chunk carries no locale
+// label, so among a namespace's locale variants we pick en-US by scoring how
+// English the values read.
+const dottedKey = /"[\w-]+(?:\.[\w-]+)+":/g;
+const englishWord = /\b(?:the|and|your|you|for|with|this|that|are|from|have|will|would|please|when|which|about)\b/gi;
+
+function namespaceFromChunk(name) {
+	const match = /^cf-(.+)\.[\w-]{6,12}\.js$/.exec(name);
+	return match ? match[1] : null;
+}
+
+// Returns the translations object (key -> string) if this chunk looks like a
+// translation module, else null.
+function extractTranslations(code) {
+	if ((code.match(dottedKey)?.length ?? 0) < 5) {
+		return null;
+	}
+	let ast;
+	try {
+		ast = parse(code, { ecmaVersion: 'latest', sourceType: 'module' });
+	} catch {
+		return null;
+	}
+	let best = null;
+	full(ast, (node) => {
+		if (node.type !== 'ObjectExpression' || node.properties.length < 5) {
+			return;
+		}
+		let dotted = 0;
+		const obj = {};
+		for (const prop of node.properties) {
+			if (prop.type !== 'Property' || prop.computed) {
 				continue;
 			}
-			const jsContent = await res.text();
-
-			// Extract bundler version if present (typically in runtime.js)
-			if (!bundlerVersion) {
-				const bundlerMatch = bundlerPattern.exec(jsContent);
-				if (bundlerMatch) {
-					bundlerVersion = bundlerMatch[1];
-					console.log(`Found bundler version: ${bundlerVersion}`);
-				}
+			const key = prop.key.type === 'Literal' ? prop.key.value : null;
+			const value = staticString(prop.value);
+			if (typeof key !== 'string' || value === null) {
+				continue;
 			}
-
-			// Look for chunk mappings using multiple strategies
-			const hexHashPattern = /^[\da-f]{16}$/;
-
-			// Strategy 1: Find objects that start with numeric keys and hex string values
-			// Pattern: {1234:"abcdef123456789",5678:"..."}
-			const chunkStartPattern = /{(\d+):"([\da-f]{16})"/g;
-			let startMatch;
-			while ((startMatch = chunkStartPattern.exec(jsContent)) !== null) {
-				// Found a potential chunk mapping start, extract the full object
-				let braceCount = 1;
-				let idx = startMatch.index + 1;
-				while (idx < jsContent.length && braceCount > 0) {
-					if (jsContent[idx] === '{') {
-						braceCount++;
-					} else if (jsContent[idx] === '}') {
-						braceCount--;
-					}
-					idx++;
-				}
-				const objStr = jsContent.slice(startMatch.index, idx);
-
-				// Only process if it's a substantial object (chunk mappings have hundreds of entries)
-				if (objStr.length > 1000) {
-					try {
-						// Use eval since keys are unquoted numbers (valid JS but not JSON)
-						// eslint-disable-next-line no-eval
-						const parsed = eval('(function(){return ' + objStr + '})()');
-						const values = Object.values(parsed);
-						// Verify these look like chunk hashes (16 char hex strings)
-						if (values.length > 50 && values.every(val => typeof val === 'string' && hexHashPattern.test(val))) {
-							console.log(`Found ${values.length} chunk hashes in ${script.file}`);
-							for (const hash of values) {
-								allChunkHashes.add(hash);
-							}
-						}
-					} catch {
-						// Ignore parse errors
-					}
-				}
+			if (key.includes('.')) {
+				dotted++;
 			}
-
-			// Strategy 2: Also try the original regex-based approach for backwards compatibility
-			chunks.lastIndex = 0;
-			let chunkMatch;
-			while ((chunkMatch = chunks.exec(jsContent)) !== null) {
-				const matchStr = chunkMatch[0];
-				if (matchStr.length > 50) {
-					try {
-						const parsed = JSON.parse(matchStr);
-						const values = Object.values(parsed);
-						if (values.length > 10 && values.every(val => typeof val === 'string' && hexHashPattern.test(val))) {
-							console.log(`Found ${values.length} chunk hashes in ${script.file} (JSON)`);
-							for (const hash of values) {
-								allChunkHashes.add(hash);
-							}
-						}
-					} catch {
-						try {
-							// eslint-disable-next-line no-eval
-							const parsed = eval('(function(){return ' + matchStr + '})()');
-							const values = Object.values(parsed);
-							if (values.length > 10 && values.every(val => typeof val === 'string' && hexHashPattern.test(val))) {
-								console.log(`Found ${values.length} chunk hashes in ${script.file} (eval)`);
-								for (const hash of values) {
-									allChunkHashes.add(hash);
-								}
-							}
-						} catch {
-							// Ignore
-						}
-					}
-				}
-			}
-		} catch (err) {
-			console.warn(`Error fetching ${script.file}:`, err.message);
+			obj[key] = value;
 		}
-	}
-
-	if (allChunkHashes.size === 0) {
-		console.error('No chunk hashes found in any entry scripts');
-		return;
-	}
-
-	console.log(`Total unique chunk hashes found: ${allChunkHashes.size}`);
-	return {
-		chunks: [...allChunkHashes],
-		bundlerVersion,
-	};
-}
-
-const dashStructure = ['src', 'apps', 'dash'];
-async function prepareWriteDir(files, directory = 'dashboard-extracted', write) {
-	let maxDepth = 0;
-	for (const file in files) {
-		const depth = /^(\.\.\/)+/.exec(file)?.[0].split('../').length - 1;
-		if (depth > maxDepth) {
-			maxDepth = depth;
-		}
-	}
-	let rootDir = path.resolve(`../data/${directory}/`);
-	if (write) {
-		await fs.ensureDir(rootDir);
-		await fs.emptyDir(rootDir);
-	}
-	for (let i = 1; i <= maxDepth; i++) {
-		if (directory === 'dashboard-extracted' && dashStructure[i - 1]) {
-			rootDir += `/${dashStructure[i - 1]}`;
-		} else {
-			rootDir += `/${i}`;
-		}
-	}
-	rootDir = path.normalize(rootDir);
-	if (write) {
-		await fs.ensureDir(rootDir);
-	}
-	return rootDir;
-}
-
-async function writeFile(file, data, rootDir) {
-	let filePath = path.resolve(rootDir, file);
-	let fileName = path.basename(filePath);
-	if (!isValidFilename(fileName)) {
-		console.log(`Invalid filename: ${fileName}`);
-		fileName = filenamify(fileName);
-		console.log(`Using filename: ${fileName}`);
-		filePath = path.resolve(rootDir, fileName);
-	}
-	if (!data) {
-		console.warn('No data for file', file);
-		return;
-	}
-	await fs.ensureDir(path.dirname(filePath));
-	if ((ArrayBuffer.isView(data) || data?.toString?.() === '[object ArrayBuffer]')) {
-		if (data.buffer) {
-			await fs.writeFile(filePath, Buffer.from(data.buffer));
-		} else {
-			await fs.writeFile(filePath, Buffer.from(data));
-		}
-	} else if (Buffer.isBuffer(data)) {
-		await fs.writeFile(filePath, data);
-	} else if (Array.isArray(data)) {
-		await fs.writeFile(filePath, data.map(code => beautify(code)).join('\n\n'));
-	} else if (data !== undefined) {
-		await fs.writeFile(filePath, data);
-	}
-}
-
-async function processInlineTranslation(file, code) {
-	const ast = parseLoose(code, {
-		sourceType: 'script',
-		ecmaVersion: 2025,
-	});
-
-	let filename;
-	let translations;
-	let output;
-	// find what's most likely the translactions part
-	full(ast, (node) => {
-		if (
-			node.type === 'CallExpression' &&
-			node.callee?.type === 'SequenceExpression' &&
-			node.callee?.expressions?.length === 2 &&
-			node.arguments?.length === 2 &&
-			node.arguments?.[0]?.type === 'Literal' &&
-			node.arguments?.[1]?.type === 'ObjectExpression'
-		) {
-			filename = node.arguments[0].value;
-			translations = node.arguments[1].properties;
-			output = generate(node.arguments[1], {
-				indent: '\t',
-			});
+		// require most keys to be dotted namespace keys to avoid config objects
+		if (dotted >= 5 && dotted / node.properties.length >= 0.8 && (!best || dotted > best.dotted)) {
+			best = { dotted, obj };
 		}
 	});
-	if (filename && translations && output) {
-		await writeFile(path.basename(file), output, path.resolve('../data/dashboard-translations'));
+	if (!best) {
+		return null;
 	}
+	// A real translation module is almost entirely the translations object; a
+	// code chunk that merely contains a dotted-key object (e.g. an events map)
+	// has a tiny object relative to its code, so reject those.
+	if (JSON.stringify(best.obj).length < code.length * 0.35) {
+		return null;
+	}
+	return best.obj;
 }
 
-async function writeFiles(files, write) {
-	const rootDir = await prepareWriteDir(files, 'dashboard-extracted', write);
-	const tree = [];
-	for (const file in files) {
-		if (write) {
-			try {
-				await writeFile(file, files[file], rootDir);
-			} catch (err) {
-				console.error('Error writing file', file, err);
-			}
-		}
-		if (file.includes('.translations.ts')) {
-			await processInlineTranslation(file, files[file]);
-		}
-		tree.push(file);
+// Score how likely a locale variant is en-US. en-US is essentially pure ASCII
+// and full of English function words; other locales carry accented/non-Latin
+// characters and fewer of those words. Higher score = more likely en-US.
+function localeScore(obj) {
+	const values = Object.values(obj);
+	if (values.length === 0) {
+		return -Infinity;
 	}
-	return tree.sort();
+	const text = values.join(' ');
+	const total = text.length || 1;
+	const nonAscii = (text.match(/[\u0080-\uFFFF]/g) ?? []).length;
+	const english = (text.match(englishWord) ?? []).length;
+	return (english / values.length) - ((nonAscii / total) * 10);
 }
 
-async function writeAssets(files, write) {
-	// like above, but let's check this one in
-	const rootDir = await prepareWriteDir(files, 'dashboard-assets', write);
-	for (const file in files) {
-		if (!likelyFiles.test(file)) {
-			continue;
-		}
-		if (write) {
-			try {
-				await writeFile(file, files[file], rootDir);
-			} catch (err) {
-				console.error('Error writing file', file, err);
-			}
-		}
+async function run() {
+	if (!staticDashURL) {
+		throw new Error('STATIC_DASH_URL is not set');
 	}
-}
+	const dashboardDir = path.resolve('../data/dashboard');
+	const translationsDir = path.resolve('../data/dashboard-translations');
+	await fs.ensureDir(dashboardDir);
+	await fs.ensureDir(translationsDir);
 
-const partMapper = {
-	zoneId: ':zone_id',
-	accountId: ':account_id',
-};
-function parseQuasiToRoute(quasi) {
-	// loop through expressions and quasis and order them as appropriate
-	const joined = [...quasi.expressions, ...quasi.quasis].sort((itemA, itemB) => itemA.start - itemB.start);
-	let route = '';
-	for (const part of joined) {
-		if (part.type === 'TemplateElement') {
-			route += part.value.raw;
-		} else if (part.type === 'Literal') {
-			const mapped = partMapper[part.value] ?? `:${part.value}`;
-			route += mapped;
-		}
-	}
-	return route;
-}
-async function writeMeta(files, translations) {
-	const strings = new Set();
-	const properties = new Set();
-	const identifiers = new Set();
-	const fileList = Object.keys(files);
-	const addString = (str, type = 'string') => {
-		// handle all strings
-		// ignore a bunch of things we don't care about or want to dupe
-		if (fileList.includes(str)) {
-			return;
-		}
-		if (translations.includes(str)) {
-			return;
-		}
-		if (typeof(str) !== 'string') {
-			return;
-		}
-		if (str.trim() === '') {
-			return;
-		}
-		if (str.startsWith('<html>')) {
-			return;
-		}
-		if (str.startsWith('[{')) {
-			return;
-		}
-		// likely SVG string
-		if (/^m\s?\d+/i.test(str)) {
-			return;
-		}
-		// images and stuff
-		if (str.startsWith('data:')) {
-			return;
-		}
-		if (str.startsWith('url(')) {
-			return;
-		}
-		if (str.startsWith('http')) {
-			return;
-		}
-		// likely CSS string
-		if (str.includes('!important')) {
-			return;
-		}
-		if (str.startsWith(';\n')) {
-			return;
-		}
-		if (str.startsWith('calc(')) {
-			return;
-		}
-		// css units
-		if (isValidCSSUnit.default(str)) {
-			return;
-		}
-		if (hexColorRegex({ strict: true }).test(str)) {
-			return;
-		}
-		if (cssProperties.all.includes(str)) {
-			return;
-		}
-		// number px/fr
-		if (/^\d+\s?(px|fr|rem)/i.test(str)) {
-			return;
-		}
-		// likely more css/svg stuff
-		if (str.startsWith('0 ')) {
-			return;
-		}
-		if (type === 'string') {
-			strings.add(str?.trim?.());
-		} else if (type === 'property') {
-			properties.add(str?.trim?.());
-		} else if (type === 'identifier') {
-			identifiers.add(str?.trim?.());
-		}
-	};
+	const chunks = await crawlChunks();
+
+	// accumulators
 	const regexes = new Set();
-	const callees = new Set();
-	for (const file in files) {
-		if (likelyFiles.test(file)) {
-			continue;
-		}
-		if (file.includes('translations')) {
-			continue;
-		}
-		if (file.includes('node_modules') && !file.includes('@cloudflare')) {
-			continue;
-		}
-		if (file.includes('moment')) {
-			continue;
-		}
-
-		try {
-			const ast = parseLoose(files[file], {
-				sourceType: 'script',
-				ecmaVersion: 2025,
-			});
-			full(ast, (node) => {
-				if (node.type === 'StringLiteral' || node.type === 'Literal') {
-					if (node.regex && node.raw) {
-						regexes.add(node.raw?.trim?.());
-					} else if (node.value) {
-						addString(node.value);
-					}
-				}
-				if (node.type === 'TemplateLiteral') {
-					addString(node.quasis[0].value.raw?.trim?.());
-				}
-				if (node.type === 'Identifier' && node.name?.length > 3) {
-					addString(node.name, 'identifier');
-				}
-				if (node.type === 'CallExpression' && node.callee?.name && node.callee?.name.length > 3) {
-					callees.add(node.callee.name);
-				}
-				if (node.type === 'Property' && node.key?.name && node.key.name.length > 3) {
-					addString(node.key.name, 'property');
-				}
-				if (node.type === 'MemberExpression' && node.property?.name && node.property.name.length > 3) {
-					addString(node.property.name, 'property');
-				}
-				if (node.type === 'SwitchStatement') {
-					for (const switchCase of node.cases) {
-						if (switchCase.test) {
-							if (switchCase.test.type === 'Literal') {
-								addString(switchCase.test.value);
-							} else if (switchCase.test.type === 'MemberExpression') {
-								addString(switchCase.test.property.name);
-							}
-						}
-					}
-				}
-			});
-		} catch (err) {
-			console.error('Error parsing file for strings', file, err);
-		}
-	}
-	const stringsArray = [...strings].sort();
-	const stingsFile = path.resolve('../data/dashboard/strings.json');
-	await fs.writeFile(stingsFile, JSON.stringify(stringsArray, null, '\t'));
-
-	const filteredProperties = [...properties].filter(str => !stringsArray.includes(str)).sort();
-	const propertiesFile = path.resolve('../data/dashboard/properties.json');
-	await fs.writeFile(propertiesFile, JSON.stringify(filteredProperties.sort(), null, '\t'));
-
-	const identifiersFile = path.resolve('../data/dashboard/identifiers.json');
-	await fs.writeFile(identifiersFile, JSON.stringify([...identifiers].sort(), null, '\t'));
-
-	const regexesFile = path.resolve('../data/dashboard/regexes.json');
-	await fs.writeFile(regexesFile, JSON.stringify([...regexes].sort(), null, '\t'));
-
-	const calleesFile = path.resolve('../data/dashboard/callees.json');
-	await fs.writeFile(calleesFile, JSON.stringify([...callees].sort(), null, '\t'));
-}
-
-async function writeSubRoutes(files) {
-	const rootDir = await prepareWriteDir(files, 'dashboard-subroutes', true);
-	for (const file in files) {
-		try {
-			await writeFile(file + '.json', JSON.stringify([...files[file]].sort(), null, '\t'), rootDir);
-		} catch (err) {
-			console.error('Error writing file', file, err);
-		}
-	}
-}
-
-async function generateDashboardStructure(wantedChunks, write = false, translations) {
-	// parse each chunk to generate filesystem
-	// this is definitely not perfect and very loose, but it works for now
-
-	const files = {};
-	const getRemoteFiles = [];
-	const subRoutes = {};
 	const links = new Set();
-	const apiReqs = [];
 	const colos = new Set();
-	for (const chunk of wantedChunks) {
-		for (const match of chunk.code.matchAll(/["'](https?:\/\/[^"']*)["']/g)) {
-			if (match && match[1] && !match[1].includes('`')) {
-				try {
-					const url = new URL(match[1]);
-					url.pathname = url.pathname.replaceAll(/\/\/+/g, '/');
-					links.add(url.toString());
-				} catch {
-					//console.warn('Found a bad link', match[1]);
-				}
+	const apiReqs = [];
+	const translationsByNs = new Map(); // namespace -> { score, obj }
+	let buildInfo = null;
+
+	console.log('Analysing chunks...');
+	let processed = 0;
+	for (const [name, code] of chunks) {
+		if (++processed % 500 === 0) {
+			console.log(`Analysed ${processed}/${chunks.size}`);
+		}
+
+		// Syntax-highlighter TextMate grammars (cf-<lang> chunks) are ~2/3 of all
+		// chunks and pure vendor noise — skip them entirely.
+		if (code.includes('"scopeName"')) {
+			continue;
+		}
+
+		// links survive as string/template literals; match ' " and `
+		for (const match of code.matchAll(/["'`](https?:\/\/[^"'`]*)["'`]/g)) {
+			const raw = match[1];
+			// drop template fragments / placeholders (`${x}`, `$1`, `*`, `<`)
+			if (/[$*<>`{}]/.test(raw)) {
+				continue;
+			}
+			try {
+				const url = new URL(raw);
+				url.pathname = url.pathname.replaceAll(/\/{2,}/g, '/');
+				links.add(url.toString());
+			} catch {
+				// ignore malformed URLs
 			}
 		}
-		const ast = parse(chunk.code, {
-			sourceType: 'script',
-			ecmaVersion: 2025,
-		});
-		const recursiveImports = []; // sometimes things are imported recursively
-		// find webpack/rspack chunks
-		fullAncestor(ast, (node, ancestors) => {
-			// first find the webpack chunk assignment
-			// rspack uses webpackChunk_cloudflare_app_dash instead of webpackChunk
-			const propertyName = node?.callee?.object?.left?.property?.name;
-			if (
-				node.type === 'CallExpression' &&
-				node?.callee?.type === 'MemberExpression' &&
-				node?.callee?.object?.type === 'AssignmentExpression' &&
-				node?.callee?.object?.left?.type === 'MemberExpression' &&
-				node?.callee?.object?.left?.object?.type === 'Identifier' &&
-				node?.callee?.object?.left?.object?.name === 'self' &&
-				node?.callee?.object?.left?.property?.type === 'Identifier' &&
-				(propertyName === 'webpackChunk' || propertyName === 'webpackChunk_cloudflare_app_dash')
-			) {
-				// then get the files and their contents from the webpack chunk
-				const buildFiles = node?.arguments?.[0]?.elements?.[1]?.properties ?? [];
-				for (const buildFile of buildFiles) {
-					if (
-						(buildFile.type === 'ObjectProperty' || buildFile.type === 'Property') &&
-						(buildFile.key.type === 'StringLiteral' || buildFile.key.type === 'Literal') &&
-						buildFile.value.type === 'FunctionExpression' && buildFile.value.params?.length > 0
-					) {
-						const file = buildFile.key.value;
-						const code = chunk.code.slice(buildFile.value.start, buildFile.value.end);
-						if (file?.includes('recursive ')) {
-							recursiveImports.push({
-								code,
-								file,
-							});
-							continue;
-						}
-						// get static files like images
-						if (likelyFiles.test(file) && (buildFile.value?.body?.body?.[1]?.expression?.right || buildFile.value?.body?.body?.[0]?.expression?.right)) {
-							const fileData = buildFile.value?.body?.body?.[1]?.expression?.right || buildFile.value?.body?.body?.[0]?.expression?.right;
-							if (fileData.type === 'BinaryExpression') {
-								// something like this: `i.p + "e42997c2963d927d6ba5.png"`
-								// remote file, go get it
-								const remoteFile = buildFile.value?.body?.body?.[1]?.expression?.right?.right?.value || buildFile.value?.body?.body?.[0]?.expression?.right?.right?.value;
-								files[file] = ''; // add to list of files so it's still included in our manifest
-								getRemoteFiles.push(async function() {
-									let fileRes = null;
-									try {
-										fileRes = await fetch(`${staticDashURL}${remoteFile}`, { agent });
-									} catch {}
-									if (!fileRes?.ok) {
-										console.error('Failure fetching remote file', remoteFile);
-										return;
-									}
-									console.log('Fetched remote file', file, remoteFile);
-									const fileBuffer = await fileRes.arrayBuffer();
-									files[file] = Buffer.from(fileBuffer);
-								});
-							} else if (
-								(fileData.type === 'Literal' || fileData.type === 'StringLiteral') &&
-								fileData.value.startsWith('data:')
-							) {
-								// base64 encoded file, decode it
-								const fileBuffer = dataUriToBuffer(fileData.value);
-								if (fileBuffer) {
-									files[file] = fileBuffer.buffer;
-								}
-							} else {
-								// no match?
-								console.log('Unhandled file data', file, fileData);
-							}
-						// else handle code
-						} else if (files[file] && files[file].at(-1) !== code) {
-							files[file].push(code);
-						} else {
-							files[file] = [code];
-						}
 
-						// handle subroutes
-						if (
-							buildFile.value.body?.type === 'BlockStatement' &&
-							buildFile.value.body?.body?.length > 0
-						) {
-							// only care if this file includes the util-routes helper
-							let includesRoutesHelper = false;
-							for (const bodyItem of buildFile.value.body.body) {
-								if (
-									bodyItem.type === 'VariableDeclaration' &&
-									bodyItem.declarations?.length > 0
-								) {
-									for (const decl of bodyItem.declarations) {
-										if (decl?.init?.arguments?.[0]?.value?.includes?.(subRoutesSnippet) || decl?.init?.arguments?.[0]?.value?.includes?.(actionSnippet)) {
-											includesRoutesHelper = true;
-											break;
-										}
-									}
-									if (includesRoutesHelper) {
-										break;
-									}
-								}
-							}
-							if (!includesRoutesHelper) {
-								continue;
-							}
-							const getPartPage = function() {
-								const realPage = /react\/pages\/(.*)/.exec(file);
-								const commonAction = /react\/common\/actions\/(.*)/.exec(file);
-								let page = null;
-								if (realPage) {
-									page = realPage[1];
-								} else if (commonAction) {
-									page = '_common/' + commonAction[1];
-								} else if (file.includes('microfrontends/index.ts')) {
-									page = '_common/_index';
-								} else if (file.includes('../init.ts')) {
-									page = '_common/_init';
-								}
-								return page;
-							};
-							const parseSubroute = function(routeParts) {
-								const page = getPartPage();
-								if (!page) {
-									console.error('Could not determine page for subroutes', file);
-									return false;
-								}
-
-								// making some wild assumptions here, but good enough
-								subRoutes[page] ??= new Set();
-								let route = '';
-								for (const [index, routePart] of routeParts.entries()) {
-									if (routePart.endsWith('/')) {
-										route += `${routePart}[id]`;
-									} else if (routePart === '' && index !== 0) {
-										route += '/*';
-									} else {
-										route += routePart;
-									}
-								}
-								subRoutes[page].add(route);
-								return true;
-							};
-
-							for (const bodyItem of buildFile.value.body.body) {
-								// old definition
-								if (
-									bodyItem.type === 'FunctionDeclaration' &&
-									bodyItem.body?.body?.length === 2 &&
-									bodyItem.body.body[0]?.type === 'VariableDeclaration' &&
-									bodyItem.body.body[1]?.type === 'ReturnStatement' &&
-									bodyItem.body.body[1]?.argument?.type === 'SequenceExpression' &&
-									bodyItem.body.body[1]?.argument?.expressions?.length === 2 &&
-									bodyItem.body.body[0].declarations[0]?.type === 'VariableDeclarator' &&
-									bodyItem.body.body[0].declarations[0]?.init?.arguments?.length === 1 &&
-									bodyItem.body.body[0].declarations[0]?.init?.arguments?.[0]?.type === 'ArrayExpression' &&
-									bodyItem.body.body[0].declarations[0]?.init.arguments[0].elements?.every(ele => ele.type === 'Literal')
-								) {
-									const routeParts = bodyItem.body.body[0].declarations[0].init.arguments[0].elements.map(ele => ele.value);
-									const addSubroute = parseSubroute(routeParts);
-									if (!addSubroute) {
-										continue;
-									}
-								}
-
-								// new definition for subroutes
-								if (
-									bodyItem.type === 'VariableDeclaration'
-								) {
-									// loop over declarations
-									for (const decl of bodyItem.declarations) {
-										if (
-											decl.type === 'VariableDeclarator' &&
-											decl.init?.type === 'CallExpression' &&
-											decl.init?.callee?.type === 'SequenceExpression' &&
-											decl.init?.arguments?.length >= 1 &&
-											decl.init?.arguments?.[0]?.type === 'LogicalExpression' &&
-											decl.init?.arguments?.[0]?.right?.type === 'AssignmentExpression' &&
-											decl.init?.arguments?.[0]?.right?.right?.type === 'CallExpression' &&
-											decl.init?.arguments?.[0]?.right?.right?.arguments?.[0]?.elements?.every(ele => ele.type === 'Literal')
-										) {
-											const routeParts = decl.init.arguments[0].right.right.arguments[0].elements.map(ele => ele.value);
-											const addSubroute = parseSubroute(routeParts);
-											if (!addSubroute) {
-												continue;
-											}
-										}
-									}
-
-									// loop over declarations
-									for (const decl of bodyItem.declarations) {
-										if (
-											decl.type === 'VariableDeclarator' &&
-											decl.init?.type === 'ObjectExpression' &&
-											decl.init?.properties?.length > 0 &&
-											decl.init?.properties?.some(prop => prop?.key?.type === 'Identifier') &&
-											decl.init?.properties?.[0]?.value?.type === 'TaggedTemplateExpression' &&
-											decl.init?.properties?.[0]?.value?.tag?.type === 'SequenceExpression' &&
-											decl.init?.properties?.[0]?.value?.tag?.expressions?.length === 2
-
-										) {
-											const parsed = parseQuasiToRoute(decl.init.properties[0].value.quasi);
-											const page = getPartPage();
-											if (!page) {
-												console.error('Could not determine page for subroutes', file);
-												continue;
-											}
-											subRoutes[page] ??= new Set();
-											subRoutes[page].add(parsed);
-										}
-									}
-								}
-							}
-						}
-					}
-				}
+		// inline source-locale (English) translations chunk (cf-<ns>.translations.*)
+		const inlineMatch = inlineNs.exec(name);
+		if (inlineMatch) {
+			const obj = extractInlineTranslations(code, inlineMatch[1]);
+			if (obj) {
+				// authoritative English source — always win over locale-scored variants
+				translationsByNs.set(inlineMatch[1], { score: Infinity, obj });
 			}
-			// handle other generic API requests
+			continue;
+		}
+
+		// locale-catalog chunk (cf-<ns>.<hash>.js): pick the en-US variant by score
+		const namespace = namespaceFromChunk(name);
+		if (namespace) {
+			const translations = extractTranslations(code);
+			if (translations) {
+				const score = localeScore(translations);
+				const existing = translationsByNs.get(namespace);
+				// never override an authoritative inline (Infinity) source
+				if (!existing || (existing.score !== Infinity && score > existing.score)) {
+					translationsByNs.set(namespace, { score, obj: translations });
+				}
+				continue;
+			}
+		}
+
+		if (!buildInfo) {
+			buildInfo = extractBuildInfo(code);
+		}
+
+		let ast;
+		try {
+			ast = parse(code, { ecmaVersion: 'latest', sourceType: 'module' });
+		} catch {
+			continue;
+		}
+		full(ast, (node) => {
+			if (node.type === 'Literal' && node.regex && node.raw) {
+				regexes.add(node.raw.trim());
+			}
+
+			// API requests: object literals with a uri/url + method
 			if (
 				node.type === 'ObjectExpression' &&
 				node.properties?.length >= 3 &&
-				(node.properties?.some(prop => prop?.key?.name === 'uri') || node.properties?.some(prop => prop?.key?.name === 'url')) &&
-				node.properties?.some(prop => prop?.key?.name === 'method')
+				node.properties.some(prop => prop?.key?.name === 'uri' || prop?.key?.name === 'url') &&
+				node.properties.some(prop => prop?.key?.name === 'method')
 			) {
-				const apiReq = {
-					uri: null,
-					method: null,
-				};
+				const apiReq = { uri: null, method: null };
 				for (const property of node.properties) {
+					const value = staticString(property.value) ?? property.value?.value;
 					switch (property?.key?.name) {
-						case 'url': {
-							let url = property.value.value?.trim();
-							// fix old style urls
-							if (url?.includes?.('(zoneId)')) {
-								url = url.replace('(zoneId)', ':zone_identifier');
-							}
-							apiReq.uri = url;
-							break;
-						}
-						case 'uri': {
-							apiReq.uri = property.value.value?.trim();
+						case 'url': case 'uri': {
+							apiReq.uri = typeof value === 'string' ? value.trim() : value;
 							break;
 						}
 						case 'method': {
-							apiReq.method = property.value.value?.toUpperCase?.();
+							apiReq.method = typeof value === 'string' ? value.toUpperCase() : value;
 							break;
 						}
 						case 'name': {
-							apiReq.name = property.value.value?.trim();
+							apiReq.name = typeof value === 'string' ? value.trim() : value;
 							break;
 						}
-						case 'id': {
-							apiReq.id = property.value.value?.trim();
-							break;
-						}
-						case 'transKey': {
-							apiReq.id = property.value.value?.trim();
+						case 'id': case 'transKey': {
+							apiReq.id = typeof value === 'string' ? value.trim() : value;
 							break;
 						}
 					}
 				}
-				// try to find in ancestor
-				if (!apiReq.id && ancestors.at(-2)?.key?.value) {
-					apiReq.id = ancestors.at(-2)?.key?.value;
-				}
-
 				if (apiReq.uri && apiReq.method && (apiReq.id || apiReq.name)) {
 					apiReqs.push(apiReq);
 				}
 			}
 
-			// find colos
-			if (
-				node.type === 'ArrayExpression' &&
-				node.elements?.length >= 300 &&
-				node.elements?.every(ele => ele.type === 'ObjectExpression') &&
-				node.elements?.every(ele => ele.properties?.some(prop => prop?.key?.name === 'value')) &&
-				node.elements?.every(ele => ele.properties?.some(prop => prop?.key?.name === 'label')) &&
-				node.elements?.some(ele => ele.properties?.some(prop => prop?.value?.value === 'lhr01'))
-			) {
+			// colos: a large array of { value, label } where values are colo
+			// codes (e.g. `lhr01`). Values are template literals in Vite output.
+			if (node.type === 'ArrayExpression' && (node.elements?.length ?? 0) >= 100) {
+				const coloCode = /^[a-z]{3}\d{2}$/i;
+				const found = [];
 				for (const ele of node.elements) {
-					for (const prop of ele.properties) {
+					if (ele?.type !== 'ObjectExpression') {
+						continue;
+					}
+					let value = null;
+					let hasLabel = false;
+					for (const prop of ele.properties || []) {
 						if (prop?.key?.name === 'value') {
-							colos.add(prop.value.value);
+							value = staticString(prop.value);
+						} else if (prop?.key?.name === 'label') {
+							hasLabel = true;
 						}
 					}
+					if (hasLabel && value && coloCode.test(value)) {
+						found.push(value);
+					}
+				}
+				if (found.length >= 50) {
+					for (const value of found) {
+						colos.add(value);
+					}
 				}
 			}
 		});
-		// TODO: maybe do something with `recursiveImports`?
-		// We already have the files these reference, so they're probably not useful
-	}
-	if (write) {
-		while (getRemoteFiles.length > 0) {
-			// 10 at a time
-			await Promise.all(getRemoteFiles.splice(0, 10).map(func => func()));
-		}
-	}
-	await writeAssets(files, write);
-	await writeMeta(files, translations);
-	await writeSubRoutes(subRoutes);
-	const linksFile = path.resolve('../data/dashboard/links.json');
-	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
-
-	apiReqs.sort((reqA, reqB) => reqA.uri.localeCompare(reqB.uri));
-	const apiReqsFile = path.resolve('../data/dashboard/api-requests.json');
-	await fs.writeFile(apiReqsFile, JSON.stringify([...apiReqs].sort(), null, '\t'));
-
-	const colosFile = path.resolve('../data/dashboard/colos.json');
-	await fs.writeFile(colosFile, JSON.stringify([...colos].sort(), null, '\t'));
-
-	const tree = await writeFiles(files, write);
-	return tree;
-}
-
-async function run() {
-	console.log('Fetching main chunk...');
-	const chunkData = await getChunks();
-	if (!chunkData) {
-		console.error('Failed to get chunks!');
-		return;
-	}
-	const { chunks, bundlerVersion } = chunkData;
-
-	console.log('Fetching and analysing additional chunks...');
-	const wantedChunks = await findWantedChunks(chunks);
-	// Attach bundler version to wantedChunks for later use
-	if (wantedChunks) {
-		wantedChunks.bundlerVersion = bundlerVersion;
 	}
 
-	if (!wantedChunks || wantedChunks.dashboard === null) {
-		console.error('Failed to find main chunk!');
-		return;
-	}
-
-	await writeJS('dashboard.js', wantedChunks.dashboard.code);
-
-	// generate app structure
-	let writeAssets = true;
-	if (process.argv.includes('--no-write')) {
-		console.log('Not writing assets');
-		writeAssets = false;
-	}
-
-	// parse tranlsations
-	const translations = {};
-	const allTranslationKeys = [];
-	for (const translation of wantedChunks.translations) {
-		const json = /JSON\.parse\(['`](.*)['`]\)/.exec(translation.code);
-		if (json !== null) {
-			const parsed = JSON.parse(removeSlashes(json[1]));
-			const translationNameParse = /dash\/intl\/intl-translations\/src\/locale\/en-US\/(?<name>[\w-_]+)\.json"/.exec(translation.code);
-			if (!translationNameParse?.groups?.name) {
-				continue;
-			}
-			console.log('Found translation', translationNameParse.groups.name);
-			translations[translationNameParse.groups.name] = parsed;
-			allTranslationKeys.push(...Object.keys(parsed));
-		}
-	}
-	console.log('Writing translations...');
-	for (const [translationName, translation] of Object.entries(translations)) {
-		const file = path.resolve(`../data/dashboard-translations/${translationName}.json`);
-		await fs.ensureDir(path.dirname(file));
-		await fs.writeFile(file, JSON.stringify(translation, null, '\t'));
-	}
-
-	// genrate app structure
-	const tree = await generateDashboardStructure([
-		...wantedChunks.chunks,
-		wantedChunks.dashboard,
-	], writeAssets, allTranslationKeys);
-	const treeFile = path.resolve('../data/dashboard/files.json');
-	await fs.writeFile(treeFile, JSON.stringify(tree, null, '\t'));
-
-	// parse navigation
-	let navigation = null;
-	if (wantedChunks.navigation) {
-		const ast = parse(wantedChunks.navigation.code, {
-			sourceType: 'script',
-			ecmaVersion: 2025,
-		});
-		full(ast, (node) => {
-			if (node.type === 'ObjectExpression') {
-				const hasRoot = node.properties?.find?.(prop => prop.key.name === 'root');
-				// this is probably our navigation
-				if (hasRoot && hasRoot.value.type === 'ArrayExpression') {
-					navigation = node;
-				}
-			}
-		});
-		if (navigation) {
-			console.log('Found navigation');
-			const rawNavigation = wantedChunks.navigation.code.slice(navigation.start, navigation.end);
-			try {
-				const rawNavigationAST = parse(`const navigation = ${rawNavigation}`, {
-					sourceType: 'script',
-					ecmaVersion: 2025,
-				});
-				// clean up references to other vals
-				// this will lose a bit of data, but we'll still get most of it
-				full(rawNavigationAST, (node) => {
-					// hasPermission function checks contain a lot of references to other things
-					if (node.type === 'Property' && node.key.name === 'hasPermission') {
-						node.value = {
-							type: 'Literal',
-							value: null,
-						};
-					}
-
-					// tabs reference external things
-					if (
-						(node.type === 'Property' && node.key.name === 'tabs')
-						&& (node.value.type === 'CallExpression' || node.value.type === 'MemberExpression' || node.value.type === 'Identifier')
-					) {
-						node.value = {
-							type: 'ArrayExpression',
-							elements: [],
-						};
-					}
-
-					// "support" and maybe other things reference external things
-					if (
-						node.type === 'Property'
-						&& node.key.type === 'Identifier'
-						&& node.value.type === 'MemberExpression'
-						&& node.value.object.type === 'Identifier'
-						&& node.value.property.type === 'Identifier'
-					) {
-						node.value = {
-							type: 'Literal',
-							value: null,
-						};
-					}
-				});
-				const generated = generate(rawNavigationAST, {
-					indent: '\t',
-				});
-				const file = path.resolve('../data/dashboard/navigation.json');
-				fs.ensureDir(path.dirname(file));
-				// eslint-disable-next-line no-eval
-				const navOutput = eval(`(function run(){${generated}; return navigation;})()`);
-				// write serialised version
-				await fs.writeFile(file, JSON.stringify(navOutput, null, '\t'));
-			} catch (err) {
-				console.error('Error getting nav', err);
-			}
-			// write raw JS version
-			await writeJS('navigation.js', 'const navigation = ' + rawNavigation);
+	// --- write translations (non-destructive: overwrite/add per namespace) ----
+	// Only emit namespaces where a genuinely English (en-US) variant was found.
+	// Some namespaces ship no en-US chunk (the source strings are inlined into
+	// component code) — for those every variant scores <= 0, so we skip them
+	// rather than write a wrong-language fallback.
+	const englishNamespaces = [...translationsByNs].filter(([, value]) => value.score > 0);
+	if (englishNamespaces.length < 10) {
+		console.warn(`Only found ${englishNamespaces.length} en-US translation namespaces; skipping translation write`);
+	} else {
+		console.log(`Writing ${englishNamespaces.length} en-US translation namespaces (skipped ${translationsByNs.size - englishNamespaces.length} non-en-US-only)`);
+		for (const [namespace, { obj }] of englishNamespaces) {
+			await fs.writeFile(path.join(translationsDir, `${namespace}.json`), JSON.stringify(obj, null, '\t'));
 		}
 	}
 
-	// parse main dash version, etc.
-	let dashInfo = null;
-	const ast = parse(wantedChunks.dashboard.code, {
-		sourceType: 'script',
-		ecmaVersion: 2025,
-	});
-	full(ast, (node) => {
-		if (node.type === 'ObjectExpression') {
-			const hasDashVersion = node.properties?.find?.(prop => prop.key.name === 'dashVersion');
-			// this is probably the dash info payload
-			if (hasDashVersion && (hasDashVersion.value.type === 'Literal' || hasDashVersion.value.type === 'StringLiteral')) {
-				dashInfo = node;
-			}
-		}
-	});
-	if (dashInfo) {
-		console.log('Found dashboard info');
-		const rawDashInfo = wantedChunks.dashboard.code.slice(dashInfo.start, dashInfo.end);
-		// eslint-disable-next-line no-eval
-		const realDashInfo = eval('(function run(){return ' + rawDashInfo + '})()');
+	// --- write metadata -------------------------------------------------------
+	const writeJson = (file, data) => fs.writeFile(path.join(dashboardDir, file), JSON.stringify(data, null, '\t'));
+	await writeJson('regexes.json', [...regexes].sort());
+	await writeJson('links.json', [...links].sort());
+	apiReqs.sort((reqA, reqB) => String(reqA.uri).localeCompare(String(reqB.uri)));
+	await writeJson('api-requests.json', apiReqs);
+	await writeJson('colos.json', [...colos].sort());
 
-		// Add bundler version if available (e.g., rspack@1.5.8)
-		if (wantedChunks.bundlerVersion) {
-			realDashInfo.bundler = wantedChunks.bundlerVersion;
-		}
-
-		// write serialised version
-		const file = path.resolve('../data/dashboard/info.json');
-		fs.ensureDir(path.dirname(file));
-		await fs.writeFile(file, JSON.stringify(realDashInfo, null, '\t'));
-
-		// prepend to list of all dash versions
-		if (!allVersions.some(existingVersion => existingVersion.dashVersion === realDashInfo.dashVersion)) {
+	// --- write build info + versions history ----------------------------------
+	if (buildInfo?.dashVersion) {
+		await writeJson('info.json', buildInfo);
+		const versionsFile = path.join(dashboardDir, 'versions.json');
+		const allVersions = await fs.readJson(versionsFile).catch(() => []);
+		if (!allVersions.some(version => version.dashVersion === buildInfo.dashVersion)) {
 			allVersions.unshift({
-				dashVersion: realDashInfo.dashVersion,
-				branch: realDashInfo.branch,
-				env: realDashInfo.env,
-				date: new Date(realDashInfo.builtAt).toISOString(),
+				dashVersion: buildInfo.dashVersion,
+				branch: buildInfo.branch,
+				env: buildInfo.env,
+				date: new Date(buildInfo.builtAt).toISOString(),
 			});
+			await fs.writeFile(versionsFile, JSON.stringify(allVersions, null, '\t'));
 		}
-		await fs.writeFile(path.resolve('../data/dashboard/versions.json'), JSON.stringify(allVersions, null, '\t'));
+		console.log(`Build: dashVersion=${buildInfo.dashVersion} node=${buildInfo.versions?.node} bundler=${buildInfo.bundler}`);
+	} else {
+		console.warn('globalThis.build not found in any chunk');
 	}
-
-	// get bootstrap
-	// const bootstrap = await fetch("https://dash.cloudflare.com/api/v4/system/bootstrap", {
-	// 	headers: {
-	// 		"x-cross-site-security": "dash",
-	// 		"Referer": "https://dash.cloudflare.com/",
-	// 	},
-	// 	body: null,
-	// 	method: "GET",
-	// });
-	// if(bootstrap.status === 200){
-	// 	const json = await bootstrap.json();
-	// 	if(json.success && json?.result?.data?.sdh){
-	// 		console.log('Writing sso domains');
-	// 		const ssoDomains = json.result.data.sdh.map(hash => hash.slice(-20)).sort();
-	// 		await fs.writeFile(path.resolve('../data/dashboard/sso-domains.json'), JSON.stringify(ssoDomains, null, '\t'));
-	// 	}
-	// }
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
 		[
-			'data/dashboard-translations/*',
-			'data/dashboard-subroutes/**/*',
-			'data/dashboard-subroutes/**/*.json',
-			'data/dashboard-subroutes/**/*.ts.json',
+			'data/dashboard-translations/*.json',
 			'data/dashboard/*.json',
-			'data/dashboard/*.js',
 		],
 		`${prefix} - Dashboard Data was updated!`,
 		'CFData - Dashboard Update',
