@@ -57,5 +57,6 @@
 	"UserAgent": "string; Contents of the user agent header in the HTTP request.",
 	"UserID": "string; User identity where the HTTP request originated from.",
 	"VirtualNetworkID": "string; The identifier of the virtual network the device was connected to, if any.",
-	"VirtualNetworkName": "string; The name of the virtual network the device was connected to, if any."
+	"VirtualNetworkName": "string; The name of the virtual network the device was connected to, if any.",
+	"Warnings": "array[string]; Warnings generated during request processing."
 }
