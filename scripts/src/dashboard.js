@@ -210,7 +210,7 @@ function extractInlineTranslations(code, namespace) {
 
 // --- globalThis.build ---------------------------------------------------------
 function extractBuildInfo(code) {
-	if (!code.includes('dashVersion') || !code.includes('builtAt') || !code.includes('bundler')) {
+	if (!code.includes('dashVersion') || !code.includes('builtAt')) {
 		return null;
 	}
 	let ast;
@@ -220,19 +220,26 @@ function extractBuildInfo(code) {
 		return null;
 	}
 	let build = null;
+	// Match by object shape (an object literal carrying both dashVersion and
+	// builtAt) rather than a specific assignment, so it's robust to how the
+	// bundle emits it.
 	full(ast, (node) => {
-		if (build || node.type !== 'AssignmentExpression') {
+		if (build || node.type !== 'ObjectExpression') {
 			return;
 		}
-		const left = node.left;
-		if (
-			left.type === 'MemberExpression' && !left.computed &&
-			left.object.type === 'Identifier' &&
-			(left.object.name === 'globalThis' || left.object.name === 'window') &&
-			left.property.type === 'Identifier' && left.property.name === 'build' &&
-			node.right.type === 'ObjectExpression'
-		) {
-			build = staticEval(node.right);
+		const keys = new Set();
+		for (const prop of node.properties) {
+			if (prop.type !== 'Property' || prop.computed) {
+				continue;
+			}
+			if (prop.key.type === 'Identifier') {
+				keys.add(prop.key.name);
+			} else if (prop.key.type === 'Literal') {
+				keys.add(String(prop.key.value));
+			}
+		}
+		if (keys.has('dashVersion') && keys.has('builtAt')) {
+			build = staticEval(node);
 		}
 	});
 	return build;
