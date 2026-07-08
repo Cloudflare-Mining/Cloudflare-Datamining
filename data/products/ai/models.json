@@ -1949,6 +1949,40 @@
 		]
 	},
 	{
+		"id": "1161560b-87f9-4795-afb3-a905cf21bcf8",
+		"source": 1,
+		"name": "@cf/moondream/moondream3.1-9B-A2B",
+		"description": "Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B active parameters) that delivers frontier-level visual reasoning for tasks like object detection, pointing, OCR, and structured output.",
+		"task": {
+			"id": "882a91d1-c331-4eec-bdad-834c919942a8",
+			"name": "Image-to-Text",
+			"description": "Image to text models output a text from a given image. Image captioning or optical character recognition can be considered as the most common applications of image to text."
+		},
+		"created_at": "2026-07-07 14:39:02.726",
+		"tags": [],
+		"properties": [
+			{
+				"property_id": "price",
+				"value": [
+					{
+						"unit": "per M input tokens",
+						"price": 0.3,
+						"currency": "USD"
+					},
+					{
+						"unit": "per M output tokens",
+						"price": 1,
+						"currency": "USD"
+					}
+				]
+			},
+			{
+				"property_id": "vision",
+				"value": "true"
+			}
+		]
+	},
+	{
 		"id": "0e372c11-8720-46c9-a02d-666188a22dae",
 		"source": 1,
 		"name": "@cf/leonardo/lucid-origin",
