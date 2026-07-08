@@ -473,9 +473,6 @@
 	"billing-unified-checkout-zaraz": {
 		"enabled": true
 	},
-	"billing-unified-checkout-zero-trust": {
-		"enabled": true
-	},
 	"billing-unified-checkout-zone-plan": {
 		"enabled": true
 	},
@@ -3103,6 +3100,9 @@
 		"enabled": true
 	},
 	"workers-metrics-configurable-dashboard": {
+		"enabled": false
+	},
+	"workers-metrics-dashboard-experiment": {
 		"enabled": false
 	},
 	"workers-observability": {
