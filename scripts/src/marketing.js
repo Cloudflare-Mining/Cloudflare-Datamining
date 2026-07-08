@@ -64,12 +64,13 @@ const cookieHeader = function(bmCookie) {
 	return bmCookie ? `${bmCookie.name}=${bmCookie.value}` : undefined;
 };
 
-const get = function(url, bmCookie) {
+const get = function(url, bmCookie, accept) {
 	return fetch(url, {
 		agent,
 		headers: {
 			'user-agent': userAgent,
 			'cookie': cookieHeader(bmCookie),
+			...(accept ? { accept } : {}),
 		},
 	});
 };
@@ -92,24 +93,52 @@ const mdUrlFor = function(urlPath) {
 	return urlPath === 'index' ? `${origin}/index.md` : `${origin}/${urlPath}.md`;
 };
 
+const pageUrlFor = function(urlPath) {
+	return urlPath === 'index' ? `${origin}/` : `${origin}/${urlPath}`;
+};
+
+const writePage = async function(url, filePath, text) {
+	try {
+		await fs.outputFile(filePath, stabiliseText(text));
+		return true;
+	} catch (err) {
+		console.warn('Ignoring', url, err.message);
+		return false;
+	}
+};
+
+// Not every page ships a static `.md` twin, but the HTML route content-
+// negotiates one; keep it only if the server actually served markdown rather
+// than falling back to HTML.
+const tryMarkdownNegotiation = async function(urlPath, filePath, bmCookie) {
+	const url = pageUrlFor(urlPath);
+	const res = await get(url, bmCookie, 'text/markdown');
+	if (!res.ok) {
+		return false;
+	}
+	if (!(res.headers.get('content-type') ?? '').includes('text/markdown')) {
+		return false;
+	}
+	return writePage(url, filePath, await res.text());
+};
+
 const processPage = async function(urlPath, bmCookie) {
 	const url = mdUrlFor(urlPath);
 	const filePath = path.resolve(pagesDir, `${urlPath}.md`);
 	const res = await get(url, bmCookie);
 	if (!res.ok) {
 		console.log('Failed', url, res.status);
-		// A 404 means the page was removed; drop the stale copy.
 		if (res.status === 404) {
-			await fs.remove(filePath).catch(() => {});
+			// The `.md` twin is gone, but the page itself may still negotiate
+			// markdown; only drop the stale copy if that also fails.
+			const negotiated = await tryMarkdownNegotiation(urlPath, filePath, bmCookie);
+			if (!negotiated) {
+				await fs.remove(filePath).catch(() => {});
+			}
 		}
 		return;
 	}
-	const text = await res.text();
-	try {
-		await fs.outputFile(filePath, stabiliseText(text));
-	} catch (err) {
-		console.warn('Ignoring', url, err.message);
-	}
+	await writePage(url, filePath, await res.text());
 };
 
 const processCatalog = async function(entry, bmCookie) {
