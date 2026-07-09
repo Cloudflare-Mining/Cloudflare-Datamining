@@ -49,11 +49,7 @@ npm install @cloudflare/react-native-webrtc @react-native-documents/picker react
 Install these **required** dependencies as per your ```react-native``` version
 
 - ```react-native-safe-area-context```
-  - **react-native (0.64 - 0.74)** : 
-    ```bash
-    npm install react-native-safe-area-context@^4.0.0
-    ```
-  - **react-native (>= 0.74)** : 
+  - **react-native (>= 0.74 / 0.84.1+ recommended)** :
     ```bash
     npm install react-native-safe-area-context@^5.0.0
     ```
