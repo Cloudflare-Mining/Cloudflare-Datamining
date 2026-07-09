@@ -74,7 +74,7 @@
 	<li>Managing or configuring non-HTTP services: email, DNS authoritative/recursive, FTP, SSH.</li>
 </ul>
 <h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
-<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between&nbsp;€ 50,000 - 68,000</p>
+<p data-path-to-node="1">● For Portugal based hires: Estimated annual salary is between € 61,000 - 84,000</p>
 <ul data-path-to-node="2">
 	<li>
 		<p data-path-to-node="2,0,0">The final offer will be inclusive of time exemption, in alignment with the applicable law and collective bargaining agreements.</p>

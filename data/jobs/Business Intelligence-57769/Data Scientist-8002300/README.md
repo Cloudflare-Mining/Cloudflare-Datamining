@@ -26,12 +26,12 @@
 <h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
 	<li>Bachelors or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields.</li>
-	<li>3+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams) </li>
+	<li>4-9 years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)</li>
 	<li>Strong experience working with business functions such as Finance, Sales, and Marketing to build models and drive impactful business outcomes (eg: customer and revenue growth)</li>
 	<li>3+ years experience with a fast-growing SaaS business based company is preferred.</li>
 	<li>Strong experience in scientific computing using Python.</li>
 	<li>Experience with Spark, SQL, Tableau, Google Analytics, BigQuery (or any other Big data/Cloud equivalent) etc.</li>
-	<li>Experience working with and processing structured, unstructured, and semi-structured data.&nbsp; </li>
+	<li>Experience working with and processing structured, unstructured, and semi-structured data.&nbsp;</li>
 	<li>Strong cross-functional collaboration experience with data engineering and data analysts teams within the function.</li>
 	<li>Proven track record of applying data insights and machine learning in order to address business needs and drive revenue.</li>
 	<li>Proficiency in large language models and the frameworks (Langchain, Langgraph, etc.) necessary for implementing GenAI applications, such as AI Agents, chatbots and related use cases.</li>
