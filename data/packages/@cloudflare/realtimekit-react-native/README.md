@@ -74,7 +74,7 @@ export default function App() {
       });
     };
     init();
-    if (meeting) meeting.joinRoom();
+    if (meeting) meeting.join();
   }, []);
 
   if (meeting)
@@ -90,7 +90,7 @@ export default function App() {
 The `meeting` object is used for all interaction with Cloudflare's servers. For example, the following code snippet is used for a user to join a room.
 
 ```ts
-await meeting.joinRoom();
+await meeting.join();
 ```
 
 _For more examples, please refer to the [Documentation](https://docs.realtime.cloudflare.com/rn-core)._
