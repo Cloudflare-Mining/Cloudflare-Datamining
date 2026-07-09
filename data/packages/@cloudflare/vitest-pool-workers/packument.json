@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/vitest-pool-workers",
 	"dist-tags": {
-		"latest": "0.18.3"
+		"latest": "0.18.4"
 	},
 	"versions": {
 		"0.1.0": {
@@ -14879,11 +14879,70 @@
 			"name": "@cloudflare/vitest-pool-workers",
 			"version": "0.18.3",
 			"dependencies": {
+				"zod": "3.25.76",
+				"esbuild": "0.28.1",
+				"wrangler": "4.109.0",
+				"miniflare": "4.20260708.0",
+				"cjs-module-lexer": "1.2.3"
+			},
+			"devDependencies": {
+				"birpc": "0.2.14",
+				"semver": "^7.7.1",
+				"tsdown": "0.16.3",
+				"undici": "7.28.0",
+				"vitest": "4.1.0",
+				"devalue": "^5.6.3",
+				"capnp-es": "0.0.14",
+				"get-port": "^7.1.0",
+				"tree-kill": "1.2.2",
+				"ts-dedent": "^2.2.0",
+				"typescript": "5.8.3",
+				"@types/node": "22.15.17",
+				"jscodeshift": "^17.3.0",
+				"@types/semver": "^7.5.1",
+				"@vitest/runner": "4.1.0",
+				"@vitest/snapshot": "4.1.0",
+				"@types/jscodeshift": "^17.3.0",
+				"@cloudflare/workers-types": "^5.20260708.1",
+				"@cloudflare/workers-utils": "0.25.1",
+				"@cloudflare/workers-tsconfig": "0.0.0",
+				"@cloudflare/workflows-shared": "0.12.0",
+				"@cloudflare/mock-npm-registry": "0.0.0"
+			},
+			"peerDependencies": {
+				"vitest": "^4.1.0",
+				"@vitest/runner": "^4.1.0",
+				"@vitest/snapshot": "^4.1.0"
+			},
+			"dist": {
+				"shasum": "62c70e4cc5a2cc07af0f4e7d28796bea2c2e40d0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.18.3.tgz",
+				"fileCount": 19,
+				"integrity": "sha512-1Yo4mI7dS9cK0kHfrCRRnDtKH71TfTjQm1VwxndA2vvFUV79UjHsrwQbpY2D6PQCPEYHgWYw4kjOxtt1S9Y19A==",
+				"signatures": [
+					{
+						"sig": "MEUCIE6DxddH+whtE/doVV9jS861XIpCb9FPkUId6kiH0srUAiEAoq3YXcFh6yPsvgWwQZPGi7FMwSpiPnthdnWjOWOtEPw=",
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+					}
+				],
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.18.3",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"unpackedSize": 689868
+			}
+		},
+		"0.18.4": {
+			"name": "@cloudflare/vitest-pool-workers",
+			"version": "0.18.4",
+			"dependencies": {
 				"cjs-module-lexer": "1.2.3",
 				"esbuild": "0.28.1",
 				"zod": "3.25.76",
-				"miniflare": "4.20260708.0",
-				"wrangler": "4.109.0"
+				"miniflare": "4.20260708.1",
+				"wrangler": "4.110.0"
 			},
 			"devDependencies": {
 				"@cloudflare/workers-types": "^5.20260708.1",
@@ -14906,7 +14965,7 @@
 				"vitest": "4.1.0",
 				"@cloudflare/mock-npm-registry": "0.0.0",
 				"@cloudflare/workers-tsconfig": "0.0.0",
-				"@cloudflare/workers-utils": "0.25.1",
+				"@cloudflare/workers-utils": "0.26.0",
 				"@cloudflare/workflows-shared": "0.12.0"
 			},
 			"peerDependencies": {
@@ -14915,13 +14974,13 @@
 				"vitest": "^4.1.0"
 			},
 			"dist": {
-				"integrity": "sha512-1Yo4mI7dS9cK0kHfrCRRnDtKH71TfTjQm1VwxndA2vvFUV79UjHsrwQbpY2D6PQCPEYHgWYw4kjOxtt1S9Y19A==",
-				"shasum": "62c70e4cc5a2cc07af0f4e7d28796bea2c2e40d0",
-				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.18.3.tgz",
+				"integrity": "sha512-jOXvyLoR2b8jFvo3tX+mWxXXwcZ+PbId3d7vGFtZsuKakmDjKSeIq4o/sQjkqNv6q3XacIKSCAvfM8TfkPyrEw==",
+				"shasum": "1fa769db9980cd83cc43f14de3b5d69e5c52fe18",
+				"tarball": "https://registry.npmjs.org/@cloudflare/vitest-pool-workers/-/vitest-pool-workers-0.18.4.tgz",
 				"fileCount": 19,
 				"unpackedSize": 689868,
 				"attestations": {
-					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.18.3",
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-pool-workers@0.18.4",
 					"provenance": {
 						"predicateType": "https://slsa.dev/provenance/v1"
 					}
@@ -14929,7 +14988,7 @@
 				"signatures": [
 					{
 						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
-						"sig": "MEUCIE6DxddH+whtE/doVV9jS861XIpCb9FPkUId6kiH0srUAiEAoq3YXcFh6yPsvgWwQZPGi7FMwSpiPnthdnWjOWOtEPw="
+						"sig": "MEQCIEXQ43M6gs/BrkZK5ITpW4acpetRDeJ+oLNJPsNh/t+4AiACsiAryNi5zANC6izTAhRlPdw3SLSJuirowNYhAujo9Q=="
 					}
 				]
 			}
