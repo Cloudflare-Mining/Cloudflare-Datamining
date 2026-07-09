@@ -1,0 +1,78 @@
+{
+	"type": "object",
+	"properties": {
+		"task": {
+			"type": "string",
+			"enum": [
+				"query",
+				"caption",
+				"point",
+				"detect"
+			],
+			"default": "query",
+			"description": "Which Moondream skill to run."
+		},
+		"image": {
+			"type": "string",
+			"description": "Input image as a public HTTPS URL or base64 data URI. Optional for `query`; required for `caption`, `point`, and `detect`."
+		},
+		"question": {
+			"type": "string",
+			"default": "What's in this image?",
+			"description": "Question for the `query` task."
+		},
+		"caption_length": {
+			"type": "string",
+			"enum": [
+				"short",
+				"normal",
+				"long"
+			],
+			"default": "normal",
+			"description": "Caption length for the `caption` task."
+		},
+		"target": {
+			"type": "string",
+			"default": "person",
+			"description": "Object phrase to locate for `point` and `detect` tasks (e.g. 'person wearing a red shirt')."
+		},
+		"reasoning": {
+			"type": "boolean",
+			"default": true,
+			"description": "Enable reasoning trace for the `query` task."
+		},
+		"temperature": {
+			"type": "number",
+			"minimum": 0,
+			"maximum": 2,
+			"default": 0.2,
+			"description": "Sampling temperature."
+		},
+		"top_p": {
+			"type": "number",
+			"minimum": 0,
+			"maximum": 1,
+			"default": 0.9,
+			"description": "Top-p (nucleus) sampling."
+		},
+		"max_tokens": {
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 28672,
+			"default": 8192,
+			"description": "Max tokens to generate for `query` and `caption`."
+		},
+		"max_objects": {
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 500,
+			"default": 150,
+			"description": "Max objects to return for `point` and `detect`."
+		},
+		"stream": {
+			"type": "boolean",
+			"default": true,
+			"description": "Return incremental tokens for `query` and `caption`. `point` and `detect` do not support streaming."
+		}
+	}
+}

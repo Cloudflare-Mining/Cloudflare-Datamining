@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-07-08T04:33:50.336Z",
-	"model_count": 197,
+	"generated_at": "2026-07-09T04:34:11.517Z",
+	"model_count": 200,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -1216,6 +1216,89 @@
 			"terms": null,
 			"cover_image_url": null,
 			"created_at": "2026-06-08 18:17:18"
+		},
+		{
+			"model_id": "elevenlabs/eleven-flash-v2-5",
+			"slug": "elevenlabs/eleven-flash-v2-5",
+			"display_name": "Eleven Flash v2.5",
+			"description": "ElevenLabs' low-latency Flash v2.5 text-to-speech model for fast multilingual speech generation.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Speech",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Speech",
+				"Audio Generation",
+				"Low Latency",
+				"Multilingual"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://elevenlabs.io/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert"
+				}
+			],
+			"metadata": {
+				"Latency": "Optimized for fast generation",
+				"Output Formats": "MP3, WAV, PCM, Opus, u-law, A-law",
+				"Voices": "Supports ElevenLabs voice IDs"
+			},
+			"external_info": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
+			"terms": "https://elevenlabs.io/terms",
+			"cover_image_url": null,
+			"created_at": "2026-07-09 02:31:08"
+		},
+		{
+			"model_id": "elevenlabs/eleven-turbo-v2-5",
+			"slug": "elevenlabs/eleven-turbo-v2-5",
+			"display_name": "Eleven Turbo v2.5",
+			"description": "ElevenLabs' Turbo v2.5 text-to-speech model balancing high-quality voice generation with low latency across 32 languages.",
+			"task": {
+				"id": "",
+				"name": "Text-to-Speech",
+				"description": ""
+			},
+			"tags": [
+				"Text-to-Speech",
+				"Audio Generation",
+				"Low Latency",
+				"Multilingual"
+			],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "terms",
+					"value": "https://elevenlabs.io/terms"
+				},
+				{
+					"property_id": "info",
+					"value": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert"
+				}
+			],
+			"metadata": {
+				"Languages": "32",
+				"Latency": "Low (~250-300ms)",
+				"Output Formats": "MP3, WAV, PCM, Opus, u-law, A-law",
+				"Voices": "Supports ElevenLabs voice IDs"
+			},
+			"external_info": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
+			"terms": "https://elevenlabs.io/terms",
+			"cover_image_url": null,
+			"created_at": "2026-07-09 02:32:45"
 		},
 		{
 			"model_id": "google/gemini-2.5-flash-lite",
@@ -8622,6 +8705,59 @@
 			"terms": null,
 			"cover_image_url": null,
 			"created_at": "2025-02-14 12:28:19.009"
+		},
+		{
+			"model_id": "@cf/moondream/moondream3.1-9B-A2B",
+			"slug": "cf/moondream/moondream3.1-9B-A2B",
+			"display_name": "moondream3.1-9B-A2B",
+			"description": "Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B active parameters) that delivers frontier-level visual reasoning for tasks like object detection, pointing, OCR, and structured output.",
+			"task": {
+				"id": "882a91d1-c331-4eec-bdad-834c919942a8",
+				"name": "Image-to-Text",
+				"description": "Image to text models output a text from a given image. Image captioning or optical character recognition can be considered as the most common applications of image to text."
+			},
+			"tags": [],
+			"context_length": null,
+			"max_output_tokens": null,
+			"supports_async": false,
+			"hosting": "hosted",
+			"data_source": "legacy",
+			"properties": [
+				{
+					"property_id": "price",
+					"value": [
+						{
+							"unit": "per M input tokens",
+							"price": 0.3,
+							"currency": "USD"
+						},
+						{
+							"unit": "per M output tokens",
+							"price": 1,
+							"currency": "USD"
+						}
+					]
+				},
+				{
+					"property_id": "terms",
+					"value": "https://moondream.ai/licenses/model/1.0"
+				},
+				{
+					"property_id": "vision",
+					"value": "true"
+				}
+			],
+			"metadata": {
+				"beta": false,
+				"lora": false,
+				"function_calling": false,
+				"partner": false,
+				"realtime": false
+			},
+			"external_info": null,
+			"terms": "https://moondream.ai/licenses/model/1.0",
+			"cover_image_url": null,
+			"created_at": "2026-07-07 14:39:02.726"
 		},
 		{
 			"model_id": "@hf/google/gemma-7b-it",
