@@ -4,21 +4,34 @@ title: The Cloudflare Blog
 image: https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5x04dbbOIp3eiugWSYPeUo/839720d141b384ea4478dd29706ed289/meta_image.png
 ---
 
+[Why we cannot wait for better post-quantum signature algorithms](https://blog.cloudflare.com/ml-dsa-will-have-to-do/)
+
+2026-07-09
+
+NIST is advancing nine new post-quantum signature algorithms as potential candidates for future standardization. We take a closer look at all of them, and argue that while they are in the works and show great potential, we should use ML-DSA for now — the best one currently available. ...
+
+[Continue reading »](https://blog.cloudflare.com/ml-dsa-will-have-to-do/)
+* [![Bas Westerbaan](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KeBG8XO1ADZHuEV9v5Hwz/6c90a96cfb1373b208bffc35f3fd71f4/bas.png)](https://blog.cloudflare.com/author/bas/)  
+[Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
+* [![Christopher Patton](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sRmXhNpfDUovdIUpP9Keq/8dfd4dfc04f8f6d45b0a69121edfa0e2/christopher-patton.jpg)](https://blog.cloudflare.com/author/christopher-patton/)  
+[Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/)
+
+![Why we cannot wait for better post-quantum signature algorithms](https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fBIVdM2UuoFVQRd9xvTrG/e743b553524f84488246d1645dfde433/image1.png)
+
 [Introducing Meerkat: an experiment in global consensus](https://blog.cloudflare.com/meerkat-introduction/)
 
 2026-07-08
 
+[Research](https://blog.cloudflare.com/tag/research/)[Network](https://blog.cloudflare.com/tag/network/)[Database](https://blog.cloudflare.com/tag/database/)[Distributed Systems](https://blog.cloudflare.com/tag/distributed-systems/)[Meerkat](https://blog.cloudflare.com/tag/meerkat/)
+
 Cloudflare Research is building a global consensus service called Meerkat that uses a new consensus algorithm called QuePaxa. We plan to use Meerkat to build a strongly consistent, fault-tolerant key-value store, and other applications....
 
-[Continue reading »](https://blog.cloudflare.com/meerkat-introduction/)
 * [![James Larisch](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CYzjboSN2jX2JkZpzkAN0/837e9a57e77efd26c440e2b216323f0f/unnamed.jpg)](https://blog.cloudflare.com/author/james-larisch/)  
 [James Larisch](https://blog.cloudflare.com/author/james-larisch/)
 * [![Bob Halley](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2n4gYm8aVnBqHwTSP3BGq3/74bbc91727393b0e50a7aee003916e9b/Bob_Halley_.jpg)](https://blog.cloudflare.com/author/bob-halley/)  
 [Bob Halley](https://blog.cloudflare.com/author/bob-halley/)
 * [![João Pedro Leite](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nwbH50VfB6OUFgvJVD7yh/2f2381275ac2ff032dc6f1da1c52961b/cf8c8c1a-42dc-4dd6-8225-21723b1966bd.webp)](https://blog.cloudflare.com/author/joao-pedro-leite/)  
 [João Pedro Leite](https://blog.cloudflare.com/author/joao-pedro-leite/)
-
-![Introducing Meerkat: an experiment in global consensus](https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LOCTGkyM5ZFw05P2Os2Y8/a0d1dcceee291080f7de4a19c79d27c8/image1.png)
 
 [Cloudflare proudly joins the UK government's Cyber Resilience Pledge](https://blog.cloudflare.com/cloudflare-joins-uk-cyber-resilience-pledge/)
 
@@ -267,17 +280,6 @@ Cloudflare is deepening our investment in AI with the addition of team members f
 [Zach Albertson](https://blog.cloudflare.com/author/zach-albertson/)
 * [![Michelle Chen](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hrcl3aVtUbBuCMeuXETWy/93dbfbc7d41c09ba35d863312dbde89d/michelle.jpg)](https://blog.cloudflare.com/author/michelle/)  
 [Michelle Chen](https://blog.cloudflare.com/author/michelle/)
-
-[Scaling Security Insights: how we achieved a 10x increase in global scanning capacity](https://blog.cloudflare.com/scaling-security-scans/)
-
-2026-06-12
-
-[Application Security](https://blog.cloudflare.com/tag/application-security/)[Security Posture Management](https://blog.cloudflare.com/tag/security-posture-management/)[Engineering](https://blog.cloudflare.com/tag/engineering/)[Postgres](https://blog.cloudflare.com/tag/postgres/)[Kafka](https://blog.cloudflare.com/tag/kafka/)
-
-Cloudflare Security Insights system now processes over 120 scans per second, providing frequent insights for all customers. By optimizing Kafka consumers, Postgres queries, and our API, we scaled our throughput 10x without adding hardware....
-
-* [![Dave Baxter](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47SPUZ0TBAoySIlzGM9DSP/430fa22602f08d412aec8bbc29b39bb1/Dave_Baxter_.webp)](https://blog.cloudflare.com/author/dave-baxter/)  
-[Dave Baxter](https://blog.cloudflare.com/author/dave-baxter/)
 
 * [1](https://blog.cloudflare.com/)
 * [2](https://blog.cloudflare.com/page/2/)
