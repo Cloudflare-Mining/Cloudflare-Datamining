@@ -1,12 +1,12 @@
 ---
 title: "Cloudflare AI Search - Automatic RAG infrastructure and querying"
-description: "Connect your data and deliver natural language search in your applications. AI Search supports spins up a RAG architecture from a bucket or website. Supports open standards like NLWeb and customization inclduing metadata filtering."
+description: "Connect your data and deliver natural language search in your applications. AI Search spins up a RAG architecture from a bucket or website, and supports open standards like NLWeb and customization including metadata filtering."
 url: "https://www.cloudflare.com/products/ai-search"
 ---
 
 # AI Search
 
-> Connect your data and deliver natural language search in your applications.
+> Connect your data and deliver natural language search in your applications without worrying about infrastructure.
 
 ## Key Features
 
@@ -20,31 +20,35 @@ url: "https://www.cloudflare.com/products/ai-search"
 
 ## Benefits
 
-### Deploy RAG architecture in minutes
+### Atomic search unit for platforms
 
-AI Search gives you a production-ready RAG pipeline out of the box — just connect your data and go.
+Create isolated AI Search instances at runtime, and spin them up or down for multi-tenant use cases.
 
 ### Always Up-to-Date
 
-AI Search continuously re-indexes your data so responses always reflect the latest information.
+AI Search continuously indexes your data so responses always reflect the latest information.
 
-### Built to Run at the Edge
+### Any source, format, and language
 
-AI Search is built on top of the Workers Developer Platform, serving requests from the edge.
+Index multimodal content from sources like R2 and websites, with Workers AI models enabling search across 100+ languages.
 
 ## Use Cases
 
-### NLWeb and AI Search
+### Agent file search
 
-AI Search is ideal for creating a powerful search engine for your company's internal and external knowledge and documentation. With support for NLWeb, it can generate deep links to content, helping users navigate large data sources.
+Give agents retrieval over your files and knowledge. Use it in popular agent libraries like Cloudflare's Agents SDK and more.
 
-### Product Chatbot
+### Multimodal search
 
-You can use AI Search to build a chatbot that answers customer questions using your own product content. This ensures that the chatbot provides accurate and customized responses based on your official documentation and knowledge base. Since AI Search is built to run at the edge, it delivers fast, local AI responses, which improves the user experience by reducing latency.
+Search across text, images, and PDFs from a single query, so users find the right answer no matter how it's stored.
 
-### Multi-Tenant or Personalized AI Assistants
+### Per-tenant or per-agent file search
 
-Use AI Search's metadata filtering to create secure, personalized AI assistants for many different users or teams from a single instance. This feature ensures that each user's queries are answered using only their specific, authorized data, guaranteeing a private and tailored experience for every group.
+Provision an isolated AI Search instance per tenant, project, or agent at runtime, each with its own content and retrieval.
+
+### Website and code search
+
+Index your websites and codebases so teams and agents get cited answers across your content and code.
 
 ## Resources
 
