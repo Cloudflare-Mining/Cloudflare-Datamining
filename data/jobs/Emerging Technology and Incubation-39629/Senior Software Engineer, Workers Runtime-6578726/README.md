@@ -5,37 +5,36 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<h3><strong>Available Locations: Austin, TX&nbsp;</strong></h3>
+<h3>About the Role</h3>
+<p>Cloudflare’s Emerging Technologies &amp; Incubation team builds new products at the edge by combining Cloudflare’s network scale with rapid product incubation. This role is on the Workers Runtime team, which ships the runtime that executes customer code at the edge. You’ll improve performance, expand JavaScript and WebAssembly support, and help the runtime scale safely and efficiently.</p>
+<h3>Responsibilities</h3>
 <ul>
-	<li>Atlanta, US</li>
-	<li>Austin, US</li>
-	<li>Denver, US</li>
+	<li>Build features and improvements for the Workers Runtime.</li>
+	<li>Improve runtime performance, reliability, and scale.</li>
+	<li>Expand JavaScript API and WebAssembly support.</li>
+	<li>Help shape features based on what is technically possible.</li>
+	<li>Own code in production and debug issues in a large-scale distributed system.</li>
+	<li>Work in a fast-paced, iterative environment that balances product goals with technical execution.</li>
 </ul>
-<h2>About the Role</h2>
-<p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
-<h2>Responsibilities</h2>
-<p>As a product manager on the Enterprise Readiness team, you will be responsible for helping to build the capabilities that our largest customers demand that will help them effectively scale their use of Cloudflare. You will:</p>
+<h3>Desirable Skills, Knowledge &amp; Experience</h3>
 <ul>
-	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on organizations and partners.</li>
-	<li>Connect the pieces. Product managers are a nerve center at Cloudflare, responsible for connecting engineering, program management, marketing, revenue, and partners to make sure that our ships go out on time and with the maximum impact.</li>
-	<li>Excel across teams. Enterprise capabilities cut across all of our product verticals, so you should be comfortable working with product managers across the company to prioritize systemic improvements that our enterprise customers need.</li>
-	<li>Be customer obsessed. You will be responsible for directly engaging with customers and understanding how they use our products. You’ll bring these insights back to the team to build a great roadmap.</li>
-	<li>Be data driven. You should be comfortable working with data, and analyzing data to quantify the impact of problems and opportunities in your space.</li>
+	<li>2+ years of recent professional experience with C++ or Rust.</li>
+	<li>Strong computer science fundamentals, including data structures, algorithms, and software design.</li>
+	<li>Operational mindset and experience owning production systems.</li>
+	<li>Deep understanding of the web, including HTTP, JavaScript, and WebAssembly.</li>
+	<li>Experience debugging and optimizing large-scale Linux-based distributed systems.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3>Bonus Points</h3>
 <ul>
-	<li>6+ years of experience as a product manager, technical program manager, or equivalent delivering solutions in the cloud at scale for a technical audience</li>
-	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.</li>
-	<li>User experience sense. You’re comfortable working with product designers to translate the requirements into an elegant user experience.</li>
-	<li>Strong written and verbal communication skills for both an internal and external audience as appropriate.</li>
+	<li>Experience building high-performance distributed systems in Rust.</li>
+	<li>Experience with cloud or serverless platforms.</li>
+	<li>Familiarity with JS engine internals such as V8, SpiderMonkey, or JavaScriptCore.</li>
+	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, or Lucet.</li>
+	<li>Deep Linux, UNIX, kernel, or networking knowledge.</li>
+	<li>Contributions to large open source projects.</li>
 </ul>
-<h2>Bonus Points</h2>
-<ul>
-	<li>You’ve enthusiastically adopted the latest generation of agentic coding tools, and you can use them effectively to navigate a codebase, or prototype the improvements you envision for your feature area.</li>
-	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?</li>
-	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
-	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.</li>
-</ul>
+<h3 id="SeniorSystemsEngineerWorkersRuntime-AbouttheDepartment"></h3>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

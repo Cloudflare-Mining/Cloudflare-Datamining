@@ -5,73 +5,28 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<p><strong>Available Location: San Francisco, CA<br>Dates: September 14 - December 4</strong></p>
+<p><strong>About the role<br></strong>We are seeking a creative and driven Brand Social Media Intern to help execute an impactful, high-visibility social media strategy. This role will support a major new Cloudflare awareness campaign and a large-scale Out-of-Home (OOH) advertising blitz in the San Francisco Bay Area during Q4.&nbsp;Timed alongside Connect, our global annual user conference, this campaign—titled “Paint the Town Orange”—aims to bridge physical and digital advertising. You will play a key role in extending our local OOH presence into a global social media movement, driving engagement among Cloudflare’s customers, prospects, and tech community.</p>
+<h4><strong>Responsibilities</strong></h4>
 <ul>
-	<li>Atlanta, US</li>
-	<li>Austin, US</li>
-	<li>Denver, US</li>
-	<li>New York, US</li>
-	<li>Seattle, US</li>
-	<li>Washington DC, US</li>
-	<li>US Remote</li>
+	<li><strong>Social Amplification &amp; Experiential Marketing:</strong> Drive digital engagement for our brand awareness campaign and other marketing activations by utilizing and repurposing footage from OOH and live experiential events.</li>
+	<li><strong>Virtual OOH &amp; Content Ideation:</strong> Brainstorm, concept, and help create "Virtual OOH" (CGI/digital-first) social content to maximize online visual impact and virality.</li>
+	<li><strong>Copywriting &amp; Traffic Management:</strong> Develop compelling social ad copy and manage the creation of tracking/destination URLs to support campaign goals.</li>
+	<li><strong>Global Calendar Management:</strong> Oversee a campaign-specific social media calendar, ensuring all platforms across all target languages are synchronized and executed in close partnership with the Corporate Social team.</li>
+	<li><strong>Localization &amp; Distribution:</strong> Coordinate translations and manage distribution specifically for Cloudflare's Japanese social media handles to ensure regional relevance.</li>
+	<li><strong>Campaign Project Management:</strong> Maintain organization, track deadlines, and manage project workflows to keep multi-channel campaign deliverables on schedule.</li>
 </ul>
-<h2>About the Role</h2>
-<p>We want to find the best people to join our team and then help you to do your best work. The Employee Relations Team is a new Center of Excellence within the People Team, with the mission to ensure our organization’s treatment of every employee is fair, respectful, and consistent with our Cloudflare Capabilities. To support that mission, this position’s responsibilities fall into proactive and reactive categories. Reactive responsibilities include handling complex investigations and partnering with business leaders on the performance management process. Proactive responsibilities include identifying and addressing trends to improve the overall employee experience at Cloudflare.</p>
-<h2>Responsibilities</h2>
-<p>In this role, you will report to the Sr. Director, Employee Relations and support our Americas People Team Business Partners (PTBPs). You will be partnering with key stakeholders across Cloudflare in various ways, including those listed below:</p>
+<h4><strong>Desirable Skills, Knowledge, and Experience:</strong></h4>
 <ul>
-	<li>Operate as a trusted advisor, consulting with PTBPs and senior business leaders on complex organizational issues and challenging assumptions to create solutions that solve business problems.</li>
-	<li>Conduct complex and thorough investigations into employee relations matters, providing fair and objective recommendations for resolution.</li>
-	<li>Adhere to service level agreements for timely response and follow up to issues, including appropriate use of the case management system, effective and thorough documentation and reporting, and all associated processes.</li>
-	<li>Build, analyze, and maintain ER metrics and present data to People Team partners on a quarterly basis.</li>
-	<li>Conduct in-depth root cause analysis of ER trends, presenting data-driven stories in business language to influence talent decisions and advise on the productivity impact of attrition.</li>
-	<li>Provide advice and guidance to managers in assigned business units to address employee performance issues, including the administration of the PIP or Package process.</li>
-	<li>Partner with the Learning and Development Team to develop training workshops/classes/toolkits for leaders.</li>
-	<li>Assist with the updating of Company policies and responding to inquiries and concerns.</li>
-	<li>Lead and coordinate major global ER projects, requiring significant analysis and the development of innovative solutions that have a broad impact on the ER model and company policy.</li>
-	<li>Partner cross-functionally with key stakeholders, including Legal Compliance, Payroll, Benefits, and other departments to resolve employee issues in a timely manner.</li>
+	<li>Currently pursuing a degree or program in Marketing or relevant field to the role.</li>
+	<li>A social media native with a pulse on current Internet culture, emerging digital trends, and visual storytelling.</li>
+	<li>Strong copyediting skills and an eye for creative multimedia content (video, virtual OOH, etc.).</li>
+	<li>Excellent project management and organizational skills, with the ability to manage multi-language calendars.</li>
+	<li>Available for a full-time, 12-week internship, working from our San Francisco office 3-5 days a week during the fall (Sept-Dec).</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<p><strong>Compensation</strong></p>
 <ul>
-	<li>You have served on a People/HR team for a minimum of 8 years, 6 of which have been in an Employee Relations capacity.</li>
-	<li>You are motivated by cultivating company culture, building great businesses and helping people do their best work.</li>
-	<li>You possess strong knowledge of pertinent employment laws, as well as People Team management principles, practices and procedures.</li>
-	<li>You have outstanding judgment and the ability to balance the needs of the company, managers and employees.</li>
-	<li>You have a successful history of developing strong relationships and operating effectively through virtual support and in a distributed environment.</li>
-	<li>You approach challenges with a solution-focused mindset, viewing obstacles as opportunities for improvement and growth.</li>
-	<li>You have experience designing and leading change strategies for complex initiatives, partnering with stakeholders to co-create solutions and ensure buy-in.</li>
-	<li>You are strategic, have a keen business acumen, and a track record of partnering closely with business leaders. You can articulate how People Teams bring value to an organization.</li>
-	<li>You are a trusted partner who leads with empathy, building strong relationships through exceptional written and verbal communication. Your high emotional intelligence allows you to navigate sensitive situations with understanding and professionalism..</li>
-	<li>You devote time and attention to supporting our employees, fostering strong relationships and sustaining the trust placed in you.</li>
-	<li>You uphold the highest standards of integrity, communicating honestly, treating others with respect, and leading with dignity.</li>
-</ul>
-<h2>Compensation</h2>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p>Financial Benefits</p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p>Time Off</p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
+	<li><span data-sheets-root="1">For Bay Area based hires: Estimated hourly rate of $27.</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

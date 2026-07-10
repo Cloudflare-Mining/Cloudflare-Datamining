@@ -5,74 +5,35 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<h2>Available Locations</h2>
+<h2>Job Title - Product Security Engineer</h2>
+<h3>Available Location - Bengaluru, India</h3>
+<h3>Role Summary</h3>
+<p>As a Product Security Engineer, you will support security assessments and vulnerability operations for Cloudflare’s core software products. In this role, you will analyze system architecture, threat model new features, and ensure that product-related security findings are accurately triaged, routed to the correct engineering owners, and mitigated within our SLAs.</p>
+<p>On any given day, you might conduct a deep-dive security review on a new feature design, triage a complex bug bounty submission, or work directly with engineering teams to resolve vulnerabilities from different sources like bug bounties, SAST, fuzzing and penetration tests. You will also work autonomously to identify areas where our manual processes slow down. You will write code and integrate AI/LLM solutions to automate initial triage and data enrichment, building tools that help the team handle security findings at scale. In short, your work will sit at the intersection of Product Security, Vulnerability Operations, and internal AI Tooling. Ideally, you&nbsp;have experience in conducting academic/vulnerability research with a focus on systems security.</p>
+<h3>Role Responsibilities</h3>
 <ul>
-	<li>Atlanta, US</li>
-	<li>Austin, US</li>
-	<li>Denver, US</li>
-	<li>New York, US</li>
-	<li>Seattle, US</li>
-	<li>Washington DC, US</li>
-	<li>US Remote</li>
+	<li>Implement AI Security Solutions: Identify process bottlenecks and build AI-driven tools or scripts to help automate code analysis, optimize triage, and streamline Product Security workflows.</li>
+	<li>Security Reviews &amp; Threat Modeling: Conduct structured security reviews and threat modeling sessions (e.g., STRIDE) across product features, defining security requirements early in the development lifecycle.</li>
+	<li>Product Vulnerability Management: Manage the operational lifecycle of product security findings. Ensure vulnerabilities are verified, mapped to the correct engineering owner, and tracked to mitigation in alignment with established SLAs.</li>
+	<li>Bug Bounty Triage: Perform the technical triage and validation of Cloudflare’s external Bug Bounty submissions, verifying exploitability and evaluating business risk.</li>
+	<li>Pentest Coordination: Support internal and external penetration testing engagements by reviewing findings, clarifying technical context, and assisting development teams with remediation strategies.</li>
+	<li>Engineering Collaboration: Partner closely with DevOps and product teams, acting as a reliable security point of contact and helping developers implement secure coding practices.</li>
 </ul>
-<h2>About the Role</h2>
-<p>We want to find the best people to join our team and then help you to do your best work. The Employee Relations Team is a new Center of Excellence within the People Team, with the mission to ensure our organization’s treatment of every employee is fair, respectful, and consistent with our Cloudflare Capabilities. To support that mission, this position’s responsibilities fall into proactive and reactive categories. Reactive responsibilities include handling complex investigations and partnering with business leaders on the performance management process. Proactive responsibilities include identifying and addressing trends to improve the overall employee experience at Cloudflare.</p>
-<h2>Responsibilities</h2>
-<p>In this role, you will report to the Sr. Director, Employee Relations and support our Americas People Team Business Partners (PTBPs). You will be partnering with key stakeholders across Cloudflare in various ways, including those listed below:</p>
+<h3>Role Requirements (Must-Have Skills)</h3>
 <ul>
-	<li>Operate as a trusted advisor, consulting with PTBPs and senior business leaders on complex organizational issues and challenging assumptions to create solutions that solve business problems.</li>
-	<li>Conduct complex and thorough investigations into employee relations matters, providing fair and objective recommendations for resolution.</li>
-	<li>Adhere to service level agreements for timely response and follow up to issues, including appropriate use of the case management system, effective and thorough documentation and reporting, and all associated processes.</li>
-	<li>Build, analyze, and maintain ER metrics and present data to People Team partners on a quarterly basis.</li>
-	<li>Conduct in-depth root cause analysis of ER trends, presenting data-driven stories in business language to influence talent decisions and advise on the productivity impact of attrition.</li>
-	<li>Provide advice and guidance to managers in assigned business units to address employee performance issues, including the administration of the PIP or Package process.</li>
-	<li>Partner with the Learning and Development Team to develop training workshops/classes/toolkits for leaders.</li>
-	<li>Assist with the updating of Company policies and responding to inquiries and concerns.</li>
-	<li>Lead and coordinate major global ER projects, requiring significant analysis and the development of innovative solutions that have a broad impact on the ER model and company policy.</li>
-	<li>Partner cross-functionally with key stakeholders, including Legal Compliance, Payroll, Benefits, and other departments to resolve employee issues in a timely manner.</li>
+	<li>Product/AppSec Expertise: 5+ years of experience in Product or Application Security within large-scale distributed cloud environments or SaaS platforms.</li>
+	<li>Practical AI &amp; Automation Engineering: Demonstrated ability to build production-grade automation scripts and tools. Must possess hands-on engineering experience leveraging AI/LLMs to solve operational or technical challenges.</li>
+	<li>Threat Modeling &amp; Risk Analysis: Competency in threat modeling methodologies and the ability to evaluate code flaws to determine their actual engineering and security impact.</li>
+	<li>Vulnerability Lifecycle Operations: Experience tracking, routing, and driving the remediation of software vulnerabilities across engineering groups while working against defined SLAs.</li>
+	<li>Strong Collaboration &amp; Communication: Ability to collaborate effectively across teams, clearly communicating technical security risks to software engineers and resolving ownership ambiguity constructively.</li>
 </ul>
-<h2>Desirable Skills, Knowledge, and Experience</h2>
+<h3>Nice-to-Have Skills</h3>
 <ul>
-	<li>You have served on a People/HR team for a minimum of 8 years, 6 of which have been in an Employee Relations capacity.</li>
-	<li>You are motivated by cultivating company culture, building great businesses and helping people do their best work.</li>
-	<li>You possess strong knowledge of pertinent employment laws, as well as People Team management principles, practices and procedures.</li>
-	<li>You have outstanding judgment and the ability to balance the needs of the company, managers and employees.</li>
-	<li>You have a successful history of developing strong relationships and operating effectively through virtual support and in a distributed environment.</li>
-	<li>You approach challenges with a solution-focused mindset, viewing obstacles as opportunities for improvement and growth.</li>
-	<li>You have experience designing and leading change strategies for complex initiatives, partnering with stakeholders to co-create solutions and ensure buy-in.</li>
-	<li>You are strategic, have a keen business acumen, and a track record of partnering closely with business leaders. You can articulate how People Teams bring value to an organization.</li>
-	<li>You are a trusted partner who leads with empathy, building strong relationships through exceptional written and verbal communication. Your high emotional intelligence allows you to navigate sensitive situations with understanding and professionalism..</li>
-	<li>You devote time and attention to supporting our employees, fostering strong relationships and sustaining the trust placed in you.</li>
-	<li>You uphold the highest standards of integrity, communicating honestly, treating others with respect, and leading with dignity.</li>
+	<li>Offensive Security Tooling: Familiarity with modern exploitation techniques, fuzzing frameworks, or automated scanning utilities.</li>
+	<li>Program Management Experience: Experience scaling crowdsourced security programs (e.g., HackerOne, Bugcrowd) or optimizing agile project management workflows within JIRA.</li>
+	<li>Experience in integrating hardware security features into production code bases</li>
 </ul>
-<h2>Compensation</h2>
-<p><strong>Equity</strong></p>
-<p>This role is eligible to participate in Cloudflare’s equity plan.</p>
-<p><strong>Benefits</strong></p>
-<p>Cloudflare offers a complete package of benefits and programs to support you and your family. Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun! The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</p>
-<p>Health &amp; Welfare Benefits</p>
-<ul>
-	<li>Medical/Rx Insurance</li>
-	<li>Dental Insurance</li>
-	<li>Vision Insurance</li>
-	<li>Flexible Spending Accounts</li>
-	<li>Commuter Spending Accounts</li>
-	<li>Fertility &amp; Family Forming Benefits</li>
-	<li>On-demand mental health support and Employee Assistance Program</li>
-	<li>Global Travel Medical Insurance</li>
-</ul>
-<p>Financial Benefits</p>
-<ul>
-	<li>Short and Long Term Disability Insurance</li>
-	<li>Life &amp; Accident Insurance</li>
-	<li>401(k) Retirement Savings Plan</li>
-	<li>Employee Stock Participation Plan</li>
-</ul>
-<p>Time Off</p>
-<ul>
-	<li>Flexible paid time off covering vacation and sick leave</li>
-	<li>Leave programs, including parental, pregnancy health, medical, and bereavement leave</li>
-</ul>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

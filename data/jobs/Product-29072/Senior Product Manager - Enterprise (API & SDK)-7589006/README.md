@@ -7,28 +7,35 @@
 </div>
 <h2>Available Locations</h2>
 <ul>
-	<li>Singapore</li>
-	<li>Sydney, Australia</li>
+	<li>Atlanta, US</li>
+	<li>Austin, US</li>
+	<li>Denver, US</li>
 </ul>
 <h2>About the Role</h2>
-<p>Cloudflare's business pushes the boundaries of what the Internet can do, our customers expect no less, and we need a world-class commercial legal team to meet the needs of our business.&nbsp; Our team is composed of accomplished lawyers and staff who bring their unique expertise and backgrounds to a global team.&nbsp; Our work product may often be contracts but we understand that each contract defines the intangible and clarifies the possible.&nbsp; We believe that doing this with clarity creates strong and elegant agreements that can meet the needs of the business now and as Cloudflare continues to grow.</p>
-<p>In this role, you’ll be a key member of Cloudflare’s APAC commercial legal team.&nbsp; We are looking for a commercially savvy lawyer who can confidently navigate complex and high value transactions. You will collaborate and work cross-functionally with other internal groups, across the sales, deal desk, finance, privacy, product legal and security compliance teams and be a trusted advisor, accelerating deal velocity while protecting the company’s interests.&nbsp;This is a unique opportunity to thrive in a fast-paced environment where your legal expertise directly drives business growth. The position is based in Singapore or Sydney and frequent communication with our other offices will be required.</p>
+<p>As a Senior Product Manager at Cloudflare, you will be responsible for building products that improve the way that the Internet works. Product Managers at Cloudflare shape high-level product goals but also get our hands dirty. On an average day, you might pitch a concept to senior leadership, collaborate with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, and pair with an engineer on implementation.</p>
+<h2>Responsibilities</h2>
+<p>As a product manager on the Enterprise Readiness team, you will be responsible for helping to build the capabilities that our largest customers demand that will help them effectively scale their use of Cloudflare. You will:</p>
+<ul>
+	<li>Own your space. You will own the priorities and scope for a high performing engineering team focusing on organizations and partners.</li>
+	<li>The Product Manager role requires deep familiarity with the <strong>Terraform</strong> <strong>SDK</strong></li>
+	<li>A significant challenge in this role is navigating the tension between enterprise requirements and simplicity for individual users, a friction point that requires careful design decisions&nbsp;</li>
+	<li>The position involves leading <strong>API</strong> design reviews, determining best practices for company-wide implementation, such as pagination, versioning, and deprecation</li>
+	<li>The job demands a 50/50 balance between building a personal roadmap and convincing other product managers to adopt a unified API standard</li>
+	<li>The Product Manager will primarily engage with practitioners, including<strong> platform engineers</strong>,<strong> DevOps</strong> professionals, and<strong> enterprise architects</strong>, rather than executive leadership</li>
+</ul>
 <h2>Desirable Skills, Knowledge, and Experience</h2>
 <ul>
-	<li>LL.B. or JD degree with strong academic credentials.</li>
-	<li>Admitted to practice law in Singapore, UK, US, Australia or Japan.</li>
-	<li>At least 4 years relevant experience including a mix of law firm and in-house experience for a technology company (either on secondment or after leaving the law firm) with at least 2 years of experience working for an internationally recognized law firm.</li>
-	<li>A demonstrated ability to learn new systems and tools, the better to adapt to AI tooling.</li>
-	<li>Substantive experience with drafting, reviewing, and negotiating a variety of complex commercial agreements, including SaaS agreements and consulting services statements of work.</li>
-	<li>Resourceful self-starter with an eye for detail, excellent problem-solving capabilities, judgment, negotiation, communication (written and verbal) and interpersonal skills.</li>
-	<li>Good strategic, business sense, and demonstrated negotiation skills with respect to legal issues.</li>
-	<li>Proven ability to manage high-volume workloads, multiple stakeholder demands and ever-shifting priorities all while instilling confidence.</li>
-	<li>Ability to identify and explain non-standard terms and associated risks to relevant business stakeholders and interpret contract requirements, obligations and risk exposure and advise on the same.</li>
+	<li>6+ years of experience as a product manager, technical program manager, or equivalent delivering solutions in the cloud at scale for a technical audience</li>
+	<li>Customer focus. At Cloudflare, we serve the needs of customers large and small, and our product managers need to be comfortable understanding how to design for enterprises without compromising the experience for individuals and small businesses.</li>
+	<li>User experience sense. You’re comfortable working with product designers to translate the requirements into an elegant user experience.</li>
+	<li>Strong written and verbal communication skills for both an internal and external audience as appropriate.</li>
 </ul>
 <h2>Bonus Points</h2>
 <ul>
-	<li>Solid understanding of local and international privacy and data protection laws.</li>
-	<li>Experience using administrative management systems such Salesforce, DocuSign, Ironclad and/or JIRA.</li>
+	<li>You’ve enthusiastically adopted the latest generation of agentic coding tools, and you can use them effectively to navigate a codebase, or prototype the improvements you envision for your feature area.</li>
+	<li>Data-fluency - Can you work directly with data yourself to build confidence in your views and can you use that same data to persuade others?</li>
+	<li>Engineering fluency - while it’s not required, we tend to find success with candidates who have a technical background, formal or otherwise. You don’t need a CS degree but building credibility with our engineering teams is critical and so some history of technical acumen would be super helpful</li>
+	<li>At Cloudflare it’s pretty helpful to understand how the Internet really works at layers 2 through 7. If you don’t have this, be prepared to speak with mastery about another realm of similar complexity.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
