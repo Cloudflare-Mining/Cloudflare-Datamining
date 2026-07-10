@@ -1,8 +1,8 @@
 {
 	"name": "vinext",
 	"dist-tags": {
-		"latest": "1.0.0-beta.0",
-		"beta": "1.0.0-beta.0"
+		"beta": "1.0.0-beta.0",
+		"latest": "1.0.0-beta.1"
 	},
 	"versions": {
 		"0.0.0": {
@@ -3595,6 +3595,65 @@
 					}
 				},
 				"unpackedSize": 4618295
+			},
+			"engines": {
+				"node": ">=22"
+			}
+		},
+		"1.0.0-beta.1": {
+			"name": "vinext",
+			"version": "1.0.0-beta.1",
+			"dependencies": {
+				"@unpic/react": "^1.0.2",
+				"@vercel/og": "^0.8.6",
+				"image-size": "2.0.2",
+				"ipaddr.js": "^2.1.0",
+				"magic-string": "^0.30.21",
+				"vite-plugin-commonjs": "^0.10.4",
+				"web-vitals": "^4.2.4"
+			},
+			"devDependencies": {
+				"@types/node": "^25.9.2",
+				"@types/react": "^19.2.16",
+				"@types/react-dom": "^19.2.3",
+				"@vitejs/plugin-react": "^6.0.1",
+				"@vitejs/plugin-rsc": "^0.5.27",
+				"am-i-vibing": "^0.5.0",
+				"pathslash": "^0.1.0",
+				"react-server-dom-webpack": "^19.2.7",
+				"vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+				"vite-plus": "0.2.2"
+			},
+			"peerDependencies": {
+				"@mdx-js/rollup": "^3.0.0",
+				"@vitejs/plugin-react": "^5.1.4 || ^6.0.0",
+				"@vitejs/plugin-rsc": "^0.5.26",
+				"react": "^19.2.6",
+				"react-dom": "^19.2.6",
+				"react-server-dom-webpack": "^19.2.6",
+				"vite": "^8.0.0"
+			},
+			"bin": {
+				"vinext": "dist/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-epfX5y/li8dTzBRoVcJK19vWf/kM50bSkYhqF8BePz4/Y3oPClTAndYgkMNmRxPJ5rps2H2ZNcxlnAoLWKuAXw==",
+				"shasum": "0401efcf9f806925b157a5297b25ea798db72dbb",
+				"tarball": "https://registry.npmjs.org/vinext/-/vinext-1.0.0-beta.1.tgz",
+				"fileCount": 864,
+				"unpackedSize": 4664313,
+				"attestations": {
+					"url": "https://registry.npmjs.org/-/npm/v1/attestations/vinext@1.0.0-beta.1",
+					"provenance": {
+						"predicateType": "https://slsa.dev/provenance/v1"
+					}
+				},
+				"signatures": [
+					{
+						"keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+						"sig": "MEQCIBiTBUx6jNXpYY1UeH+SqVjtgLBAhLmu/ihq+BbDchrWAiBcYAW/ceF8UYN9/nX80lb2esCXgReGvvF1i9IQDabSqg=="
+					}
+				]
 			},
 			"engines": {
 				"node": ">=22"
