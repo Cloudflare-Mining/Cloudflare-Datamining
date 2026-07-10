@@ -15,7 +15,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>When a host on the Internet wants to send some data, it must know how to divide the data into packets. And in particular, it needs to know the maximum size of packet. The maximum size of a packet a host can send is called <a href="https://en.wikipedia.org/wiki/Maximum_transmission_unit" target="_blank" rel="noopener noreferrer">Maximum Transmission Unit: MTU</a>.</p>
+	<p>When a host on the Internet wants to send some data, it must know how to divide the data into packets. And in particular, it needs to know the maximum size of packet. The maximum size of a packet a host can send is called <a href="http://en.wikipedia.org/wiki/Maximum_transmission_unit" target="_blank" rel="noopener noreferrer">Maximum Transmission Unit: MTU</a>.</p>
 	<p>The longer the MTU the better for performance, but the worse for reliability. This is because a lost packet means more data to be retransmitted and because many routers on the Internet can't deliver very long packets.</p>
 	<p>The fathers of the Internet assumed that this problem would be solved at the IP layer with IP fragmentation. Unfortunately IP <a href="http://www.hpl.hp.com/techreports/Compaq-DEC/WRL-87-3.pdf" target="_blank" rel="noopener noreferrer">fragmentation has serious disadvantages</a>, and it's avoided in practice.</p>
 	<div class="flex anchor relative">
@@ -35,7 +35,7 @@
 	</blockquote>
 	<p>So a router must send <a href="http://www.networksorcery.com/enp/protocol/icmp/msg3.htm" target="_blank" rel="noopener noreferrer">ICMP type 3 code 4 message</a>. If you want to see one type:</p>
 	<pre class="language-bash"><code class="language-bash">tcpdump -s0 -p -ni eth0 'icmp and icmp[0] == 3 and icmp[1] == 4'</code></pre>
-	<p>This ICMP message is supposed to be delivered to the originating host, which in turn should adjust the MTU setting for that particular connection. This mechanism is called <a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery" target="_blank" rel="noopener noreferrer">Path MTU Discovery</a>.</p>
+	<p>This ICMP message is supposed to be delivered to the originating host, which in turn should adjust the MTU setting for that particular connection. This mechanism is called <a href="http://en.wikipedia.org/wiki/Path_MTU_Discovery" target="_blank" rel="noopener noreferrer">Path MTU Discovery</a>.</p>
 	<p>In theory, it's great but unfortunately many things can go wrong when delivering ICMP packets. The most common problems are caused by misconfigured firewalls that drop ICMP packets.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -51,7 +51,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>A situation when a router drops packets but for some reason can't deliver relevant ICMP messages is called <a href="https://en.wikipedia.org/wiki/Black_hole_(networking)" target="_blank" rel="noopener noreferrer">an ICMP black hole</a>.</p>
+	<p>A situation when a router drops packets but for some reason can't deliver relevant ICMP messages is called <a href="http://en.wikipedia.org/wiki/Black_hole_(networking)" target="_blank" rel="noopener noreferrer">an ICMP black hole</a>.</p>
 	<p>When that happens the whole connection gets stuck. The sending side constantly tries to resend lost packets, while the receiving side acknowledges only the small packets that get delivered.</p>
 	<p>There are generally three solutions to this problem.</p>
 	<p><i>1) Reduce the MTU on the client side.</i></p>
@@ -82,7 +82,7 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 	</div>
 	<p>To understand what happened last week, first we need to make a detour and discuss our architecture. At CloudFlare <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p">we use BGP in two ways</a>. We use it externally, the BGP that organizes the Internet, and internally between servers.</p>
 	<p>The internal use of BGP allows us to get high availability across servers. If a machine goes down the BGP router will notice and will push the traffic to another server automatically.</p>
-	<p>We've used this for a long time but last week increased its use in our network as we increased internal BGP load balancing. The load balancing mechanism is known as <a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing" target="_blank" rel="noopener noreferrer">ECMP: Equal Cost Multi Path routing</a>. From the configuration point of view the change was minimal, it only required adjusting the BGP metrics to equal values, the ECMP-enabled router does the rest of the work.</p>
+	<p>We've used this for a long time but last week increased its use in our network as we increased internal BGP load balancing. The load balancing mechanism is known as <a href="http://en.wikipedia.org/wiki/Equal-cost_multi-path_routing" target="_blank" rel="noopener noreferrer">ECMP: Equal Cost Multi Path routing</a>. From the configuration point of view the change was minimal, it only required adjusting the BGP metrics to equal values, the ECMP-enabled router does the rest of the work.</p>
 	<p>But with ECMP the router must be somewhat smart. It can't do true load balancing, as packets from one TCP connections could end up on a wrong server. Instead in ECMP the router <a href="http://www.slideshare.net/SkillFactory/02-34638420" target="_blank" rel="noopener noreferrer">counts a hash from the usual tuple</a> extracted from every packet:</p>
 	<ul>
 		<li>
@@ -157,7 +157,7 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss</code></pre>
 			<p>We're enabling the Linux RFC4821 Path MTU Discovery for IPv4, whichshould help with true ICMP black holes.</p>
 		</li>
 	</ul>
-	<p>Found this article interesting? <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">Join our team</a>, including to our <a href="https://blog.cloudflare.com/cloudflare-london-were-hiring">elite office in London</a>. We're constantly looking for talented developers and network engineers!</p>
+	<p>Found this article interesting? <a href="http://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">Join our team</a>, including to our <a href="https://blog.cloudflare.com/cloudflare-london-were-hiring">elite office in London</a>. We're constantly looking for talented developers and network engineers!</p>
 	<div class="flex anchor relative">
 		<h4 id="appendix">Appendix</h4>
 		<a href="https://blog.cloudflare.com/#appendix" aria-hidden="true" class="relative sm:absolute sm:-start-5">

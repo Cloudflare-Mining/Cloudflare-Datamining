@@ -15,7 +15,7 @@
 		</a>
 	</div>
 	<p>As we've followed the PRISM story, we've tried to reconcile how the PRISM slides could be accurate while so many tech executives have denied participation in the program. One theory that surfaced was that the NSA had broken the private SSL keys of a select number of web giants. Our theory was that this could explain how companies were added over time—as their private SSL keys were cracked—while their executives wouldn't have any knowledge of what was happening.</p>
-	<p>Even the name of the program—"PRISM"—led credence to this theory. Prisms are often used with fiber optic cables in order to split the light the cables carry into multiple copies. This is not new technology. In 2006 in <a href="https://en.wikipedia.org/wiki/Room_641A" target="_blank" rel="noopener noreferrer">Room 641a</a> of a data center in San Francisco, AT&amp;T installed a beam splitter to siphon traffic from their optical network, reportedly at the request of the NSA.</p>
+	<p>Even the name of the program—"PRISM"—led credence to this theory. Prisms are often used with fiber optic cables in order to split the light the cables carry into multiple copies. This is not new technology. In 2006 in <a href="http://en.wikipedia.org/wiki/Room_641A" target="_blank" rel="noopener noreferrer">Room 641a</a> of a data center in San Francisco, AT&amp;T installed a beam splitter to siphon traffic from their optical network, reportedly at the request of the NSA.</p>
 	<p>SSL should protect these communications. However, with most SSL ciphers, the private key remains the same for all sessions. As a result, if the NSA were to record encrypted traffic, they could later break the SSL key used to secure the traffic and then use the broken key to decrypt what they previously recorded.</p>
 	<div class="flex anchor relative">
 		<h3 id="breaking-ssl">Breaking SSL</h3>
@@ -76,7 +76,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Rwn2KTYmtxuRHRrLVwJLA/9eb55673c9e551ae9ef6307dabf660fb/elliptic_curve.png" alt="Prism" class="kg-image" width="165" height="203" loading="lazy">
 
 	</figure>
-	<p>While ECDHE arguably already puts Google at the head of the pack for web transaction security, to further augment security Google has <a href="https://googleonlinesecurity.blogspot.com/2013/05/changes-to-our-ssl-certificates.html" target="_blank" rel="noopener noreferrer">publicly announced</a> that they will be increasing their key length to 2048-bit by the end of 2013. Assuming the company continues to prefer the ECDHE cipher suites, this will put Google at the cutting edge of web transaction security.</p>
+	<p>While ECDHE arguably already puts Google at the head of the pack for web transaction security, to further augment security Google has <a href="http://googleonlinesecurity.blogspot.com/2013/05/changes-to-our-ssl-certificates.html" target="_blank" rel="noopener noreferrer">publicly announced</a> that they will be increasing their key length to 2048-bit by the end of 2013. Assuming the company continues to prefer the ECDHE cipher suites, this will put Google at the cutting edge of web transaction security.</p>
 	<div class="flex anchor relative">
 		<h3 id="ssl-on-cloudflare">SSL on CloudFlare</h3>
 		<a href="https://blog.cloudflare.com/#ssl-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">

@@ -12,7 +12,7 @@
 		</a>
 	</div>
 	<p>Lua is a scripting language. Specifically, it is a full-featured multi-paradigm language with a simple syntax and semantics that resemble JavaScript or Scheme. Lua also has an interesting story to it, as it is one of the only languages from an emerging country that has had worldwide impact.</p>
-	<p>Lua has always meant to be embedded with larger systems written in other languages (like C and C++), and has thrived at staying very minimal and easy to integrate. As a result, Lua is popular within videogames, <a href="https://wiki.wireshark.org/Lua" target="_blank" rel="noopener noreferrer">security oriented software</a>, and, morerecently, <a href="https://en.wikipedia.org/wiki/Wikipedia:Wikipedia_Signpost/2012-01-30/Technology_report" target="_blank" rel="noopener noreferrer">Wikipedia</a>.</p>
+	<p>Lua has always meant to be embedded with larger systems written in other languages (like C and C++), and has thrived at staying very minimal and easy to integrate. As a result, Lua is popular within videogames, <a href="http://wiki.wireshark.org/Lua" target="_blank" rel="noopener noreferrer">security oriented software</a>, and, morerecently, <a href="http://en.wikipedia.org/wiki/Wikipedia:Wikipedia_Signpost/2012-01-30/Technology_report" target="_blank" rel="noopener noreferrer">Wikipedia</a>.</p>
 	<div class="flex anchor relative">
 		<h3 id="benefits-of-nginx-lua">Benefits of Nginx+Lua</h3>
 		<a href="https://blog.cloudflare.com/#benefits-of-nginx-lua" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -23,7 +23,7 @@
 	</div>
 	<p>Nginx+Lua is a self-contained web server embedding the scripting language Lua. Powerful applications can be written directly inside Nginx without using cgi, fastcgi, or uwsgi. By adding a little Lua code to an existing Nginx configuration file, it is easy to add small features. To see it yourself, at the end of this post I've included some logging code that can be added to any existing configuration.</p>
 	<p>One of the core benefits of Nginx+Lua is that it is fully asynchronous. Nginx+Lua inherits the same event loop model that has made Nginx a popular choice of webserver. "Asynchronous" simply means that Nginx can interrupt your code when it is waiting on a blocking operation, such as an outgoing connection or reading a file, and run the code of another incoming HTTP Request.</p>
-	<p>All the Lua code is written in a <i>sequential</i> fashion. The asynchronous logic is hidden to the Nginx+Lua programmer. If you are familiar with other event-driven webservers, that means <i>no callbacks</i>. In addition, Nginx+Lua is <a href="https://google-opensource.blogspot.com/2010/01/love-for-luajit.html" target="_blank" rel="noopener noreferrer">blazingly fast</a>, leveraging the LuaJIT interpreter.</p>
+	<p>All the Lua code is written in a <i>sequential</i> fashion. The asynchronous logic is hidden to the Nginx+Lua programmer. If you are familiar with other event-driven webservers, that means <i>no callbacks</i>. In addition, Nginx+Lua is <a href="http://google-opensource.blogspot.com/2010/01/love-for-luajit.html" target="_blank" rel="noopener noreferrer">blazingly fast</a>, leveraging the LuaJIT interpreter.</p>
 	<div class="flex anchor relative">
 		<h3 id="getting-nginx-lua-installed">Getting Nginx+Lua installed</h3>
 		<a href="https://blog.cloudflare.com/#getting-nginx-lua-installed" aria-hidden="true" class="relative sm:absolute sm:-start-5">

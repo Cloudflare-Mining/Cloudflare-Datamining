@@ -1,7 +1,7 @@
 <div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zXHY40R34jLJNYYYpTCJf/ce1e2476f5218e268eb2f33f773e652b/post-mortem-what-todays-network-outage-looked.png" alt="">
 <div class="post-content post-body-content lh-copy gray1">
 	<p></p>
-	<p>Yesterday, around 16:36 GMT, we had an <a href="https://www.cloudflare.com/system-status" target="_blank" rel="noopener noreferrer">interruption to our network services</a>. The interruption was caused by a combination of factors. First, we had an upstream bandwidth provider with some network issues that primarily affected our European data centers. Second, we misapplied a network rate limit in an attempt to mitigate a large DDoS our ops team had been fighting throughout the night.</p>
+	<p>Yesterday, around 16:36 GMT, we had an <a href="http://www.cloudflare.com/system-status" target="_blank" rel="noopener noreferrer">interruption to our network services</a>. The interruption was caused by a combination of factors. First, we had an upstream bandwidth provider with some network issues that primarily affected our European data centers. Second, we misapplied a network rate limit in an attempt to mitigate a large DDoS our ops team had been fighting throughout the night.</p>
 	<p>CloudFlare is designed to make sites faster, safer and more reliable so any time an incident on our network causes any of our customers' sites to be unreachable it is unacceptable. I wanted to take some time to give you more of a sense of exactly what happened and what our ops and engineering teams have been working on since we got things restored in order to protect our network from incidents like this in the future.</p>
 	<div class="flex anchor relative">
 		<h3 id="two-visible-events">Two Visible Events</h3>
@@ -11,7 +11,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The graph at the top of this post is the aggregate traffic across CloudFlare's <a href="https://www.cloudflare.com/network-map" target="_blank" rel="noopener noreferrer">eight European data centers</a>. The green section represents traffic that is inbound to our network, the blue line represents traffic that is outbound from our network. Inbound traffic includes both requests that we receive from visitors to our customers' sites as well as any content that we pull from our customers' origin servers. Since we cache content on our network, the blue line should always be significantly above the green one.</p>
+	<p>The graph at the top of this post is the aggregate traffic across CloudFlare's <a href="http://www.cloudflare.com/network-map" target="_blank" rel="noopener noreferrer">eight European data centers</a>. The green section represents traffic that is inbound to our network, the blue line represents traffic that is outbound from our network. Inbound traffic includes both requests that we receive from visitors to our customers' sites as well as any content that we pull from our customers' origin servers. Since we cache content on our network, the blue line should always be significantly above the green one.</p>
 	<p>Two things you notice from the graph: the big green spike around 13:30 GMT and the fall off in the blue line around 16:30 GMT. While the two were almost 3 hours apart, they are in fact related. Here's what happened.</p>
 	<div class="flex anchor relative">
 		<h3 id="limited-network-and-a-nasty-attack">Limited Network and a Nasty Attack</h3>

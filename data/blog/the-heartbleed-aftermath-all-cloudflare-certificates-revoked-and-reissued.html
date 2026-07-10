@@ -72,12 +72,12 @@
 			</svg>
 		</a>
 	</div>
-	<p>The <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Key_generation" target="_blank" rel="noopener noreferrer">RSA cryptosystem</a> is based on picking two prime numbers (which are habitually called p and q) and then using various mathematical properties of prime numbers to create a secure system. First a number n (called the modulus) is calculated. It is just p x q.</p>
+	<p>The <a href="http://en.wikipedia.org/wiki/RSA_(cryptosystem)#Key_generation" target="_blank" rel="noopener noreferrer">RSA cryptosystem</a> is based on picking two prime numbers (which are habitually called p and q) and then using various mathematical properties of prime numbers to create a secure system. First a number n (called the modulus) is calculated. It is just p x q.</p>
 	<p>The other two vital values in RSA are called exponents and typically called e and d. In common RSA cryptosystems the number e is 65537. The public key is (n, e) (i.e. the modulus and the exponent e), the private key is (n, d) (i.e. the modulus and the exponent d). Of course, the prime numbers p and q also have to be kept secret because everything depends on them.</p>
 	<p>In textbook RSA, you can perform the private key operation with only d and n, but it's slow.</p>
-	<p>In OpenSSL, RSA’s private key operation also uses the primes p and q to speed up the private key operation using <a href="https://en.wikipedia.org/wiki/Montgomery_reduction" target="_blank" rel="noopener noreferrer">Montgomery Arithemetic</a> and other tricks. If either p or q are found, they can be used to derive the private key d. Searching for p and q was the approach taken by most of the successful contestants of the challenge.</p>
+	<p>In OpenSSL, RSA’s private key operation also uses the primes p and q to speed up the private key operation using <a href="http://en.wikipedia.org/wiki/Montgomery_reduction" target="_blank" rel="noopener noreferrer">Montgomery Arithemetic</a> and other tricks. If either p or q are found, they can be used to derive the private key d. Searching for p and q was the approach taken by most of the successful contestants of the challenge.</p>
 	<p>The most common trick for identifying the prime factors from random data was to take all blocks of data that match the size of a prime factor (128 bytes in the case of our 2,048 bit RSA key) and convert them to a number. Some contestants did a primality check to see if the number was prime or not, and some contestants tried to divide the number into the public modulus n. If the number turned out to be a prime factor, then it can be used to extract the private key d. This was the approach taken by Fedor Indutny as published on <a href="https://blog.indutny.com/9.heartbleed" target="_blank" rel="noopener noreferrer">his blog</a>.</p>
-	<p>The second and slightly more elegant approach was taken by Rubin Xu. He started by attempting to find prime factors but quickly gave up on finding them. He then decided to use <a href="https://en.wikipedia.org/wiki/Coppersmith's_Attack" target="_blank" rel="noopener noreferrer">Coppersmith's Attack</a> to derive the private exponent. In this attack, only pieces of the private key are needed and the private key is reconstructed mathematically. This attack is so efficient that he managed to extract the private key from only the first 50 dumps!</p>
+	<p>The second and slightly more elegant approach was taken by Rubin Xu. He started by attempting to find prime factors but quickly gave up on finding them. He then decided to use <a href="http://en.wikipedia.org/wiki/Coppersmith's_Attack" target="_blank" rel="noopener noreferrer">Coppersmith's Attack</a> to derive the private exponent. In this attack, only pieces of the private key are needed and the private key is reconstructed mathematically. This attack is so efficient that he managed to extract the private key from only the first 50 dumps!</p>
 	<div class="flex anchor relative">
 		<h3 id="the-winners">The Winners</h3>
 		<a href="https://blog.cloudflare.com/#the-winners" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -89,40 +89,40 @@
 	<p>Here are the winners of the challenge in order of when they found the private key:</p>
 	<ol>
 		<li>
-			<p>Fedor Indutny (<a href="https://twitter.com/indutny" target="_blank" rel="noopener noreferrer">@indutny</a>) Developer</p>
+			<p>Fedor Indutny (<a href="http://twitter.com/indutny" target="_blank" rel="noopener noreferrer">@indutny</a>) Developer</p>
 		</li>
 		<li>
 			<p>Ilkka Mattila, Information Security Adviser</p>
 		</li>
 		<li>
-			<p>Rubin Xu (<a href="https://twitter.com/xurubin" target="_blank" rel="noopener noreferrer">@xurubin</a>), Security PhD Student</p>
+			<p>Rubin Xu (<a href="http://twitter.com/xurubin" target="_blank" rel="noopener noreferrer">@xurubin</a>), Security PhD Student</p>
 		</li>
 		<li>
-			<p>Ben Murphy (<a href="https://twitter.com/benmmurphy" target="_blank" rel="noopener noreferrer">@benmmurphy</a>), Security Researcher</p>
+			<p>Ben Murphy (<a href="http://twitter.com/benmmurphy" target="_blank" rel="noopener noreferrer">@benmmurphy</a>), Security Researcher</p>
 		</li>
 		<li>
-			<p>Steve Hunter (<a href="https://twitter.com/nonaxiomatic" target="_blank" rel="noopener noreferrer">@nonaxiomatic</a>)</p>
+			<p>Steve Hunter (<a href="http://twitter.com/nonaxiomatic" target="_blank" rel="noopener noreferrer">@nonaxiomatic</a>)</p>
 		</li>
 		<li>
-			<p>Xavier Martin (<a href="https://twitter.com/xav" target="_blank" rel="noopener noreferrer">@xav</a>), Security Researcher</p>
+			<p>Xavier Martin (<a href="http://twitter.com/xav" target="_blank" rel="noopener noreferrer">@xav</a>), Security Researcher</p>
 		</li>
 		<li>
 			<p>no name given</p>
 		</li>
 		<li>
-			<p>Jeremi Gosney (<a href="https://twitter.com/jmgosney" target="_blank" rel="noopener noreferrer">@jmgosney</a>), CEO, Stricture Group</p>
+			<p>Jeremi Gosney (<a href="http://twitter.com/jmgosney" target="_blank" rel="noopener noreferrer">@jmgosney</a>), CEO, Stricture Group</p>
 		</li>
 		<li>
-			<p>Michele Guerini Rocco (<a href="https://twitter.com/Rnhmjoj" target="_blank" rel="noopener noreferrer">@Rnhmjoj</a>), Student</p>
+			<p>Michele Guerini Rocco (<a href="http://twitter.com/Rnhmjoj" target="_blank" rel="noopener noreferrer">@Rnhmjoj</a>), Student</p>
 		</li>
 		<li>
-			<p>David Gervais (<a href="https://twitter.com/davidgervais" target="_blank" rel="noopener noreferrer">@davidgervais</a>), Software Engineer</p>
+			<p>David Gervais (<a href="http://twitter.com/davidgervais" target="_blank" rel="noopener noreferrer">@davidgervais</a>), Software Engineer</p>
 		</li>
 		<li>
-			<p>Christian Bürgi (<a href="https://twitter.com/buergich" target="_blank" rel="noopener noreferrer">@buergich</a>)</p>
+			<p>Christian Bürgi (<a href="http://twitter.com/buergich" target="_blank" rel="noopener noreferrer">@buergich</a>)</p>
 		</li>
 		<li>
-			<p>Daniel Burkard (<a href="https://twitter.com/hiptomcat" target="_blank" rel="noopener noreferrer">@hiptomcat</a>)</p>
+			<p>Daniel Burkard (<a href="http://twitter.com/hiptomcat" target="_blank" rel="noopener noreferrer">@hiptomcat</a>)</p>
 		</li>
 		<li>
 			<p>mancha</p>

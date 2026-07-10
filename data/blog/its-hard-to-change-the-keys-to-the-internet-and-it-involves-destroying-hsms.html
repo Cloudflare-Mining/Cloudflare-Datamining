@@ -7,7 +7,7 @@
 	<p>With access to this root Trust Anchor, it would be possible to re-sign the DNS tree and tamper with the content of DNS records on any domain, implementing an on-path DNS attack… without causing recursors and resolvers to consider the data invalid.</p>
 	<p>As explained in this <a href="https://www.cloudflare.com/dns/dnssec/root-signing-ceremony" target="_blank" rel="noopener noreferrer">blog</a> the key is very well protected with eye scanners and fingerprint readers and fire-breathing dragons patrolling the gate (okay, maybe not dragons). Operationally though, the root zone uses two different keys, the mentioned Trust Anchor key (that is called the Key Signing Key or KSK for short) and the Zone Signing Key (ZSK).</p>
 	<p>The ZSK (Zone Signing Key) is used to generate signatures for all of the Resource Records (RRs) in a zone.</p>
-	<p>You can query for the DNSSEC signature (the RRSIG record) of “<a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a>” using your friendly dig command.</p>
+	<p>You can query for the DNSSEC signature (the RRSIG record) of “<a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a>” using your friendly dig command.</p>
 	<pre class="language-bash"><code class="language-bash">$ dig www.cloudflare.com +dnssec</code></pre>
 
 	<pre class="language-bash"><code class="language-bash">;; QUESTION SECTION:

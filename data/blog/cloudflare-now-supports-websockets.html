@@ -49,7 +49,7 @@
 		</a>
 	</div>
 	<p>CloudFlare sees a large number of traditional HTTP requests that generate relatively short-lived connections. And, traditionally, we aimed at optimizing our network to support these requests. WebSockets present new challenges because they require much longer lived connections than traditional web requests, and that required changes to our network stack.</p>
-	<p>A modern operating system can handle multiple concurrent connections to different network services so long as there's a way to distinguish these connections from each other. One way of making these distinctions is called a "<a href="https://en.wikipedia.org/wiki/Tuple" target="_blank" rel="noopener noreferrer">tuple</a>". In theory, there are five distinct elements that form a tuple that can differentiate concurrent connections: protocol (e.g., TCP or UDP), the source IP address, the source port, the destination IP address, and the destination port.</p>
+	<p>A modern operating system can handle multiple concurrent connections to different network services so long as there's a way to distinguish these connections from each other. One way of making these distinctions is called a "<a href="http://en.wikipedia.org/wiki/Tuple" target="_blank" rel="noopener noreferrer">tuple</a>". In theory, there are five distinct elements that form a tuple that can differentiate concurrent connections: protocol (e.g., TCP or UDP), the source IP address, the source port, the destination IP address, and the destination port.</p>
 	<p>Since CloudFlare is a proxy, there are two connections that matter: connections from browsers to our network, and connections from our network back to our customers' origin web servers. Connections from browsers to our network have highly diverse source IPs so they don’t impose a concurrent connection bottleneck. On the other hand, even before we implemented WebSockets, we've seen constraints based on concurrent connections to our customers' origin servers.</p>
 	<div class="flex anchor relative">
 		<h3 id="trouble-with-tuples">Trouble with Tuples</h3>
@@ -78,8 +78,8 @@
 		</a>
 	</div>
 	<p>The number of available ports is defined as a 16-bit number. That allows a maximum of 65,536 theoretical ports, but, in practice, the number of ports available to act as a source port is more limited.</p>
-	<p>The list of ports that can be used as a source port is known as the <a href="https://en.wikipedia.org/wiki/Ephemeral_port" target="_blank" rel="noopener noreferrer">Ephemeral Port Range</a>. The standards organization in charge of such things, known as IANA, recommends that the operating system pick a source port between 49152 and 65535. If you follow IANA's recommendations for the Ephemeral Port Range, there are only 16,384 available source ports.</p>
-	<p>The ports in range 1 - 1023, know as "<a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports" target="_blank" rel="noopener noreferrer">Well Known Ports"</a>, are specially reserved and excluded from the Ephemeral Port Range.</p>
+	<p>The list of ports that can be used as a source port is known as the <a href="http://en.wikipedia.org/wiki/Ephemeral_port" target="_blank" rel="noopener noreferrer">Ephemeral Port Range</a>. The standards organization in charge of such things, known as IANA, recommends that the operating system pick a source port between 49152 and 65535. If you follow IANA's recommendations for the Ephemeral Port Range, there are only 16,384 available source ports.</p>
+	<p>The ports in range 1 - 1023, know as "<a href="http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports" target="_blank" rel="noopener noreferrer">Well Known Ports"</a>, are specially reserved and excluded from the Ephemeral Port Range.</p>
 	<p>At CloudFlare, we have a good sense of what will be connecting across the IPs on our network so we're comfortable expanding our Ephemeral Port Range to span from 9024 through 65535, giving us 56,512 possible source ports. The maximum number of simultaneous outgoing connections to any given CloudFlare customers' origin from any given server on our network should be: 56,512 multiplied by the number of source IPs assigned to the server. You'd think that would be plenty of connections, but there's a catch.</p>
 	<div class="flex anchor relative">
 		<h3 id="bind-before-connect">Bind Before Connect</h3>
@@ -89,10 +89,10 @@
 			</svg>
 		</a>
 	</div>
-	<p>As I wrote above, in order to prevent too much traffic from coming from a single IP, we spread requests across multiple source IP addresses. We use a version of Linux in the Debian family. In Linux, in order to pin the outbound request to a particular IP you bind a socket to a particular source IP and source port (using the bind() function) then establish the connection (using the connect() function). For example, if you wanted to set the source IP to be 1.1.1.1 and the source port to 1234 and then open a connection to the web server at <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>, you'd use the following code:</p>
+	<p>As I wrote above, in order to prevent too much traffic from coming from a single IP, we spread requests across multiple source IP addresses. We use a version of Linux in the Debian family. In Linux, in order to pin the outbound request to a particular IP you bind a socket to a particular source IP and source port (using the bind() function) then establish the connection (using the connect() function). For example, if you wanted to set the source IP to be 1.1.1.1 and the source port to 1234 and then open a connection to the web server at <a href="http://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>, you'd use the following code:</p>
 	<p>s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		s.bind(("1.1.1.1", 1234))
-		s.connect(("<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>", 80))</p>
+		s.connect(("<a href="http://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>", 80))</p>
 	<p>If you specify a source port of 0 when you call bind(), then you're instructing the operating system to randomly find an available port for you:</p>
 	<p>s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</p>
 	<div class="flex anchor relative">
@@ -104,7 +104,7 @@
 		</a>
 	</div>
 	<p>s.bind(("1.1.1.1", 0))
-		s.connect(("<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>", 80))</p>
+		s.connect(("<a href="http://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>", 80))</p>
 	<p>That works great, however, Linux's bind function is conservative. Because it doesn't know what you're going to be using the port for, when a port is reserved the bind function holds it regardless of the protocol, destination IP, or destination port. In other words, if you bind this way you're only using two of the possible five variables in the connection tuple.</p>
 	<p>At CloudFlare, this limited the number of concurrent connections per server from 64k for every source IP globally, to 64k for every source IP for every destination host. This practically removes the limit of outgoing connections from CloudFlare.</p>
 	<p>In practice, with typical HTTP connections, the connection limits rarely had an impact. This was because HTTP connections are typically very short-lived so under normal circumstances no server would ever hit the limit. We would occasionally see the limits hit on some servers during large Layer 7 DDoS attacks. We knew, however, if we were going to support WebSockets having a limited pool of concurrent connections would create a problem.</p>
@@ -134,14 +134,14 @@
 	</div>
 	<p>s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		s.bind(("1.1.1.1", 0))
-		s.connect(("<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>", 80))</p>
+		s.connect(("<a href="http://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>", 80))</p>
 	<p>This works fine in our case so long as two connections sharing the same source IP and source port are sending and receiving traffic from two different destination IPs. And, given the large number of destination IPs behind our network, conflicts are rare. If there's a conflict, the connect() function will return an error. The solution is to watch for the error and, when one occurs, retry the port selection until you find an available, unconflicted port. Here's a simplified version of the code we use:</p>
 	<p>for i in range(RETRIES):
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		s.bind(("192.168.1.21", 0))
 		try:
-		s.connect(("<a href="https://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>", 80))
+		s.connect(("<a href="http://www.google.com" target="_blank" rel="noopener noreferrer">www.google.com</a>", 80))
 		break
 		except socket.error, e:
 		if e.errno != errno.EADDRNOTAVAIL:

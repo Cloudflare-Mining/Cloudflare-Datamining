@@ -47,7 +47,7 @@
 	</div>
 	<p>After establishing a TCP connection to port 443 on the server, your browser transmits a <b>ClientHello</b> message containing the most recent version of TLS it supports; randomly generated data to be used for key exchange; the hostname of the website the user wants to browse; other capabilities or extensions it supports; and a rank ordered list of supported encryption algorithms.</p>
 	<p>If the session had previously been established with a server that supports session IDs or <a href="https://blog.cloudflare.com/microsoft-tls-downgrade-schannel-bug#overview">session tickets</a>, this resumption data would have been sent in an attempt to abbreviate the process and avoid a “full” handshake; the steps below assume a full handshake, however, not an abbreviated one.</p>
-	<p>_Figure 1 - ClientHello message sent by Chrome to <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com\</a>_</p>
+	<p>_Figure 1 - ClientHello message sent by Chrome to <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com\</a>_</p>
 	<div class="flex anchor relative">
 		<h4 id="step-2-server-hello">Step 2 - Server Hello</h4>
 		<a href="https://blog.cloudflare.com/#step-2-server-hello" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -57,7 +57,7 @@
 		</a>
 	</div>
 	<p>If the basic parameters of the <b>ClientHello</b> are acceptable to the web server, it responds with a <b>ServerHello</b> containing its own random data, the subset of the client-sent extensions it supports, and the selection it made from each of the options—(maximum supported) TLS version, cipher suite, and method of compression—provided by the client. Those interested in the cipher suites that CloudFlare’s edge supports can find them <a href="https://github.com/cloudflare/sslconfig/blob/master/conf" target="_blank" rel="noopener noreferrer">listed on GitHub</a>.</p>
-	<p>_Figure 2 - ServerHello message sent by <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> to Chrome_</p>
+	<p>_Figure 2 - ServerHello message sent by <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> to Chrome_</p>
 	<div class="flex anchor relative">
 		<h4 id="step-3-server-certificate">Step 3 - (Server) Certificate</h4>
 		<a href="https://blog.cloudflare.com/#step-3-server-certificate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -68,7 +68,7 @@
 	</div>
 	<p>Immediately after sending the <b>ServerHello</b>, i.e., without waiting for a response from the client, the server sends the <b>Certificate</b> message. This message contains — at minimum — the leaf certificate matching the requested site, but it also can contain <a href="https://blog.cloudflare.com/what-we-just-did-to-make-ssl-even-faster">other certificates in the chain</a> such as the CA intermediate(s).</p>
 	<p>We'll come back to this message in a moment, as by this point any server-side logic to determine the optimal certificate to present to the browser — SHA-2 ECDSA, SHA-2 RSA, or SHA-1 RSA — must have been executed.</p>
-	<p><i>Figure 3 - Certificate message sent by </i><a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><i>www.cloudflare.com</i></a><i> to Chrome</i></p>
+	<p><i>Figure 3 - Certificate message sent by </i><a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><i>www.cloudflare.com</i></a><i> to Chrome</i></p>
 	<div class="flex anchor relative">
 		<h4 id="step-4-certificate-chain-validation">Step 4 - Certificate Chain Validation</h4>
 		<a href="https://blog.cloudflare.com/#step-4-certificate-chain-validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">

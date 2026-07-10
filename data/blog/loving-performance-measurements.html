@@ -80,7 +80,7 @@
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/I8VbrcSjVSKY1i7fbVEMl/8108e25e78c1ee5356bbd080c467c056/Screenshot_2025-05-15_at_11.33.40.png" alt="" class="kg-image" width="2094" height="280" loading="lazy">
 	</figure>
 	<p>It's a good reminder that while statistics is a great tool for providing a simplified and generalized representation of a complex system, it can also obscure important subtleties of that system. A good way to think of statistical modeling is like lossy compression. In the latency visualization above (which is a plot of TTFB over time), we are compressing the entire spectrum of latency metrics into 4 percentile bands, and because we are only considering up to the 99th percentile, there's an entire 1% of samples left over that we are ignoring!&nbsp;</p>
-	<p>"What?" I hear you asking. "P99 is already well into perfection territory. We're not trying to be perfectionists. Maybe we should get our p50s down first". Let's put things in perspective. This zone (<a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>www.cloudflare.com</u></a>) is getting about 30,000 req/s and the 99th percentile latency is 500 ms. (Here we are defining latency as “Edge TTFB”, a server-side approximation of our now official definition.) So there are 300 req/s that are taking longer than half a second to complete, and that's just the portion of the request that <i>we</i> can see. How much worse than 500 ms are those requests in the top 1%? If we look at the 100th percentile (the max), we get a much different vibe from our Edge TTFB plot.</p>
+	<p>"What?" I hear you asking. "P99 is already well into perfection territory. We're not trying to be perfectionists. Maybe we should get our p50s down first". Let's put things in perspective. This zone (<a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>www.cloudflare.com</u></a>) is getting about 30,000 req/s and the 99th percentile latency is 500 ms. (Here we are defining latency as “Edge TTFB”, a server-side approximation of our now official definition.) So there are 300 req/s that are taking longer than half a second to complete, and that's just the portion of the request that <i>we</i> can see. How much worse than 500 ms are those requests in the top 1%? If we look at the 100th percentile (the max), we get a much different vibe from our Edge TTFB plot.</p>
 	<figure class="kg-card kg-image-card">
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/NDvJObDLjy5D8bKIEhsjS/10f1c40940ba41aae308100c7f374836/image12.png" alt="" class="kg-image" width="1379" height="620" loading="lazy">
 	</figure>
@@ -94,7 +94,7 @@
 		</a>
 	</div>
 	<p>Maybe you're still not convinced. It feels more intuitive to focus on the median because the latency experienced by 50 out of 100 people seems more important to focus on than that of 1 in 100. I would argue that is a totally true statement, but notice I said "people"<sup> </sup>and not "requests." A person visiting a website is not likely to be doing it one request at a time.</p>
-	<p>Taking <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>www.cloudflare.com</u></a> as an example again, when a user opens that page, their browser makes more than <b>70</b> requests. It sounds big, but in the world of user-facing websites, it’s not that bad. In contrast, <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer"><u>www.amazon.com</u></a> issues more than <b>400</b> requests! It's worth noting that not all those requests need to complete before a web page or application becomes usable. That's why more advanced and browser-focused metrics exist, but I will leave a discussion of those for later blog posts. I am more interested in how making that many requests changes the probability calculations for expected latency on a per-user basis.&nbsp;</p>
+	<p>Taking <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>www.cloudflare.com</u></a> as an example again, when a user opens that page, their browser makes more than <b>70</b> requests. It sounds big, but in the world of user-facing websites, it’s not that bad. In contrast, <a href="http://www.amazon.com" target="_blank" rel="noopener noreferrer"><u>www.amazon.com</u></a> issues more than <b>400</b> requests! It's worth noting that not all those requests need to complete before a web page or application becomes usable. That's why more advanced and browser-focused metrics exist, but I will leave a discussion of those for later blog posts. I am more interested in how making that many requests changes the probability calculations for expected latency on a per-user basis.&nbsp;</p>
 	<p>Here's a brief primer on combining probabilities that covers everything you need to know to understand this section.</p>
 	<ul>
 		<li>
@@ -112,7 +112,7 @@
 		&nbsp; &amp;= 25\%
 		\end{align}$$</p>
 	<p>We can generalize this for any percentile and any number of requests. $$P( pX_{N}) = X\%^{N}$$</p>
-	<p>For <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>www.cloudflare.com</u></a> and its 70ish requests, the percentage of visitors that won't experience a latency above the median is&nbsp;</p>
+	<p>For <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>www.cloudflare.com</u></a> and its 70ish requests, the percentage of visitors that won't experience a latency above the median is&nbsp;</p>
 	<p>$$\begin{align}
 		P( p50_{70}) &amp;= 50\%^{70} \\
 		&nbsp; &amp;\approx 0.000000000000000000001\%
@@ -125,7 +125,7 @@
 		X &amp;= e^{ \frac{ln\left ( 50\% \right )}{70}} \\
 		X &amp;\approx&nbsp; 99\%
 		\end{align}$$</p>
-	<p>This seems a little too perfect, but I am not making this up. For <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>www.cloudflare.com</u></a>, if you want to capture a value that's representative of what the median user can expect, you need to look at $p99$ request latency. Extending this even further, if you want a value that's representative of what 99% of users will experience, you need to look at the <b>99.99th</b> <b>percentile</b>!</p>
+	<p>This seems a little too perfect, but I am not making this up. For <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>www.cloudflare.com</u></a>, if you want to capture a value that's representative of what the median user can expect, you need to look at $p99$ request latency. Extending this even further, if you want a value that's representative of what 99% of users will experience, you need to look at the <b>99.99th</b> <b>percentile</b>!</p>
 	<div class="flex anchor relative">
 		<h2 id="spherical-latency-in-a-vacuum">Spherical latency in a vacuum</h2>
 		<a href="https://blog.cloudflare.com/#spherical-latency-in-a-vacuum" aria-hidden="true" class="relative sm:absolute sm:-start-5">

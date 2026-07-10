@@ -77,7 +77,7 @@ Supported protocols: h2 spdy/3.1 http/1.1
 $ is-http2 www.amazon.com
 × HTTP/2 not supported by www.amazon.com
 Supported protocols: http/1.1</code></pre>
-	<p>The <code>is-http</code> tool is also useful because it gives you a list of the protocols advertised by the server. As you can see <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> supports HTTP/2, HTTP/1.1 and SPDY/3.1.</p>
+	<p>The <code>is-http</code> tool is also useful because it gives you a list of the protocols advertised by the server. As you can see <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> supports HTTP/2, HTTP/1.1 and SPDY/3.1.</p>
 	<div class="flex anchor relative">
 		<h4 id="curl">curl</h4>
 		<a href="https://blog.cloudflare.com/#curl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -141,7 +141,7 @@ $ sudo ldconfig</code></pre>
 		</a>
 	</div>
 	<p>If you built <code>curl</code> using my instructions above you will have built and installed some tools that come with the <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library. One of those is a command-line client called <code>nghttp</code>. It can be used like <code>curl</code> to download from the web using HTTP/2 but it also has a handy verbose option that shows that actual HTTP/2 frames sent and received.</p>
-	<p>By running it with <code>-nv</code> you get HTTP/2 and throw away the actual downloaded page. Here's its output when downloading <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> using HTTP/2. On a terminal with color support it uses coloring to highlight different parts of the log.</p>
+	<p>By running it with <code>-nv</code> you get HTTP/2 and throw away the actual downloaded page. Here's its output when downloading <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> using HTTP/2. On a terminal with color support it uses coloring to highlight different parts of the log.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XhV2QcvnnoVSUERRpyGgP/d204e9ebeaff7da0cac4ead13aa053a5/Screen-Shot-2015-12-03-at-13-24-46.png" alt="" class="kg-image" width="1265" height="1259" loading="lazy">
@@ -184,7 +184,7 @@ $ go get github.com/fstab/h2c</code></pre>
 	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -nextprotoneg ''
 CONNECTED(00000003)
 Protocols advertised by server: h2, spdy/3.1, http/1.1</code></pre>
-	<p>There you can see that <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> support HTTP/2 (the h2), SPDY/3.1 and HTTP/1.1.</p>
+	<p>There you can see that <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> support HTTP/2 (the h2), SPDY/3.1 and HTTP/1.1.</p>
 	<div class="flex anchor relative">
 		<h4 id="h2i">h2i</h4>
 		<a href="https://blog.cloudflare.com/#h2i" aria-hidden="true" class="relative sm:absolute sm:-start-5">
@@ -195,7 +195,7 @@ Protocols advertised by server: h2, spdy/3.1, http/1.1</code></pre>
 	</div>
 	<p>If you want to do low level HTTP/2 debugging there's an interactive client call <a href="https://github.com/golang/net/tree/master/http2/h2i" target="_blank" rel="noopener noreferrer">h2i</a>. Once again it requires that you have Go installed. To get it, run</p>
 	<pre class="language-bash"><code class="language-bash">$ go get github.com/golang/net/http2/h2i</code></pre>
-	<p>You can then use <code>h2i</code> to connect to a site that uses HTTP/2 and send it individual HTTP/2 frames. For example, here's the start of session connecting to <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> and requesting the home page using the <code>headers</code> command which allows you to type in a standard HTTP/1.1 request.</p>
+	<p>You can then use <code>h2i</code> to connect to a site that uses HTTP/2 and send it individual HTTP/2 frames. For example, here's the start of session connecting to <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> and requesting the home page using the <code>headers</code> command which allows you to type in a standard HTTP/1.1 request.</p>
 	<pre class="language-bash"><code class="language-bash">$ h2i www.cloudflare.com
 Connecting to www.cloudflare.com:443 ...
 Connected to 198.41.214.163:443

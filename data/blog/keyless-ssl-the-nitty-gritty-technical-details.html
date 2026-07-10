@@ -24,7 +24,7 @@
 		</a>
 	</div>
 	<p>TLS has two main goals: confidentiality and authentication. Both are critically important to securely communicating on the Internet.</p>
-	<p>Communication is considered confidential when two parties are confident that nobody else can understand their conversation. Confidentiality can be achieved using symmetric encryption: use a key known only to the two parties involved to encrypt messages before sending them. In TLS, this symmetric encryption is typically done using a strong block cipher like <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">AES</a>. Older browsers and platforms might use a cipher like <a href="https://en.wikipedia.org/wiki/Triple_DES" target="_blank" rel="noopener noreferrer">Triple DES</a> or the stream cipher <a href="https://en.wikipedia.org/wiki/RC4" target="_blank" rel="noopener noreferrer">RC4</a>, <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">which is now considered insecure</a>.</p>
+	<p>Communication is considered confidential when two parties are confident that nobody else can understand their conversation. Confidentiality can be achieved using symmetric encryption: use a key known only to the two parties involved to encrypt messages before sending them. In TLS, this symmetric encryption is typically done using a strong block cipher like <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">AES</a>. Older browsers and platforms might use a cipher like <a href="http://en.wikipedia.org/wiki/Triple_DES" target="_blank" rel="noopener noreferrer">Triple DES</a> or the stream cipher <a href="http://en.wikipedia.org/wiki/RC4" target="_blank" rel="noopener noreferrer">RC4</a>, <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye">which is now considered insecure</a>.</p>
 	<p>The other crucial goal of TLS is authentication. Authentication is a way to ensure the person on the other end is who they say they are. This is accomplished with public keys. Websites use certificates and public key cryptography to prove their identity to web browsers. And browsers need two things to trust a certificate: proof that the other party is the owner of the certificate, and proof that the certificate is trusted.</p>
 	<p>A website certificate contains a public key, and if the website can prove that it controls the associated private key, that’s proof that they are the owner of the certificate. A browser considers a certificate trusted if the certificate was granted by a trusted certificate authority, and contains the site’s domain name. More technical details of how trust works with web certificates is described in <a href="https://blog.cloudflare.com/introducing-cfssl">a previous blog post</a> about our open source SSL toolkit, CFSSL.</p>
 	<p>In the context of the web, confidentiality and authentication are achieved through the process of establishing a shared key and proving ownership of a certificate. TLS does this through a series of messages called a “handshake”.</p>
@@ -43,7 +43,7 @@
 
 	</figure>
 	<p>The TLS protocol evolved from the Secure Sockets Layer (SSL) protocol which was developed by Netscape in the mid-1990s. In 1999, the Internet Engineering Task Force (IETF) standardized a new protocol called TLS, which is an updated version of SSL. In fact, TLS is so similar to SSL that TLS 1.0 uses the SSL protocol version number 3.1. This may seem confusing at first, but makes sense since TLS is just a minor update to SSL 3.0. Subsequent versions of TLS have followed this pattern. Since TLS is an evolution of the SSL protocol, people still use the terms TLS and SSL somewhat interchangeably.</p>
-	<p>There are two main types of handshakes in TLS: one based on <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank" rel="noopener noreferrer">RSA</a>, and one based on <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank" rel="noopener noreferrer">Diffie-Hellman</a>. RSA and Diffie-Hellman were the two algorithms which ushered in the era of modern cryptography, and brought cryptography to the masses. These two handshakes differ only in how the two goals of key establishment and authentication are achieved:</p>
+	<p>There are two main types of handshakes in TLS: one based on <a href="http://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank" rel="noopener noreferrer">RSA</a>, and one based on <a href="http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank" rel="noopener noreferrer">Diffie-Hellman</a>. RSA and Diffie-Hellman were the two algorithms which ushered in the era of modern cryptography, and brought cryptography to the masses. These two handshakes differ only in how the two goals of key establishment and authentication are achieved:</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3B1xXZSACJ04l2CYJhHbzN/36b086a5ab2cbaf3b07fd494b17b5749/keyless-blog-table.png" alt="alt" class="kg-image" width="800" height="150" loading="lazy">
@@ -62,7 +62,7 @@
 	</div>
 	<p>Before we walk through the steps of the handshake, here are a couple definitions.</p>
 	<p><b>1. Session key</b>This is the end result of a handshake. It’s a key for a symmetric cipher, and allows the client and server to encrypt messages to each other.</p>
-	<p><b>2. Client random</b>This is a sequence of 32 bytes created by the client. It’s unique for each connection, and is supposed to contain a four-byte timestamp followed by 28 random bytes. Recently, Google Chrome switched to using 32 bytes of random in order to prevent client fingerprinting. These random values are often called a <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce" target="_blank" rel="noopener noreferrer">nonce</a>.</p>
+	<p><b>2. Client random</b>This is a sequence of 32 bytes created by the client. It’s unique for each connection, and is supposed to contain a four-byte timestamp followed by 28 random bytes. Recently, Google Chrome switched to using 32 bytes of random in order to prevent client fingerprinting. These random values are often called a <a href="http://en.wikipedia.org/wiki/Cryptographic_nonce" target="_blank" rel="noopener noreferrer">nonce</a>.</p>
 	<p><b>3. Server random</b>A server random is the same as the client random except generated by the server.</p>
 	<p><b>4. Pre-main secret</b>This is a 48-byte blob of data. It can be combined with both the client random and the server random to create the session key using a “pseudorandom function” (PRF).</p>
 	<p><b>5. Cipher suite</b>This is a unique identifier for combining algorithms making up a TLS connection. It defines one algorithm for each of the following:</p>
@@ -89,25 +89,25 @@
 			<p>RSA for authentication (implied)</p>
 		</li>
 		<li>
-			<p>128-bit <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">Advanced Encryption Standard</a> in <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation" target="_blank" rel="noopener noreferrer">Cipher Block Chaining (CBC) mode</a> for confidentiality</p>
+			<p>128-bit <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">Advanced Encryption Standard</a> in <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation" target="_blank" rel="noopener noreferrer">Cipher Block Chaining (CBC) mode</a> for confidentiality</p>
 		</li>
 		<li>
-			<p>160-bit <a href="https://en.wikipedia.org/wiki/SHA-1" target="_blank" rel="noopener noreferrer">Secure Hashing Algorithm (SHA)</a> for integrity</p>
+			<p>160-bit <a href="http://en.wikipedia.org/wiki/SHA-1" target="_blank" rel="noopener noreferrer">Secure Hashing Algorithm (SHA)</a> for integrity</p>
 		</li>
 	</ul>
 	<p>A more daunting, but valid cipher suite is “ECDHE-ECDSA-AES256-GCM-SHA384” which defines a session that uses:</p>
 	<ul>
 		<li>
-			<p>Elliptic Curve Diffie-Hellman Ephemeral (<a href="https://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman" target="_blank" rel="noopener noreferrer">ECDHE</a>) key exchange for key establishment</p>
+			<p>Elliptic Curve Diffie-Hellman Ephemeral (<a href="http://en.wikipedia.org/wiki/Elliptic_curve_Diffie%E2%80%93Hellman" target="_blank" rel="noopener noreferrer">ECDHE</a>) key exchange for key establishment</p>
 		</li>
 		<li>
 			<p>Elliptic Curve Digital Signature Algorithms (<a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">ECDSA</a>) for authentication</p>
 		</li>
 		<li>
-			<p>256-bit <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">Advanced Encryption Standard</a> in <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode" target="_blank" rel="noopener noreferrer">Galois/Counter mode (GCM)</a> for confidentiality</p>
+			<p>256-bit <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">Advanced Encryption Standard</a> in <a href="http://en.wikipedia.org/wiki/Galois/Counter_Mode" target="_blank" rel="noopener noreferrer">Galois/Counter mode (GCM)</a> for confidentiality</p>
 		</li>
 		<li>
-			<p>384-bit <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreferrer">Secure Hashing Algorithm</a> for integrity</p>
+			<p>384-bit <a href="http://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener noreferrer">Secure Hashing Algorithm</a> for integrity</p>
 		</li>
 	</ul>
 	<p>With these definitions in hand, let’s walk through an RSA handshake.</p>
@@ -126,7 +126,7 @@
 
 	</figure>
 	<p><b>Message 1: “Client Hello”</b></p>
-	<p>The client hello contains the protocol version that the client wants to use, and some other information to get the handshake started including the client random and a list of cipher suites. Modern browsers also include the hostname they are looking for, called the <a href="https://en.wikipedia.org/wiki/Server_Name_Indication" target="_blank" rel="noopener noreferrer">Server Name Indication (SNI)</a>. SNI lets the web server host multiple domains on the same IP address.</p>
+	<p>The client hello contains the protocol version that the client wants to use, and some other information to get the handshake started including the client random and a list of cipher suites. Modern browsers also include the hostname they are looking for, called the <a href="http://en.wikipedia.org/wiki/Server_Name_Indication" target="_blank" rel="noopener noreferrer">Server Name Indication (SNI)</a>. SNI lets the web server host multiple domains on the same IP address.</p>
 	<p><b>Message 2: “Server Hello”</b></p>
 	<p>After receiving the client hello, the server picks the parameters for the handshake going forward. The choice of cipher suite determines what type of handshake is performed. The server “hello” message contains the server random, the server’s chosen cipher suite, and the server’s certificate. The certificate contains the server’s public key and domain name.</p>
 	<p>Note: CloudFlare’s cipher suite preferences are posted publicly on our <a href="https://github.com/cloudflare/sslconfig" target="_blank" rel="noopener noreferrer">Github page</a>.</p>
@@ -170,7 +170,7 @@
 			<p>Both person a and b end up with g<sup>ab</sup>, which is their shared secret</p>
 		</li>
 	</ul>
-	<p>This doesn't work well with regular numbers because g<sup>ab</sup> can get really large, and there are efficient ways to take the nth root of a number. However, we can change the problem space and make it work. This is done by restricting the computation to numbers of a fixed size by always dividing the result of a computation by big prime number and taking the remainder. This is called modular arithmetic. Taking an nth root in modular arithmetic is called the <a href="https://en.wikipedia.org/wiki/Discrete_logarithm" target="_blank" rel="noopener noreferrer">discrete logarithm problem</a> and is considered a hard problem.</p>
+	<p>This doesn't work well with regular numbers because g<sup>ab</sup> can get really large, and there are efficient ways to take the nth root of a number. However, we can change the problem space and make it work. This is done by restricting the computation to numbers of a fixed size by always dividing the result of a computation by big prime number and taking the remainder. This is called modular arithmetic. Taking an nth root in modular arithmetic is called the <a href="http://en.wikipedia.org/wiki/Discrete_logarithm" target="_blank" rel="noopener noreferrer">discrete logarithm problem</a> and is considered a hard problem.</p>
 	<p>Another variant of the Diffie-Hellman key agreement uses Elliptic Curves, ECDHE. For more information on Elliptic Curves, check out <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography">this primer</a> we published last year. A shared secret can be derived using either of these fixed-size Diffie-Hellman key agreement algorithms.</p>
 	<p>Now let’s go through a Diffie-Hellman handshake:</p>
 	<figure class="kg-card kg-image-card ">
@@ -231,7 +231,7 @@
 	</figure>
 	<p>For Keyless SSL to be secure, the connection from CloudFlare’s edge to the key server also needs to be secure. The key server can act as a cryptographic oracle by performing private key operations for anyone who can contact it. Ensuring that only CloudFlare can ask the key server to perform operations is crucial to the security of Keyless SSL.</p>
 	<p>We secure the connection from CloudFlare to the key server with mutually authenticated TLS. Previously, we described TLS handshakes that were only authenticated in one direction: the client validated the server. In mutually authenticated TLS, both client and server have certificates and authenticate each other. The key server authenticates CloudFlare and CloudFlare authenticates the key server.</p>
-	<p>In Keyless SSL, the key server only allows connections from clients with a certificate signed by a CloudFlare internal certificate authority. We use certificates granted by our own certificate authority for both sides of this connection. We have strict controls over how these certificates are granted and use the <a href="https://en.wikipedia.org/wiki/X.509#Extensions_informing_a_specific_usage_of_a_certificate" target="_blank" rel="noopener noreferrer">X.509 Extended Key Usage</a> option to ensure that certificates are only used as intended. This prevents any party that doesn’t have a CloudFlare granted certificate from communicating with the key server. Customers also have the option to add firewall rules to limit incoming connections to those from <a href="https://www.cloudflare.com/ips" target="_blank" rel="noopener noreferrer">CloudFlare’s IP space</a>.</p>
+	<p>In Keyless SSL, the key server only allows connections from clients with a certificate signed by a CloudFlare internal certificate authority. We use certificates granted by our own certificate authority for both sides of this connection. We have strict controls over how these certificates are granted and use the <a href="http://en.wikipedia.org/wiki/X.509#Extensions_informing_a_specific_usage_of_a_certificate" target="_blank" rel="noopener noreferrer">X.509 Extended Key Usage</a> option to ensure that certificates are only used as intended. This prevents any party that doesn’t have a CloudFlare granted certificate from communicating with the key server. Customers also have the option to add firewall rules to limit incoming connections to those from <a href="https://www.cloudflare.com/ips" target="_blank" rel="noopener noreferrer">CloudFlare’s IP space</a>.</p>
 	<p>Additionally, we restrict the cipher suite for this connection to one of the following:</p>
 	<ul>
 		<li>
@@ -251,7 +251,7 @@
 		</a>
 	</div>
 	<p>The key server itself can be modified to work with hardware security module (HSM), providing additional hardware security for customers who want to protect the key server from undiscovered software vulnerabilities similar to <a href="https://blog.cloudflare.com/searching-for-the-prime-suspect-how-heartbleed-leaked-private-keys">Heartbleed</a>.</p>
-	<p>The key server is not subject to padding oracle attacks like that of <a href="https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack" target="_blank" rel="noopener noreferrer">Bleichenbacher</a> because it uses constant size responses. Side-channel attacks such as timing attacks are ineffective as long as the underlying cryptographic library used on the key server is immune. We use OpenSSL in our reference implementation which has been hardened against such attacks.</p>
+	<p>The key server is not subject to padding oracle attacks like that of <a href="http://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack" target="_blank" rel="noopener noreferrer">Bleichenbacher</a> because it uses constant size responses. Side-channel attacks such as timing attacks are ineffective as long as the underlying cryptographic library used on the key server is immune. We use OpenSSL in our reference implementation which has been hardened against such attacks.</p>
 	<div class="flex anchor relative">
 		<h3 id="performance-enhancements">Performance enhancements</h3>
 		<a href="https://blog.cloudflare.com/#performance-enhancements" aria-hidden="true" class="relative sm:absolute sm:-start-5">

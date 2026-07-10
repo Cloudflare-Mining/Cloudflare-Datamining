@@ -69,7 +69,7 @@
 	<p>On a side note, there are now <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks">serious problems with RC4</a> and as better replacements come along (such as ciphersuites based on AES) CloudFlare will update the ciphersuites it uses to provide the best level of protection.</p>
 	<p>That said the basic idea is that the only way to break into a connection secured with a symmetric cipher is to try out all the keys. Which brings us to 128-bit and 256-bit keys.</p>
 	<p>A 128-bit key means there are 340,282,366,920,938,463,463,374,607,431,768,211,456 possible keys to try. A 256-bit key has the square of that many keys to try: a hugenumber.</p>
-	<p>To put that in context imagine trying to test all the keys for a 128-bit AES encryption using the <a href="https://en.wikipedia.org/wiki/AES_instruction_set" target="_blank" rel="noopener noreferrer">special AES instructions</a> added to the latest Intel microprocessors. These instructions are designed to be very fast and according to Intel's own data decrypting a block of AES encrypted data would take 5.6 cycles on <a href="http://ark.intel.com/products/47932" target="_blank" rel="noopener noreferrer">Intel i7 Processor</a> with 4 cores.</p>
+	<p>To put that in context imagine trying to test all the keys for a 128-bit AES encryption using the <a href="http://en.wikipedia.org/wiki/AES_instruction_set" target="_blank" rel="noopener noreferrer">special AES instructions</a> added to the latest Intel microprocessors. These instructions are designed to be very fast and according to Intel's own data decrypting a block of AES encrypted data would take 5.6 cycles on <a href="http://ark.intel.com/products/47932" target="_blank" rel="noopener noreferrer">Intel i7 Processor</a> with 4 cores.</p>
 	<p>Put another way, that processor could try out one key on one block of data in about 1.7 nanoseconds. At that speed it would take it about <b>1.3 * 10^12 * the age of the universe</b> to check all the keys (you'd probably only have to check half before finding the right one so divide that incredibly long time by two).</p>
 	<p>Since personal computers became available roughly 1 billion of them have been sold. Imagine that they all had the same top-of-the-line processor and were used to attack a 128-bit key. You'd manage to get the time down to <b>660 * the age of the universe</b>.</p>
 	<figure class="kg-card kg-image-card ">
@@ -115,7 +115,7 @@
 			</svg>
 		</a>
 	</div>
-	<p>The <a href="https://www.keylength.com/en/3" target="_blank" rel="noopener noreferrer">ECRYPT II recommendations</a> on key length say that a 128-bit symmetric key provides the same strength of protection as a 3,248-bit asymmetric key. And that those key lengths provide long term protection of data encrypted with them.</p>
+	<p>The <a href="http://www.keylength.com/en/3" target="_blank" rel="noopener noreferrer">ECRYPT II recommendations</a> on key length say that a 128-bit symmetric key provides the same strength of protection as a 3,248-bit asymmetric key. And that those key lengths provide long term protection of data encrypted with them.</p>
 	<p>The length of time a key is good for is also important. Over time computers get faster and techniques for breaking encryption schemes (particuarly techniques for breaking asymmetric encryption) get better. That 512-bit key used for TI calculators probably looked pretty safe when it was first chosen. And in 1999 a key of that length took a <a href="https://en.wikipedia.org/wiki/Cray_C90" target="_blank" rel="noopener noreferrer">supercomputer</a> to break.</p>
 	<figure class="kg-card kg-image-card ">
 
@@ -144,7 +144,7 @@
 			<p>So, Google Chrome set up an ephemeral <a href="https://www.imperialviolet.org/2011/11/22/forwardsecret.html" target="_blank" rel="noopener noreferrer">256-bit</a> Elliptic Curve Diffie Hellman public/private key pair and used it to agree on a 128-bit symmetric key for the rest of the communication.</p>
 		</li>
 		<li>
-			<p>To prove that the web site really was <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> the 2,048-bit RSA key was used along with the web site's certificate.</p>
+			<p>To prove that the web site really was <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> the 2,048-bit RSA key was used along with the web site's certificate.</p>
 		</li>
 	</ol>
 	<p>So, three different key lengths were used: 128-bit (with RC4), 256-bit (with ECDHE) and 2,048-bit (with RSA). All three key lengths provide similar levels of security.</p>

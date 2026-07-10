@@ -13,7 +13,7 @@
 	<p>CloudFlare's architecture starts with an assumption: failure is going to happen. As a result, we have to plan for failure at every level and design a system that gracefully handles it when it occurs. To understand how we do this, you have to understand the components of CloudFlare's edge systems. Here are four critical components we deploy at the edge of our network:</p>
 	<ol>
 		<li>
-			<p>**Network:**CloudFlare's <a href="https://www.cloudflare.com/network-map" target="_blank" rel="noopener noreferrer">23 data centers</a> (internally we refer to them as PoPs) are connected to the rest of the world via multiple providers. These connections are both through transit (bandwidth) providers as well as other networks we directly peer with.</p>
+			<p>**Network:**CloudFlare's <a href="http://www.cloudflare.com/network-map" target="_blank" rel="noopener noreferrer">23 data centers</a> (internally we refer to them as PoPs) are connected to the rest of the world via multiple providers. These connections are both through transit (bandwidth) providers as well as other networks we directly peer with.</p>
 		</li>
 		<li>
 			<p>**Router:**at the edge of each of our PoPs is a router. This router announces the paths packets take to CloudFlare's network from the rest of the Internet.</p>

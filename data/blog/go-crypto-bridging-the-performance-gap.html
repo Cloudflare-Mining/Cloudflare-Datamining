@@ -54,7 +54,7 @@ Sign 3-prime         1,973,009 ns/op      5,035,561 ns/op      2.6X</code></pre>
 			</svg>
 		</a>
 	</div>
-	<p>As I mentioned AEAD is a special combination of a cipher and a MAC. In the case of AES-GCM the cipher is the AES block cipher in <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29" target="_blank" rel="noopener noreferrer">Counter Mode</a> (AES-CTR). For the MAC it uses a universal hash called <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode#Encryption_and_authentication" target="_blank" rel="noopener noreferrer">GHASH</a>, encrypted with AES-CTR.</p>
+	<p>As I mentioned AEAD is a special combination of a cipher and a MAC. In the case of AES-GCM the cipher is the AES block cipher in <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29" target="_blank" rel="noopener noreferrer">Counter Mode</a> (AES-CTR). For the MAC it uses a universal hash called <a href="http://en.wikipedia.org/wiki/Galois/Counter_Mode#Encryption_and_authentication" target="_blank" rel="noopener noreferrer">GHASH</a>, encrypted with AES-CTR.</p>
 	<p>The inputs to the AES-GCM AEAD encryption are as follows:</p>
 	<ul>
 		<li>

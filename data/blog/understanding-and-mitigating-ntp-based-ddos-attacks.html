@@ -45,7 +45,7 @@
 	<p>My Mac quietly synchronizes with that server to keep its clock accurate. And, of course, NTP is not just used by Macs: it is widely used across the Internet by desktops, servers and even phones to keep their clocks in sync.</p>
 	<p>Unfortunately, the simple UDP-based NTP protocol is prone to amplification attacks because it will reply to a packet with a spoofed source IP address and because at least one of its built in commands will send a long reply to a short request. That makes it ideal as a DDoS tool.</p>
 	<p>NTP contains a command called monlist (or sometimes MON_GETLIST) which can be sent to an NTP server for monitoring purposes. It returns the addresses of up to the last 600 machines that the NTP server has interacted with. This response is much bigger than the request sent making it ideal for an amplification attack.</p>
-	<p>To get an idea of how much larger, I used the <a href="http://linuxcommand.org/man_pages/ntpdc1.html" target="_blank" rel="noopener noreferrer">ntpdc</a> command to send a monlist command to a randomly chosen open NTP server on the Internet. Here are the request and response packets captured with <a href="https://www.wireshark.org" target="_blank" rel="noopener noreferrer">Wireshark</a>.</p>
+	<p>To get an idea of how much larger, I used the <a href="http://linuxcommand.org/man_pages/ntpdc1.html" target="_blank" rel="noopener noreferrer">ntpdc</a> command to send a monlist command to a randomly chosen open NTP server on the Internet. Here are the request and response packets captured with <a href="http://www.wireshark.org" target="_blank" rel="noopener noreferrer">Wireshark</a>.</p>
 	<figure class="kg-card kg-image-card ">
 
 		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rrzt9EWPhDbg0F1uQkWvH/98cc24692bf708d385e729851e87ec0c/Screen_Shot_2014-01-09_at_11.47.29_AM.png" alt="" class="kg-image" width="740" height="227" loading="lazy">
@@ -87,6 +87,6 @@
 			</svg>
 		</a>
 	</div>
-	<p>The black and white photograph at the top of this blog post shows the UK's original <a href="https://en.wikipedia.org/wiki/Speaking_clock" target="_blank" rel="noopener noreferrer">speaking clock</a> and the original voice of the clock <a href="https://en.wikipedia.org/wiki/Jane_Cain" target="_blank" rel="noopener noreferrer">Jane Cain</a>. A common way to synchronize clocks and watches was to telephone the speaking clock to get the precise time.</p>
+	<p>The black and white photograph at the top of this blog post shows the UK's original <a href="http://en.wikipedia.org/wiki/Speaking_clock" target="_blank" rel="noopener noreferrer">speaking clock</a> and the original voice of the clock <a href="http://en.wikipedia.org/wiki/Jane_Cain" target="_blank" rel="noopener noreferrer">Jane Cain</a>. A common way to synchronize clocks and watches was to telephone the speaking clock to get the precise time.</p>
 	<p>Geeks like me will be amused that the NTP UDP port for time synchronization is 123 and that the telephone number of the UK speaking clock is also 123. Even today dialing 123 in the UK gets you the time.</p>
 </div>
