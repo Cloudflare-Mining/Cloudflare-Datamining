@@ -1,0 +1,68 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"input": {
+			"anyOf": [
+				{
+					"type": "string"
+				},
+				{
+					"type": "array",
+					"items": {}
+				}
+			]
+		},
+		"instructions": {
+			"type": "string"
+		},
+		"temperature": {
+			"type": "number",
+			"minimum": 0,
+			"maximum": 2
+		},
+		"max_output_tokens": {
+			"type": "number",
+			"exclusiveMinimum": 0
+		},
+		"top_p": {
+			"type": "number",
+			"minimum": 0,
+			"maximum": 1
+		},
+		"stream": {
+			"type": "boolean"
+		},
+		"tools": {
+			"type": "array",
+			"items": {}
+		},
+		"tool_choice": {},
+		"text": {
+			"type": "object",
+			"properties": {
+				"format": {}
+			},
+			"additionalProperties": {}
+		},
+		"reasoning": {
+			"type": "object",
+			"properties": {
+				"effort": {
+					"type": "string",
+					"enum": [
+						"none",
+						"low",
+						"medium",
+						"high"
+					]
+				}
+			},
+			"additionalProperties": {}
+		}
+	},
+	"required": [
+		"input"
+	],
+	"additionalProperties": {}
+}

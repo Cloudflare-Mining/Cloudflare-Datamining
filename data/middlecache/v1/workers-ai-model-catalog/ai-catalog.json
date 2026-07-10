@@ -1,6 +1,6 @@
 {
-	"generated_at": "2026-07-09T04:34:11.517Z",
-	"model_count": 200,
+	"generated_at": "2026-07-10T04:33:58.873Z",
+	"model_count": 203,
 	"models": [
 		{
 			"model_id": "alibaba/hh1-i2v",
@@ -3349,6 +3349,153 @@
 			"terms": "https://openai.com/policies/",
 			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.5.png",
 			"created_at": "2026-05-22 17:53:37"
+		},
+		{
+			"model_id": "openai/gpt-5.6-luna",
+			"slug": "openai/gpt-5.6-luna",
+			"display_name": "GPT-5.6 Luna",
+			"description": "GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Multimodal",
+				"Responses API"
+			],
+			"context_length": 1050000,
+			"max_output_tokens": 128000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1050000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "128000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"API": "Responses",
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.6-luna.png",
+			"created_at": "2026-07-10 02:51:21"
+		},
+		{
+			"model_id": "openai/gpt-5.6-sol",
+			"slug": "openai/gpt-5.6-sol",
+			"display_name": "GPT-5.6 Sol",
+			"description": "GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Multimodal",
+				"Responses API"
+			],
+			"context_length": 1050000,
+			"max_output_tokens": 128000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1050000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "128000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"API": "Responses",
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.6-sol.png",
+			"created_at": "2026-07-10 02:48:18"
+		},
+		{
+			"model_id": "openai/gpt-5.6-terra",
+			"slug": "openai/gpt-5.6-terra",
+			"display_name": "GPT-5.6 Terra",
+			"description": "GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.",
+			"task": {
+				"id": "",
+				"name": "Text Generation",
+				"description": ""
+			},
+			"tags": [
+				"LLM",
+				"Coding",
+				"Reasoning",
+				"Multimodal",
+				"Responses API"
+			],
+			"context_length": 1050000,
+			"max_output_tokens": 128000,
+			"supports_async": false,
+			"hosting": "proxied",
+			"data_source": "catalog",
+			"properties": [
+				{
+					"property_id": "context_window",
+					"value": "1050000"
+				},
+				{
+					"property_id": "max_output_tokens",
+					"value": "128000"
+				},
+				{
+					"property_id": "terms",
+					"value": "https://openai.com/policies/"
+				},
+				{
+					"property_id": "info",
+					"value": "https://openai.com/"
+				}
+			],
+			"metadata": {
+				"API": "Responses",
+				"Architecture": "Transformer"
+			},
+			"external_info": "https://openai.com/",
+			"terms": "https://openai.com/policies/",
+			"cover_image_url": "https://pub-26f1392c1b674324be6786695bd72257.r2.dev/openai/gpt-5.6-terra.png",
+			"created_at": "2026-07-10 02:49:52"
 		},
 		{
 			"model_id": "openai/gpt-5",
