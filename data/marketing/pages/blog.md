@@ -4,19 +4,30 @@ title: The Cloudflare Blog
 image: https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5x04dbbOIp3eiugWSYPeUo/839720d141b384ea4478dd29706ed289/meta_image.png
 ---
 
+[Improving Smart Tiered Cache for Public Cloud Regions](https://blog.cloudflare.com/smart-tiered-cache-for-public-clouds/)
+
+2026-07-10
+
+Smart Tiered Cache allows for precise upper tier selection for origins hosted on AWS, GCP, Azure, and Oracle Cloud with customer-provided cloud region hints....
+
+[Continue reading »](https://blog.cloudflare.com/smart-tiered-cache-for-public-clouds/)
+* [![Chenxi Zhang](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7EQfzUeOrDgcspt4RpViNs/344af95b877d5c465e4ee2cbd9ffecbe/Chenxi_Zhang_.webp)](https://blog.cloudflare.com/author/chenxi-zhang/)  
+[Chenxi Zhang](https://blog.cloudflare.com/author/chenxi-zhang/)
+
+![Improving Smart Tiered Cache for Public Cloud Regions](https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34RhfMA1OJKjtfvoQM1pyI/dd7228eae4022a98f53c46243c9c4114/BLOG-3328_image2.png)
+
 [Why we cannot wait for better post-quantum signature algorithms](https://blog.cloudflare.com/ml-dsa-will-have-to-do/)
 
 2026-07-09
 
+[Post-Quantum](https://blog.cloudflare.com/tag/post-quantum/)[Security](https://blog.cloudflare.com/tag/security/)[Research](https://blog.cloudflare.com/tag/research/)[Cryptography](https://blog.cloudflare.com/tag/cryptography/)
+
 NIST is advancing nine new post-quantum signature algorithms as potential candidates for future standardization. We take a closer look at all of them, and argue that while they are in the works and show great potential, we should use ML-DSA for now — the best one currently available. ...
 
-[Continue reading »](https://blog.cloudflare.com/ml-dsa-will-have-to-do/)
 * [![Bas Westerbaan](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4KeBG8XO1ADZHuEV9v5Hwz/6c90a96cfb1373b208bffc35f3fd71f4/bas.png)](https://blog.cloudflare.com/author/bas/)  
 [Bas Westerbaan](https://blog.cloudflare.com/author/bas/)
 * [![Christopher Patton](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4sRmXhNpfDUovdIUpP9Keq/8dfd4dfc04f8f6d45b0a69121edfa0e2/christopher-patton.jpg)](https://blog.cloudflare.com/author/christopher-patton/)  
 [Christopher Patton](https://blog.cloudflare.com/author/christopher-patton/)
-
-![Why we cannot wait for better post-quantum signature algorithms](https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fBIVdM2UuoFVQRd9xvTrG/e743b553524f84488246d1645dfde433/image1.png)
 
 [Introducing Meerkat: an experiment in global consensus](https://blog.cloudflare.com/meerkat-introduction/)
 
@@ -265,21 +276,6 @@ Get unified visibility into your email authentication posture and reach full DMA
 
 * [![Ayush Kumar](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16XufphFwxLrjgrc4HQd5K/31b6f03b182f3fd13f09ad34ad9de18c/ayush.png)](https://blog.cloudflare.com/author/ayush/)  
 [Ayush Kumar](https://blog.cloudflare.com/author/ayush/)
-
-[Growing the Cloudflare AI team with talent from Ensemble AI](https://blog.cloudflare.com/ensemble-ai-talent-joins-cloudflare/)
-
-2026-06-15
-
-[Workers AI](https://blog.cloudflare.com/tag/workers-ai/)[AI](https://blog.cloudflare.com/tag/ai/)
-
-Cloudflare is deepening our investment in AI with the addition of team members from Ensemble AI, focusing on machine learning infrastructure and efficiency....
-
-* [![Alex Reneau](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0Xn0p4DB4jHUapdgMYPy/bd0f04d81202a011153303c8cd8ffb8a/Alex_Reneau_.jpeg)](https://blog.cloudflare.com/author/alex-reneau/)  
-[Alex Reneau](https://blog.cloudflare.com/author/alex-reneau/)
-* [![Zach Albertson](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Aqya7idvUK5tJmhoUyMJk/e9d8fd04e6f6c7d6c4f2d27db8c52821/Zach_Albertson_.png)](https://blog.cloudflare.com/author/zach-albertson/)  
-[Zach Albertson](https://blog.cloudflare.com/author/zach-albertson/)
-* [![Michelle Chen](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hrcl3aVtUbBuCMeuXETWy/93dbfbc7d41c09ba35d863312dbde89d/michelle.jpg)](https://blog.cloudflare.com/author/michelle/)  
-[Michelle Chen](https://blog.cloudflare.com/author/michelle/)
 
 * [1](https://blog.cloudflare.com/)
 * [2](https://blog.cloudflare.com/page/2/)
