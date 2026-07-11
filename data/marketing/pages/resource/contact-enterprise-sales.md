@@ -4,7 +4,7 @@ description: Contact Cloudflare enterprise sales today to gain access to advance
 image: https://www.cloudflare.com/preview.png
 ---
 
- Learn more about Cloudflare 
+ Digital modernization for financial institutions 
 
 ##  Contact Enterprise Sales 
 
@@ -421,6 +421,12 @@ Deploy code, route traffic, and integrate compute primitives that drop into your
 ### Proven at the enterprise tier
 
 Trusted by IBM, Shopify, DHL, L'Oréal, Garmin, Allianz. Named a Visionary in the 2025 Gartner Magic Quadrant for SASE Platforms and a Leader in the Forrester Wave for WAF.
+
+### Why enterprises choose Cloudflare
+
+**Integrated security & performance** 
+
+Deeply integrated products forming a unified control plane for your entire infrastructure. 
 
 # Build without boundaries
 
