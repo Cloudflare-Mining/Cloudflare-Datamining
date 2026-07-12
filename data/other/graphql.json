@@ -4266,7 +4266,6 @@
 		"dstIpCountry": "Country code of the session destination IP address",
 		"email": "The email address of the gateway user who initiated the session",
 		"proxyEndpoint": "The proxy endpoint used on this session",
-		"ruleId": "The ID of the Gateway rule (policy) that matched the session, if any",
 		"sessionId": "The network session unique identifier",
 		"sni": "The SNI pulled from the session tls handshake, if present",
 		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
@@ -4410,7 +4409,6 @@
 		"quarantined": "Indicates if the request content was quarantined",
 		"redirectTargetURI": "The URI to which the user was redirected",
 		"requestId": "The request unique identifier",
-		"ruleId": "The ID of the Gateway rule (policy) that matched the request, if any",
 		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
 		"srcIpContinent": "Continent code of the request source IP address",
 		"srcIpCountry": "Country code of the request source IP address",
@@ -5234,7 +5232,6 @@
 		"__description": "",
 		"botDetectionIdArray": "Array of bot management detection ids",
 		"botDetectionIdCountArray": "Count array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
-		"botDetectionIdResponseBytesArray": "Bytes array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
 		"botDetectionTagArray": "Array of bot management detection tags",
 		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index.",
 		"clientRequestAcceptContentTypeCategoryArray": "Array of Accept content type category slugs (e.g. html, json, images) aggregated independently across requests, ordered by request count descending and capped at 50 entries. Each category is counted separately — a request accepting both text/html and application/json contributes to both html and json totals.",
@@ -13826,7 +13823,6 @@
 		"__description": "",
 		"botDetectionIdArray": "Array of bot management detection ids",
 		"botDetectionIdCountArray": "Count array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
-		"botDetectionIdResponseBytesArray": "Bytes array of bot management detection ids. Elements in this array correspond to elements in botDetectionIdArray by index.",
 		"botDetectionTagArray": "Array of bot management detection tags",
 		"botDetectionTagCountArray": "Count array of bot management detection tags. Elements in this array correspond to elements in botDetectionTagArray by index.",
 		"clientRequestAcceptContentTypeCategoryArray": "Array of Accept content type category slugs (e.g. html, json, images) aggregated independently across requests, ordered by request count descending and capped at 50 entries. Each category is counted separately — a request accepting both text/html and application/json contributes to both html and json totals.",
@@ -15386,7 +15382,7 @@
 		"__description": "Scalar type types.Float32"
 	},
 	"float64": {
-		"__description": "Scalar type types.Float64"
+		"__description": "Scalar type float64"
 	},
 	"int16": {
 		"__description": "Scalar type int16"
