@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/email/sending/feedback": {
+		"description": "Returns the count of feedback emails received for the specified account and date range.",
 		"operationId": "get_publicFeedbackStatus",
 		"parameters": [
 			{

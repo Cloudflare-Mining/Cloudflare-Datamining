@@ -555,7 +555,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-pages",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_identifier}/custom_pages/{identifier}": {
 		"description": "Fetches the details of a custom page.",
@@ -1055,7 +1059,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-pages",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_identifier}/custom_pages/preview_tokens": {
 		"description": "Creates a signed JWT token used to preview custom pages before they are published.",
@@ -2006,6 +2014,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-pages.account-custom-pages",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

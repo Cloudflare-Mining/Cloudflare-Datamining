@@ -286,7 +286,10 @@
 		],
 		"x-api-token-group": [
 			"Zone Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.holds",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/hold": {
 		"description": "Retrieve whether the zone is subject to a zone hold, and metadata about the hold.",
@@ -562,6 +565,234 @@
 			}
 		],
 		"summary": "Get Zone Hold",
+		"tags": [
+			"Zone Holds"
+		],
+		"x-api-token-group": [
+			"Trust and Safety Write",
+			"Trust and Safety Read",
+			"Zero Trust: PII Read",
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin",
+			"Access: Apps and Policies Revoke",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read",
+			"Access: Apps and Policies Revoke",
+			"Access: Mutual TLS Certificates Write",
+			"Access: Organizations, Identity Providers, and Groups Write",
+			"Zone Settings Write",
+			"Zone Settings Read",
+			"Zone Read",
+			"DNS Read",
+			"Workers Scripts Write",
+			"Workers Scripts Read",
+			"Zone Write",
+			"Workers Routes Write",
+			"Workers Routes Read",
+			"Stream Write",
+			"Stream Read",
+			"SSL and Certificates Write",
+			"SSL and Certificates Read",
+			"Logs Write",
+			"Logs Read",
+			"Cache Purge",
+			"Page Rules Write",
+			"Page Rules Read",
+			"Load Balancers Write",
+			"Load Balancers Read",
+			"Firewall Services Write",
+			"Firewall Services Read",
+			"DNS Write",
+			"Apps Write",
+			"Analytics Read",
+			"Access: Apps and Policies Write",
+			"Access: Apps and Policies Read"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.holds",
+		"x-fern-sdk-method-name": "get"
+	},
+	"GET /zones/{zone_id}/hold/{zone_name}": {
+		"description": "Retrieve whether a given hostname is subject to a zone hold, and metadata about the hold.\nThis endpoint checks whether the given hostname (or any of its ancestor domains) is blocked\nby an active zone hold. If a hold with `include_subdomains` is active on an ancestor domain,\nthat hold is returned. This endpoint is used internally by SSL/COMS to check hold status\nduring zone activation.",
+		"operationId": "zones-0-hold-zone-name-get",
+		"parameters": [
+			{
+				"description": "Zone identifier. Consumed by the API gateway for routing; the backend\nhandler does not use this value directly.",
+				"in": "path",
+				"name": "zone_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "The hostname to check for a zone hold. May be a subdomain (e.g. `subdomain.example.com`)\nor an apex domain (e.g. `example.com`). The service checks the hostname and its ancestor\ndomains for active holds with `include_subdomains` enabled.",
+				"in": "path",
+				"name": "zone_name",
+				"required": true,
+				"schema": {
+					"example": "subdomain.example.com",
+					"maxLength": 253,
+					"pattern": "^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"hold": {
+									"description": "Whether the hostname is currently subject to a zone hold.",
+									"example": true,
+									"type": "boolean"
+								},
+								"hold_after": {
+									"description": "The RFC3339-formatted timestamp at which the hold will be automatically\nre-enabled, if the hold was temporarily disabled. Null if the hold is\npermanently enabled or not set.",
+									"example": "2023-01-31T15:56:36+00:00",
+									"format": "date-time",
+									"nullable": true,
+									"type": "string"
+								},
+								"include_subdomains": {
+									"description": "Whether the hold extends to block subdomains of the held zone.",
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"type": "object"
+						}
+					}
+				},
+				"description": "Successful Response"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											],
+											"minLength": 1
+										},
+										"messages": {
+											"allOf": [
+												{
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"enum": [
+												null
+											],
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												false
+											],
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [],
+		"summary": "Get Zone Hold by Zone Name",
 		"tags": [
 			"Zone Holds"
 		],
@@ -910,7 +1141,18 @@
 		],
 		"x-api-token-group": [
 			"Zone Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.holds",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-params": {
+			"hold_after": {
+				"default": null
+			},
+			"include_subdomains": {
+				"default": null
+			}
+		}
 	},
 	"POST /zones/{zone_id}/hold": {
 		"description": "Enforce a zone hold on the zone, blocking the creation and activation of zones with this zone's hostname.\nZone holds cannot be enabled on CDN-only zones.",
@@ -1200,6 +1442,9 @@
 		],
 		"x-api-token-group": [
 			"Zone Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.holds",
+		"x-fern-sdk-method-name": "create"
 	}
 }

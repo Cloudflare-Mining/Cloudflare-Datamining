@@ -305,7 +305,11 @@
 		"summary": "Delete Zero Trust list",
 		"tags": [
 			"Zero Trust lists"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/lists": {
 		"description": "Fetch all Zero Trust lists for an account.",
@@ -854,7 +858,11 @@
 		"summary": "List Zero Trust lists",
 		"tags": [
 			"Zero Trust lists"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/lists/{list_id}": {
 		"description": "Fetch a single Zero Trust list.",
@@ -2322,7 +2330,11 @@
 		"summary": "Patch Zero Trust list.",
 		"tags": [
 			"Zero Trust lists"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/gateway/lists": {
 		"description": "Creates a new Zero Trust list.",
@@ -3844,6 +3856,10 @@
 		"summary": "Update Zero Trust list",
 		"tags": [
 			"Zero Trust lists"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.lists",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -569,7 +569,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.zone-certificates",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth": {
 		"description": "Lists all client certificates configured for zone-level authenticated origin pulls.",
@@ -1205,7 +1209,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.zone-certificates",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/{certificate_id}": {
 		"description": "Retrieves details for a specific client certificate used in zone-level authenticated origin pulls.",
@@ -1772,7 +1780,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.zone-certificates",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/settings": {
 		"description": "Get whether zone-level authenticated origin pulls is enabled or not. It is false by default.",
@@ -2153,7 +2165,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/origin_tls_client_auth": {
 		"description": "Upload your own certificate you want Cloudflare to use for edge-to-origin communication to override the shared certificate. Please note that it is important to keep only one certificate active. Also, make sure to enable zone-level authenticated origin pulls by making a PUT call to settings endpoint to see the uploaded certificate in use.",
@@ -2742,7 +2758,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.zone-certificates",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/origin_tls_client_auth/settings": {
 		"description": "Enable or disable zone-level authenticated origin pulls. 'enabled' should be set true either before/after the certificate is uploaded to see the certificate in use.",
@@ -3143,6 +3163,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

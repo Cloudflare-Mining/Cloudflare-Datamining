@@ -931,7 +931,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/{image_id}": {
-		"description": "Fetch details for a single image.",
+		"description": "Fetch details for a CF Images image.",
 		"operationId": "cloudflare-images-image-details",
 		"parameters": [
 			{
@@ -1481,7 +1481,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/{image_id}/blob": {
-		"description": "Fetch base image. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original.",
+		"description": "Download an image from CF Images. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original.",
 		"operationId": "cloudflare-images-base-image",
 		"parameters": [
 			{
@@ -1644,7 +1644,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Base image",
+		"summary": "Download image",
 		"tags": [
 			"Cloudflare Images"
 		],
@@ -2061,7 +2061,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/images/v2": {
-		"description": "List up to 10000 images with up to 1000 results per page. Use the optional parameters below to get a specific range of images.\nPagination is supported via continuation_token.\n\n**Metadata Filtering (Optional):**\n\nYou can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax.\n\n**Supported Operators:**\n- `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match\n- `gt` / `gt:number` - Greater than (number only)\n- `gte` / `gte:number` - Greater than or equal (number only)\n- `lt` / `lt:number` - Less than (number only)\n- `lte` / `lte:number` - Less than or equal (number only)\n- `in` / `in:string` / `in:number` - Match any value in list (pipe-separated)\n\n**Metadata Filter Constraints:**\n- Maximum 5 metadata filters per request\n- Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`)\n- Maximum 10 elements for list operators (`in`)\n- Supports string, number, and boolean value types\n- Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values\n\n**Filter Consistency:**\nFilters are combined with AND logic. The system does not validate whether filter combinations are logically consistent. For example, `meta.priority[eq:number]=5&meta.priority[lte:number]=3` will return zero results because no value can satisfy both conditions simultaneously. It is the caller's responsibility to ensure filter combinations make sense.\n\n**Examples:**\n```\n# List all images\n/images/v2\n\n# Filter by metadata [eq]\n/images/v2?meta.status[eq:string]=active\n\n# Filter by metadata [in]\n/images/v2?meta.status[in]=pending|deleted|flagged\n\n# Filter by metadata [in:number]\n/images/v2?meta.ratings[in:number]=4|5\n\n# Filter by metadata range [gte:number]\n/images/v2?meta.priority[gte:number]=1\n\n# Filter by bounded range\n/images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5\n\n# Filter by nested metadata\n/images/v2?meta.region.name[eq]=eu-west\n\n# Combine metadata filters with creator\n/images/v2?meta.status[eq]=active&creator=user123\n\n# Multiple metadata filters (AND logic)\n/images/v2?meta.status[eq]=active&meta.priority[eq:number]=5\n```\n",
+		"description": "List up to 10000 images from CF Images, with up to 1000 results per page. Use the optional parameters below to get a specific range of images.\nPagination is supported via continuation_token.\n\n**Metadata Filtering (Optional):**\n\nYou can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax.\n\n**Supported Operators:**\n- `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match\n- `gt` / `gt:number` - Greater than (number only)\n- `gte` / `gte:number` - Greater than or equal (number only)\n- `lt` / `lt:number` - Less than (number only)\n- `lte` / `lte:number` - Less than or equal (number only)\n- `in` / `in:string` / `in:number` - Match any value in list (pipe-separated)\n\n**Metadata Filter Constraints:**\n- Maximum 5 metadata filters per request\n- Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`)\n- Maximum 10 elements for list operators (`in`)\n- Supports string, number, and boolean value types\n- Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values\n\n**Filter Consistency:**\nFilters are combined with AND logic. The system does not validate whether filter combinations are logically consistent. For example, `meta.priority[eq:number]=5&meta.priority[lte:number]=3` will return zero results because no value can satisfy both conditions simultaneously. It is the caller's responsibility to ensure filter combinations make sense.\n\n**Examples:**\n```\n# List all images\n/images/v2\n\n# Filter by metadata [eq]\n/images/v2?meta.status[eq:string]=active\n\n# Filter by metadata [in]\n/images/v2?meta.status[in]=pending|deleted|flagged\n\n# Filter by metadata [in:number]\n/images/v2?meta.ratings[in:number]=4|5\n\n# Filter by metadata range [gte:number]\n/images/v2?meta.priority[gte:number]=1\n\n# Filter by bounded range\n/images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5\n\n# Filter by nested metadata\n/images/v2?meta.region.name[eq]=eu-west\n\n# Combine metadata filters with creator\n/images/v2?meta.status[eq]=active&creator=user123\n\n# Multiple metadata filters (AND logic)\n/images/v2?meta.status[eq]=active&meta.priority[eq:number]=5\n```\n",
 		"operationId": "cloudflare-images-list-images-v2",
 		"parameters": [
 			{
@@ -3016,7 +3016,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/images/v1/{image_id}": {
-		"description": "Update image access control. On access control change, all copies of the image are purged from cache.",
+		"description": "Update a CF Images image's metadata, creator, or access control. On access control change, all copies of the image are purged from cache.",
 		"operationId": "cloudflare-images-update-image",
 		"parameters": [
 			{
@@ -3591,7 +3591,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/images/v1": {
-		"description": "Upload an image with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request.\nAn image can be uploaded by sending an image file or passing an accessible to an API url.\n",
+		"description": "Upload an image to CF Images. Images up to 10 Megabytes can be uploaded using a\nsingle HTTP POST (multipart/form-data) request by sending an image file or\npassing a URL accessible to the API.\n",
 		"operationId": "cloudflare-images-upload-an-image-via-url",
 		"parameters": [
 			{

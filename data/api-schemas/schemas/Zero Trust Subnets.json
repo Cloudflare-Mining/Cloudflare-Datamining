@@ -447,7 +447,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.subnets.warp",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets": {
 		"description": "Lists and filters subnets in an account.",
@@ -1086,7 +1090,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare One Networks Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.subnets",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}": {
 		"description": "Get a WARP IP assignment subnet.",
@@ -1535,7 +1543,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare One Networks Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.subnets.warp",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/cloudflare_source/{address_family}": {
 		"description": "Updates the Cloudflare Source subnet of the given address family",
@@ -2017,7 +2029,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.subnets.cloudflare-source",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/zerotrust/subnets/warp/{subnet_id}": {
 		"description": "Updates a WARP IP assignment subnet.\n\n**Update constraints:**\n- The `network` field cannot be modified for WARP subnets. Only `name`, `comment`, and `is_default_network` can be updated.\n- IPv6 subnets cannot be updated\n",
@@ -2504,7 +2520,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.subnets.warp",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/zerotrust/subnets/warp": {
 		"description": "Create a WARP IP assignment subnet. Currently, only IPv4 subnets can be created.\n\n**Network constraints:**\n- The network must be within one of the following private IP ranges:\n  - `10.0.0.0/8` (RFC 1918)\n  - `172.16.0.0/12` (RFC 1918)\n  - `192.168.0.0/16` (RFC 1918)\n  - `100.64.0.0/10` (RFC 6598 - CGNAT)\n- The subnet must have a prefix length of `/24` or larger (e.g., `/16`, `/20`, `/24` are valid; `/25`, `/28` are not)\n",
@@ -2983,6 +3003,10 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare One Networks Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.subnets.warp",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

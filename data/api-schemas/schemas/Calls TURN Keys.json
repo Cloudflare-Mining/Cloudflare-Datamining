@@ -182,7 +182,11 @@
 		],
 		"x-api-token-group": [
 			"Calls Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "calls.turn",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/calls/turn_keys": {
 		"description": "Lists all TURN keys in the Cloudflare account",
@@ -460,7 +464,11 @@
 		"x-api-token-group": [
 			"Calls Write",
 			"Calls Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "calls.turn",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/calls/turn_keys/{key_id}": {
 		"description": "Fetches details for a single TURN key.",
@@ -753,7 +761,11 @@
 		"x-api-token-group": [
 			"Calls Write",
 			"Calls Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "calls.turn",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/calls/turn_keys": {
 		"description": "Creates a new Cloudflare Calls TURN key.",
@@ -946,7 +958,11 @@
 		],
 		"x-api-token-group": [
 			"Calls Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "calls.turn",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/calls/turn_keys/{key_id}": {
 		"description": "Edit details for a single TURN key.",
@@ -1257,6 +1273,10 @@
 		],
 		"x-api-token-group": [
 			"Calls Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "calls.turn",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -296,7 +296,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "acm.custom-trust-store",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/acm/custom_trust_store": {
 		"description": "Get Custom Origin Trust Store for a Zone.",
@@ -935,7 +939,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "acm.custom-trust-store",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/acm/custom_trust_store/{custom_origin_trust_store_id}": {
 		"description": "Retrieves details about a specific root CA certificate in the custom origin trust store, including expiration and subject information.",
@@ -1471,7 +1479,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "acm.custom-trust-store",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/acm/custom_trust_store": {
 		"description": "Upload a root CA certificate to the Custom Origin Trust Store for a Zone. Only root CA certificates are accepted.",
@@ -2015,6 +2027,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "acm.custom-trust-store",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

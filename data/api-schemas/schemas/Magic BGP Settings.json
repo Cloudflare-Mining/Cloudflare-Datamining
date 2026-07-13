@@ -411,6 +411,10 @@
 			"free": false,
 			"pro": false
 		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.bgp-settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/magic/bgp/settings": {
@@ -854,6 +858,10 @@
 			"free": false,
 			"pro": false
 		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.bgp-settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

@@ -336,6 +336,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/ai-gateway/evaluation-types": {
+		"description": "Lists all available evaluator types for scoring AI gateway responses.",
 		"operationId": "aig-config-list-evaluators",
 		"parameters": [
 			{
@@ -541,7 +542,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.evaluation-types",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations": {
 		"description": "Lists all AI Gateway evaluator types configured for the account.",

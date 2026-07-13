@@ -386,7 +386,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones/{zone_id}/secondary_dns/outgoing": {
 		"description": "Get primary zone configuration for outgoing zone transfers.",
@@ -861,7 +864,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/secondary_dns/outgoing/status": {
 		"description": "Get primary zone transfer status.",
@@ -1236,7 +1242,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing.status",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing": {
 		"description": "Create primary zone configuration for outgoing zone transfers.",
@@ -1752,7 +1761,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing/disable": {
 		"description": "Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone.",
@@ -2131,7 +2143,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
+		"x-fern-sdk-method-name": "disable",
+		"x-forge-require-confirmation": "This operation turns off outgoing zone transfers for the primary zone, which means secondary zones will stop receiving updates."
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing/enable": {
 		"description": "Enable outgoing zone transfers for primary zone.",
@@ -2510,7 +2526,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
+		"x-fern-sdk-method-name": "enable"
 	},
 	"POST /zones/{zone_id}/secondary_dns/outgoing/force_notify": {
 		"description": "Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone.",
@@ -2889,7 +2908,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
+		"x-fern-sdk-method-name": "force-notify"
 	},
 	"PUT /zones/{zone_id}/secondary_dns/outgoing": {
 		"description": "Update primary zone configuration for outgoing zone transfers.",
@@ -3405,6 +3427,9 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.outgoing",
+		"x-fern-sdk-method-name": "update"
 	}
 }

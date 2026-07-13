@@ -159,7 +159,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream": {
 		"description": "Lists up to 1000 videos from a single request. For a specific range, refer to the optional parameters.",
@@ -903,7 +907,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/{identifier}": {
 		"description": "Fetches details for a single video.",
@@ -1493,7 +1501,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/embed": {
 		"description": "Fetches an HTML code snippet to embed a video in a web page delivered through Cloudflare. On success, returns an HTML fragment for use on web pages to display a video. On failure, returns a JSON response body.",
@@ -1664,7 +1676,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.embed",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/storage-usage": {
 		"description": "Returns information about an account's storage use.",
@@ -1951,7 +1967,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.videos",
+		"x-fern-sdk-method-name": "storage-usage",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream": {
 		"description": "Initiates a video upload using the TUS protocol. On success, the server responds with a status code 201 (created) and includes a `location` header to indicate where the content should be uploaded. Refer to https://tus.io for protocol details.",
@@ -2179,7 +2199,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/{identifier}": {
 		"description": "Edit details for a single video.",
@@ -2866,7 +2890,11 @@
 		"summary": "Edit video details",
 		"tags": [
 			"Stream Videos"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/token": {
 		"description": "Creates a signed URL token for a video. If a body is not provided in the request, a token is created with default values.",
@@ -3255,7 +3283,11 @@
 		"summary": "Create signed URL tokens for videos",
 		"tags": [
 			"Stream Videos"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.token",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/copy": {
 		"description": "Uploads a video to Stream from a provided URL.",
@@ -3945,7 +3977,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.copy",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/direct_upload": {
 		"description": "Creates a direct upload that allows video uploads without an API key.",
@@ -4402,6 +4438,10 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.direct-upload",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

@@ -271,7 +271,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.groups",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/groups": {
 		"description": "Lists all Access groups.",
@@ -3326,7 +3330,11 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.groups",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/groups/{group_id}": {
 		"description": "Fetches a single Access group.",
@@ -6321,7 +6329,11 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.groups",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/groups": {
 		"description": "Creates a new Access group.",
@@ -11345,7 +11357,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.groups",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/groups/{group_id}": {
 		"description": "Updates a configured Access group.",
@@ -16381,6 +16397,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.groups",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

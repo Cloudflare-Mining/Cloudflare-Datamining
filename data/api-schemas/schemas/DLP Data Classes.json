@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/dlp/data_classes/{data_class_id}": {
+		"description": "Deletes a data class from the account.",
 		"operationId": "dlp-data-classes-delete",
 		"parameters": [
 			{
@@ -258,6 +259,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/data_classes": {
+		"description": "Lists data classes configured for the account.",
 		"operationId": "dlp-data-classes-list",
 		"parameters": [
 			{
@@ -571,6 +573,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/data_classes/{data_class_id}": {
+		"description": "Gets the configuration for a data class.",
 		"operationId": "dlp-data-classes-read",
 		"parameters": [
 			{
@@ -890,6 +893,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/data_classes": {
+		"description": "Creates a data class for use in DLP profiles.",
 		"operationId": "dlp-data-classes-create",
 		"parameters": [
 			{
@@ -1256,6 +1260,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/data_classes/{data_class_id}": {
+		"description": "Updates the configuration for a data class.",
 		"operationId": "dlp-data-classes-update",
 		"parameters": [
 			{

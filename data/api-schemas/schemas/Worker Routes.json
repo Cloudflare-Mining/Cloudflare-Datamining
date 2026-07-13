@@ -272,7 +272,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Routes Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.routes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/workers/routes": {
 		"description": "Returns routes for a zone.",
@@ -560,7 +564,11 @@
 		"x-api-token-group": [
 			"Workers Routes Write",
 			"Workers Routes Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.routes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/workers/routes/{route_id}": {
 		"description": "Returns information about a route, including URL pattern and Worker.",
@@ -857,7 +865,11 @@
 		"x-api-token-group": [
 			"Workers Routes Write",
 			"Workers Routes Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.routes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/workers/routes": {
 		"description": "Creates a route that maps a URL pattern to a Worker.",
@@ -1181,7 +1193,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Routes Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.routes",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/workers/routes/{route_id}": {
 		"description": "Updates the URL pattern or Worker associated with a route.",
@@ -1517,6 +1533,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Routes Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.routes",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

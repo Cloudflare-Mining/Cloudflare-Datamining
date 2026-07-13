@@ -270,7 +270,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.captions.language",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions": {
 		"description": "Lists the available captions or subtitles for a specific video.",
@@ -564,7 +568,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.captions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions/{language}": {
 		"description": "Lists the captions or subtitles for provided language.",
@@ -871,7 +879,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.captions.language",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/captions/{language}/vtt": {
 		"description": "Return WebVTT captions for a provided language.",
@@ -1053,7 +1065,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.captions.language.vtt",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/captions/{language}/generate": {
 		"description": "Generate captions or subtitles for provided language via AI.",
@@ -1356,7 +1372,11 @@
 		"summary": "Generate captions or subtitles for a provided language via AI",
 		"tags": [
 			"Stream Subtitles/Captions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.captions.language",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/stream/{identifier}/captions/{language}": {
 		"description": "Uploads the caption or subtitle file to the endpoint for a specific BCP47 language. One caption or subtitle file per language is allowed.",
@@ -1683,6 +1703,10 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.captions.language",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

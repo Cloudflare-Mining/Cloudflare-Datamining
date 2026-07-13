@@ -432,7 +432,11 @@
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs": {
 		"description": "Update the maintenance configuration for a specific table. This allows you to\nenable or disable compaction and adjust target file sizes for optimization.\n",
@@ -951,6 +955,10 @@
 		],
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2-data-catalog.namespaces.tables.maintenance-configs",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

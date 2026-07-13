@@ -1,4 +1,1867 @@
 {
+	"GET /accounts/{account_id}/registrar-sandbox/registrations": {
+		"description": "Returns a paginated list of domain registrations owned by the account.\n\nThis endpoint uses cursor-based pagination. Results are ordered by registration\ndate by default. To fetch the next page, pass the `cursor` value from the\n`result_info` object in the response as the `cursor` query parameter in\nyour next request. An empty `cursor` string indicates there are no more\npages.\n",
+		"operationId": "sandbox-registrar-domain-registration-list",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Opaque token from a previous response's `result_info.cursor`.\nPass this value to fetch the next page of results. Omit (or\npass an empty string) for the first page.\n",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"maxLength": 256,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Number of items to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Sort direction for results. Defaults to ascending order.\n",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"default": "asc",
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Column to sort results by. Defaults to registration date\n(`registry_created_at`) when omitted.\n",
+				"in": "query",
+				"name": "sort_by",
+				"schema": {
+					"default": "registry_created_at",
+					"enum": [
+						"registry_created_at",
+						"registry_expires_at",
+						"name"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"empty_account": {
+								"summary": "Account with no registrations",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [],
+									"result_info": {
+										"count": 0,
+										"cursor": "",
+										"per_page": 20
+									},
+									"success": true
+								}
+							},
+							"multiple_domains": {
+								"summary": "Account with multiple domains",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [
+										{
+											"auto_renew": true,
+											"created_at": "2025-01-15T10:00:00Z",
+											"domain_name": "example.com",
+											"expires_at": "2026-01-15T10:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2025-03-20T14:30:00Z",
+											"domain_name": "mybrand.dev",
+											"expires_at": "2026-03-20T14:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										}
+									],
+									"result_info": {
+										"count": 2,
+										"cursor": "",
+										"per_page": 20
+									},
+									"success": true
+								}
+							},
+							"next_page": {
+								"description": "Response when fetching the next page by passing the cursor from a previous response. The empty cursor indicates this is the last page.",
+								"summary": "Next page of results (last page)",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [
+										{
+											"auto_renew": true,
+											"created_at": "2025-04-01T09:00:00Z",
+											"domain_name": "charlie.org",
+											"expires_at": "2026-04-01T09:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										}
+									],
+									"result_info": {
+										"count": 1,
+										"cursor": "",
+										"per_page": 20
+									},
+									"success": true
+								}
+							},
+							"paginated": {
+								"summary": "First page with more results available",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": [
+										{
+											"auto_renew": true,
+											"created_at": "2024-01-15T09:30:00Z",
+											"domain_name": "acmecorp.com",
+											"expires_at": "2026-01-15T09:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-02-20T14:00:00Z",
+											"domain_name": "brightwave.net",
+											"expires_at": "2026-02-20T14:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-03-05T11:15:00Z",
+											"domain_name": "cloudpeak.org",
+											"expires_at": "2026-03-05T11:15:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-03-22T08:45:00Z",
+											"domain_name": "solarpanel.io",
+											"expires_at": "2026-03-22T08:45:00Z",
+											"locked": true,
+											"privacy_mode": "off",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2024-04-10T16:00:00Z",
+											"domain_name": "greenleaf.dev",
+											"expires_at": "2026-04-10T16:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-05-03T10:30:00Z",
+											"domain_name": "swiftrunner.app",
+											"expires_at": "2026-05-03T10:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2024-05-18T13:00:00Z",
+											"domain_name": "northerntrail.co",
+											"expires_at": "2025-05-18T13:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "expired"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-06-01T07:20:00Z",
+											"domain_name": "pixelforge.xyz",
+											"expires_at": "2026-06-01T07:20:00Z",
+											"locked": false,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-06-25T15:45:00Z",
+											"domain_name": "oceandrift.com",
+											"expires_at": "2026-06-25T15:45:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-07-12T09:00:00Z",
+											"domain_name": "rocketlaunch.net",
+											"expires_at": "2026-07-12T09:00:00Z",
+											"locked": true,
+											"privacy_mode": "off",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2024-08-08T12:30:00Z",
+											"domain_name": "blueprintlab.io",
+											"expires_at": "2026-08-08T12:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-09-01T18:00:00Z",
+											"domain_name": "maplewood.org",
+											"expires_at": "2026-09-01T18:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2024-09-20T10:15:00Z",
+											"domain_name": "thunderbolt.dev",
+											"expires_at": "2025-09-20T10:15:00Z",
+											"locked": false,
+											"privacy_mode": "off",
+											"status": "expired"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-10-05T14:45:00Z",
+											"domain_name": "silverbranch.app",
+											"expires_at": "2026-10-05T14:45:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-11-11T08:00:00Z",
+											"domain_name": "nightowl.co",
+											"expires_at": "2026-11-11T08:00:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2024-12-01T11:30:00Z",
+											"domain_name": "crimsongate.com",
+											"expires_at": "2026-12-01T11:30:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": false,
+											"created_at": "2025-01-07T16:20:00Z",
+											"domain_name": "frostedpine.net",
+											"expires_at": "2027-01-07T16:20:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2025-01-25T09:50:00Z",
+											"domain_name": "horizonline.xyz",
+											"expires_at": "2027-01-25T09:50:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2025-02-14T13:00:00Z",
+											"domain_name": "coppervine.io",
+											"expires_at": "2027-02-14T13:00:00Z",
+											"locked": true,
+											"privacy_mode": "off",
+											"status": "active"
+										},
+										{
+											"auto_renew": true,
+											"created_at": "2025-03-02T07:40:00Z",
+											"domain_name": "starlitpath.org",
+											"expires_at": "2027-03-02T07:40:00Z",
+											"locked": true,
+											"privacy_mode": "redaction",
+											"status": "active"
+										}
+									],
+									"result_info": {
+										"count": 20,
+										"cursor": "eyJ0IjoiMjAyNS0wNi0xNVQxMjowMDowMC4wMDAwMDBaIiwibiI6ImJyYXZvLm5ldCJ9",
+										"per_page": 20
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"description": "A domain registration resource representing the current state of a registered domain.",
+												"properties": {
+													"auto_renew": {
+														"description": "Whether the domain will be automatically renewed before expiration.",
+														"example": true,
+														"type": "boolean"
+													},
+													"created_at": {
+														"description": "When the domain was registered. Present when the registration resource exists.",
+														"example": "2025-01-15T10:00:00Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"domain_name": {
+														"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+														"example": "example.com",
+														"type": "string",
+														"x-auditable": true
+													},
+													"expires_at": {
+														"description": "When the domain registration expires. Present when the registration is ready; may be null only while `status` is `registration_pending`.",
+														"example": "2026-01-15T10:00:00Z",
+														"format": "date-time",
+														"nullable": true,
+														"type": "string"
+													},
+													"locked": {
+														"description": "Whether the domain is locked for transfer.",
+														"example": true,
+														"type": "boolean"
+													},
+													"privacy_mode": {
+														"description": "Current WHOIS privacy mode for the registration.",
+														"enum": [
+															false,
+															"redaction"
+														],
+														"example": "redaction",
+														"type": "string"
+													},
+													"status": {
+														"description": "Current registration status.\n- `active`: Domain is registered and operational\n- `registration_pending`: Registration is in progress\n- `expired`: Domain has expired\n- `suspended`: Domain is suspended by the registry\n- `redemption_period`: Domain is in the redemption grace period\n- `pending_delete`: Domain is pending deletion by the registry\n",
+														"enum": [
+															"active",
+															"registration_pending",
+															"expired",
+															"suspended",
+															"redemption_period",
+															"pending_delete"
+														],
+														"example": "active",
+														"type": "string"
+													}
+												},
+												"required": [
+													"domain_name",
+													"status",
+													"created_at",
+													"expires_at",
+													"auto_renew",
+													"privacy_mode",
+													"locked"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result_info": {
+											"description": "Cursor-based pagination metadata. Used by list endpoints that support\ncursor pagination. Pass the `cursor` value as a query parameter in the\nnext request to fetch the next page. An empty string indicates there\nare no more pages.\n",
+											"properties": {
+												"count": {
+													"description": "Number of items in the current result set.",
+													"example": 20,
+													"type": "integer"
+												},
+												"cursor": {
+													"description": "Opaque cursor for fetching the next page. Pass this value as the\n`cursor` query parameter in a subsequent request. An empty string\nindicates there are no more pages.\n",
+													"example": "eyJ0IjoiMjAyNS0wNi0xNVQxMjowMDowMC4wMDAwMDBaIiwibiI6ImJyYXZvLm5ldCJ9",
+													"type": "string"
+												},
+												"per_page": {
+													"description": "Maximum number of items per page.",
+													"example": 20,
+													"type": "integer"
+												}
+											},
+											"required": [
+												"cursor",
+												"per_page",
+												"count"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result",
+										"result_info"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "List of registrations for the account."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"invalid_cursor": {
+								"summary": "Invalid cursor",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Invalid pagination cursor"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "List registrations failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "List Registrations",
+		"tags": [
+			"Registrar Registration"
+		]
+	},
+	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}": {
+		"description": "Returns the current state of a domain registration.\n\nThis is the canonical read endpoint for a domain you own. It returns\nthe full registration resource including current settings and expiration.\nWhen the registration resource is ready, both `created_at` and `expires_at`\nare present in the response.\n",
+		"operationId": "sandbox-registrar-domain-registration-get",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Domain name to retrieve.",
+				"in": "path",
+				"name": "domain_name",
+				"required": true,
+				"schema": {
+					"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+					"example": "example.com",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"active": {
+								"summary": "Active domain",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"auto_renew": true,
+										"created_at": "2025-01-15T10:00:00Z",
+										"domain_name": "example.com",
+										"expires_at": "2026-01-15T10:00:00Z",
+										"locked": true,
+										"privacy_mode": "redaction",
+										"status": "active"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A domain registration resource representing the current state of a registered domain.",
+											"properties": {
+												"auto_renew": {
+													"description": "Whether the domain will be automatically renewed before expiration.",
+													"example": true,
+													"type": "boolean"
+												},
+												"created_at": {
+													"description": "When the domain was registered. Present when the registration resource exists.",
+													"example": "2025-01-15T10:00:00Z",
+													"format": "date-time",
+													"type": "string"
+												},
+												"domain_name": {
+													"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+													"example": "example.com",
+													"type": "string",
+													"x-auditable": true
+												},
+												"expires_at": {
+													"description": "When the domain registration expires. Present when the registration is ready; may be null only while `status` is `registration_pending`.",
+													"example": "2026-01-15T10:00:00Z",
+													"format": "date-time",
+													"nullable": true,
+													"type": "string"
+												},
+												"locked": {
+													"description": "Whether the domain is locked for transfer.",
+													"example": true,
+													"type": "boolean"
+												},
+												"privacy_mode": {
+													"description": "Current WHOIS privacy mode for the registration.",
+													"enum": [
+														false,
+														"redaction"
+													],
+													"example": "redaction",
+													"type": "string"
+												},
+												"status": {
+													"description": "Current registration status.\n- `active`: Domain is registered and operational\n- `registration_pending`: Registration is in progress\n- `expired`: Domain has expired\n- `suspended`: Domain is suspended by the registry\n- `redemption_period`: Domain is in the redemption grace period\n- `pending_delete`: Domain is pending deletion by the registry\n",
+													"enum": [
+														"active",
+														"registration_pending",
+														"expired",
+														"suspended",
+														"redemption_period",
+														"pending_delete"
+													],
+													"example": "active",
+													"type": "string"
+												}
+											},
+											"required": [
+												"domain_name",
+												"status",
+												"created_at",
+												"expires_at",
+												"auto_renew",
+												"privacy_mode",
+												"locked"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Registration details."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"domain_not_found": {
+								"summary": "Domain not found",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Domain not found"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"invalid_domain_name": {
+								"summary": "Invalid domain name",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Invalid domain name"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get registration failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Registration",
+		"tags": [
+			"Registrar Registration"
+		]
+	},
+	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}/registration-status": {
+		"description": "Returns the current status of a domain registration workflow.\n\nUse this endpoint to poll for completion when the POST response\nreturned `202 Accepted`. The URL is provided in the `links.self`\nfield of the workflow status response.\n\nPoll this endpoint until the workflow reaches a terminal state or a\nstate that requires user attention.\n\n**Terminal states:** `succeeded` and `failed` are terminal and always\nhave `completed: true`.\n\n**Non-terminal states:**\n- `action_required` has `completed: false` and will not resolve on its\n  own. The workflow is paused pending user intervention.\n- `blocked` has `completed: false` and indicates the workflow is waiting\n  on a third party such as the extension registry or losing registrar.\n  Continue polling while informing the user of the delay.\n\nUse increasing backoff between polls. When `state: blocked`, use a\nlonger polling interval and do not poll indefinitely.\n\nA naive polling loop that only checks `completed` can run indefinitely\nwhen `state: action_required`. Break explicitly on `action_required`:\n\n```js\nlet status;\ndo {\n  await new Promise(r => setTimeout(r, 2000));\n  status = await cloudflare.request({\n    method: 'GET',\n    path: reg.result.links.self,\n  });\n} while (\n  !status.result.completed &&\n  status.result.state !== 'action_required'\n);\n\nif (status.result.state === 'action_required') {\n  // Surface context.action and context.confirmation_sent_to to the user.\n  // Do not re-submit the registration request.\n}\n```\n",
+		"operationId": "sandbox-registrar-domain-registration-get-status",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "domain_name",
+				"required": true,
+				"schema": {
+					"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+					"example": "example.com",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"action_required": {
+								"description": "Non-terminal but not transient. The workflow is paused and\nrequires user action to proceed. An automated polling loop\nmust break on this state — it will not resolve on its own.\nSurface context.action to the user.\n",
+								"summary": "User action required",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"action": "registrant_email_confirmation_pending",
+											"confirmation_sent_to": "a***@example.com",
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/registration-status"
+										},
+										"state": "action_required",
+										"updated_at": "2025-10-27T10:01:00Z"
+									},
+									"success": true
+								}
+							},
+							"blocked": {
+								"description": "Non-terminal. The workflow cannot make progress due to a\nthird party (e.g., the extension's registry or a losing\nregistrar). Unlike action_required, no user action will help.\nContinue polling — the block may resolve when the third party\nresponds.\n",
+								"summary": "Blocked by third party",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"blocked_by": "registry",
+											"detail": "Awaiting registry confirmation. This may take up to 24 hours.",
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/registration-status"
+										},
+										"state": "blocked",
+										"updated_at": "2025-10-27T10:05:00Z"
+									},
+									"success": true
+								}
+							},
+							"failed": {
+								"description": "Terminal state. The registration could not be completed.\nSee error.code and error.message for the reason. Do not\nauto-retry without user review.\n",
+								"summary": "Registration failed",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": true,
+										"context": {
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"error": {
+											"code": "registry_rejected",
+											"message": "Registry rejected the registration request."
+										},
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/registration-status"
+										},
+										"state": "failed",
+										"updated_at": "2025-10-27T10:00:08Z"
+									},
+									"success": true
+								}
+							},
+							"in_progress": {
+								"description": "The registration is still being processed. Continue polling\nthis endpoint. In synchronous mode, the server only waits\nfor a bounded amount of time before returning `202` — this\nstatus is what you see when polling after that timeout. Registrations\nwill not remain in this state indefinitely; the workflow has\nan internal deadline after which it transitions to succeeded,\nfailed, or blocked.\n",
+								"summary": "Registration in progress",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/registration-status"
+										},
+										"state": "in_progress",
+										"updated_at": "2025-10-27T10:00:12Z"
+									},
+									"success": true
+								}
+							},
+							"succeeded": {
+								"description": "Terminal state. The domain has been registered. The full\nregistration resource is included in context.registration —\nno additional GET request is needed.\n",
+								"summary": "Registration completed successfully",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": true,
+										"context": {
+											"domain_name": "example.com",
+											"registration": {
+												"auto_renew": true,
+												"created_at": "2025-10-27T10:00:00Z",
+												"domain_name": "example.com",
+												"expires_at": "2026-10-27T10:00:00Z",
+												"locked": true,
+												"privacy_mode": "redaction",
+												"status": "active"
+											}
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/registration-status"
+										},
+										"state": "succeeded",
+										"updated_at": "2025-10-27T10:00:03Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Status of an async registration workflow.",
+											"properties": {
+												"completed": {
+													"description": "Whether the workflow has reached a terminal state. `true` when\n`state` is `succeeded` or `failed`. `false` for `pending`,\n`in_progress`, `action_required`, and `blocked`.\n",
+													"example": false,
+													"type": "boolean"
+												},
+												"context": {
+													"additionalProperties": true,
+													"description": "Workflow-specific data for this workflow.\n\nThe workflow subject is identified by `context.domain_name` for\ndomain-centric workflows.\n",
+													"type": "object"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"error": {
+													"allOf": [
+														{
+															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
+															"properties": {
+																"code": {
+																	"description": "Machine-readable error code identifying the failure reason.",
+																	"example": "registry_rejected",
+																	"type": "string"
+																},
+																"message": {
+																	"description": "Human-readable explanation of the failure. May include registry-specific details.",
+																	"example": "Registry rejected the request.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"code",
+																"message"
+															],
+															"type": "object"
+														}
+													],
+													"nullable": true
+												},
+												"links": {
+													"properties": {
+														"resource": {
+															"description": "URL to the domain resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com",
+															"type": "string"
+														},
+														"self": {
+															"description": "URL to this status resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com/registration-status",
+															"type": "string"
+														}
+													},
+													"required": [
+														"self"
+													],
+													"type": "object"
+												},
+												"state": {
+													"description": "Workflow lifecycle state.\n- `pending`: Workflow has been created but not yet started processing.\n- `in_progress`: Actively processing. Continue polling `links.self`.\n  The workflow has an internal deadline and will not remain in this\n  state indefinitely.\n- `action_required`: Paused — requires action by the user (not the\n  system). See `context.action` for what is needed. An automated\n  polling loop must break on this state; it will not resolve on its\n  own without user intervention.\n- `blocked`: The workflow cannot make progress due to a third party\n  such as the domain extension's registry or a losing registrar.\n  No user action will help. Continue polling — the block may resolve\n  when the third party responds.\n- `succeeded`: Terminal. The operation completed successfully.\n  `completed` will be `true`. For registrations, `context.registration`\n  contains the resulting registration resource.\n- `failed`: Terminal. The operation failed. `completed` will be `true`.\n  See `error.code` and `error.message` for the reason. Do not\n  auto-retry without user review.\n",
+													"enum": [
+														"pending",
+														"in_progress",
+														"action_required",
+														"blocked",
+														"succeeded",
+														"failed"
+													],
+													"example": "in_progress",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"state",
+												"completed",
+												"created_at",
+												"updated_at",
+												"links"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Registration workflow status."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"workflow_not_found": {
+								"summary": "No workflow found",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "No workflow found for example.com"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get status failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Registration Status",
+		"tags": [
+			"Registrar Registration"
+		]
+	},
+	"GET /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}/update-status": {
+		"description": "Returns the current status of a domain update workflow.\n\nUse this endpoint to poll for completion when the PATCH response\nreturned `202 Accepted`. The URL is provided in the `links.self`\nfield of the workflow status response.\n\nPoll this endpoint until the workflow reaches a terminal state or a\nstate that requires user attention.\n\nUse increasing backoff between polls. When the workflow remains blocked\non a third party, use a longer polling interval and do not poll indefinitely.\n",
+		"operationId": "sandbox-registrar-domain-registration-get-update-status",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "domain_name",
+				"required": true,
+				"schema": {
+					"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+					"example": "example.com",
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"failed": {
+								"summary": "Update failed",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": true,
+										"context": {
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"error": {
+											"code": "registry_rejected",
+											"message": "Registry rejected the update request."
+										},
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/update-status"
+										},
+										"state": "failed",
+										"updated_at": "2025-10-27T10:00:45Z"
+									},
+									"success": true
+								}
+							},
+							"in_progress": {
+								"summary": "Update in progress",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"domain_name": "example.com",
+											"fields_updated": [
+												"auto_renew"
+											],
+											"pending_registry_confirmation": true
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/update-status"
+										},
+										"state": "in_progress",
+										"updated_at": "2025-10-27T10:00:05Z"
+									},
+									"success": true
+								}
+							},
+							"succeeded": {
+								"summary": "Update completed successfully",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": true,
+										"context": {
+											"domain_name": "example.com",
+											"fields_updated": [
+												"auto_renew"
+											]
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/update-status"
+										},
+										"state": "succeeded",
+										"updated_at": "2025-10-27T10:00:30Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Status of an async registration workflow.",
+											"properties": {
+												"completed": {
+													"description": "Whether the workflow has reached a terminal state. `true` when\n`state` is `succeeded` or `failed`. `false` for `pending`,\n`in_progress`, `action_required`, and `blocked`.\n",
+													"example": false,
+													"type": "boolean"
+												},
+												"context": {
+													"additionalProperties": true,
+													"description": "Workflow-specific data for this workflow.\n\nThe workflow subject is identified by `context.domain_name` for\ndomain-centric workflows.\n",
+													"type": "object"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"error": {
+													"allOf": [
+														{
+															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
+															"properties": {
+																"code": {
+																	"description": "Machine-readable error code identifying the failure reason.",
+																	"example": "registry_rejected",
+																	"type": "string"
+																},
+																"message": {
+																	"description": "Human-readable explanation of the failure. May include registry-specific details.",
+																	"example": "Registry rejected the request.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"code",
+																"message"
+															],
+															"type": "object"
+														}
+													],
+													"nullable": true
+												},
+												"links": {
+													"properties": {
+														"resource": {
+															"description": "URL to the domain resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com",
+															"type": "string"
+														},
+														"self": {
+															"description": "URL to this status resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com/registration-status",
+															"type": "string"
+														}
+													},
+													"required": [
+														"self"
+													],
+													"type": "object"
+												},
+												"state": {
+													"description": "Workflow lifecycle state.\n- `pending`: Workflow has been created but not yet started processing.\n- `in_progress`: Actively processing. Continue polling `links.self`.\n  The workflow has an internal deadline and will not remain in this\n  state indefinitely.\n- `action_required`: Paused — requires action by the user (not the\n  system). See `context.action` for what is needed. An automated\n  polling loop must break on this state; it will not resolve on its\n  own without user intervention.\n- `blocked`: The workflow cannot make progress due to a third party\n  such as the domain extension's registry or a losing registrar.\n  No user action will help. Continue polling — the block may resolve\n  when the third party responds.\n- `succeeded`: Terminal. The operation completed successfully.\n  `completed` will be `true`. For registrations, `context.registration`\n  contains the resulting registration resource.\n- `failed`: Terminal. The operation failed. `completed` will be `true`.\n  See `error.code` and `error.message` for the reason. Do not\n  auto-retry without user review.\n",
+													"enum": [
+														"pending",
+														"in_progress",
+														"action_required",
+														"blocked",
+														"succeeded",
+														"failed"
+													],
+													"example": "in_progress",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"state",
+												"completed",
+												"created_at",
+												"updated_at",
+												"links"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update workflow status."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"workflow_not_found": {
+								"summary": "No workflow found",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "No workflow found for example.com"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Get update status failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Get Update Status",
+		"tags": [
+			"Registrar Registration"
+		]
+	},
 	"GET /accounts/{account_id}/registrar/registrations": {
 		"description": "Returns a paginated list of domain registrations owned by the account.\n\nThis endpoint uses cursor-based pagination. Results are ordered by registration\ndate by default. To fetch the next page, pass the `cursor` value from the\n`result_info` object in the response as the `cursor` query parameter in\nyour next request. An empty `cursor` string indicates there are no more\npages.\n",
 		"operationId": "registrar-domain-registration-list",
@@ -1862,6 +3725,657 @@
 			"Registrar Registration"
 		]
 	},
+	"PATCH /accounts/{account_id}/registrar-sandbox/registrations/{domain_name}": {
+		"description": "Updates an existing domain registration.\n\nBy default, the server holds the connection for a bounded, server-defined\namount of time while the update completes. Most updates finish within this\nwindow and return `200 OK` with a completed workflow status.\n\nIf the update is still processing after this synchronous wait window, the\nserver returns `202 Accepted`. Poll the URL in `links.self` to track progress.\n\nTo skip the wait and receive an immediate `202`, send `Prefer: respond-async`.\n\nThis endpoint currently supports updating `auto_renew` only.\n",
+		"operationId": "sandbox-registrar-domain-registration-update",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Domain name to update.",
+				"in": "path",
+				"name": "domain_name",
+				"required": true,
+				"schema": {
+					"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+					"example": "example.com",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"description": "Set to `respond-async` to receive an immediate `202 Accepted` without\nwaiting for the operation to complete (RFC 7240).\n",
+				"in": "header",
+				"name": "Prefer",
+				"schema": {
+					"enum": [
+						"respond-async"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"disable_auto_renew": {
+							"summary": "Disable auto-renewal",
+							"value": {
+								"auto_renew": false
+							}
+						},
+						"enable_auto_renew": {
+							"summary": "Enable auto-renewal",
+							"value": {
+								"auto_renew": true
+							}
+						}
+					},
+					"schema": {
+						"description": "Request to update an existing domain registration.\n\nThis endpoint currently supports updating `auto_renew` only.\n",
+						"minProperties": 1,
+						"properties": {
+							"auto_renew": {
+								"description": "Enable or disable automatic renewal.\nSetting this field to `true` authorizes Cloudflare to charge the\naccount's default payment method up to 30 days before domain expiry\nto renew the domain automatically. Renewal pricing may change over\ntime based on registry pricing.\n",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"completed": {
+								"summary": "Update completed within timeout (most common)",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": true,
+										"context": {
+											"domain_name": "example.com",
+											"registration": {
+												"auto_renew": true,
+												"created_at": "2025-01-15T10:00:00Z",
+												"domain_name": "example.com",
+												"expires_at": "2026-01-15T10:00:00Z",
+												"locked": true,
+												"privacy_mode": "redaction",
+												"status": "active"
+											}
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/update-status"
+										},
+										"state": "succeeded",
+										"updated_at": "2025-10-27T10:00:02Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Status of an async registration workflow.",
+											"properties": {
+												"completed": {
+													"description": "Whether the workflow has reached a terminal state. `true` when\n`state` is `succeeded` or `failed`. `false` for `pending`,\n`in_progress`, `action_required`, and `blocked`.\n",
+													"example": false,
+													"type": "boolean"
+												},
+												"context": {
+													"additionalProperties": true,
+													"description": "Workflow-specific data for this workflow.\n\nThe workflow subject is identified by `context.domain_name` for\ndomain-centric workflows.\n",
+													"type": "object"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"error": {
+													"allOf": [
+														{
+															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
+															"properties": {
+																"code": {
+																	"description": "Machine-readable error code identifying the failure reason.",
+																	"example": "registry_rejected",
+																	"type": "string"
+																},
+																"message": {
+																	"description": "Human-readable explanation of the failure. May include registry-specific details.",
+																	"example": "Registry rejected the request.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"code",
+																"message"
+															],
+															"type": "object"
+														}
+													],
+													"nullable": true
+												},
+												"links": {
+													"properties": {
+														"resource": {
+															"description": "URL to the domain resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com",
+															"type": "string"
+														},
+														"self": {
+															"description": "URL to this status resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com/registration-status",
+															"type": "string"
+														}
+													},
+													"required": [
+														"self"
+													],
+													"type": "object"
+												},
+												"state": {
+													"description": "Workflow lifecycle state.\n- `pending`: Workflow has been created but not yet started processing.\n- `in_progress`: Actively processing. Continue polling `links.self`.\n  The workflow has an internal deadline and will not remain in this\n  state indefinitely.\n- `action_required`: Paused — requires action by the user (not the\n  system). See `context.action` for what is needed. An automated\n  polling loop must break on this state; it will not resolve on its\n  own without user intervention.\n- `blocked`: The workflow cannot make progress due to a third party\n  such as the domain extension's registry or a losing registrar.\n  No user action will help. Continue polling — the block may resolve\n  when the third party responds.\n- `succeeded`: Terminal. The operation completed successfully.\n  `completed` will be `true`. For registrations, `context.registration`\n  contains the resulting registration resource.\n- `failed`: Terminal. The operation failed. `completed` will be `true`.\n  See `error.code` and `error.message` for the reason. Do not\n  auto-retry without user review.\n",
+													"enum": [
+														"pending",
+														"in_progress",
+														"action_required",
+														"blocked",
+														"succeeded",
+														"failed"
+													],
+													"example": "in_progress",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"state",
+												"completed",
+												"created_at",
+												"updated_at",
+												"links"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update completed successfully within the synchronous wait window.\nThe workflow status will have `state: succeeded` and `completed: true`.\n",
+				"headers": {
+					"Preference-Applied": {
+						"description": "Echoed when the server honored a `Prefer` header.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"202": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"still_processing": {
+								"summary": "Update still in progress after timeout",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/update-status"
+										},
+										"state": "in_progress",
+										"updated_at": "2025-10-27T10:00:10Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Status of an async registration workflow.",
+											"properties": {
+												"completed": {
+													"description": "Whether the workflow has reached a terminal state. `true` when\n`state` is `succeeded` or `failed`. `false` for `pending`,\n`in_progress`, `action_required`, and `blocked`.\n",
+													"example": false,
+													"type": "boolean"
+												},
+												"context": {
+													"additionalProperties": true,
+													"description": "Workflow-specific data for this workflow.\n\nThe workflow subject is identified by `context.domain_name` for\ndomain-centric workflows.\n",
+													"type": "object"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"error": {
+													"allOf": [
+														{
+															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
+															"properties": {
+																"code": {
+																	"description": "Machine-readable error code identifying the failure reason.",
+																	"example": "registry_rejected",
+																	"type": "string"
+																},
+																"message": {
+																	"description": "Human-readable explanation of the failure. May include registry-specific details.",
+																	"example": "Registry rejected the request.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"code",
+																"message"
+															],
+															"type": "object"
+														}
+													],
+													"nullable": true
+												},
+												"links": {
+													"properties": {
+														"resource": {
+															"description": "URL to the domain resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com",
+															"type": "string"
+														},
+														"self": {
+															"description": "URL to this status resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com/registration-status",
+															"type": "string"
+														}
+													},
+													"required": [
+														"self"
+													],
+													"type": "object"
+												},
+												"state": {
+													"description": "Workflow lifecycle state.\n- `pending`: Workflow has been created but not yet started processing.\n- `in_progress`: Actively processing. Continue polling `links.self`.\n  The workflow has an internal deadline and will not remain in this\n  state indefinitely.\n- `action_required`: Paused — requires action by the user (not the\n  system). See `context.action` for what is needed. An automated\n  polling loop must break on this state; it will not resolve on its\n  own without user intervention.\n- `blocked`: The workflow cannot make progress due to a third party\n  such as the domain extension's registry or a losing registrar.\n  No user action will help. Continue polling — the block may resolve\n  when the third party responds.\n- `succeeded`: Terminal. The operation completed successfully.\n  `completed` will be `true`. For registrations, `context.registration`\n  contains the resulting registration resource.\n- `failed`: Terminal. The operation failed. `completed` will be `true`.\n  See `error.code` and `error.message` for the reason. Do not\n  auto-retry without user review.\n",
+													"enum": [
+														"pending",
+														"in_progress",
+														"action_required",
+														"blocked",
+														"succeeded",
+														"failed"
+													],
+													"example": "in_progress",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"state",
+												"completed",
+												"created_at",
+												"updated_at",
+												"links"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Update is still processing. This occurs when the operation did not\ncomplete within the synchronous wait window, or when `Prefer: respond-async`\nwas sent. Poll the URL in `links.self` to track progress.\n",
+				"headers": {
+					"Location": {
+						"description": "URL of the workflow status resource (same as `links.self`).",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"Preference-Applied": {
+						"description": "Set to `respond-async` when the server honored the preference.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"domain_not_found": {
+								"summary": "Domain not found",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Domain not found"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"invalid_auto_renew": {
+								"summary": "Invalid auto_renew value",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Must be a boolean if present",
+											"source": {
+												"pointer": "/auto_renew"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Update registration failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Update Registration",
+		"tags": [
+			"Registrar Registration"
+		]
+	},
 	"PATCH /accounts/{account_id}/registrar/registrations/{domain_name}": {
 		"description": "Updates an existing domain registration.\n\nBy default, the server holds the connection for a bounded, server-defined\namount of time while the update completes. Most updates finish within this\nwindow and return `200 OK` with a completed workflow status.\n\nIf the update is still processing after this synchronous wait window, the\nserver returns `202 Accepted`. Poll the URL in `links.self` to track progress.\n\nTo skip the wait and receive an immediate `202`, send `Prefer: respond-async`.\n\nThis endpoint currently supports updating `auto_renew` only.\n",
 		"operationId": "registrar-domain-registration-update",
@@ -2513,8 +5027,843 @@
 			"Registrar Registration"
 		]
 	},
+	"POST /accounts/{account_id}/registrar-sandbox/registrations": {
+		"description": "Starts a domain registration workflow.\n\n### Prerequisites\n- The account must not already be at the maximum supported domain limit.\n    A single account may own up to 100 domains in total across registrations\n    created through either the dashboard or this API.\n- The domain must be on a supported extension for programmatic registration.\n- Use `POST /domain-check` immediately before calling this endpoint to confirm\n    real-time availability and pricing.\n\n### Defaults\n- `years`: defaults to the extension's minimum registration period (1 year for\n    most extensions, but varies — for example, `.ai` (if supported) requires a minimum of 2 years).\n- `auto_renew`: defaults to `false`. Setting it to `true` is an explicit\n    opt-in authorizing Cloudflare to charge the account's default payment\n    method up to 30 days before domain expiry to renew the registration.\n    Renewal pricing may change over time based on registry pricing.\n- `privacy_mode`: defaults to `redaction`.\n\n### Premium domains\nPremium domain registration is not currently supported by this API.\nIf `POST /domain-check` returns `tier: premium`, do not call this\nendpoint for that domain.\n\n### Response behavior\nBy default, the server holds the connection for a bounded, server-defined\namount of time while the registration completes. Most registrations finish\nwithin this window and return `201 Created` with a completed workflow status.\n\nIf the registration is still processing after this synchronous wait window,\nthe server returns `202 Accepted`. Poll the URL in `links.self` to track progress.\n\nTo skip the wait and receive an immediate `202`, send `Prefer: respond-async`.",
+		"operationId": "sandbox-registrar-domain-registration-create",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Set to `respond-async` to receive an immediate `202 Accepted` without\nwaiting for the operation to complete (RFC 7240).\n\nThe header may be combined with other preferences using standard\ncomma-separated syntax.\n",
+				"in": "header",
+				"name": "Prefer",
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"minimal": {
+							"description": "The simplest registration request. All defaults apply:\n- `years` defaults to the extension's minimum registration period (typically 1 year)\n- `auto_renew` defaults to `false`\n- `privacy_mode` defaults to `redaction`\n- Registrant contact falls back to the account's default address book entry\n",
+							"summary": "Minimal registration — just a domain name",
+							"value": {
+								"domain_name": "my-new-startup.com"
+							}
+						},
+						"multi_year": {
+							"description": "Register a domain for 3 years.",
+							"summary": "Register for multiple years",
+							"value": {
+								"domain_name": "longterm-project.dev",
+								"years": 3
+							}
+						},
+						"with_contact": {
+							"description": "Provide registrant contact data inline if the account does not have\na default address book entry, or to override it for this registration.\n",
+							"summary": "Register with explicit registrant contact",
+							"value": {
+								"auto_renew": true,
+								"contacts": {
+									"registrant": {
+										"email": "ada@example.com",
+										"phone": "+1.5555555555",
+										"postal_info": {
+											"address": {
+												"city": "Austin",
+												"country_code": "US",
+												"postal_code": "78701",
+												"state": "TX",
+												"street": "123 Main St"
+											},
+											"name": "Ada Lovelace",
+											"organization": "Example Inc"
+										}
+									}
+								},
+								"domain_name": "example.com",
+								"privacy_mode": "redaction",
+								"years": 1
+							}
+						}
+					},
+					"schema": {
+						"properties": {
+							"auto_renew": {
+								"default": false,
+								"description": "Enable or disable automatic renewal. Defaults to `false` if omitted.\nSetting this field to `true` is an explicit opt-in authorizing\nCloudflare to charge the account's default payment method up to 30\ndays before domain expiry to renew the domain automatically.\nRenewal pricing may change over time based on registry pricing.\n",
+								"example": false,
+								"type": "boolean"
+							},
+							"contacts": {
+								"description": "Contact data for the registration request.\n\nIf the `contacts` object is omitted entirely from the request, or if\n`contacts.registrant` is not provided, the system will use the account's\ndefault address book entry as the registrant contact. This default must be\npre-configured by the account owner at\n`https://dash.cloudflare.com/{account_id}/domains/registrations`, where\nthey can create or update the address book entry and accept the required\nagreement. No API exists for managing address book entries at this time.\n\nIf no default address book entry exists and no registrant contact is\nprovided, the registration request will fail with a validation error.\n",
+								"properties": {
+									"registrant": {
+										"description": "Registrant contact data for the domain registration. This information\nis submitted to the domain registry and, depending on extension and\nprivacy settings, may appear in public WHOIS records.\n",
+										"properties": {
+											"email": {
+												"description": "Email address for the registrant. Used for domain-related\ncommunications from the registry, including ownership verification\nand renewal notices.\n",
+												"example": "ada@example.com",
+												"format": "email",
+												"type": "string"
+											},
+											"fax": {
+												"description": "Fax number in E.164 format (e.g., `+1.5555555555`). Optional.\nMost registrations do not require a fax number.\n",
+												"example": "+1.5555555555",
+												"type": "string"
+											},
+											"phone": {
+												"description": "Phone number in E.164 format: `+{country_code}.{number}` with no\nspaces or dashes. Examples: `+1.5555555555` (US), `+44.2071234567`\n(UK), `+81.312345678` (Japan).\n",
+												"example": "+1.5555555555",
+												"type": "string"
+											},
+											"postal_info": {
+												"description": "Postal/mailing information for the registrant contact.",
+												"properties": {
+													"address": {
+														"description": "Physical mailing address for the registrant contact.",
+														"properties": {
+															"city": {
+																"description": "City or locality name.",
+																"example": "Austin",
+																"type": "string"
+															},
+															"country_code": {
+																"description": "Two-letter country code per ISO 3166-1 alpha-2 (e.g., `US`, `GB`, `CA`, `DE`).",
+																"example": "US",
+																"type": "string"
+															},
+															"postal_code": {
+																"description": "Postal or ZIP code.",
+																"example": "78701",
+																"type": "string"
+															},
+															"state": {
+																"description": "State, province, or region. Use the standard abbreviation where applicable (e.g., `TX` for Texas, `ON` for Ontario).",
+																"example": "TX",
+																"type": "string"
+															},
+															"street": {
+																"description": "Street address including building/suite number.",
+																"example": "123 Main St",
+																"type": "string"
+															}
+														},
+														"required": [
+															"street",
+															"city",
+															"state",
+															"postal_code",
+															"country_code"
+														],
+														"type": "object"
+													},
+													"name": {
+														"description": "Full legal name of the registrant (individual or authorized representative).",
+														"example": "Ada Lovelace",
+														"type": "string"
+													},
+													"organization": {
+														"description": "Organization or company name. Optional for individual registrants.",
+														"example": "Example Inc",
+														"type": "string"
+													}
+												},
+												"required": [
+													"name",
+													"address"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"phone",
+											"email",
+											"postal_info"
+										],
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"domain_name": {
+								"description": "Fully qualified domain name (FQDN) including the extension\n(e.g., `example.com`, `mybrand.app`). The domain name uniquely\nidentifies a registration — the same domain cannot be registered\ntwice, making it a natural idempotency key for registration requests.\n",
+								"example": "example.com",
+								"type": "string",
+								"x-auditable": true
+							},
+							"privacy_mode": {
+								"default": "redaction",
+								"description": "WHOIS privacy mode for the registration. Defaults to `redaction`.\n- `off`: Do not request WHOIS privacy.\n- `redaction`: Request WHOIS redaction where supported by the extension.\n  Some extensions do not support privacy/redaction.\n",
+								"enum": [
+									false,
+									"redaction"
+								],
+								"example": "redaction",
+								"type": "string"
+							},
+							"years": {
+								"description": "Number of years to register (1–10). If omitted, defaults to the\nminimum registration period required by the registry for this\nextension. For most extensions this is 1 year, but some extensions\nrequire longer minimum terms (e.g., `.ai` requires a minimum of\n2 years).\n\nThe registry for each extension may also enforce its own maximum\nregistration term. If the requested value exceeds the registry's\nmaximum, the registration will be rejected. When in doubt, use the\ndefault by omitting this field.\n",
+								"example": 1,
+								"maximum": 10,
+								"minimum": 1,
+								"type": "integer"
+							}
+						},
+						"required": [
+							"domain_name"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"completed": {
+								"summary": "Registration completed within timeout (most common)",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": true,
+										"context": {
+											"domain_name": "example.com",
+											"registration": {
+												"auto_renew": true,
+												"created_at": "2025-10-27T10:00:00Z",
+												"domain_name": "example.com",
+												"expires_at": "2026-10-27T10:00:00Z",
+												"locked": true,
+												"privacy_mode": "redaction",
+												"status": "active"
+											}
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/registration-status"
+										},
+										"state": "succeeded",
+										"updated_at": "2025-10-27T10:00:03Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Status of an async registration workflow.",
+											"properties": {
+												"completed": {
+													"description": "Whether the workflow has reached a terminal state. `true` when\n`state` is `succeeded` or `failed`. `false` for `pending`,\n`in_progress`, `action_required`, and `blocked`.\n",
+													"example": false,
+													"type": "boolean"
+												},
+												"context": {
+													"additionalProperties": true,
+													"description": "Workflow-specific data for this workflow.\n\nThe workflow subject is identified by `context.domain_name` for\ndomain-centric workflows.\n",
+													"type": "object"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"error": {
+													"allOf": [
+														{
+															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
+															"properties": {
+																"code": {
+																	"description": "Machine-readable error code identifying the failure reason.",
+																	"example": "registry_rejected",
+																	"type": "string"
+																},
+																"message": {
+																	"description": "Human-readable explanation of the failure. May include registry-specific details.",
+																	"example": "Registry rejected the request.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"code",
+																"message"
+															],
+															"type": "object"
+														}
+													],
+													"nullable": true
+												},
+												"links": {
+													"properties": {
+														"resource": {
+															"description": "URL to the domain resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com",
+															"type": "string"
+														},
+														"self": {
+															"description": "URL to this status resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com/registration-status",
+															"type": "string"
+														}
+													},
+													"required": [
+														"self"
+													],
+													"type": "object"
+												},
+												"state": {
+													"description": "Workflow lifecycle state.\n- `pending`: Workflow has been created but not yet started processing.\n- `in_progress`: Actively processing. Continue polling `links.self`.\n  The workflow has an internal deadline and will not remain in this\n  state indefinitely.\n- `action_required`: Paused — requires action by the user (not the\n  system). See `context.action` for what is needed. An automated\n  polling loop must break on this state; it will not resolve on its\n  own without user intervention.\n- `blocked`: The workflow cannot make progress due to a third party\n  such as the domain extension's registry or a losing registrar.\n  No user action will help. Continue polling — the block may resolve\n  when the third party responds.\n- `succeeded`: Terminal. The operation completed successfully.\n  `completed` will be `true`. For registrations, `context.registration`\n  contains the resulting registration resource.\n- `failed`: Terminal. The operation failed. `completed` will be `true`.\n  See `error.code` and `error.message` for the reason. Do not\n  auto-retry without user review.\n",
+													"enum": [
+														"pending",
+														"in_progress",
+														"action_required",
+														"blocked",
+														"succeeded",
+														"failed"
+													],
+													"example": "in_progress",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"state",
+												"completed",
+												"created_at",
+												"updated_at",
+												"links"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Registration completed successfully within the synchronous wait window.\nThe workflow status will have `state: succeeded` and `completed: true`.\n",
+				"headers": {
+					"Preference-Applied": {
+						"description": "Echoed when the server honored a `Prefer` header.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"202": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"still_processing": {
+								"summary": "Registration still in progress",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"completed": false,
+										"context": {
+											"domain_name": "example.com"
+										},
+										"created_at": "2025-10-27T10:00:00Z",
+										"links": {
+											"resource": "/accounts/abc/registrar/registrations/example.com",
+											"self": "/accounts/abc/registrar/registrations/example.com/registration-status"
+										},
+										"state": "in_progress",
+										"updated_at": "2025-10-27T10:00:10Z"
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Status of an async registration workflow.",
+											"properties": {
+												"completed": {
+													"description": "Whether the workflow has reached a terminal state. `true` when\n`state` is `succeeded` or `failed`. `false` for `pending`,\n`in_progress`, `action_required`, and `blocked`.\n",
+													"example": false,
+													"type": "boolean"
+												},
+												"context": {
+													"additionalProperties": true,
+													"description": "Workflow-specific data for this workflow.\n\nThe workflow subject is identified by `context.domain_name` for\ndomain-centric workflows.\n",
+													"type": "object"
+												},
+												"created_at": {
+													"format": "date-time",
+													"type": "string"
+												},
+												"error": {
+													"allOf": [
+														{
+															"description": "Error details when a workflow reaches the `failed` state. The specific\nerror codes and messages depend on the workflow type (registration,\nupdate, etc.) and the underlying registry response. These workflow\nerror codes are separate from immediate HTTP error `errors[].code`\nvalues returned by non-2xx responses. Surface\n`error.message` to the user for context.\n",
+															"properties": {
+																"code": {
+																	"description": "Machine-readable error code identifying the failure reason.",
+																	"example": "registry_rejected",
+																	"type": "string"
+																},
+																"message": {
+																	"description": "Human-readable explanation of the failure. May include registry-specific details.",
+																	"example": "Registry rejected the request.",
+																	"type": "string"
+																}
+															},
+															"required": [
+																"code",
+																"message"
+															],
+															"type": "object"
+														}
+													],
+													"nullable": true
+												},
+												"links": {
+													"properties": {
+														"resource": {
+															"description": "URL to the domain resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com",
+															"type": "string"
+														},
+														"self": {
+															"description": "URL to this status resource.",
+															"example": "/accounts/{account_id}/registrar/registrations/example.com/registration-status",
+															"type": "string"
+														}
+													},
+													"required": [
+														"self"
+													],
+													"type": "object"
+												},
+												"state": {
+													"description": "Workflow lifecycle state.\n- `pending`: Workflow has been created but not yet started processing.\n- `in_progress`: Actively processing. Continue polling `links.self`.\n  The workflow has an internal deadline and will not remain in this\n  state indefinitely.\n- `action_required`: Paused — requires action by the user (not the\n  system). See `context.action` for what is needed. An automated\n  polling loop must break on this state; it will not resolve on its\n  own without user intervention.\n- `blocked`: The workflow cannot make progress due to a third party\n  such as the domain extension's registry or a losing registrar.\n  No user action will help. Continue polling — the block may resolve\n  when the third party responds.\n- `succeeded`: Terminal. The operation completed successfully.\n  `completed` will be `true`. For registrations, `context.registration`\n  contains the resulting registration resource.\n- `failed`: Terminal. The operation failed. `completed` will be `true`.\n  See `error.code` and `error.message` for the reason. Do not\n  auto-retry without user review.\n",
+													"enum": [
+														"pending",
+														"in_progress",
+														"action_required",
+														"blocked",
+														"succeeded",
+														"failed"
+													],
+													"example": "in_progress",
+													"type": "string"
+												},
+												"updated_at": {
+													"format": "date-time",
+													"type": "string"
+												}
+											},
+											"required": [
+												"state",
+												"completed",
+												"created_at",
+												"updated_at",
+												"links"
+											],
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Registration is still processing. This occurs when the operation did\nnot complete within the synchronous wait window, or when `Prefer: respond-async`\nwas sent. Poll the URL in `links.self` to track progress.\n",
+				"headers": {
+					"Location": {
+						"description": "URL of the workflow status resource (same as `links.self`).",
+						"schema": {
+							"type": "string"
+						}
+					},
+					"Preference-Applied": {
+						"description": "Set to `respond-async` when the server honored the preference.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"account_domain_limit_exceeded": {
+								"description": "The account already owns the maximum supported number of domains.\nDomains created through either the dashboard or this API count\ntoward the same account-wide limit.\n",
+								"summary": "Account has reached the domain limit",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Domain limit reached: you cannot register more than 100 domains.",
+											"source": {
+												"pointer": "/domain_name"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"domain_name_required": {
+								"description": "The required `domain_name` field was not provided.",
+								"summary": "Missing domain name",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "domain_name is required",
+											"source": {
+												"pointer": "/domain_name"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"invalid_auto_renew": {
+								"description": "The `auto_renew` field must be a boolean if present.",
+								"summary": "Invalid auto_renew value",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Must be a boolean",
+											"source": {
+												"pointer": "/auto_renew"
+											}
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"missing_contact": {
+								"description": "The request did not include a registrant contact, and the account\nhas no default address book entry to fall back to. Either provide\ncontacts.registrant in the request or set up a default address\nbook entry at `https://dash.cloudflare.com/{account_id}/domains/registrations`.\n",
+								"summary": "No registrant contact and no default address book entry",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "No registrant contact provided and no default address book entry found for this account."
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"registration_not_supported": {
+								"description": "The extension is not supported for registration through this API.\nThis includes extensions that are unsupported by the API or do\nnot support the required registration contact flow.\n",
+								"summary": "Registration not supported for extension",
+								"value": {
+									"errors": [
+										{
+											"code": 10000,
+											"message": "Registration is not supported for this extension"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create registration failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create Registration",
+		"tags": [
+			"Registrar Registration"
+		]
+	},
 	"POST /accounts/{account_id}/registrar/registrations": {
-		"description": "Starts a domain registration workflow. This is a billable operation — successful\nregistration charges the account's default payment method. All successful\ndomain registrations are non-refundable — once the workflow completes with\n`state: succeeded`, the charge cannot be reversed.\n\n### Prerequisites\n- The account must have a billing profile with a valid default payment method.\n  Set this up at `https://dash.cloudflare.com/{account_id}/billing/payment-info`.\n- The account must not already be at the maximum supported domain limit.\n  A single account may own up to 100 domains in total across registrations\n  created through either the dashboard or this API.\n- The domain must be on a supported extension for programmatic registration.\n- Use `POST /domain-check` immediately before calling this endpoint to confirm\n  real-time availability and pricing.\n\n### Supported extensions\nIn this API, \"extension\" means the full registrable suffix after the domain\nlabel. For example, in `example.co.uk`, the extension is `co.uk`.\n\nProgrammatic registration is currently supported for:\n\n`com`, `org`, `net`, `app`, `dev`, `cc`, `xyz`, `info`, `cloud`, `studio`,\n`live`, `link`, `pro`, `tech`, `fyi`, `shop`, `online`, `tools`, `run`,\n`games`, `build`, `systems`, `world`, `news`, `site`, `network`, `chat`,\n`space`, `family`, `page`, `life`, `group`, `email`, `solutions`, `day`,\n`blog`, `ing`, `icu`, `academy`, `today`\n\nCloudflare Registrar supports 400+ extensions in the dashboard. Extensions\nnot listed above can still be registered at\n`https://dash.cloudflare.com/{account_id}/domains/registrations`.\n\n### Express mode\nThe only required field is `domain_name`. If `contacts` is omitted, the system\nuses the account's default address book entry as the registrant. If no default\nexists and no contact is provided, the request fails. Set up a default address\nbook entry and accept the required agreement at\n`https://dash.cloudflare.com/{account_id}/domains/registrations`.\n\n### Defaults\n- `years`: defaults to the extension's minimum registration period (1 year for\n  most extensions, but varies — for example, `.ai` (if supported) requires a minimum of 2 years).\n- `auto_renew`: defaults to `false`. Setting it to `true` is an explicit\n  opt-in authorizing Cloudflare to charge the account's default payment\n  method up to 30 days before domain expiry to renew the registration.\n  Renewal pricing may change over time based on registry pricing.\n- `privacy_mode`: defaults to `redaction`.\n\n### Premium domains\nPremium domain registration is not currently supported by this API.\nIf `POST /domain-check` returns `tier: premium`, do not call this\nendpoint for that domain.\n\n### Response behavior\nBy default, the server holds the connection for a bounded, server-defined\namount of time while the registration completes. Most registrations finish\nwithin this window and return `201 Created` with a completed workflow status.\n\nIf the registration is still processing after this synchronous wait window,\nthe server returns `202 Accepted`. Poll the URL in `links.self` to track progress.\n\nTo skip the wait and receive an immediate `202`, send `Prefer: respond-async`.\n",
+		"description": "Starts a domain registration workflow. This is a billable operation — successful\nregistration charges the account's default payment method. All successful\ndomain registrations are non-refundable — once the workflow completes with\n`state: succeeded`, the charge cannot be reversed.\n\n### Prerequisites\n- The account must have a billing profile with a valid default payment method.\n  Set this up at `https://dash.cloudflare.com/{account_id}/billing/payment-info`.\n- The account must not already be at the maximum supported domain limit.\n  A single account may own up to 100 domains in total across registrations\n  created through either the dashboard or this API.\n- The domain must be on a supported extension for programmatic registration.\n- Use `POST /domain-check` immediately before calling this endpoint to confirm\n  real-time availability and pricing.\n\n### Express mode\nThe only required field is `domain_name`. If `contacts` is omitted, the system\nuses the account's default address book entry as the registrant. If no default\nexists and no contact is provided, the request fails. Set up a default address\nbook entry and accept the required agreement at\n`https://dash.cloudflare.com/{account_id}/domains/registrations`.\n\n### Defaults\n- `years`: defaults to the extension's minimum registration period (1 year for\n  most extensions, but varies — for example, `.ai` (if supported) requires a minimum of 2 years).\n- `auto_renew`: defaults to `false`. Setting it to `true` is an explicit\n  opt-in authorizing Cloudflare to charge the account's default payment\n  method up to 30 days before domain expiry to renew the registration.\n  Renewal pricing may change over time based on registry pricing.\n- `privacy_mode`: defaults to `redaction`.\n\n### Premium domains\nPremium domain registration is not currently supported by this API.\nIf `POST /domain-check` returns `tier: premium`, do not call this\nendpoint for that domain.\n\n### Response behavior\nBy default, the server holds the connection for a bounded, server-defined\namount of time while the registration completes. Most registrations finish\nwithin this window and return `201 Created` with a completed workflow status.\n\nIf the registration is still processing after this synchronous wait window,\nthe server returns `202 Accepted`. Poll the URL in `links.self` to track progress.\n\nTo skip the wait and receive an immediate `202`, send `Prefer: respond-async`.\n",
 		"operationId": "registrar-domain-registration-create",
 		"parameters": [
 			{

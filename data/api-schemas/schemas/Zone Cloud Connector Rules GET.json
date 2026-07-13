@@ -1,5 +1,6 @@
 {
 	"GET /zones/{zone_id}/cloud_connector/rules": {
+		"description": "Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services.",
 		"operationId": "zone-cloud-connector-rules",
 		"parameters": [
 			{

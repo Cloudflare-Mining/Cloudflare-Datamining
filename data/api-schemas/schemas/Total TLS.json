@@ -421,7 +421,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "acm.total-tls",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/acm/total_tls": {
 		"description": "Set Total TLS Settings or disable the feature for a Zone.",
@@ -877,6 +881,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "acm.total-tls",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	}
 }

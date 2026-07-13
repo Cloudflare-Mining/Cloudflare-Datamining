@@ -228,7 +228,11 @@
 		"x-api-token-group": [
 			"Logs Write",
 			"Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.list",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/logs/retrieve": {
 		"description": "Returns logs stored in R2 that match the provided query parameters.",
@@ -413,6 +417,10 @@
 		"x-api-token-group": [
 			"Logs Write",
 			"Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.retrieve",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

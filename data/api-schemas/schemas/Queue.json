@@ -317,7 +317,11 @@
 		"x-api-token-group": [
 			"Queues Write",
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.subscriptions",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/queues/{queue_id}": {
 		"description": "Deletes a queue",
@@ -486,7 +490,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.delete"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
 		"description": "Deletes the consumer for a queue.",
@@ -668,7 +676,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.delete"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.consumers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/event_subscriptions/subscriptions": {
 		"description": "Get a paginated list of event subscriptions with optional sorting and filtering",
@@ -1119,7 +1131,11 @@
 			"Queues Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.subscriptions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}": {
 		"description": "Get details about an existing event subscription",
@@ -1497,7 +1513,11 @@
 		"x-api-token-group": [
 			"Queues Write",
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.subscriptions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/queues": {
 		"description": "Returns the queues owned by an account.",
@@ -1953,7 +1973,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.list"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}": {
 		"description": "Get details about a specific queue.",
@@ -2389,7 +2413,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}/consumers": {
 		"description": "Returns the consumers for a Queue",
@@ -2726,7 +2754,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.list"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.consumers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
 		"description": "Fetches the consumer for a queue by consumer id",
@@ -3073,7 +3105,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.consumers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/queues/{queue_id}/metrics": {
 		"description": "Return best-effort metrics for a queue. Values may be approximate due to the distributed nature of queues.",
@@ -3507,7 +3543,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.purge",
+		"x-fern-sdk-method-name": "status",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/event_subscriptions/subscriptions/{subscription_id}": {
 		"description": "Update an existing event subscription",
@@ -4002,7 +4042,16 @@
 		"x-api-token-group": [
 			"Queues Write",
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.subscriptions",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"enabled": {
+				"default": null
+			}
+		}
 	},
 	"PATCH /accounts/{account_id}/queues/{queue_id}": {
 		"description": "Updates a Queue.",
@@ -4702,7 +4751,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/event_subscriptions/subscriptions": {
 		"description": "Create a new event subscription for a queue",
@@ -5367,7 +5420,11 @@
 		"x-api-token-group": [
 			"Queues Write",
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.subscriptions",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues": {
 		"description": "Create a new queue",
@@ -5807,7 +5864,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.create"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/consumers": {
 		"description": "Creates a new consumer for a Queue",
@@ -6269,7 +6330,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.create"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.consumers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages": {
 		"description": "Push a message to a Queue",
@@ -6543,7 +6608,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.push"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.messages",
+		"x-fern-sdk-method-name": "push",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/ack": {
 		"description": "Acknowledge + Retry messages from a Queue",
@@ -6790,7 +6859,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.ack"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.messages",
+		"x-fern-sdk-method-name": "ack",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/batch": {
 		"description": "Push a batch of message to a Queue",
@@ -7078,7 +7151,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.push"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.messages",
+		"x-fern-sdk-method-name": "bulk-push",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/preview": {
 		"description": "Preview messages from a Queue without leasing them. Messages remain available for subsequent preview or pull operations.",
@@ -7327,7 +7404,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.peek"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.messages",
+		"x-fern-sdk-method-name": "preview",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/preview/ack": {
 		"description": "Delete previewed messages from a Queue. Note that messages acknowledged this way aren't considered delivered, they are instantly deleted from this queue and do not affect metrics.",
@@ -7565,7 +7646,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.ack"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.messages",
+		"x-fern-sdk-method-name": "ack-preview",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/messages/pull": {
 		"description": "Pull a batch of messages from a Queue",
@@ -7857,7 +7942,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.pull"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.messages",
+		"x-fern-sdk-method-name": "pull",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/queues/{queue_id}/purge": {
 		"description": "Deletes all messages from the Queue.",
@@ -8313,7 +8402,12 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.ack"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.purge",
+		"x-fern-sdk-method-name": "start",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation drops every message in the queue."
 	},
 	"PUT /accounts/{account_id}/queues/{queue_id}": {
 		"description": "Updates a Queue. Note that this endpoint does not support partial updates. If successful, the Queue's configuration is overwritten with the supplied configuration.",
@@ -9013,7 +9107,11 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/queues/{queue_id}/consumers/{consumer_id}": {
 		"description": "Updates the consumer for a queue, or creates one if it does not exist.",
@@ -9489,6 +9587,10 @@
 			"enum": [
 				"com.cloudflare.edge.worker.queue.update"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "queues.consumers",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

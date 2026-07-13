@@ -589,7 +589,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.routes",
+		"x-fern-sdk-method-name": "empty",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/magic/routes/{route_id}": {
 		"description": "Disable and remove a specific Magic static route.",
@@ -1159,7 +1163,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.routes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/routes": {
 		"description": "List all Magic static routes.",
@@ -1704,7 +1712,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.routes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/routes/{route_id}": {
 		"description": "Get a specific Magic static route.",
@@ -2262,7 +2274,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.routes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/routes": {
 		"description": "Creates a new Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes.",
@@ -2875,7 +2891,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.routes",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/routes": {
 		"description": "Update multiple Magic static routes. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. Only fields for a route that need to be changed need be provided.",
@@ -3532,7 +3552,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.routes",
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/routes/{route_id}": {
 		"description": "Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes.",
@@ -4172,6 +4196,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.routes",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

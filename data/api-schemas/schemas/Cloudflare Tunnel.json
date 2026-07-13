@@ -675,7 +675,11 @@
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: cloudflared Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
 		"description": "Removes a connection (aka Cloudflare Tunnel Connector) from a Cloudflare Tunnel independently of its current state. If no connector id (client_id) is provided all connectors will be removed. We recommend running this command after rotating tokens.",
@@ -1038,7 +1042,11 @@
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: cloudflared Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.connections",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"description": "Deletes a Warp Connector Tunnel from an account.",
@@ -1677,7 +1685,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: WARP Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cfd_tunnel": {
 		"description": "Lists and filters Cloudflare Tunnels in an account.",
@@ -2528,7 +2540,11 @@
 			"Cloudflare One Connector: cloudflared Read",
 			"Cloudflare Tunnel Write",
 			"Cloudflare Tunnel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"description": "Fetches a single Cloudflare Tunnel.",
@@ -3199,7 +3215,11 @@
 			"Cloudflare One Connector: cloudflared Read",
 			"Cloudflare Tunnel Write",
 			"Cloudflare Tunnel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connections": {
 		"description": "Fetches connection details for a Cloudflare Tunnel.",
@@ -3828,7 +3848,11 @@
 			"Cloudflare One Connector: cloudflared Read",
 			"Cloudflare Tunnel Write",
 			"Cloudflare Tunnel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.connections",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/connectors/{connector_id}": {
 		"description": "Fetches connector and connection details for a Cloudflare Tunnel.",
@@ -4387,7 +4411,11 @@
 			"Cloudflare One Connector: cloudflared Read",
 			"Cloudflare Tunnel Write",
 			"Cloudflare Tunnel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.connectors",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/cfd_tunnel/{tunnel_id}/token": {
 		"description": "Gets the token used to associate cloudflared with a specific tunnel.",
@@ -4727,7 +4755,11 @@
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: cloudflared Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.token",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/tunnels": {
 		"description": "Lists and filters all types of Tunnels in an account.",
@@ -5914,7 +5946,11 @@
 			"Cloudflare One Connector: cloudflared Read",
 			"Cloudflare Tunnel Write",
 			"Cloudflare Tunnel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector": {
 		"description": "Lists and filters Warp Connector Tunnels in an account.",
@@ -6725,7 +6761,11 @@
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: WARP Write",
 			"Cloudflare One Connector: WARP Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"description": "Fetches a single Warp Connector Tunnel.",
@@ -7356,7 +7396,11 @@
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: WARP Write",
 			"Cloudflare One Connector: WARP Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connections": {
 		"description": "Fetches connection details for a WARP Connector Tunnel.",
@@ -7967,7 +8011,11 @@
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: WARP Write",
 			"Cloudflare One Connector: WARP Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector.connections",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/connectors/{connector_id}": {
 		"description": "Fetches connector and connection details for a WARP Connector Tunnel.",
@@ -8508,7 +8556,11 @@
 			"Cloudflare One Connectors Read",
 			"Cloudflare One Connector: WARP Write",
 			"Cloudflare One Connector: WARP Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector.connectors",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/token": {
 		"description": "Gets the token used to associate warp device with a specific Warp Connector tunnel.",
@@ -8848,7 +8900,11 @@
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: cloudflared Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector.token",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/cfd_tunnel/{tunnel_id}": {
 		"description": "Updates an existing Cloudflare Tunnel.",
@@ -9539,7 +9595,11 @@
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: cloudflared Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/warp_connector/{tunnel_id}": {
 		"description": "Updates an existing Warp Connector Tunnel.",
@@ -10191,7 +10251,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: WARP Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cfd_tunnel": {
 		"description": "Creates a new Cloudflare Tunnel in an account.",
@@ -10881,7 +10945,11 @@
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: cloudflared Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/cfd_tunnel/{tunnel_id}/management": {
 		"description": "Gets a management token used to access the management resources (i.e. Streaming Logs) of a tunnel.",
@@ -11247,7 +11315,11 @@
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: cloudflared Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.management",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/warp_connector": {
 		"description": "Creates a new Warp Connector Tunnel in an account.",
@@ -11887,7 +11959,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: WARP Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/failover": {
 		"description": "Triggers a manual failover for a specific WARP Connector Tunnel, setting the specified client as the active connector. The tunnel must be configured for high availability (HA) and the client must be linked to the tunnel.",
@@ -12249,6 +12325,10 @@
 		"x-api-token-group": [
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: WARP Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.warp-connector.failover",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

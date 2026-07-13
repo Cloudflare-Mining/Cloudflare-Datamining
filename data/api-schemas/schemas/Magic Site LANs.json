@@ -485,7 +485,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.lans",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/lans": {
 		"description": "Lists Site LANs associated with an account.",
@@ -955,7 +959,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.lans",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
 		"description": "Get a specific Site LAN.",
@@ -1439,7 +1447,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.lans",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
 		"description": "Patch a specific Site LAN.",
@@ -2120,7 +2132,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.lans",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/sites/{site_id}/lans": {
 		"description": "Creates a new Site LAN. If the site is in high availability mode, static_addressing is required along with secondary and virtual address.",
@@ -2791,7 +2807,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.lans",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}": {
 		"description": "Update a specific Site LAN.",
@@ -3472,6 +3492,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.lans",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

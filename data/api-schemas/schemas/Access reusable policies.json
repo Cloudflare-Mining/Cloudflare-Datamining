@@ -269,7 +269,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.policies",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/policies": {
 		"description": "Lists Access reusable policies.",
@@ -2566,12 +2570,14 @@
 																			"allowed_clipboard_local_to_remote_formats": {
 																				"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
 																				"example": [
-																					"text"
+																					"text",
+																					"file"
 																				],
 																				"items": {
 																					"description": "Clipboard format for RDP connections.",
 																					"enum": [
-																						"text"
+																						"text",
+																						"file"
 																					],
 																					"type": "string",
 																					"x-auditable": true
@@ -2581,12 +2587,14 @@
 																			"allowed_clipboard_remote_to_local_formats": {
 																				"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
 																				"example": [
-																					"text"
+																					"text",
+																					"file"
 																				],
 																				"items": {
 																					"description": "Clipboard format for RDP connections.",
 																					"enum": [
-																						"text"
+																						"text",
+																						"file"
 																					],
 																					"type": "string",
 																					"x-auditable": true
@@ -2817,7 +2825,11 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.policies",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/policies/{policy_id}": {
 		"description": "Fetches a single Access reusable policy.",
@@ -5071,12 +5083,14 @@
 																		"allowed_clipboard_local_to_remote_formats": {
 																			"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
 																			"example": [
-																				"text"
+																				"text",
+																				"file"
 																			],
 																			"items": {
 																				"description": "Clipboard format for RDP connections.",
 																				"enum": [
-																					"text"
+																					"text",
+																					"file"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -5086,12 +5100,14 @@
 																		"allowed_clipboard_remote_to_local_formats": {
 																			"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
 																			"example": [
-																				"text"
+																				"text",
+																				"file"
 																			],
 																			"items": {
 																				"description": "Clipboard format for RDP connections.",
 																				"enum": [
-																					"text"
+																					"text",
+																					"file"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -5320,7 +5336,11 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.policies",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/policies": {
 		"description": "Creates a new Access reusable policy.",
@@ -7456,12 +7476,14 @@
 											"allowed_clipboard_local_to_remote_formats": {
 												"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
 												"example": [
-													"text"
+													"text",
+													"file"
 												],
 												"items": {
 													"description": "Clipboard format for RDP connections.",
 													"enum": [
-														"text"
+														"text",
+														"file"
 													],
 													"type": "string",
 													"x-auditable": true
@@ -7471,12 +7493,14 @@
 											"allowed_clipboard_remote_to_local_formats": {
 												"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
 												"example": [
-													"text"
+													"text",
+													"file"
 												],
 												"items": {
 													"description": "Clipboard format for RDP connections.",
 													"enum": [
-														"text"
+														"text",
+														"file"
 													],
 													"type": "string",
 													"x-auditable": true
@@ -9777,12 +9801,14 @@
 																		"allowed_clipboard_local_to_remote_formats": {
 																			"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
 																			"example": [
-																				"text"
+																				"text",
+																				"file"
 																			],
 																			"items": {
 																				"description": "Clipboard format for RDP connections.",
 																				"enum": [
-																					"text"
+																					"text",
+																					"file"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -9792,12 +9818,14 @@
 																		"allowed_clipboard_remote_to_local_formats": {
 																			"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
 																			"example": [
-																				"text"
+																				"text",
+																				"file"
 																			],
 																			"items": {
 																				"description": "Clipboard format for RDP connections.",
 																				"enum": [
-																					"text"
+																					"text",
+																					"file"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -10025,7 +10053,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.policies",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/policies/{policy_id}": {
 		"description": "Updates a Access reusable policy.",
@@ -12172,12 +12204,14 @@
 											"allowed_clipboard_local_to_remote_formats": {
 												"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
 												"example": [
-													"text"
+													"text",
+													"file"
 												],
 												"items": {
 													"description": "Clipboard format for RDP connections.",
 													"enum": [
-														"text"
+														"text",
+														"file"
 													],
 													"type": "string",
 													"x-auditable": true
@@ -12187,12 +12221,14 @@
 											"allowed_clipboard_remote_to_local_formats": {
 												"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
 												"example": [
-													"text"
+													"text",
+													"file"
 												],
 												"items": {
 													"description": "Clipboard format for RDP connections.",
 													"enum": [
-														"text"
+														"text",
+														"file"
 													],
 													"type": "string",
 													"x-auditable": true
@@ -14493,12 +14529,14 @@
 																		"allowed_clipboard_local_to_remote_formats": {
 																			"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
 																			"example": [
-																				"text"
+																				"text",
+																				"file"
 																			],
 																			"items": {
 																				"description": "Clipboard format for RDP connections.",
 																				"enum": [
-																					"text"
+																					"text",
+																					"file"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -14508,12 +14546,14 @@
 																		"allowed_clipboard_remote_to_local_formats": {
 																			"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
 																			"example": [
-																				"text"
+																				"text",
+																				"file"
 																			],
 																			"items": {
 																				"description": "Clipboard format for RDP connections.",
 																				"enum": [
-																					"text"
+																					"text",
+																					"file"
 																				],
 																				"type": "string",
 																				"x-auditable": true
@@ -14741,6 +14781,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.policies",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

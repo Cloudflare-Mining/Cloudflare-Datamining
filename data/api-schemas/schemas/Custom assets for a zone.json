@@ -170,7 +170,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-pages.assets.delete",
+		"x-fern-sdk-method-name": "v2",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_identifier}/custom_pages/assets": {
 		"description": "Fetches all the custom assets at the zone level.",
@@ -696,7 +700,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-pages.assets.list",
+		"x-fern-sdk-method-name": "v2",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_identifier}/custom_pages/assets/{asset_name}": {
 		"description": "Fetches the details of a custom asset.",
@@ -1140,7 +1148,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-pages.assets.get",
+		"x-fern-sdk-method-name": "v2",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_identifier}/custom_pages/assets": {
 		"description": "Creates a new custom asset at the zone level.",
@@ -1605,7 +1617,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-pages.assets.create",
+		"x-fern-sdk-method-name": "v2",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_identifier}/custom_pages/assets/{asset_name}": {
 		"description": "Updates the configuration of an existing custom asset.",
@@ -2074,6 +2090,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-pages.assets.update",
+		"x-fern-sdk-method-name": "v2",
+		"x-forge-hidden": true
 	}
 }

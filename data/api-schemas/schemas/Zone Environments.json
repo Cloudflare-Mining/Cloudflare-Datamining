@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/environments/{environment_id}": {
+		"description": "Deletes a zone environment by reference identifier.",
 		"operationId": "zonesEnvironmentsDelete",
 		"responses": {
 			"200": {
@@ -200,6 +201,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/environments": {
+		"description": "Lists configured environments for a zone.",
 		"operationId": "zonesEnvironmentsList",
 		"responses": {
 			"200": {
@@ -401,6 +403,7 @@
 		]
 	},
 	"PATCH /zones/{zone_id}/environments": {
+		"description": "Applies partial updates to zone environments.",
 		"operationId": "zonesEnvironmentsEdit",
 		"requestBody": {
 			"content": {
@@ -665,6 +668,7 @@
 		]
 	},
 	"POST /zones/{zone_id}/environments": {
+		"description": "Creates environments for a zone.",
 		"operationId": "zonesEnvironmentsCreate",
 		"requestBody": {
 			"content": {
@@ -929,6 +933,7 @@
 		]
 	},
 	"POST /zones/{zone_id}/environments/{environment_id}/rollback": {
+		"description": "Rolls a zone environment back to its previous version.",
 		"operationId": "zonesEnvironmentsRollback",
 		"responses": {
 			"200": {
@@ -1129,6 +1134,7 @@
 		]
 	},
 	"PUT /zones/{zone_id}/environments": {
+		"description": "Replaces the full environment configuration for a zone.",
 		"operationId": "zonesEnvironmentsUpdate",
 		"requestBody": {
 			"content": {

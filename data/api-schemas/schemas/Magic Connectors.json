@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/magic/connectors/{connector_id}": {
+		"description": "Deletes a Magic WAN Connector.",
 		"operationId": "mconn-connector-delete",
 		"parameters": [
 			{
@@ -599,7 +600,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Remove a connector from your account",
+		"summary": "Delete Connector",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -614,6 +615,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/magic/connectors": {
+		"description": "Lists Magic WAN Connectors.",
 		"operationId": "mconn-connector-list",
 		"parameters": [
 			{
@@ -1163,6 +1165,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}": {
+		"description": "Fetches a Magic WAN Connector.",
 		"operationId": "mconn-connector-fetch",
 		"parameters": [
 			{
@@ -1778,6 +1781,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/interrupts": {
+		"description": "Lists interrupts for a Magic WAN Connector.",
 		"operationId": "mconn-connector-interrupt-list",
 		"parameters": [
 			{
@@ -2329,6 +2333,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events": {
+		"description": "Lists Magic WAN Connector Telemetry Events",
 		"operationId": "mconn-connector-telemetry-events-list",
 		"parameters": [
 			{
@@ -2797,7 +2802,8 @@
 		}
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/{event_t}.{event_n}": {
-		"operationId": "mconn-connector-telemetry-events-get",
+		"description": "Fetches Magic WAN Connector Telemetry Event",
+		"operationId": "mconn-connector-telemetry-events-fetch",
 		"parameters": [
 			{
 				"in": "path",
@@ -2895,352 +2901,40 @@
 											"description": "Recorded Event",
 											"properties": {
 												"e": {
-													"oneOf": [
-														{
-															"properties": {
-																"k": {
-																	"description": "Initialized process",
-																	"enum": [
-																		"Init"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
+													"additionalProperties": true,
+													"description": "Event kind plus event-specific payload fields.\n\nEvent kinds:\n- `Init`: Initialized process\n- `Leave`: Stopped process\n- `StartAttestation`: Started attestation\n- `FinishAttestationSuccess`: Finished attestation\n- `FinishAttestationFailure`: Failed attestation\n- `StartRotateCryptKey`: Started crypt key rotation\n- `FinishRotateCryptKeySuccess`: Finished crypt key rotation\n- `FinishRotateCryptKeyFailure`: Failed crypt key rotation\n- `StartRotatePki`: Started PKI rotation\n- `FinishRotatePkiSuccess`: Finished PKI rotation\n- `FinishRotatePkiFailure`: Failed PKI rotation\n- `StartUpgrade`: Started upgrade\n- `FinishUpgradeSuccess`: Finished upgrade\n- `FinishUpgradeFailure`: Failed upgrade\n- `Reconcile`: Reconciled\n- `ConfigureCloudflaredTunnel`: Configured Cloudflared tunnel\n- `RekeyInstallBoth`: Installed initial inbound and outbound keys\n- `RekeyStart`: Installed new inbound key, kept old outbound\n- `RekeyRestart`: Restarted in-progress rekey with newer key material\n- `RekeyAdvance`: Confirmed traffic on new inbound key, swapped outbound to new\n- `RekeyComplete`: Deleted old keys\n- `RekeyReset`: Deleted all keys after receiving an unexpected key",
+													"properties": {
+														"k": {
+															"description": "Event kind",
+															"enum": [
+																"Init",
+																"Leave",
+																"StartAttestation",
+																"FinishAttestationSuccess",
+																"FinishAttestationFailure",
+																"StartRotateCryptKey",
+																"FinishRotateCryptKeySuccess",
+																"FinishRotateCryptKeyFailure",
+																"StartRotatePki",
+																"FinishRotatePkiSuccess",
+																"FinishRotatePkiFailure",
+																"StartUpgrade",
+																"FinishUpgradeSuccess",
+																"FinishUpgradeFailure",
+																"Reconcile",
+																"ConfigureCloudflaredTunnel",
+																"RekeyInstallBoth",
+																"RekeyStart",
+																"RekeyRestart",
+																"RekeyAdvance",
+																"RekeyComplete",
+																"RekeyReset"
 															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Stopped process",
-																	"enum": [
-																		"Leave"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Started attestation",
-																	"enum": [
-																		"StartAttestation"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Finished attestation",
-																	"enum": [
-																		"FinishAttestationSuccess"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Failed attestation",
-																	"enum": [
-																		"FinishAttestationFailure"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Started crypt key rotation",
-																	"enum": [
-																		"StartRotateCryptKey"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Finished crypt key rotation",
-																	"enum": [
-																		"FinishRotateCryptKeySuccess"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Failed crypt key rotation",
-																	"enum": [
-																		"FinishRotateCryptKeyFailure"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Started PKI rotation",
-																	"enum": [
-																		"StartRotatePki"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Finished PKI rotation",
-																	"enum": [
-																		"FinishRotatePkiSuccess"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Failed PKI rotation",
-																	"enum": [
-																		"FinishRotatePkiFailure"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Started upgrade",
-																	"enum": [
-																		"StartUpgrade"
-																	],
-																	"type": "string"
-																},
-																"url": {
-																	"description": "Location of upgrade bundle",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k",
-																"url"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Finished upgrade",
-																	"enum": [
-																		"FinishUpgradeSuccess"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Failed upgrade",
-																	"enum": [
-																		"FinishUpgradeFailure"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Reconciled",
-																	"enum": [
-																		"Reconcile"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Configured Cloudflared tunnel",
-																	"enum": [
-																		"ConfigureCloudflaredTunnel"
-																	],
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Installed initial inbound and outbound keys",
-																	"enum": [
-																		"RekeyInstallBoth"
-																	],
-																	"type": "string"
-																},
-																"tunnel_id": {
-																	"description": "Tunnel identifier",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k",
-																"tunnel_id"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Installed new inbound key, kept old outbound",
-																	"enum": [
-																		"RekeyStart"
-																	],
-																	"type": "string"
-																},
-																"tunnel_id": {
-																	"description": "Tunnel identifier",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k",
-																"tunnel_id"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Confirmed traffic on new inbound key, swapped outbound to new",
-																	"enum": [
-																		"RekeyAdvance"
-																	],
-																	"type": "string"
-																},
-																"tunnel_id": {
-																	"description": "Tunnel identifier",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k",
-																"tunnel_id"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Deleted old keys",
-																	"enum": [
-																		"RekeyComplete"
-																	],
-																	"type": "string"
-																},
-																"tunnel_id": {
-																	"description": "Tunnel identifier",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k",
-																"tunnel_id"
-															],
-															"type": "object"
-														},
-														{
-															"properties": {
-																"k": {
-																	"description": "Deleted all keys after receiving an unexpected key",
-																	"enum": [
-																		"RekeyReset"
-																	],
-																	"type": "string"
-																},
-																"tunnel_id": {
-																	"description": "Tunnel identifier",
-																	"type": "string"
-																}
-															},
-															"required": [
-																"k",
-																"tunnel_id"
-															],
-															"type": "object"
+															"type": "string"
 														}
+													},
+													"required": [
+														"k"
 													],
 													"type": "object"
 												},
@@ -3609,7 +3303,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Event",
+		"summary": "Fetch Event",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -3625,7 +3319,8 @@
 		}
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/latest": {
-		"operationId": "mconn-connector-telemetry-events-listLatest",
+		"description": "Fetches latest Magic WAN Connector Telemetry Events",
+		"operationId": "mconn-connector-telemetry-events-fetch-latest",
 		"parameters": [
 			{
 				"in": "path",
@@ -3713,352 +3408,40 @@
 														"description": "Recorded Event",
 														"properties": {
 															"e": {
-																"oneOf": [
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Initialized process",
-																				"enum": [
-																					"Init"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
+																"additionalProperties": true,
+																"description": "Event kind plus event-specific payload fields.\n\nEvent kinds:\n- `Init`: Initialized process\n- `Leave`: Stopped process\n- `StartAttestation`: Started attestation\n- `FinishAttestationSuccess`: Finished attestation\n- `FinishAttestationFailure`: Failed attestation\n- `StartRotateCryptKey`: Started crypt key rotation\n- `FinishRotateCryptKeySuccess`: Finished crypt key rotation\n- `FinishRotateCryptKeyFailure`: Failed crypt key rotation\n- `StartRotatePki`: Started PKI rotation\n- `FinishRotatePkiSuccess`: Finished PKI rotation\n- `FinishRotatePkiFailure`: Failed PKI rotation\n- `StartUpgrade`: Started upgrade\n- `FinishUpgradeSuccess`: Finished upgrade\n- `FinishUpgradeFailure`: Failed upgrade\n- `Reconcile`: Reconciled\n- `ConfigureCloudflaredTunnel`: Configured Cloudflared tunnel\n- `RekeyInstallBoth`: Installed initial inbound and outbound keys\n- `RekeyStart`: Installed new inbound key, kept old outbound\n- `RekeyRestart`: Restarted in-progress rekey with newer key material\n- `RekeyAdvance`: Confirmed traffic on new inbound key, swapped outbound to new\n- `RekeyComplete`: Deleted old keys\n- `RekeyReset`: Deleted all keys after receiving an unexpected key",
+																"properties": {
+																	"k": {
+																		"description": "Event kind",
+																		"enum": [
+																			"Init",
+																			"Leave",
+																			"StartAttestation",
+																			"FinishAttestationSuccess",
+																			"FinishAttestationFailure",
+																			"StartRotateCryptKey",
+																			"FinishRotateCryptKeySuccess",
+																			"FinishRotateCryptKeyFailure",
+																			"StartRotatePki",
+																			"FinishRotatePkiSuccess",
+																			"FinishRotatePkiFailure",
+																			"StartUpgrade",
+																			"FinishUpgradeSuccess",
+																			"FinishUpgradeFailure",
+																			"Reconcile",
+																			"ConfigureCloudflaredTunnel",
+																			"RekeyInstallBoth",
+																			"RekeyStart",
+																			"RekeyRestart",
+																			"RekeyAdvance",
+																			"RekeyComplete",
+																			"RekeyReset"
 																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Stopped process",
-																				"enum": [
-																					"Leave"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Started attestation",
-																				"enum": [
-																					"StartAttestation"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Finished attestation",
-																				"enum": [
-																					"FinishAttestationSuccess"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Failed attestation",
-																				"enum": [
-																					"FinishAttestationFailure"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Started crypt key rotation",
-																				"enum": [
-																					"StartRotateCryptKey"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Finished crypt key rotation",
-																				"enum": [
-																					"FinishRotateCryptKeySuccess"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Failed crypt key rotation",
-																				"enum": [
-																					"FinishRotateCryptKeyFailure"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Started PKI rotation",
-																				"enum": [
-																					"StartRotatePki"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Finished PKI rotation",
-																				"enum": [
-																					"FinishRotatePkiSuccess"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Failed PKI rotation",
-																				"enum": [
-																					"FinishRotatePkiFailure"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Started upgrade",
-																				"enum": [
-																					"StartUpgrade"
-																				],
-																				"type": "string"
-																			},
-																			"url": {
-																				"description": "Location of upgrade bundle",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k",
-																			"url"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Finished upgrade",
-																				"enum": [
-																					"FinishUpgradeSuccess"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Failed upgrade",
-																				"enum": [
-																					"FinishUpgradeFailure"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Reconciled",
-																				"enum": [
-																					"Reconcile"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Configured Cloudflared tunnel",
-																				"enum": [
-																					"ConfigureCloudflaredTunnel"
-																				],
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Installed initial inbound and outbound keys",
-																				"enum": [
-																					"RekeyInstallBoth"
-																				],
-																				"type": "string"
-																			},
-																			"tunnel_id": {
-																				"description": "Tunnel identifier",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k",
-																			"tunnel_id"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Installed new inbound key, kept old outbound",
-																				"enum": [
-																					"RekeyStart"
-																				],
-																				"type": "string"
-																			},
-																			"tunnel_id": {
-																				"description": "Tunnel identifier",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k",
-																			"tunnel_id"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Confirmed traffic on new inbound key, swapped outbound to new",
-																				"enum": [
-																					"RekeyAdvance"
-																				],
-																				"type": "string"
-																			},
-																			"tunnel_id": {
-																				"description": "Tunnel identifier",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k",
-																			"tunnel_id"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Deleted old keys",
-																				"enum": [
-																					"RekeyComplete"
-																				],
-																				"type": "string"
-																			},
-																			"tunnel_id": {
-																				"description": "Tunnel identifier",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k",
-																			"tunnel_id"
-																		],
-																		"type": "object"
-																	},
-																	{
-																		"properties": {
-																			"k": {
-																				"description": "Deleted all keys after receiving an unexpected key",
-																				"enum": [
-																					"RekeyReset"
-																				],
-																				"type": "string"
-																			},
-																			"tunnel_id": {
-																				"description": "Tunnel identifier",
-																				"type": "string"
-																			}
-																		},
-																		"required": [
-																			"k",
-																			"tunnel_id"
-																		],
-																		"type": "object"
+																		"type": "string"
 																	}
+																},
+																"required": [
+																	"k"
 																],
 																"type": "object"
 															},
@@ -4436,7 +3819,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get latest Events",
+		"summary": "Fetch latest Events",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -4452,6 +3835,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots": {
+		"description": "Lists Magic WAN Connector Telemetry Snapshots",
 		"operationId": "mconn-connector-telemetry-snapshots-list",
 		"parameters": [
 			{
@@ -4902,7 +4286,8 @@
 		}
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/{snapshot_t}": {
-		"operationId": "mconn-connector-telemetry-snapshots-get",
+		"description": "Fetches Magic WAN Connector Telemetry Snapshot",
+		"operationId": "mconn-connector-telemetry-snapshots-fetch",
 		"parameters": [
 			{
 				"in": "path",
@@ -6454,7 +5839,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get Snapshot",
+		"summary": "Fetch Snapshot",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -6470,7 +5855,8 @@
 		}
 	},
 	"GET /accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/latest": {
-		"operationId": "mconn-connector-telemetry-snapshots-listLatest",
+		"description": "Fetches latest Magic WAN Connector Telemetry Snapshots",
+		"operationId": "mconn-connector-telemetry-snapshots-fetch-latest",
 		"parameters": [
 			{
 				"in": "path",
@@ -8029,7 +7415,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Get latest Snapshots",
+		"summary": "Fetch latest Snapshots",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -8045,6 +7431,7 @@
 		}
 	},
 	"PATCH /accounts/{account_id}/magic/connectors/{connector_id}": {
+		"description": "Updates properties of a Magic WAN Connector. May be used to re-provision a license key.",
 		"operationId": "mconn-connector-update",
 		"parameters": [
 			{
@@ -8737,7 +8124,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Edit Connector to update specific properties or Re-provision License Key",
+		"summary": "Update Connector",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -8752,6 +8139,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/magic/connectors": {
+		"description": "Creates a Magic WAN Connector.",
 		"operationId": "mconn-connector-create",
 		"parameters": [
 			{
@@ -9528,7 +8916,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Add a connector to your account",
+		"summary": "Create Connector",
 		"tags": [
 			"Magic Connectors"
 		],
@@ -9543,6 +8931,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/magic/connectors/{connector_id}/interrupts": {
+		"description": "Creates an interrupt for a Magic WAN Connector.",
 		"operationId": "mconn-connector-interrupt-create",
 		"parameters": [
 			{
@@ -10208,6 +9597,7 @@
 		}
 	},
 	"PUT /accounts/{account_id}/magic/connectors/{connector_id}": {
+		"description": "Replaces properties of a Magic WAN Connector. May be used to re-provision a license key.",
 		"operationId": "mconn-connector-replace",
 		"parameters": [
 			{
@@ -10900,7 +10290,7 @@
 				"api_token": []
 			}
 		],
-		"summary": "Replace Connector or Re-provision License Key",
+		"summary": "Replace Connector",
 		"tags": [
 			"Magic Connectors"
 		],

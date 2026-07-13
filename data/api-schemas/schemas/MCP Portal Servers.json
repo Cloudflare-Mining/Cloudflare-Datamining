@@ -146,6 +146,14 @@
 										},
 										"status": {
 											"default": "waiting",
+											"description": "Current sync state of the server",
+											"enum": [
+												"waiting",
+												"ready",
+												"stale",
+												"error"
+											],
+											"example": "ready",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -467,6 +475,14 @@
 											},
 											"status": {
 												"default": "waiting",
+												"description": "Current sync state of the server",
+												"enum": [
+													"waiting",
+													"ready",
+													"stale",
+													"error"
+												],
+												"example": "ready",
 												"readOnly": true,
 												"type": "string"
 											},
@@ -772,6 +788,14 @@
 										},
 										"status": {
 											"default": "waiting",
+											"description": "Current sync state of the server",
+											"enum": [
+												"waiting",
+												"ready",
+												"stale",
+												"error"
+											],
+											"example": "ready",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -1183,6 +1207,14 @@
 										},
 										"status": {
 											"default": "waiting",
+											"description": "Current sync state of the server",
+											"enum": [
+												"waiting",
+												"ready",
+												"stale",
+												"error"
+											],
+											"example": "ready",
 											"readOnly": true,
 											"type": "string"
 										},
@@ -1415,6 +1447,12 @@
 											"type": "object"
 										},
 										"status": {
+											"enum": [
+												"waiting",
+												"ready",
+												"stale",
+												"error"
+											],
 											"type": "string"
 										}
 									},
@@ -1741,6 +1779,14 @@
 										},
 										"status": {
 											"default": "waiting",
+											"description": "Current sync state of the server",
+											"enum": [
+												"waiting",
+												"ready",
+												"stale",
+												"error"
+											],
+											"example": "ready",
 											"readOnly": true,
 											"type": "string"
 										},

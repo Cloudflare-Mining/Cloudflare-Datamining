@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs": {
+		"description": "Deletes gateway log entries matching the specified criteria.",
 		"operationId": "aig-config-delete-gateway-logs",
 		"parameters": [
 			{
@@ -226,9 +227,14 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.logs",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs": {
+		"description": "Lists request/response log entries for the AI gateway with filtering and pagination.",
 		"operationId": "aig-config-list-gateway-logs",
 		"parameters": [
 			{
@@ -796,7 +802,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.logs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}": {
 		"description": "Retrieves detailed information for a specific AI Gateway log entry.",
@@ -1016,7 +1026,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.logs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/request": {
 		"description": "Retrieves the original request payload for an AI Gateway log entry.",
@@ -1132,7 +1146,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.logs",
+		"x-fern-sdk-method-name": "request",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/response": {
 		"description": "Retrieves the response payload for an AI Gateway log entry.",
@@ -1248,7 +1266,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.logs",
+		"x-fern-sdk-method-name": "response",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}": {
 		"description": "Updates metadata for an AI Gateway log entry.",
@@ -1415,6 +1437,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.logs",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	}
 }

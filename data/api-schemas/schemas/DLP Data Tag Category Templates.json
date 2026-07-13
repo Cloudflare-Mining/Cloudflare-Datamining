@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/dlp/data_tag_category_templates": {
+		"description": "Lists available data tag category templates.",
 		"operationId": "dlp-data-tag-category-templates-list",
 		"parameters": [
 			{
@@ -291,6 +292,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/data_tag_category_templates/{template_id}": {
+		"description": "Gets an available data tag category template.",
 		"operationId": "dlp-data-tag-category-template-read",
 		"parameters": [
 			{

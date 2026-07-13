@@ -246,7 +246,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.site-info",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}": {
 		"description": "Deletes an existing rule from a Web Analytics ruleset.",
@@ -502,7 +506,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rum/site_info/{site_id}": {
 		"description": "Retrieves a Web Analytics site.",
@@ -709,7 +717,7 @@
 												},
 												"snippet": {
 													"description": "Encoded JavaScript snippet.",
-													"example": "<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
+													"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 													"type": "string",
 													"x-auditable": true
 												}
@@ -858,7 +866,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.site-info",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rum/site_info/list": {
 		"description": "Lists all Web Analytics sites of an account.",
@@ -1085,7 +1097,7 @@
 													},
 													"snippet": {
 														"description": "Encoded JavaScript snippet.",
-														"example": "<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
+														"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 														"type": "string",
 														"x-auditable": true
 													}
@@ -1267,7 +1279,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.site-info",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/rum/site_info/site_tag/list": {
 		"description": "Returns all site tags for an account as an array of site tag strings. This endpoint returns all results without pagination.\n",
@@ -2311,7 +2327,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/settings/rum": {
 		"description": "Retrieves RUM status for a zone.",
@@ -2558,7 +2578,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.rum",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}/settings/rum": {
 		"description": "Toggles RUM on/off for an existing zone.",
@@ -2821,7 +2844,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.rum",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /accounts/{account_id}/rum/site_info": {
 		"description": "Creates a new Web Analytics site.",
@@ -3046,7 +3072,7 @@
 												},
 												"snippet": {
 													"description": "Encoded JavaScript snippet.",
-													"example": "<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
+													"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 													"type": "string",
 													"x-auditable": true
 												}
@@ -3195,7 +3221,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.site-info",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/rum/v2/{ruleset_id}/rule": {
 		"description": "Creates a new rule in a Web Analytics ruleset.",
@@ -3516,7 +3546,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/rum/v2/{ruleset_id}/rules": {
 		"description": "Modifies one or more rules in a Web Analytics ruleset with a single request.",
@@ -3898,7 +3932,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.rules",
+		"x-fern-sdk-method-name": "bulk-create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/rum/site_info/{site_id}": {
 		"description": "Updates an existing Web Analytics site.",
@@ -4146,7 +4184,7 @@
 												},
 												"snippet": {
 													"description": "Encoded JavaScript snippet.",
-													"example": "<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
+													"example": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"bc40a2d1b5834453aba85c1b9a3054da\"}'></script><!-- End Cloudflare Web Analytics -->",
 													"type": "string",
 													"x-auditable": true
 												}
@@ -4295,7 +4333,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.site-info",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}": {
 		"description": "Updates a rule in a Web Analytics ruleset.",
@@ -4627,6 +4669,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "rum.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

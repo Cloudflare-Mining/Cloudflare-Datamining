@@ -265,7 +265,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Mutual TLS Certificates Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.certificates",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/access/certificates": {
 		"description": "Lists all mTLS certificates.",
@@ -598,7 +602,11 @@
 		"x-api-token-group": [
 			"Access: Mutual TLS Certificates Write",
 			"Access: Mutual TLS Certificates Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.certificates",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/access/certificates/{certificate_id}": {
 		"description": "Fetches a single mTLS certificate.",
@@ -905,7 +913,11 @@
 		"x-api-token-group": [
 			"Access: Mutual TLS Certificates Write",
 			"Access: Mutual TLS Certificates Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.certificates",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/access/certificates/settings": {
 		"description": "List all mTLS hostname settings for this zone.",
@@ -1220,7 +1232,11 @@
 		"x-api-token-group": [
 			"Access: Mutual TLS Certificates Write",
 			"Access: Mutual TLS Certificates Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.certificates.settings",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/access/certificates": {
 		"description": "Adds a new mTLS root certificate to Access.",
@@ -1548,7 +1564,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Mutual TLS Certificates Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.certificates",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/access/certificates/{certificate_id}": {
 		"description": "Updates a configured mTLS certificate.",
@@ -1882,7 +1902,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Mutual TLS Certificates Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.certificates",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/access/certificates/settings": {
 		"description": "Updates an mTLS certificate's hostname settings.",
@@ -2241,6 +2265,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Mutual TLS Certificates Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.certificates.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

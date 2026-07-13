@@ -181,7 +181,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
 		"description": "Lists indexed items in an AI Search instance.",
@@ -294,6 +295,16 @@
 				"schema": {
 					"description": "Filter items by their unique ID. Returns at most one item.",
 					"maxLength": 64,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter items by their exact key (object key / filename). Keys are unique per source, so combine with `source` to disambiguate across data sources.",
+				"in": "query",
+				"name": "key",
+				"schema": {
+					"description": "Filter items by their exact key (object key / filename). Keys are unique per source, so combine with `source` to disambiguate across data sources.",
+					"maxLength": 1024,
 					"type": "string"
 				}
 			},
@@ -596,7 +607,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
 		"description": "Retrieves a specific indexed item from an AI Search instance.",
@@ -857,7 +869,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/chunks": {
 		"description": "Lists chunks for a specific item in an AI Search instance, including their text content.",
@@ -1163,7 +1176,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/download": {
 		"description": "Downloads the raw file content for a specific item from the managed AI Search instance storage.",
@@ -1368,7 +1382,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/logs": {
 		"description": "Lists processing logs for a specific item in an AI Search instance.",
@@ -1674,7 +1689,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}": {
 		"description": "Syncs an item to an AI Search instance index.",
@@ -2007,10 +2023,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
-		"description": "Uploads a file to a managed AI Search instance via multipart/form-data (max 4MB).",
+		"description": "Uploads a file to a managed AI Search instance via multipart/form-data.",
 		"operationId": "ai-search-namespace-instance-upload-item",
 		"parameters": [
 			{
@@ -2054,7 +2071,7 @@
 					"schema": {
 						"properties": {
 							"file": {
-								"description": "The file to upload (max 4MB). Filename must not exceed 128 characters.",
+								"description": "The file to upload. Filename must not exceed 128 characters.",
 								"format": "binary",
 								"type": "string"
 							},
@@ -2303,6 +2320,46 @@
 					}
 				},
 				"description": "Item key already exist."
+			},
+			"413": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "File exceeds maximum size."
 			}
 		},
 		"security": [
@@ -2328,7 +2385,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items": {
 		"description": "Creates or updates an indexed item in an AI Search instance.",
@@ -2691,6 +2749,7 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	}
 }

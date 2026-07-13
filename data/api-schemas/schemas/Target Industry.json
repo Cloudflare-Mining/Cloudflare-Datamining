@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/targetIndustries": {
+		"description": "List all target industries referenced in events for a specific dataset.",
 		"operationId": "get_TargetIndustryListByDataset",
 		"parameters": [
 			{
@@ -111,6 +112,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries": {
+		"description": "List target industries referenced in events across one or more datasets.",
 		"operationId": "get_TargetIndustryList",
 		"parameters": [
 			{
@@ -223,6 +225,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/targetIndustries/catalog": {
+		"description": "List all predefined target industries from the industry map catalog.",
 		"operationId": "get_TargetIndustryListComplete",
 		"parameters": [
 			{

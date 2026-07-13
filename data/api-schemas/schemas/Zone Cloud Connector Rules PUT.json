@@ -1,5 +1,6 @@
 {
 	"PUT /zones/{zone_id}/cloud_connector/rules": {
+		"description": "Updates Cloud Connector rules for a zone, replacing the existing rule configuration.",
 		"operationId": "zone-cloud-conenctor-rules-put",
 		"parameters": [
 			{

@@ -536,7 +536,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hostnames.settings.tls",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/hostnames/settings/{setting_id}": {
 		"description": "List the requested TLS setting for the hostnames under this zone.",
@@ -1193,7 +1197,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hostnames.settings.tls",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}": {
 		"description": "Get the requested TLS setting for the hostname.",
@@ -1724,7 +1732,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hostnames.settings.tls-single",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/hostnames/settings/{setting_id}/{hostname}": {
 		"description": "Update the tls setting value for the hostname.",
@@ -2317,6 +2329,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hostnames.settings.tls",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

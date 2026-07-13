@@ -307,7 +307,11 @@
 		"x-api-token-group": [
 			"Cloudflare Zero Trust Secure DNS Locations Write",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.locations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/locations": {
 		"description": "List Zero Trust Gateway locations for an account.",
@@ -457,7 +461,7 @@
 														"nullable": true,
 														"type": "string",
 														"x-auditable": true,
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"doh_subdomain": {
 														"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
@@ -505,7 +509,7 @@
 																		},
 																		"nullable": true,
 																		"type": "array",
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"require_token": {
 																		"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -544,7 +548,7 @@
 																		},
 																		"nullable": true,
 																		"type": "array",
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	}
 																},
 																"type": "object"
@@ -588,7 +592,7 @@
 																		},
 																		"nullable": true,
 																		"type": "array",
-																		"x-stainless-terraform-configurability": "computed_optional"
+																		"x-stainless-terraform-configurability": "optional"
 																	}
 																},
 																"type": "object"
@@ -662,7 +666,7 @@
 															"mode"
 														],
 														"type": "object",
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"name": {
 														"description": "Specify the location name.",
@@ -688,7 +692,7 @@
 														},
 														"nullable": true,
 														"type": "array",
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-stainless-terraform-configurability": "optional"
 													},
 													"updated_at": {
 														"example": "2014-01-01T05:20:00.12345Z",
@@ -845,7 +849,7 @@
 																"nullable": true,
 																"type": "string",
 																"x-auditable": true,
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"doh_subdomain": {
 																"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
@@ -893,7 +897,7 @@
 																				},
 																				"nullable": true,
 																				"type": "array",
-																				"x-stainless-terraform-configurability": "computed_optional"
+																				"x-stainless-terraform-configurability": "optional"
 																			},
 																			"require_token": {
 																				"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -932,7 +936,7 @@
 																				},
 																				"nullable": true,
 																				"type": "array",
-																				"x-stainless-terraform-configurability": "computed_optional"
+																				"x-stainless-terraform-configurability": "optional"
 																			}
 																		},
 																		"type": "object"
@@ -976,7 +980,7 @@
 																				},
 																				"nullable": true,
 																				"type": "array",
-																				"x-stainless-terraform-configurability": "computed_optional"
+																				"x-stainless-terraform-configurability": "optional"
 																			}
 																		},
 																		"type": "object"
@@ -1050,7 +1054,7 @@
 																	"mode"
 																],
 																"type": "object",
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"name": {
 																"description": "Specify the location name.",
@@ -1076,7 +1080,7 @@
 																},
 																"nullable": true,
 																"type": "array",
-																"x-stainless-terraform-configurability": "computed_optional"
+																"x-stainless-terraform-configurability": "optional"
 															},
 															"updated_at": {
 																"example": "2014-01-01T05:20:00.12345Z",
@@ -1333,7 +1337,7 @@
 													"nullable": true,
 													"type": "string",
 													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"doh_subdomain": {
 													"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
@@ -1381,7 +1385,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"require_token": {
 																	"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -1420,7 +1424,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
 															"type": "object"
@@ -1464,7 +1468,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
 															"type": "object"
@@ -1538,7 +1542,7 @@
 														"mode"
 													],
 													"type": "object",
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -1564,7 +1568,7 @@
 													},
 													"nullable": true,
 													"type": "array",
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -1688,7 +1692,7 @@
 															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"doh_subdomain": {
 															"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
@@ -1736,7 +1740,7 @@
 																			},
 																			"nullable": true,
 																			"type": "array",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"require_token": {
 																			"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -1775,7 +1779,7 @@
 																			},
 																			"nullable": true,
 																			"type": "array",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object"
@@ -1819,7 +1823,7 @@
 																			},
 																			"nullable": true,
 																			"type": "array",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object"
@@ -1893,7 +1897,7 @@
 																"mode"
 															],
 															"type": "object",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -1919,7 +1923,7 @@
 															},
 															"nullable": true,
 															"type": "array",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -2119,7 +2123,7 @@
 												},
 												"nullable": true,
 												"type": "array",
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"require_token": {
 												"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -2158,7 +2162,7 @@
 												},
 												"nullable": true,
 												"type": "array",
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											}
 										},
 										"type": "object"
@@ -2202,7 +2206,7 @@
 												},
 												"nullable": true,
 												"type": "array",
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											}
 										},
 										"type": "object"
@@ -2249,7 +2253,7 @@
 									"mode"
 								],
 								"type": "object",
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"name": {
 								"description": "Specify the location name.",
@@ -2275,7 +2279,7 @@
 								},
 								"nullable": true,
 								"type": "array",
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							}
 						},
 						"required": [
@@ -2389,7 +2393,7 @@
 													"nullable": true,
 													"type": "string",
 													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"doh_subdomain": {
 													"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
@@ -2437,7 +2441,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"require_token": {
 																	"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -2476,7 +2480,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
 															"type": "object"
@@ -2520,7 +2524,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
 															"type": "object"
@@ -2594,7 +2598,7 @@
 														"mode"
 													],
 													"type": "object",
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -2620,7 +2624,7 @@
 													},
 													"nullable": true,
 													"type": "array",
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -2744,7 +2748,7 @@
 															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"doh_subdomain": {
 															"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
@@ -2792,7 +2796,7 @@
 																			},
 																			"nullable": true,
 																			"type": "array",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"require_token": {
 																			"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -2831,7 +2835,7 @@
 																			},
 																			"nullable": true,
 																			"type": "array",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object"
@@ -2875,7 +2879,7 @@
 																			},
 																			"nullable": true,
 																			"type": "array",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object"
@@ -2949,7 +2953,7 @@
 																"mode"
 															],
 															"type": "object",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -2975,7 +2979,7 @@
 															},
 															"nullable": true,
 															"type": "array",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -3100,7 +3104,11 @@
 		"x-api-token-group": [
 			"Cloudflare Zero Trust Secure DNS Locations Write",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.locations",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/gateway/locations/{location_id}": {
 		"description": "Update a configured Zero Trust Gateway location.",
@@ -3184,7 +3192,7 @@
 												},
 												"nullable": true,
 												"type": "array",
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											},
 											"require_token": {
 												"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -3223,7 +3231,7 @@
 												},
 												"nullable": true,
 												"type": "array",
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											}
 										},
 										"type": "object"
@@ -3267,7 +3275,7 @@
 												},
 												"nullable": true,
 												"type": "array",
-												"x-stainless-terraform-configurability": "computed_optional"
+												"x-stainless-terraform-configurability": "optional"
 											}
 										},
 										"type": "object"
@@ -3314,7 +3322,7 @@
 									"mode"
 								],
 								"type": "object",
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							},
 							"name": {
 								"description": "Specify the location name.",
@@ -3340,7 +3348,7 @@
 								},
 								"nullable": true,
 								"type": "array",
-								"x-stainless-terraform-configurability": "computed_optional"
+								"x-stainless-terraform-configurability": "optional"
 							}
 						},
 						"required": [
@@ -3454,7 +3462,7 @@
 													"nullable": true,
 													"type": "string",
 													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"doh_subdomain": {
 													"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
@@ -3502,7 +3510,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																},
 																"require_token": {
 																	"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -3541,7 +3549,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
 															"type": "object"
@@ -3585,7 +3593,7 @@
 																	},
 																	"nullable": true,
 																	"type": "array",
-																	"x-stainless-terraform-configurability": "computed_optional"
+																	"x-stainless-terraform-configurability": "optional"
 																}
 															},
 															"type": "object"
@@ -3659,7 +3667,7 @@
 														"mode"
 													],
 													"type": "object",
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"name": {
 													"description": "Specify the location name.",
@@ -3685,7 +3693,7 @@
 													},
 													"nullable": true,
 													"type": "array",
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-stainless-terraform-configurability": "optional"
 												},
 												"updated_at": {
 													"example": "2014-01-01T05:20:00.12345Z",
@@ -3809,7 +3817,7 @@
 															"nullable": true,
 															"type": "string",
 															"x-auditable": true,
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"doh_subdomain": {
 															"description": "Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.",
@@ -3857,7 +3865,7 @@
 																			},
 																			"nullable": true,
 																			"type": "array",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		},
 																		"require_token": {
 																			"description": "Specify whether the DOH endpoint requires user identity authentication.",
@@ -3896,7 +3904,7 @@
 																			},
 																			"nullable": true,
 																			"type": "array",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object"
@@ -3940,7 +3948,7 @@
 																			},
 																			"nullable": true,
 																			"type": "array",
-																			"x-stainless-terraform-configurability": "computed_optional"
+																			"x-stainless-terraform-configurability": "optional"
 																		}
 																	},
 																	"type": "object"
@@ -4014,7 +4022,7 @@
 																"mode"
 															],
 															"type": "object",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"name": {
 															"description": "Specify the location name.",
@@ -4040,7 +4048,7 @@
 															},
 															"nullable": true,
 															"type": "array",
-															"x-stainless-terraform-configurability": "computed_optional"
+															"x-stainless-terraform-configurability": "optional"
 														},
 														"updated_at": {
 															"example": "2014-01-01T05:20:00.12345Z",
@@ -4165,6 +4173,10 @@
 		"x-api-token-group": [
 			"Cloudflare Zero Trust Secure DNS Locations Write",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.locations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

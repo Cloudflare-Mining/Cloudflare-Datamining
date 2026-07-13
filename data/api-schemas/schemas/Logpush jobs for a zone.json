@@ -285,7 +285,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.jobs",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/fields": {
 		"description": "Lists all fields available for a dataset. The response result is. an object with key-value pairs, where keys are field names, and values are descriptions.",
@@ -609,7 +613,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.datasets.fields",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logpush/datasets/{dataset_id}/jobs": {
 		"description": "Lists Logpush jobs for a zone for a dataset.",
@@ -1262,7 +1270,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.datasets.jobs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logpush/jobs": {
 		"description": "Lists Logpush jobs for a zone.",
@@ -1865,7 +1877,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.jobs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logpush/jobs/{job_id}": {
 		"description": "Gets the details of a Logpush job.",
@@ -2479,7 +2495,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.jobs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/logpush/jobs": {
 		"description": "Creates a new Logpush job for a zone.",
@@ -3409,7 +3429,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.jobs",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/logpush/ownership": {
 		"description": "Gets a new ownership challenge sent to your destination.",
@@ -3713,7 +3737,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.ownership",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/logpush/ownership/validate": {
 		"description": "Validates ownership challenge of the destination.",
@@ -4016,7 +4044,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.ownership",
+		"x-fern-sdk-method-name": "validate",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/logpush/validate/destination": {
 		"description": "Validates destination.",
@@ -4315,7 +4347,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.validate",
+		"x-fern-sdk-method-name": "destination",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/logpush/validate/destination/exists": {
 		"description": "Checks if there is an existing job with a destination.",
@@ -4609,7 +4645,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.validate",
+		"x-fern-sdk-method-name": "destination-exists",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/logpush/validate/origin": {
 		"description": "Validates logpull origin with logpull_options.",
@@ -4910,7 +4950,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.validate",
+		"x-fern-sdk-method-name": "origin",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/logpush/jobs/{job_id}": {
 		"description": "Updates a Logpush job.",
@@ -5801,6 +5845,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.jobs",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

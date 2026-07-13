@@ -317,7 +317,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Service Tokens Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.service-tokens",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/access/service_tokens": {
 		"description": "Lists all service tokens.",
@@ -664,7 +668,11 @@
 		"x-api-token-group": [
 			"Access: Service Tokens Write",
 			"Access: Service Tokens Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.service-tokens",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/access/service_tokens/{service_token_id}": {
 		"description": "Fetches a single service token.",
@@ -985,7 +993,11 @@
 		"x-api-token-group": [
 			"Access: Service Tokens Write",
 			"Access: Service Tokens Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.service-tokens",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/access/service_tokens": {
 		"description": "Generates a new service token. **Note:** This is the only time you can get the Client Secret. If you lose the Client Secret, you will have to create a new service token.",
@@ -1314,7 +1326,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Service Tokens Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.service-tokens",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/access/service_tokens/{service_token_id}": {
 		"description": "Updates a configured service token.",
@@ -1669,6 +1685,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Service Tokens Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.service-tokens",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

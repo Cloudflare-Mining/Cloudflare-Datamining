@@ -422,7 +422,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.commands",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/commands/{command_id}/downloads/{filename}": {
 		"description": "Downloads artifacts for an executed command. Bulk downloads are not supported",
@@ -660,7 +664,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.commands.results",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/commands/devices": {
 		"description": "List devices with WARP client support for remote captures which have been connected in the last 1 hour.",
@@ -1042,7 +1050,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.commands.eligible-devices",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/commands/quota": {
 		"description": "Retrieves the current quota usage and limits for device commands within a specific account, including the time when the quota will reset",
@@ -1358,7 +1370,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.commands.quota",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dex/commands": {
 		"description": "Initiate commands for up to 10 devices per account.",
@@ -1814,6 +1830,10 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare DEX Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.commands",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

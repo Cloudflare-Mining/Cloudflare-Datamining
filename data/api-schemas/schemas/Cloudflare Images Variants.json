@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/images/v1/variants/{variant_id}": {
-		"description": "Deleting a variant purges the cache for all images associated with the variant.",
+		"description": "Delete a CF Images variant. This will purge the cache for all images associated with the variant.",
 		"operationId": "cloudflare-images-variants-delete-a-variant",
 		"parameters": [
 			{
@@ -384,7 +384,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/variants": {
-		"description": "Lists existing variants.",
+		"description": "List existing CF Images variants.",
 		"operationId": "cloudflare-images-variants-list-variants",
 		"parameters": [
 			{
@@ -871,7 +871,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/images/v1/variants/{variant_id}": {
-		"description": "Fetch details for a single variant.",
+		"description": "Fetch details for a CF Images variant.",
 		"operationId": "cloudflare-images-variants-variant-details",
 		"parameters": [
 			{
@@ -1915,7 +1915,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/images/v1/variants/{variant_id}": {
-		"description": "Updating a variant purges the cache for all images associated with the variant.",
+		"description": "Update a CF Images variant. This will purge the cache for all images associated with the variant.",
 		"operationId": "cloudflare-images-variants-update-a-variant",
 		"parameters": [
 			{
@@ -2513,7 +2513,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/images/v1/variants": {
-		"description": "Specify variants that allow you to resize images for different use cases.",
+		"description": "Create a CF Images variant that allows you to resize images for different use cases.",
 		"operationId": "cloudflare-images-variants-create-a-variant",
 		"parameters": [
 			{

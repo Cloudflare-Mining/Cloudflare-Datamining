@@ -2140,6 +2140,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/api_gateway/schemas": {
+		"description": "Retrieves API operations and their features exported as OpenAPI schemas.",
 		"operationId": "api-shield-endpoint-management-retrieve-operations-and-features-as-open-api-schemas",
 		"parameters": [
 			{

@@ -276,7 +276,11 @@
 		"x-api-token-group": [
 			"Zone Write",
 			"Page Rules Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "page-rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/pagerules": {
 		"description": "Fetches Page Rules in a zone.",
@@ -1811,7 +1815,11 @@
 			"Zone Write",
 			"Page Rules Write",
 			"Page Rules Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "page-rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Fetches the details of a Page Rule.",
@@ -3341,7 +3349,11 @@
 			"Analytics Read",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "page-rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Updates one or more fields of an existing Page Rule.",
@@ -6036,7 +6048,11 @@
 		"x-api-token-group": [
 			"Zone Write",
 			"Page Rules Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "page-rules",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/pagerules": {
 		"description": "Creates a new Page Rule.",
@@ -8722,7 +8738,11 @@
 		"x-api-token-group": [
 			"Zone Write",
 			"Page Rules Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "page-rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/pagerules/{pagerule_id}": {
 		"description": "Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request.",
@@ -11421,6 +11441,10 @@
 		"x-api-token-group": [
 			"Zone Write",
 			"Page Rules Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "page-rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

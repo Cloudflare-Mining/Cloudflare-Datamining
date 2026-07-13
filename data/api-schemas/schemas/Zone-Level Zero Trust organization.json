@@ -333,7 +333,11 @@
 			"Access: Organizations, Identity Providers, and Groups Revoke",
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.zone-organizations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/access/organizations": {
 		"description": "Sets up a Zero Trust organization for your account.",
@@ -737,7 +741,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.zone-organizations",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/access/organizations/revoke_user": {
 		"description": "Revokes a user's access across all applications.",
@@ -930,7 +938,12 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.zone-organizations",
+		"x-fern-sdk-method-name": "revoke-user-create",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation revokes all access tokens for a user, affecting their access to all applications within the zone."
 	},
 	"PUT /zones/{zone_id}/access/organizations": {
 		"description": "Updates the configuration for your Zero Trust organization.",
@@ -1330,6 +1343,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.zone-organizations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

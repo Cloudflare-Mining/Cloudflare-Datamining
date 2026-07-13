@@ -515,7 +515,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames": {
 		"description": "List certificate ID - hostname associations for the given zone. Shows which hostnames are associated to which certificates for authenticated origin pulls.",
@@ -1165,7 +1169,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-associations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/{hostname}": {
 		"description": "Retrieves the client certificate authentication status for a specific hostname, showing whether authenticated origin pulls are enabled.",
@@ -1786,7 +1794,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.hostnames",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates": {
 		"description": "Lists all client certificates configured for per-hostname authenticated origin pulls on the zone.",
@@ -2363,7 +2375,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates/{certificate_id}": {
 		"description": "Get the certificate by ID to be used for client authentication on a hostname.",
@@ -2876,7 +2892,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/origin_tls_client_auth/hostnames/certificates": {
 		"description": "Upload a certificate to be used for client authentication on a hostname. 10 hostname certificates per zone are allowed.",
@@ -3406,7 +3426,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.hostname-certificates",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/origin_tls_client_auth/hostnames": {
 		"description": "Associate a hostname to a certificate and enable, disable or invalidate the association. If disabled, client certificate will not be sent to the hostname even if activated at the zone level. 100 maximum associations on a single certificate are allowed. Note: Use a null value for parameter *enabled* to invalidate the association.",
@@ -4232,6 +4256,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "origin-tls-client-auth.hostnames",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

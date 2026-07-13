@@ -989,7 +989,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/workers/{external_script_id}/builds": {
 		"description": "Get all builds for a specific worker script with pagination",
@@ -1448,7 +1452,11 @@
 		"x-api-token-group": [
 			"Workers CI Write",
 			"Workers CI Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.builds",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/workers/{external_script_id}/triggers": {
 		"description": "Get all triggers for a specific worker script",
@@ -1722,7 +1730,11 @@
 		"x-api-token-group": [
 			"Workers CI Write",
 			"Workers CI Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.triggers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/workers/{script_tag}": {
 		"description": "Retrieve the build configuration for a specific Worker script, including git repository details and production settings.",
@@ -3033,7 +3045,11 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}": {
 		"description": "Get details about a specific Worker.",
@@ -4027,7 +4043,11 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/builds/workers/{script_tag}": {
 		"description": "Update the build configuration for a Worker script. Supports partial updates to git repository settings and production build settings.",
@@ -7014,7 +7034,11 @@
 		"summary": "Edit Worker",
 		"tags": [
 			"Workers"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/builds/workers": {
 		"description": "Create a new build configuration for a Worker script, linking it to a git repository with CI/CD triggers.",
@@ -9629,7 +9653,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/workers/{worker_id}": {
 		"description": "Perform a complete replacement of a Worker, where omitted properties are set to their default values. This is the exact same as the Create Worker endpoint, but operates on an existing Worker. To perform a partial update instead, use the Edit Worker endpoint.",
@@ -11664,6 +11692,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

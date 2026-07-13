@@ -104,7 +104,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles": {
 		"description": "Lists WARP Device IP profiles.",
@@ -325,7 +329,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
 		"description": "Fetches a single WARP Device IP profile.",
@@ -492,7 +500,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/devices/ip-profiles/{profile_id}": {
 		"description": "Updates a WARP Device IP profile. Currently, only IPv4 Device subnets can be associated.",
@@ -707,7 +719,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/ip-profiles": {
 		"description": "Creates a WARP Device IP profile. Currently, only IPv4 Device subnets can be associated.",
@@ -922,6 +938,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.ip-profiles",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

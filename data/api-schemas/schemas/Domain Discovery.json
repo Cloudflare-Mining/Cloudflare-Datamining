@@ -1,4 +1,576 @@
 {
+	"GET /accounts/{account_id}/registrar-sandbox/domain-search": {
+		"description": "Searches for domain name suggestions based on a keyword, phrase, or partial domain name.\nReturns a list of potentially available domains with pricing information.\n\n**Important:** Results are non-authoritative and based on cached data. Always use the\n`/domain-check` endpoint to verify real-time availability before attempting registration.\n\nSuggestions are scoped to extensions supported for programmatic registration\nvia this API (`POST /registrations`). Domains on unsupported extensions will\nnot appear in results, even if they are available at the registry level.\n\n### Use cases\n- Brand name discovery (e.g., \"acme corp\" → acmecorp.com, acmecorp.dev)\n- Keyword-based suggestions (e.g., \"coffee shop\" → coffeeshop.com, mycoffeeshop.net)\n- Alternative extension discovery (e.g., \"example.com\" → example.com, example.app, example.xyz)\n\n### Workflow\n1. Call this endpoint with a keyword or domain name.\n2. Present suggestions to the user.\n3. Call `/domain-check` with the user's chosen domains to confirm real-time availability and pricing.\n4. Proceed to `POST /registrations` only for supported non-premium domains\n   where the Check response returns `registrable: true`.\n\n**Note:** Searching with just a domain extension (e.g., \"com\" or \".app\") is not supported. Provide a keyword or domain name.\n",
+		"operationId": "sandbox-registrar-domain-discovery-search",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			},
+			{
+				"description": "The search term to find domain suggestions. Accepts keywords, phrases, or full domain names.\n- Phrases: \"coffee shop\" returns coffeeshop.com, mycoffeeshop.net, etc.\n- Domain names: \"example.com\" returns example.com and variations across extensions\n",
+				"example": "coffee shop",
+				"in": "query",
+				"name": "q",
+				"required": true,
+				"schema": {
+					"maxLength": 100,
+					"minLength": 1,
+					"type": "string"
+				}
+			},
+			{
+				"description": "Limits results to specific domain extensions from the supported set. If not specified,\nreturns results across all supported extensions. Extensions not in the supported\nset are silently ignored.\n",
+				"example": [
+					"com",
+					"net",
+					"org"
+				],
+				"explode": false,
+				"in": "query",
+				"name": "extensions",
+				"schema": {
+					"items": {
+						"type": "string"
+					},
+					"maxItems": 20,
+					"type": "array"
+				},
+				"style": "form"
+			},
+			{
+				"description": "Maximum number of domain suggestions to return. Defaults to 20 if not specified.\n",
+				"example": 20,
+				"in": "query",
+				"name": "limit",
+				"schema": {
+					"default": 20,
+					"maximum": 50,
+					"minimum": 1,
+					"type": "integer"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"brand_search": {
+								"description": "Searching for a brand or company name",
+								"summary": "Brand name search - \"acme corp\"",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "acmecorp.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "8.57",
+													"renewal_cost": "8.57"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "acmecorp.dev",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "10.11",
+													"renewal_cost": "10.11"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "acmecorp.app",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "11.00",
+													"renewal_cost": "11.00"
+												},
+												"registrable": true,
+												"tier": "standard"
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"extension_filtered_search": {
+								"description": "Searching with extensions=com,net limits results to those domain extensions",
+								"summary": "Search with domain extension filter",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "bestpizza.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "8.57",
+													"renewal_cost": "8.57"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "bestpizza.net",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "9.95",
+													"renewal_cost": "9.95"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "bestpizzashop.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "8.57",
+													"renewal_cost": "8.57"
+												},
+												"registrable": true,
+												"tier": "standard"
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"keyword_search": {
+								"description": "Searching for a keyword phrase returns relevant domain suggestions",
+								"summary": "Keyword search - \"coffee shop\"",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "coffeeshop.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "8.57",
+													"renewal_cost": "8.57"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "coffeeshoponline.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "8.57",
+													"renewal_cost": "8.57"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "mycoffeeshop.net",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "9.95",
+													"renewal_cost": "9.95"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "thecoffeeshop.shop",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "11.00",
+													"renewal_cost": "11.00"
+												},
+												"registrable": true,
+												"tier": "standard"
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"no_results": {
+								"description": "When no registrable domains match the search",
+								"summary": "No available domains found",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": []
+									},
+									"success": true
+								}
+							},
+							"premium_results": {
+								"description": "Some suggestions may be premium domains with higher pricing. Premium registration is not currently supported by this API.",
+								"summary": "Results including premium domains",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "crypto.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "100000.00",
+													"renewal_cost": "5000.00"
+												},
+												"registrable": true,
+												"tier": "premium"
+											},
+											{
+												"name": "cryptotrading.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "8.57",
+													"renewal_cost": "8.57"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "mycrypto.net",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "9.95",
+													"renewal_cost": "9.95"
+												},
+												"registrable": true,
+												"tier": "standard"
+											}
+										]
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Contains the search results.",
+											"properties": {
+												"domains": {
+													"description": "Array of domain suggestions sorted by relevance. May be empty if no domains match the search criteria.",
+													"items": {
+														"description": "Represents a single domain suggestion returned by the Search endpoint. Search results are non-authoritative and may be based on cached data. Use POST /domain-check to confirm real-time availability and pricing before registration.",
+														"properties": {
+															"name": {
+																"description": "The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs).",
+																"example": "example.com",
+																"type": "string"
+															},
+															"pricing": {
+																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"properties": {
+																	"currency": {
+																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
+																		"example": "USD",
+																		"type": "string"
+																	},
+																	"registration_cost": {
+																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
+																		"example": "8.57",
+																		"type": "string"
+																	},
+																	"renewal_cost": {
+																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
+																		"example": "8.57",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"currency",
+																	"registration_cost",
+																	"renewal_cost"
+																],
+																"type": "object"
+															},
+															"reason": {
+																"description": "Present only when `registrable` is `false` on search results. Explains why the domain does not appear registrable through this API. These values are advisory; use POST /domain-check for authoritative status.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain appears unavailable.",
+																"enum": [
+																	"extension_not_supported_via_api",
+																	"extension_not_supported",
+																	"extension_disallows_registration",
+																	"domain_premium",
+																	"domain_unavailable"
+																],
+																"example": "domain_unavailable",
+																"type": "string"
+															},
+															"registrable": {
+																"description": "Indicates whether this domain appears available based on search data. Search results are non-authoritative and may be stale. - `true`: The domain appears available. Use POST /domain-check to confirm before registration.\n- `false`: The domain does not appear available in search results.",
+																"example": true,
+																"type": "boolean"
+															},
+															"tier": {
+																"description": "The pricing tier for this domain. Always present when `registrable` is `true`;\ndefaults to `standard` for most domains. May be absent when `registrable`\nis `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry\n",
+																"enum": [
+																	"standard",
+																	"premium"
+																],
+																"example": "standard",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"registrable"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"domains"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully returned domain search results."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"invalid_query": {
+								"description": "The query is invalid for search because it is too long, not supported as IDN/punycode, or becomes empty after sanitization.",
+								"summary": "Invalid search query",
+								"value": {
+									"errors": [
+										{
+											"code": 1002,
+											"message": "Parameter q exceeds maximum length of 100 characters"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"missing_query": {
+								"description": "The required `q` parameter was not provided in the request.",
+								"summary": "Missing search query",
+								"value": {
+									"errors": [
+										{
+											"code": 1001,
+											"message": "Missing required parameter: q"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request parameters. Common causes:\n- Missing required `q` parameter\n- Query exceeds 100 character limit\n- Invalid extension format\n"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Search for available domains",
+		"tags": [
+			"Domain Discovery"
+		]
+	},
 	"GET /accounts/{account_id}/registrar/domain-search": {
 		"description": "Searches for domain name suggestions based on a keyword, phrase, or partial domain name.\nReturns a list of potentially available domains with pricing information.\n\n**Important:** Results are non-authoritative and based on cached data. Always use the\n`/domain-check` endpoint to verify real-time availability before attempting registration.\n\nSuggestions are scoped to extensions supported for programmatic registration\nvia this API (`POST /registrations`). Domains on unsupported extensions will\nnot appear in results, even if they are available at the registry level.\n\n### Use cases\n- Brand name discovery (e.g., \"acme corp\" → acmecorp.com, acmecorp.dev)\n- Keyword-based suggestions (e.g., \"coffee shop\" → coffeeshop.com, mycoffeeshop.net)\n- Alternative extension discovery (e.g., \"example.com\" → example.com, example.app, example.xyz)\n\n### Workflow\n1. Call this endpoint with a keyword or domain name.\n2. Present suggestions to the user.\n3. Call `/domain-check` with the user's chosen domains to confirm real-time availability and pricing.\n4. Proceed to `POST /registrations` only for supported non-premium domains\n   where the Check response returns `registrable: true`.\n\n**Note:** Searching with just a domain extension (e.g., \"com\" or \".app\") is not supported. Provide a keyword or domain name.\n",
 		"operationId": "registrar-domain-discovery-search",
@@ -567,6 +1139,601 @@
 			}
 		],
 		"summary": "Search for available domains",
+		"tags": [
+			"Domain Discovery"
+		]
+	},
+	"POST /accounts/{account_id}/registrar-sandbox/domain-check": {
+		"description": "Performs real-time, authoritative availability checks directly against domain\nregistries. Use this endpoint to verify a domain is available before attempting\nregistration via `POST /registrations`.\n\n**Important:** Unlike the Search endpoint, these results are authoritative and\nreflect current registry status. Always check availability immediately before\nregistration as domain status can change rapidly.\n\n**Note:** This endpoint uses POST to accept a list of domains in the request\nbody. It is a read-only operation — it does not create, modify, or reserve\nany domains.\n\n### Extension support\n\nOnly domains on extensions supported for programmatic registration by this API\ncan be registered. If you check a domain on an unsupported extension, the response\nwill include `registrable: false` with a `reason` field explaining why:\n\n- `extension_not_supported_via_api` — Cloudflare Registrar supports this extension\n  in the dashboard, but it is not yet available for programmatic registration via\n  this API. Register via `https://dash.cloudflare.com/{account_id}/domains/registrations` instead.\n- `extension_not_supported` — This extension is not supported by Cloudflare\n  Registrar.\n- `extension_disallows_registration` — The extension's registry has temporarily\n  or permanently frozen new registrations. No registrar can register domains on\n  this extension at this time.\n- `domain_premium` — The domain is premium priced. Premium registration is not\n  currently supported by this API.\n- `domain_unavailable` — The domain is already registered, reserved, or otherwise\n  not available for registration on a supported extension.\n\nThe `reason` field is only present when `registrable` is `false`.\n\n### Behavior\n- Maximum 20 domains per request\n- Pricing is only returned for domains where `registrable: true`\n- Results are not cached; each request queries the registry\n\n### Workflow\n1. Call this endpoint with domains the user wants to register.\n2. For each domain where `registrable: true`, present pricing to the user.\n3. If `tier: premium`, note that premium registration is not currently\n   supported by this API and do not proceed to `POST /registrations`.\n4. Proceed to `POST /registrations` only for supported non-premium domains.\n",
+		"operationId": "sandbox-registrar-domain-discovery-check",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID. Required for all Registrar API operations.",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"readOnly": true,
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"examples": {
+						"bulk_check": {
+							"description": "Check the same name across multiple supported extensions",
+							"summary": "Bulk check across domain extensions",
+							"value": {
+								"domains": [
+									"myawesomebrand.com",
+									"myawesomebrand.net",
+									"myawesomebrand.org",
+									"myawesomebrand.app",
+									"myawesomebrand.dev"
+								]
+							}
+						},
+						"multiple_domains": {
+							"summary": "Check multiple domains",
+							"value": {
+								"domains": [
+									"example.com",
+									"example.net",
+									"mycompany.dev"
+								]
+							}
+						},
+						"single_domain": {
+							"summary": "Check single domain",
+							"value": {
+								"domains": [
+									"example.com"
+								]
+							}
+						}
+					},
+					"schema": {
+						"description": "Request body for checking domain availability.",
+						"properties": {
+							"domains": {
+								"description": "List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension.\n- Minimum: 1 domain\n- Maximum: 20 domains per request\n- Domains on unsupported extensions are returned with `registrable: false` and a `reason` field\n- Malformed domain names (e.g., missing extension) may be omitted from the response\n",
+								"example": [
+									"example.com",
+									"example.net"
+								],
+								"items": {
+									"type": "string"
+								},
+								"maxItems": 20,
+								"minItems": 1,
+								"type": "array"
+							}
+						},
+						"required": [
+							"domains"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"description": "List of fully qualified domain names (FQDNs) to check. Each domain must include the extension (e.g., \"example.com\", not \"example\").",
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"all_available": {
+								"description": "Unique names may be available across domain extensions",
+								"summary": "All domains available",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "xq7mz9brand.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "8.57",
+													"renewal_cost": "8.57"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "xq7mz9brand.net",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "9.95",
+													"renewal_cost": "9.95"
+												},
+												"registrable": true,
+												"tier": "standard"
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"all_unavailable": {
+								"description": "Common names are often already registered",
+								"summary": "All domains taken",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "example.com",
+												"reason": "domain_unavailable",
+												"registrable": false
+											},
+											{
+												"name": "example.net",
+												"reason": "domain_unavailable",
+												"registrable": false
+											},
+											{
+												"name": "example.org",
+												"reason": "domain_unavailable",
+												"registrable": false
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"mixed_availability": {
+								"description": "Some domains available, some taken",
+								"summary": "Mixed availability results",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "cloudflare.com",
+												"reason": "domain_unavailable",
+												"registrable": false
+											},
+											{
+												"name": "my-unique-startup-name-2024.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "8.57",
+													"renewal_cost": "8.57"
+												},
+												"registrable": true,
+												"tier": "standard"
+											},
+											{
+												"name": "my-unique-startup-name-2024.dev",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "10.11",
+													"renewal_cost": "10.11"
+												},
+												"registrable": true,
+												"tier": "standard"
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"premium_domain": {
+								"description": "Premium pricing may be surfaced by this endpoint, but premium registration is not currently supported by this API.",
+								"summary": "Premium domain surfaced but not registrable",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "coffee.xyz",
+												"reason": "domain_premium",
+												"registrable": false,
+												"tier": "premium"
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"registry_frozen": {
+								"description": "The extension's registry has temporarily or permanently stopped accepting new registrations.",
+								"summary": "Registry has frozen new registrations",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "example.py",
+												"reason": "extension_disallows_registration",
+												"registrable": false
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"unsupported_extension": {
+								"description": "The extension is not supported by Cloudflare Registrar at all.",
+								"summary": "Extension not supported by Cloudflare Registrar",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "example.horse",
+												"reason": "extension_not_supported",
+												"registrable": false
+											}
+										]
+									},
+									"success": true
+								}
+							},
+							"unsupported_via_api": {
+								"description": "The .uk extension is supported by Cloudflare Registrar in the dashboard but not yet available for programmatic registration via this API.",
+								"summary": "Extension supported in dashboard but not via API",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"domains": [
+											{
+												"name": "mybrand.uk",
+												"reason": "extension_not_supported_via_api",
+												"registrable": false
+											},
+											{
+												"name": "mybrand.com",
+												"pricing": {
+													"currency": "USD",
+													"registration_cost": "8.57",
+													"renewal_cost": "8.57"
+												},
+												"registrable": true,
+												"tier": "standard"
+											}
+										]
+									},
+									"success": true
+								}
+							}
+						},
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"result": {
+											"anyOf": [
+												{
+													"type": "object"
+												},
+												{
+													"items": {
+														"type": "object"
+													},
+													"type": "array"
+												},
+												{
+													"type": "string"
+												}
+											]
+										},
+										"success": {
+											"description": "Whether the API call was successful",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Contains the availability check results.",
+											"properties": {
+												"domains": {
+													"description": "Array of domain availability results. Domains on unsupported\nextensions are included with `registrable: false` and a `reason`\nfield. Malformed domain names may be omitted.\n",
+													"items": {
+														"description": "Represents a single authoritative domain availability result returned by the Check endpoint. Check results reflect current registry status and should be used immediately before registration.",
+														"properties": {
+															"name": {
+																"description": "The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs).",
+																"example": "example.com",
+																"type": "string"
+															},
+															"pricing": {
+																"description": "Annual pricing information for a registrable domain. This object is only\npresent when `registrable` is `true`. All prices are per year and returned\nas strings to preserve decimal precision.\n\n`registration_cost` and `renewal_cost` are frequently the same value, but\nmay differ — especially for premium domains where registries set different\nrates for initial registration vs. renewal. For a multi-year registration\n(e.g., 4 years), the first year is charged at `registration_cost` and each\nsubsequent year at `renewal_cost`. Registry pricing may change over time;\nthe values returned here reflect the current registry rate. Premium pricing\nmay be surfaced by Search and Check, but premium registration is not currently\nsupported by this API.\n",
+																"properties": {
+																	"currency": {
+																		"description": "ISO-4217 currency code for the prices (e.g., \"USD\", \"EUR\", \"GBP\").",
+																		"example": "USD",
+																		"type": "string"
+																	},
+																	"registration_cost": {
+																		"description": "The first-year cost to register this domain. For premium domains\n(`tier: premium`), this price is set by the registry and may be\nsignificantly higher than standard pricing. For multi-year\nregistrations, this cost applies to the first year only; subsequent\nyears are charged at `renewal_cost`.\n",
+																		"example": "8.57",
+																		"type": "string"
+																	},
+																	"renewal_cost": {
+																		"description": "Per-year renewal cost for this domain. Applied to each year beyond\nthe first year of a multi-year registration, and to each annual\nauto-renewal thereafter. May differ from `registration_cost`,\nespecially for premium domains where initial registration often\ncosts more than renewals.\n",
+																		"example": "8.57",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"currency",
+																	"registration_cost",
+																	"renewal_cost"
+																],
+																"type": "object"
+															},
+															"reason": {
+																"description": "Present only when `registrable` is `false`. Explains why the domain cannot be registered via this API.\n- `extension_not_supported_via_api`: Cloudflare Registrar supports this extension in the dashboard but it is not yet available for programmatic registration via this API. The user can register via `https://dash.cloudflare.com/{account_id}/domains/registrations`.\n- `extension_not_supported`: This extension is not supported by Cloudflare Registrar at all.\n- `extension_disallows_registration`: The extension's registry has temporarily or permanently frozen new registrations. No registrar can register domains on this extension at this time.\n- `domain_premium`: The domain is premium priced. Premium registration is not currently supported by this API.\n- `domain_unavailable`: The domain is already registered, reserved, or otherwise not available on a supported extension.",
+																"enum": [
+																	"extension_not_supported_via_api",
+																	"extension_not_supported",
+																	"extension_disallows_registration",
+																	"domain_premium",
+																	"domain_unavailable"
+																],
+																"example": "domain_unavailable",
+																"type": "string"
+															},
+															"registrable": {
+																"description": "Indicates whether this domain can be registered programmatically through this API based on a real-time registry check.\n- `true`: Domain is available for registration. The `pricing` object will be included.\n- `false`: Domain is not available. See the `reason` field for why. `tier` may still be present on some non-registrable results, such as premium domains.",
+																"example": true,
+																"type": "boolean"
+															},
+															"tier": {
+																"description": "The pricing tier for this domain. Always present when `registrable` is `true`; defaults to `standard` for most domains. May be absent when `registrable` is `false`.\n- `standard`: Standard registry pricing\n- `premium`: Premium domain with higher pricing set by the registry",
+																"enum": [
+																	"standard",
+																	"premium"
+																],
+																"example": "standard",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"registrable"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"domains"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Successfully returned availability results. Each requested domain appears in the `domains` array with its current availability status and pricing (if available)."
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"examples": {
+							"domains_required": {
+								"description": "The `domains` array must contain at least one domain name to check.",
+								"summary": "Domains array missing or empty",
+								"value": {
+									"errors": [
+										{
+											"code": 1006,
+											"message": "domains array must contain at least one domain"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"no_valid_domains": {
+								"description": "None of the provided domains are valid after normalization and validation.",
+								"summary": "No valid domains",
+								"value": {
+									"errors": [
+										{
+											"code": 1008,
+											"message": "None of the provided domains are valid or have supported extensions"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							},
+							"too_many_domains": {
+								"description": "The request exceeds the maximum limit of 20 domains per request. Split into multiple requests.",
+								"summary": "Too many domains",
+								"value": {
+									"errors": [
+										{
+											"code": 1007,
+											"message": "domains array exceeds maximum of 20 domains"
+										}
+									],
+									"messages": [],
+									"result": null,
+									"success": false
+								}
+							}
+						},
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minItems": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Invalid request parameters. Common causes:\n- Empty `domains` array\n- Exceeds maximum of 20 domains per request\n- Malformed request body\n- None of the provided domains are valid\n"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Check domain availability",
 		"tags": [
 			"Domain Discovery"
 		]

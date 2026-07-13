@@ -192,7 +192,11 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.triggers.environment-variables",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
 		"description": "Get all environment variables for a trigger",
@@ -356,7 +360,11 @@
 		"x-api-token-group": [
 			"Workers CI Write",
 			"Workers CI Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.triggers.environment-variables",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables": {
 		"description": "Create or update environment variables for a trigger",
@@ -618,6 +626,10 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.triggers.environment-variables",
+		"x-fern-sdk-method-name": "upsert",
+		"x-forge-hidden": true
 	}
 }

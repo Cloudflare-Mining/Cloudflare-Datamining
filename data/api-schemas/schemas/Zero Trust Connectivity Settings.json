@@ -238,7 +238,11 @@
 			"Zero Trust Report",
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.connectivity-settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/zerotrust/connectivity_settings": {
 		"description": "Updates the Zero Trust Connectivity Settings for the given account.",
@@ -501,6 +505,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.connectivity-settings",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	}
 }

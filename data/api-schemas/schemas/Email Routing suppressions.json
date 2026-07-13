@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/email/routing/suppression/{suppression_id}": {
+		"description": "Deletes an email suppression for the specified account.",
 		"operationId": "delete_publicDeleteSuppressionRouting",
 		"parameters": [
 			{
@@ -78,6 +79,7 @@
 		]
 	},
 	"DELETE /zones/{zone_id}/email/routing/suppression/{suppression_id}": {
+		"description": "Deletes an email suppression for the specified zone.",
 		"operationId": "delete_publicDeleteSuppressionZoneRouting",
 		"parameters": [
 			{
@@ -156,6 +158,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email/routing/suppression": {
+		"description": "Lists email suppressions for the specified account.",
 		"operationId": "get_publicListSuppressionRouting",
 		"parameters": [
 			{
@@ -327,6 +330,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/email/routing/suppression/{suppression_id}": {
+		"description": "Retrieves a single email suppression for the specified account.",
 		"operationId": "get_publicGetSuppressionRouting",
 		"parameters": [
 			{
@@ -443,6 +447,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/email/routing/suppression": {
+		"description": "Lists email suppressions for the specified zone.",
 		"operationId": "get_publicListSuppressionZoneRouting",
 		"parameters": [
 			{
@@ -618,6 +623,7 @@
 		]
 	},
 	"GET /zones/{zone_id}/email/routing/suppression/{suppression_id}": {
+		"description": "Retrieves a single email suppression for the specified zone.",
 		"operationId": "get_publicGetSuppressionZoneRouting",
 		"parameters": [
 			{
@@ -738,6 +744,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/email/routing/suppression": {
+		"description": "Creates a new email suppression for the specified account.",
 		"operationId": "post_publicNewSuppressionRouting",
 		"parameters": [
 			{
@@ -843,6 +850,7 @@
 		]
 	},
 	"POST /zones/{zone_id}/email/routing/suppression": {
+		"description": "Creates a new email suppression for the specified zone.",
 		"operationId": "post_publicNewSuppressionZoneRouting",
 		"parameters": [
 			{

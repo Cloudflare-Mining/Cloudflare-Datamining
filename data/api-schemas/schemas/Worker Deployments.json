@@ -256,7 +256,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.deployments",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
 		"description": "List of Worker Deployments. The first deployment in the list is the latest deployment actively serving traffic.",
@@ -617,7 +621,11 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.deployments",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}": {
 		"description": "Get information about a Worker Deployment.",
@@ -976,7 +984,11 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.deployments",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/scripts/{script_name}/deployments": {
 		"description": "Deployments configure how [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions) are deployed to traffic. A deployment can consist of one or two versions of a Worker.",
@@ -1425,6 +1437,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.deployments",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

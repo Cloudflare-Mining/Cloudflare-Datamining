@@ -436,7 +436,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks": {
 		"description": "Lists and filters virtual networks in an account.",
@@ -992,7 +996,11 @@
 			"Cloudflare One Networks Read",
 			"Cloudflare Tunnel Write",
 			"Cloudflare Tunnel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"description": "Get a virtual network.",
@@ -1455,7 +1463,11 @@
 		"summary": "Get a virtual network",
 		"tags": [
 			"Tunnel Virtual Network"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/teamnet/virtual_networks/{virtual_network_id}": {
 		"description": "Updates an existing virtual network.",
@@ -1923,7 +1935,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/teamnet/virtual_networks": {
 		"description": "Adds a new virtual network to an account.",
@@ -2391,6 +2407,10 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.virtual-networks",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

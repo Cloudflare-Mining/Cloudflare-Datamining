@@ -37,13 +37,21 @@
 				}
 			},
 			{
-				"description": "Filter results by billable metric id (e.g., workers_standard_requests).",
+				"description": "Filter results by one or more billable metric ids. Repeat the parameter  to filter by multiple metrics. Maximum 10 values.",
+				"explode": true,
 				"in": "query",
-				"name": "metric",
+				"name": "metric_id",
 				"schema": {
-					"example": "workers_standard_requests",
-					"maxLength": 128,
-					"type": "string"
+					"example": [
+						"workers_standard_requests",
+						"http_transferred_bytes"
+					],
+					"items": {
+						"maxLength": 128,
+						"type": "string"
+					},
+					"maxItems": 10,
+					"type": "array"
 				}
 			}
 		],
@@ -474,16 +482,6 @@
 				"schema": {
 					"example": "2025-05-31",
 					"format": "date",
-					"type": "string"
-				}
-			},
-			{
-				"description": "Filter results by billable metric id (e.g., workers_standard_requests).",
-				"in": "query",
-				"name": "metric",
-				"schema": {
-					"example": "workers_standard_requests",
-					"maxLength": 128,
 					"type": "string"
 				}
 			}

@@ -507,7 +507,7 @@
 																"type": "boolean"
 															},
 															"id": {
-																"default": "3ae93e67",
+																"default": "49606b3a",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$",
 																"type": "string"
@@ -1297,7 +1297,7 @@
 																	"type": "boolean"
 																},
 																"id": {
-																	"default": "b2b85b80",
+																	"default": "3898c294",
 																	"minLength": 1,
 																	"pattern": "^[a-zA-Z0-9_-]+$",
 																	"type": "string"
@@ -1693,7 +1693,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.urls",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{id}": {
 		"description": "Retrieves details for a specific AI Gateway dataset.",
@@ -2203,7 +2207,7 @@
 																"type": "boolean"
 															},
 															"id": {
-																"default": "cdf78a86",
+																"default": "2853cd13",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$",
 																"type": "string"
@@ -3100,7 +3104,7 @@
 																"type": "boolean"
 															},
 															"id": {
-																"default": "41891001",
+																"default": "6539bde3",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$",
 																"type": "string"
@@ -3860,7 +3864,7 @@
 													"type": "boolean"
 												},
 												"id": {
-													"default": "053b076a",
+													"default": "f613b478",
 													"minLength": 1,
 													"pattern": "^[a-zA-Z0-9_-]+$",
 													"type": "string"
@@ -4526,7 +4530,7 @@
 																"type": "boolean"
 															},
 															"id": {
-																"default": "348942c8",
+																"default": "4df34587",
 																"minLength": 1,
 																"pattern": "^[a-zA-Z0-9_-]+$",
 																"type": "string"

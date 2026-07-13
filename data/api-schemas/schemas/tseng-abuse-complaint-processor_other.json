@@ -322,6 +322,136 @@
 				},
 				"description": "Abuse report list successful"
 			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"example": [],
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"example": "Not entitled to use feature: Abuse Report API",
+											"type": "string"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"example": "error",
+											"type": "string"
+										}
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -381,7 +511,11 @@
 		"x-api-token-group": [
 			"Trust and Safety Write",
 			"Trust and Safety Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/emails": {
 		"description": "List emails sent to the customer for an abuse report. Returns all successful customer emails sent for the specified abuse report. Does not include emails sent to hosts or submitters.",
@@ -589,6 +723,136 @@
 				},
 				"description": "Bad request - invalid parameters or report not found"
 			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"example": [],
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"example": "Not entitled to use feature: Abuse Report API",
+											"type": "string"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"example": "error",
+											"type": "string"
+										}
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -648,7 +912,11 @@
 		"x-api-token-group": [
 			"Trust and Safety Write",
 			"Trust and Safety Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports.emails",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_id}/mitigations": {
 		"description": "List mitigations done to remediate the abuse report.",
@@ -730,6 +998,7 @@
 						"r2_takedown_object",
 						"rate_limit_cache",
 						"redirect_video_stream",
+						"zone_fint",
 						"registrar_freeze",
 						"registrar_parking",
 						"stream_block_account",
@@ -880,6 +1149,7 @@
 															"r2_takedown_object",
 															"rate_limit_cache",
 															"redirect_video_stream",
+															"zone_fint",
 															"registrar_freeze",
 															"registrar_parking",
 															"stream_block_account",
@@ -947,6 +1217,136 @@
 				},
 				"description": "List abuse report mitigations successful"
 			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"example": [],
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"example": "Not entitled to use feature: Abuse Report API",
+											"type": "string"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"example": "error",
+											"type": "string"
+										}
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -1006,7 +1406,11 @@
 		"x-api-token-group": [
 			"Trust and Safety Write",
 			"Trust and Safety Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports.mitigations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/abuse-reports/{report_param}": {
 		"description": "Retrieve the details of an abuse report.",
@@ -1376,6 +1780,136 @@
 				},
 				"description": "Report submitted with an error"
 			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"example": [],
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"example": "Not entitled to use feature: Abuse Report API",
+											"type": "string"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"example": "error",
+											"type": "string"
+										}
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nread permission required for this account."
+			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -1560,7 +2094,11 @@
 		"x-api-token-group": [
 			"Trust and Safety Write",
 			"Trust and Safety Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_id}/mitigations/appeal": {
 		"description": "Request a review for mitigations on an account.",
@@ -1714,6 +2252,7 @@
 													"r2_takedown_object",
 													"rate_limit_cache",
 													"redirect_video_stream",
+													"zone_fint",
 													"registrar_freeze",
 													"registrar_parking",
 													"stream_block_account",
@@ -1776,6 +2315,136 @@
 				},
 				"description": "Mitigation appeals received"
 			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"example": [],
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"example": "Not entitled to use feature: Abuse Report API",
+											"type": "string"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"example": "error",
+											"type": "string"
+										}
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The request is not authorized. Missing or invalid credentials may be\nrejected with the standard Cloudflare API authentication error. If\ncredentials are valid, the API token does not have the Abuse Reports\nedit permission required for this account."
+			},
 			"500": {
 				"content": {
 					"application/json": {
@@ -1834,10 +2503,14 @@
 		],
 		"x-api-token-group": [
 			"Trust and Safety Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports.mitigations",
+		"x-fern-sdk-method-name": "review",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/abuse-reports/{report_param}": {
-		"description": "Submit the Abuse Report of a particular type",
+		"description": "Submit an abuse report of a particular type.\n\nRequires the abuse-reports entitlement on the account (Enterprise\naccounts have it by default; other accounts must request access) and an\nAPI token with the `Account > Abuse Reports > Edit` permission. If the\naccount is not entitled, the request is rejected with an HTTP `401`\nresponse (see below).",
 		"operationId": "SubmitAbuseReport",
 		"parameters": [
 			{
@@ -2990,6 +3663,127 @@
 					"application/json": {
 						"schema": {
 							"properties": {
+								"err_code": {
+									"oneOf": [
+										{
+											"description": "Report has invalid type",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Invalid Port and Protocol passed to api",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Comment maximum length of 2000 characters exceeded",
+											"type": "string"
+										},
+										{
+											"description": "Provided email was invalid",
+											"type": "string"
+										},
+										{
+											"description": "Invalid IP passed to api",
+											"type": "string"
+										},
+										{
+											"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+											"type": "string"
+										},
+										{
+											"description": "Missing a required field",
+											"type": "string"
+										},
+										{
+											"description": "Invalid URL (http://example.com/) Invalid URL Scheme (http or https) Missing hostname in url Missing a required field Could not determine encoding of field\n",
+											"type": "string"
+										},
+										{
+											"description": "Failed while reading from database Failed while writing to the database This service error will trigger an alert for Cloudflare engineers to investigate the cause resolve it.\n",
+											"type": "string"
+										},
+										{
+											"description": "You have already submitted this URL in the last 7 days",
+											"type": "string"
+										},
+										{
+											"description": "Provided emails did not match",
+											"type": "string"
+										},
+										{
+											"description": "Failed to send confirmation email",
+											"type": "string"
+										},
+										{
+											"description": "Failed to translate email",
+											"type": "string"
+										},
+										{
+											"description": "Invalid value for notification preference",
+											"type": "string"
+										},
+										{
+											"description": "Please pick one party to notify about this report",
+											"type": "string"
+										},
+										{
+											"description": "Must acknowledge that you are bound by 512(f), that you have a good faith belief about the material, and that you have the authority to act",
+											"type": "string"
+										},
+										{
+											"description": "Original Work section must be between 1 and 2000 characters",
+											"type": "string"
+										},
+										{
+											"description": "Signature must match your name",
+											"type": "string"
+										},
+										{
+											"description": "Report has the wrong type",
+											"type": "string"
+										},
+										{
+											"description": "An unexpected error occurred",
+											"type": "string"
+										},
+										{
+											"description": "A URL contains a domain that is not active on Cloudflare",
+											"type": "string"
+										},
+										{
+											"description": "You have entered URLs that contain more than 1 unique hostname. A single report may only include 1 unique hostname (i.e, www.example.com). To report URLs related to another hostname (i.e. other.example.com) you'll need to file a separate report.",
+											"type": "string"
+										}
+									],
+									"type": "string"
+								},
 								"error_code": {
 									"oneOf": [
 										{
@@ -3136,6 +3930,7 @@
 								"request",
 								"result",
 								"msg",
+								"err_code",
 								"error_code"
 							],
 							"type": "object"
@@ -3144,11 +3939,262 @@
 				},
 				"description": "Report submitted with an error"
 			},
+			"401": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "For HTTP 401 responses, use one of these error shapes. Cloudflare's API layer rejects requests with missing or invalid credentials before they reach the Abuse Reports API and returns the standard Cloudflare API error envelope. The Abuse Reports API returns its authorization error shape when valid credentials fail the Abuse Reports permission check or the submission entitlement check.",
+							"oneOf": [
+								{
+									"description": "Cloudflare's API layer uses this standard error envelope for requests that fail authentication before they reach the Abuse Reports API. The example shows the authentication error for missing or invalid credentials.",
+									"example": {
+										"errors": [
+											{
+												"code": 10000,
+												"message": "Authentication error"
+											}
+										],
+										"messages": [],
+										"result": null,
+										"success": false
+									},
+									"properties": {
+										"errors": {
+											"description": "Cloudflare API error details.",
+											"example": [
+												{
+													"code": 10000,
+													"message": "Authentication error"
+												}
+											],
+											"items": {
+												"properties": {
+													"code": {
+														"oneOf": [
+															{
+																"type": "string"
+															},
+															{
+																"type": "number"
+															}
+														]
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"messages": {
+											"description": "Informational messages.",
+											"example": [],
+											"items": {
+												"properties": {
+													"message": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"result": {
+											"description": "Always null for this error response.",
+											"nullable": true,
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the request succeeded.",
+											"example": false,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result"
+									],
+									"type": "object"
+								},
+								{
+									"description": "The Abuse Reports API returns this HTTP 401 authorization error after credentials pass authentication but fail the required Abuse Reports permission check or, for report submission, the account entitlement check. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\". Enterprise accounts have the entitlement by default; other accounts must request access.",
+									"example": {
+										"err_code": "unknown_err",
+										"error_code": "unknown_err",
+										"msg": "Not entitled to use feature: Abuse Report API",
+										"result": "error"
+									},
+									"properties": {
+										"err_code": {
+											"description": "Machine-readable error code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"error_code": {
+											"description": "Legacy alias for err_code.",
+											"example": "unknown_err",
+											"type": "string"
+										},
+										"msg": {
+											"description": "Human-readable description of the authorization error. Submission entitlement failures return \"Not entitled to use feature: Abuse Report API\".",
+											"example": "Not entitled to use feature: Abuse Report API",
+											"type": "string"
+										},
+										"result": {
+											"description": "The result is 'error' for an error response.",
+											"example": "error",
+											"type": "string"
+										}
+									},
+									"required": [
+										"result",
+										"msg",
+										"err_code",
+										"error_code"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "The request is not authorized to submit abuse reports. Missing or\ninvalid credentials may be rejected with the standard Cloudflare API\nauthentication error. If credentials are valid, this is most commonly\nbecause the account does not have the abuse-reports entitlement\n(Enterprise accounts have it by default; other accounts must request\naccess), or because the API token is missing the\n`Account > Abuse Reports > Edit` permission. Entitlement failures\nreturn the message `Not entitled to use feature: Abuse Report API`."
+			},
 			"500": {
 				"content": {
 					"application/json": {
 						"schema": {
 							"properties": {
+								"err_code": {
+									"oneOf": [
+										{
+											"description": "Report has invalid type",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Invalid Port and Protocol passed to api",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Provided value has invalid size",
+											"type": "string"
+										},
+										{
+											"description": "Comment maximum length of 2000 characters exceeded",
+											"type": "string"
+										},
+										{
+											"description": "Provided email was invalid",
+											"type": "string"
+										},
+										{
+											"description": "Invalid IP passed to api",
+											"type": "string"
+										},
+										{
+											"description": "Please provide a more detailed description of the infringement between 1 and 5000 characters",
+											"type": "string"
+										},
+										{
+											"description": "Missing a required field",
+											"type": "string"
+										},
+										{
+											"description": "Invalid URL (http://example.com/) Invalid URL Scheme (http or https) Missing hostname in url Missing a required field Could not determine encoding of field\n",
+											"type": "string"
+										},
+										{
+											"description": "Failed while reading from database Failed while writing to the database This service error will trigger an alert for Cloudflare engineers to investigate the cause resolve it.\n",
+											"type": "string"
+										},
+										{
+											"description": "You have already submitted this URL in the last 7 days",
+											"type": "string"
+										},
+										{
+											"description": "Provided emails did not match",
+											"type": "string"
+										},
+										{
+											"description": "Failed to send confirmation email",
+											"type": "string"
+										},
+										{
+											"description": "Failed to translate email",
+											"type": "string"
+										},
+										{
+											"description": "Invalid value for notification preference",
+											"type": "string"
+										},
+										{
+											"description": "Please pick one party to notify about this report",
+											"type": "string"
+										},
+										{
+											"description": "Must acknowledge that you are bound by 512(f), that you have a good faith belief about the material, and that you have the authority to act",
+											"type": "string"
+										},
+										{
+											"description": "Original Work section must be between 1 and 2000 characters",
+											"type": "string"
+										},
+										{
+											"description": "Signature must match your name",
+											"type": "string"
+										},
+										{
+											"description": "Report has the wrong type",
+											"type": "string"
+										},
+										{
+											"description": "An unexpected error occurred",
+											"type": "string"
+										},
+										{
+											"description": "A URL contains a domain that is not active on Cloudflare",
+											"type": "string"
+										},
+										{
+											"description": "You have entered URLs that contain more than 1 unique hostname. A single report may only include 1 unique hostname (i.e, www.example.com). To report URLs related to another hostname (i.e. other.example.com) you'll need to file a separate report.",
+											"type": "string"
+										}
+									],
+									"type": "string"
+								},
 								"error_code": {
 									"oneOf": [
 										{
@@ -3295,6 +4341,7 @@
 								"request",
 								"result",
 								"msg",
+								"err_code",
 								"error_code"
 							],
 							"type": "object"
@@ -3312,6 +4359,10 @@
 		"summary": "Submit an abuse report",
 		"tags": [
 			"tseng-abuse-complaint-processor_other"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "abuse-reports",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

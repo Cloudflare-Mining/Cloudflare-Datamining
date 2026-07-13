@@ -468,7 +468,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-hostnames.fallback-origin",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/custom_hostnames/fallback_origin": {
 		"description": "Retrieves the current fallback origin configuration for custom hostnames on a zone. The fallback origin handles traffic when specific custom hostname origins are unavailable.",
@@ -934,7 +938,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-hostnames.fallback-origin",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/custom_hostnames/fallback_origin": {
 		"description": "Updates the fallback origin configuration for custom hostnames on a zone. Sets the default origin server for custom hostname traffic.",
@@ -1421,6 +1429,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "custom-hostnames.fallback-origin",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

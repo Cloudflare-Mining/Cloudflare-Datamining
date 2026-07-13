@@ -271,7 +271,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.identity-providers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/identity_providers": {
 		"description": "Lists all configured identity providers.",
@@ -4259,7 +4263,11 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.identity-providers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}": {
 		"description": "Fetches a configured identity provider.",
@@ -8194,7 +8202,11 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.identity-providers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/groups": {
 		"description": "Lists SCIM Group resources synced to Cloudflare via the System for Cross-domain Identity Management (SCIM).",
@@ -8604,7 +8616,11 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.identity-providers.scim.groups",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/identity_providers/{identity_provider_id}/scim/users": {
 		"description": "Lists SCIM User resources synced to Cloudflare via the System for Cross-domain Identity Management (SCIM).",
@@ -9061,7 +9077,11 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.identity-providers.scim.users",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/identity_providers": {
 		"description": "Adds a new identity provider to Access.",
@@ -16662,7 +16682,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.identity-providers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/identity_providers/{identity_provider_id}/saml_certificate": {
 		"description": "Creates a new SAML encryption certificate set and assigns it to the specified \nSAML Identity Provider. This endpoint is idempotent - if the IdP already has \na certificate set assigned, the existing certificate set is returned with a 200 status.\n\n**Workflow for enabling SAML encryption:**\n1. Call this endpoint to create and assign a certificate set to the IdP\n2. Update the IdP configuration (PUT `/identity_providers/{id}`) with:\n   - `config.enable_encryption: true`\n   - `saml_certificate_set_id: <uid from step 1>`\n3. Configure the certificate's public key in your external SAML Identity Provider\n",
@@ -25009,6 +25033,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.identity-providers",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

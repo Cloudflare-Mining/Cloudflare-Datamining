@@ -286,6 +286,296 @@
 			"Pages Write"
 		]
 	},
+	"DELETE /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/tails/{tail_id}": {
+		"description": "Deletes a tail from a Pages deployment.",
+		"operationId": "pages-deployment-delete-tail",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "tail_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "deployment_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"nullable": true,
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Delete deployment tail response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Delete deployment tail response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Delete deployment tail",
+		"tags": [
+			"Pages Deployment"
+		],
+		"x-api-token-group": [
+			"Pages Write"
+		]
+	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments": {
 		"description": "Fetch a list of project deployments.",
 		"operationId": "pages-deployment-get-deployments",
@@ -789,6 +1079,22 @@
 													"short_id": {
 														"description": "Short Id (8 character) of the deployment.",
 														"example": "f64788e9",
+														"readOnly": true,
+														"type": "string",
+														"x-auditable": true
+													},
+													"skip_reason": {
+														"description": "Why the deployment was skipped.",
+														"enum": [
+															"commit_message",
+															"preview_deployments_disabled",
+															"production_deployments_disabled",
+															"path_config",
+															"branch_config",
+															"pages_to_workers_conversion"
+														],
+														"example": "commit_message",
+														"nullable": true,
 														"readOnly": true,
 														"type": "string",
 														"x-auditable": true
@@ -1641,6 +1947,22 @@
 												"short_id": {
 													"description": "Short Id (8 character) of the deployment.",
 													"example": "f64788e9",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"skip_reason": {
+													"description": "Why the deployment was skipped.",
+													"enum": [
+														"commit_message",
+														"preview_deployments_disabled",
+														"production_deployments_disabled",
+														"path_config",
+														"branch_config",
+														"pages_to_workers_conversion"
+													],
+													"example": "commit_message",
+													"nullable": true,
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
@@ -3026,6 +3348,22 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"skip_reason": {
+													"description": "Why the deployment was skipped.",
+													"enum": [
+														"commit_message",
+														"preview_deployments_disabled",
+														"production_deployments_disabled",
+														"path_config",
+														"branch_config",
+														"pages_to_workers_conversion"
+													],
+													"example": "commit_message",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
 												"source": {
 													"description": "Configs for the project source control.",
 													"properties": {
@@ -3871,6 +4209,22 @@
 												"short_id": {
 													"description": "Short Id (8 character) of the deployment.",
 													"example": "f64788e9",
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
+												"skip_reason": {
+													"description": "Why the deployment was skipped.",
+													"enum": [
+														"commit_message",
+														"preview_deployments_disabled",
+														"production_deployments_disabled",
+														"path_config",
+														"branch_config",
+														"pages_to_workers_conversion"
+													],
+													"example": "commit_message",
+													"nullable": true,
 													"readOnly": true,
 													"type": "string",
 													"x-auditable": true
@@ -4724,6 +5078,22 @@
 													"type": "string",
 													"x-auditable": true
 												},
+												"skip_reason": {
+													"description": "Why the deployment was skipped.",
+													"enum": [
+														"commit_message",
+														"preview_deployments_disabled",
+														"production_deployments_disabled",
+														"path_config",
+														"branch_config",
+														"pages_to_workers_conversion"
+													],
+													"example": "commit_message",
+													"nullable": true,
+													"readOnly": true,
+													"type": "string",
+													"x-auditable": true
+												},
 												"source": {
 													"description": "Configs for the project source control.",
 													"properties": {
@@ -5119,6 +5489,330 @@
 			}
 		],
 		"summary": "Rollback deployment",
+		"tags": [
+			"Pages Deployment"
+		],
+		"x-api-token-group": [
+			"Pages Write"
+		]
+	},
+	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/tails": {
+		"description": "Start a tail that receives logs and exception data.",
+		"operationId": "pages-deployment-create-tail",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "deployment_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "project_name",
+				"required": true,
+				"schema": {
+					"description": "Name of the project.",
+					"example": "this-is-my-project-01",
+					"pattern": "^[a-z0-9][a-z0-9-]*$",
+					"type": "string",
+					"x-auditable": true
+				}
+			},
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"description": "Identifier.",
+					"example": "023e105f4ecef8ad9ca31a8372d0c353",
+					"maxLength": 32,
+					"type": "string",
+					"x-auditable": true
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"example": {
+							"filters": [
+								{
+									"outcome": [
+										"exception"
+									]
+								}
+							]
+						},
+						"properties": {
+							"filters": {
+								"description": "Filters to apply to the tail session.",
+								"items": {
+									"additionalProperties": true,
+									"type": "object"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"enum": [
+												true
+											],
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "A tail session for streaming logs from a Pages deployment.",
+											"properties": {
+												"id": {
+													"description": "Identifier of the tail session.",
+													"example": "49a4dcf81a3940fab8453b2be3fb86ef",
+													"readOnly": true,
+													"type": "string"
+												},
+												"url": {
+													"description": "Optional WebSocket URL to connect to for receiving tail events, when returned by the tail service.",
+													"example": "wss://tail.developers.workers.dev/49a4dcf81a3940fab8453b2be3fb86ef",
+													"readOnly": true,
+													"type": "string"
+												}
+											},
+											"required": [
+												"id"
+											],
+											"type": "object"
+										}
+									},
+									"required": [
+										"result"
+									],
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Create deployment tail response."
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Create deployment tail response failure."
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Create deployment tail",
 		"tags": [
 			"Pages Deployment"
 		],

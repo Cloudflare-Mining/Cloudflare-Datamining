@@ -288,7 +288,11 @@
 			"Billing Read",
 			"Account Settings Write",
 			"Account Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.account-settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/account-settings": {
 		"description": "Creates Worker account settings for an account.",
@@ -571,6 +575,10 @@
 		],
 		"x-api-token-group": [
 			"Account Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.account-settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

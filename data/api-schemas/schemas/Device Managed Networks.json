@@ -523,7 +523,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.networks",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/networks": {
 		"description": "Fetches a list of managed networks for an account.",
@@ -1028,7 +1032,11 @@
 		"summary": "List your device managed networks",
 		"tags": [
 			"Device Managed Networks"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.networks",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/networks/{network_id}": {
 		"description": "Fetches details for a single managed network.",
@@ -1499,7 +1507,11 @@
 		"summary": "Get device managed network details",
 		"tags": [
 			"Device Managed Networks"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.networks",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/networks": {
 		"description": "Creates a new device managed network.",
@@ -2021,7 +2033,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.networks",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/networks/{network_id}": {
 		"description": "Updates a configured device managed network.",
@@ -2550,6 +2566,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.networks",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

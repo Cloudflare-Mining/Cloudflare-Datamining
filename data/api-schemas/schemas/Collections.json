@@ -172,6 +172,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items/{item_id}": {
+		"description": "Delete an item from a collection by its identifier.",
 		"operationId": "delete_ItemDelete",
 		"parameters": [
 			{
@@ -780,6 +781,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items/{item_id}": {
+		"description": "Retrieve a single item from a collection by its identifier.",
 		"operationId": "get_ItemGet",
 		"parameters": [
 			{
@@ -1138,6 +1140,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/v2/collections/{collection_id}/items/{item_id}": {
+		"description": "Update an item in a collection with partial data.",
 		"operationId": "patch_ItemUpdate",
 		"parameters": [
 			{

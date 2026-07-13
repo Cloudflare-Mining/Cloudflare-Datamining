@@ -234,7 +234,11 @@
 			"enum": [
 				"com.cloudflare.edge.hyperdrive.database.delete"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hyperdrive",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/hyperdrive/configs": {
 		"description": "Returns a list of Hyperdrives.",
@@ -252,6 +256,27 @@
 					"readOnly": true,
 					"type": "string",
 					"x-auditable": true
+				}
+			},
+			{
+				"description": "Page number of paginated results.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"default": 1,
+					"minimum": 1,
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Maximum number of results per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"default": 20,
+					"maximum": 100,
+					"minimum": 1,
+					"type": "integer"
 				}
 			}
 		],
@@ -846,7 +871,11 @@
 			"enum": [
 				"com.cloudflare.edge.hyperdrive.database.list"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hyperdrive",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"description": "Returns the specified Hyperdrive configuration.",
@@ -1439,7 +1468,11 @@
 			"enum": [
 				"com.cloudflare.edge.hyperdrive.database.read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hyperdrive",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
 		"description": "Patches and returns the specified Hyperdrive configuration. Custom caching settings are not kept if caching is disabled.",
@@ -2244,6 +2277,22 @@
 			"enum": [
 				"com.cloudflare.edge.hyperdrive.database.update"
 			]
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hyperdrive",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mtls.mtls_certificate_id": {
+				"flagName": "mtls-certificate-id"
+			},
+			"mtls.sslmode": {
+				"choices": [
+					"require",
+					"verify-ca",
+					"verify-full"
+				]
+			}
 		}
 	},
 	"POST /accounts/{account_id}/hyperdrive/configs": {
@@ -3180,6 +3229,22 @@
 			"enum": [
 				"com.cloudflare.edge.hyperdrive.database.create"
 			]
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hyperdrive",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mtls.mtls_certificate_id": {
+				"flagName": "mtls-certificate-id"
+			},
+			"mtls.sslmode": {
+				"choices": [
+					"require",
+					"verify-ca",
+					"verify-full"
+				]
+			}
 		}
 	},
 	"PUT /accounts/{account_id}/hyperdrive/configs/{hyperdrive_id}": {
@@ -4130,6 +4195,22 @@
 			"enum": [
 				"com.cloudflare.edge.hyperdrive.database.update"
 			]
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "hyperdrive",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
+		"x-forge-params": {
+			"mtls.mtls_certificate_id": {
+				"flagName": "mtls-certificate-id"
+			},
+			"mtls.sslmode": {
+				"choices": [
+					"require",
+					"verify-ca",
+					"verify-full"
+				]
+			}
 		}
 	}
 }

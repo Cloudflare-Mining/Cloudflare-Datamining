@@ -546,6 +546,13 @@
 			"Zone Write",
 			"Page Rules Write",
 			"Page Rules Read"
-		]
+		],
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "page-rules.settings",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
+		}
 	}
 }

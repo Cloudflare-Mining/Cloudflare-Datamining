@@ -433,7 +433,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
 		"description": "Deletion is not immediate, an updated share recipient object with a new status will be returned.",
@@ -775,7 +779,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"description": "Deletion is not immediate, an updated share resource object with a new status will be returned.",
@@ -1112,7 +1120,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/shares": {
 		"description": "Lists all account shares.",
@@ -1729,7 +1741,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/shares/{share_id}": {
 		"description": "Fetches share by ID.",
@@ -2183,7 +2199,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/recipients": {
 		"description": "List share recipients by share ID.",
@@ -2594,7 +2614,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/recipients/{recipient_id}": {
 		"description": "Get share recipient by ID.",
@@ -2945,7 +2969,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/resources": {
 		"description": "List share resources by share ID.",
@@ -3375,7 +3403,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"description": "Get share resource by ID.",
@@ -3712,7 +3744,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}/shares": {
 		"description": "Lists all organization shares.",
@@ -4294,7 +4330,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.shares",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/shares": {
 		"description": "Creates a new resource share for sharing Cloudflare resources with other accounts or organizations.",
@@ -4831,7 +4871,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/recipients": {
 		"description": "Adds a recipient to a resource share, granting them access to the shared resources.",
@@ -5210,7 +5254,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/shares/{share_id}/resources": {
 		"description": "Adds a resource to an existing share, making it available to share recipients.",
@@ -5584,7 +5632,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}": {
 		"description": "Updating is not immediate, an updated share object with a new status will be returned.",
@@ -6040,7 +6092,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/recipients": {
 		"description": "Changes a share's recipients to match the given list. Returns an error if the share targets an organization.",
@@ -6273,7 +6329,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.recipients",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/shares/{share_id}/resources/{share_resource_id}": {
 		"description": "Update is not immediate, an updated share resource object with a new status will be returned.",
@@ -6628,6 +6688,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "resource-sharing.resources",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/countries": {
+		"description": "Retrieve country code information for all supported countries.",
 		"operationId": "get_CountryRead",
 		"parameters": [
 			{

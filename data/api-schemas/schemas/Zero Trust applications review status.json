@@ -367,7 +367,11 @@
 		"summary": "List applications review statuses",
 		"tags": [
 			"Zero Trust applications review status"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps.review.status",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/gateway/apps/review_status": {
 		"description": "Update the statuses of your applications.",
@@ -778,6 +782,10 @@
 		"summary": "Update applications review statuses",
 		"tags": [
 			"Zero Trust applications review status"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps.review.status",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -261,7 +261,11 @@
 		"tags": [
 			"Zero Trust users"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": null,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.users",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/access/users/{user_id}/mfa_authenticators/{authenticator_id}": {
 		"description": "Deletes a specific MFA device for a user. This action is only available if MFA is turned on for the organization.",
@@ -535,7 +539,11 @@
 		"tags": [
 			"Zero Trust users"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": null,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.users.mfa.authenticators",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/users": {
 		"description": "Gets a list of users for an account.",
@@ -950,7 +958,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Audit Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.users",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}": {
 		"description": "Gets a specific user for an account.",
@@ -1276,7 +1288,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Audit Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.users",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions": {
 		"description": "Get active sessions for a single user.",
@@ -1633,7 +1649,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Audit Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.users.active-sessions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/active_sessions/{nonce}": {
 		"description": "Get an active session for a single user.",
@@ -2086,7 +2106,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Audit Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.users.active-sessions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/failed_logins": {
 		"description": "Get all failed login attempts for a single user.",
@@ -2405,7 +2429,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Audit Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.users.failed-logins",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/users/{user_id}/last_seen_identity": {
 		"description": "Get last seen identity for a single user.",
@@ -2840,7 +2868,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Audit Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.users.last-seen-identity",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/users": {
 		"description": "Creates a new user.",
@@ -3177,7 +3209,11 @@
 		"tags": [
 			"Zero Trust users"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": null,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.users",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/users/{user_id}": {
 		"description": "Updates a specific user's name for an account. Requires the user's current email as confirmation (email cannot be changed).",
@@ -3529,6 +3565,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust: Seats Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.users",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -270,7 +270,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.zone-identity-providers",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/access/identity_providers": {
 		"description": "Lists all configured identity providers.",
@@ -2587,7 +2591,11 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.zone-identity-providers",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {
 		"description": "Fetches a configured identity provider.",
@@ -4759,7 +4767,11 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.zone-identity-providers",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/access/identity_providers": {
 		"description": "Adds a new identity provider to Access.",
@@ -8836,6 +8848,10 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.zone-identity-providers",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /zones/{zone_id}/access/identity_providers/{identity_provider_id}": {
@@ -12925,6 +12941,10 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.zone-identity-providers",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

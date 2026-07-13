@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}": {
+		"description": "Deletes a sensitivity group and its levels.",
 		"operationId": "dlp-sensitivity-groups-delete",
 		"parameters": [
 			{
@@ -258,6 +259,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups": {
+		"description": "Lists sensitivity groups configured for the account.",
 		"operationId": "dlp-sensitivity-groups-list",
 		"parameters": [
 			{
@@ -576,6 +578,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}": {
+		"description": "Gets a sensitivity group and its levels.",
 		"operationId": "dlp-sensitivity-groups-read",
 		"parameters": [
 			{
@@ -900,6 +903,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order": {
+		"description": "Gets the current order of sensitivity levels in a group.",
 		"operationId": "dlp-sensitivity-groups-get-level-order",
 		"parameters": [
 			{
@@ -1171,6 +1175,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/sensitivity_groups": {
+		"description": "Creates a sensitivity group, optionally from a template.",
 		"operationId": "dlp-sensitivity-groups-create",
 		"parameters": [
 			{
@@ -1538,6 +1543,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}": {
+		"description": "Updates a sensitivity group and its levels.",
 		"operationId": "dlp-sensitivity-groups-update",
 		"parameters": [
 			{
@@ -1918,6 +1924,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/sensitivity_groups/{sensitivity_group_id}/level_order": {
+		"description": "Updates the order of sensitivity levels in a group.",
 		"operationId": "dlp-sensitivity-groups-put-level-order",
 		"parameters": [
 			{

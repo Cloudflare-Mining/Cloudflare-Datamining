@@ -395,7 +395,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.tsigs",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/secondary_dns/tsigs": {
 		"description": "List TSIGs.",
@@ -901,7 +904,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.tsigs",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/secondary_dns/tsigs/{tsig_id}": {
 		"description": "Get TSIG.",
@@ -1342,7 +1348,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.tsigs",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/secondary_dns/tsigs": {
 		"description": "Create TSIG.",
@@ -1813,7 +1822,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.tsigs",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/secondary_dns/tsigs/{tsig_id}": {
 		"description": "Modify TSIG.",
@@ -2295,6 +2307,9 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.tsigs",
+		"x-fern-sdk-method-name": "update"
 	}
 }

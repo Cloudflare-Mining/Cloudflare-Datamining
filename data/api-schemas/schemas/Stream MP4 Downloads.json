@@ -263,7 +263,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.downloads",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
 		"description": "Delete specific type of download. For backwards-compatibility, DELETE requests to /downloads will delete the default download.",
@@ -545,7 +549,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.typed-downloads",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/{identifier}/downloads": {
 		"description": "Lists the downloads created for a video.",
@@ -890,7 +898,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.downloads",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/downloads": {
 		"description": "Creates a download for a video when a video is ready to view. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`.",
@@ -1231,7 +1243,11 @@
 		"summary": "Create downloads",
 		"tags": [
 			"Stream MP4 Downloads"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.downloads",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/{identifier}/downloads/{download_type}": {
 		"description": "Creates a download for a video of specified type. For backwards-compatibility, POST requests to /downloads will enable the default download.",
@@ -1588,6 +1604,10 @@
 		"summary": "Create download",
 		"tags": [
 			"Stream MP4 Downloads"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.typed-downloads",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

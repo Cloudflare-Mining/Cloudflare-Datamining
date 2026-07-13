@@ -292,6 +292,10 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.placement.regions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	}
 }

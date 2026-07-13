@@ -181,7 +181,11 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.services.environments.content",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"description": "Get script settings from a worker with an environment.",
@@ -660,7 +664,11 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.services.environments.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/settings": {
 		"description": "Patch script metadata, such as bindings.",
@@ -1440,7 +1448,11 @@
 		"summary": "Patch Script Settings",
 		"tags": [
 			"Worker Environment"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.services.environments.settings",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/content": {
 		"description": "Put script content from a worker with an environment.",
@@ -2392,6 +2404,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.services.environments.content",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

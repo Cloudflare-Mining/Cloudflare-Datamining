@@ -414,6 +414,14 @@
 														},
 														"status": {
 															"default": "waiting",
+															"description": "Current sync state of the server",
+															"enum": [
+																"waiting",
+																"ready",
+																"stale",
+																"error"
+															],
+															"example": "ready",
 															"readOnly": true,
 															"type": "string"
 														},
@@ -600,6 +608,7 @@
 		}
 	},
 	"GET /accounts/{account_id}/access/ai-controls/mcp/portals/{id}": {
+		"description": "Read the details of a single MCP Portal, including its configured servers.",
 		"operationId": "mcp-portals-api-fetch-gateways",
 		"parameters": [
 			{
@@ -817,6 +826,14 @@
 													},
 													"status": {
 														"default": "waiting",
+														"description": "Current sync state of the server",
+														"enum": [
+															"waiting",
+															"ready",
+															"stale",
+															"error"
+														],
+														"example": "ready",
 														"readOnly": true,
 														"type": "string"
 													},
@@ -1342,6 +1359,14 @@
 													},
 													"status": {
 														"default": "waiting",
+														"description": "Current sync state of the server",
+														"enum": [
+															"waiting",
+															"ready",
+															"stale",
+															"error"
+														],
+														"example": "ready",
 														"readOnly": true,
 														"type": "string"
 													},
@@ -1874,6 +1899,14 @@
 													},
 													"status": {
 														"default": "waiting",
+														"description": "Current sync state of the server",
+														"enum": [
+															"waiting",
+															"ready",
+															"stale",
+															"error"
+														],
+														"example": "ready",
 														"readOnly": true,
 														"type": "string"
 													},

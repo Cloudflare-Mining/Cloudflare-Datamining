@@ -612,7 +612,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare DEX Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.tests",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/colos": {
 		"description": "List Cloudflare colos that account's devices were connected to during a time period, sorted by usage starting from the most used colo. Colos without traffic are also returned and sorted alphabetically.",
@@ -926,10 +930,14 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.colos",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/fleet-status/live": {
-		"description": "Get the live status of a latest device given device_id from the device_state table",
+		"description": "Get the latest status of a device given device_id from the device_state table.",
 		"operationId": "devices-live-status",
 		"parameters": [
 			{
@@ -1804,7 +1812,7 @@
 						}
 					}
 				},
-				"description": "Get the live status of a latest device."
+				"description": "Get the latest status of a device."
 			},
 			"4XX": {
 				"content": {
@@ -1917,7 +1925,7 @@
 						}
 					}
 				},
-				"description": "Get the live status of a latest device failure."
+				"description": "Get the latest status of a device failure."
 			}
 		},
 		"security": [
@@ -1932,7 +1940,7 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "Get the live status of a latest device",
+		"summary": "Get the latest status of a device.",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
 		],
@@ -1941,7 +1949,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.devices",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/fleet-status/over-time": {
 		"description": "Get time-bucketed status metrics for a specific device.",
@@ -3030,7 +3042,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.devices.over-time",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/devices/{device_id}/isps": {
 		"description": "List ISP information observed for a specific device during traceroute tests.",
@@ -3508,7 +3524,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.isps",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/devices/dex_tests": {
 		"description": "Fetch all DEX tests.",
@@ -3935,7 +3955,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.tests",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}": {
 		"description": "Fetch a single DEX test.",
@@ -4320,10 +4344,14 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.tests",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/devices": {
-		"description": "List details for devices using WARP.",
+		"description": "List details of devices using WARP.",
 		"operationId": "dex-fleet-status-devices",
 		"parameters": [
 			{
@@ -5554,7 +5582,7 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "List fleet status devices",
+		"summary": "List details of devices using WARP.",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
 		],
@@ -5563,10 +5591,14 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.devices",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/live": {
-		"description": "List details for live (up to 60 minutes) devices using WARP.",
+		"description": "Get details for live (up to 60 minutes) devices using WARP.",
 		"operationId": "dex-fleet-status-live",
 		"parameters": [
 			{
@@ -5793,7 +5825,7 @@
 						}
 					}
 				},
-				"description": "List device details (live) response."
+				"description": "Get device details (live) response."
 			},
 			"4XX": {
 				"content": {
@@ -5906,7 +5938,7 @@
 						}
 					}
 				},
-				"description": "List device details (live) response failure."
+				"description": "Get device details (live) response failure."
 			}
 		},
 		"security": [
@@ -5921,7 +5953,7 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "List fleet status details by dimension",
+		"summary": "Get live aggregate device details by dimension",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
 		],
@@ -5930,10 +5962,14 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.devices.aggregates.live",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/fleet-status/over-time": {
-		"description": "List details for devices using WARP, up to 7 days.",
+		"description": "Get aggregate details for devices using WARP, up to 7 days.",
 		"operationId": "dex-fleet-status-over-time",
 		"parameters": [
 			{
@@ -6079,41 +6115,6 @@
 												"messages"
 											],
 											"type": "object"
-										},
-										{
-											"properties": {
-												"result_info": {
-													"properties": {
-														"count": {
-															"description": "Total number of results for the requested service.",
-															"example": 1,
-															"type": "number"
-														},
-														"page": {
-															"description": "Current page within paginated list of results.",
-															"example": 1,
-															"type": "number"
-														},
-														"per_page": {
-															"description": "Number of results per page of results.",
-															"example": 20,
-															"type": "number"
-														},
-														"total_count": {
-															"description": "Total results available without any search parameters.",
-															"example": 2000,
-															"type": "number"
-														},
-														"total_pages": {
-															"description": "The number of total pages in the entire result set.",
-															"example": 100,
-															"type": "number"
-														}
-													},
-													"type": "object"
-												}
-											},
-											"type": "object"
 										}
 									],
 									"type": "object"
@@ -6179,7 +6180,7 @@
 						}
 					}
 				},
-				"description": "List DEX devices response."
+				"description": "Get DEX devices aggregate success response."
 			},
 			"4XX": {
 				"content": {
@@ -6292,7 +6293,7 @@
 						}
 					}
 				},
-				"description": "DEX HTTP test details failure response."
+				"description": "Get DEX devices aggregate failure response."
 			}
 		},
 		"security": [
@@ -6307,7 +6308,7 @@
 				"user_service_key": []
 			}
 		],
-		"summary": "List fleet status aggregate details by dimension",
+		"summary": "Get over time aggregate details for devices by dimension",
 		"tags": [
 			"DEX Synthetic Application Monitoring"
 		],
@@ -6316,7 +6317,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.devices.aggregates.over-time",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}": {
 		"description": "Get test details and aggregate performance metrics for an http test for a given time period between 1 hour and 7 days.",
@@ -7153,7 +7158,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.test-results.http",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/http-tests/{test_id}/percentiles": {
 		"description": "Get percentiles for an http test for a given time period between 1 hour and 7 days.",
@@ -7546,7 +7555,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.test-results.http.percentiles",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/tests/overview": {
 		"description": "List DEX tests with overview metrics.",
@@ -8459,7 +8472,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.overview.tests",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/tests/unique-devices": {
 		"description": "Returns unique count of devices that have run synthetic application monitoring tests in the past 7 days.",
@@ -8750,7 +8767,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.overview.tests.unique-devices",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/traceroute-test-results/{test_result_id}/network-path": {
 		"description": "Get a breakdown of hops and performance metrics for a specific traceroute test run",
@@ -9144,7 +9165,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.test-results.traceroute.network-path",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}": {
 		"description": "Get test details and aggregate performance metrics for a traceroute test for a given time period between 1 hour and 7 days.",
@@ -9922,7 +9947,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.test-results.traceroute",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/network-path": {
 		"description": "Get a breakdown of metrics by hop for individual traceroute test runs.",
@@ -10343,7 +10372,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.tests.network-path",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/traceroute-tests/{test_id}/percentiles": {
 		"description": "Get percentiles for a traceroute test for a given time period between 1 hour and 7 days.",
@@ -10732,7 +10765,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.test-results.traceroute.percentiles",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dex/devices/dex_tests": {
 		"description": "Create a DEX test.",
@@ -11228,7 +11265,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare DEX Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.tests",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/dex/devices/dex_tests/{dex_test_id}": {
 		"description": "Update a DEX test.",
@@ -11736,6 +11777,10 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare DEX Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.tests",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

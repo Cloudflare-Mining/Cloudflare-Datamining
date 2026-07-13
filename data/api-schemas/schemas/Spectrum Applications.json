@@ -293,7 +293,11 @@
 		],
 		"x-api-token-group": [
 			"Zone Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "spectrum.apps",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/spectrum/apps": {
 		"description": "Retrieves a list of currently existing Spectrum applications inside a zone.",
@@ -572,7 +576,7 @@
 																"properties": {
 																	"argo_smart_routing": {
 																		"default": false,
-																		"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP applications with traffic_type set to \"direct\".",
+																		"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
 																		"example": true,
 																		"type": "boolean"
 																	},
@@ -1019,7 +1023,11 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "spectrum.apps",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/spectrum/apps/{app_id}": {
 		"description": "Gets the application configuration of a specific application inside a zone.",
@@ -1232,7 +1240,7 @@
 															"properties": {
 																"argo_smart_routing": {
 																	"default": false,
-																	"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP applications with traffic_type set to \"direct\".",
+																	"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
 																	"example": true,
 																	"type": "boolean"
 																},
@@ -1674,7 +1682,11 @@
 		"x-api-token-group": [
 			"Zone Settings Write",
 			"Zone Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "spectrum.apps",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/spectrum/apps": {
 		"description": "Creates a new Spectrum application from a configuration using a name for the origin.",
@@ -1773,7 +1785,7 @@
 										"properties": {
 											"argo_smart_routing": {
 												"default": false,
-												"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP applications with traffic_type set to \"direct\".",
+												"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
 												"example": true,
 												"type": "boolean"
 											},
@@ -2243,7 +2255,7 @@
 															"properties": {
 																"argo_smart_routing": {
 																	"default": false,
-																	"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP applications with traffic_type set to \"direct\".",
+																	"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
 																	"example": true,
 																	"type": "boolean"
 																},
@@ -2684,7 +2696,11 @@
 		],
 		"x-api-token-group": [
 			"Zone Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "spectrum.apps",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/spectrum/apps/{app_id}": {
 		"description": "Updates a previously existing application's configuration that uses a name for the origin.",
@@ -2805,7 +2821,7 @@
 										"properties": {
 											"argo_smart_routing": {
 												"default": false,
-												"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP applications with traffic_type set to \"direct\".",
+												"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
 												"example": true,
 												"type": "boolean"
 											},
@@ -3275,7 +3291,7 @@
 															"properties": {
 																"argo_smart_routing": {
 																	"default": false,
-																	"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP applications with traffic_type set to \"direct\".",
+																	"description": "Enables Argo Smart Routing for this application.\nNotes: Only available for TCP or UDP applications with traffic_type set to \"direct\".",
 																	"example": true,
 																	"type": "boolean"
 																},
@@ -3716,6 +3732,10 @@
 		],
 		"x-api-token-group": [
 			"Zone Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "spectrum.apps",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

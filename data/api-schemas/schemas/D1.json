@@ -223,7 +223,75 @@
 		],
 		"x-api-token-group": [
 			"D1 Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/d1/database": {
 		"description": "Returns a list of D1 databases.",
@@ -532,7 +600,75 @@
 		"x-api-token-group": [
 			"D1 Read",
 			"D1 Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Returns the specified D1 database.",
@@ -863,7 +999,74 @@
 		"x-api-token-group": [
 			"D1 Read",
 			"D1 Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark": {
 		"description": "Retrieves the current bookmark, or the nearest bookmark at or before a provided timestamp.\nBookmarks can be used with the restore endpoint to revert the database to a previous point in time.\n",
@@ -1106,7 +1309,75 @@
 		"x-api-token-group": [
 			"D1 Read",
 			"D1 Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1.time-travel",
+		"x-fern-sdk-method-name": "get-bookmark",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Updates partially the specified D1 database.",
@@ -1160,7 +1431,8 @@
 								"required": [
 									"mode"
 								],
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"type": "object"
@@ -1431,7 +1703,74 @@
 		],
 		"x-api-token-group": [
 			"D1 Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database": {
 		"description": "Returns the created D1 database.",
@@ -1504,7 +1843,8 @@
 								"required": [
 									"mode"
 								],
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -1778,7 +2118,75 @@
 		],
 		"x-api-token-group": [
 			"D1 Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/export": {
 		"description": "Returns a URL where the SQL contents of your D1 can be downloaded. Note: this process may take\nsome time for larger DBs, during which your D1 will be unavailable to serve queries. To avoid\nblocking your DB unnecessarily, an in-progress export must be continually polled or will automatically cancel.\n",
@@ -2217,7 +2625,74 @@
 		"summary": "Export D1 Database as SQL",
 		"tags": [
 			"D1"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "export",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/import": {
 		"description": "Generates a temporary URL for uploading an SQL file to, then instructing the D1 to import it\nand polling it for status updates. Imports block the D1 for their duration.\n",
@@ -2777,7 +3252,74 @@
 		"summary": "Import SQL into your D1 Database",
 		"tags": [
 			"D1"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "import",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/query": {
 		"description": "Returns the query result as an object.",
@@ -3164,7 +3706,74 @@
 		"x-api-token-group": [
 			"D1 Read",
 			"D1 Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "query",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/raw": {
 		"description": "Returns the query result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint.",
@@ -3575,7 +4184,74 @@
 		"x-api-token-group": [
 			"D1 Read",
 			"D1 Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "raw",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/d1/database/{database_id}/time_travel/restore": {
 		"description": "Restores a D1 database to a previous point in time either via a bookmark or a timestamp.\n",
@@ -3852,7 +4528,75 @@
 		"summary": "Restore D1 Database to a bookmark or point in time",
 		"tags": [
 			"D1"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1.time-travel",
+		"x-fern-sdk-method-name": "restore",
+		"x-forge-epilogue": "This command acts on remote D1 Databases.",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/d1/database/{database_id}": {
 		"description": "Updates the specified D1 database.",
@@ -3906,7 +4650,8 @@
 								"required": [
 									"mode"
 								],
-								"type": "object"
+								"type": "object",
+								"x-stainless-terraform-configurability": "computed_optional"
 							}
 						},
 						"required": [
@@ -4180,6 +4925,73 @@
 		],
 		"x-api-token-group": [
 			"D1 Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "d1",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-globals": [
+			{
+				"alias": "v",
+				"description": "Show version number",
+				"name": "version",
+				"required": {
+					"default": false
+				},
+				"type": "boolean"
+			},
+			{
+				"description": "Run as if Wrangler was started in the specified directory instead of the current working directory",
+				"name": "cwd",
+				"required": {
+					"default": "."
+				},
+				"type": "string"
+			},
+			{
+				"alias": "c",
+				"description": "Path to Wrangler configuration file",
+				"name": "config",
+				"required": {
+					"default": "./wrangler.toml"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "e",
+				"description": "Environment to use for operations, and for selecting .env and .dev.vars files",
+				"name": "env",
+				"required": {
+					"default": "dev"
+				},
+				"type": "string"
+			},
+			{
+				"description": "Path to an .env file to load",
+				"name": "env-file",
+				"required": {
+					"default": "./.env"
+				},
+				"type": "string"
+			},
+			{
+				"alias": "x-provision",
+				"description": "Experimental: Enable automatic resource provisioning",
+				"name": "experimental-provision",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			},
+			{
+				"alias": "x-auto-create",
+				"description": "Automatically provision draft bindings with new resources",
+				"name": "experimental-auto-create",
+				"required": {
+					"default": true
+				},
+				"type": "boolean"
+			}
+		],
+		"x-forge-hidden": true
 	}
 }

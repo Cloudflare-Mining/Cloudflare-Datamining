@@ -245,7 +245,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.domains",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/domains": {
 		"description": "Lists all domains for an account.",
@@ -648,7 +652,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.domains",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/domains/{domain_id}": {
 		"description": "Gets information about a domain.",
@@ -972,7 +980,11 @@
 		"x-api-token-group": [
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.domains",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/workers/domains": {
 		"description": "Attaches a domain that routes traffic to a Worker.",
@@ -1366,6 +1378,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.domains",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

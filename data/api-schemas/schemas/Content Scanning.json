@@ -420,7 +420,11 @@
 		"x-api-token-group": [
 			"Zone WAF Write",
 			"Account WAF Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "content-scanning.payloads",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/content-upload-scan/payloads": {
 		"description": "Get a list of existing custom scan expressions for Content Scanning.",
@@ -826,7 +830,11 @@
 			"Zone WAF Read",
 			"Account WAF Write",
 			"Account WAF Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "content-scanning.payloads",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/content-upload-scan/settings": {
 		"description": "Retrieve the current status of Content Scanning.",
@@ -1089,7 +1097,11 @@
 			"Zone WAF Read",
 			"Account WAF Write",
 			"Account WAF Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "content-scanning.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/content-upload-scan/disable": {
 		"description": "Disable Content Scanning.",
@@ -1305,7 +1317,12 @@
 		"x-api-token-group": [
 			"Zone WAF Write",
 			"Account WAF Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "content-scanning",
+		"x-fern-sdk-method-name": "disable",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation turns off WAF content scanning for a zone."
 	},
 	"POST /zones/{zone_id}/content-upload-scan/enable": {
 		"description": "Enable Content Scanning.",
@@ -1521,7 +1538,11 @@
 		"x-api-token-group": [
 			"Zone WAF Write",
 			"Account WAF Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "content-scanning",
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/content-upload-scan/payloads": {
 		"description": "Add custom scan expressions for Content Scanning.",
@@ -1950,7 +1971,11 @@
 		"x-api-token-group": [
 			"Zone WAF Write",
 			"Account WAF Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "content-scanning.payloads",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/content-upload-scan/settings": {
 		"description": "Update the Content Scanning status.",
@@ -2236,6 +2261,10 @@
 		"x-api-token-group": [
 			"Zone WAF Write",
 			"Account WAF Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "content-scanning",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

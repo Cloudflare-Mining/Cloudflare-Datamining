@@ -102,7 +102,11 @@
 		"tags": [
 			"Deployment Groups"
 		],
-		"x-auditable": true
+		"x-auditable": true,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.deployment.groups",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups": {
 		"description": "Lists all deployment groups for an account. Use deployment groups to assign target WARP client versions to specific devices. This endpoint is in Beta.",
@@ -325,7 +329,11 @@
 		"summary": "List deployment groups",
 		"tags": [
 			"Deployment Groups"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.deployment.groups",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/deployment-groups/{group_id}": {
 		"description": "Fetches a single deployment group by its ID. This endpoint is in Beta.",
@@ -493,7 +501,11 @@
 		"summary": "Get deployment group",
 		"tags": [
 			"Deployment Groups"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.deployment.groups",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/devices/deployment-groups/{group_id}": {
 		"description": "Updates a deployment group. Returns 409 if any newly added policy IDs already belong to another deployment group. This endpoint is in Beta.",
@@ -715,7 +727,11 @@
 		"tags": [
 			"Deployment Groups"
 		],
-		"x-auditable": true
+		"x-auditable": true,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.deployment.groups",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/deployment-groups": {
 		"description": "Creates a new deployment group. Policy IDs must be unique across all deployment groups. This endpoint is in Beta.",
@@ -934,6 +950,10 @@
 		"tags": [
 			"Deployment Groups"
 		],
-		"x-auditable": true
+		"x-auditable": true,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.deployment.groups",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

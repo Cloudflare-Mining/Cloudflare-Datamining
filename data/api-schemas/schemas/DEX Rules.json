@@ -268,7 +268,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare DEX Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/rules": {
 		"description": "List DEX Rules.",
@@ -746,7 +750,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/dex/rules/{rule_id}": {
 		"description": "Get details for a DEX Rule.",
@@ -1134,7 +1142,11 @@
 			"Cloudflare DEX Read",
 			"Zero Trust Report",
 			"Zero Trust Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/dex/rules/{rule_id}": {
 		"description": "Update a DEX Rule.",
@@ -1544,7 +1556,11 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare DEX Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.rules",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/dex/rules": {
 		"description": "Create a DEX Rule.",
@@ -1946,6 +1962,10 @@
 		],
 		"x-api-token-group": [
 			"Cloudflare DEX Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.dex.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

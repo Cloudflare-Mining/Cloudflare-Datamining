@@ -140,6 +140,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset": {
+		"description": "List all datasets accessible to the account.",
 		"operationId": "get_DatasetList",
 		"parameters": [
 			{
@@ -252,6 +253,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
+		"description": "Retrieve metadata for a specific dataset.",
 		"operationId": "get_DatasetRead",
 		"parameters": [
 			{
@@ -363,6 +365,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
+		"description": "Update an existing dataset by its identifier.",
 		"operationId": "patch_DatasetUpdate",
 		"parameters": [
 			{
@@ -497,6 +500,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}": {
+		"description": "Update an existing dataset by its identifier.",
 		"operationId": "post_DatasetUpdate",
 		"parameters": [
 			{
@@ -632,6 +636,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/create": {
+		"description": "Create a new dataset in the account.",
 		"operationId": "post_DatasetCreate",
 		"parameters": [
 			{

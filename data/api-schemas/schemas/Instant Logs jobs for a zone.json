@@ -430,7 +430,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.edge",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/logpush/edge/jobs": {
 		"description": "Creates a new Instant Logs job for a zone.",
@@ -897,6 +901,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logpush.edge",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

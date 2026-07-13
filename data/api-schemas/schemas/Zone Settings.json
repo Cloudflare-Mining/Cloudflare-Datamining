@@ -4105,6 +4105,12 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "zones.settings",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
+		},
 		"x-stainless-deprecation-message": "This endpoint is deprecated. Zone settings should instead be managed individually."
 	},
 	"GET /zones/{zone_id}/settings/{setting_id}": {
@@ -8281,7 +8287,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.settings",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /zones/{zone_id}/settings/aegis": {
 		"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",
@@ -17718,6 +17727,12 @@
 			"free": true,
 			"pro": true
 		},
+		"x-fern-availability": "deprecated",
+		"x-fern-sdk-group-name": "zones.settings",
+		"x-fern-sdk-method-name": "bulk-edit",
+		"x-forge-sunset": {
+			"date": "2030-01-01T00:00:00Z"
+		},
 		"x-stainless-deprecation-message": "This endpoint is deprecated. Zone settings should instead be managed individually."
 	},
 	"PATCH /zones/{zone_id}/settings/{setting_id}": {
@@ -22623,7 +22638,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.settings",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"PATCH /zones/{zone_id}/settings/aegis": {
 		"description": "Aegis provides dedicated egress IPs (from Cloudflare to your origin) for your layer 7 WAF and CDN services. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.",

@@ -1,5 +1,6 @@
 {
 	"POST /accounts/{account_id}/cloudforce-one/events/datasets/populate": {
+		"description": "Populate dataset-specific lookup tables by scanning existing event data with batch processing.",
 		"operationId": "post_DatasetPopulate",
 		"parameters": [
 			{

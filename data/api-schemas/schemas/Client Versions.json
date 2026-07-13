@@ -202,7 +202,11 @@
 		"summary": "List client versions",
 		"tags": [
 			"Client Versions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.client.versions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/client-versions/target-environments": {
 		"description": "Retrieves a list of all available target environments with their display names. This endpoint is in Beta.",
@@ -309,6 +313,10 @@
 		"summary": "List available target environments",
 		"tags": [
 			"Client Versions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.client.target.environments",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	}
 }

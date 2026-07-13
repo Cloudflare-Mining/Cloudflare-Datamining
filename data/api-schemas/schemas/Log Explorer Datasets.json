@@ -321,7 +321,11 @@
 		"x-api-token-group": [
 			"Logs Write",
 			"Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.accounts",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
 		"description": "Retrieve a single Log Explorer dataset by ID for the account.",
@@ -676,7 +680,11 @@
 		],
 		"x-api-token-group": [
 			"Logs Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.accounts",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/logs/explorer/datasets/available": {
 		"description": "Returns all dataset types that this account can create. Each entry\nincludes the dataset schema and timestamp field.\n\nThe schema shows all possible fields for a dataset. However, not all\nfields may be available for your account. When creating or updating a\ndataset, only fields available to your account can be enabled. If you\nrequest a field that is not available, you will receive an error.\n",
@@ -985,7 +993,11 @@
 		"x-api-token-group": [
 			"Logs Write",
 			"Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.accounts.available",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets": {
 		"description": "Returns all Log Explorer datasets configured for the zone.\n\nList responses omit the `fields` property; use the single-dataset\nendpoint to retrieve field configuration.\n",
@@ -1301,7 +1313,11 @@
 		"x-api-token-group": [
 			"Logs Write",
 			"Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.zones",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
 		"description": "Retrieve a single Log Explorer dataset by ID for the zone.",
@@ -1656,7 +1672,11 @@
 		],
 		"x-api-token-group": [
 			"Logs Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.zones",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/logs/explorer/datasets/available": {
 		"description": "Returns all dataset types that this zone can create. Each entry includes\nthe dataset schema and timestamp field.\n\nThe schema shows all possible fields for a dataset. However, not all\nfields may be available for your account. When creating or updating a\ndataset, only fields available to your account can be enabled. If you\nrequest a field that is not available, you will receive an error.\n",
@@ -1965,7 +1985,11 @@
 		"x-api-token-group": [
 			"Logs Write",
 			"Logs Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.zones.available",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/logs/explorer/datasets": {
 		"description": "Create a new Log Explorer dataset for the account.\n\nUse the `/accounts/{account_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n\nFor zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/datasets\n\nFor dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
@@ -2412,7 +2436,11 @@
 		],
 		"x-api-token-group": [
 			"Logs Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.accounts",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/logs/explorer/datasets": {
 		"description": "Create a new Log Explorer dataset for the zone.\n\nUse the `/zones/{zone_id}/logs/explorer/datasets/available` endpoint\nto list dataset types you can create along with their available fields.\n\nThe `fields` property is optional. If not specified, all available fields\nwill be enabled.\n\nFor account-level datasets use the account-scoped endpoint: POST /accounts/{account_id}/logs/explorer/datasets\n\nFor dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
@@ -2859,7 +2887,11 @@
 		],
 		"x-api-token-group": [
 			"Logs Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.zones",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/logs/explorer/datasets/{dataset_id}": {
 		"description": "Updates the enabled state and/or field configuration of an account dataset.",
@@ -3257,7 +3289,11 @@
 		],
 		"x-api-token-group": [
 			"Logs Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.accounts",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/logs/explorer/datasets/{dataset_id}": {
 		"description": "Updates the enabled state and/or field configuration of a zone dataset.",
@@ -3655,6 +3691,10 @@
 		],
 		"x-api-token-group": [
 			"Logs Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.datasets.zones",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -483,6 +483,10 @@
 			"free": false,
 			"pro": false
 		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.bgp-filter-profiles",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/magic/bgp/filter_profiles": {
@@ -921,6 +925,10 @@
 			"free": false,
 			"pro": false
 		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.bgp-filter-profiles",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/magic/bgp/filter_profiles/{profile_id}": {
@@ -1407,6 +1415,10 @@
 			"free": false,
 			"pro": false
 		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.bgp-filter-profiles",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/magic/bgp/filter_profiles": {
@@ -1931,6 +1943,10 @@
 			"free": false,
 			"pro": false
 		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.bgp-filter-profiles",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /accounts/{account_id}/magic/bgp/filter_profiles/{profile_id}": {
@@ -2463,6 +2479,10 @@
 			"free": false,
 			"pro": false
 		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.bgp-filter-profiles",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

@@ -432,7 +432,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"deprecated": true,
@@ -910,6 +914,7 @@
 			"Cloudflare One Networks Write",
 			"Cloudflare Tunnel Write"
 		],
+		"x-fern-ignore": true,
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
 	"GET /accounts/{account_id}/teamnet/routes": {
@@ -1614,7 +1619,11 @@
 			"Cloudflare One Networks Read",
 			"Cloudflare Tunnel Write",
 			"Cloudflare Tunnel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/teamnet/routes/{route_id}": {
 		"description": "Get a private network route in an account.",
@@ -2045,7 +2054,11 @@
 		"summary": "Get tunnel route",
 		"tags": [
 			"Tunnel Routing"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/teamnet/routes/ip/{ip}": {
 		"description": "Fetches routes that contain the given IP address.",
@@ -2555,7 +2568,11 @@
 			"Cloudflare One Networks Read",
 			"Cloudflare Tunnel Write",
 			"Cloudflare Tunnel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.routes.ips",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/{route_id}": {
 		"description": "Updates an existing private network route in an account. The fields that are meant to be updated should be provided in the body of the request.",
@@ -3033,7 +3050,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"deprecated": true,
@@ -3468,6 +3489,7 @@
 			"Cloudflare One Networks Write",
 			"Cloudflare Tunnel Write"
 		],
+		"x-fern-ignore": true,
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	},
 	"POST /accounts/{account_id}/teamnet/routes": {
@@ -3938,7 +3960,11 @@
 		"x-api-token-group": [
 			"Cloudflare One Networks Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.networks.routes",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/teamnet/routes/network/{ip_network_encoded}": {
 		"deprecated": true,
@@ -4412,6 +4438,7 @@
 			"Cloudflare One Networks Write",
 			"Cloudflare Tunnel Write"
 		],
+		"x-fern-ignore": true,
 		"x-stainless-deprecation-message": "This endpoint and its related APIs are deprecated in favor of the equivalent Tunnel Route (without CIDR) APIs."
 	}
 }

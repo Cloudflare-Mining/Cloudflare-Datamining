@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}": {
-		"description": "Delete namespace.",
+		"description": "Permanently delete a namespace. The namespace must be empty (no instances).",
 		"operationId": "ai-search-delete-namespace",
 		"parameters": [
 			{
@@ -153,7 +153,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.namespace",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This will permanently delete the namespace."
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces": {
 		"description": "List namespaces.",
@@ -352,7 +356,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.namespace",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}": {
 		"description": "Read namespace.",
@@ -490,7 +497,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.namespace",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
 		"description": "Moves an instance from its current namespace to the specified target namespace. Use 'default' as new_namespace to move the instance back to the default namespace. Fails with 400 if the target namespace already has an instance with the same id (ids must be unique within a namespace — the same id can exist in different namespaces).",
@@ -679,7 +689,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-search.namespaces.move",
+		"x-fern-sdk-method-name": "instance",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces": {
 		"description": "Create a new namespace.",
@@ -920,7 +934,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.namespace",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}": {
 		"description": "Update namespace.",
@@ -1116,6 +1133,9 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.namespace",
+		"x-fern-sdk-method-name": "update"
 	}
 }

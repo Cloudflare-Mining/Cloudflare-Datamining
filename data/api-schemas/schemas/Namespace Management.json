@@ -506,6 +506,10 @@
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2-data-catalog.namespaces",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	}
 }

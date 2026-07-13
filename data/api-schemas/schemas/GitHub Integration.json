@@ -222,6 +222,10 @@
 		"x-api-token-group": [
 			"Workers CI Write",
 			"Workers CI Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.repos.config-autofill",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }

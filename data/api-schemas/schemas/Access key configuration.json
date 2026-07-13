@@ -275,7 +275,11 @@
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write",
 			"Access: Organizations, Identity Providers, and Groups Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.keys",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/keys/rotate": {
 		"description": "Perfoms a key rotation for an account.",
@@ -552,7 +556,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.keys",
+		"x-fern-sdk-method-name": "rotate",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/keys": {
 		"description": "Updates the Access key rotation settings for an account.",
@@ -851,6 +859,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Organizations, Identity Providers, and Groups Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.keys",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

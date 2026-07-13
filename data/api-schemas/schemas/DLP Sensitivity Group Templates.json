@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/dlp/sensitivity_groups/templates": {
+		"description": "Lists available sensitivity group templates.",
 		"operationId": "dlp-sensitivity-group-templates-list",
 		"parameters": [
 			{
@@ -291,6 +292,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/sensitivity_groups/templates/{template_id}": {
+		"description": "Gets an available sensitivity group template.",
 		"operationId": "dlp-sensitivity-group-template-read",
 		"parameters": [
 			{

@@ -187,7 +187,196 @@
 			"pro": true
 		}
 	},
+	"GET /accounts/{account_id}/email/sending/messages/{message_id}": {
+		"description": "Returns the raw RFC 5322 MIME message for the given account and message id.",
+		"operationId": "email-sending-get-email-message",
+		"parameters": [
+			{
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"example": "12345",
+					"pattern": "^\\d+$",
+					"type": "string"
+				}
+			},
+			{
+				"in": "path",
+				"name": "message_id",
+				"required": true,
+				"schema": {
+					"example": "<aB3xK9mP@example.com>",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"message/rfc822": {
+						"schema": {
+							"format": "binary",
+							"type": "string"
+						}
+					}
+				},
+				"description": "The raw RFC 5322 MIME message."
+			},
+			"404": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Account or message not found."
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"messages": {
+									"items": {
+										"properties": {
+											"code": {
+												"type": "number"
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"nullable": true
+								},
+								"success": {
+									"enum": [
+										false
+									],
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "An unexpected error occurred."
+			}
+		},
+		"security": [
+			{
+				"api_email": [],
+				"api_key": [],
+				"api_token": []
+			}
+		],
+		"summary": "Fetch an email message",
+		"tags": [
+			"Email Sending"
+		],
+		"x-cfPermissionsRequired": {
+			"enum": [
+				"com.cloudflare.api.account.email.sending.read"
+			]
+		},
+		"x-cfPlanAvailability": {
+			"business": true,
+			"enterprise": true,
+			"free": false,
+			"pro": true
+		}
+	},
 	"POST /accounts/{account_id}/email/sending/send": {
+		"description": "Send an email for the specified account using the structured builder. Provide the sender, recipients, subject, and at least one of text or html; attachments are optional.",
 		"operationId": "email-sending-account-send-builder",
 		"parameters": [
 			{
@@ -255,7 +444,7 @@
 													"type": "string"
 												},
 												"disposition": {
-													"description": "Must be 'inline'. Indicates the attachment is embedded in the email body.",
+													"description": "Must be 'inline'. Embeds the attachment in the email body.",
 													"enum": [
 														"inline"
 													],
@@ -295,7 +484,7 @@
 													"type": "string"
 												},
 												"disposition": {
-													"description": "Must be 'attachment'. Indicates a standard file attachment.",
+													"description": "Must be 'attachment'. Adds a standard file attachment.",
 													"enum": [
 														"attachment"
 													],
@@ -355,7 +544,7 @@
 														"type": "string"
 													},
 													"name": {
-														"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+														"description": "Display name for the email address (e.g., 'John Doe'). Optional; set to null or leave it unset to send the address on its own.",
 														"example": "John Doe",
 														"nullable": true,
 														"type": "string"
@@ -388,7 +577,7 @@
 																	"type": "string"
 																},
 																"name": {
-																	"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+																	"description": "Display name for the email address (e.g., 'John Doe'). Optional; set to null or leave it unset to send the address on its own.",
 																	"example": "John Doe",
 																	"nullable": true,
 																	"type": "string"
@@ -441,7 +630,7 @@
 														"type": "string"
 													},
 													"name": {
-														"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+														"description": "Display name for the email address (e.g., 'John Doe'). Optional; set to null or leave it unset to send the address on its own.",
 														"example": "John Doe",
 														"nullable": true,
 														"type": "string"
@@ -474,7 +663,7 @@
 																	"type": "string"
 																},
 																"name": {
-																	"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+																	"description": "Display name for the email address (e.g., 'John Doe'). Optional; set to null or leave it unset to send the address on its own.",
 																	"example": "John Doe",
 																	"nullable": true,
 																	"type": "string"
@@ -518,7 +707,7 @@
 												"type": "string"
 											},
 											"name": {
-												"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+												"description": "Display name for the email address (e.g., 'John Doe'). Optional; set to null or leave it unset to send the address on its own.",
 												"example": "John Doe",
 												"nullable": true,
 												"type": "string"
@@ -542,7 +731,7 @@
 								"type": "object"
 							},
 							"html": {
-								"description": "HTML body of the email. At least one of text or html must be provided (non-empty).",
+								"description": "HTML body of the email. Provide at least one of text or html (non-empty).",
 								"example": "<h1>Hello</h1><p>Please find your report attached.</p>",
 								"type": "string"
 							},
@@ -568,7 +757,7 @@
 												"type": "string"
 											},
 											"name": {
-												"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+												"description": "Display name for the email address (e.g., 'John Doe'). Optional; set to null or leave it unset to send the address on its own.",
 												"example": "John Doe",
 												"nullable": true,
 												"type": "string"
@@ -587,7 +776,7 @@
 								"type": "string"
 							},
 							"text": {
-								"description": "Plain text body of the email. At least one of text or html must be provided (non-empty).",
+								"description": "Plain text body of the email. Provide at least one of text or html (non-empty).",
 								"example": "Hello\n\nPlease find your report attached.",
 								"type": "string"
 							},
@@ -620,7 +809,7 @@
 												"type": "string"
 											},
 											"name": {
-												"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+												"description": "Display name for the email address (e.g., 'John Doe'). Optional; set to null or leave it unset to send the address on its own.",
 												"example": "John Doe",
 												"nullable": true,
 												"type": "string"
@@ -653,7 +842,7 @@
 															"type": "string"
 														},
 														"name": {
-															"description": "Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.",
+															"description": "Display name for the email address (e.g., 'John Doe'). Optional; set to null or leave it unset to send the address on its own.",
 															"example": "John Doe",
 															"nullable": true,
 															"type": "string"
@@ -1096,6 +1285,7 @@
 		}
 	},
 	"POST /accounts/{account_id}/email/sending/send_raw": {
+		"description": "Send a raw RFC 5322 (MIME) email for the specified account. Provide the full MIME message plus the SMTP envelope (from and recipients).",
 		"operationId": "email-sending-account-send-raw-message",
 		"parameters": [
 			{

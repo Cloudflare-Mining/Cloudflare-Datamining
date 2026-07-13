@@ -415,7 +415,11 @@
 		"x-api-token-group": [
 			"Workers CI Write",
 			"Workers CI Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds",
+		"x-fern-sdk-method-name": "get-builds-by-version",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/builds/{build_uuid}": {
 		"description": "Retrieve detailed information about a specific build",
@@ -887,7 +891,11 @@
 		"x-api-token-group": [
 			"Workers CI Write",
 			"Workers CI Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.builds",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/builds/{build_uuid}/logs": {
 		"description": "Retrieve logs for a specific build with cursor-based pagination",
@@ -1121,7 +1129,11 @@
 		"x-api-token-group": [
 			"Workers CI Write",
 			"Workers CI Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.builds.logs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/builds/builds/latest": {
 		"description": "Retrieve the most recent builds for multiple worker scripts",
@@ -1539,7 +1551,11 @@
 		"x-api-token-group": [
 			"Workers CI Write",
 			"Workers CI Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds",
+		"x-fern-sdk-method-name": "get-latest-builds",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/builds/builds/{build_uuid}/cancel": {
 		"description": "Cancel a running or queued build",
@@ -1753,6 +1769,10 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.builds",
+		"x-fern-sdk-method-name": "cancel",
+		"x-forge-hidden": true
 	}
 }

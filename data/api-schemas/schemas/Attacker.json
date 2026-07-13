@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/attackers": {
+		"description": "List attacker names referenced in events across one or more datasets.",
 		"operationId": "get_AttackerList",
 		"parameters": [
 			{

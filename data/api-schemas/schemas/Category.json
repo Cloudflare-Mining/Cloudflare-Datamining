@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"description": "Delete a category by its identifier.",
 		"operationId": "delete_CategoryDelete",
 		"parameters": [
 			{
@@ -97,6 +98,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories": {
+		"description": "List categories across one or more datasets for the account.",
 		"operationId": "get_CategoryList",
 		"parameters": [
 			{
@@ -226,6 +228,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"description": "Retrieve a single category by its identifier.",
 		"operationId": "get_CategoryRead",
 		"parameters": [
 			{
@@ -351,6 +354,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/categories/catalog": {
+		"description": "List all categories stored in the account catalog.",
 		"operationId": "get_CategoryListComplete",
 		"parameters": [
 			{
@@ -1302,6 +1306,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"description": "Update an existing category by its identifier.",
 		"operationId": "patch_CategoryUpdate",
 		"parameters": [
 			{
@@ -1462,6 +1467,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/{category_id}": {
+		"description": "Update an existing category by its identifier.",
 		"operationId": "post_CategoryUpdate",
 		"parameters": [
 			{
@@ -1623,6 +1629,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/categories/create": {
+		"description": "Create a new event category for the account.",
 		"operationId": "post_CategoryCreate",
 		"parameters": [
 			{

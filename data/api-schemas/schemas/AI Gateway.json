@@ -262,7 +262,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing.spending_limit",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"description": "Remove the auto top-up configuration for the account.",
@@ -527,7 +531,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing.topup.config",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/credit-balance": {
 		"description": "Retrieve the current credit balance, payment method info, and top-up configuration.",
@@ -854,7 +862,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing",
+		"x-fern-sdk-method-name": "credit_balance",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-history": {
 		"description": "Retrieve a list of past invoices with pagination, optionally filtered by type.",
@@ -1226,7 +1238,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing",
+		"x-fern-sdk-method-name": "invoice_history",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/invoice-preview": {
 		"description": "Retrieve a preview of the upcoming invoice including line items and tax.",
@@ -1618,7 +1634,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing",
+		"x-fern-sdk-method-name": "invoice_preview",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/spending-limit": {
 		"description": "Retrieve the current spending limit configuration for the account.",
@@ -1915,7 +1935,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing.spending_limit",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"description": "Retrieve the current auto top-up threshold, amount, and any error state.",
@@ -2210,7 +2234,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing.topup.config",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/billing/topup/limits": {
 		"description": "Retrieve the minimum and maximum allowed top-up amounts (in cents) for this account.",
@@ -2830,7 +2858,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing",
+		"x-fern-sdk-method-name": "usage_history",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/spending-limit": {
 		"deprecated": true,
@@ -3139,7 +3171,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing.spending_limit",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup": {
 		"description": "Create a credit top-up via Stripe PaymentIntent for the given account.",
@@ -3454,7 +3490,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing.topup",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/config": {
 		"description": "Configure auto top-up with a balance threshold and top-up amount.",
@@ -3760,7 +3800,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing.topup.config",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/billing/topup/status": {
 		"description": "Get the payment processing status of a top-up by its invoice ID.",
@@ -4062,6 +4106,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai_gateway.billing.topup",
+		"x-fern-sdk-method-name": "status",
+		"x-forge-hidden": true
 	}
 }

@@ -201,7 +201,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/ai-search/tokens": {
 		"description": "List tokens.",
@@ -430,7 +431,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"GET /accounts/{account_id}/ai-search/tokens/{id}": {
 		"description": "Read token.",
@@ -645,7 +647,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"POST /accounts/{account_id}/ai-search/tokens": {
 		"description": "Create a new token.",
@@ -837,7 +840,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"PUT /accounts/{account_id}/ai-search/tokens/{id}": {
 		"description": "Update token.",
@@ -1079,6 +1083,7 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	}
 }

@@ -1436,7 +1436,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices": {
 		"deprecated": true,
@@ -2122,7 +2126,11 @@
 		"summary": "List devices (deprecated)",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/{device_id}": {
 		"deprecated": true,
@@ -2772,7 +2780,11 @@
 		"summary": "Get device (deprecated)",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/{device_id}/override_codes": {
 		"deprecated": true,
@@ -3244,7 +3256,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.override-codes",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/policies": {
 		"description": "Fetches a list of the device settings profiles for an account.",
@@ -4663,7 +4679,11 @@
 		"summary": "List device settings profiles",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/policy": {
 		"description": "Fetches the default device settings profile for an account.",
@@ -5938,7 +5958,11 @@
 		"summary": "Get the default device settings profile",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}": {
 		"description": "Fetches a device settings profile by ID.",
@@ -7322,7 +7346,11 @@
 		"summary": "Get device settings profile by ID",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
 		"description": "Fetches the list of routes excluded from the WARP client's tunnel for a specific device settings profile.",
@@ -7818,7 +7846,11 @@
 		"summary": "Get the Split Tunnel exclude list for a device settings profile",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.excludes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
 		"description": "Fetches the list of domains to bypass Gateway DNS resolution from a specified device settings profile. These domains will use the specified local DNS resolver instead.",
@@ -8282,7 +8314,11 @@
 		"summary": "Get the Local Domain Fallback list for a device settings profile",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.fallback-domains",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/policy/{policy_id}/include": {
 		"description": "Fetches the list of routes included in the WARP client's tunnel for a specific device settings profile.",
@@ -8778,7 +8814,11 @@
 		"summary": "Get the Split Tunnel include list for a device settings profile",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.includes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/policy/exclude": {
 		"description": "Fetches the list of routes excluded from the WARP client's tunnel.",
@@ -9263,7 +9303,11 @@
 		"summary": "Get the Split Tunnel exclude list",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.excludes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/policy/fallback_domains": {
 		"description": "Fetches a list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead.",
@@ -9716,7 +9760,11 @@
 		"summary": "Get your Local Domain Fallback list",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.fallback-domains",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/policy/include": {
 		"description": "Fetches the list of routes included in the WARP client's tunnel.",
@@ -10201,7 +10249,11 @@
 		"summary": "Get the Split Tunnel include list",
 		"tags": [
 			"Devices"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.includes",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/devices/policy/certificates": {
 		"description": "Fetches device certificate provisioning.",
@@ -10576,7 +10628,11 @@
 		"x-api-token-group": [
 			"SSL and Certificates Write",
 			"SSL and Certificates Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.certificates",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/devices/policy": {
 		"description": "Updates the default device settings profile for an account.",
@@ -12186,7 +12242,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/devices/policy/{policy_id}": {
 		"description": "Updates a configured device settings profile.",
@@ -13933,7 +13993,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/devices/policy/certificates": {
 		"description": "Enable Zero Trust Clients to provision a certificate, containing a x509 subject, and referenced by Access device posture policies when the client visits MTLS protected domains. This facilitates device posture without a WARP session.",
@@ -14327,7 +14391,11 @@
 		],
 		"x-api-token-group": [
 			"SSL and Certificates Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.certificates",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/policy": {
 		"description": "Creates a device settings profile to be applied to certain devices matching the criteria.",
@@ -16076,7 +16144,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/devices/revoke": {
 		"deprecated": true,
@@ -16426,7 +16498,12 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.revoke",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation revokes sessions for a batch of devices destructively."
 	},
 	"POST /accounts/{account_id}/devices/unrevoke": {
 		"deprecated": true,
@@ -16776,7 +16853,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.unrevoke",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/exclude": {
 		"description": "Sets the list of routes excluded from the WARP client's tunnel for a specific device settings profile.",
@@ -17332,7 +17413,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.excludes",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/fallback_domains": {
 		"description": "Sets the list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead. This will only apply to the specified device settings profile.",
@@ -17840,7 +17925,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.fallback-domains",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/policy/{policy_id}/include": {
 		"description": "Sets the list of routes included in the WARP client's tunnel for a specific device settings profile.",
@@ -18396,7 +18485,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.custom.includes",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/policy/exclude": {
 		"description": "Sets the list of routes excluded from the WARP client's tunnel.",
@@ -18941,7 +19034,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.excludes",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/policy/fallback_domains": {
 		"description": "Sets the list of domains to bypass Gateway DNS resolution. These domains will use the specified local DNS resolver instead.",
@@ -19438,7 +19535,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.fallback-domains",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/policy/include": {
 		"description": "Sets the list of routes included in the WARP client's tunnel.",
@@ -19983,6 +20084,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.policies.default.includes",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

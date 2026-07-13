@@ -898,7 +898,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/gre_tunnels": {
 		"description": "Lists GRE tunnels associated with an account.",
@@ -1779,7 +1783,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}": {
 		"description": "Lists informtion for a specific GRE tunnel.",
@@ -2668,7 +2676,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/gre_tunnels": {
 		"description": "Creates a new GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
@@ -3729,7 +3741,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/gre_tunnels": {
 		"description": "Updates multiple GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
@@ -4628,7 +4644,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}": {
 		"description": "Updates a specific GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
@@ -5680,6 +5700,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.gre-tunnels",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

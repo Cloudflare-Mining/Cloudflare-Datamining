@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/cloudforce-one/events/{dataset_id}/delete": {
+		"description": "Delete one or more events from a dataset.",
 		"operationId": "delete_EventDelete",
 		"parameters": [
 			{
@@ -103,6 +104,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}": {
+		"description": "Remove one or more tags from an event.",
 		"operationId": "delete_EventTagDelete",
 		"parameters": [
 			{
@@ -314,6 +316,7 @@
 		]
 	},
 	"DELETE /accounts/{account_id}/cloudforce-one/events/relate/{event_id}": {
+		"description": "Remove one or more references from an event.",
 		"operationId": "delete_EventReferenceDelete",
 		"parameters": [
 			{
@@ -444,7 +447,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events": {
-		"description": "Use `datasetId=all` or `datasetId=*` to query all event datasets for the account (limited to 10). When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+		"description": "Use `datasetId=all` or `datasetId=*` to query all event datasets for the account (limited to 50). When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
 		"operationId": "get_EventListGet",
 		"parameters": [
 			{
@@ -1084,6 +1087,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
+		"description": "Retrieve raw data for a specific event.",
 		"operationId": "get_EventRawRead",
 		"parameters": [
 			{
@@ -2487,6 +2491,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}": {
+		"description": "Update an existing event by its identifier.",
 		"operationId": "patch_EventUpdate",
 		"parameters": [
 			{
@@ -2822,6 +2827,7 @@
 		]
 	},
 	"PATCH /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
+		"description": "Update raw data for a specific event.",
 		"operationId": "patch_EventRawUpdate",
 		"parameters": [
 			{
@@ -3401,6 +3407,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}": {
+		"description": "Update an existing event by its identifier.",
 		"operationId": "post_EventUpdate",
 		"parameters": [
 			{
@@ -3737,6 +3744,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/{event_id}/raw/{raw_id}": {
+		"description": "Update raw data for a specific event.",
 		"operationId": "post_EventRawUpdate",
 		"parameters": [
 			{
@@ -4797,6 +4805,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/copy": {
+		"description": "Copy one or more events from a source dataset to a destination dataset.",
 		"operationId": "post_EventCopyToNewDS",
 		"parameters": [
 			{
@@ -4964,6 +4973,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/dataset/{dataset_id}/move": {
+		"description": "Move one or more events from a source dataset to a destination dataset.",
 		"operationId": "post_EventMoveToNewDS",
 		"parameters": [
 			{
@@ -5152,6 +5162,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/event_tag/{event_id}/create": {
+		"description": "Add one or more tags to an event.",
 		"operationId": "post_EventTagCreate",
 		"parameters": [
 			{
@@ -5792,6 +5803,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/cloudforce-one/events/relate/{event_id}/create": {
+		"description": "Create one or more references between events.",
 		"operationId": "post_EventReferenceCreate",
 		"parameters": [
 			{

@@ -1,5 +1,6 @@
 {
 	"GET /accounts/{account_id}/cloudforce-one/events/indicator-types": {
+		"description": "List indicator types across one or more datasets for the account.",
 		"operationId": "get_IndicatorTypesList",
 		"parameters": [
 			{

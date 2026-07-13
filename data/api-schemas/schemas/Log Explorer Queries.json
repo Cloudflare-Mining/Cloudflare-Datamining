@@ -309,7 +309,8 @@
 			"Logs Write",
 			"Logs Read"
 		],
-		"x-auditable": false
+		"x-auditable": false,
+		"x-fern-ignore": true
 	},
 	"GET /zones/{zone_id}/logs/explorer/query/sql": {
 		"deprecated": true,
@@ -621,7 +622,8 @@
 			"Logs Write",
 			"Logs Read"
 		],
-		"x-auditable": false
+		"x-auditable": false,
+		"x-fern-ignore": true
 	},
 	"POST /accounts/{account_id}/logs/explorer/query/sql": {
 		"description": "Run a SQL query against account-level datasets.\n\nTimestamp fields are RFC3339 strings. Filter with:\n  WHERE {timestamp_field} >= now() - INTERVAL '30' DAY\n  WHERE {timestamp_field} >= '2026-04-01T00:00:00Z'\n  WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z'\n\nCheck /accounts/{account_id}/logs/explorer/datasets to see enabled account level datasets.\nZone-level datasets will not appear here.\nCheck /accounts/{account_id}/logs/explorer/datasets/available for the schemas, and the name of the timestamp fields.\n\nFor zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/query/sql\n\nFor more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/\n",
@@ -935,6 +937,10 @@
 			"Logs Read"
 		],
 		"x-auditable": false,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.query.accounts",
+		"x-fern-sdk-method-name": "sql",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /zones/{zone_id}/logs/explorer/query/sql": {
@@ -1249,6 +1255,10 @@
 			"Logs Read"
 		],
 		"x-auditable": false,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "logs.log-explorer.query.zones",
+		"x-fern-sdk-method-name": "sql",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

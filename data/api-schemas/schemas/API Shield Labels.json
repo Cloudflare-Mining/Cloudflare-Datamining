@@ -1,5 +1,6 @@
 {
 	"DELETE /zones/{zone_id}/api_gateway/labels/user": {
+		"description": "Delete user labels",
 		"operationId": "api-shield-labels-delete-user-labels",
 		"requestBody": {
 			"content": {
@@ -3106,6 +3107,7 @@
 		]
 	},
 	"POST /zones/{zone_id}/api_gateway/labels/user": {
+		"description": "Create user labels",
 		"operationId": "api-shield-labels-create-user-labels",
 		"requestBody": {
 			"content": {

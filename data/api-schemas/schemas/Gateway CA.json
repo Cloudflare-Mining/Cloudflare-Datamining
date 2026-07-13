@@ -271,7 +271,11 @@
 		],
 		"x-api-token-group": [
 			"Access: SSH Auditing Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.gateway-ca",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/gateway_ca": {
 		"description": "Lists SSH Certificate Authorities (CA).",
@@ -574,7 +578,11 @@
 		"x-api-token-group": [
 			"Access: SSH Auditing Write",
 			"Access: SSH Auditing Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.gateway-ca",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/gateway_ca": {
 		"description": "Adds a new SSH Certificate Authority (CA).",
@@ -838,6 +846,10 @@
 		],
 		"x-api-token-group": [
 			"Access: SSH Auditing Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.gateway-ca",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

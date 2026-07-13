@@ -468,7 +468,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes": {
 		"description": "List all AI Gateway Dynamic Routes.",
@@ -1033,7 +1037,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
 		"description": "Get an AI Gateway Dynamic Route.",
@@ -1556,7 +1564,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments": {
 		"description": "List all AI Gateway Dynamic Route Deployments.",
@@ -1722,7 +1734,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "list-deployments",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions": {
 		"description": "List all AI Gateway Dynamic Route Versions.",
@@ -1899,7 +1915,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "list-versions",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions/{version_id}": {
 		"description": "Get an AI Gateway Dynamic Route Version.",
@@ -2398,7 +2418,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "get-version",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}": {
 		"description": "Update an AI Gateway Dynamic Route.",
@@ -3279,7 +3303,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes": {
 		"description": "Create a new AI Gateway Dynamic Route.",
@@ -4132,7 +4160,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments": {
 		"description": "Create a new AI Gateway Dynamic Route Deployment.",
@@ -4621,7 +4653,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "create-deployment",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions": {
 		"description": "Create a new AI Gateway Dynamic Route Version.",
@@ -5428,6 +5464,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ai-gateway.dynamic-routing",
+		"x-fern-sdk-method-name": "create-version",
+		"x-forge-hidden": true
 	}
 }

@@ -281,7 +281,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
 		"description": "Retrieves details for a specific AI Search indexing job.",
@@ -480,7 +483,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}/logs": {
 		"description": "Lists log entries for an AI Search indexing job.",
@@ -759,7 +765,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "logs"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs": {
 		"description": "Lists indexing jobs for an AI Search instance.",
@@ -1053,7 +1062,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}": {
 		"description": "Retrieves details for a specific AI Search indexing job.",
@@ -1262,7 +1275,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}/logs": {
 		"description": "Lists log entries for an AI Search indexing job.",
@@ -1551,10 +1568,14 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "logs"
 	},
 	"PATCH /accounts/{account_id}/ai-search/instances/{id}/jobs/{job_id}": {
-		"description": "Updates the status of an AI Search indexing job.",
+		"description": "Cancel an in-progress indexing job for an AI Search instance.",
 		"operationId": "ai-search-instance-change-job-status",
 		"parameters": [
 			{
@@ -1796,7 +1817,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Change Job Status",
+		"summary": "Cancel an indexing job.",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -1810,10 +1831,14 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "cancel",
+		"x-forge-require-confirmation": "This will cancel the running indexing job."
 	},
 	"PATCH /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}": {
-		"description": "Updates the status of an AI Search indexing job.",
+		"description": "Cancel an in-progress indexing job for an AI Search instance.",
 		"operationId": "ai-search-namespace-instance-change-job-status",
 		"parameters": [
 			{
@@ -2065,7 +2090,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Change Job Status",
+		"summary": "Cancel an indexing job.",
 		"tags": [
 			"AI Search Instances Jobs"
 		],
@@ -2079,7 +2104,12 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "cancel",
+		"x-forge-require-confirmation": "This will cancel the running indexing job."
 	},
 	"POST /accounts/{account_id}/ai-search/instances/{id}/jobs": {
 		"description": "Creates a new indexing job for an AI Search instance.",
@@ -2372,7 +2402,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs": {
 		"description": "Creates a new indexing job for an AI Search instance.",
@@ -2675,6 +2708,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search.jobs",
+		"x-fern-sdk-method-name": "create"
 	}
 }

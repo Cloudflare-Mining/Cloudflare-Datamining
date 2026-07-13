@@ -330,7 +330,11 @@
 		"x-api-token-group": [
 			"Access: Policy Test Write",
 			"Access: Policy Test Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.applications.policy-tests",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/policy-tests/{policy_test_id}/users": {
 		"description": "Fetches a single page of user results from an Access policy test.",
@@ -661,7 +665,11 @@
 		"x-api-token-group": [
 			"Access: Policy Test Write",
 			"Access: Policy Test Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.applications.policy-tests.users",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/policy-tests": {
 		"description": "Starts an Access policy test.",
@@ -2802,12 +2810,14 @@
 																"allowed_clipboard_local_to_remote_formats": {
 																	"description": "Clipboard formats allowed when copying from local machine to remote RDP session.",
 																	"example": [
-																		"text"
+																		"text",
+																		"file"
 																	],
 																	"items": {
 																		"description": "Clipboard format for RDP connections.",
 																		"enum": [
-																			"text"
+																			"text",
+																			"file"
 																		],
 																		"type": "string",
 																		"x-auditable": true
@@ -2817,12 +2827,14 @@
 																"allowed_clipboard_remote_to_local_formats": {
 																	"description": "Clipboard formats allowed when copying from remote RDP session to local machine.",
 																	"example": [
-																		"text"
+																		"text",
+																		"file"
 																	],
 																	"items": {
 																		"description": "Clipboard format for RDP connections.",
 																		"enum": [
-																			"text"
+																			"text",
+																			"file"
 																		],
 																		"type": "string",
 																		"x-auditable": true
@@ -3163,6 +3175,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Policy Test Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.applications.policy-tests",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

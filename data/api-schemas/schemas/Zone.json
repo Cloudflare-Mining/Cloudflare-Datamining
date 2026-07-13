@@ -221,7 +221,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /zones": {
 		"description": "Lists, searches, sorts, and filters your zones. Listing zones across more than 500 accounts\nis currently not allowed.\n",
@@ -921,9 +924,13 @@
 		],
 		"x-api-token-group": [
 			"Zone Zone Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /zones/{zone_id}": {
+		"description": "Zone Details",
 		"operationId": "zones-0-get",
 		"parameters": [
 			{
@@ -1494,7 +1501,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones",
+		"x-fern-sdk-method-name": "get"
 	},
 	"PATCH /zones/{zone_id}": {
 		"description": "Edits a zone. Only one zone property can be changed at a time.",
@@ -2082,9 +2092,13 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones",
+		"x-fern-sdk-method-name": "edit"
 	},
 	"POST /zones": {
+		"description": "Create Zone",
 		"operationId": "zones-post",
 		"requestBody": {
 			"content": {
@@ -2640,7 +2654,10 @@
 		"x-api-token-group": [
 			"Zone Zone Edit",
 			"Zone DNS Edit"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /zones/{zone_id}/environments/{environment_id}/purge_cache": {
 		"description": "Purge cached content scoped to a specific environment. Supports the same purge types as the zone-level endpoint (purge everything, by URL, by tag, host, or prefix).\n\n### Availability and limits\nPlease refer to [purge cache availability and limits documentation page](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits).\n",
@@ -3895,6 +3912,9 @@
 		],
 		"x-api-token-group": [
 			"Zone Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zones.activation-check",
+		"x-fern-sdk-method-name": "trigger"
 	}
 }

@@ -341,7 +341,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Service Tokens Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/service_tokens": {
 		"description": "Lists all service tokens.",
@@ -746,7 +750,11 @@
 		"x-api-token-group": [
 			"Access: Service Tokens Write",
 			"Access: Service Tokens Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/service_tokens/{service_token_id}": {
 		"description": "Fetches a single service token.",
@@ -1091,7 +1099,11 @@
 		"x-api-token-group": [
 			"Access: Service Tokens Write",
 			"Access: Service Tokens Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/service_tokens": {
 		"description": "Generates a new service token. **Note:** This is the only time you can get the Client Secret. If you lose the Client Secret, you will have to rotate the Client Secret or create a new service token.",
@@ -1440,7 +1452,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Service Tokens Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/service_tokens/{service_token_id}/refresh": {
 		"description": "Refreshes the expiration of a service token.",
@@ -1784,7 +1800,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Service Tokens Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
+		"x-fern-sdk-method-name": "refresh",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/service_tokens/{service_token_id}/rotate": {
 		"description": "Generates a new Client Secret for a service token and revokes the old one.",
@@ -2119,7 +2139,11 @@
 		"summary": "Rotate a service token",
 		"tags": [
 			"Access service tokens"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
+		"x-fern-sdk-method-name": "rotate",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/service_tokens/{service_token_id}": {
 		"description": "Updates a configured service token.",
@@ -2500,6 +2524,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Service Tokens Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.service-tokens",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

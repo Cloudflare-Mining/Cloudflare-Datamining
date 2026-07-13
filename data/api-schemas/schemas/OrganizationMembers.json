@@ -148,6 +148,8 @@
 					"items": {
 						"enum": [
 							"active",
+							"pending",
+							"rejected",
 							"canceled"
 						],
 						"type": "string"
@@ -265,6 +267,8 @@
 											"status": {
 												"enum": [
 													"active",
+													"pending",
+													"rejected",
 													"canceled"
 												],
 												"type": "string"
@@ -495,6 +499,8 @@
 										"status": {
 											"enum": [
 												"active",
+												"pending",
+												"rejected",
 												"canceled"
 											],
 											"type": "string"
@@ -739,6 +745,8 @@
 										"status": {
 											"enum": [
 												"active",
+												"pending",
+												"rejected",
 												"canceled"
 											],
 											"type": "string"
@@ -988,6 +996,8 @@
 											"status": {
 												"enum": [
 													"active",
+													"pending",
+													"rejected",
 													"canceled"
 												],
 												"type": "string"

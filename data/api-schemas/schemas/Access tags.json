@@ -265,7 +265,11 @@
 		"summary": "Delete a tag",
 		"tags": [
 			"Access tags"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.tags",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/tags": {
 		"description": "List tags",
@@ -616,7 +620,11 @@
 		"summary": "List tags",
 		"tags": [
 			"Access tags"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.tags",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/tags/{tag_name}": {
 		"description": "Get a tag",
@@ -921,7 +929,11 @@
 		"summary": "Get a tag",
 		"tags": [
 			"Access tags"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.tags",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/tags": {
 		"description": "Create a tag",
@@ -1231,7 +1243,11 @@
 		"summary": "Create a tag",
 		"tags": [
 			"Access tags"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.tags",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/access/tags/{tag_name}": {
 		"description": "Update a tag",
@@ -1582,6 +1598,10 @@
 		"summary": "Update a tag",
 		"tags": [
 			"Access tags"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.tags",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

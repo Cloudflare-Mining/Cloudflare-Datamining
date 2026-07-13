@@ -3359,6 +3359,7 @@
 	},
 	"POST /zones/{zone_id}/api_gateway/user_schemas": {
 		"deprecated": true,
+		"description": "Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints.",
 		"operationId": "api-shield-schema-validation-post-schema",
 		"requestBody": {
 			"content": {

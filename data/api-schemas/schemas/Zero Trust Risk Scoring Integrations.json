@@ -560,6 +560,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/zt_risk_scoring/integrations/{integration_id}": {
+		"description": "Gets a Zero Trust risk score integration by ID.",
 		"operationId": "dlp-zt-risk-score-integration-get",
 		"parameters": [
 			{

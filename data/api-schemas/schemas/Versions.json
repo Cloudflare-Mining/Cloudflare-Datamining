@@ -250,7 +250,11 @@
 		"summary": "Delete Version",
 		"tags": [
 			"Versions"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers.versions",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}/versions": {
 		"description": "List all versions for a Worker.",
@@ -2637,7 +2641,11 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers.versions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}": {
 		"description": "Get details about a specific version.",
@@ -4980,7 +4988,11 @@
 			"Workers Tail Read",
 			"Workers Scripts Write",
 			"Workers Scripts Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers.versions",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/workers/{worker_id}/versions/latest": {
 		"description": "Only `/versions/latest` is supported. Creates a new version by applying a JSON Merge Patch (RFC 7396) to the latest version. Patching a specific version ID is not supported. Omitted fields are inherited from the latest version.",
@@ -15852,6 +15864,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Scripts Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers.beta.workers.versions",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

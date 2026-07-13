@@ -1290,6 +1290,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.investigate",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}": {
@@ -1951,6 +1955,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.investigate",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/action_log": {
@@ -2264,6 +2272,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.investigate.get-action",
+		"x-fern-sdk-method-name": "log",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/detections": {
@@ -2786,6 +2798,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.investigate.detections",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/preview": {
@@ -3036,6 +3052,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.investigate.preview",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/raw": {
@@ -3286,6 +3306,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.investigate.raw",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/{investigate_id}/trace": {
@@ -3609,9 +3633,14 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.investigate.trace",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk": {
+		"description": "Returns a paginated list of bulk action jobs for the account.",
 		"operationId": "email_security_get_bulk_jobs",
 		"parameters": [
 			{
@@ -4189,6 +4218,7 @@
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}": {
+		"description": "Returns the status and details of a specific bulk action job.",
 		"operationId": "email_security_get_bulk_job",
 		"responses": {
 			"200": {
@@ -4671,6 +4701,7 @@
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages": {
+		"description": "Returns the individual messages associated with a bulk action job, including their processing status.",
 		"operationId": "email_security_get_bulk_job_messages",
 		"parameters": [
 			{
@@ -6086,6 +6117,10 @@
 			"Email Security"
 		],
 		"x-api-token-group": null,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.submissions",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/{investigate_id}/move": {
@@ -6696,9 +6731,14 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.investigate.reclassify",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/investigate/bulk": {
+		"description": "Creates a new bulk action job to move or release messages that match the provided search parameters.",
 		"operationId": "email_security_create_bulk_job",
 		"requestBody": {
 			"content": {
@@ -6858,7 +6898,7 @@
 			"required": true
 		},
 		"responses": {
-			"200": {
+			"201": {
 				"content": {
 					"application/json": {
 						"schema": {
@@ -8750,6 +8790,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.investigate.release",
+		"x-fern-sdk-method-name": "bulk",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	}
 }

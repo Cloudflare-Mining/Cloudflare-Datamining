@@ -448,7 +448,11 @@
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2-data-catalog",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2-catalog/{bucket_name}": {
 		"description": "Retrieve detailed information about a specific R2 catalog by bucket name.\nReturns catalog status, maintenance configuration, and credential status.\n",
@@ -919,7 +923,11 @@
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write",
 			"Workers R2 Data Catalog Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2-data-catalog",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/disable": {
 		"description": "Disable an R2 bucket as a catalog. This operation deactivates the catalog\nbut preserves existing metadata and data files. The catalog can be\nre-enabled later.\n",
@@ -1167,7 +1175,12 @@
 		],
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2-data-catalog",
+		"x-fern-sdk-method-name": "disable",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation turns off the data catalog for the bucket. Existing namespace or table state remains, but writes stop."
 	},
 	"POST /accounts/{account_id}/r2-catalog/{bucket_name}/enable": {
 		"description": "Enable an R2 bucket as an Apache Iceberg catalog. This operation creates\nthe necessary catalog infrastructure and activates the bucket for storing\nIceberg metadata and data files.\n",
@@ -1554,6 +1567,10 @@
 		],
 		"x-api-token-group": [
 			"Workers R2 Data Catalog Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2-data-catalog",
+		"x-fern-sdk-method-name": "enable",
+		"x-forge-hidden": true
 	}
 }

@@ -35,6 +35,15 @@
 				}
 			},
 			{
+				"description": "Hydration strategy for neighbor nodes when expand=nodes is set. r2_join (default): use R2 JOIN query + DO fallback. do_only: use plain R2 query + hydrate all neighbors via Durable Objects.",
+				"in": "query",
+				"name": "hydration",
+				"schema": {
+					"description": "Hydration strategy for neighbor nodes when expand=nodes is set. r2_join (default): use R2 JOIN query + DO fallback. do_only: use plain R2 query + hydrate all neighbors via Durable Objects.",
+					"type": "string"
+				}
+			},
+			{
 				"description": "Max neighbors per seed (default: 100, max: 1000). Values above 1000 return 400.",
 				"in": "query",
 				"name": "limit",
@@ -84,6 +93,18 @@
 					"description": "Opaque pagination token. Only valid when seeds has exactly 1 entry; 400 otherwise.",
 					"type": "string"
 				}
+			},
+			{
+				"description": "Comma-separated list of response sections to expand (hydrate). Allowed: `nodes`. Omitting `expand` returns identifier-only nodes.",
+				"in": "query",
+				"name": "expand",
+				"schema": {
+					"description": "Comma-separated list of response sections to expand (hydrate). Allowed: `nodes`. Omitting `expand` returns identifier-only nodes.",
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
 			}
 		],
 		"responses": {
@@ -91,8 +112,8 @@
 				"content": {
 					"application/json": {
 						"examples": {
-							"multi-seed": {
-								"summary": "Multi-seed batch expansion (merge + dedup)",
+							"multi-seed-hydrated": {
+								"summary": "Multi-seed with expand=nodes (merge + dedup)",
 								"value": {
 									"errors": [],
 									"messages": [],
@@ -157,8 +178,8 @@
 									"success": true
 								}
 							},
-							"single-seed": {
-								"summary": "Single seed expansion",
+							"single-seed-hydrated": {
+								"summary": "Single seed with expand=nodes — fully hydrated nodes",
 								"value": {
 									"errors": [],
 									"messages": [],
@@ -257,6 +278,78 @@
 											"event:550e8400-e29b-41d4-a716-446655440000"
 										],
 										"total_count": 4,
+										"truncated": false
+									},
+									"success": true
+								}
+							},
+							"single-seed-skeleton": {
+								"summary": "Single seed (default, no expand) — identifier-only nodes",
+								"value": {
+									"errors": [],
+									"messages": [],
+									"result": {
+										"edges": [
+											{
+												"id": "event:550e8400-e29b-41d4-a716-446655440000→indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04:appears_in",
+												"relationshipType": "appears_in",
+												"source": "event:550e8400-e29b-41d4-a716-446655440000",
+												"sourceId": "550e8400-e29b-41d4-a716-446655440000",
+												"sourceType": "event",
+												"target": "indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"targetId": "661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"targetType": "indicator"
+											},
+											{
+												"id": "event:550e8400-e29b-41d4-a716-446655440000→tag:772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71:tagged_with",
+												"relationshipType": "tagged_with",
+												"source": "event:550e8400-e29b-41d4-a716-446655440000",
+												"sourceId": "550e8400-e29b-41d4-a716-446655440000",
+												"sourceType": "event",
+												"target": "tag:772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71",
+												"targetId": "772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71",
+												"targetType": "tag"
+											}
+										],
+										"node": {
+											"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
+											"id": "event:550e8400-e29b-41d4-a716-446655440000",
+											"role": "focal",
+											"type": "event",
+											"uuid": "550e8400-e29b-41d4-a716-446655440000"
+										},
+										"nodes": [
+											{
+												"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
+												"id": "event:550e8400-e29b-41d4-a716-446655440000",
+												"role": "focal",
+												"type": "event",
+												"uuid": "550e8400-e29b-41d4-a716-446655440000"
+											},
+											{
+												"datasetId": "a1b2c3d4-0001-4000-8000-000000000001",
+												"id": "indicator:661fa920-bbf3-4e71-9c55-2a3d8e7f1b04",
+												"type": "indicator",
+												"uuid": "661fa920-bbf3-4e71-9c55-2a3d8e7f1b04"
+											},
+											{
+												"id": "tag:772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71",
+												"type": "tag",
+												"uuid": "772af1c8-dc4a-4a29-b3e6-4f8c9d2a6e71"
+											}
+										]
+									},
+									"result_info": {
+										"count": 3,
+										"cursor": null,
+										"depth_reached": 1,
+										"edge_count": 2,
+										"has_more": false,
+										"query_time_ms": 42,
+										"seeds": [
+											"event:550e8400-e29b-41d4-a716-446655440000"
+										],
+										"total_count": 3,
 										"truncated": false
 									},
 									"success": true

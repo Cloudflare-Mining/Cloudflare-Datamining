@@ -282,7 +282,11 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/access/apps": {
 		"description": "List all Access Applications in a zone.",
@@ -4817,6 +4821,10 @@
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}": {
@@ -9335,6 +9343,10 @@
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /zones/{zone_id}/access/apps/{app_id}/user_policy_checks": {
@@ -9717,7 +9729,11 @@
 			"Access: Apps and Policies Read",
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps.user.policy.checks",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/access/apps/{app_id}/settings": {
 		"description": "Updates application settings.",
@@ -10027,7 +10043,11 @@
 		"summary": "Update application settings",
 		"tags": [
 			"Zone-Level Access applications"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps.settings",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/access/apps": {
 		"description": "Adds a new application to Access.",
@@ -23019,6 +23039,10 @@
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /zones/{zone_id}/access/apps/{app_id}/revoke_tokens": {
@@ -23219,7 +23243,12 @@
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Revoke",
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps.revoke.tokens",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation revokes all service tokens for the application."
 	},
 	"PUT /zones/{zone_id}/access/apps/{app_id}": {
 		"description": "Updates an Access application.",
@@ -36234,6 +36263,10 @@
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PUT /zones/{zone_id}/access/apps/{app_id}/settings": {
@@ -36548,6 +36581,10 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.apps.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

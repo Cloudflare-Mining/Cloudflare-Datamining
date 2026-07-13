@@ -300,7 +300,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.netflow-config",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/sites/{site_id}/netflow_config": {
 		"description": "Get NetFlow configuration for a site.",
@@ -599,7 +603,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.netflow-config",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/magic/sites/{site_id}/netflow_config": {
 		"description": "Updates NetFlow configuration for a site.",
@@ -941,7 +949,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.netflow-config",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/magic/sites/{site_id}/netflow_config": {
 		"description": "Creates a NetFlow configuration for a site.",
@@ -1279,7 +1291,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.netflow-config",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/sites/{site_id}/netflow_config": {
 		"description": "Updates NetFlow configuration for a site (partial update).",
@@ -1621,6 +1637,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.sites.netflow-config",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

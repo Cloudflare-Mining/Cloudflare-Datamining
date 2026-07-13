@@ -383,7 +383,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ssl.universal.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/ssl/universal/settings": {
 		"description": "Patch Universal SSL Settings for a Zone.",
@@ -787,6 +791,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "ssl.universal.settings",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	}
 }

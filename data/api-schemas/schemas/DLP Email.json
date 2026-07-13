@@ -2565,6 +2565,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/email/rules/{rule_id}": {
+		"description": "Updates a DLP email scanning rule.",
 		"operationId": "dlp-email-scanner-update-rule",
 		"parameters": [
 			{

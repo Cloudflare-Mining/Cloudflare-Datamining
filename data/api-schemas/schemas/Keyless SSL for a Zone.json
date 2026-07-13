@@ -402,7 +402,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/keyless_certificates": {
 		"description": "List all Keyless SSL configurations for a given zone.",
@@ -1086,7 +1090,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
 		"description": "Get details for one Keyless SSL configuration.",
@@ -1743,7 +1751,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/keyless_certificates/{keyless_certificate_id}": {
 		"description": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port.",
@@ -2426,7 +2438,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/keyless_certificates": {
 		"description": "Creates a Keyless SSL configuration that allows SSL/TLS termination without exposing private keys to Cloudflare. Keys remain on your infrastructure.",
@@ -3112,6 +3128,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "keyless-certificates",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

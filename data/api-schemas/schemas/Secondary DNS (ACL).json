@@ -395,7 +395,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/secondary_dns/acls": {
 		"description": "List ACLs.",
@@ -887,7 +890,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/secondary_dns/acls/{acl_id}": {
 		"description": "Get ACL.",
@@ -1314,7 +1320,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/secondary_dns/acls": {
 		"description": "Create ACL.",
@@ -1757,7 +1766,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/secondary_dns/acls/{acl_id}": {
 		"description": "Modify ACL.",
@@ -2218,6 +2230,9 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.acls",
+		"x-fern-sdk-method-name": "update"
 	}
 }

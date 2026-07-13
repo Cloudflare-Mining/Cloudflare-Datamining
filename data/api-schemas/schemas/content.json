@@ -1,0 +1,824 @@
+{
+	"GET /accounts/{account_id}/data-security/posture/content": {
+		"description": "List DLP content findings",
+		"operationId": "ListContentAssets",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Direction to order results.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by an DLP profile ID",
+				"in": "query",
+				"name": "dlp_profile_id",
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by an integration ID",
+				"in": "query",
+				"name": "integration_id",
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter to view findings that occurred on or before the affliction date. Can be a date-time in ISO 8601 format or an epoch timestamp.",
+				"in": "query",
+				"name": "max_affliction_date",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter to view findings that occurred on or after the affliction date. Can be a date-time in ISO 8601 format or an epoch timestamp.",
+				"in": "query",
+				"name": "min_affliction_date",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Which field to use when ordering content assets.",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"enum": [
+						"asset_name",
+						"dlp_profile_count",
+						"integration_name",
+						"latest_affliction_date"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "A page number within the paginated result set.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of results to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "A search term.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter by vendor",
+				"in": "query",
+				"name": "vendor",
+				"schema": {
+					"description": "Supported vendor types for integrations.",
+					"enum": [
+						"ANTHROPIC",
+						"AWS",
+						"BITBUCKET",
+						"BOX",
+						"CONFLUENCE",
+						"DROPBOX",
+						"GITHUB",
+						"GOOGLE_CLOUD_PLATFORM",
+						"GOOGLE_WORKSPACE",
+						"JIRA",
+						"MICROSOFT",
+						"MICROSOFT_INTERNAL",
+						"OPENAI",
+						"SALESFORCE",
+						"SERVICENOW",
+						"SLACK"
+					],
+					"example": "GOOGLE_WORKSPACE",
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"description": "Response structure for paginated collections.",
+									"properties": {
+										"errors": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"example": 1000,
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"format": "uri",
+														"type": "string"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"example": "Request processed successfully",
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"example": "/data/attributes/name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array",
+											"uniqueItems": true
+										},
+										"messages": {
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"description": "Error or message code.",
+														"example": 1000,
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"description": "Link to relevant documentation.",
+														"example": "https://developers.cloudflare.com/api/operations/list-findings",
+														"format": "uri",
+														"type": "string"
+													},
+													"message": {
+														"description": "Human-readable message.",
+														"example": "Request processed successfully",
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"description": "JSON pointer to the source of the error.",
+																"example": "/data/attributes/name",
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object"
+											},
+											"type": "array",
+											"uniqueItems": true
+										},
+										"result_info": {
+											"description": "Pagination and result information.",
+											"properties": {
+												"count": {
+													"description": "Total number of results for the requested service.",
+													"example": 1,
+													"type": "integer"
+												},
+												"cursor": {
+													"description": "Cursor for cursor-based pagination.",
+													"example": "eyJpZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMCIsImFmZmxpY3Rpb25fZGF0ZSI6IjE5NzAtMDEtMDFUMDA6MDA6MDAuMDAwMDAwWiJ9",
+													"nullable": true,
+													"type": "string"
+												},
+												"next": {
+													"description": "URL to the next page of results.",
+													"format": "uri",
+													"nullable": true,
+													"type": "string"
+												},
+												"page": {
+													"description": "Current page within paginated list of results.",
+													"example": 1,
+													"type": "integer"
+												},
+												"per_page": {
+													"description": "Number of results per page of results.",
+													"example": 20,
+													"type": "integer"
+												},
+												"previous": {
+													"description": "URL to the previous page of results.",
+													"format": "uri",
+													"nullable": true,
+													"type": "string"
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters.",
+													"example": 2000,
+													"type": "integer"
+												}
+											},
+											"type": "object"
+										},
+										"success": {
+											"description": "Whether the API call was successful.",
+											"example": true,
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success",
+										"errors",
+										"messages",
+										"result_info"
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"description": "Array of content asset objects.",
+											"items": {
+												"description": "Content asset with DLP information.",
+												"properties": {
+													"asset_id": {
+														"description": "Unique identifier for the asset.",
+														"example": "e6910838-4b91-45e9-b2b4-91bb23cb9762",
+														"format": "uuid",
+														"type": "string"
+													},
+													"asset_name": {
+														"description": "Name of the asset.",
+														"example": "Test Asset Name",
+														"type": "string"
+													},
+													"dlp_contexts": {
+														"description": "DLP context information for this asset.",
+														"items": {
+															"description": "DLP context information for a finding.",
+															"properties": {
+																"created": {
+																	"description": "When the DLP context was created.",
+																	"example": "2025-03-18T17:25:38.695977Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																},
+																"deleted": {
+																	"description": "When the DLP context was deleted.",
+																	"example": "2025-03-18T17:25:38.695977Z",
+																	"format": "date-time",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"entry_ids": {
+																	"description": "DLP Entry IDs.",
+																	"example": [
+																		"21befc68-a297-4090-ac10-17a051b901cd",
+																		"d6dd1e16-f78c-401a-b564-45c4e44aa467"
+																	],
+																	"items": {
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"type": "array"
+																},
+																"id": {
+																	"description": "Unique identifier for the DLP context.",
+																	"example": "7653ff3a-d25e-4c10-8034-3460937c045b",
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"match_context_max_extent": {
+																	"description": "DLP Right Boundary of match context.",
+																	"example": 512,
+																	"maximum": 2147483647,
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "integer"
+																},
+																"match_context_min_extent": {
+																	"description": "DLP Left Boundary of match context.",
+																	"example": 1,
+																	"maximum": 2147483647,
+																	"minimum": 0,
+																	"nullable": true,
+																	"type": "integer"
+																},
+																"match_context_payload": {
+																	"additionalProperties": true,
+																	"description": "DLP Match context payload that matched the profile in question.",
+																	"example": {},
+																	"nullable": true,
+																	"type": "object"
+																},
+																"profile_id": {
+																	"description": "DLP Profile ID.",
+																	"example": "ab20a60b-21f2-4b13-ac98-24dcee27ac0e",
+																	"format": "uuid",
+																	"type": "string"
+																},
+																"updated": {
+																	"description": "When the DLP context was last updated.",
+																	"example": "2025-03-18T17:25:38.695977Z",
+																	"format": "date-time",
+																	"readOnly": true,
+																	"type": "string"
+																}
+															},
+															"required": [
+																"created",
+																"entry_ids",
+																"profile_id",
+																"updated"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"dlp_profile_count": {
+														"description": "Number of DLP profiles that flagged this asset.",
+														"example": 2,
+														"type": "integer"
+													},
+													"dlp_profile_ids": {
+														"description": "IDs of DLP profiles that flagged this asset.",
+														"example": [
+															"c12f2059-8df4-43f8-9eb9-d27112d92b63",
+															"822c051b-0bb4-4747-8929-471a1d506eef"
+														],
+														"items": {
+															"format": "uuid",
+															"type": "string"
+														},
+														"type": "array"
+													},
+													"integration": {
+														"description": "Summary information about an integration.",
+														"properties": {
+															"created": {
+																"description": "When entity was created.",
+																"example": "2021-08-10T20:16:11.851451Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"credential_health_status": {
+																"description": "Health status of integration credentials.",
+																"enum": [
+																	"Initializing",
+																	"Healthy",
+																	"Unhealthy"
+																],
+																"example": "Healthy",
+																"type": "string"
+															},
+															"credentials_expiry": {
+																"description": "The date and time when the integration credentials will expire.",
+																"example": "2025-03-18T17:25:38.697902Z",
+																"format": "date-time",
+																"nullable": true,
+																"type": "string"
+															},
+															"id": {
+																"description": "Integration ID.",
+																"example": "c416bc38-75dc-425f-ae25-c37b5df5c37f",
+																"format": "uuid",
+																"type": "string"
+															},
+															"is_paused": {
+																"default": false,
+																"description": "Whether the given integration is paused by the user.",
+																"example": false,
+																"type": "boolean"
+															},
+															"last_hydrated": {
+																"description": "When were the integration credentials last updated.",
+																"example": "2025-03-18T17:25:38.697894Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "Name of the integration.",
+																"example": "Example integration",
+																"maxLength": 256,
+																"type": "string"
+															},
+															"permissions": {
+																"description": "The vendor-specific permissions associated with the integration.",
+																"example": [
+																	"GroupMember.Read.All",
+																	"Group.Read.All"
+																],
+																"items": {
+																	"type": "string"
+																},
+																"readOnly": true,
+																"type": "array"
+															},
+															"policy": {
+																"description": "Policy configuration for an integration.",
+																"example": {
+																	"compliance_level": "standard",
+																	"dlp_enabled": true,
+																	"id": "d647642e-09ac-4b34-8acc-ac30f57adc2c",
+																	"name": "Google Workspace Standard Policy"
+																},
+																"properties": {
+																	"client_id": {
+																		"description": "OAuth client ID for the policy.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"compliance_level": {
+																		"description": "Compliance level for the policy.",
+																		"example": "standard",
+																		"type": "string"
+																	},
+																	"dlp_enabled": {
+																		"description": "Whether DLP is enabled for this policy.",
+																		"example": true,
+																		"type": "boolean"
+																	},
+																	"id": {
+																		"description": "Policy identifier.",
+																		"example": "d647642e-09ac-4b34-8acc-ac30f57adc2c",
+																		"format": "uuid",
+																		"type": "string"
+																	},
+																	"link": {
+																		"description": "Link to policy documentation.",
+																		"format": "uri",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "Policy name.",
+																		"example": "Google Workspace Standard Policy",
+																		"type": "string"
+																	},
+																	"permissions": {
+																		"description": "List of permissions included in the policy.",
+																		"example": [
+																			"https://www.googleapis.com/auth/admin.directory.domain.readonly",
+																			"https://www.googleapis.com/auth/admin.directory.user.readonly"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"type": "object"
+															},
+															"status": {
+																"description": "Current status of the integration.",
+																"example": "Healthy",
+																"readOnly": true,
+																"type": "string"
+															},
+															"updated": {
+																"description": "Last entity was updated.",
+																"example": "2021-08-10T20:16:11.851451Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															},
+															"upgradable": {
+																"description": "Whether the integrations permissions can be updated.",
+																"example": false,
+																"readOnly": true,
+																"type": "boolean"
+															},
+															"upgrade_dismissed": {
+																"default": false,
+																"description": "UI State as to whether a potential permissions upgrade has been dismissed.",
+																"example": false,
+																"type": "boolean"
+															},
+															"vendor": {
+																"description": "Information about a vendor/service provider.",
+																"properties": {
+																	"description": {
+																		"description": "Detailed information about what kinds of issues are detected for this vendor.",
+																		"example": "Identify important security issues across your Google Workspace account ranging from shadow IT, misconfigurations, user access, and more.",
+																		"nullable": true,
+																		"type": "string"
+																	},
+																	"display_name": {
+																		"description": "The display name of the vendor.",
+																		"example": "Google Workspace",
+																		"type": "string"
+																	},
+																	"id": {
+																		"description": "The id of the vendor.",
+																		"example": "R09PR0xFX1dPUktTUEFDRQ==",
+																		"type": "string"
+																	},
+																	"logo": {
+																		"description": "Logo URL for the vendor.",
+																		"example": "https://cdn.vectrix-infra.com/DetectionPack_Logos/GoogleWorkspace/g.png",
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"name": {
+																		"description": "The name of the vendor.",
+																		"example": "GOOGLE_WORKSPACE",
+																		"type": "string"
+																	},
+																	"policies": {
+																		"description": "The policies related to the vendor.",
+																		"example": [],
+																		"items": {
+																			"additionalProperties": true,
+																			"type": "object"
+																		},
+																		"type": "array"
+																	},
+																	"static_logo": {
+																		"description": "Static logo URL for the vendor.",
+																		"example": "https://onprem.cloudflare.come/DetectionPack_Logos/GoogleWorkspace/g.png",
+																		"format": "uri",
+																		"type": "string"
+																	},
+																	"zt_enrollments": {
+																		"description": "The vendor's compatible Zero Trust products.",
+																		"example": [
+																			"casb"
+																		],
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array"
+																	}
+																},
+																"required": [
+																	"description",
+																	"display_name",
+																	"id",
+																	"logo",
+																	"name",
+																	"static_logo",
+																	"zt_enrollments"
+																],
+																"type": "object"
+															},
+															"zt_enrollments": {
+																"description": "Zero Trust products associated with this integration.",
+																"items": {
+																	"description": "Information about a Zero Trust product integration.",
+																	"example": {
+																		"description": "example",
+																		"display_name": "Cloud Access Security Broker",
+																		"enabled": true,
+																		"id": "casb"
+																	},
+																	"properties": {
+																		"description": {
+																			"description": "Brief description of the Zero Trust Product.",
+																			"example": "example",
+																			"type": "string"
+																		},
+																		"display_name": {
+																			"description": "The verbose name of the Zero Trust Product.",
+																			"example": "Cloud Access Security Broker",
+																			"type": "string"
+																		},
+																		"enabled": {
+																			"default": false,
+																			"description": "Flag to enable/disable access to the listed integration from the corresponding Cloudflare product.",
+																			"example": true,
+																			"type": "boolean"
+																		},
+																		"id": {
+																			"description": "The internal identifier of the Zero Trust Product.",
+																			"example": "casb",
+																			"type": "string"
+																		}
+																	},
+																	"type": "object"
+																},
+																"readOnly": true,
+																"type": "array"
+															}
+														},
+														"required": [
+															"created",
+															"last_hydrated",
+															"name",
+															"permissions",
+															"policy",
+															"status",
+															"updated",
+															"upgradable",
+															"vendor",
+															"zt_enrollments"
+														],
+														"type": "object"
+													},
+													"latest_affliction_date": {
+														"description": "Most recent date this asset was flagged.",
+														"example": "2024-10-18T19:53:57.626659Z",
+														"format": "date-time",
+														"type": "string"
+													}
+												},
+												"required": [
+													"asset_id",
+													"asset_name",
+													"latest_affliction_date",
+													"dlp_profile_ids",
+													"dlp_profile_count",
+													"dlp_contexts",
+													"integration"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK: Successful HTTP request"
+			},
+			"400": {
+				"description": "Bad Request: Invalid request parameters"
+			},
+			"429": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Common response structure for all API endpoints.",
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"example": 1000,
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"format": "uri",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"example": "Request processed successfully",
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"example": "/data/attributes/name",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"example": 1000,
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"format": "uri",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"example": "Request processed successfully",
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"example": "/data/attributes/name",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Too Many Requests: Request was rate limited. May include a\n`Retry-After` header.",
+				"headers": {
+					"Retry-After": {
+						"description": "Optional. Indicates how many seconds to wait before retrying.",
+						"schema": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List DLP content findings",
+		"tags": [
+			"content"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	}
+}

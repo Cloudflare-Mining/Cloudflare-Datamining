@@ -725,9 +725,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/search": {
+		"description": "Performs a semantic search query against multiple AI Search instances in parallel, merging the retrieved results into a single ranked response.",
 		"operationId": "ai-search-namespace-multi-instance-search",
 		"parameters": [
 			{
@@ -1323,6 +1325,7 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	}
 }

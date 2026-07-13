@@ -445,7 +445,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.settings",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/devices/settings": {
 		"description": "Describes the current device settings for a Zero Trust account.",
@@ -890,7 +894,11 @@
 		"summary": "Get device settings for a Zero Trust account",
 		"tags": [
 			"Zero Trust accounts"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.settings",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway": {
 		"description": "Retrieve information about the current Zero Trust account.",
@@ -1223,7 +1231,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/configuration": {
 		"description": "Retrieve the current Zero Trust account configuration.",
@@ -2421,7 +2433,11 @@
 		"summary": "Get Zero Trust account configuration",
 		"tags": [
 			"Zero Trust accounts"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.configurations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/configuration/custom_certificate": {
 		"deprecated": true,
@@ -2632,7 +2648,11 @@
 		"summary": "Get Zero Trust certificate configuration",
 		"tags": [
 			"Zero Trust accounts"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.configurations.custom-certificate",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/egress_cidr_pairs": {
 		"description": "Retrieve the list of egress CIDRs allocated to this Zero Trust account.",
@@ -3456,7 +3476,11 @@
 		"summary": "Get logging settings for the Zero Trust account",
 		"tags": [
 			"Zero Trust accounts"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.logging",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/devices/settings": {
 		"description": "Patches the current device settings for a Zero Trust account.",
@@ -3960,7 +3984,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.settings",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/gateway/configuration": {
 		"description": "Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, `certificate`, or `max_ttl_secs` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.",
@@ -5601,7 +5629,11 @@
 		"summary": "Patch Zero Trust account configuration",
 		"tags": [
 			"Zero Trust accounts"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.configurations",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/gateway": {
 		"description": "Create a Zero Trust account for an existing Cloudflare account.",
@@ -5933,7 +5965,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/devices/settings": {
 		"description": "Updates the current device settings for a Zero Trust account.",
@@ -6437,7 +6473,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.devices.settings",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/gateway/configuration": {
 		"description": "Update the current Zero Trust account configuration.",
@@ -8078,7 +8118,11 @@
 		"summary": "Update Zero Trust account configuration",
 		"tags": [
 			"Zero Trust accounts"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.configurations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/gateway/logging": {
 		"description": "Update logging settings for the current Zero Trust account.",
@@ -8635,6 +8679,10 @@
 		"summary": "Update Zero Trust account logging settings",
 		"tags": [
 			"Zero Trust accounts"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.logging",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -209,7 +209,11 @@
 		],
 		"x-api-token-group": [
 			"Workers R2 Storage Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"description": "Deletes an existing R2 bucket.",
@@ -383,7 +387,11 @@
 		],
 		"x-api-token-group": [
 			"Workers R2 Storage Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
 		"description": "Delete the CORS policy for a bucket.",
@@ -561,7 +569,11 @@
 		"summary": "Delete Bucket CORS Policy",
 		"tags": [
 			"R2 Bucket"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.cors",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"description": "Remove custom domain registration from an existing R2 bucket.",
@@ -771,7 +783,11 @@
 		],
 		"x-api-token-group": [
 			"Workers R2 Storage Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"description": "Disables Sippy on this bucket.",
@@ -965,7 +981,11 @@
 		],
 		"x-api-token-group": [
 			"Workers R2 Storage Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.sippy",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration": {
 		"description": "List all event notification rules for a bucket.",
@@ -1326,7 +1346,11 @@
 		"x-api-token-group": [
 			"Workers R2 Storage Write",
 			"Workers R2 Storage Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {
 		"description": "Get a single event notification rule.",
@@ -1684,7 +1708,11 @@
 		"x-api-token-group": [
 			"Workers R2 Storage Write",
 			"Workers R2 Storage Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets": {
 		"description": "Lists all R2 buckets on your account.",
@@ -2002,7 +2030,11 @@
 		"x-api-token-group": [
 			"Workers R2 Storage Write",
 			"Workers R2 Storage Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"description": "Gets properties of an existing R2 bucket.",
@@ -2242,7 +2274,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
 		"description": "Get the CORS policy for a bucket.",
@@ -2502,7 +2538,11 @@
 		"summary": "Get Bucket CORS Policy",
 		"tags": [
 			"R2 Bucket"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.cors",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"description": "Gets a list of all custom domains registered with an existing R2 bucket.",
@@ -2805,7 +2845,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"description": "Get the configuration for a custom domain on an existing R2 bucket.",
@@ -3098,7 +3142,11 @@
 		"x-api-token-group": [
 			"Workers R2 Storage Write",
 			"Workers R2 Storage Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed": {
 		"description": "Gets state of public access over the bucket's R2-managed (r2.dev) domain.",
@@ -3314,7 +3362,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.domains.managed",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
 		"description": "Get object lifecycle rules for a bucket.",
@@ -3696,7 +3748,11 @@
 		"summary": "Get Object Lifecycle Rules",
 		"tags": [
 			"R2 Bucket"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.lifecycle",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
 		"description": "Get the local uploads configuration for a bucket. When enabled, object's data is written to the nearest region first, then asynchronously replicated to the bucket's primary region.",
@@ -3876,7 +3932,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.local-uploads",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
 		"description": "Get lock rules for a bucket.",
@@ -4158,7 +4218,11 @@
 		"summary": "Get Bucket Lock Rules",
 		"tags": [
 			"R2 Bucket"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.locks",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"description": "Gets configuration for Sippy for an existing R2 bucket.",
@@ -4412,7 +4476,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.read"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.sippy",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/r2/buckets/{bucket_name}": {
 		"description": "Updates properties of an existing R2 bucket.",
@@ -4672,7 +4740,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.write"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/r2/buckets": {
 		"description": "Creates a new R2 bucket.",
@@ -4945,7 +5017,11 @@
 		],
 		"x-api-token-group": [
 			"Workers R2 Storage Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom": {
 		"description": "Register a new custom domain for an existing R2 bucket.",
@@ -5234,7 +5310,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.write"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/r2/temp-access-credentials": {
 		"description": "Creates temporary access credentials on a bucket that can be optionally scoped to prefixes or objects.",
@@ -5481,7 +5561,11 @@
 		"summary": "Create Temporary Access Credentials",
 		"tags": [
 			"R2 Bucket"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.temporary-credentials",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/event_notifications/r2/{bucket_name}/configuration/queues/{queue_id}": {
 		"description": "Create event notification rule.",
@@ -5740,7 +5824,11 @@
 		],
 		"x-api-token-group": [
 			"Workers R2 Storage Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.event-notifications",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/cors": {
 		"description": "Set the CORS policy for a bucket.",
@@ -6005,7 +6093,11 @@
 		"summary": "Put Bucket CORS Policy",
 		"tags": [
 			"R2 Bucket"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.cors",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/domains/custom/{domain}": {
 		"description": "Edit the configuration for a custom domain on an existing R2 bucket.",
@@ -6286,7 +6378,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.write"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.domains.custom",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/domains/managed": {
 		"description": "Updates state of public access over the bucket's R2-managed (r2.dev) domain.",
@@ -6525,7 +6621,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.write"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.domains.managed",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lifecycle": {
 		"description": "Set the object lifecycle rules for a bucket.",
@@ -6908,7 +7008,11 @@
 		"summary": "Put Object Lifecycle Rules",
 		"tags": [
 			"R2 Bucket"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.lifecycle",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads": {
 		"description": "Set the local uploads configuration for a bucket. When enabled, object's data is written to the nearest region first, then asynchronously replicated to the bucket's primary region.",
@@ -7095,7 +7199,11 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.write"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.local-uploads",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/lock": {
 		"description": "Set lock rules for a bucket.",
@@ -7378,7 +7486,11 @@
 		"summary": "Put Bucket Lock Rules",
 		"tags": [
 			"R2 Bucket"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.locks",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/r2/buckets/{bucket_name}/sippy": {
 		"description": "Sets configuration for Sippy for an existing R2 bucket.",
@@ -7805,6 +7917,10 @@
 			"enum": [
 				"com.cloudflare.edge.r2.bucket.write"
 			]
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "r2.buckets.sippy",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

@@ -561,7 +561,11 @@
 			"Cloudflare One Connector: cloudflared Read",
 			"Cloudflare Tunnel Write",
 			"Cloudflare Tunnel Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.configurations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
 		"description": "Gets the high-availability configuration for a WARP Connector tunnel.",
@@ -1771,7 +1775,11 @@
 			"Cloudflare One Connectors Write",
 			"Cloudflare One Connector: cloudflared Write",
 			"Cloudflare Tunnel Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.tunnels.cloudflared.configurations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/warp_connector/{tunnel_id}/configurations": {
 		"description": "Adds or updates the high-availability configuration for a WARP Connector tunnel.",

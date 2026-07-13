@@ -182,7 +182,11 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.repos.connections",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/builds/repos/connections": {
 		"description": "Upsert a repository connection for CI/CD integration",
@@ -394,6 +398,10 @@
 		],
 		"x-api-token-group": [
 			"Workers CI Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "workers-builds.repos.connections",
+		"x-fern-sdk-method-name": "upsert",
+		"x-forge-hidden": true
 	}
 }

@@ -395,7 +395,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.peers",
+		"x-fern-sdk-method-name": "delete"
 	},
 	"GET /accounts/{account_id}/secondary_dns/peers": {
 		"description": "List Peers.",
@@ -921,7 +924,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.peers",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/secondary_dns/peers/{peer_id}": {
 		"description": "Get Peer.",
@@ -1382,7 +1388,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.peers",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts/{account_id}/secondary_dns/peers": {
 		"description": "Create Peer.",
@@ -1852,7 +1861,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.peers",
+		"x-fern-sdk-method-name": "create"
 	},
 	"PUT /accounts/{account_id}/secondary_dns/peers/{peer_id}": {
 		"description": "Modify Peer.",
@@ -2364,6 +2376,9 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "dns.zone-transfers.peers",
+		"x-fern-sdk-method-name": "update"
 	}
 }

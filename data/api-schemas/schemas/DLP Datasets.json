@@ -537,6 +537,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/datasets/{dataset_id}": {
+		"description": "Gets a dataset and its latest upload status.",
 		"operationId": "dlp-datasets-read",
 		"parameters": [
 			{

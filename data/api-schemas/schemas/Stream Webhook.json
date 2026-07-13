@@ -251,7 +251,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.webhooks",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/webhook": {
 		"description": "Retrieves a list of webhooks.",
@@ -530,7 +534,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.webhooks",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/stream/webhook": {
 		"description": "Creates a webhook notification.",
@@ -846,6 +854,10 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.webhooks",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

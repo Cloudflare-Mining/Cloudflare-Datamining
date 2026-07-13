@@ -272,7 +272,11 @@
 		],
 		"x-api-token-group": [
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.applications.cas",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/apps/{app_id}/ca": {
 		"description": "Fetches a short-lived certificate CA and its public key.",
@@ -562,7 +566,11 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.applications.cas",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/access/apps/ca": {
 		"description": "Lists short-lived certificate CAs and their public keys.",
@@ -896,7 +904,11 @@
 		"x-api-token-group": [
 			"Access: Apps and Policies Write",
 			"Access: Apps and Policies Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.applications.cas",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/access/apps/{app_id}/ca": {
 		"description": "Generates a new short-lived certificate CA and public key.",
@@ -1185,6 +1197,10 @@
 		],
 		"x-api-token-group": [
 			"Access: Apps and Policies Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.access.applications.cas",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

@@ -61,7 +61,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}": {
 		"description": "Deletes an output and removes it from the associated live input.",
@@ -137,7 +141,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/live_inputs": {
 		"description": "Lists the live inputs created for an account. To get the credentials needed to stream to a specific live input, request a single live input.",
@@ -457,7 +465,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/live_inputs/{live_input_identifier}": {
 		"description": "Retrieves details of an existing live input.",
@@ -962,7 +974,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs": {
 		"description": "Retrieves all outputs associated with a specified live input.",
@@ -1253,7 +1269,11 @@
 		"x-api-token-group": [
 			"Stream Write",
 			"Stream Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/live_inputs": {
 		"description": "Creates a live input, and returns credentials that you or your users can use to stream live video to Cloudflare Stream.",
@@ -1843,7 +1863,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/disable": {
 		"description": "Prevents a live input from being streamed to and makes the live input inaccessible to any future API calls until enabled.",
@@ -2344,7 +2368,12 @@
 		"summary": "Disable a live input",
 		"tags": [
 			"Stream Live Inputs"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs.disable",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation disables a live input. Active streams to it are dropped."
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/enable": {
 		"description": "Allows a live input to be streamed to and makes the live input accessible to any future API calls.",
@@ -2845,7 +2874,11 @@
 		"summary": "Enable a live input",
 		"tags": [
 			"Stream Live Inputs"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs.enable",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs": {
 		"description": "Creates a new output that can be used to simulcast or restream live video to other RTMP or SRT destinations. Outputs are always linked to a specific live input — one live input can have many outputs.",
@@ -3168,7 +3201,11 @@
 		"summary": "Create a new output, connected to a live input",
 		"tags": [
 			"Stream Live Inputs"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/rotate_keys": {
 		"description": "Rotates the credentials for a live input without changing its identifier. Old credentials are revoked, broadcasts using stale credentials are automatically disconnected shortly after rotation, and the response returns refreshed credentials.",
@@ -3669,7 +3706,11 @@
 		"summary": "Rotate keys for a live input",
 		"tags": [
 			"Stream Live Inputs"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs.rotate",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/stream/live_inputs/{live_input_identifier}": {
 		"description": "Updates a specified live input.",
@@ -4271,7 +4312,11 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}": {
 		"description": "Updates the state of an output.",
@@ -4596,6 +4641,10 @@
 		],
 		"x-api-token-group": [
 			"Stream Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "stream.live-inputs.outputs",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

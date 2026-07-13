@@ -300,7 +300,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles": {
 		"description": "List all Zero Trust Gateway PAC files for an account.",
@@ -748,7 +752,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
 		"description": "Get a single Zero Trust Gateway PAC file.",
@@ -1152,7 +1160,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/gateway/pacfiles": {
 		"description": "Create a new Zero Trust Gateway PAC file.",
@@ -1585,7 +1597,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/gateway/pacfiles/{pacfile_id}": {
 		"description": "Update a configured Zero Trust Gateway PAC file.",
@@ -2023,6 +2039,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.pacfiles",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

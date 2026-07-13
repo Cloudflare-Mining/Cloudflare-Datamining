@@ -482,6 +482,18 @@
 			}
 		}
 	],
+	"PARAMETERS /accounts/{account_id}/browser-extension/config": [
+		{
+			"description": "Cloudflare account ID.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"minLength": 1,
+				"type": "string"
+			}
+		}
+	],
 	"PARAMETERS /accounts/{account_id}/challenges/widgets": [
 		{
 			"in": "path",
@@ -623,6 +635,54 @@
 		}
 	],
 	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}/exec": [
+		{
+			"description": "Account identifier.",
+			"in": "path",
+			"name": "account_id",
+			"required": true,
+			"schema": {
+				"example": "account-123",
+				"type": "string"
+			}
+		}
+	],
+	"PARAMETERS /accounts/{account_id}/containers/applications/{application_id}/instances/{instance_id}/fetch": [
 		{
 			"description": "Account identifier.",
 			"in": "path",

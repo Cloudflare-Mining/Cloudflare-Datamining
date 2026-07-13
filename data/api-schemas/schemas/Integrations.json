@@ -982,7 +982,7 @@
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/one/integrations": {
-		"description": "Creates a new integration for the specified application.",
+		"description": "Creates a new integration for the specified application. Integration creation with OAuth is not supported by API at the moment. For other auth methods, use `GET /v2/applications/{slug}/credential-guide` to see the required credential structure and example payloads for each vendor.",
 		"operationId": "create_integration_v2",
 		"parameters": [
 			{
@@ -1026,8 +1026,10 @@
 						"description": "Serializer for v2 integration create requests.",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BOX` - BOX\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 								"enum": [
+									"BOX",
+									"DROPBOX",
 									"GITHUB",
 									"GOOGLE_WORKSPACE",
 									"MICROSOFT_INTERNAL",
@@ -1120,8 +1122,10 @@
 						"description": "Serializer for v2 integration create requests.",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BOX` - BOX\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 								"enum": [
+									"BOX",
+									"DROPBOX",
 									"GITHUB",
 									"GOOGLE_WORKSPACE",
 									"MICROSOFT_INTERNAL",
@@ -1191,8 +1195,10 @@
 						"description": "Serializer for v2 integration create requests.",
 						"properties": {
 							"application": {
-								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
+								"description": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).\n\n* `BOX` - BOX\n* `DROPBOX` - DROPBOX\n* `GITHUB` - GITHUB\n* `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE\n* `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL\n* `SALESFORCE` - SALESFORCE\n* `SLACK` - SLACK",
 								"enum": [
+									"BOX",
+									"DROPBOX",
 									"GITHUB",
 									"GOOGLE_WORKSPACE",
 									"MICROSOFT_INTERNAL",

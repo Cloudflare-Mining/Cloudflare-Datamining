@@ -624,7 +624,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.queries",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/observability/queries": {
 		"description": "List saved queries.",
@@ -1290,7 +1294,11 @@
 		"x-api-token-group": [
 			"Workers Observability Write",
 			"Workers Observability Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.queries",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/observability/queries/{queryId}": {
 		"description": "Retrieve a saved query.",
@@ -1918,7 +1926,11 @@
 		"x-api-token-group": [
 			"Workers Observability Write",
 			"Workers Observability Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.queries",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/observability/queries/{queryId}": {
 		"description": "Update saved query.",
@@ -2906,7 +2918,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.queries",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/observability/queries": {
 		"description": "Persist query for later use.",
@@ -3884,6 +3900,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.queries",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

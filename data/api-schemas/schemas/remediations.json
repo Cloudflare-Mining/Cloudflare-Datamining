@@ -1,0 +1,1151 @@
+{
+	"GET /accounts/{account_id}/data-security/posture/remediations/jobs": {
+		"description": "List all remediation jobs tied to a specific Cloudflare Account. Note that `cursor` and `page` are mutually exclusive.",
+		"operationId": "ListRemediationJobs",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "A cursor for pagination.",
+				"in": "query",
+				"name": "cursor",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "A page number within the paginated result set.",
+				"in": "query",
+				"name": "page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "Number of results to return per page.",
+				"in": "query",
+				"name": "per_page",
+				"schema": {
+					"type": "integer"
+				}
+			},
+			{
+				"description": "A search term.",
+				"in": "query",
+				"name": "search",
+				"schema": {
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter to view remediations updated on or after the min updated datetime. Can be a date-time in ISO 8601 format or an epoch timestamp.",
+				"in": "query",
+				"name": "min_updated_at",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter to view remediations updated on or before the max updated datetime. Can be a date-time in ISO 8601 format or an epoch timestamp.",
+				"in": "query",
+				"name": "max_updated_at",
+				"schema": {
+					"format": "date-time",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter to view remediations with the given status.",
+				"in": "query",
+				"name": "status",
+				"schema": {
+					"description": "Status of a remediation job.",
+					"enum": [
+						"pending",
+						"processing",
+						"completed",
+						"failed",
+						"validating"
+					],
+					"example": "pending",
+					"type": "string"
+				}
+			},
+			{
+				"description": "Filter remediations by what kind of actor triggered them. Supports multiple comma-separated values (`user`, `account_token`, or `workflow`).",
+				"example": [
+					"user",
+					"workflow"
+				],
+				"explode": false,
+				"in": "query",
+				"name": "triggered_by_actor",
+				"schema": {
+					"items": {
+						"description": "Type of actor that triggered the remediation job.",
+						"enum": [
+							"user",
+							"account_token",
+							"workflow"
+						],
+						"example": "user",
+						"type": "string"
+					},
+					"type": "array"
+				},
+				"style": "form"
+			},
+			{
+				"description": "Filter by an integration ID",
+				"in": "query",
+				"name": "integration_id",
+				"schema": {
+					"format": "uuid",
+					"type": "string"
+				}
+			},
+			{
+				"description": "An optional param to sort the results by the given field.",
+				"in": "query",
+				"name": "order",
+				"schema": {
+					"enum": [
+						"created_at",
+						"affliction_date",
+						"integration_name",
+						"status",
+						"last_updated_at",
+						"asset_name",
+						"finding_type_name"
+					],
+					"type": "string"
+				}
+			},
+			{
+				"description": "Direction to order results.",
+				"in": "query",
+				"name": "direction",
+				"schema": {
+					"enum": [
+						"asc",
+						"desc"
+					],
+					"type": "string"
+				}
+			}
+		],
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Paginated list of remediation jobs.",
+							"properties": {
+								"errors": {
+									"description": "Array of error messages.",
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"description": "Array of informational messages.",
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"description": "Array of remediation job objects.",
+									"items": {
+										"description": "Information about a remediation job.",
+										"properties": {
+											"asset": {
+												"description": "Asset information for a remediation job.",
+												"properties": {
+													"category": {
+														"description": "Category information for a remediation job asset.",
+														"properties": {
+															"service": {
+																"description": "Specific service within the vendor.",
+																"example": "OneDrive",
+																"type": "string"
+															},
+															"type": {
+																"description": "Asset type.",
+																"example": "SaaS",
+																"type": "string"
+															},
+															"vendor": {
+																"description": "Display names for vendor types.",
+																"enum": [
+																	"AWS",
+																	"Anthropic",
+																	"Bitbucket",
+																	"Box",
+																	"Confluence",
+																	"Dropbox",
+																	"GitHub",
+																	"Google Cloud Platform",
+																	"Google Workspace",
+																	"Jira",
+																	"Microsoft",
+																	"Microsoft Internal",
+																	"Okta",
+																	"OpenAI",
+																	"Slack",
+																	"Salesforce",
+																	"ServiceNow",
+																	"Workday",
+																	"Zoom"
+																],
+																"example": "Google Workspace",
+																"type": "string"
+															}
+														},
+														"required": [
+															"type",
+															"vendor",
+															"service"
+														],
+														"type": "object"
+													},
+													"external_id": {
+														"description": "External identifier from the source system.",
+														"example": "c416bc38-75db-425f-ae25-c37b5df5c37f",
+														"type": "string"
+													},
+													"fields": {
+														"description": "Additional fields associated with the asset.",
+														"items": {
+															"description": "Additional field information for a remediation job asset.",
+															"properties": {
+																"link": {
+																	"description": "Optional link associated with the field.",
+																	"example": "https://dashboard.microsoft.com/files/details",
+																	"format": "uri",
+																	"nullable": true,
+																	"type": "string"
+																},
+																"name": {
+																	"description": "Field name.",
+																	"example": "File Name",
+																	"type": "string"
+																},
+																"value": {
+																	"description": "Field value (can be string, number, or boolean).",
+																	"example": "sensitive-document.xlsx",
+																	"oneOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "boolean"
+																		}
+																	],
+																	"type": "string"
+																}
+															},
+															"required": [
+																"name",
+																"value"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"id": {
+														"description": "Unique identifier for the asset.",
+														"example": "a1b2c3d4-5678-9abc-def0-123456789abc",
+														"format": "uuid",
+														"type": "string"
+													},
+													"link": {
+														"description": "Direct link to the asset.",
+														"example": "https://dashboard.microsoft.com/files/details",
+														"format": "uri",
+														"nullable": true,
+														"type": "string"
+													},
+													"name": {
+														"description": "Human-readable name of the asset.",
+														"example": "Microsoft File Publicly Accessible",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"external_id",
+													"name",
+													"fields",
+													"category"
+												],
+												"type": "object"
+											},
+											"created_at": {
+												"description": "When the remediation job was created.",
+												"example": "2025-07-07T18:39:13.123456Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"finding_id": {
+												"description": "Encoded finding ID.",
+												"example": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAxOjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMgo=",
+												"type": "string"
+											},
+											"finding_instance_id": {
+												"description": "ID of the finding instance being remediated.",
+												"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e",
+												"format": "uuid",
+												"type": "string"
+											},
+											"finding_type_id": {
+												"description": "ID of the finding type.",
+												"example": "775c5f38-efcf-4b2b-93db-8428979eb6a2",
+												"format": "uuid",
+												"type": "string"
+											},
+											"finding_type_name": {
+												"description": "Name of the finding type.",
+												"example": "Microsoft: File publicly accessible with edit access",
+												"type": "string"
+											},
+											"id": {
+												"description": "Unique identifier for the remediation job.",
+												"example": "c416bc38-75db-425f-ae25-c37b5df5c37f",
+												"format": "uuid",
+												"type": "string"
+											},
+											"integration_name": {
+												"description": "Name of the integration.",
+												"example": "Microsoft",
+												"type": "string"
+											},
+											"last_updated": {
+												"description": "When the remediation job was last updated.",
+												"example": "2025-07-07T18:39:13.123456Z",
+												"format": "date-time",
+												"type": "string"
+											},
+											"remediation_type": {
+												"description": "Type of remediation being performed.",
+												"example": "Remove publicly accessible edit url",
+												"type": "string"
+											},
+											"status": {
+												"description": "Status of a remediation job.",
+												"enum": [
+													"pending",
+													"processing",
+													"completed",
+													"failed",
+													"validating"
+												],
+												"example": "pending",
+												"type": "string"
+											},
+											"triggered_by_actor": {
+												"description": "Type of actor that triggered the remediation job. Null on legacy rows created before this column was populated.",
+												"enum": [
+													"user",
+													"account_token",
+													"workflow",
+													null
+												],
+												"example": "user",
+												"nullable": true,
+												"type": "string"
+											},
+											"triggered_by_id": {
+												"description": "ID of the actor that triggered the job. User tag when actor is \"user\", account tag when \"account_token\", workflow config UUID when \"workflow\". Null on legacy rows.",
+												"example": "0123456789abcdef0123456789abcdef",
+												"nullable": true,
+												"type": "string"
+											},
+											"triggered_by_user": {
+												"description": "Email of the user who triggered the remediation. For account-token actors this is the literal \"Account API Token\"; for workflow actors this is empty.",
+												"example": "user@example.com",
+												"type": "string"
+											}
+										},
+										"required": [
+											"id",
+											"status",
+											"finding_instance_id",
+											"finding_type_id",
+											"finding_id",
+											"finding_type_name",
+											"remediation_type",
+											"integration_name",
+											"triggered_by_user",
+											"created_at",
+											"last_updated",
+											"asset"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result_info": {
+									"properties": {
+										"count": {
+											"description": "Number of results on current page.",
+											"example": 2,
+											"type": "integer"
+										},
+										"cursor": {
+											"description": "Cursor for pagination.",
+											"example": "next_cursor_value",
+											"nullable": true,
+											"type": "string"
+										},
+										"page": {
+											"description": "Current page number.",
+											"example": 1,
+											"type": "integer"
+										},
+										"per_page": {
+											"description": "Number of results per page.",
+											"example": 10,
+											"type": "integer"
+										},
+										"total_count": {
+											"description": "Total number of results.",
+											"example": 2,
+											"type": "integer"
+										}
+									},
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result_info",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK: Successful HTTP request"
+			},
+			"400": {
+				"description": "Bad Request: Invalid request parameters"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "List remediation jobs",
+		"tags": [
+			"remediations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Read",
+			"Zero Trust Write"
+		]
+	},
+	"POST /accounts/{account_id}/data-security/posture/remediations/jobs": {
+		"description": "Create one or more remediation jobs tied to a specific Cloudflare Account.",
+		"operationId": "CreateRemediationJobs",
+		"parameters": [
+			{
+				"description": "Cloudflare account ID for the user making the request.",
+				"example": "46148281d8a93d002ef242d8b0d5f9f6",
+				"in": "path",
+				"name": "account_id",
+				"required": true,
+				"schema": {
+					"type": "string"
+				}
+			}
+		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body for creating remediation jobs.",
+						"properties": {
+							"finding_instance_ids": {
+								"description": "UUIDs identifying Finding Instances.",
+								"example": [
+									"3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e",
+									"ab7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d7g"
+								],
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"remediation_type_id": {
+								"description": "A UUID identifying this Remediation Type.",
+								"example": "5a7d9e2f-1b3c-4d5e-8f6a-7b8c9d0e1f2a",
+								"format": "uuid",
+								"type": "string"
+							}
+						},
+						"required": [
+							"finding_instance_ids",
+							"remediation_type_id"
+						],
+						"type": "object"
+					}
+				}
+			}
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Response for remediation job creation requests.",
+							"properties": {
+								"errors": {
+									"description": "Array of error messages.",
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"description": "Array of informational messages.",
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"created": {
+											"description": "Successfully created remediation jobs.",
+											"items": {
+												"description": "Information about a remediation job.",
+												"properties": {
+													"asset": {
+														"description": "Asset information for a remediation job.",
+														"properties": {
+															"category": {
+																"description": "Category information for a remediation job asset.",
+																"properties": {
+																	"service": {
+																		"description": "Specific service within the vendor.",
+																		"example": "OneDrive",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Asset type.",
+																		"example": "SaaS",
+																		"type": "string"
+																	},
+																	"vendor": {
+																		"description": "Display names for vendor types.",
+																		"enum": [
+																			"AWS",
+																			"Anthropic",
+																			"Bitbucket",
+																			"Box",
+																			"Confluence",
+																			"Dropbox",
+																			"GitHub",
+																			"Google Cloud Platform",
+																			"Google Workspace",
+																			"Jira",
+																			"Microsoft",
+																			"Microsoft Internal",
+																			"Okta",
+																			"OpenAI",
+																			"Slack",
+																			"Salesforce",
+																			"ServiceNow",
+																			"Workday",
+																			"Zoom"
+																		],
+																		"example": "Google Workspace",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"vendor",
+																	"service"
+																],
+																"type": "object"
+															},
+															"external_id": {
+																"description": "External identifier from the source system.",
+																"example": "c416bc38-75db-425f-ae25-c37b5df5c37f",
+																"type": "string"
+															},
+															"fields": {
+																"description": "Additional fields associated with the asset.",
+																"items": {
+																	"description": "Additional field information for a remediation job asset.",
+																	"properties": {
+																		"link": {
+																			"description": "Optional link associated with the field.",
+																			"example": "https://dashboard.microsoft.com/files/details",
+																			"format": "uri",
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "Field name.",
+																			"example": "File Name",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Field value (can be string, number, or boolean).",
+																			"example": "sensitive-document.xlsx",
+																			"oneOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				}
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"value"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"id": {
+																"description": "Unique identifier for the asset.",
+																"example": "a1b2c3d4-5678-9abc-def0-123456789abc",
+																"format": "uuid",
+																"type": "string"
+															},
+															"link": {
+																"description": "Direct link to the asset.",
+																"example": "https://dashboard.microsoft.com/files/details",
+																"format": "uri",
+																"nullable": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "Human-readable name of the asset.",
+																"example": "Microsoft File Publicly Accessible",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"external_id",
+															"name",
+															"fields",
+															"category"
+														],
+														"type": "object"
+													},
+													"created_at": {
+														"description": "When the remediation job was created.",
+														"example": "2025-07-07T18:39:13.123456Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"finding_id": {
+														"description": "Encoded finding ID.",
+														"example": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAxOjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMgo=",
+														"type": "string"
+													},
+													"finding_instance_id": {
+														"description": "ID of the finding instance being remediated.",
+														"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e",
+														"format": "uuid",
+														"type": "string"
+													},
+													"finding_type_id": {
+														"description": "ID of the finding type.",
+														"example": "775c5f38-efcf-4b2b-93db-8428979eb6a2",
+														"format": "uuid",
+														"type": "string"
+													},
+													"finding_type_name": {
+														"description": "Name of the finding type.",
+														"example": "Microsoft: File publicly accessible with edit access",
+														"type": "string"
+													},
+													"id": {
+														"description": "Unique identifier for the remediation job.",
+														"example": "c416bc38-75db-425f-ae25-c37b5df5c37f",
+														"format": "uuid",
+														"type": "string"
+													},
+													"integration_name": {
+														"description": "Name of the integration.",
+														"example": "Microsoft",
+														"type": "string"
+													},
+													"last_updated": {
+														"description": "When the remediation job was last updated.",
+														"example": "2025-07-07T18:39:13.123456Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"remediation_type": {
+														"description": "Type of remediation being performed.",
+														"example": "Remove publicly accessible edit url",
+														"type": "string"
+													},
+													"status": {
+														"description": "Status of a remediation job.",
+														"enum": [
+															"pending",
+															"processing",
+															"completed",
+															"failed",
+															"validating"
+														],
+														"example": "pending",
+														"type": "string"
+													},
+													"triggered_by_actor": {
+														"description": "Type of actor that triggered the remediation job. Null on legacy rows created before this column was populated.",
+														"enum": [
+															"user",
+															"account_token",
+															"workflow",
+															null
+														],
+														"example": "user",
+														"nullable": true,
+														"type": "string"
+													},
+													"triggered_by_id": {
+														"description": "ID of the actor that triggered the job. User tag when actor is \"user\", account tag when \"account_token\", workflow config UUID when \"workflow\". Null on legacy rows.",
+														"example": "0123456789abcdef0123456789abcdef",
+														"nullable": true,
+														"type": "string"
+													},
+													"triggered_by_user": {
+														"description": "Email of the user who triggered the remediation. For account-token actors this is the literal \"Account API Token\"; for workflow actors this is empty.",
+														"example": "user@example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"status",
+													"finding_instance_id",
+													"finding_type_id",
+													"finding_id",
+													"finding_type_name",
+													"remediation_type",
+													"integration_name",
+													"triggered_by_user",
+													"created_at",
+													"last_updated",
+													"asset"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"failed": {
+											"description": "Failed remediation job creation attempts.",
+											"items": {
+												"description": "Information about a failed remediation job creation.",
+												"properties": {
+													"error": {
+														"description": "Error message describing the failure.",
+														"example": "Failed to create remediation job",
+														"type": "string"
+													},
+													"finding_instance_id": {
+														"description": "ID of the finding instance that failed to create a remediation job.",
+														"example": "2e6b4c8a-9d1f-4e3b-8c7a-5f9e2d1a6b4c",
+														"format": "uuid",
+														"type": "string"
+													}
+												},
+												"required": [
+													"finding_instance_id",
+													"error"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"created",
+										"failed"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "OK: Successful HTTP request"
+			},
+			"400": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Response for remediation job creation requests.",
+							"properties": {
+								"errors": {
+									"description": "Array of error messages.",
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"messages": {
+									"description": "Array of informational messages.",
+									"example": [],
+									"items": {
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"result": {
+									"properties": {
+										"created": {
+											"description": "Successfully created remediation jobs.",
+											"items": {
+												"description": "Information about a remediation job.",
+												"properties": {
+													"asset": {
+														"description": "Asset information for a remediation job.",
+														"properties": {
+															"category": {
+																"description": "Category information for a remediation job asset.",
+																"properties": {
+																	"service": {
+																		"description": "Specific service within the vendor.",
+																		"example": "OneDrive",
+																		"type": "string"
+																	},
+																	"type": {
+																		"description": "Asset type.",
+																		"example": "SaaS",
+																		"type": "string"
+																	},
+																	"vendor": {
+																		"description": "Display names for vendor types.",
+																		"enum": [
+																			"AWS",
+																			"Anthropic",
+																			"Bitbucket",
+																			"Box",
+																			"Confluence",
+																			"Dropbox",
+																			"GitHub",
+																			"Google Cloud Platform",
+																			"Google Workspace",
+																			"Jira",
+																			"Microsoft",
+																			"Microsoft Internal",
+																			"Okta",
+																			"OpenAI",
+																			"Slack",
+																			"Salesforce",
+																			"ServiceNow",
+																			"Workday",
+																			"Zoom"
+																		],
+																		"example": "Google Workspace",
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"type",
+																	"vendor",
+																	"service"
+																],
+																"type": "object"
+															},
+															"external_id": {
+																"description": "External identifier from the source system.",
+																"example": "c416bc38-75db-425f-ae25-c37b5df5c37f",
+																"type": "string"
+															},
+															"fields": {
+																"description": "Additional fields associated with the asset.",
+																"items": {
+																	"description": "Additional field information for a remediation job asset.",
+																	"properties": {
+																		"link": {
+																			"description": "Optional link associated with the field.",
+																			"example": "https://dashboard.microsoft.com/files/details",
+																			"format": "uri",
+																			"nullable": true,
+																			"type": "string"
+																		},
+																		"name": {
+																			"description": "Field name.",
+																			"example": "File Name",
+																			"type": "string"
+																		},
+																		"value": {
+																			"description": "Field value (can be string, number, or boolean).",
+																			"example": "sensitive-document.xlsx",
+																			"oneOf": [
+																				{
+																					"type": "string"
+																				},
+																				{
+																					"type": "number"
+																				},
+																				{
+																					"type": "boolean"
+																				}
+																			],
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"value"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"id": {
+																"description": "Unique identifier for the asset.",
+																"example": "a1b2c3d4-5678-9abc-def0-123456789abc",
+																"format": "uuid",
+																"type": "string"
+															},
+															"link": {
+																"description": "Direct link to the asset.",
+																"example": "https://dashboard.microsoft.com/files/details",
+																"format": "uri",
+																"nullable": true,
+																"type": "string"
+															},
+															"name": {
+																"description": "Human-readable name of the asset.",
+																"example": "Microsoft File Publicly Accessible",
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"external_id",
+															"name",
+															"fields",
+															"category"
+														],
+														"type": "object"
+													},
+													"created_at": {
+														"description": "When the remediation job was created.",
+														"example": "2025-07-07T18:39:13.123456Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"finding_id": {
+														"description": "Encoded finding ID.",
+														"example": "MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAxOjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMgo=",
+														"type": "string"
+													},
+													"finding_instance_id": {
+														"description": "ID of the finding instance being remediated.",
+														"example": "3f7b8c9d-6e5a-4f3b-9c2d-1e0a8b7c6d5e",
+														"format": "uuid",
+														"type": "string"
+													},
+													"finding_type_id": {
+														"description": "ID of the finding type.",
+														"example": "775c5f38-efcf-4b2b-93db-8428979eb6a2",
+														"format": "uuid",
+														"type": "string"
+													},
+													"finding_type_name": {
+														"description": "Name of the finding type.",
+														"example": "Microsoft: File publicly accessible with edit access",
+														"type": "string"
+													},
+													"id": {
+														"description": "Unique identifier for the remediation job.",
+														"example": "c416bc38-75db-425f-ae25-c37b5df5c37f",
+														"format": "uuid",
+														"type": "string"
+													},
+													"integration_name": {
+														"description": "Name of the integration.",
+														"example": "Microsoft",
+														"type": "string"
+													},
+													"last_updated": {
+														"description": "When the remediation job was last updated.",
+														"example": "2025-07-07T18:39:13.123456Z",
+														"format": "date-time",
+														"type": "string"
+													},
+													"remediation_type": {
+														"description": "Type of remediation being performed.",
+														"example": "Remove publicly accessible edit url",
+														"type": "string"
+													},
+													"status": {
+														"description": "Status of a remediation job.",
+														"enum": [
+															"pending",
+															"processing",
+															"completed",
+															"failed",
+															"validating"
+														],
+														"example": "pending",
+														"type": "string"
+													},
+													"triggered_by_actor": {
+														"description": "Type of actor that triggered the remediation job. Null on legacy rows created before this column was populated.",
+														"enum": [
+															"user",
+															"account_token",
+															"workflow",
+															null
+														],
+														"example": "user",
+														"nullable": true,
+														"type": "string"
+													},
+													"triggered_by_id": {
+														"description": "ID of the actor that triggered the job. User tag when actor is \"user\", account tag when \"account_token\", workflow config UUID when \"workflow\". Null on legacy rows.",
+														"example": "0123456789abcdef0123456789abcdef",
+														"nullable": true,
+														"type": "string"
+													},
+													"triggered_by_user": {
+														"description": "Email of the user who triggered the remediation. For account-token actors this is the literal \"Account API Token\"; for workflow actors this is empty.",
+														"example": "user@example.com",
+														"type": "string"
+													}
+												},
+												"required": [
+													"id",
+													"status",
+													"finding_instance_id",
+													"finding_type_id",
+													"finding_id",
+													"finding_type_name",
+													"remediation_type",
+													"integration_name",
+													"triggered_by_user",
+													"created_at",
+													"last_updated",
+													"asset"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"failed": {
+											"description": "Failed remediation job creation attempts.",
+											"items": {
+												"description": "Information about a failed remediation job creation.",
+												"properties": {
+													"error": {
+														"description": "Error message describing the failure.",
+														"example": "Failed to create remediation job",
+														"type": "string"
+													},
+													"finding_instance_id": {
+														"description": "ID of the finding instance that failed to create a remediation job.",
+														"example": "2e6b4c8a-9d1f-4e3b-8c7a-5f9e2d1a6b4c",
+														"format": "uuid",
+														"type": "string"
+													}
+												},
+												"required": [
+													"finding_instance_id",
+													"error"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"required": [
+										"created",
+										"failed"
+									],
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"example": true,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Bad Request: Invalid request parameters"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			}
+		],
+		"summary": "Creates remediation jobs",
+		"tags": [
+			"remediations"
+		],
+		"x-api-token-group": [
+			"Zero Trust Write"
+		]
+	}
+}

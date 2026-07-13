@@ -1,5 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/dlp/data_tag_categories/{category_id}": {
+		"description": "Deletes a data tag category and its tags.",
 		"operationId": "dlp-data-tag-categories-delete",
 		"parameters": [
 			{
@@ -258,6 +259,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/data_tag_categories": {
+		"description": "Lists data tag categories configured for the account.",
 		"operationId": "dlp-data-tag-categories-list",
 		"parameters": [
 			{
@@ -576,6 +578,7 @@
 		]
 	},
 	"GET /accounts/{account_id}/dlp/data_tag_categories/{category_id}": {
+		"description": "Gets a data tag category and its tags.",
 		"operationId": "dlp-data-tag-categories-read",
 		"parameters": [
 			{
@@ -900,6 +903,7 @@
 		]
 	},
 	"POST /accounts/{account_id}/dlp/data_tag_categories": {
+		"description": "Creates a data tag category, optionally from a template.",
 		"operationId": "dlp-data-tag-categories-create",
 		"parameters": [
 			{
@@ -1267,6 +1271,7 @@
 		]
 	},
 	"PUT /accounts/{account_id}/dlp/data_tag_categories/{category_id}": {
+		"description": "Updates a data tag category and its tags.",
 		"operationId": "dlp-data-tag-categories-update",
 		"parameters": [
 			{

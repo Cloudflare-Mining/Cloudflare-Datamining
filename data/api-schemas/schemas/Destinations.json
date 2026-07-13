@@ -322,7 +322,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.destinations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/workers/observability/destinations": {
 		"description": "List your Workers Observability Telemetry Destinations.",
@@ -710,7 +714,11 @@
 		"x-api-token-group": [
 			"Workers Observability Write",
 			"Workers Observability Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.destinations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/workers/observability/destinations/{slug}": {
 		"description": "Update an existing Workers Observability Telemetry Destination.",
@@ -1136,7 +1144,11 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.destinations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/workers/observability/destinations": {
 		"description": "Create a new Workers Observability Telemetry Destination.",
@@ -1526,6 +1538,10 @@
 		],
 		"x-api-token-group": [
 			"Workers Observability Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "observability.destinations",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

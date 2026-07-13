@@ -305,7 +305,11 @@
 		"summary": "Delete a Zero Trust Gateway rule",
 		"tags": [
 			"Zero Trust Gateway rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/rules": {
 		"description": "List Zero Trust Gateway rules for an account.",
@@ -595,7 +599,7 @@
 																	"type": "array",
 																	"x-auditable": true
 																},
-																"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																"example": {
 																	"My-Next-Header": [
 																		"foo",
@@ -809,6 +813,20 @@
 																	}
 																},
 																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"delete_headers": {
+																"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																"example": [
+																	"X-Old-Header",
+																	"X-Remove-Me"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"nullable": true,
+																"type": "array",
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"dns_resolvers": {
@@ -1128,6 +1146,24 @@
 																"nullable": true,
 																"type": "boolean",
 																"x-auditable": true,
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"set_headers": {
+																"additionalProperties": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																"example": {
+																	"X-User-Identity": [
+																		"user=@{identity.name}"
+																	]
+																},
+																"nullable": true,
+																"type": "object",
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"untrusted_cert": {
@@ -1552,7 +1588,7 @@
 																			"type": "array",
 																			"x-auditable": true
 																		},
-																		"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																		"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																		"example": {
 																			"My-Next-Header": [
 																				"foo",
@@ -1766,6 +1802,20 @@
 																			}
 																		},
 																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"delete_headers": {
+																		"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																		"example": [
+																			"X-Old-Header",
+																			"X-Remove-Me"
+																		],
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"nullable": true,
+																		"type": "array",
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"dns_resolvers": {
@@ -2087,6 +2137,24 @@
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "optional"
 																	},
+																	"set_headers": {
+																		"additionalProperties": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
+																		"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																		"example": {
+																			"X-User-Identity": [
+																				"user=@{identity.name}"
+																			]
+																		},
+																		"nullable": true,
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
 																	"untrusted_cert": {
 																		"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
 																		"nullable": true,
@@ -2332,7 +2400,11 @@
 		"summary": "List Zero Trust Gateway rules",
 		"tags": [
 			"Zero Trust Gateway rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/rules/{rule_id}": {
 		"description": "Get a single Zero Trust Gateway rule.",
@@ -2603,7 +2675,7 @@
 																"type": "array",
 																"x-auditable": true
 															},
-															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 															"example": {
 																"My-Next-Header": [
 																	"foo",
@@ -2817,6 +2889,20 @@
 																}
 															},
 															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"delete_headers": {
+															"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+															"example": [
+																"X-Old-Header",
+																"X-Remove-Me"
+															],
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"nullable": true,
+															"type": "array",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"dns_resolvers": {
@@ -3136,6 +3222,24 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"set_headers": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+															"example": {
+																"X-User-Identity": [
+																	"user=@{identity.name}"
+																]
+															},
+															"nullable": true,
+															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
@@ -3527,7 +3631,7 @@
 																		"type": "array",
 																		"x-auditable": true
 																	},
-																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																	"example": {
 																		"My-Next-Header": [
 																			"foo",
@@ -3741,6 +3845,20 @@
 																		}
 																	},
 																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"delete_headers": {
+																	"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																	"example": [
+																		"X-Old-Header",
+																		"X-Remove-Me"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"nullable": true,
+																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"dns_resolvers": {
@@ -4062,6 +4180,24 @@
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "optional"
 																},
+																"set_headers": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																	"example": {
+																		"X-User-Identity": [
+																			"user=@{identity.name}"
+																		]
+																	},
+																	"nullable": true,
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
 																	"nullable": true,
@@ -4304,7 +4440,11 @@
 		"summary": "Get Zero Trust Gateway rule details.",
 		"tags": [
 			"Zero Trust Gateway rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/rules/tenant": {
 		"description": "List Zero Trust Gateway rules for the parent account of an account in the MSP configuration.",
@@ -4594,7 +4734,7 @@
 																	"type": "array",
 																	"x-auditable": true
 																},
-																"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																"example": {
 																	"My-Next-Header": [
 																		"foo",
@@ -4808,6 +4948,20 @@
 																	}
 																},
 																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"delete_headers": {
+																"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																"example": [
+																	"X-Old-Header",
+																	"X-Remove-Me"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"nullable": true,
+																"type": "array",
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"dns_resolvers": {
@@ -5127,6 +5281,24 @@
 																"nullable": true,
 																"type": "boolean",
 																"x-auditable": true,
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"set_headers": {
+																"additionalProperties": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																"example": {
+																	"X-User-Identity": [
+																		"user=@{identity.name}"
+																	]
+																},
+																"nullable": true,
+																"type": "object",
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"untrusted_cert": {
@@ -5551,7 +5723,7 @@
 																			"type": "array",
 																			"x-auditable": true
 																		},
-																		"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																		"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																		"example": {
 																			"My-Next-Header": [
 																				"foo",
@@ -5765,6 +5937,20 @@
 																			}
 																		},
 																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"delete_headers": {
+																		"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																		"example": [
+																			"X-Old-Header",
+																			"X-Remove-Me"
+																		],
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"nullable": true,
+																		"type": "array",
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"dns_resolvers": {
@@ -6086,6 +6272,24 @@
 																		"x-auditable": true,
 																		"x-stainless-terraform-configurability": "optional"
 																	},
+																	"set_headers": {
+																		"additionalProperties": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
+																		"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																		"example": {
+																			"X-User-Identity": [
+																				"user=@{identity.name}"
+																			]
+																		},
+																		"nullable": true,
+																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
 																	"untrusted_cert": {
 																		"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
 																		"nullable": true,
@@ -6331,7 +6535,11 @@
 		"summary": "List Zero Trust Gateway rules inherited from the parent account",
 		"tags": [
 			"Zero Trust Gateway rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
+		"x-fern-sdk-method-name": "list-tenant",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/gateway/rules": {
 		"description": "Update select fields of multiple Zero Trust Gateway rules in a single request. This is commonly used to reorder rules by updating their precedence values. Only the fields provided for each rule are updated.",
@@ -6671,7 +6879,7 @@
 																	"type": "array",
 																	"x-auditable": true
 																},
-																"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																"example": {
 																	"My-Next-Header": [
 																		"foo",
@@ -6885,6 +7093,20 @@
 																	}
 																},
 																"type": "object",
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"delete_headers": {
+																"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																"example": [
+																	"X-Old-Header",
+																	"X-Remove-Me"
+																],
+																"items": {
+																	"type": "string",
+																	"x-auditable": true
+																},
+																"nullable": true,
+																"type": "array",
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"dns_resolvers": {
@@ -7204,6 +7426,24 @@
 																"nullable": true,
 																"type": "boolean",
 																"x-auditable": true,
+																"x-stainless-terraform-configurability": "optional"
+															},
+															"set_headers": {
+																"additionalProperties": {
+																	"items": {
+																		"type": "string"
+																	},
+																	"type": "array",
+																	"x-auditable": true
+																},
+																"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																"example": {
+																	"X-User-Identity": [
+																		"user=@{identity.name}"
+																	]
+																},
+																"nullable": true,
+																"type": "object",
 																"x-stainless-terraform-configurability": "optional"
 															},
 															"untrusted_cert": {
@@ -7625,7 +7865,7 @@
 																			"type": "array",
 																			"x-auditable": true
 																		},
-																		"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																		"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																		"example": {
 																			"My-Next-Header": [
 																				"foo",
@@ -7839,6 +8079,20 @@
 																			}
 																		},
 																		"type": "object",
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"delete_headers": {
+																		"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																		"example": [
+																			"X-Old-Header",
+																			"X-Remove-Me"
+																		],
+																		"items": {
+																			"type": "string",
+																			"x-auditable": true
+																		},
+																		"nullable": true,
+																		"type": "array",
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"dns_resolvers": {
@@ -8158,6 +8412,24 @@
 																		"nullable": true,
 																		"type": "boolean",
 																		"x-auditable": true,
+																		"x-stainless-terraform-configurability": "optional"
+																	},
+																	"set_headers": {
+																		"additionalProperties": {
+																			"items": {
+																				"type": "string"
+																			},
+																			"type": "array",
+																			"x-auditable": true
+																		},
+																		"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																		"example": {
+																			"X-User-Identity": [
+																				"user=@{identity.name}"
+																			]
+																		},
+																		"nullable": true,
+																		"type": "object",
 																		"x-stainless-terraform-configurability": "optional"
 																	},
 																	"untrusted_cert": {
@@ -8713,7 +8985,7 @@
 																"type": "array",
 																"x-auditable": true
 															},
-															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 															"example": {
 																"My-Next-Header": [
 																	"foo",
@@ -8927,6 +9199,20 @@
 																}
 															},
 															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"delete_headers": {
+															"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+															"example": [
+																"X-Old-Header",
+																"X-Remove-Me"
+															],
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"nullable": true,
+															"type": "array",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"dns_resolvers": {
@@ -9246,6 +9532,24 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"set_headers": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+															"example": {
+																"X-User-Identity": [
+																	"user=@{identity.name}"
+																]
+															},
+															"nullable": true,
+															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
@@ -9634,7 +9938,7 @@
 																		"type": "array",
 																		"x-auditable": true
 																	},
-																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																	"example": {
 																		"My-Next-Header": [
 																			"foo",
@@ -9848,6 +10152,20 @@
 																		}
 																	},
 																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"delete_headers": {
+																	"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																	"example": [
+																		"X-Old-Header",
+																		"X-Remove-Me"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"nullable": true,
+																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"dns_resolvers": {
@@ -10167,6 +10485,24 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"set_headers": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																	"example": {
+																		"X-User-Identity": [
+																			"user=@{identity.name}"
+																		]
+																	},
+																	"nullable": true,
+																	"type": "object",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"untrusted_cert": {
@@ -10573,7 +10909,7 @@
 											"type": "array",
 											"x-auditable": true
 										},
-										"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+										"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 										"example": {
 											"My-Next-Header": [
 												"foo",
@@ -10787,6 +11123,20 @@
 											}
 										},
 										"type": "object",
+										"x-stainless-terraform-configurability": "optional"
+									},
+									"delete_headers": {
+										"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+										"example": [
+											"X-Old-Header",
+											"X-Remove-Me"
+										],
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"nullable": true,
+										"type": "array",
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"dns_resolvers": {
@@ -11106,6 +11456,24 @@
 										"nullable": true,
 										"type": "boolean",
 										"x-auditable": true,
+										"x-stainless-terraform-configurability": "optional"
+									},
+									"set_headers": {
+										"additionalProperties": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array",
+											"x-auditable": true
+										},
+										"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+										"example": {
+											"X-User-Identity": [
+												"user=@{identity.name}"
+											]
+										},
+										"nullable": true,
+										"type": "object",
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"untrusted_cert": {
@@ -11448,7 +11816,7 @@
 																"type": "array",
 																"x-auditable": true
 															},
-															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 															"example": {
 																"My-Next-Header": [
 																	"foo",
@@ -11662,6 +12030,20 @@
 																}
 															},
 															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"delete_headers": {
+															"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+															"example": [
+																"X-Old-Header",
+																"X-Remove-Me"
+															],
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"nullable": true,
+															"type": "array",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"dns_resolvers": {
@@ -11981,6 +12363,24 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"set_headers": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+															"example": {
+																"X-User-Identity": [
+																	"user=@{identity.name}"
+																]
+															},
+															"nullable": true,
+															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
@@ -12372,7 +12772,7 @@
 																		"type": "array",
 																		"x-auditable": true
 																	},
-																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																	"example": {
 																		"My-Next-Header": [
 																			"foo",
@@ -12586,6 +12986,20 @@
 																		}
 																	},
 																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"delete_headers": {
+																	"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																	"example": [
+																		"X-Old-Header",
+																		"X-Remove-Me"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"nullable": true,
+																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"dns_resolvers": {
@@ -12907,6 +13321,24 @@
 																	"x-auditable": true,
 																	"x-stainless-terraform-configurability": "optional"
 																},
+																"set_headers": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																	"example": {
+																		"X-User-Identity": [
+																			"user=@{identity.name}"
+																		]
+																	},
+																	"nullable": true,
+																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
 																"untrusted_cert": {
 																	"description": "Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.",
 																	"nullable": true,
@@ -13150,7 +13582,11 @@
 		"summary": "Create a Zero Trust Gateway rule",
 		"tags": [
 			"Zero Trust Gateway rules"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.rules",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/gateway/rules/{rule_id}/reset_expiration": {
 		"description": "Resets the expiration of a Zero Trust Gateway Rule if its duration elapsed and it has a default duration. The Zero Trust Gateway Rule must have values  for both `expiration.expires_at` and `expiration.duration`.",
@@ -13421,7 +13857,7 @@
 																"type": "array",
 																"x-auditable": true
 															},
-															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 															"example": {
 																"My-Next-Header": [
 																	"foo",
@@ -13635,6 +14071,20 @@
 																}
 															},
 															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"delete_headers": {
+															"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+															"example": [
+																"X-Old-Header",
+																"X-Remove-Me"
+															],
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"nullable": true,
+															"type": "array",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"dns_resolvers": {
@@ -13954,6 +14404,24 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"set_headers": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+															"example": {
+																"X-User-Identity": [
+																	"user=@{identity.name}"
+																]
+															},
+															"nullable": true,
+															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
@@ -14342,7 +14810,7 @@
 																		"type": "array",
 																		"x-auditable": true
 																	},
-																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																	"example": {
 																		"My-Next-Header": [
 																			"foo",
@@ -14556,6 +15024,20 @@
 																		}
 																	},
 																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"delete_headers": {
+																	"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																	"example": [
+																		"X-Old-Header",
+																		"X-Remove-Me"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"nullable": true,
+																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"dns_resolvers": {
@@ -14875,6 +15357,24 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"set_headers": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																	"example": {
+																		"X-User-Identity": [
+																			"user=@{identity.name}"
+																		]
+																	},
+																	"nullable": true,
+																	"type": "object",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"untrusted_cert": {
@@ -15293,7 +15793,7 @@
 											"type": "array",
 											"x-auditable": true
 										},
-										"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+										"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 										"example": {
 											"My-Next-Header": [
 												"foo",
@@ -15507,6 +16007,20 @@
 											}
 										},
 										"type": "object",
+										"x-stainless-terraform-configurability": "optional"
+									},
+									"delete_headers": {
+										"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+										"example": [
+											"X-Old-Header",
+											"X-Remove-Me"
+										],
+										"items": {
+											"type": "string",
+											"x-auditable": true
+										},
+										"nullable": true,
+										"type": "array",
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"dns_resolvers": {
@@ -15826,6 +16340,24 @@
 										"nullable": true,
 										"type": "boolean",
 										"x-auditable": true,
+										"x-stainless-terraform-configurability": "optional"
+									},
+									"set_headers": {
+										"additionalProperties": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array",
+											"x-auditable": true
+										},
+										"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+										"example": {
+											"X-User-Identity": [
+												"user=@{identity.name}"
+											]
+										},
+										"nullable": true,
+										"type": "object",
 										"x-stainless-terraform-configurability": "optional"
 									},
 									"untrusted_cert": {
@@ -16168,7 +16700,7 @@
 																"type": "array",
 																"x-auditable": true
 															},
-															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+															"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 															"example": {
 																"My-Next-Header": [
 																	"foo",
@@ -16382,6 +16914,20 @@
 																}
 															},
 															"type": "object",
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"delete_headers": {
+															"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+															"example": [
+																"X-Old-Header",
+																"X-Remove-Me"
+															],
+															"items": {
+																"type": "string",
+																"x-auditable": true
+															},
+															"nullable": true,
+															"type": "array",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"dns_resolvers": {
@@ -16701,6 +17247,24 @@
 															"nullable": true,
 															"type": "boolean",
 															"x-auditable": true,
+															"x-stainless-terraform-configurability": "optional"
+														},
+														"set_headers": {
+															"additionalProperties": {
+																"items": {
+																	"type": "string"
+																},
+																"type": "array",
+																"x-auditable": true
+															},
+															"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+															"example": {
+																"X-User-Identity": [
+																	"user=@{identity.name}"
+																]
+															},
+															"nullable": true,
+															"type": "object",
 															"x-stainless-terraform-configurability": "optional"
 														},
 														"untrusted_cert": {
@@ -17092,7 +17656,7 @@
 																		"type": "array",
 																		"x-auditable": true
 																	},
-																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.",
+																	"description": "Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
 																	"example": {
 																		"My-Next-Header": [
 																			"foo",
@@ -17306,6 +17870,20 @@
 																		}
 																	},
 																	"type": "object",
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"delete_headers": {
+																	"description": "Remove headers from allowed requests by name. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes. Settable only for `http` rules with the action set to `allow`.",
+																	"example": [
+																		"X-Old-Header",
+																		"X-Remove-Me"
+																	],
+																	"items": {
+																		"type": "string",
+																		"x-auditable": true
+																	},
+																	"nullable": true,
+																	"type": "array",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"dns_resolvers": {
@@ -17625,6 +18203,24 @@
 																	"nullable": true,
 																	"type": "boolean",
 																	"x-auditable": true,
+																	"x-stainless-terraform-configurability": "optional"
+																},
+																"set_headers": {
+																	"additionalProperties": {
+																		"items": {
+																			"type": "string"
+																		},
+																		"type": "array",
+																		"x-auditable": true
+																	},
+																	"description": "Replace existing headers on allowed requests with the specified key-value pairs. If a header does not exist, it is added. Header values may contain `@{selector.name}` variable references that are interpolated at the edge. Use `@@{` to escape a literal `@{`. A maximum of 20 header operations (add + set + delete) is allowed per policy. Each header name may not exceed 256 bytes and each header value may not exceed 4 KB. Settable only for `http` rules with the action set to `allow`.",
+																	"example": {
+																		"X-User-Identity": [
+																			"user=@{identity.name}"
+																		]
+																	},
+																	"nullable": true,
+																	"type": "object",
 																	"x-stainless-terraform-configurability": "optional"
 																},
 																"untrusted_cert": {

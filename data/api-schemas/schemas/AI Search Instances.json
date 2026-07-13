@@ -1,6 +1,6 @@
 {
 	"DELETE /accounts/{account_id}/ai-search/instances/{id}": {
-		"description": "Delete instance.",
+		"description": "Permanently delete an AI Search instance and all its indexed data.",
 		"operationId": "ai-search-delete-instance",
 		"parameters": [
 			{
@@ -215,6 +215,7 @@
 												"@cf/google/embeddinggemma-300m",
 												"google-ai-studio/gemini-embedding-001",
 												"google-ai-studio/gemini-embedding-2-preview",
+												"google-ai-studio/gemini-embedding-2",
 												"openai/text-embedding-3-small",
 												"openai/text-embedding-3-large",
 												"",
@@ -489,8 +490,7 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -840,7 +840,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete instance.",
+		"summary": "Delete an AI Search instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -854,10 +854,14 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This will permanently delete the AI Search instance and all its indexed data."
 	},
 	"DELETE /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
-		"description": "Delete instance.",
+		"description": "Permanently delete an AI Search instance and all its indexed data.",
 		"operationId": "ai-search-namespace-delete-instance",
 		"parameters": [
 			{
@@ -1082,6 +1086,7 @@
 												"@cf/google/embeddinggemma-300m",
 												"google-ai-studio/gemini-embedding-001",
 												"google-ai-studio/gemini-embedding-2-preview",
+												"google-ai-studio/gemini-embedding-2",
 												"openai/text-embedding-3-small",
 												"openai/text-embedding-3-large",
 												"",
@@ -1356,8 +1361,7 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -1707,7 +1711,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Delete instance.",
+		"summary": "Delete an AI Search instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -1721,10 +1725,15 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-require-confirmation": "This will permanently delete the AI Search instance and all its indexed data."
 	},
 	"GET /accounts/{account_id}/ai-search/instances": {
-		"description": "List instances.",
+		"description": "List all AI Search instances in the account.",
 		"operationId": "ai-search-list-instances",
 		"parameters": [
 			{
@@ -2002,6 +2011,7 @@
 													"@cf/google/embeddinggemma-300m",
 													"google-ai-studio/gemini-embedding-001",
 													"google-ai-studio/gemini-embedding-2-preview",
+													"google-ai-studio/gemini-embedding-2",
 													"openai/text-embedding-3-small",
 													"openai/text-embedding-3-large",
 													"",
@@ -2276,8 +2286,7 @@
 														"type": "array"
 													},
 													"keyword_match_mode": {
-														"default": "and",
-														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 														"enum": [
 															"and",
 															"or"
@@ -2663,7 +2672,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "List instances.",
+		"summary": "List AI Search instances.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -2677,10 +2686,13 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}": {
-		"description": "Read instance.",
+		"description": "Retrieve the configuration and status of an AI Search instance.",
 		"operationId": "ai-search-fetch-instance",
 		"parameters": [
 			{
@@ -2895,6 +2907,7 @@
 												"@cf/google/embeddinggemma-300m",
 												"google-ai-studio/gemini-embedding-001",
 												"google-ai-studio/gemini-embedding-2-preview",
+												"google-ai-studio/gemini-embedding-2",
 												"openai/text-embedding-3-small",
 												"openai/text-embedding-3-large",
 												"",
@@ -3169,8 +3182,7 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -3520,7 +3532,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Read instance.",
+		"summary": "Get an AI Search instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -3534,10 +3546,13 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/ai-search/instances/{id}/stats": {
-		"description": "Retrieves usage statistics for AI Search instances.",
+		"description": "Retrieve usage and indexing statistics for an AI Search instance.",
 		"operationId": "ai-search-stats",
 		"parameters": [
 			{
@@ -3716,7 +3731,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Stats",
+		"summary": "Get instance statistics.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -3730,10 +3745,13 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "stats"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances": {
-		"description": "List instances.",
+		"description": "List all AI Search instances in the account.",
 		"operationId": "ai-search-namespace-list-instances",
 		"parameters": [
 			{
@@ -4021,6 +4039,7 @@
 													"@cf/google/embeddinggemma-300m",
 													"google-ai-studio/gemini-embedding-001",
 													"google-ai-studio/gemini-embedding-2-preview",
+													"google-ai-studio/gemini-embedding-2",
 													"openai/text-embedding-3-small",
 													"openai/text-embedding-3-large",
 													"",
@@ -4295,8 +4314,7 @@
 														"type": "array"
 													},
 													"keyword_match_mode": {
-														"default": "and",
-														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+														"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 														"enum": [
 															"and",
 															"or"
@@ -4682,7 +4700,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "List instances.",
+		"summary": "List AI Search instances.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -4696,10 +4714,14 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "list"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
-		"description": "Read instance.",
+		"description": "Retrieve the configuration and status of an AI Search instance.",
 		"operationId": "ai-search-namespace-fetch-instance",
 		"parameters": [
 			{
@@ -4924,6 +4946,7 @@
 												"@cf/google/embeddinggemma-300m",
 												"google-ai-studio/gemini-embedding-001",
 												"google-ai-studio/gemini-embedding-2-preview",
+												"google-ai-studio/gemini-embedding-2",
 												"openai/text-embedding-3-small",
 												"openai/text-embedding-3-large",
 												"",
@@ -5198,8 +5221,7 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -5549,7 +5571,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Read instance.",
+		"summary": "Get an AI Search instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -5563,10 +5585,14 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "get"
 	},
 	"GET /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/stats": {
-		"description": "Retrieves usage statistics for AI Search instances.",
+		"description": "Retrieve usage and indexing statistics for an AI Search instance.",
 		"operationId": "ai-search-namespace-stats",
 		"parameters": [
 			{
@@ -5755,7 +5781,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Stats",
+		"summary": "Get instance statistics.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -5769,10 +5795,14 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "stats"
 	},
 	"POST /accounts/{account_id}/ai-search/instances": {
-		"description": "Create a new instance.",
+		"description": "Create a new AI Search instance with the given configuration.",
 		"operationId": "ai-search-create-instance",
 		"parameters": [
 			{
@@ -5970,6 +6000,7 @@
 									"@cf/google/embeddinggemma-300m",
 									"google-ai-studio/gemini-embedding-001",
 									"google-ai-studio/gemini-embedding-2-preview",
+									"google-ai-studio/gemini-embedding-2",
 									"openai/text-embedding-3-small",
 									"openai/text-embedding-3-large",
 									"",
@@ -6202,8 +6233,7 @@
 										"type": "array"
 									},
 									"keyword_match_mode": {
-										"default": "and",
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 										"enum": [
 											"and",
 											"or"
@@ -6678,6 +6708,7 @@
 												"@cf/google/embeddinggemma-300m",
 												"google-ai-studio/gemini-embedding-001",
 												"google-ai-studio/gemini-embedding-2-preview",
+												"google-ai-studio/gemini-embedding-2",
 												"openai/text-embedding-3-small",
 												"openai/text-embedding-3-large",
 												"",
@@ -6952,8 +6983,7 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -7343,7 +7373,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create new instance.",
+		"summary": "Create an AI Search instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -7357,7 +7387,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/ai-search/instances/{id}/chat/completions": {
 		"description": "Performs a chat completion request against an AI Search instance, using indexed content as context for generating responses.",
@@ -8051,7 +8084,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"POST /accounts/{account_id}/ai-search/instances/{id}/search": {
 		"description": "Executes a semantic search query against an AI Search instance to find relevant indexed content.",
@@ -8614,10 +8648,13 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "search"
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances": {
-		"description": "Create a new instance.",
+		"description": "Create a new AI Search instance with the given configuration.",
 		"operationId": "ai-search-namespace-create-instance",
 		"parameters": [
 			{
@@ -8825,6 +8862,7 @@
 									"@cf/google/embeddinggemma-300m",
 									"google-ai-studio/gemini-embedding-001",
 									"google-ai-studio/gemini-embedding-2-preview",
+									"google-ai-studio/gemini-embedding-2",
 									"openai/text-embedding-3-small",
 									"openai/text-embedding-3-large",
 									"",
@@ -9057,8 +9095,7 @@
 										"type": "array"
 									},
 									"keyword_match_mode": {
-										"default": "and",
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 										"enum": [
 											"and",
 											"or"
@@ -9533,6 +9570,7 @@
 												"@cf/google/embeddinggemma-300m",
 												"google-ai-studio/gemini-embedding-001",
 												"google-ai-studio/gemini-embedding-2-preview",
+												"google-ai-studio/gemini-embedding-2",
 												"openai/text-embedding-3-small",
 												"openai/text-embedding-3-large",
 												"",
@@ -9807,8 +9845,7 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -10198,7 +10235,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Create new instance.",
+		"summary": "Create an AI Search instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -10212,7 +10249,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/chat/completions": {
 		"description": "Performs a chat completion request against an AI Search instance, using indexed content as context for generating responses.",
@@ -10916,7 +10957,8 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-ignore": true
 	},
 	"POST /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/search": {
 		"description": "Executes a semantic search query against an AI Search instance to find relevant indexed content.",
@@ -11489,10 +11531,14 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "search"
 	},
 	"PUT /accounts/{account_id}/ai-search/instances/{id}": {
-		"description": "Update instance.",
+		"description": "Update the configuration of an AI Search instance.",
 		"operationId": "ai-search-update-instance",
 		"parameters": [
 			{
@@ -11699,6 +11745,7 @@
 									"@cf/google/embeddinggemma-300m",
 									"google-ai-studio/gemini-embedding-001",
 									"google-ai-studio/gemini-embedding-2-preview",
+									"google-ai-studio/gemini-embedding-2",
 									"openai/text-embedding-3-small",
 									"openai/text-embedding-3-large",
 									"",
@@ -11920,8 +11967,7 @@
 										"type": "array"
 									},
 									"keyword_match_mode": {
-										"default": "and",
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 										"enum": [
 											"and",
 											"or"
@@ -12441,6 +12487,7 @@
 												"@cf/google/embeddinggemma-300m",
 												"google-ai-studio/gemini-embedding-001",
 												"google-ai-studio/gemini-embedding-2-preview",
+												"google-ai-studio/gemini-embedding-2",
 												"openai/text-embedding-3-small",
 												"openai/text-embedding-3-large",
 												"",
@@ -12715,8 +12762,7 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -13106,7 +13152,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update instance.",
+		"summary": "Update an AI Search instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -13120,10 +13166,13 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "update"
 	},
 	"PUT /accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}": {
-		"description": "Update instance.",
+		"description": "Update the configuration of an AI Search instance.",
 		"operationId": "ai-search-namespace-update-instance",
 		"parameters": [
 			{
@@ -13340,6 +13389,7 @@
 									"@cf/google/embeddinggemma-300m",
 									"google-ai-studio/gemini-embedding-001",
 									"google-ai-studio/gemini-embedding-2-preview",
+									"google-ai-studio/gemini-embedding-2",
 									"openai/text-embedding-3-small",
 									"openai/text-embedding-3-large",
 									"",
@@ -13561,8 +13611,7 @@
 										"type": "array"
 									},
 									"keyword_match_mode": {
-										"default": "and",
-										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+										"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 										"enum": [
 											"and",
 											"or"
@@ -14082,6 +14131,7 @@
 												"@cf/google/embeddinggemma-300m",
 												"google-ai-studio/gemini-embedding-001",
 												"google-ai-studio/gemini-embedding-2-preview",
+												"google-ai-studio/gemini-embedding-2",
 												"openai/text-embedding-3-small",
 												"openai/text-embedding-3-large",
 												"",
@@ -14356,8 +14406,7 @@
 													"type": "array"
 												},
 												"keyword_match_mode": {
-													"default": "and",
-													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.",
+													"description": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'.",
 													"enum": [
 														"and",
 														"or"
@@ -14747,7 +14796,7 @@
 				"api_key": []
 			}
 		],
-		"summary": "Update instance.",
+		"summary": "Update an AI Search instance.",
 		"tags": [
 			"AI Search Instances"
 		],
@@ -14761,6 +14810,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "beta",
+		"x-fern-ignore": true,
+		"x-fern-sdk-group-name": "ai-search",
+		"x-fern-sdk-method-name": "update"
 	}
 }

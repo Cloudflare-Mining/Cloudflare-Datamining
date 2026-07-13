@@ -890,7 +890,11 @@
 		"summary": "List proxy endpoints",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
 		"description": "Get a single Zero Trust Gateway proxy endpoint.",
@@ -1421,7 +1425,11 @@
 		"summary": "Get a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/gateway/proxy_endpoints/{proxy_endpoint_id}": {
 		"description": "Update a configured Zero Trust Gateway proxy endpoint.",
@@ -2572,6 +2580,10 @@
 		"summary": "Create a proxy endpoint",
 		"tags": [
 			"Zero Trust Gateway proxy endpoints"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "zero-trust.gateway.proxy-endpoints",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

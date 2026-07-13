@@ -251,6 +251,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -499,6 +503,294 @@
 			}
 		],
 		"summary": "Delete a blocked email sender",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
+		"x-stability": "beta"
+	},
+	"DELETE /accounts/{account_id}/email-security/settings/domains": {
+		"deprecated": true,
+		"description": "Deprecated. Use the batch endpoint instead.",
+		"operationId": "email_security_delete_domains",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"items": {
+							"properties": {
+								"id": {
+									"description": "Domain identifier",
+									"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+									"format": "uuid",
+									"type": "string",
+									"x-auditable": true
+								}
+							},
+							"required": [
+								"id"
+							],
+							"type": "object"
+						},
+						"minItems": 1,
+						"type": "array"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"200": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"properties": {
+													"id": {
+														"description": "Domain identifier",
+														"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+														"format": "uuid",
+														"type": "string",
+														"x-auditable": true
+													}
+												},
+												"required": [
+													"id"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Deleted domains"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Unprotect multiple email domains",
 		"tags": [
 			"Email Security Settings"
 		],
@@ -1523,6 +1815,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"DELETE /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
@@ -1877,7 +2173,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+							"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 							"enum": [
 								"EMAIL",
 								"DOMAIN",
@@ -2130,6 +2426,7 @@
 														"readOnly": true
 													},
 													"pattern": {
+														"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 														"example": "test@example.com",
 														"maxLength": 1024,
 														"minLength": 1,
@@ -2137,7 +2434,7 @@
 														"x-auditable": true
 													},
 													"pattern_type": {
-														"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+														"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 														"enum": [
 															"EMAIL",
 															"DOMAIN",
@@ -2304,6 +2601,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/allow_policies/{policy_id}": {
@@ -2509,6 +2810,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -2516,7 +2818,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -2681,6 +2983,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/block_senders": {
@@ -2749,7 +3055,7 @@
 				"schema": {
 					"allOf": [
 						{
-							"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+							"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 							"enum": [
 								"EMAIL",
 								"DOMAIN",
@@ -2961,6 +3267,7 @@
 														"readOnly": true
 													},
 													"pattern": {
+														"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 														"example": "test@example.com",
 														"maxLength": 1024,
 														"minLength": 1,
@@ -2968,7 +3275,7 @@
 														"x-auditable": true
 													},
 													"pattern_type": {
-														"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+														"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 														"enum": [
 															"EMAIL",
 															"DOMAIN",
@@ -3287,6 +3594,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -3294,7 +3602,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -3568,8 +3876,10 @@
 						"pending",
 						"active",
 						"failed",
-						"timeout"
+						"timeout",
+						null
 					],
+					"nullable": true,
 					"type": "string"
 				}
 			}
@@ -3751,8 +4061,10 @@
 														"enum": [
 															"none",
 															"good",
-															"invalid"
+															"invalid",
+															null
 														],
+														"nullable": true,
 														"type": "string"
 													},
 													"domain": {
@@ -3804,8 +4116,10 @@
 													"folder": {
 														"enum": [
 															"AllItems",
-															"Inbox"
+															"Inbox",
+															null
 														],
+														"nullable": true,
 														"type": "string"
 													},
 													"id": {
@@ -3899,8 +4213,10 @@
 															"good",
 															"neutral",
 															"open",
-															"invalid"
+															"invalid",
+															null
 														],
+														"nullable": true,
 														"type": "string"
 													},
 													"status": {
@@ -3908,8 +4224,10 @@
 															"pending",
 															"active",
 															"failed",
-															"timeout"
+															"timeout",
+															null
 														],
+														"nullable": true,
 														"type": "string"
 													},
 													"transport": {
@@ -4212,8 +4530,10 @@
 													"enum": [
 														"none",
 														"good",
-														"invalid"
+														"invalid",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"domain": {
@@ -4265,8 +4585,10 @@
 												"folder": {
 													"enum": [
 														"AllItems",
-														"Inbox"
+														"Inbox",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"id": {
@@ -4360,8 +4682,10 @@
 														"good",
 														"neutral",
 														"open",
-														"invalid"
+														"invalid",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"status": {
@@ -4369,8 +4693,10 @@
 														"pending",
 														"active",
 														"failed",
-														"timeout"
+														"timeout",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"transport": {
@@ -4520,6 +4846,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.domains",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/domains/{domain_id}/verification": {
@@ -4621,7 +4951,6 @@
 								{
 									"properties": {
 										"result": {
-											"additionalProperties": false,
 											"properties": {
 												"last_checked_at": {
 													"description": "When the last DNS TXT check was attempted, if any.",
@@ -4634,8 +4963,10 @@
 														"pending",
 														"active",
 														"failed",
-														"timeout"
+														"timeout",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"txt_record_name": {
@@ -7065,6 +7396,10 @@
 			"Cloud Email Security: Write",
 			"Cloud Email Security: Read"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/email-security/settings/url_ignore_patterns": {
@@ -7840,6 +8175,7 @@
 										"readOnly": true
 									},
 									"pattern": {
+										"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 										"example": "test@example.com",
 										"maxLength": 1024,
 										"minLength": 1,
@@ -7847,7 +8183,7 @@
 										"x-auditable": true
 									},
 									"pattern_type": {
-										"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 										"enum": [
 											"EMAIL",
 											"DOMAIN",
@@ -8080,6 +8416,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -8087,7 +8424,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -8251,6 +8588,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/block_senders/{pattern_id}": {
@@ -8324,6 +8665,7 @@
 										"readOnly": true
 									},
 									"pattern": {
+										"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 										"example": "test@example.com",
 										"maxLength": 1024,
 										"minLength": 1,
@@ -8331,7 +8673,7 @@
 										"x-auditable": true
 									},
 									"pattern_type": {
-										"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 										"enum": [
 											"EMAIL",
 											"DOMAIN",
@@ -8511,6 +8853,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -8518,7 +8861,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -8671,6 +9014,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.block-senders",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/domains/{domain_id}": {
@@ -8680,7 +9027,6 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
 						"properties": {
 							"allowed_delivery_modes": {
 								"items": {
@@ -8720,8 +9066,10 @@
 							"folder": {
 								"enum": [
 									"AllItems",
-									"Inbox"
+									"Inbox",
+									null
 								],
+								"nullable": true,
 								"type": "string"
 							},
 							"integration_id": {
@@ -8925,8 +9273,10 @@
 													"enum": [
 														"none",
 														"good",
-														"invalid"
+														"invalid",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"domain": {
@@ -8978,8 +9328,10 @@
 												"folder": {
 													"enum": [
 														"AllItems",
-														"Inbox"
+														"Inbox",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"id": {
@@ -9073,8 +9425,10 @@
 														"good",
 														"neutral",
 														"open",
-														"invalid"
+														"invalid",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"status": {
@@ -9082,8 +9436,10 @@
 														"pending",
 														"active",
 														"failed",
-														"timeout"
+														"timeout",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"transport": {
@@ -10508,6 +10864,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"PATCH /accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}": {
@@ -10954,6 +11314,7 @@
 										"readOnly": true
 									},
 									"pattern": {
+										"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 										"example": "test@example.com",
 										"maxLength": 1024,
 										"minLength": 1,
@@ -10961,7 +11322,7 @@
 										"x-auditable": true
 									},
 									"pattern_type": {
-										"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 										"enum": [
 											"EMAIL",
 											"DOMAIN",
@@ -11202,6 +11563,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -11209,7 +11571,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -11373,6 +11735,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.allow-policies",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/allow_policies/batch": {
@@ -11512,6 +11878,7 @@
 															"readOnly": true
 														},
 														"pattern": {
+															"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 															"example": "test@example.com",
 															"maxLength": 1024,
 															"minLength": 1,
@@ -11519,7 +11886,7 @@
 															"x-auditable": true
 														},
 														"pattern_type": {
-															"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+															"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 															"enum": [
 																"EMAIL",
 																"DOMAIN",
@@ -11680,6 +12047,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -11687,7 +12055,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -11835,6 +12203,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -11842,7 +12211,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -12125,6 +12494,7 @@
 																"readOnly": true
 															},
 															"pattern": {
+																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -12132,7 +12502,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -12265,6 +12635,7 @@
 																"readOnly": true
 															},
 															"pattern": {
+																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -12272,7 +12643,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -12405,6 +12776,7 @@
 																"readOnly": true
 															},
 															"pattern": {
+																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -12412,7 +12784,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -12581,6 +12953,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.batch.allow.policies.batch",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/block_senders": {
@@ -12654,6 +13030,7 @@
 										"readOnly": true
 									},
 									"pattern": {
+										"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 										"example": "test@example.com",
 										"maxLength": 1024,
 										"minLength": 1,
@@ -12661,7 +13038,7 @@
 										"x-auditable": true
 									},
 									"pattern_type": {
-										"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+										"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 										"enum": [
 											"EMAIL",
 											"DOMAIN",
@@ -12845,6 +13222,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -12852,7 +13230,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -13102,6 +13480,7 @@
 															"readOnly": true
 														},
 														"pattern": {
+															"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 															"example": "test@example.com",
 															"maxLength": 1024,
 															"minLength": 1,
@@ -13109,7 +13488,7 @@
 															"x-auditable": true
 														},
 														"pattern_type": {
-															"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+															"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 															"enum": [
 																"EMAIL",
 																"DOMAIN",
@@ -13217,6 +13596,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -13224,7 +13604,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -13315,6 +13695,7 @@
 													"readOnly": true
 												},
 												"pattern": {
+													"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 													"example": "test@example.com",
 													"maxLength": 1024,
 													"minLength": 1,
@@ -13322,7 +13703,7 @@
 													"x-auditable": true
 												},
 												"pattern_type": {
-													"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+													"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 													"enum": [
 														"EMAIL",
 														"DOMAIN",
@@ -13552,6 +13933,7 @@
 																"readOnly": true
 															},
 															"pattern": {
+																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -13559,7 +13941,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -13639,6 +14021,7 @@
 																"readOnly": true
 															},
 															"pattern": {
+																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -13646,7 +14029,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -13726,6 +14109,7 @@
 																"readOnly": true
 															},
 															"pattern": {
+																"description": "The pattern value to match against. Format depends on `pattern_type`:\n- EMAIL: a valid email address, e.g. `user@example.com`\n- DOMAIN: a valid domain name, e.g. `example.com`\n- IP: a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted; private, loopback, link-local, and unspecified addresses are rejected.\n",
 																"example": "test@example.com",
 																"maxLength": 1024,
 																"minLength": 1,
@@ -13733,7 +14117,7 @@
 																"x-auditable": true
 															},
 															"pattern_type": {
-																"description": "Type of pattern matching.\nNote: UNKNOWN is deprecated and cannot be used when creating or updating policies, but may be returned for existing entries.\n",
+																"description": "Type of pattern matching.\n- EMAIL: matches a full email address (e.g. `user@example.com`)\n- DOMAIN: matches a domain name (e.g. `example.com`)\n- IP: matches a plain IPv4 address (e.g. `1.2.3.4`) or an IPv4 CIDR block (e.g. `1.2.3.0/24`). Only globally reachable addresses are accepted.\n- UNKNOWN: deprecated, cannot be used when creating or updating policies, but may be returned for existing entries.\n",
 																"enum": [
 																	"EMAIL",
 																	"DOMAIN",
@@ -13893,6 +14277,594 @@
 		],
 		"x-stability": "beta"
 	},
+	"POST /accounts/{account_id}/email-security/settings/domains": {
+		"description": "Protects a new email domain by adding it to Email Security. Accepts a flat configuration object covering all delivery modes. Returns the newly created domain configuration.",
+		"operationId": "email_security_create_domains",
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"additionalProperties": false,
+						"properties": {
+							"allowed_delivery_modes": {
+								"items": {
+									"enum": [
+										"DIRECT",
+										"BCC",
+										"JOURNAL",
+										"API",
+										"RETRO_SCAN"
+									],
+									"type": "string"
+								},
+								"maxItems": 10,
+								"minItems": 1,
+								"type": "array"
+							},
+							"domain": {
+								"type": "string",
+								"x-auditable": true
+							},
+							"drop_dispositions": {
+								"items": {
+									"enum": [
+										"MALICIOUS",
+										"MALICIOUS-BEC",
+										"SUSPICIOUS",
+										"SPOOF",
+										"SPAM",
+										"BULK",
+										"ENCRYPTED",
+										"EXTERNAL",
+										"UNKNOWN",
+										"NONE"
+									],
+									"type": "string"
+								},
+								"maxItems": 10,
+								"type": "array"
+							},
+							"folder": {
+								"enum": [
+									"AllItems",
+									"Inbox",
+									null
+								],
+								"nullable": true,
+								"type": "string"
+							},
+							"integration_id": {
+								"format": "uuid",
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							},
+							"ip_restrictions": {
+								"example": [
+									"192.0.2.0/24",
+									"2001:db8::/32"
+								],
+								"items": {
+									"type": "string",
+									"x-auditable": true
+								},
+								"maxItems": 100,
+								"type": "array"
+							},
+							"lookback_hops": {
+								"maximum": 20,
+								"minimum": 1,
+								"nullable": true,
+								"type": "integer",
+								"x-auditable": true
+							},
+							"regions": {
+								"items": {
+									"enum": [
+										"GLOBAL",
+										"AU",
+										"DE",
+										"IN",
+										"US"
+									],
+									"type": "string"
+								},
+								"maxItems": 10,
+								"minItems": 1,
+								"type": "array"
+							},
+							"require_tls_inbound": {
+								"nullable": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"require_tls_outbound": {
+								"nullable": true,
+								"type": "boolean",
+								"x-auditable": true
+							},
+							"transport": {
+								"nullable": true,
+								"type": "string",
+								"x-auditable": true
+							}
+						},
+						"required": [
+							"domain",
+							"allowed_delivery_modes",
+							"ip_restrictions",
+							"drop_dispositions",
+							"regions"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
+		"responses": {
+			"201": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"allOf": [
+								{
+									"allOf": [
+										{
+											"properties": {
+												"errors": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"messages": {
+													"example": [],
+													"items": {
+														"properties": {
+															"code": {
+																"minimum": 1000,
+																"type": "integer"
+															},
+															"documentation_url": {
+																"type": "string"
+															},
+															"message": {
+																"type": "string"
+															},
+															"source": {
+																"properties": {
+																	"pointer": {
+																		"type": "string"
+																	}
+																},
+																"type": "object"
+															}
+														},
+														"required": [
+															"code",
+															"message"
+														],
+														"type": "object",
+														"uniqueItems": true
+													},
+													"type": "array"
+												},
+												"success": {
+													"description": "Whether the API call was successful.",
+													"enum": [
+														true
+													],
+													"example": true,
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"success",
+												"errors",
+												"messages"
+											],
+											"type": "object"
+										}
+									],
+									"type": "object"
+								},
+								{
+									"properties": {
+										"result": {
+											"properties": {
+												"allowed_delivery_modes": {
+													"items": {
+														"enum": [
+															"DIRECT",
+															"BCC",
+															"JOURNAL",
+															"API",
+															"RETRO_SCAN"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"authorization": {
+													"properties": {
+														"authorized": {
+															"type": "boolean"
+														},
+														"status_message": {
+															"nullable": true,
+															"type": "string"
+														},
+														"timestamp": {
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														}
+													},
+													"required": [
+														"authorized",
+														"timestamp"
+													],
+													"type": "object"
+												},
+												"created_at": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"dmarc_status": {
+													"enum": [
+														"none",
+														"good",
+														"invalid",
+														null
+													],
+													"nullable": true,
+													"type": "string"
+												},
+												"domain": {
+													"example": "example.com",
+													"type": "string",
+													"x-auditable": true
+												},
+												"drop_dispositions": {
+													"items": {
+														"enum": [
+															"MALICIOUS",
+															"MALICIOUS-BEC",
+															"SUSPICIOUS",
+															"SPOOF",
+															"SPAM",
+															"BULK",
+															"ENCRYPTED",
+															"EXTERNAL",
+															"UNKNOWN",
+															"NONE"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"emails_processed": {
+													"properties": {
+														"timestamp": {
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"total_emails_processed": {
+															"minimum": 0,
+															"type": "integer"
+														},
+														"total_emails_processed_previous": {
+															"minimum": 0,
+															"type": "integer"
+														}
+													},
+													"required": [
+														"total_emails_processed",
+														"total_emails_processed_previous",
+														"timestamp"
+													],
+													"type": "object"
+												},
+												"folder": {
+													"enum": [
+														"AllItems",
+														"Inbox",
+														null
+													],
+													"nullable": true,
+													"type": "string"
+												},
+												"id": {
+													"description": "Domain identifier",
+													"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+													"format": "uuid",
+													"type": "string",
+													"x-auditable": true
+												},
+												"inbox_provider": {
+													"enum": [
+														"Microsoft",
+														"Google",
+														null
+													],
+													"nullable": true,
+													"type": "string"
+												},
+												"integration_id": {
+													"format": "uuid",
+													"nullable": true,
+													"type": "string"
+												},
+												"ip_restrictions": {
+													"example": [
+														"192.0.2.0/24",
+														"2001:db8::/32"
+													],
+													"items": {
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"last_modified": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"deprecated": true,
+													"description": "Deprecated, use `modified_at` instead. End of life: November 1, 2026.",
+													"readOnly": true,
+													"x-stainless-deprecation-message": "Use `modified_at` instead."
+												},
+												"lookback_hops": {
+													"type": "integer",
+													"x-auditable": true
+												},
+												"modified_at": {
+													"allOf": [
+														{
+															"example": "2014-01-01T05:20:00.12345Z",
+															"format": "date-time",
+															"type": "string",
+															"x-auditable": true
+														}
+													],
+													"readOnly": true
+												},
+												"o365_tenant_id": {
+													"nullable": true,
+													"type": "string"
+												},
+												"regions": {
+													"items": {
+														"enum": [
+															"GLOBAL",
+															"AU",
+															"DE",
+															"IN",
+															"US"
+														],
+														"type": "string"
+													},
+													"type": "array"
+												},
+												"require_tls_inbound": {
+													"nullable": true,
+													"type": "boolean"
+												},
+												"require_tls_outbound": {
+													"nullable": true,
+													"type": "boolean"
+												},
+												"spf_status": {
+													"enum": [
+														"none",
+														"good",
+														"neutral",
+														"open",
+														"invalid",
+														null
+													],
+													"nullable": true,
+													"type": "string"
+												},
+												"status": {
+													"enum": [
+														"pending",
+														"active",
+														"failed",
+														"timeout",
+														null
+													],
+													"nullable": true,
+													"type": "string"
+												},
+												"transport": {
+													"type": "string",
+													"x-auditable": true
+												}
+											},
+											"type": "object"
+										}
+									},
+									"type": "object"
+								}
+							]
+						}
+					}
+				},
+				"description": "Created domain"
+			},
+			"4XX": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"properties": {
+								"errors": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": [
+										{
+											"code": 7003,
+											"message": "No route for the URI"
+										}
+									],
+									"minLength": 1
+								},
+								"messages": {
+									"allOf": [
+										{
+											"example": [],
+											"items": {
+												"properties": {
+													"code": {
+														"minimum": 1000,
+														"type": "integer"
+													},
+													"documentation_url": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													},
+													"source": {
+														"properties": {
+															"pointer": {
+																"type": "string"
+															}
+														},
+														"type": "object"
+													}
+												},
+												"required": [
+													"code",
+													"message"
+												],
+												"type": "object",
+												"uniqueItems": true
+											},
+											"type": "array"
+										}
+									],
+									"example": []
+								},
+								"result": {
+									"enum": [
+										null
+									],
+									"nullable": true,
+									"type": "object"
+								},
+								"success": {
+									"description": "Whether the API call was successful.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Client Error"
+			}
+		},
+		"security": [
+			{
+				"api_token": []
+			},
+			{
+				"api_email": [],
+				"api_key": []
+			}
+		],
+		"summary": "Add a new email domain",
+		"tags": [
+			"Email Security Settings"
+		],
+		"x-api-token-group": [
+			"Cloud Email Security: Write"
+		],
+		"x-stability": "beta"
+	},
 	"POST /accounts/{account_id}/email-security/settings/domains/batch": {
 		"description": "Execute multiple domain operations in a single request. All four operation arrays\n(deletes, patches, puts, posts) are required and executed in order.\nSend empty arrays for unused operations.\n",
 		"operationId": "email_security_batch_domains",
@@ -13924,7 +14896,6 @@
 								"items": {
 									"allOf": [
 										{
-											"additionalProperties": false,
 											"properties": {
 												"allowed_delivery_modes": {
 													"items": {
@@ -13964,8 +14935,10 @@
 												"folder": {
 													"enum": [
 														"AllItems",
-														"Inbox"
+														"Inbox",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"integration_id": {
@@ -14084,8 +15057,10 @@
 										"folder": {
 											"enum": [
 												"AllItems",
-												"Inbox"
+												"Inbox",
+												null
 											],
+											"nullable": true,
 											"type": "string"
 										},
 										"integration_id": {
@@ -14160,8 +15135,7 @@
 								"items": {
 									"allOf": [
 										{
-											"additionalProperties": false,
-											"description": "Request body for replacing a domain via the Terraform batch PUT operation.\nThe `domain` field is intentionally absent — the domain name is immutable\nafter creation and is ignored by the server even if sent.\n",
+											"description": "Request body for replacing an email domain. The `domain` field is intentionally\nabsent — the domain name is immutable after creation.\n",
 											"properties": {
 												"allowed_delivery_modes": {
 													"items": {
@@ -14200,8 +15174,10 @@
 												"folder": {
 													"enum": [
 														"AllItems",
-														"Inbox"
+														"Inbox",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"integration_id": {
@@ -14468,8 +15444,10 @@
 																"enum": [
 																	"none",
 																	"good",
-																	"invalid"
+																	"invalid",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"domain": {
@@ -14521,8 +15499,10 @@
 															"folder": {
 																"enum": [
 																	"AllItems",
-																	"Inbox"
+																	"Inbox",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"id": {
@@ -14616,8 +15596,10 @@
 																	"good",
 																	"neutral",
 																	"open",
-																	"invalid"
+																	"invalid",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"status": {
@@ -14625,8 +15607,10 @@
 																	"pending",
 																	"active",
 																	"failed",
-																	"timeout"
+																	"timeout",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"transport": {
@@ -14690,8 +15674,10 @@
 																"enum": [
 																	"none",
 																	"good",
-																	"invalid"
+																	"invalid",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"domain": {
@@ -14743,8 +15729,10 @@
 															"folder": {
 																"enum": [
 																	"AllItems",
-																	"Inbox"
+																	"Inbox",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"id": {
@@ -14838,8 +15826,10 @@
 																	"good",
 																	"neutral",
 																	"open",
-																	"invalid"
+																	"invalid",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"status": {
@@ -14847,8 +15837,10 @@
 																	"pending",
 																	"active",
 																	"failed",
-																	"timeout"
+																	"timeout",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"transport": {
@@ -14912,8 +15904,10 @@
 																"enum": [
 																	"none",
 																	"good",
-																	"invalid"
+																	"invalid",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"domain": {
@@ -14965,8 +15959,10 @@
 															"folder": {
 																"enum": [
 																	"AllItems",
-																	"Inbox"
+																	"Inbox",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"id": {
@@ -15060,8 +16056,10 @@
 																	"good",
 																	"neutral",
 																	"open",
-																	"invalid"
+																	"invalid",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"status": {
@@ -15069,8 +16067,10 @@
 																	"pending",
 																	"active",
 																	"failed",
-																	"timeout"
+																	"timeout",
+																	null
 																],
+																"nullable": true,
 																"type": "string"
 															},
 															"transport": {
@@ -16819,6 +17819,10 @@
 		"x-api-token-group": [
 			"Cloud Email Security: Write"
 		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "email-security.settings.trusted-domains",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true,
 		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/email-security/settings/trusted_domains/batch": {
@@ -18681,7 +19685,7 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"additionalProperties": false,
+						"description": "Request body for replacing an email domain. The `domain` field is intentionally\nabsent — the domain name is immutable after creation.\n",
 						"properties": {
 							"allowed_delivery_modes": {
 								"items": {
@@ -18720,8 +19724,10 @@
 							"folder": {
 								"enum": [
 									"AllItems",
-									"Inbox"
+									"Inbox",
+									null
 								],
+								"nullable": true,
 								"type": "string"
 							},
 							"integration_id": {
@@ -18938,8 +19944,10 @@
 													"enum": [
 														"none",
 														"good",
-														"invalid"
+														"invalid",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"domain": {
@@ -18991,8 +19999,10 @@
 												"folder": {
 													"enum": [
 														"AllItems",
-														"Inbox"
+														"Inbox",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"id": {
@@ -19086,8 +20096,10 @@
 														"good",
 														"neutral",
 														"open",
-														"invalid"
+														"invalid",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"status": {
@@ -19095,8 +20107,10 @@
 														"pending",
 														"active",
 														"failed",
-														"timeout"
+														"timeout",
+														null
 													],
+													"nullable": true,
 													"type": "string"
 												},
 												"transport": {

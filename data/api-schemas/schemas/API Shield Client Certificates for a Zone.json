@@ -414,7 +414,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/certificate_authorities/hostname_associations": {
 		"description": "List Hostname Associations.",
@@ -701,7 +705,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "certificate-authorities.hostname-associations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/client_certificates": {
 		"description": "List all of your Zone's API Shield mTLS Client Certificates by Status and/or using Pagination.",
@@ -1204,7 +1212,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /zones/{zone_id}/client_certificates/{client_certificate_id}": {
 		"description": "Get Details for a single mTLS API Shield Client Certificate.",
@@ -1622,7 +1634,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PATCH /zones/{zone_id}/client_certificates/{client_certificate_id}": {
 		"description": "If a API Shield mTLS Client Certificate is in a pending_revocation state, you may reactivate it with this endpoint.",
@@ -2055,7 +2071,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /zones/{zone_id}/client_certificates": {
 		"description": "Create a new API Shield mTLS Client Certificate.",
@@ -2730,7 +2750,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "client-certificates",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/certificate_authorities/hostname_associations": {
 		"description": "Replace Hostname Associations.",
@@ -3028,6 +3052,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "certificate-authorities.hostname-associations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

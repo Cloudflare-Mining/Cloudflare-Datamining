@@ -686,7 +686,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.cf-interconnects",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}": {
 		"description": "Lists details for a specific interconnect.",
@@ -1383,7 +1387,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.cf-interconnects",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/cf_interconnects": {
 		"description": "Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
@@ -2090,7 +2098,11 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.cf-interconnects",
+		"x-fern-sdk-method-name": "bulk-update",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}": {
 		"description": "Updates a specific interconnect associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
@@ -2912,6 +2924,10 @@
 			"enterprise": true,
 			"free": false,
 			"pro": false
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "magic-transit.cf-interconnects",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }
