@@ -1,0 +1,118 @@
+<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pqbi8rwo6FweAxipzQNdo/ea4dbd9905ffff11072753d7a3296aa7/BLOG-3362_image1.png" alt="">
+<div class="post-content post-body-content lh-copy gray1">
+	<p></p>
+	<p>Bot mitigation is an adversarial game: attackers adapt, defenders respond, and the cycle continues. At Cloudflare, we stay ahead by combining visibility across our global network with signals from the client-side environment. At the network level, we analyze over 1 trillion requests per day to understand reputation, patterns, and anomalies across more than 20% of the web. On the client side, we’ve pushed detection deeper with <a href="https://developers.cloudflare.com/turnstile" target="_blank" rel="noopener noreferrer"><u>Cloudflare Turnstile</u></a>, which has evolved from a <a href="https://blog.cloudflare.com/turnstile-private-captcha-alternative"><u>CAPTCHA replacement</u></a> to a risk-based managed challenge that adapts the amount of friction needed to verify the user is authentic.</p>
+	<p>Today, Turnstile runs nearly 3 billion times per day on some of the most sensitive endpoints on the Internet, helping verify users at key moments like login, signup, and checkout. This improves protection on the most important areas of customer applications, but still leaves limited visibility into the rest of the application — how humans and bots actually interact across the full user journey.</p>
+	<p>This is the visibility gap we’re closing today with our launch of <b>Precursor</b>.</p>
+	<div class="flex anchor relative">
+		<h3 id="introducing-precursor">Introducing Precursor</h3>
+		<a href="https://blog.cloudflare.com/#introducing-precursor" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p><a href="https://developers.cloudflare.com/cloudflare-challenges/precursor" target="_blank" rel="noopener noreferrer"><u>Precursor</u></a> is a client-side, session-based verification system, built with privacy in mind, that uses dynamically injected JavaScript to continuously collect behavioral signals as visitors interact with your application. These signals are processed and incorporated into Cloudflare’s bot protection in real time, allowing us to continuously distinguish human traffic from automated or agentic traffic.</p>
+	<p>This extends the client-side detections offered by a <a href="https://developers.cloudflare.com/cloudflare-challenges" target="_blank" rel="noopener noreferrer"><u>Challenge</u></a> to your entire web application. Precursor is an optional complement to Turnstile — both are features of our Enterprise Bot Management.
+
+		This user-journey-based detection is powerful because modern automation is increasingly capable of appearing legitimate in short bursts. Bots can execute JavaScript, use real browser environments, and pass individual CAPTCHAs without raising suspicion. What remains difficult to replicate is consistent human behavior over time.</p>
+	<p>Precursor is built to capture that layer of interaction, turning behavior itself into a reliable signal for detecting fraud and abuse. By evaluating behavior across an entire session, Precursor adds significantly more signal to each decision. This improves detection precision, making it easier to distinguish real users from automation without relying on aggressive Challenges. For legitimate users, Precursor means fewer unnecessary interruptions. For bot developers, it raises the cost of operating automation by requiring them to simulate a full session. This is significantly harder to build, more expensive to maintain, and far less reliable to operate at scale.</p>
+	<div class="flex anchor relative">
+		<h3 id="to-err-is-human">To err is human&nbsp;</h3>
+		<a href="https://blog.cloudflare.com/#to-err-is-human" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>When a bot developer tries to make a mouse movement look human, they usually add <a href="https://en.wikipedia.org/wiki/Gaussian_noise" target="_blank" rel="noopener noreferrer"><u>Gaussian noise</u></a> or uniform random delays. But human movement isn't just "noisy," it is also constrained by physics:</p>
+	<ul>
+		<li>
+			<p><b>Wrist pivot:</b> A human mouse movement is often an arc, limited by the range of the wrist and the rotation of the forearm.</p>
+		</li>
+		<li>
+			<p><b>Cognitive load:</b> There is a measurable delay between a human seeing a checkbox and clicking it.</p>
+		</li>
+		<li>
+			<p><b>Hand tremor:</b> Even the steadiest human hand oscillates at a physiological tremor frequency.</p>
+		</li>
+	</ul>
+	<p>Bots, by contrast, often behave in ways that give them away. They move in linear interpolations or mathematically ideal Bézier curves. They click with a precision that humans could never replicate. And even when they do manage to simulate human error, there is a rhythm to human movements that can only be seen by examining an entire session.</p>
+	<p>Mouse movement is just one example of the signals Precursor evaluates, but it illustrates the difference clearly. Below is an example of a mouse automation library interacting with a site. You can see how the mouse moves in perfectly straight lines, always returns to an origin, and reacts with the same velocity.&nbsp;</p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/a593f96c06c93ce0c14d4ae3a8bc09e8/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fa593f96c06c93ce0c14d4ae3a8bc09e8%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p>Now, contrast that with a human navigating the same site: you see irregular paths, small corrections and overshoots, and variations in speed, timing, and direction.&nbsp;</p>
+	<div style="position: relative; padding-top: 56.25%;">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/bad8784fa2242e6b49428a007b0e3a03/iframe?muted=true&amp;preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fbad8784fa2242e6b49428a007b0e3a03%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<p>Individually, these interactions might look plausible. But over the course of a session, these patterns diverge in ways that are difficult to fake. Precursor is designed to capture and evaluate these behavioral signatures as they develop over a visitor’s interaction with an application.</p>
+	<div class="flex anchor relative">
+		<h3 id="how-precursor-works">How Precursor works</h3>
+		<a href="https://blog.cloudflare.com/#how-precursor-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To evaluate behavior over time, Precursor continuously collects interaction data on the client and builds a session-level view of activity for that site.</p>
+	<p><b>1. Injection and collection layer</b></p>
+	<p>When Precursor is enabled on your application, Cloudflare automatically injects a lightweight script into HTML responses from your site as they pass through our network, with no additional configuration, network connections, or third-party embedding required. The injected Precursor bundle is compact, obfuscated, and assembled dynamically for each response. The bundle is designed to not interfere with any additional page logic of the hosted web application.</p>
+	<p>The script attaches lightweight event listeners to capture interaction signals such as pointer movement, keyboard activity, focus changes, and visibility. These events are serialized into a compact format and buffered in memory. At regular intervals, the buffered data is sent back to the evaluation layer for analysis.</p>
+	<p><b>2. Evaluation layer</b></p>
+	<p>On the edge server, incoming Precursor payloads are deserialized into behavioral inputs. A dispatcher runs a roster of evaluators on the input data. Each evaluator reads the Precursor streams it cares about and can raise signals into the shared detection registry.</p>
+	<p>Evaluators are designed to cross-reference data. For example, they confirm that pointer activity correlates with page visibility duration, or that keyboard events only fire when a text field is focused. This stream of information is then consolidated into individual signals that are used for weighting detections.</p>
+	<p><b>3. Session integration</b></p>
+	<p>Precursor data is session-scoped, meaning it accumulates throughout a session. Session scoping is important because it means a bot cannot reset its behavioral signature by refreshing the page or starting over with a new challenge. The system also feeds session metadata into downstream detection layers for additional shadow-mode heuristics and session analysis, predicted vs. actual completion, and session delinquency heuristics. These edge-side observations are logged for detection improvement purposes and to adjust the <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer"><u>bot score</u></a> of a session.&nbsp;</p>
+	<p><b>4. Privacy by design</b></p>
+	<p>Precursor was designed to collect signals that help to distinguish human patterns from automated and abusive patterns.
+
+		The event listeners capture the minimum information needed to be a useful signal for detecting automation and abuse. For example, keyboard activity is captured as timing and rhythm, not as the actual keys pressed. In addition, behavioral signals are evaluated as aggregate patterns rather than individual actions and are consumed internally by Cloudflare's bot detection systems; they are not exposed to customer dashboards or tied to user accounts, login identities, or persistent profiles.</p>
+	<p>Taken together, this allows Precursor to maintain a continuously evolving evaluation of behavior, maximizing precision while minimizing the friction on good users.</p>
+	<div class="flex anchor relative">
+		<h3 id="per-session-analytics">Per-session analytics</h3>
+		<a href="https://blog.cloudflare.com/#per-session-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>To support this new layer of detection, we are introducing session-based views in Security Analytics. These dashboards shift the perspective from individual requests to full visitor journeys. You can now answer questions like:</p>
+	<ol>
+		<li>
+			<p>What does a typical session look like on my site?</p>
+		</li>
+		<li>
+			<p>Where do sessions diverge from expected behavior?</p>
+		</li>
+		<li>
+			<p>Which sessions show signs of automation over time?</p>
+		</li>
+	</ol>
+	<figure class="kg-card kg-image-card">
+		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HGyTpEcRUXpf3oeEV2uCM/1b6b635c945db2d2cf7b6d03970aec10/BLOG-3362_image2.png" alt="BLOG-3362 image2" class="kg-image" width="1999" height="866" loading="lazy">
+	</figure>
+	<p><sup><i>Use Security Analytics to explore session-based views for your bot management traffic.</i></sup></p>
+	<p>These analytics now capture information that per-request analytics can’t —&nbsp; especially the behavior that occurs between requests. Precursor feeds directly into existing systems like bot score, challenge decisions, and security rules, so you benefit from this added context immediately.</p>
+	<div class="flex anchor relative">
+		<h3 id="whats-next">What’s next</h3>
+		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Precursor is the foundation for extending bot detection across the entire application. We are continuing to expand the range and depth of behavioral signals for security, how session-level insights influence our bot management protections, and new ways to visualize and act on session data. As bots evolve, detection needs to move beyond isolated checkpoints and into the full flow of user activity.</p>
+	<div class="flex anchor relative">
+		<h3 id="get-started">Get started</h3>
+		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
+			<svg width="16" height="16" viewBox="0 0 24 24">
+				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
+			</svg>
+		</a>
+	</div>
+	<p>Precursor is rolling out now and can be enabled directly from your Cloudflare dashboard. Precursor will be free to use until our GA release later this year. Getting started is simple: <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>turn Precursor on</u></a> for your zone and choose how strictly you want to verify sessions. You can run it in a low-friction mode to observe behavior in the background, or require a fully verified session by enforcing Challenges if a session doesn’t already exist.&nbsp;</p>
+	<p>Once enabled, Precursor begins enhancing your existing bot defenses immediately, with no changes required to your application. If you're already using Bot Management or Turnstile, Precursor extends those protections beyond Challenges and into the rest of the session. Enable Precursor to extend detection across the full user session, including the activity between moments you already protect.</p>
+</div>
