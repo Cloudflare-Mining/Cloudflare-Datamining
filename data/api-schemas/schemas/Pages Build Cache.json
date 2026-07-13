@@ -263,6 +263,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects",
+		"x-fern-sdk-method-name": "purge-build-cache",
+		"x-forge-hidden": true,
+		"x-forge-require-confirmation": "This operation purges the build cache for a Pages project."
 	}
 }

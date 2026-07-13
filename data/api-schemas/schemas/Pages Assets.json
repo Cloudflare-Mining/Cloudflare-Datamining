@@ -274,7 +274,8 @@
 		"summary": "Check missing assets",
 		"tags": [
 			"Pages Assets"
-		]
+		],
+		"x-forge-hidden": true
 	},
 	"POST /pages/assets/upload": {
 		"description": "Upload one or more files to the Pages asset store. Each file is\nidentified by its content hash and is uploaded using the same JSON shape\nas the Cloudflare KV bulk write API. Used as part of the Pages Direct\nUpload workflow.\n\nAuthenticate with the JWT obtained from the upload-token endpoint:\nGET /accounts/{account_id}/pages/projects/{project_name}/upload-token\n",
@@ -550,7 +551,8 @@
 		"summary": "Upload asset",
 		"tags": [
 			"Pages Assets"
-		]
+		],
+		"x-forge-hidden": true
 	},
 	"POST /pages/assets/upsert-hashes": {
 		"description": "Register the provided file hashes as recently uploaded to the Pages\nasset store. Used as part of the Pages Direct Upload workflow so future\ndeployments can avoid re-uploading files that are already present.\n\nAuthenticate with the JWT obtained from the upload-token endpoint:\nGET /accounts/{account_id}/pages/projects/{project_name}/upload-token\n",
@@ -802,6 +804,7 @@
 		"summary": "Upsert asset hashes",
 		"tags": [
 			"Pages Assets"
-		]
+		],
+		"x-forge-hidden": true
 	}
 }

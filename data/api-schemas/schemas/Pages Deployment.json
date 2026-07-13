@@ -284,7 +284,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects.deployments",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/tails/{tail_id}": {
 		"description": "Deletes a tail from a Pages deployment.",
@@ -574,7 +578,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects.deployments.tails",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments": {
 		"description": "Fetch a list of project deployments.",
@@ -1502,7 +1510,11 @@
 		"x-api-token-group": [
 			"Pages Read",
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects.deployments",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}": {
 		"description": "Fetch information about a deployment.",
@@ -2368,7 +2380,11 @@
 		"x-api-token-group": [
 			"Pages Read",
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects.deployments",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/history/logs": {
 		"description": "Fetch deployment logs for a project.",
@@ -2807,7 +2823,11 @@
 		"x-api-token-group": [
 			"Pages Read",
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects.deployments.history.logs",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments": {
 		"description": "Start a new deployment from production. The repository and account must have already been authorized on the Cloudflare Pages dashboard.",
@@ -3764,7 +3784,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects.deployments",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/retry": {
 		"description": "Retry a previous deployment.",
@@ -4629,7 +4653,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects.deployments",
+		"x-fern-sdk-method-name": "retry",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/rollback": {
 		"description": "Rollback the production deployment to a previous deployment. You can only rollback to succesful builds on production.",
@@ -5494,7 +5522,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects.deployments",
+		"x-fern-sdk-method-name": "rollback",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/tails": {
 		"description": "Start a tail that receives logs and exception data.",
@@ -5818,6 +5850,10 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects.deployments.tails",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

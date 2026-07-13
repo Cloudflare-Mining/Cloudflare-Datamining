@@ -263,7 +263,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"DELETE /accounts/{account_id}/pages/projects/{project_name}/source": {
 		"description": "Disconnect the Git repository source from an existing Pages project.",
@@ -5715,7 +5719,11 @@
 		"x-api-token-group": [
 			"Pages Read",
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}": {
 		"description": "Fetch a project by name.",
@@ -8417,7 +8425,11 @@
 		"x-api-token-group": [
 			"Pages Read",
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/pages/projects/{project_name}/upload-token": {
 		"description": "Get a short-lived JWT for Pages Direct Upload asset operations.",
@@ -8692,7 +8704,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects",
+		"x-fern-sdk-method-name": "get-upload-token",
+		"x-forge-hidden": true
 	},
 	"PATCH /accounts/{account_id}/pages/projects/{project_name}": {
 		"description": "Set new attributes for an existing project. Modify environment variables. To delete an environment variable, set the key to null.",
@@ -12555,7 +12571,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects",
+		"x-fern-sdk-method-name": "edit",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pages/projects": {
 		"description": "Create a new project.",
@@ -16390,7 +16410,11 @@
 		],
 		"x-api-token-group": [
 			"Pages Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "pages.projects",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/pages/projects/{project_name}/source": {
 		"description": "Connect a Git repository source to an existing Pages project.",
