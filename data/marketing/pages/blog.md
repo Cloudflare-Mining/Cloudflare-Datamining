@@ -4,17 +4,30 @@ title: The Cloudflare Blog
 image: https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5x04dbbOIp3eiugWSYPeUo/839720d141b384ea4478dd29706ed289/meta_image.png
 ---
 
+[Introducing Precursor: detecting agentic behavior with continuous client-side signals](https://blog.cloudflare.com/introducing-precursor/)
+
+2026-07-13
+
+Precursor, our new continuous behavioral validation engine for bot management, offers visibility into how humans and bots actually interact across the full user journey. By turning session-level behavior into bot detection signals, it identifies advanced automation with higher precision — while reducing friction for legitimate users....
+
+[Continue reading »](https://blog.cloudflare.com/introducing-precursor/)
+* [![Marina Elmore](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57oe3QXMmouuqim694mCRt/a826ea8c7c8d794a1b1b679e9eafdc98/Marina_Elmore.png)](https://blog.cloudflare.com/author/marina-elmore/)  
+[Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/)
+* [![Benedikt Wolters](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YEnfGK1q6irUDXgMXL6Kh/6ec78c81de34a419e7f062742413fadf/benedikt.png)](https://blog.cloudflare.com/author/benedikt/)  
+[Benedikt Wolters](https://blog.cloudflare.com/author/benedikt/)
+
+![Introducing Precursor: detecting agentic behavior with continuous client-side signals](https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pqbi8rwo6FweAxipzQNdo/ea4dbd9905ffff11072753d7a3296aa7/BLOG-3362_image1.png)
+
 [Improving Smart Tiered Cache for Public Cloud Regions](https://blog.cloudflare.com/smart-tiered-cache-for-public-clouds/)
 
 2026-07-10
 
+[Tiered Cache](https://blog.cloudflare.com/tag/tiered-cache/)[Cache](https://blog.cloudflare.com/tag/cache/)[Performance](https://blog.cloudflare.com/tag/performance/)[Product News](https://blog.cloudflare.com/tag/product-news/)[CDN](https://blog.cloudflare.com/tag/cdn/)[Smart Shield](https://blog.cloudflare.com/tag/smart-shield/)
+
 Smart Tiered Cache allows for precise upper tier selection for origins hosted on AWS, GCP, Azure, and Oracle Cloud with customer-provided cloud region hints....
 
-[Continue reading »](https://blog.cloudflare.com/smart-tiered-cache-for-public-clouds/)
 * [![Chenxi Zhang](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7EQfzUeOrDgcspt4RpViNs/344af95b877d5c465e4ee2cbd9ffecbe/Chenxi_Zhang_.webp)](https://blog.cloudflare.com/author/chenxi-zhang/)  
 [Chenxi Zhang](https://blog.cloudflare.com/author/chenxi-zhang/)
-
-![Improving Smart Tiered Cache for Public Cloud Regions](https://cf-assets.www.cloudflare.com/zkvhlag99gkb/34RhfMA1OJKjtfvoQM1pyI/dd7228eae4022a98f53c46243c9c4114/BLOG-3328_image2.png)
 
 [Why we cannot wait for better post-quantum signature algorithms](https://blog.cloudflare.com/ml-dsa-will-have-to-do/)
 
@@ -265,17 +278,6 @@ The Cloudflare One stack is a library of agent skills that gives any AI agent th
 [AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/)
 * [![Abe Carryl](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DGgxZ9N7uw8HNW8wryqK3/063b210fe1fe059b0769791b4fe72a40/Abe_Carryl-2.webp)](https://blog.cloudflare.com/author/abe/)  
 [Abe Carryl](https://blog.cloudflare.com/author/abe/)
-
-[Cloudflare DMARC Management is now generally available](https://blog.cloudflare.com/dmarc-management-ga/)
-
-2026-06-16
-
-[Email](https://blog.cloudflare.com/tag/email/)[Email Security](https://blog.cloudflare.com/tag/email-security/)[DMARC](https://blog.cloudflare.com/tag/dmarc/)
-
-Get unified visibility into your email authentication posture and reach full DMARC enforcement with deeper reporting, record analysis, and SPF audits free for every Cloudflare customer....
-
-* [![Ayush Kumar](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/16XufphFwxLrjgrc4HQd5K/31b6f03b182f3fd13f09ad34ad9de18c/ayush.png)](https://blog.cloudflare.com/author/ayush/)  
-[Ayush Kumar](https://blog.cloudflare.com/author/ayush/)
 
 * [1](https://blog.cloudflare.com/)
 * [2](https://blog.cloudflare.com/page/2/)
