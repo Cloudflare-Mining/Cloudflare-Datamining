@@ -426,6 +426,9 @@
 	"deseng-support-forms": {
 		"false": 100
 	},
+	"deseng-unified-turnstile-combobox": {
+		"false": 100
+	},
 	"deseng-worker-domain-tab": {
 		"true": 100
 	},
@@ -558,8 +561,8 @@
 		"true": 100
 	},
 	"email-onboarding-wizard": {
-		"false": 90,
-		"true": 10
+		"true": 50,
+		"false": 50
 	},
 	"email-sending-smtp-ui": {
 		"true": 100
@@ -776,9 +779,6 @@
 	},
 	"mesh-hostname-routing": {
 		"true": 100
-	},
-	"monitored-sessions-tier-1": {
-		"false": 100
 	},
 	"moq-load-tester-ui": {
 		"true": 100
@@ -1053,9 +1053,6 @@
 	"security-overview-v-25": {
 		"true": 100
 	},
-	"security-precursor-rules": {
-		"false": 100
-	},
 	"selective-migration": {
 		"true": 100
 	},
@@ -1145,6 +1142,12 @@
 	},
 	"tsf-chat-queue-position": {
 		"false": 100
+	},
+	"tsf-deflection-help-on-expand": {
+		"true": 100
+	},
+	"tsf-deflection-second-layer": {
+		"true": 100
 	},
 	"tsf-form-ask-ai": {
 		"false": 100
