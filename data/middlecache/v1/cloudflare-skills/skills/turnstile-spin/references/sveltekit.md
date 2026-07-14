@@ -1,30 +1,8 @@
 # SvelteKit
 
-For SvelteKit projects. Widget renders in the page; siteverify can be called from a form action server-side, or directly against the Worker from the client.
+For SvelteKit projects. The widget renders in the page; siteverify is called from a SvelteKit form action (or a `+server.ts` endpoint) server-side.
 
 ```svelte title="src/routes/signup/+page.svelte"
-<script lang="ts">
-	import { onMount } from "svelte";
-	let token = "";
-
-	onMount(() => {
-		(window as any).onTurnstileSuccess = (t: string) => (token = t);
-	});
-
-	async function handleSubmit(e: Event) {
-		e.preventDefault();
-		const res = await fetch("https://YOUR_WORKER_URL/", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ token }),
-		});
-		const data = await res.json();
-		if (data.success) {
-			// proceed
-		}
-	}
-</script>
-
 <svelte:head>
 	<script
 		src="https://challenges.cloudflare.com/turnstile/v0/api.js"
@@ -33,35 +11,37 @@ For SvelteKit projects. Widget renders in the page; siteverify can be called fro
 	></script>
 </svelte:head>
 
-<form on:submit={handleSubmit}>
+<form method="POST">
 	<input name="email" type="email" required />
 	<div
 		class="cf-turnstile"
 		data-sitekey="YOUR_SITEKEY"
-		data-action="turnstile-spin-v1"
-		data-callback="onTurnstileSuccess"
+		data-action="turnstile-spin-v2"
 	></div>
-	<button type="submit" disabled={!token}>Sign up</button>
+	<button type="submit">Sign up</button>
 </form>
 ```
 
-## Variant: Form action server-side
-
-If you use SvelteKit's form actions for the signup logic, do siteverify from the action:
+Form action (canonical siteverify):
 
 ```ts title="src/routes/signup/+page.server.ts"
 import type { Actions } from "./$types";
 import { fail } from "@sveltejs/kit";
+import { TURNSTILE_SECRET } from "$env/static/private";
 
 export const actions: Actions = {
-	default: async ({ request }) => {
+	default: async ({ request, getClientAddress }) => {
 		const data = await request.formData();
 		const token = data.get("cf-turnstile-response") as string;
 
-		const verify = await fetch("https://YOUR_WORKER_URL/", {
+		const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
 			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ token }),
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: new URLSearchParams({
+				secret: TURNSTILE_SECRET,
+				response: token,
+				remoteip: getClientAddress(),
+			}),
 		});
 		const result = await verify.json();
 		if (!result.success) {
@@ -74,11 +54,43 @@ export const actions: Actions = {
 };
 ```
 
-With this variant the form posts via SvelteKit's progressive enhancement; the page component drops the explicit `fetch` call and just uses a native `<form method="POST">`.
+In `.env`:
+
+```text
+TURNSTILE_SECRET=YOUR_SECRET
+```
+
+The `$env/static/private` import enforces that the secret never reaches the client bundle.
+
+## Variant: client-side fetch to an endpoint
+
+If you need a JSON API rather than progressive-enhancement form post, use `+server.ts`:
+
+```ts title="src/routes/api/signup/+server.ts"
+import type { RequestHandler } from "./$types";
+import { TURNSTILE_SECRET } from "$env/static/private";
+
+export const POST: RequestHandler = async ({ request, getClientAddress }) => {
+	const { token } = await request.json();
+	const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: new URLSearchParams({
+			secret: TURNSTILE_SECRET,
+			response: token,
+			remoteip: getClientAddress(),
+		}),
+	});
+	const { success } = await verify.json();
+	if (!success) return new Response("forbidden", { status: 403 });
+	// process signup
+	return new Response(JSON.stringify({ ok: true }), { status: 200 });
+};
+```
 
 ## Substitutions
 
-| Placeholder        | Replace with                                |
-| ------------------ | ------------------------------------------- |
-| `YOUR_WORKER_URL`  | Deployed Worker URL from Step 5             |
-| `YOUR_SITEKEY`     | Widget site key from Step 4                 |
+| Placeholder         | Replace with                                                         |
+| ------------------- | -------------------------------------------------------------------- |
+| `YOUR_SITEKEY`      | The widget site key from Step 8                                      |
+| `YOUR_SECRET`       | The secret captured in Step 8. Stays in env, never inlined.          |

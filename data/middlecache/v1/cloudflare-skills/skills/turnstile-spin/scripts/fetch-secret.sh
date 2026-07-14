@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Retrieves the secret for an existing Turnstile widget via the Cloudflare API.
-# Used by the recovery flow when binding the secret to a freshly deployed Worker.
+# Used by the recovery flow so the agent can wire canonical server-side
+# siteverify against an existing widget without rotating the sitekey.
 #
 # Reads:
 #   $CLOUDFLARE_API_TOKEN (required)

@@ -1,52 +1,44 @@
 # Skill validation cases
 
-These cases match the MVP-row assertions in the Turnstile Spin PRD. Run them after editing this skill to confirm an agent loading it can still execute the wizard end-to-end.
+These cases match the assertions in the Turnstile Spin PRD. Run them after editing this skill to confirm an agent loading it can still execute the wizard end-to-end.
 
-## Test 1 — Health check parses cleanly
+## Test 1 — Dummy siteverify returns a structured error
 
-Given a deployed Worker, the agent should be able to parse `/health` without ambiguity.
+Step 10's `validate.sh` sends a deliberately-invalid token directly to `challenges.cloudflare.com/turnstile/v0/siteverify` using the captured secret. The expected response is `success: false` with `error-codes: ["invalid-input-response"]`. Anything else means the secret is wrong or the widget is misconfigured.
 
 ```sh
-curl -sf "${WORKER_URL}/health" | jq -e '.ok == true and (.version | type) == "string"'
+curl -s -X POST "https://challenges.cloudflare.com/turnstile/v0/siteverify" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  --data-urlencode "secret=${TURNSTILE_SECRET}" \
+  --data-urlencode "response=XXXX.DUMMY.TOKEN.XXXX" | \
+  jq -e '.success == false and (.["error-codes"] | index("invalid-input-response"))'
 ```
 
 Expected exit code: 0.
 
-## Test 2 — Dummy siteverify returns a structured error
-
-The wizard's Step 7b sends a deliberately-invalid token. The Worker must return `success: false`, a non-empty `error-codes` array, and a `_worker` block — not a bare 500.
+## Test 2 — Hostname configuration
 
 ```sh
-curl -s -X POST "${WORKER_URL}/" \
-  -H "Content-Type: application/json" \
-  -d '{"token":"XXXX.DUMMY.TOKEN.XXXX"}' | \
-  jq -e '.success == false and (.["error-codes"] | length) > 0 and (._worker | type) == "object"'
-```
-
-Expected exit code: 0.
-
-## Test 3 — Hostname configuration
-
-```sh
-npx wrangler turnstile widget show "${WIDGET_ID}" | \
+curl -s "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/challenges/widgets/${SITEKEY}" \
+  -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" | \
   jq -e '.result.domains | contains(["example.com"])'
 ```
 
 Expected exit code: 0.
 
-## Test 4 — Telemetry marker is in every written snippet
+## Test 3 — Telemetry marker is in every written snippet
 
 After the wizard completes, grep the written files:
 
 ```sh
-rg -l 'data-action="turnstile-spin-v1"' <(echo "$WRITTEN_FILES")
+rg -l 'data-action="turnstile-spin-v2"' <(echo "$WRITTEN_FILES")
 ```
 
-Expected: every written file matches. If a snippet was written without the marker, the wizard skipped Step 6 (or the agent edited the template). Re-run.
+Expected: every written file matches. If a snippet was written without the marker, the wizard skipped the Step 9 contract (or the agent edited the template). Re-run.
 
-## Test 5 — Skill persists to the right location
+## Test 4 — Skill persists to the right location
 
-After Step 8:
+After Step 11:
 
 ```sh
 test -f .claude/skills/turnstile-spin/SKILL.md \
@@ -62,7 +54,7 @@ Expected exit code: 0.
 ## Running all cases
 
 ```sh
-WORKER_URL=https://your-worker.workers.dev WIDGET_ID=0x4AAAAAAA... \
+ACCOUNT_ID=... SITEKEY=... TURNSTILE_SECRET=... CLOUDFLARE_API_TOKEN=... \
   bash tests/run-all.sh
 ```
 

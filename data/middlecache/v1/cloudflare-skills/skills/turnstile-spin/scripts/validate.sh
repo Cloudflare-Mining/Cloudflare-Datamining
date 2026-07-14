@@ -1,24 +1,29 @@
 #!/usr/bin/env bash
-# Validates a deployed Turnstile siteverify Worker end-to-end.
+# Validates a Turnstile siteverify integration end-to-end.
 #
 # Reads:
-#   $CLOUDFLARE_API_TOKEN (required for hostname check)
+#   $TURNSTILE_SECRET      (required for the dummy-token check)
+#   $CLOUDFLARE_API_TOKEN  (optional — when set, also runs the widget-domains
+#                           sanity check; when unset, that check is skipped
+#                           so the post-dashboard flow can validate without
+#                           a manually-created token)
 #
 # Args:
-#   --worker-url <url>     Deployed Worker URL (from worker-deploy.sh)
-#   --account-id <id>      Cloudflare account ID
-#   --sitekey <key>        Widget sitekey (from widget-create.sh)
-#   --expected-domains <a,b,c>  Comma-separated domains that must appear in the widget's domains array
+#   --account-id <id>             Cloudflare account ID (only used when CLOUDFLARE_API_TOKEN is set)
+#   --sitekey <key>               Widget sitekey
+#   --expected-domains <a,b,c>    Comma-separated domains that must appear in the widget's domains array
 #
-# Outputs JSON. Exit 0 if all three checks pass, 1 otherwise.
-#   ok:    {"status":"ok"}
-#   fail:  {"status":"error","check":"health|dummy_siteverify|worker_metadata|hostname","detail":"<msg>"}
+# Outputs JSON. Exit 0 if all checks pass, 1 otherwise.
+#   ok:    {"status":"ok","hostname_check":"ran"|"skipped"}
+#   fail:  {"status":"error","check":"dummy_siteverify|hostname","detail":"<msg>"}
 
 set -uo pipefail
 
+ACCOUNT_ID=""
+SITEKEY=""
+EXPECTED_DOMAINS=""
 while [[ $# -gt 0 ]]; do
   case $1 in
-    --worker-url)       WORKER_URL="$2"; shift 2 ;;
     --account-id)       ACCOUNT_ID="$2"; shift 2 ;;
     --sitekey)          SITEKEY="$2"; shift 2 ;;
     --expected-domains) EXPECTED_DOMAINS="$2"; shift 2 ;;
@@ -26,45 +31,52 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-: "${CLOUDFLARE_API_TOKEN:?CLOUDFLARE_API_TOKEN must be set}"
-: "${WORKER_URL:?--worker-url required}"
-: "${ACCOUNT_ID:?--account-id required}"
+: "${TURNSTILE_SECRET:?TURNSTILE_SECRET must be set (the secret captured in Step 8)}"
 : "${SITEKEY:?--sitekey required}"
-: "${EXPECTED_DOMAINS:?--expected-domains required}"
 
-# Check 1: health endpoint
-health=$(curl -sSf "${WORKER_URL}/health" 2>/dev/null || echo "")
-if [ -z "$health" ] || ! echo "$health" | grep -q '"ok":true'; then
-  echo "validate: health check failed; $WORKER_URL/health did not return {ok:true,version:...}" >&2
-  echo "{\"status\":\"error\",\"check\":\"health\",\"detail\":\"worker /health did not respond ok:true\"}"
-  exit 1
-fi
-
-# Check 2: dummy siteverify; should return success:false + error-codes array
-dummy=$(curl -sS -X POST "${WORKER_URL}/" \
-  -H "Content-Type: application/json" \
-  -d '{"token":"XXXX.DUMMY.TOKEN.XXXX"}' 2>/dev/null || echo "")
+# Check 1: dummy-token siteverify against challenges.cloudflare.com.
+# A valid secret + dummy token returns success:false with
+# error-codes:["invalid-input-response"]. That confirms the secret is
+# correctly bound to the widget; anything else is a real misconfiguration.
+dummy=$(curl -sS -X POST "https://challenges.cloudflare.com/turnstile/v0/siteverify" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  --data-urlencode "secret=${TURNSTILE_SECRET}" \
+  --data-urlencode "response=XXXX.DUMMY.TOKEN.XXXX" 2>/dev/null || echo "")
 
 success=$(echo "$dummy" | (jq -r '.success // "missing"' 2>/dev/null || echo "missing"))
-errors=$(echo "$dummy" | (jq -r '.["error-codes"] | length // 0' 2>/dev/null || echo "0"))
+codes=$(echo "$dummy" | (jq -r '.["error-codes"] // [] | join(",")' 2>/dev/null || echo ""))
 
-if [ "$success" != "false" ] || [ "$errors" = "0" ]; then
-  echo "validate: dummy siteverify check failed; expected success:false + error-codes; got: $dummy" >&2
-  echo "{\"status\":\"error\",\"check\":\"dummy_siteverify\",\"detail\":\"unexpected response shape\"}"
+if [ "$success" != "false" ]; then
+  echo "validate: siteverify returned unexpected shape for a dummy token: $dummy" >&2
+  echo "{\"status\":\"error\",\"check\":\"dummy_siteverify\",\"detail\":\"expected success:false on a dummy token\"}"
   exit 1
 fi
 
-# Check 2b: confirm the Worker is the managed template (not a customer-written
-# replacement) by looking for the _worker metadata field. If absent, the user
-# deployed a custom Worker; surface it so the agent can alert them.
-worker_meta=$(echo "$dummy" | (jq -r '._worker.worker_version // "missing"' 2>/dev/null || echo "missing"))
-if [ "$worker_meta" = "missing" ]; then
-  echo "validate: _worker metadata missing from response; this is not the managed Spin Worker template." >&2
-  echo "{\"status\":\"error\",\"check\":\"worker_metadata\",\"detail\":\"_worker field missing; user may have deployed a custom Worker\"}"
-  exit 1
+case ",$codes," in
+  *,invalid-input-secret,*)
+    echo "validate: siteverify rejected the secret. TURNSTILE_SECRET does not match the widget's secret." >&2
+    echo "{\"status\":\"error\",\"check\":\"dummy_siteverify\",\"detail\":\"invalid-input-secret\"}"
+    exit 1
+    ;;
+  *,invalid-input-response,*)
+    : # Expected. Continue.
+    ;;
+  *)
+    echo "validate: unexpected error codes from siteverify: $codes" >&2
+    echo "{\"status\":\"error\",\"check\":\"dummy_siteverify\",\"detail\":\"unexpected codes: $codes\"}"
+    exit 1
+    ;;
+esac
+
+# Check 2: hostname / widget domains registered. Optional — requires a
+# Cloudflare API token. When the token isn't available (e.g. post-dashboard
+# success-card flow), skip this check and report `hostname_check: skipped`.
+if [ -z "${CLOUDFLARE_API_TOKEN:-}" ] || [ -z "$ACCOUNT_ID" ] || [ -z "$EXPECTED_DOMAINS" ]; then
+  echo "validate: skipping hostname check (CLOUDFLARE_API_TOKEN, --account-id, or --expected-domains not provided)" >&2
+  echo '{"status":"ok","hostname_check":"skipped"}'
+  exit 0
 fi
 
-# Check 3: hostname / widget domains registered
 widget=$(curl -sS \
   "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$SITEKEY" \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" 2>/dev/null)
@@ -84,4 +96,4 @@ if [ -n "$missing" ]; then
   exit 1
 fi
 
-echo '{"status":"ok"}'
+echo '{"status":"ok","hostname_check":"ran"}'

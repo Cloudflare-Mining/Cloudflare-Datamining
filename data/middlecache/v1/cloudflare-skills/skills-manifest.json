@@ -399,7 +399,7 @@
 		},
 		{
 			"name": "turnstile-spin",
-			"description": "Set up Cloudflare Turnstile end-to-end in a project — scan the codebase, create the widget via the Cloudflare API, deploy the managed siteverify Worker, write the frontend snippets, validate, and persist the skill. Load this when a user asks to add Turnstile, set up CAPTCHA, protect a form from bots, or fix a Turnstile integration. Mirrors developers.cloudflare.com/turnstile/spin.",
+			"description": "Set up Cloudflare Turnstile end-to-end in a project. Scan the codebase, create the widget via the Cloudflare API, embed it on the right forms, wire canonical server-side siteverify in the customer's existing backend, validate, and persist the skill. Load this when a user asks to add Turnstile, set up CAPTCHA, protect a form from bots, or fix a Turnstile integration. Mirrors developers.cloudflare.com/turnstile/spin.",
 			"files": [
 				"README.md",
 				"SKILL.md",
@@ -414,24 +414,6 @@
 				"scripts/persist-skill.sh",
 				"scripts/validate.sh",
 				"scripts/widget-create.sh",
-				"scripts/worker-deploy.sh",
-				"templates/worker/.gitignore",
-				"templates/worker/LICENSE",
-				"templates/worker/README.md",
-				"templates/worker/package.json",
-				"templates/worker/public/post-deploy.html",
-				"templates/worker/src/errors.ts",
-				"templates/worker/src/index.ts",
-				"templates/worker/src/observability.ts",
-				"templates/worker/src/types.ts",
-				"templates/worker/src/validate.ts",
-				"templates/worker/test/deploy.test.ts",
-				"templates/worker/test/integration.test.ts",
-				"templates/worker/test/unit.test.ts",
-				"templates/worker/test/validation.test.ts",
-				"templates/worker/tsconfig.json",
-				"templates/worker/vitest.config.ts",
-				"templates/worker/wrangler.toml",
 				"tests/validation.md"
 			]
 		},

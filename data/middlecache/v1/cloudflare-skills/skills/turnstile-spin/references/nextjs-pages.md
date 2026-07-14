@@ -1,6 +1,6 @@
 # Next.js (Pages Router)
 
-For older Next.js projects using `pages/` rather than `app/`. The form posts directly to the Worker; no React state required.
+For older Next.js projects using `pages/` rather than `app/`. The widget renders client-side; siteverify lives in the API route.
 
 ```tsx title="pages/signup.tsx"
 import Script from "next/script";
@@ -9,12 +9,12 @@ export default function SignupPage() {
 	return (
 		<>
 			<Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" />
-			<form action="https://YOUR_WORKER_URL/" method="POST">
+			<form action="/api/signup" method="POST">
 				<input name="email" type="email" required />
 				<div
 					className="cf-turnstile"
 					data-sitekey="YOUR_SITEKEY"
-					data-action="turnstile-spin-v1"
+					data-action="turnstile-spin-v2"
 				/>
 				<button type="submit">Sign up</button>
 			</form>
@@ -23,9 +23,7 @@ export default function SignupPage() {
 }
 ```
 
-## Variant: API route on your own backend
-
-If you want to call siteverify from your own API route (e.g. you have application logic between siteverify and the actual signup), proxy the call through `pages/api/signup.ts`:
+API route (canonical siteverify):
 
 ```ts title="pages/api/signup.ts"
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -35,10 +33,18 @@ export default async function handler(
 	res: NextApiResponse,
 ) {
 	const token = req.body["cf-turnstile-response"] ?? req.body.token;
-	const verify = await fetch("https://YOUR_WORKER_URL/", {
+	const remoteip =
+		(req.headers["x-forwarded-for"] as string | undefined)?.split(",")[0] ??
+		req.socket.remoteAddress;
+
+	const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
 		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ token }),
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: new URLSearchParams({
+			secret: process.env.TURNSTILE_SECRET!,
+			response: token,
+			...(remoteip ? { remoteip } : {}),
+		}),
 	});
 	const data = await verify.json();
 	if (!data.success) {
@@ -49,11 +55,9 @@ export default async function handler(
 }
 ```
 
-Note: This pattern uses the Spin Worker as a siteverify proxy from your Node backend. It still works, just adds a hop. For pure SPA-style forms, the direct-post pattern above is simpler.
-
 ## Substitutions
 
-| Placeholder        | Replace with                                |
-| ------------------ | ------------------------------------------- |
-| `YOUR_WORKER_URL`  | Deployed Worker URL from Step 5             |
-| `YOUR_SITEKEY`     | Widget site key from Step 4                 |
+| Placeholder         | Replace with                                                         |
+| ------------------- | -------------------------------------------------------------------- |
+| `YOUR_SITEKEY`      | The widget site key from Step 8                                      |
+| `TURNSTILE_SECRET`  | Env-var name. Value is the secret captured in Step 8, kept off disk. |

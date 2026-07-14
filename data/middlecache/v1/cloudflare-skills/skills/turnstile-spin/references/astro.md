@@ -1,10 +1,9 @@
 # Astro
 
-For Astro projects. The form posts directly to the Worker. Astro frontmatter handles config substitution at build time.
+For Astro projects. The widget renders in a page; siteverify lives in an Astro Action, an API route, or a Pages Function. Astro frontmatter reads the sitekey from env at build time; the secret stays server-only.
 
 ```astro title="src/pages/signup.astro"
 ---
-const WORKER_URL = import.meta.env.PUBLIC_TURNSTILE_WORKER_URL;
 const SITEKEY = import.meta.env.PUBLIC_TURNSTILE_SITEKEY;
 ---
 
@@ -17,12 +16,12 @@ const SITEKEY = import.meta.env.PUBLIC_TURNSTILE_SITEKEY;
 		></script>
 	</head>
 	<body>
-		<form action={`${WORKER_URL}/`} method="POST">
+		<form action="/api/signup" method="POST">
 			<input name="email" type="email" required />
 			<div
 				class="cf-turnstile"
 				data-sitekey={SITEKEY}
-				data-action="turnstile-spin-v1"
+				data-action="turnstile-spin-v2"
 			/>
 			<button type="submit">Sign up</button>
 		</form>
@@ -33,36 +32,36 @@ const SITEKEY = import.meta.env.PUBLIC_TURNSTILE_SITEKEY;
 In your `.env`:
 
 ```text
-PUBLIC_TURNSTILE_WORKER_URL=https://YOUR_WORKER_URL
 PUBLIC_TURNSTILE_SITEKEY=YOUR_SITEKEY
+TURNSTILE_SECRET=YOUR_SECRET
 ```
 
-The `PUBLIC_` prefix is mandatory for client-exposed variables in Astro.
+The `PUBLIC_` prefix is mandatory for client-exposed variables in Astro. The secret has **no** prefix; it stays server-only.
 
-## Variant: hardcoded values
+## API route (canonical siteverify)
 
-If you do not use env vars, inline directly:
+```ts title="src/pages/api/signup.ts"
+import type { APIRoute } from "astro";
 
-```astro title="src/pages/signup.astro"
-<html>
-	<head>
-		<script
-			src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-			async
-			defer
-		></script>
-	</head>
-	<body>
-		<form action="https://YOUR_WORKER_URL/" method="POST">
-			<div
-				class="cf-turnstile"
-				data-sitekey="YOUR_SITEKEY"
-				data-action="turnstile-spin-v1"
-			/>
-			<button type="submit">Sign up</button>
-		</form>
-	</body>
-</html>
+export const POST: APIRoute = async ({ request, clientAddress }) => {
+	const form = await request.formData();
+	const token = form.get("cf-turnstile-response") as string;
+
+	const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: new URLSearchParams({
+			secret: import.meta.env.TURNSTILE_SECRET,
+			response: token,
+			remoteip: clientAddress,
+		}),
+	});
+	const { success } = await verify.json();
+	if (!success) return new Response("forbidden", { status: 403 });
+
+	// process signup
+	return Response.json({ ok: true });
+};
 ```
 
 ## Variant: Astro Actions
@@ -80,11 +79,15 @@ export const server = {
 			email: z.string().email(),
 			"cf-turnstile-response": z.string(),
 		}),
-		handler: async (input) => {
-			const verify = await fetch("https://YOUR_WORKER_URL/", {
+		handler: async (input, ctx) => {
+			const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ token: input["cf-turnstile-response"] }),
+				headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				body: new URLSearchParams({
+					secret: import.meta.env.TURNSTILE_SECRET,
+					response: input["cf-turnstile-response"],
+					remoteip: ctx.clientAddress,
+				}),
 			});
 			const data = await verify.json();
 			if (!data.success) throw new Error("Verification failed");
@@ -96,7 +99,7 @@ export const server = {
 
 ## Substitutions
 
-| Placeholder        | Replace with                                |
-| ------------------ | ------------------------------------------- |
-| `YOUR_WORKER_URL`  | Deployed Worker URL from Step 5             |
-| `YOUR_SITEKEY`     | Widget site key from Step 4                 |
+| Placeholder         | Replace with                                                         |
+| ------------------- | -------------------------------------------------------------------- |
+| `YOUR_SITEKEY`      | The widget site key from Step 8                                      |
+| `YOUR_SECRET`       | The secret captured in Step 8. Stays in env, never inlined.          |
