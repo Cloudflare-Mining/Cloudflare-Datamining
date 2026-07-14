@@ -124,6 +124,14 @@
 												"dex_tests": {
 													"items": {
 														"properties": {
+															"created": {
+																"description": "Date the test was created, in RFC 3339 format.",
+																"example": "2023-10-11T00:00:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
+															},
 															"data": {
 																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
 																"example": {
@@ -232,6 +240,14 @@
 																"maxLength": 32,
 																"readOnly": true,
 																"type": "string"
+															},
+															"updated": {
+																"description": "Date the test was last updated, in RFC 3339 format.",
+																"example": "2023-10-11T00:00:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															}
 														},
 														"required": [
@@ -363,6 +379,14 @@
 												"result": {
 													"items": {
 														"properties": {
+															"created": {
+																"description": "Date the test was created, in RFC 3339 format.",
+																"example": "2023-10-11T00:00:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
+															},
 															"data": {
 																"description": "The configuration object which contains the details for the WARP client to conduct the test.",
 																"example": {
@@ -471,6 +495,14 @@
 																"maxLength": 32,
 																"readOnly": true,
 																"type": "string"
+															},
+															"updated": {
+																"description": "Date the test was last updated, in RFC 3339 format.",
+																"example": "2023-10-11T00:00:00Z",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string",
+																"x-stainless-terraform-configurability": "computed"
 															}
 														},
 														"required": [
@@ -3698,6 +3730,14 @@
 										"result": {
 											"items": {
 												"properties": {
+													"created": {
+														"description": "Date the test was created, in RFC 3339 format.",
+														"example": "2023-10-11T00:00:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
+													},
 													"data": {
 														"description": "The configuration object which contains the details for the WARP client to conduct the test.",
 														"example": {
@@ -3806,6 +3846,14 @@
 														"maxLength": 32,
 														"readOnly": true,
 														"type": "string"
+													},
+													"updated": {
+														"description": "Date the test was last updated, in RFC 3339 format.",
+														"example": "2023-10-11T00:00:00Z",
+														"format": "date-time",
+														"readOnly": true,
+														"type": "string",
+														"x-stainless-terraform-configurability": "computed"
 													}
 												},
 												"required": [
@@ -4089,6 +4137,14 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"created": {
+													"description": "Date the test was created, in RFC 3339 format.",
+													"example": "2023-10-11T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
+												},
 												"data": {
 													"description": "The configuration object which contains the details for the WARP client to conduct the test.",
 													"example": {
@@ -4197,6 +4253,14 @@
 													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
+												},
+												"updated": {
+													"description": "Date the test was last updated, in RFC 3339 format.",
+													"example": "2023-10-11T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -10794,6 +10858,14 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"created": {
+								"description": "Date the test was created, in RFC 3339 format.",
+								"example": "2023-10-11T00:00:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string",
+								"x-stainless-terraform-configurability": "computed"
+							},
 							"data": {
 								"description": "The configuration object which contains the details for the WARP client to conduct the test.",
 								"example": {
@@ -10902,6 +10974,14 @@
 								"maxLength": 32,
 								"readOnly": true,
 								"type": "string"
+							},
+							"updated": {
+								"description": "Date the test was last updated, in RFC 3339 format.",
+								"example": "2023-10-11T00:00:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string",
+								"x-stainless-terraform-configurability": "computed"
 							}
 						},
 						"required": [
@@ -11013,6 +11093,14 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"created": {
+													"description": "Date the test was created, in RFC 3339 format.",
+													"example": "2023-10-11T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
+												},
 												"data": {
 													"description": "The configuration object which contains the details for the WARP client to conduct the test.",
 													"example": {
@@ -11121,6 +11209,14 @@
 													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
+												},
+												"updated": {
+													"description": "Date the test was last updated, in RFC 3339 format.",
+													"example": "2023-10-11T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
@@ -11306,6 +11402,14 @@
 				"application/json": {
 					"schema": {
 						"properties": {
+							"created": {
+								"description": "Date the test was created, in RFC 3339 format.",
+								"example": "2023-10-11T00:00:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string",
+								"x-stainless-terraform-configurability": "computed"
+							},
 							"data": {
 								"description": "The configuration object which contains the details for the WARP client to conduct the test.",
 								"example": {
@@ -11414,6 +11518,14 @@
 								"maxLength": 32,
 								"readOnly": true,
 								"type": "string"
+							},
+							"updated": {
+								"description": "Date the test was last updated, in RFC 3339 format.",
+								"example": "2023-10-11T00:00:00Z",
+								"format": "date-time",
+								"readOnly": true,
+								"type": "string",
+								"x-stainless-terraform-configurability": "computed"
 							}
 						},
 						"required": [
@@ -11525,6 +11637,14 @@
 									"properties": {
 										"result": {
 											"properties": {
+												"created": {
+													"description": "Date the test was created, in RFC 3339 format.",
+													"example": "2023-10-11T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
+												},
 												"data": {
 													"description": "The configuration object which contains the details for the WARP client to conduct the test.",
 													"example": {
@@ -11633,6 +11753,14 @@
 													"maxLength": 32,
 													"readOnly": true,
 													"type": "string"
+												},
+												"updated": {
+													"description": "Date the test was last updated, in RFC 3339 format.",
+													"example": "2023-10-11T00:00:00Z",
+													"format": "date-time",
+													"readOnly": true,
+													"type": "string",
+													"x-stainless-terraform-configurability": "computed"
 												}
 											},
 											"required": [
