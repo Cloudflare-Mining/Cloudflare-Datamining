@@ -287,12 +287,13 @@
 			"Google Tag Gateway"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write",
-			"Zone Settings Read"
+			"Zaraz Edit",
+			"Zaraz Read",
+			"Zaraz Admin"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#zone_settings:read"
+				"#zaraz:read"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -300,7 +301,11 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "google-tag-gateway.config",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"PUT /zones/{zone_id}/settings/google-tag-gateway/config": {
 		"description": "Updates the Google Tag Gateway configuration for a zone.",
@@ -641,11 +646,12 @@
 			"Google Tag Gateway"
 		],
 		"x-api-token-group": [
-			"Zone Settings Write"
+			"Zaraz Edit",
+			"Zaraz Admin"
 		],
 		"x-cfPermissionsRequired": {
 			"enum": [
-				"#zone_settings:edit"
+				"#zaraz:edit"
 			]
 		},
 		"x-cfPlanAvailability": {
@@ -653,6 +659,10 @@
 			"enterprise": true,
 			"free": true,
 			"pro": true
-		}
+		},
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "google-tag-gateway.config",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }
