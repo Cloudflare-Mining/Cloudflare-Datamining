@@ -311,7 +311,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/exports/{id}": {
 		"description": "Retrieves a single export job by its unique identifier",
@@ -556,7 +560,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/content/export": {
 		"description": "Creates a CSV export for content and accepts optional filters in the payload.",
@@ -982,7 +990,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{storage_namespace_id}/instances/export": {
 		"description": "Creates a CSV export for Finding instances and accepts optional filters in the payload.\n\nThe `storage_namespace_id` path parameter is derived from the finding ID by base64-decoding it\n(which yields `integration_id:finding_type_id`) and replacing the colon with a hyphen.\n",
@@ -1295,7 +1307,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/export": {
 		"description": "Creates a CSV export for findings and accepts optional filters in the payload.",
@@ -1679,7 +1695,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/remediations/jobs/export": {
 		"description": "Creates a CSV export for remediation jobs and accepts optional filters in the payload.",
@@ -2008,6 +2028,10 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

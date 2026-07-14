@@ -239,7 +239,7 @@
 						}
 					}
 				},
-				"description": "Conflict: webhook is associated with one or more workflow configs and cannot be deleted"
+				"description": "Conflict: webhook is associated with one or more policies and cannot be deleted"
 			}
 		},
 		"security": [
@@ -253,7 +253,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/webhooks": {
 		"description": "Retrieves all webhook configurations for the authenticated account.\nReturns an array of webhook configurations that can be used to send finding notifications.",
@@ -711,7 +715,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}": {
 		"description": "Retrieves a specific webhook configuration by its unique identifier.",
@@ -1391,7 +1399,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks": {
 		"description": "Creates a new webhook configuration for sending finding notifications to external endpoints.",
@@ -2142,7 +2154,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}/evaluate": {
 		"description": "Sends a test webhook event using an existing webhook configuration.\nThis allows customers to verify their webhook endpoint is still reachable and properly \nconfigured after creating the webhook resource.\n\nThe test payload includes:\n- event_type: \"webhook.test\"\n- timestamp: Current UTC timestamp\n- message: Test message indicating this is from Cloudflare CASB\n- data: Object with test: true\n",
@@ -2754,7 +2770,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/evaluate": {
 		"description": "Sends a test webhook event to the specified destination URL to verify the webhook endpoint \nis reachable and properly configured. This allows customers to validate their webhook \nconfiguration before creating the actual webhook resource.\n\nThe test payload includes:\n- event_type: \"webhook.test\"\n- timestamp: Current UTC timestamp\n- message: Test message indicating this is from Cloudflare CASB\n- data: Object with test: true\n",
@@ -3324,7 +3344,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/webhooks/jobs": {
 		"description": "Creates webhook jobs to send a finding instance to one or more configured webhooks.",
@@ -3348,7 +3372,7 @@
 						"description": "Request body for creating webhook jobs",
 						"properties": {
 							"finding_instance_ids": {
-								"description": "Array of finding instance ids ID to send to the webhooks",
+								"description": "Array of finding instance IDs to send to the webhooks",
 								"example": [
 									"770e8400-e29b-41d4-a716-446655440002",
 									"660e8400-e29b-41d4-a716-446655440001"
@@ -3569,8 +3593,7 @@
 																"description": "Type of actor that triggered the webhook job.",
 																"enum": [
 																	"user",
-																	"account_token",
-																	"workflow"
+																	"account_token"
 																],
 																"type": "string"
 															},
@@ -4099,7 +4122,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /accounts/{account_id}/data-security/posture/webhooks/{webhook_id}": {
 		"description": "Updates an existing webhook configuration with new settings.",
@@ -4870,6 +4897,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

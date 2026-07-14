@@ -512,11 +512,6 @@
 																			"threat"
 																		],
 																		"type": "object"
-																	},
-																	"supported_gateway_policy_filters": {
-																		"description": "Which (if any) Cloudflare Gateway Policy Filters this finding supports policy creation for.",
-																		"example": {},
-																		"type": "object"
 																	}
 																},
 																"type": "object"
@@ -528,7 +523,6 @@
 															"name",
 															"remediation",
 															"severity",
-															"supported_gateway_policy_filters",
 															"vendor"
 														],
 														"type": "object"
@@ -1509,11 +1503,6 @@
 																		"threat"
 																	],
 																	"type": "object"
-																},
-																"supported_gateway_policy_filters": {
-																	"description": "Which (if any) Cloudflare Gateway Policy Filters this finding supports policy creation for.",
-																	"example": {},
-																	"type": "object"
 																}
 															},
 															"type": "object"
@@ -1525,7 +1514,6 @@
 														"name",
 														"remediation",
 														"severity",
-														"supported_gateway_policy_filters",
 														"vendor"
 													],
 													"type": "object"
@@ -2318,7 +2306,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances": {
 		"description": "Lists all security finding instances for a given security finding.",
@@ -2916,13 +2908,6 @@
 														},
 														"type": "array"
 													},
-													"supported_gateway_policy_filters": {
-														"additionalProperties": true,
-														"description": "Gateway Policy filters that can be created for this finding instance.",
-														"example": {},
-														"readOnly": true,
-														"type": "object"
-													},
 													"webhooks": {
 														"description": "The most recent webhook job invocation for each webhook configuration associated with this finding instance. Each entry represents the latest job (any status) per webhook config. The 'stale' field indicates whether the job was invoked before the finding instance's current affliction_date. If no webhook jobs have been created, this field will be an empty array.",
 														"items": {
@@ -2994,8 +2979,7 @@
 													"asset",
 													"dlp_contexts",
 													"remediations",
-													"webhooks",
-													"supported_gateway_policy_filters"
+													"webhooks"
 												],
 												"type": "object"
 											},
@@ -3030,7 +3014,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/{instance_id}": {
 		"description": "Gets a security Finding instance by id.",
@@ -3450,13 +3438,6 @@
 													},
 													"type": "array"
 												},
-												"supported_gateway_policy_filters": {
-													"additionalProperties": true,
-													"description": "Gateway Policy filters that can be created for this finding instance.",
-													"example": {},
-													"readOnly": true,
-													"type": "object"
-												},
 												"webhooks": {
 													"description": "The most recent webhook job invocation for each webhook configuration associated with this finding instance. Each entry represents the latest job (any status) per webhook config. The 'stale' field indicates whether the job was invoked before the finding instance's current affliction_date. If no webhook jobs have been created, this field will be an empty array.",
 													"items": {
@@ -3528,8 +3509,7 @@
 												"asset",
 												"dlp_contexts",
 												"remediations",
-												"webhooks",
-												"supported_gateway_policy_filters"
+												"webhooks"
 											],
 											"type": "object"
 										}
@@ -3562,7 +3542,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/archive": {
 		"description": "Archive one or more finding instances.",
@@ -3998,13 +3982,6 @@
 													},
 													"type": "array"
 												},
-												"supported_gateway_policy_filters": {
-													"additionalProperties": true,
-													"description": "Gateway Policy filters that can be created for this finding instance.",
-													"example": {},
-													"readOnly": true,
-													"type": "object"
-												},
 												"webhooks": {
 													"description": "The most recent webhook job invocation for each webhook configuration associated with this finding instance. Each entry represents the latest job (any status) per webhook config. The 'stale' field indicates whether the job was invoked before the finding instance's current affliction_date. If no webhook jobs have been created, this field will be an empty array.",
 													"items": {
@@ -4076,8 +4053,7 @@
 												"asset",
 												"dlp_contexts",
 												"remediations",
-												"webhooks",
-												"supported_gateway_policy_filters"
+												"webhooks"
 											],
 											"type": "object"
 										}
@@ -4109,7 +4085,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/unarchive": {
 		"description": "Remove the archive marking from one or more finding instances.",
@@ -4552,13 +4532,6 @@
 													},
 													"type": "array"
 												},
-												"supported_gateway_policy_filters": {
-													"additionalProperties": true,
-													"description": "Gateway Policy filters that can be created for this finding instance.",
-													"example": {},
-													"readOnly": true,
-													"type": "object"
-												},
 												"webhooks": {
 													"description": "The most recent webhook job invocation for each webhook configuration associated with this finding instance. Each entry represents the latest job (any status) per webhook config. The 'stale' field indicates whether the job was invoked before the finding instance's current affliction_date. If no webhook jobs have been created, this field will be an empty array.",
 													"items": {
@@ -4630,8 +4603,7 @@
 												"asset",
 												"dlp_contexts",
 												"remediations",
-												"webhooks",
-												"supported_gateway_policy_filters"
+												"webhooks"
 											],
 											"type": "object"
 										}
@@ -4663,7 +4635,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/reset_finding_severity": {
 		"description": "If a Finding's severity has been changed, reset it back to default value.\nDoes nothing if no override exists.",
@@ -4957,11 +4933,6 @@
 																		"threat"
 																	],
 																	"type": "object"
-																},
-																"supported_gateway_policy_filters": {
-																	"description": "Which (if any) Cloudflare Gateway Policy Filters this finding supports policy creation for.",
-																	"example": {},
-																	"type": "object"
 																}
 															},
 															"type": "object"
@@ -4973,7 +4944,6 @@
 														"name",
 														"remediation",
 														"severity",
-														"supported_gateway_policy_filters",
 														"vendor"
 													],
 													"type": "object"
@@ -5339,7 +5309,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/tune_finding_severity": {
 		"description": "Update the severity of a Finding.\nThis will update the `severity_override` field on the Finding payload with the new severity value.",
@@ -5633,11 +5607,6 @@
 																		"threat"
 																	],
 																	"type": "object"
-																},
-																"supported_gateway_policy_filters": {
-																	"description": "Which (if any) Cloudflare Gateway Policy Filters this finding supports policy creation for.",
-																	"example": {},
-																	"type": "object"
 																}
 															},
 															"type": "object"
@@ -5649,7 +5618,6 @@
 														"name",
 														"remediation",
 														"severity",
-														"supported_gateway_policy_filters",
 														"vendor"
 													],
 													"type": "object"
@@ -6015,7 +5983,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/ignore": {
 		"description": "Given a list of findings, mark as ignored. Does nothing if Finding is already ignored.",
@@ -6327,11 +6299,6 @@
 																		"threat"
 																	],
 																	"type": "object"
-																},
-																"supported_gateway_policy_filters": {
-																	"description": "Which (if any) Cloudflare Gateway Policy Filters this finding supports policy creation for.",
-																	"example": {},
-																	"type": "object"
 																}
 															},
 															"type": "object"
@@ -6343,7 +6310,6 @@
 														"name",
 														"remediation",
 														"severity",
-														"supported_gateway_policy_filters",
 														"vendor"
 													],
 													"type": "object"
@@ -6706,7 +6672,11 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/unignore": {
 		"description": "Ability to un-ignore a Finding if it's previously been ignored. Does nothing if the Finding is not ignored.",
@@ -7018,11 +6988,6 @@
 																		"threat"
 																	],
 																	"type": "object"
-																},
-																"supported_gateway_policy_filters": {
-																	"description": "Which (if any) Cloudflare Gateway Policy Filters this finding supports policy creation for.",
-																	"example": {},
-																	"type": "object"
 																}
 															},
 															"type": "object"
@@ -7034,7 +6999,6 @@
 														"name",
 														"remediation",
 														"severity",
-														"supported_gateway_policy_filters",
 														"vendor"
 													],
 													"type": "object"
@@ -7397,6 +7361,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

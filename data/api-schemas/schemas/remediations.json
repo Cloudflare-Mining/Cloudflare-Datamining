@@ -81,10 +81,10 @@
 				}
 			},
 			{
-				"description": "Filter remediations by what kind of actor triggered them. Supports multiple comma-separated values (`user`, `account_token`, or `workflow`).",
+				"description": "Filter remediations by what kind of actor triggered them. Supports multiple comma-separated values.",
 				"example": [
 					"user",
-					"workflow"
+					"account_token"
 				],
 				"explode": false,
 				"in": "query",
@@ -94,8 +94,7 @@
 						"description": "Type of actor that triggered the remediation job.",
 						"enum": [
 							"user",
-							"account_token",
-							"workflow"
+							"account_token"
 						],
 						"example": "user",
 						"type": "string"
@@ -363,7 +362,6 @@
 												"enum": [
 													"user",
 													"account_token",
-													"workflow",
 													null
 												],
 												"example": "user",
@@ -371,13 +369,13 @@
 												"type": "string"
 											},
 											"triggered_by_id": {
-												"description": "ID of the actor that triggered the job. User tag when actor is \"user\", account tag when \"account_token\", workflow config UUID when \"workflow\". Null on legacy rows.",
+												"description": "ID of the actor that triggered the job. Meaning depends on triggered_by_actor. Null on legacy rows.",
 												"example": "0123456789abcdef0123456789abcdef",
 												"nullable": true,
 												"type": "string"
 											},
 											"triggered_by_user": {
-												"description": "Email of the user who triggered the remediation. For account-token actors this is the literal \"Account API Token\"; for workflow actors this is empty.",
+												"description": "Email of the user who triggered the remediation. For account-token actors this is the literal \"Account API Token\"; for policy actors this is empty.",
 												"example": "user@example.com",
 												"type": "string"
 											}
@@ -739,7 +737,6 @@
 														"enum": [
 															"user",
 															"account_token",
-															"workflow",
 															null
 														],
 														"example": "user",
@@ -747,13 +744,13 @@
 														"type": "string"
 													},
 													"triggered_by_id": {
-														"description": "ID of the actor that triggered the job. User tag when actor is \"user\", account tag when \"account_token\", workflow config UUID when \"workflow\". Null on legacy rows.",
+														"description": "ID of the actor that triggered the job. Meaning depends on triggered_by_actor. Null on legacy rows.",
 														"example": "0123456789abcdef0123456789abcdef",
 														"nullable": true,
 														"type": "string"
 													},
 													"triggered_by_user": {
-														"description": "Email of the user who triggered the remediation. For account-token actors this is the literal \"Account API Token\"; for workflow actors this is empty.",
+														"description": "Email of the user who triggered the remediation. For account-token actors this is the literal \"Account API Token\"; for policy actors this is empty.",
 														"example": "user@example.com",
 														"type": "string"
 													}
@@ -1047,7 +1044,6 @@
 														"enum": [
 															"user",
 															"account_token",
-															"workflow",
 															null
 														],
 														"example": "user",
@@ -1055,13 +1051,13 @@
 														"type": "string"
 													},
 													"triggered_by_id": {
-														"description": "ID of the actor that triggered the job. User tag when actor is \"user\", account tag when \"account_token\", workflow config UUID when \"workflow\". Null on legacy rows.",
+														"description": "ID of the actor that triggered the job. Meaning depends on triggered_by_actor. Null on legacy rows.",
 														"example": "0123456789abcdef0123456789abcdef",
 														"nullable": true,
 														"type": "string"
 													},
 													"triggered_by_user": {
-														"description": "Email of the user who triggered the remediation. For account-token actors this is the literal \"Account API Token\"; for workflow actors this is empty.",
+														"description": "Email of the user who triggered the remediation. For account-token actors this is the literal \"Account API Token\"; for policy actors this is empty.",
 														"example": "user@example.com",
 														"type": "string"
 													}
@@ -1146,6 +1142,10 @@
 		],
 		"x-api-token-group": [
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

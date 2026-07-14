@@ -295,7 +295,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}": {
 		"description": "Retrieve a specific finding type by its unique identifier.",
@@ -541,7 +545,11 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/data-security/posture/finding_types/{finding_type_id}/remediation_types": {
 		"description": "List all remediation types for a given finding type.\nThis endpoint supports both cursor and offset pagination.\nNote that `cursor` and `page` are mutually exclusive.",
@@ -825,6 +833,10 @@
 		"x-api-token-group": [
 			"Zero Trust Read",
 			"Zero Trust Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "data-security.posture",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	}
 }
