@@ -5,31 +5,65 @@
 		<p>At Cloudflare, we’re not looking for people who wait for a polished roadmap; we’re looking for the builders who see the cracks in the Internet that everyone else has simply learned to live with. We value candidates who have the instinct to spot a "normalized" problem and the AI-native curiosity to create a solution using the latest tools. Our culture is built on iteration, leveraging AI to ship faster today to make it better tomorrow, while ensuring that every improvement, no matter how small, is shared across the team to lift everyone up. If you’re the type of person who values curiosity over bureaucracy, and that AI is a partner in solving tough problems to keep the Internet moving forward, you’ll fit right in.</p>
 	</div>
 </div>
-<p><strong>Available Locations: Austin, Texas</strong></p>
-<h2><strong>About the role</strong></h2>
-<p>The Network Platforms team was formed to build and extend network software infrastructure responsible for delivery of traffic through critical paths of Cloudflare's global network. These systems directly impact traffic across Cloudflare's network infrastructure, across numerous products and millions of customers. They are key to Cloudflare's mission to make the internet faster, safer, and more reliable.</p>
-<h3><strong>What you’ll do</strong></h3>
-<p>As a member of the team you will&nbsp;build and extend various software systems that carry traffic on critical paths of Cloudflare's network: from the host server linux kernel, to the network hardware dataplane, to the physical interconnect at an adjacent network. You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will collaborate with engineers across the company, from operations teams to the teams building customer-facing products, ensuring these capabilities match business needs.</p>
-<p>Our team at Cloudflare operates under a "Run What You Build" model. This means we are responsible for the health of our systems and actively participate in our team's on-call rotation as part of our operational duties.</p>
-<h3><strong>What we are looking for</strong></h3>
-<p>We are looking for smart, innovative team players that have experience in covering Linux kernel network stack development (particularly with eBPF), complex distributed systems, and understanding of internet protocols and technologies.&nbsp;As you’ll be solving problems of massive scale and significance, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</p>
-<h4><strong>Role requirements</strong></h4>
+<h4><strong>Available Locations: Brussels</strong></h4>
+<p><strong>About the Role</strong></p>
+<p>Because of the scope, complexity, and diversity of the company’s work, our Public Policy team members must be flexible, talented and able to work collaboratively across multi-functional teams to find and present policy solutions, to carry the Cloudflare narrative and promote the public policy brand externally.&nbsp;</p>
+<p>Cloudflare’s Public Policy team helps the company by anticipating regulatory challenges, acting as an external advocate for Cloudflare on priority policy issues and identifying opportunities to build relationships with external partners.&nbsp;</p>
+<p>The team is relatively small but growing, and is often tasked with addressing global policy issues on top of local market priorities. This is a fast-moving work environment with goals that are closely linked to business priorities, however, policy issues are typically within the areas of cybersecurity, AI, data protection/privacy, connectivity and intermediary liability.</p>
+<p><strong>We are looking for an intern for a six-month period to help support our European Public Policy team, based in Brussels. The start date for this role is foreseen on September 7, 2026.</strong></p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities</strong></p>
+<p>The responsibilities of the intern will consist of working day-to-day with the European Public Policy team across a wide range of work streams and projects including:</p>
 <ul>
-	<li>Systems-level programming experience in Go, Python, Rust, C, or C++</li>
-	<li>A solid grasp of BGP and internet routing</li>
-	<li>Relish opportunities to dive into new technologies, and a demonstrated ability to do so</li>
-	<li>Experience in implementing, deploying, and debugging mission-critical distributed systems</li>
-	<li>Strong collaboration and communication skills</li>
-	<li>Willingness to adopt and integrate AI tools and systems into your engineering workflow</li>
+	<li>Help the Public Policy team to maintain internal knowledge databases, draft EU stakeholder maps and support with further automation of issue tracking</li>
+	<li>Support the team in evaluating EU policy and legislative developments, and support work to understand the impact on Cloudflare across its full product set, including attending relevant events (for instance in the European Parliament and conferences) and providing internal updates to the Public Policy team</li>
+	<li>Participate in developing talking points, policy narratives and presentation materials for use at external events and meetings and for other communication purposes (company blog, position papers, consultation responses etc)</li>
+	<li>Help compile materials for use by Cloudflare's sales and marketing teams to respond to policy-related questions raised by our customers and potential customers</li>
+	<li>Support work to build and maintain relationships with key policy makers and officials from the European Institutions, as well as within any identified national markets</li>
+	<li>Take part in engagement with business and civil society entities, including trade associations of which we are an active member</li>
+	<li>Support in providing daily/real-time and other updates to colleagues from the Cloudflare Public Policy, Legal, Trust &amp; Safety Teams and other internal stakeholders</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
+<p>&nbsp;</p>
+<p><strong>Desirable Skills, Knowledge and Experience</strong></p>
 <ul>
-	<li>Familiarity vendor switching SDKs</li>
-	<li>Familiarity with SR-MPLS and sFlow, BGP-LS &amp; PCE protocols</li>
-	<li>Experience writing packet-processing software (eg, eBPF at TC or XDP, DPDK)</li>
-	<li>Experience using AI-assisted development tools (e.g., code completion, codebase analysis, log/data exploration) in a professional setting</li>
-	<li>Experience participating in an on-call rotation</li>
+	<li>
+		<p data-path-to-node="1,0,0"><strong data-path-to-node="1,0,0" data-index-in-node="0">Academic Background &amp; Business Interest:</strong> Requires an active, self-starting individual with an academic background and a strong curiosity about the business, specifically focusing on:</p>
+		<ul data-path-to-node="1,0,1">
+			<li>
+				<p data-path-to-node="1,0,1,0,0">Cybersecurity</p>
+			</li>
+			<li>
+				<p data-path-to-node="1,0,1,1,0">Artificial Intelligence (AI)</p>
+			</li>
+			<li>
+				<p data-path-to-node="1,0,1,2,0">Connectivity/Telecoms</p>
+			</li>
+			<li>
+				<p data-path-to-node="1,0,1,3,0">Content policy</p>
+			</li>
+			<li>
+				<p data-path-to-node="1,0,1,4,0">Privacy issues</p>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<p data-path-to-node="1,1,0">Previous work or internship experience within a technology company, trade association, or an EU institution working on relevant policy topics.</p>
+	</li>
+	<li>
+		<p data-path-to-node="1,2,0"><strong data-path-to-node="1,2,0" data-index-in-node="0">Language Skills:</strong> Perfect command of English as a working language (both written and oral) is required.</p>
+	</li>
 </ul>
+<p>&nbsp;</p>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li><strong data-path-to-node="1,3,0" data-index-in-node="0">Technical Aptitude (Asset):</strong> Strong technical aptitude and the curiosity to develop, leverage, and automate internal AI tools to scale the team’s impact.</li>
+</ul>
+<p>&nbsp;</p>
+<h3 data-path-to-node="0"><strong data-path-to-node="0" data-index-in-node="0">Compensation</strong></h3>
+<p data-path-to-node="1">● For Belgium based hires: Estimated annual salary starts at €33,000.</p>
+<h3 data-path-to-node="2"><strong data-path-to-node="2" data-index-in-node="0">Equity</strong></h3>
+<p data-path-to-node="3">This role is eligible to participate in Cloudflare’s equity plan.</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
