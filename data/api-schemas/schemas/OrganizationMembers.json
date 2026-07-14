@@ -123,7 +123,11 @@
 		"summary": "Delete organization member",
 		"tags": [
 			"OrganizationMembers"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.members",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}/members": {
 		"description": "List memberships for an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
@@ -418,7 +422,11 @@
 		"summary": "List organization members",
 		"tags": [
 			"OrganizationMembers"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.members",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}/members/{member_id}": {
 		"description": "Retrieve a single membership from an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
@@ -634,7 +642,11 @@
 		"summary": "Get organization member",
 		"tags": [
 			"OrganizationMembers"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.members",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /organizations/{organization_id}/members": {
 		"description": "Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
@@ -880,7 +892,11 @@
 		"summary": "Create organization member",
 		"tags": [
 			"OrganizationMembers"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.members",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"POST /organizations/{organization_id}/members:batchCreate": {
 		"description": "Batch create multiple memberships that grant access to a specific Organization.",
@@ -1133,6 +1149,10 @@
 		"summary": "Batch create organization members",
 		"tags": [
 			"OrganizationMembers"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.members-batch-create",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	}
 }

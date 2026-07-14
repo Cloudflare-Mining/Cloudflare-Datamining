@@ -252,7 +252,11 @@
 		"summary": "Get tenant",
 		"tags": [
 			"Tenants"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "tenants",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /tenants/{tenant_id}/account_types": {
 		"description": "List of account types available for the Tenant to provision accounts.",
@@ -395,7 +399,11 @@
 		"summary": "Get tenant account types",
 		"tags": [
 			"Tenants"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "tenants.account-types",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /tenants/{tenant_id}/accounts": {
 		"description": "List of accounts for the Tenant.",
@@ -607,7 +615,11 @@
 		"summary": "List tenant accounts",
 		"tags": [
 			"Tenants"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "tenants.accounts",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /tenants/{tenant_id}/entitlements": {
 		"description": "List of innate entitlements available for the Tenant.",
@@ -928,7 +940,11 @@
 		"summary": "List tenant entitlements",
 		"tags": [
 			"Tenants"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "tenants.entitlements",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /tenants/{tenant_id}/memberships": {
 		"description": "List of active members (Cloudflare users) for the Tenant.",
@@ -1087,6 +1103,10 @@
 		"summary": "List tenant memberships",
 		"tags": [
 			"Tenants"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "tenants.memberships",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	}
 }

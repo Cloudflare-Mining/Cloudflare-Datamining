@@ -149,7 +149,11 @@
 		"summary": "Delete organization.",
 		"tags": [
 			"Organizations"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations",
+		"x-fern-sdk-method-name": "delete",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise": {
 		"description": "Returns day-wise session and recording analytics data of an App for the specified time range start_date to end_date. If start_date and end_date are not provided, the default time range is set from 30 days ago to the current date.",
@@ -711,7 +715,11 @@
 		"x-api-token-group": [
 			"User Details Write",
 			"User Details Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}": {
 		"description": "Retrieve the details of a certain organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
@@ -980,7 +988,11 @@
 		"summary": "Get organization",
 		"tags": [
 			"Organizations"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}/accounts": {
 		"description": "Retrieve a list of accounts that belong to a specific organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
@@ -1331,7 +1343,11 @@
 		"summary": "Get organization accounts",
 		"tags": [
 			"Organizations"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.organization-accounts",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"GET /organizations/{organization_id}/profile": {
 		"description": "Get an organizations profile if it exists. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
@@ -1499,7 +1515,11 @@
 		"summary": "Get organization profile",
 		"tags": [
 			"Organizations"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.organization-profile",
+		"x-fern-sdk-method-name": "get",
+		"x-forge-hidden": true
 	},
 	"POST /organizations": {
 		"description": "Create a new organization for a user. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
@@ -1892,7 +1912,11 @@
 		],
 		"x-api-token-group": [
 			"User Details Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations",
+		"x-fern-sdk-method-name": "create",
+		"x-forge-hidden": true
 	},
 	"PUT /organizations/{organization_id}": {
 		"description": "Modify organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
@@ -2297,7 +2321,11 @@
 		"summary": "Modify organization.",
 		"tags": [
 			"Organizations"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	},
 	"PUT /organizations/{organization_id}/profile": {
 		"description": "Modify organization profile. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
@@ -2425,6 +2453,10 @@
 		"summary": "Modify organization profile.",
 		"tags": [
 			"Organizations"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.organization-profile",
+		"x-fern-sdk-method-name": "update",
+		"x-forge-hidden": true
 	}
 }

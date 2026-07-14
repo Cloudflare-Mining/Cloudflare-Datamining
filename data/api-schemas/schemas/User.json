@@ -666,7 +666,11 @@
 		"x-api-token-group": [
 			"User Details Write",
 			"User Details Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "user.tenants",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"PATCH /user": {
 		"description": "Edit part of your user details.",

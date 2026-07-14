@@ -1334,7 +1334,11 @@
 			"Billing Read",
 			"Account Settings Write",
 			"Account Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "organizations.account-organizations",
+		"x-fern-sdk-method-name": "list",
+		"x-forge-hidden": true
 	},
 	"GET /accounts/{account_id}/profile": {
 		"description": "Retrieves the profile information for a specific Cloudflare account, including organization details, settings, and metadata. This endpoint is commonly used to verify account access and retrieve account-level configuration.",
@@ -1529,7 +1533,10 @@
 			"Billing Read",
 			"Account Settings Write",
 			"Account Settings Read"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.account-profile",
+		"x-fern-sdk-method-name": "get"
 	},
 	"POST /accounts": {
 		"description": "Create an account (only available for tenant admins at this time)",
@@ -2063,7 +2070,10 @@
 		"tags": [
 			"Accounts"
 		],
-		"x-api-token-group": null
+		"x-api-token-group": null,
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.account-organizations",
+		"x-fern-sdk-method-name": "create"
 	},
 	"POST /accounts/move": {
 		"description": "Batch move a collection of accounts to a specific organization. ⚠️ Not implemented.",
@@ -2243,7 +2253,10 @@
 		"summary": "Batch move accounts",
 		"tags": [
 			"Accounts"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts",
+		"x-fern-sdk-method-name": "move"
 	},
 	"PUT /accounts/{account_id}": {
 		"description": "Update an existing account.",
@@ -2806,6 +2819,9 @@
 		],
 		"x-api-token-group": [
 			"Account Settings Write"
-		]
+		],
+		"x-fern-availability": "generally-available",
+		"x-fern-sdk-group-name": "accounts.account-profile",
+		"x-fern-sdk-method-name": "update"
 	}
 }
