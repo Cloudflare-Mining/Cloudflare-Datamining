@@ -4,19 +4,30 @@ title: The Cloudflare Blog
 image: https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5x04dbbOIp3eiugWSYPeUo/839720d141b384ea4478dd29706ed289/meta_image.png
 ---
 
+[A broken DNSSEC rollover took down .AL. Now 1.1.1.1 tells you when validation is bypassed](https://blog.cloudflare.com/dnssec-nta-ede-33/)
+
+2026-07-14
+
+When a failed DNSSEC key rollover took down the .AL TLD, we deployed a Negative Trust Anchor to restore resolution. This time, though, clients didn't have to take our word for it: 1.1.1.1 returned EDE 33, a new DNS error code that signals directly in the response that DNSSEC validation was bypassed....
+
+[Continue reading »](https://blog.cloudflare.com/dnssec-nta-ede-33/)
+* [![Sebastiaan Neuteboom](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xX4aGpJvTsyOVcHZL0RoE/6615c05595e153a701715086557863f3/Screenshot_2026-01-13_at_1.48.53%C3%A2__PM.png)](https://blog.cloudflare.com/author/sebastiaan-neuteboom/)  
+[Sebastiaan Neuteboom](https://blog.cloudflare.com/author/sebastiaan-neuteboom/)
+
+![A broken DNSSEC rollover took down .AL. Now 1.1.1.1 tells you when validation is bypassed](https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4i9cpeIrqdw6VLDSUKgQXo/a5b9df138392686b5206e64f01e2ae0a/BLOG-3376_image1.png)
+
 [Introducing Precursor: detecting agentic behavior with continuous client-side signals](https://blog.cloudflare.com/introducing-precursor/)
 
 2026-07-13
 
+[Bot Management](https://blog.cloudflare.com/tag/bot-management/)[Security](https://blog.cloudflare.com/tag/security/)[Turnstile](https://blog.cloudflare.com/tag/turnstile/)[JavaScript](https://blog.cloudflare.com/tag/javascript/)[AI](https://blog.cloudflare.com/tag/ai/)[Precursor](https://blog.cloudflare.com/tag/precursor/)[Product News](https://blog.cloudflare.com/tag/product-news/)
+
 Precursor, our new continuous behavioral validation engine for bot management, offers visibility into how humans and bots actually interact across the full user journey. By turning session-level behavior into bot detection signals, it identifies advanced automation with higher precision — while reducing friction for legitimate users....
 
-[Continue reading »](https://blog.cloudflare.com/introducing-precursor/)
 * [![Marina Elmore](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57oe3QXMmouuqim694mCRt/a826ea8c7c8d794a1b1b679e9eafdc98/Marina_Elmore.png)](https://blog.cloudflare.com/author/marina-elmore/)  
 [Marina Elmore](https://blog.cloudflare.com/author/marina-elmore/)
 * [![Benedikt Wolters](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YEnfGK1q6irUDXgMXL6Kh/6ec78c81de34a419e7f062742413fadf/benedikt.png)](https://blog.cloudflare.com/author/benedikt/)  
 [Benedikt Wolters](https://blog.cloudflare.com/author/benedikt/)
-
-![Introducing Precursor: detecting agentic behavior with continuous client-side signals](https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pqbi8rwo6FweAxipzQNdo/ea4dbd9905ffff11072753d7a3296aa7/BLOG-3362_image1.png)
 
 [Improving Smart Tiered Cache for Public Cloud Regions](https://blog.cloudflare.com/smart-tiered-cache-for-public-clouds/)
 
@@ -265,19 +276,6 @@ The Agents SDK is now a runtime any agent framework can build on. Today we're op
 
 * [![Thomas Gauvin](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2niktUqyQO5YzVIBCwrBGl/9474ec9faff3b27f7ec9013a066b9b54/Thomas_Gauvin.jpg)](https://blog.cloudflare.com/author/thomas-gauvin/)  
 [Thomas Gauvin](https://blog.cloudflare.com/author/thomas-gauvin/)
-
-[Introducing the Cloudflare One stack: agent-powered deployment](https://blog.cloudflare.com/cloudflare-one-stack/)
-
-2026-06-17
-
-[Cloudflare One](https://blog.cloudflare.com/tag/cloudflare-one/)[Zero Trust](https://blog.cloudflare.com/tag/zero-trust/)[Agents](https://blog.cloudflare.com/tag/agents/)
-
-The Cloudflare One stack is a library of agent skills that gives any AI agent the knowledge it needs to plan, deploy, and manage a Zero Trust environment — no migration calls required....
-
-* [![AJ Gerstenhaber](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SVXko1wyQVVgDL2ziCCvD/a3da474903a8ba759578c5791e86a164/aj.jpg)](https://blog.cloudflare.com/author/aj/)  
-[AJ Gerstenhaber](https://blog.cloudflare.com/author/aj/)
-* [![Abe Carryl](https://blog.cloudflare.com/cdn-cgi/image/format=auto,dpr=3,width=64,height=64,gravity=face,fit=crop,zoom=0.5/https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DGgxZ9N7uw8HNW8wryqK3/063b210fe1fe059b0769791b4fe72a40/Abe_Carryl-2.webp)](https://blog.cloudflare.com/author/abe/)  
-[Abe Carryl](https://blog.cloudflare.com/author/abe/)
 
 * [1](https://blog.cloudflare.com/)
 * [2](https://blog.cloudflare.com/page/2/)
