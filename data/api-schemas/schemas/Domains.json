@@ -459,9 +459,9 @@
 														"deprecated": true,
 														"description": "Worker environment associated with the domain.",
 														"example": "production",
+														"readOnly": true,
 														"type": "string",
-														"x-auditable": true,
-														"x-stainless-terraform-configurability": "computed_optional"
+														"x-auditable": true
 													},
 													"hostname": {
 														"description": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
@@ -503,8 +503,7 @@
 													"zone_id",
 													"zone_name",
 													"hostname",
-													"service",
-													"environment"
+													"service"
 												],
 												"type": "object"
 											},
@@ -789,9 +788,9 @@
 													"deprecated": true,
 													"description": "Worker environment associated with the domain.",
 													"example": "production",
+													"readOnly": true,
 													"type": "string",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-auditable": true
 												},
 												"hostname": {
 													"description": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
@@ -833,8 +832,7 @@
 												"zone_id",
 												"zone_name",
 												"hostname",
-												"service",
-												"environment"
+												"service"
 											],
 											"type": "object"
 										}
@@ -1022,9 +1020,9 @@
 										"deprecated": true,
 										"description": "Worker environment associated with the domain.",
 										"example": "production",
+										"readOnly": true,
 										"type": "string",
-										"x-auditable": true,
-										"x-stainless-terraform-configurability": "computed_optional"
+										"x-auditable": true
 									},
 									"hostname": {
 										"description": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
@@ -1066,8 +1064,7 @@
 									"zone_id",
 									"zone_name",
 									"hostname",
-									"service",
-									"environment"
+									"service"
 								],
 								"type": "object"
 							},
@@ -1188,9 +1185,9 @@
 													"deprecated": true,
 													"description": "Worker environment associated with the domain.",
 													"example": "production",
+													"readOnly": true,
 													"type": "string",
-													"x-auditable": true,
-													"x-stainless-terraform-configurability": "computed_optional"
+													"x-auditable": true
 												},
 												"hostname": {
 													"description": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
@@ -1232,8 +1229,7 @@
 												"zone_id",
 												"zone_name",
 												"hostname",
-												"service",
-												"environment"
+												"service"
 											],
 											"type": "object"
 										}
