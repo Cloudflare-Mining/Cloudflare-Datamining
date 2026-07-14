@@ -24,7 +24,7 @@ Featured in
 
 ### Press releases
 
-[ Press release  Cloudflare Introduces Precursor; One-Click Behavioral Defense Against Modern Bots July 13, 2026 View release → ](/press/press-releases/2026/cloudflare-introduces-precursor-one-click-behavioral-defense-against-modern-bots/)[ Press release  Cloudflare Announces Research Pilot with OpenAI July 8, 2026 View release → ](/press/press-releases/2026/cloudflare-announces-research-pilot-with-openai/)[ Press release  Cloudflare Allows the Agentic Internet to Flourish with a Simple Philosophy: Your Content, Your Rules July 1, 2026 View release → ](/press/press-releases/2026/cloudflare-allows-the-agentic-internet-to-flourish-with-a-simple-philosophy-your-content-your-rules/) 
+[ Press release  Cloudflare Announces Research Pilot with OpenAI July 8, 2026 View release → ](/press/press-releases/2026/cloudflare-announces-research-pilot-with-openai/)[ Press release  Cloudflare Allows the Agentic Internet to Flourish with a Simple Philosophy: Your Content, Your Rules July 1, 2026 View release → ](/press/press-releases/2026/cloudflare-allows-the-agentic-internet-to-flourish-with-a-simple-philosophy-your-content-your-rules/)[ Press release  Cloudflare and beehiiv Introduce AI Crawl Controls to Help Independent Publishers Navigate the AI Era June 23, 2026 View release → ](https://www.cloudflare.com/press/press-releases/2026/cloudflare-and-beehiiv-introduce-ai-crawl-controls-to-help-independent-publishers-navigate-the-ai-era/) 
 
 [View press releases](/press/press-releases/) 
 
