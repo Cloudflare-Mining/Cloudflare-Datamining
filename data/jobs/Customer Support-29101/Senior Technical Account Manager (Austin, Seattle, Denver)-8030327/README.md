@@ -12,12 +12,12 @@
 <h4><strong>About the Role</strong></h4>
 <p>As a Technical Account Manager, you will own the post-sales support experience for Cloudflare’s largest Enterprise customers, ensuring smooth operations and proactive technical guidance. As the primary technical point of contact, you will manage support interactions, troubleshoot issues, drive escalations, and advocate for customer needs.&nbsp;</p>
 <p>You will act as an architectural governance partner, continuously mapping customer environments against industry best practices and Cloudflare's Well-Architected framework. By proactively identifying security gaps, single points of failure, and performance bottlenecks, you will prevent incidents before they impact production.&nbsp;</p>
-<p>Working closely with Customer Success, Account Teams, Product, Engineering, and partnering with Customer Support, you will align technical solutions with customer roadmaps and business objectives. This role requires a mix of technical expertise, customer service excellence, and strategic problem-solving to ensure high customer satisfaction and retention.</p>
+<p>Working closely with Account Teams, Product, Engineering, and partnering with Customer Support, you will align technical solutions with customer roadmaps and business objectives. This role requires a mix of technical expertise, customer service excellence, and strategic problem-solving to ensure high customer satisfaction and retention.</p>
 <p>For TAMs specializing in Network Services, you will focus on optimizing customer Cloudflare configurations, ensuring the reliability and security of their network infrastructure.</p>
 <h4><strong>Responsibilities</strong></h4>
 <ul>
 	<li>Serve as the primary technical support contact for assigned Enterprise customers.</li>
-	<li>Build and maintain strong cross-functional relationships with Product, Engineering, Account Executives, Customer Success, Professional Services, and Partners to support every phase of the customer journey.</li>
+	<li>Build and maintain strong cross-functional relationships with Product, Engineering, Account Executives, Professional Services, and Partners to support every phase of the customer journey.</li>
 	<li>Leverage AI-driven tools and workflows to optimize daily operations, including incident summarization, case prioritization, and automated handover documentation, to increase team productivity and focus on strategic customer advocacy.</li>
 	<li>Collaborate with internal teams to ensure high customer satisfaction, delivering world-class technical support and advocacy.</li>
 	<li>Provide actionable customer feedback to Product and Engineering teams to help shape product improvements.</li>
