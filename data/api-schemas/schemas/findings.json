@@ -1226,11 +1226,12 @@
 				}
 			},
 			{
-				"description": "A unique identifier for the finding type",
+				"description": "A base64-encoded ID identifying this Finding.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
 				"schema": {
+					"format": "byte",
 					"type": "string"
 				}
 			}
@@ -2310,7 +2311,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "get",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"GET /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances": {
 		"description": "Lists all security finding instances for a given security finding.",
@@ -3579,7 +3581,7 @@
 					"schema": {
 						"description": "Request body for bulk actions on finding instances.",
 						"properties": {
-							"finding_instances": {
+							"check_instances": {
 								"description": "A list of finding instance IDs to pass along.",
 								"example": [
 									"497f6eca-6276-4993-bfeb-53cbbbba6f08"
@@ -3592,7 +3594,7 @@
 							}
 						},
 						"required": [
-							"finding_instances"
+							"check_instances"
 						],
 						"type": "object"
 					}
@@ -4089,7 +4091,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/instances/unarchive": {
 		"description": "Remove the archive marking from one or more finding instances.",
@@ -4120,29 +4123,22 @@
 			"content": {
 				"application/json": {
 					"schema": {
-						"description": "Request body for finding instance operations. In the API interface, we refer to the 'finding' table in our DB as finding instances.",
+						"description": "Request body for bulk actions on finding instances.",
 						"properties": {
-							"affliction_date": {
-								"description": "When this instance was identified.",
-								"example": "2025-03-18T17:25:38.700541Z",
-								"format": "date-time",
-								"type": "string"
-							},
-							"id": {
-								"description": "Unique identifier for the finding instance.",
-								"example": "497f6eca-6276-4993-bfeb-53cbbbba6f08",
-								"format": "uuid",
-								"type": "string"
-							},
-							"is_archived": {
-								"default": false,
-								"description": "Whether this finding instance is archived.",
-								"example": false,
-								"type": "boolean"
+							"check_instances": {
+								"description": "A list of finding instance IDs to pass along.",
+								"example": [
+									"497f6eca-6276-4993-bfeb-53cbbbba6f08"
+								],
+								"items": {
+									"format": "uuid",
+									"type": "string"
+								},
+								"type": "array"
 							}
 						},
 						"required": [
-							"affliction_date"
+							"check_instances"
 						],
 						"type": "object"
 					}
@@ -4639,7 +4635,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/reset_finding_severity": {
 		"description": "If a Finding's severity has been changed, reset it back to default value.\nDoes nothing if no override exists.",
@@ -4656,11 +4653,12 @@
 				}
 			},
 			{
-				"description": "A unique string value identifying this finding type v2.",
+				"description": "A base64-encoded ID identifying this Finding.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
 				"schema": {
+					"format": "byte",
 					"type": "string"
 				}
 			}
@@ -5296,6 +5294,114 @@
 			},
 			"404": {
 				"description": "Not Found: Finding not found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"example": 1000,
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"format": "uri",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"example": "Request processed successfully",
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"example": "/data/attributes/name",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"example": 1000,
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"format": "uri",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"example": "Request processed successfully",
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"example": "/data/attributes/name",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Server Error: Unexpected failure resetting finding severity"
 			}
 		},
 		"security": [
@@ -5313,7 +5419,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/{finding_id}/tune_finding_severity": {
 		"description": "Update the severity of a Finding.\nThis will update the `severity_override` field on the Finding payload with the new severity value.",
@@ -5330,15 +5437,42 @@
 				}
 			},
 			{
-				"description": "A unique integer value identifying this findings stats v2.",
+				"description": "A base64-encoded ID identifying this Finding.",
 				"in": "path",
 				"name": "finding_id",
 				"required": true,
 				"schema": {
-					"type": "integer"
+					"format": "byte",
+					"type": "string"
 				}
 			}
 		],
+		"requestBody": {
+			"content": {
+				"application/json": {
+					"schema": {
+						"description": "Request body for updating a finding's severity.",
+						"properties": {
+							"new_severity": {
+								"description": "The numeric severity value to apply to the finding.",
+								"enum": [
+									1,
+									2,
+									3,
+									4
+								],
+								"type": "integer"
+							}
+						},
+						"required": [
+							"new_severity"
+						],
+						"type": "object"
+					}
+				}
+			},
+			"required": true
+		},
 		"responses": {
 			"200": {
 				"content": {
@@ -5970,6 +6104,114 @@
 			},
 			"404": {
 				"description": "Not Found: Finding not found"
+			},
+			"500": {
+				"content": {
+					"application/json": {
+						"schema": {
+							"description": "Standard error response structure.",
+							"properties": {
+								"errors": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"example": 1000,
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"format": "uri",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"example": "Request processed successfully",
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"example": "/data/attributes/name",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"messages": {
+									"example": [],
+									"items": {
+										"properties": {
+											"code": {
+												"description": "Error or message code.",
+												"example": 1000,
+												"minimum": 1000,
+												"type": "integer"
+											},
+											"documentation_url": {
+												"description": "Link to relevant documentation.",
+												"example": "https://developers.cloudflare.com/api/operations/list-findings",
+												"format": "uri",
+												"type": "string"
+											},
+											"message": {
+												"description": "Human-readable message.",
+												"example": "Request processed successfully",
+												"type": "string"
+											},
+											"source": {
+												"properties": {
+													"pointer": {
+														"description": "JSON pointer to the source of the error.",
+														"example": "/data/attributes/name",
+														"type": "string"
+													}
+												},
+												"type": "object"
+											}
+										},
+										"required": [
+											"code",
+											"message"
+										],
+										"type": "object"
+									},
+									"type": "array",
+									"uniqueItems": true
+								},
+								"success": {
+									"description": "Indicates the request failed.",
+									"enum": [
+										false
+									],
+									"example": false,
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"success",
+								"errors",
+								"messages"
+							],
+							"type": "object"
+						}
+					}
+				},
+				"description": "Internal Server Error: Unexpected failure updating finding severity"
 			}
 		},
 		"security": [
@@ -5987,7 +6229,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/ignore": {
 		"description": "Given a list of findings, mark as ignored. Does nothing if Finding is already ignored.",
@@ -6010,7 +6253,7 @@
 					"schema": {
 						"description": "Request body for bulk actions on findings.",
 						"properties": {
-							"findings": {
+							"checks": {
 								"description": "A list of finding IDs to pass along.",
 								"example": [
 									"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAxOjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMgo="
@@ -6024,7 +6267,7 @@
 							}
 						},
 						"required": [
-							"findings"
+							"checks"
 						],
 						"type": "object"
 					}
@@ -6676,7 +6919,8 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	},
 	"POST /accounts/{account_id}/data-security/posture/findings/unignore": {
 		"description": "Ability to un-ignore a Finding if it's previously been ignored. Does nothing if the Finding is not ignored.",
@@ -6699,7 +6943,7 @@
 					"schema": {
 						"description": "Request body for bulk actions on findings.",
 						"properties": {
-							"findings": {
+							"checks": {
 								"description": "A list of finding IDs to pass along.",
 								"example": [
 									"MDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAxOjAwMDAwMDAwLTAwMDAtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMgo="
@@ -6713,7 +6957,7 @@
 							}
 						},
 						"required": [
-							"findings"
+							"checks"
 						],
 						"type": "object"
 					}
@@ -7365,6 +7609,7 @@
 		"x-fern-availability": "generally-available",
 		"x-fern-sdk-group-name": "data-security.posture",
 		"x-fern-sdk-method-name": "create",
-		"x-forge-hidden": true
+		"x-forge-hidden": true,
+		"x-stability": "beta"
 	}
 }
