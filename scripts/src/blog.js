@@ -209,6 +209,51 @@ function reviveObject(raw) {
 	return Object.fromEntries(Object.entries(raw).map(([key, value]) => [key, reviveTuple(value)]));
 }
 
+// emdash no longer ships the props blob the old blog did, so rebuild a slimmer version from
+// ld+json and the rendered DOM. tag Ghost IDs and internal tags aren't exposed here anymore.
+function buildEmdashProps(rawDom, url, ldJsonData) {
+	const slug = new URL(url).pathname.replaceAll(/^\/|\/$/g, '');
+
+	// tag chips live in the post header; skip the sitewide tag dropdown that also renders `/tag/` links
+	const postTags = [];
+	const seenTags = new Set();
+	rawDom('.post-content a[href^="/tag/"]').each((i, el) => {
+		if (rawDom(el).closest('[data-tags-dropdown]').length > 0) { return; }
+		const tagSlug = rawDom(el).attr('href').replaceAll(/^\/tag\/|\/$/g, '');
+		if (!tagSlug || seenTags.has(tagSlug)) { return; }
+		seenTags.add(tagSlug);
+		postTags.push({ name: rawDom(el).text().trim(), slug: tagSlug });
+	});
+
+	const authors = [];
+	const seenAuthors = new Set();
+	rawDom('.post-content a[href^="/author/"]').each((i, el) => {
+		const authorSlug = rawDom(el).attr('href').replaceAll(/^\/author\/|\/$/g, '');
+		const name = rawDom(el).text().trim();
+		if (!authorSlug || !name || seenAuthors.has(authorSlug)) { return; }
+		seenAuthors.add(authorSlug);
+		authors.push({ name, slug: authorSlug });
+	});
+
+	const readingTime = rawDom('main').text().match(/(\d+)\s*min(?:ute)?s?\s*read/i)?.[1] ?? null;
+
+	return {
+		initialReadingTime: readingTime,
+		locale: rawDom('meta[name="locale"]').attr('content') ?? null,
+		post: {
+			authors,
+			excerpt: ldJsonData?.description ?? null,
+			feature_image: ldJsonData?.image?.url ?? ldJsonData?.image ?? null,
+			published_at: ldJsonData?.datePublished ?? null,
+			slug,
+			tags: postTags,
+			title: ldJsonData?.headline ?? null,
+			updated_at: ldJsonData?.dateModified ?? null,
+			url: ldJsonData?.url ?? url,
+		},
+	};
+}
+
 const promises = [];
 const tags = [];
 const oldTags = fs.readFileSync(path.resolve(dir, '_tags.json'));
@@ -227,12 +272,20 @@ for (const url of [...blogURLs].sort()) {
 		}
 		await fs.ensureDir(path.dirname(slug));
 
-		const data = await fetchURL(url, 'section.post-full-content', slug);
-		if (!data?.selected) {
+		// old blog wraps content in `section.post-full-content`; the emdash rewrite uses `div.article-content`
+		const data = await fetchURL(url, 'section.post-full-content, .article-content', slug);
+		if (!data?.body) {
 			console.warn('Failed to fetch', url);
 			return;
 		}
-		const dom = cheerio.load(data.selected, null, false);
+		const rawDom = cheerio.load(data.body);
+		const isEmdash = rawDom('section.post-full-content').length === 0;
+		const contentHTML = isEmdash ? rawDom('.article-content').html() : rawDom('section.post-full-content').html();
+		if (!contentHTML) {
+			console.warn('Failed to find post content', url);
+			return;
+		}
+		const dom = cheerio.load(contentHTML, null, false);
 
 		// handle email protection
 		const emailProtectionLinks = dom('a[href^="/cdn-cgi/l/email-protection"]');
@@ -342,10 +395,9 @@ for (const url of [...blogURLs].sort()) {
 		}
 
 		// get application/ld+json
-		const rawDom = cheerio.load(data.body);
 		const ldJson = rawDom('script[type="application/ld+json"]');
+		let ldJsonData;
 		if (ldJson) {
-			let ldJsonData;
 			ldJson.each((i, json) => {
 				const el = rawDom(json);
 				const jsonText = el.text();
@@ -378,15 +430,11 @@ for (const url of [...blogURLs].sort()) {
 			}
 		}
 
-		// get props from astro-island Post component
-		const astroIslands = rawDom('astro-island');
-		const astroIslandPost = astroIslands.filter((i, el) => {
-			const astro = rawDom(el);
-			return astro.attr('component-export') === 'Post';
-		});
-		if (astroIslandPost) {
-			const astro = rawDom(astroIslandPost);
-			const props = JSON.parse(astro.attr('props'));
+		// old blog embeds rich props in an astro-island; emdash drops it, so reconstruct from ld+json + DOM
+		const astroIslandPost = rawDom('astro-island').filter((i, el) => rawDom(el).attr('component-export') === 'Post');
+		let postTags = null;
+		if (astroIslandPost.length > 0) {
+			const props = JSON.parse(astroIslandPost.attr('props'));
 			const revived = reviveObject(props);
 
 			// remove relatedPosts
@@ -395,14 +443,23 @@ for (const url of [...blogURLs].sort()) {
 			const ordered = sortObjectByKeys(revived);
 			ordered.post = sortObjectByKeys(ordered.post);
 			await fs.writeFile(slug + '.props.json', JSON.stringify(ordered, null, '\t'));
+			postTags = revived.post.tags;
+		} else {
+			const emdashProps = buildEmdashProps(rawDom, url, ldJsonData);
+			if (emdashProps) {
+				const ordered = sortObjectByKeys(emdashProps);
+				ordered.post = sortObjectByKeys(ordered.post);
+				await fs.writeFile(slug + '.props.json', JSON.stringify(ordered, null, '\t'));
+				postTags = emdashProps.post.tags;
+			}
+		}
 
-			// add tags if ID not already in list
-			if (revived.post.tags) {
-				for (const tag of revived.post.tags) {
-					// check if ID is already in list, this is array of objects
-					if (!tags.some(existingTag => existingTag.id === tag.id)) {
-						tags.push(tag);
-					}
+		// add tags if not already in list; old tags key on their Ghost ID, emdash tags only expose a slug
+		if (postTags) {
+			for (const tag of postTags) {
+				const exists = tags.some(existingTag => (tag.id ? existingTag.id === tag.id : existingTag.slug === tag.slug));
+				if (!exists) {
+					tags.push(tag);
 				}
 			}
 		}
@@ -418,7 +475,7 @@ await Promise.all(promises);
 if (publisher) {
 	await fs.writeFile(path.resolve(dir, '_publisher.json'), JSON.stringify(publisher, null, '\t'));
 }
-const orderedTags = tags.sort((tagA, tagB) => tagA.id.localeCompare(tagB.id));
+const orderedTags = tags.sort((tagA, tagB) => (tagA.id ?? tagA.slug).localeCompare(tagB.id ?? tagB.slug));
 await fs.writeFile(path.resolve(dir, '_tags.json'), JSON.stringify(orderedTags, null, '\t'));
 
 // dump internal tags to a file
