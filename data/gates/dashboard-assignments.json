@@ -1,26 +1,8 @@
 {
-	"allow-google-acm": {
-		"true": 100
-	},
-	"allow-google-ssl-for-saas": {
-		"true": 100
-	},
-	"argo-multi-sku-checkout-experiment": {
-		"control": 100
-	},
 	"billing-contract-self-serve-legal-agreement": {
 		"variant-click-through": 100
 	},
-	"gates-streaming-load-test": {
-		"false": 100
-	},
 	"oauth-access-management": {
-		"true": 100
-	},
-	"registrar-account-home-copy-experiment": {
-		"registrar": 100
-	},
-	"tsf-3-auto-optin": {
 		"true": 100
 	},
 	"unintended-registration": {
@@ -51,9 +33,6 @@
 		"true": 100
 	},
 	"account-oauth-policy": {
-		"true": 100
-	},
-	"account-owned-api-tokens": {
 		"true": 100
 	},
 	"account-traffic-analytics": {
@@ -113,9 +92,6 @@
 	"ai-gateway-playground": {
 		"true": 100
 	},
-	"ai-gateway-prompts": {
-		"false": 100
-	},
 	"ai-gateway-provider-keys": {
 		"true": 100
 	},
@@ -155,21 +131,6 @@
 	"api-gateway-endpoint-management": {
 		"true": 100
 	},
-	"api-policies-bidi-compat": {
-		"true": 100
-	},
-	"area-1-retro-scan": {
-		"true": 100
-	},
-	"area-1-retro-scan-duration": {
-		"experiment-14": 100
-	},
-	"argo-analytics-migration-available": {
-		"false": 100
-	},
-	"asn-lists": {
-		"false": 100
-	},
 	"astro-pages-autofix": {
 		"false": 100
 	},
@@ -180,12 +141,6 @@
 		"false": 100
 	},
 	"banda-billing": {
-		"true": 100
-	},
-	"banda-build-caching": {
-		"true": 100
-	},
-	"banda-workers-ui": {
 		"true": 100
 	},
 	"billing-apple-pay-gate": {
@@ -219,9 +174,6 @@
 		"true": 100
 	},
 	"billing-stripe-bad-debt-payment-enabled": {
-		"true": 100
-	},
-	"billing-stripe-paypal-payment": {
 		"true": 100
 	},
 	"billing-unified-checkout": {
@@ -284,18 +236,11 @@
 	"bola-enumeration-session-severity-enable": {
 		"false": 100
 	},
-	"bot-management-survey-banner": {
-		"true": 100
-	},
 	"browser-rendering-live-view": {
 		"true": 100
 	},
 	"browser-rendering-session-recording": {
 		"true": 100
-	},
-	"cache-reserve-show-potential-savings": {
-		"true": 50,
-		"false": 50
 	},
 	"cache-response-rules": {
 		"true": 100
@@ -329,9 +274,6 @@
 	},
 	"cloudy-insights": {
 		"true": 100
-	},
-	"combined-add-site-page-with-dns-transfer-options": {
-		"experiment": 100
 	},
 	"containers-ui": {
 		"true": 100
@@ -389,9 +331,6 @@
 	},
 	"data-dx-saved-queries": {
 		"false": 100
-	},
-	"deprecate-workers-usage-models": {
-		"true": 100
 	},
 	"deseng-account-selector": {
 		"true": 100
@@ -477,9 +416,6 @@
 	"dns-experience-paygo": {
 		"true": 100
 	},
-	"dns-gql-analytics-for-all": {
-		"true": 100
-	},
 	"dns-private-routing": {
 		"true": 100
 	},
@@ -493,9 +429,6 @@
 		"false": 100
 	},
 	"durable-objects-filter-metrics-by-name-id": {
-		"true": 100
-	},
-	"durable-objects-ui-tweaks": {
 		"true": 100
 	},
 	"dx-account-home-empty-state": {
@@ -518,9 +451,6 @@
 	"dx-enable-adobe-launch": {
 		"false": 100
 	},
-	"dx-footer-simplify": {
-		"experiment": 100
-	},
 	"dx-login-flows-kumo": {
 		"true": 100
 	},
@@ -530,20 +460,8 @@
 	"dx-manage-domain-refactor": {
 		"true": 100
 	},
-	"dx-new-error-state-login-and-signup": {
-		"experiment": 100
-	},
 	"dx-product-catalogue": {
 		"false": 100
-	},
-	"dx-recommendation-widget": {
-		"experiment": 100
-	},
-	"dx-reduced-locale-selection": {
-		"true": 100
-	},
-	"dx-sign-up-workers-onboarding-path-test-1": {
-		"experiment": 100
 	},
 	"dx-signup-social-authentication-updates": {
 		"email-upfront": 100
@@ -576,9 +494,6 @@
 	"event-hub-ui": {
 		"true": 100
 	},
-	"foundation-dns-enabled": {
-		"true": 100
-	},
 	"fractus": {
 		"baseline": 100
 	},
@@ -593,12 +508,6 @@
 	},
 	"fw-4-ai-custom-topic-config": {
 		"true": 100
-	},
-	"gauss-db-scopes": {
-		"true": 100
-	},
-	"gurjinder-feature-test": {
-		"false": 100
 	},
 	"http-2-multiplexing": {
 		"true": 100
@@ -639,12 +548,6 @@
 	"images-transformations-analytics": {
 		"true": 100
 	},
-	"improved-quick-edit": {
-		"true": 100
-	},
-	"integration-worker-templates": {
-		"true": 100
-	},
 	"internal-dns": {
 		"true": 100
 	},
@@ -665,9 +568,6 @@
 	},
 	"load-balancing-video-variant-b": {
 		"false": 100
-	},
-	"lock-user-invites-to-sso-domains": {
-		"true": 100
 	},
 	"logpush-transformation-beta": {
 		"false": 100
@@ -792,9 +692,6 @@
 	"moq-relay-creation": {
 		"false": 100
 	},
-	"multiple-policies": {
-		"true": 100
-	},
 	"new-email-changing-flow": {
 		"true": 100
 	},
@@ -808,16 +705,7 @@
 	"oauth-management-ui": {
 		"true": 100
 	},
-	"page-rules-templates": {
-		"true": 100
-	},
-	"page-shield-free-tier": {
-		"true": 100
-	},
 	"page-shield-rules-reporting-directives": {
-		"true": 100
-	},
-	"pages-smart-placement": {
 		"true": 100
 	},
 	"pages-v3-build-image": {
@@ -873,9 +761,6 @@
 	"prg-image-optimization-video-experiment": {
 		"experiment": 100
 	},
-	"prg-images-checkout-consolidation-experiment": {
-		"experiment": 100
-	},
 	"prg-lb-observatory-wayfinding": {
 		"true": 75,
 		"false": 25
@@ -926,9 +811,6 @@
 		"baseline": 50,
 		"variant-a": 50
 	},
-	"prg-streaming-checkout-consolidation-experiment": {
-		"experiment": 100
-	},
 	"prg-transfer-link-experiment": {
 		"experiment": 100
 	},
@@ -938,16 +820,10 @@
 	"prg-unified-checkout-log-explorer": {
 		"true": 100
 	},
-	"prg-upsell-banner-supression": {
-		"true": 100
-	},
 	"prg-zone-plan-post-purchase-survey": {
 		"true": 100
 	},
 	"programmable-flow-protection": {
-		"true": 100
-	},
-	"ps-cookie-monitor": {
 		"true": 100
 	},
 	"ps-javascript-malicious-details": {
@@ -1005,10 +881,10 @@
 	"registrar-unified-checkout-restore": {
 		"true": 100
 	},
-	"rl-throttle-behaviour": {
-		"true": 100
+	"registrar-unified-checkout-transfer": {
+		"false": 100
 	},
-	"rm-18295-saml-salesforce-integration": {
+	"rl-throttle-behaviour": {
 		"true": 100
 	},
 	"rm-22803-member-ui-redesign": {
@@ -1035,9 +911,6 @@
 	"security-analytics-account-takeover": {
 		"false": 100
 	},
-	"security-analytics-ai": {
-		"true": 100
-	},
 	"security-analytics-rl": {
 		"true": 100
 	},
@@ -1046,12 +919,6 @@
 	},
 	"security-bot-base": {
 		"true": 100
-	},
-	"security-center-cf-one": {
-		"false": 100
-	},
-	"security-events-mr-promo": {
-		"branch-2": 100
 	},
 	"security-overview-all-suggestions": {
 		"true": 100
@@ -1101,9 +968,6 @@
 	"ssl-frh-internal-client-certificates": {
 		"false": 100
 	},
-	"standard-usage-model": {
-		"true": 100
-	},
 	"stream-ai-caption-language-pack-1": {
 		"true": 100
 	},
@@ -1137,15 +1001,6 @@
 	"total-tls": {
 		"true": 100
 	},
-	"tsf-3-change-priority": {
-		"true": 100
-	},
-	"tsf-3-community-deflection": {
-		"branch-2": 100
-	},
-	"tsf-3-self-help": {
-		"true": 100
-	},
 	"tsf-chat-queue-position": {
 		"false": 100
 	},
@@ -1177,9 +1032,6 @@
 	"turnstile-enable-table-widgets": {
 		"true": 100
 	},
-	"turnstile-hostname-table": {
-		"true": 100
-	},
 	"two-factor-login-interstitial": {
 		"true": 100
 	},
@@ -1193,9 +1045,6 @@
 		"false": 100
 	},
 	"unmetered-rate-limiting": {
-		"true": 100
-	},
-	"use-page-shield-resource-alert-types": {
 		"true": 100
 	},
 	"usergroups": {
@@ -1235,32 +1084,16 @@
 	"workers-for-platforms-paygo": {
 		"true": 100
 	},
-	"workers-metadata-binding": {
-		"false": 100
-	},
-	"workers-observability-billing": {
-		"true": 100
-	},
 	"workers-smart-placement-v2": {
 		"true": 100
 	},
 	"workers-vpc-service-dash": {
 		"true": 100
 	},
-	"zaraz-plans-page-access": {
-		"true": 100
-	},
-	"zero-trust-path-picker": {
-		"experiment": 50,
-		"baseline": 50
-	},
 	"zone-analytics-dns-cta": {
 		"variant-b": 100
 	},
 	"zone-analytics-performance-argo-banner": {
-		"variant-b": 100
-	},
-	"zone-analytics-security-cta": {
 		"variant-b": 100
 	},
 	"zone-analytics-traffic-cta": {
@@ -1281,16 +1114,7 @@
 	"zone-versioning-comparison-feature": {
 		"true": 100
 	},
-	"zone-versioning-environment-migration": {
-		"true": 100
-	},
-	"zone-versioning-navigation-redesign": {
-		"true": 100
-	},
 	"zt-dynamic-routes": {
-		"true": 100
-	},
-	"zt-sidebar": {
 		"true": 100
 	}
 }
